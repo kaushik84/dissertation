@@ -1,0 +1,81 @@
+%% Input for the pictures, references  
+
+% die Zahl x in den eckigen Klammern [x] gibt die Anzahl der Parameter vor 
+
+
+% Parameter des ersten Makro:
+% 1. Größe des Bildes (optional)
+% 2. Name der Bilddatei wird ebenfalls ins Label uebernommen aber ohne eps
+% 3. Bildtitel (optional)
+
+% Bem.:
+% Label hat die gleiche Bezeichnung wie die Bilddatei ohne eps
+% Abstand zum vorherigen Bild ist mit eingebaut
+
+\input epsf
+\newcommand{\eps}[2]{
+           \def\DXS{#1}
+           \if\DXS\empty\else\setlength{\epsfxsize#1cm}\fi
+           \centerline{\epsfbox{#2.eps}}}
+\newcommand{\FIGE}[3]{\def\DTIT{#3}
+                       \vskip0.25cm %Anstand zum vorherigen Bild
+                       \begin{figure}[hbt]
+                       \eps{#1}{#2}
+                       \if\DTIT\empty\else\caption{#3}\fi
+                       \label{Fig:#2}
+                     \end{figure}}
+\newcommand{\FIGG}[4]{\def\DTIT{#3}
+                       %\vskip-0.25cm %Anstand zum vorherigen Bild
+                       \begin{figure}[hbt]                       
+                       \centerline{#4\includegraphics[width=#1cm]{#2}}
+%                       \centerline{\includegraphics[width=#1cm]{#2}}
+                       \if\DTIT\empty\else\caption{#3}\fi
+                       \label{Fig:#2}
+                     \end{figure}}
+\newcommand{\FIG}[5]{\def\DTIT{#3}
+                       %\vskip-0.25cm %Anstand zum vorherigen Bild
+                       \begin{figure}[#5]                       
+                       \centerline{#4\includegraphics[width=#1cm]{#2}}
+%                       \centerline{\includegraphics[width=#1cm]{#2}}
+                       \if\DTIT\empty\else\caption{#3}\fi
+                       \label{Fig:#2}
+                     \end{figure}}
+%#1 gibt das Bild vor - muss mit ``I nput'' lesbar sein !
+\newcommand{\FIGI}[4]{\begin{figure}[hbt]
+                       \center{\input{#1}}
+\vskip#4cm
+                       \caption{#2}
+                       \label{Fig:#3}
+                      \end{figure}}
+
+% zwei eps Bilder übereinander
+\newcommand{\FIGA}[4]{\begin{figure}[tb]
+   \if\@empty#1\centerline{\epsfbox{#1.eps}}
+          \else\setlength{\epsfysize}{#1}\centerline{\epsfbox{#2.eps}}\fi
+                       \caption{#4}
+                       \label{Fig:#3}
+                      \end{figure}}
+
+% Tabelle einbinden
+\newcommand{\TAB}[3]{\begin{table}[tb]
+                       \center{\input{#1}}
+                       \caption{#3}
+                       \label{Tab:#2}
+                     \end{table}}
+
+%Referenzen formatieren
+%\newcommand{\REFF}[2]{{\rm \ref{Fig:#1}{\if\@empty#2\else#2\fi}}}
+\newcommand{\REFT}[1]{{\rm Tabelle~\ref{Tab:#1}}}
+\newcommand{\REFFS}[2]{{\rm den Bildern \hskip0.01cm\ref{Fig:#1} und \ref{Fig:#2}}}
+\newcommand{\REFF}[1]{{\rm Bild~\ref{Fig:#1}}}
+\newcommand{\REFS}[1]{{\rm \ref{Satz:#1}}}
+\newcommand{\REFD}[1]{{\rm \ref{Def:#1}}}
+\newcommand{\REFE}[1]{{\rm \ref{Ex:#1}}}
+\newcommand{\REFG}[1]{{\rm (\ref{Group:#1})}}
+\newcommand{\REF}[1]{{\rm (\ref{#1})}}
+
+
+
+
+
+

@@ -1,0 +1,66 @@
+\chapter{Introduction}
+
+\section{Motivation}
+\label{sec:mot}
+
+\subsection{Spectrum scarcity problem}
+
+\subsection{Cognitive radio}
+\begin{itemize}
+\item Mitola's concept
+\item Portability using software defined radio 
+\end{itemize}
+
+\subsection{Overview of the small cell deployment}
+\begin{itemize}
+\item Capacity improvements -- femto cell base station -- frequency reuse -- interference coordination  
+\item Coverage improvements -- relay -- transparent to the network  
+\end{itemize}
+
+\subsection{Cognitive relay as cognitive radio}
+\todo{Use case}
+Cognitive relay is a network element that provides secondary usage of the spectrum to the devices operating indoor. 
+\begin{itemize}
+\item Capacity improvements through reusing the primary user spectrum 
+\item Coverage improvements through indoor deployment  
+\end{itemize}
+%Two fields in electrical engineering formed the evolution of Software Defined Radios: the history of wireless communication principles and the development of digital processing technologies.
+
+%The wireless transmission of information started at the end of the 19th century. In 1886, Heinrich Hertz was the first who generated and detected electromagnetic radiation, with which he verified Maxwell's theory of the existence of electromagnetic waves. Nicola Tesla gave a public demonstration of wireless radio communications in 1893 and ten years later Marconi succeeded in the first wireless transmission over the Atlantic. Even if these milestones in the history of wireless communications took place more than hundred years ago, the principles of the transmission of amplitude modulated (AM) analog signals are still existent today: Most broadcast radio receivers provide an AM tuner for the radio frequency (RF) band and the signal for analog broadcast television is also amplitude modulated. In 1933, Edwin Armstrong patented a method to integrate the information in the frequency component of an electromagnetic wave instead in the amplitude. Hence, radios with \ac{FM} occurred and are still used in the \ac{VHF} band for audio broadcast.
+
+%The fact that old communication schemes are still used today is also true for digital communications. The \ac{GSM} was created 1981 and thirty years later it has a market share of \SI{80.4}{\%} for cellular mobile networks \cite{gsm}. With the standards that were released in the last two decades like the 802.11 family, \ac{UMTS} or \ac{LTE}, a normal user faces plenty of complete different wireless communication schemes. It is a fact that more and more communication schemes emerge while the older ones still must be maintained. From a normal user perspective this is not problematic due to the fact that the communication devices are cheap and can be replaced immediately.
+
+%From a military perspective this is a huge challenge. The number of radio communication standards in this area are in the range of several hundreds and a legacy radio device supports only a few of them. These devices should additionally operate over decades. New devices should not only be interoperable with the older devices they should also be interoperable with communication schemes from other countries for international operations. The present situation with the need for a radio device can be summarized as follows: There are plenty of radio communication standards and the optimum would be a device that supports present standards and also communication schemes for the future.
+
+%\subsection{History of digital processing technology}
+%The development of programmable devices for data processing started in 1971 with the Intel 4004. This was the first single chip microprocessor on the market with an integrated \ac{CPU}, a memory unit, as well as input and output control ports \cite{intel4004}. Eleven years later the first commercial microprocessor with a special architecture for multiplying and accumulating was released \cite{dsp}. With these \acp{DSP} \index{DSP} a new branch of processors intended for digital processing purposes evolved. At the same time, the company Xilinx was founded and developed the first \ac{FPGA} \index{FPGA} for the commercial market \cite{xc2064}. These inventions and the development of the \ac{ADC} \index{ADC} and \ac{DAC} \index{DAC} technology formed the basis of processing radio signals with software.
+
+%\subsection{Evolution of Software Defined Radio}
+
+%With the development in processing technology in the last thirty years, the architecture of radio devices changed from application specific integrated circuits to processors and reconfigurable logic. With these programmable devices, the radio standards could be realized by software and could be changed according to the user's need. Although many people contributed in this idea like Ulrich Rohde in 1984 \cite{rohde}, Joe Mitola coined the term ``Software Defined Radio'' in 1991 \cite{mitola}.
+
+%At the same time, the first \ac{SDR} \index{SDR} project was initiated by the U.S. military to produce an SDR that could be tuned to frequencies between \SI{2}{MHz} and \SI{2}{GHz} and provide furthermore interoperability between several different standards of the armed forces. Today, the principle of \ac{SDR} is present in many fields of wireless communication. In the military environment, \ac{SDR} projects are launched around the world. In the U.S. military, the project \ac{JTRS} should produce devices that are interoperable to many existing military and civilian communication standards and should successively replace existing legacy radios. The German equivalent: ``\ac{SVFuA}'' is a software defined joint radio system that works in a frequency range between \SI{3}{MHz} and \SI{3}{GHz} and should also replace existing legacy devices in the German army.
+
+%The advantage of an SDR is the reconfigurability and the interoperability to old radio communication standards. Legacy radios can still be used and the SDR has even the possibility to work as a gateway between existent and new wireless standards \cite{sdr_pgs}. These advantages were also recognized by various European agencies of public and governmental security, which face the problem to replace their old analog communication structure with a new digital system. The European project ``\ac{WINTSEC}'' proposed \ac{SDR} as the key enabler for this step \cite{europ_system}. But not only the replacement of legacy to new devices can be accomplished. An \ac{SDR} can also enable the wireless communication among rescue teams, firefighters and police. It can furthermore establish a connection with rescue teams across a country's borders.
+
+%With the company Vanu Inc., \acp{SDR} are also existent on the commercial market for mobile communication. Vanu Inc. was the first company that developed base stations with \acp{GPP}\index{GPP}. The wireless standards are written in high level languages and can be configured and maintained online \cite{vanu}.
+
+%\subsection{Problem of portability \index{Portability}}
+%The difference between a legacy radio device and a \acl{SDR} is in principle the distribution of the \ac{SDR} in a waveform \index{Waveform} part and in a platform \index{Platform} part. It is therefore named: ``The waveform/platform paradigm''. The platform consists of the hardware with various processing elements, memory and user interfaces. However, it is not only the hardware that comprises a platform, it is also the software connected to it like the operating system, the firmware and \index{API} \acp{API}. The waveform is an application that is supported by the SDR platform and configures it in accordance to the dedicated radio communication standard. Therefore, the waveform enables the platform to be part of the related radio communication system. The waveform developer is able to build multiple waveforms for his platform.
+
+%In the past years several new SDR platforms were released and each waveform developer build applications for his own system. The question evolved: ``How can be assured that waveforms can be moved from one platform to another?'' This portability problem is not only valid for the exchange of waveforms. It is also existent when SDR platforms are modernized and upgraded with new processors. How can be assured that waveforms running on the old platform can be ported to the new platform with a minimum of effort?
+
+%This work focuses on these questions. It proposes a development flow and shows that waveforms can be ported. A proof of concept is given with an exemplary waveform and two platforms. It additionally investigates the overhead of automatically generated code, which is a key term for waveform portability.
+
+
+\section{Outline of Work}
+%Chapter 2 gives an overview of existing waveform development flows and compares them with respect to portability issues. The Model-Based Design is introduced for baseband processing and measurements are presented about the overhead of automatically generated codes.
+
+%In this work about portability of SDR waveforms also an overview of SDR platforms are given in chapter 3, concerning a general and a detailed description of two special platforms that are used for waveform porting. These are the USRP and the SFF SDR. Furthermore, chapter 3 describes how the model-based waveform design was integrated in these platforms.
+
+%With the knowledge of the waveform development flow and the SDR platforms, the next step is the design and the port of a real world waveform. For this proof of concept, the professional mobile radio waveform for public and governmental security systems was chosen, known as TETRA. Chapter 4 therefore gives an overview of TETRA and describes the development of the waveform according to the design flow, introduced in chapter 2. Furthermore, the port of this waveform from one platform to another is described. It presents results and benchmarks of the generated code for TETRA on both platforms and introduce the tests for evaluating the real time waveform with measurement equipment.
+
+%The detailed description of further ports that were realized is not necessary for this work. Therefore, chapter 5 gives an overview of the challenges and results from other waveform ports.
+
+%Chapter 6 finally concludes the work and gives an outlook of waveform development in the future.
+

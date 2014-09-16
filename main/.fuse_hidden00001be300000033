@@ -1,0 +1,1308 @@
+\relax 
+\providecommand\HyperFirstAtBeginDocument{\AtBeginDocument}
+\HyperFirstAtBeginDocument{\ifx\hyper@anchor\@undefined
+\global\let\oldcontentsline\contentsline
+\gdef\contentsline#1#2#3#4{\oldcontentsline{#1}{#2}{#3}}
+\global\let\oldnewlabel\newlabel
+\gdef\newlabel#1#2{\newlabelxx{#1}#2}
+\gdef\newlabelxx#1#2#3#4#5#6{\oldnewlabel{#1}{{#2}{#3}}}
+\AtEndDocument{\ifx\hyper@anchor\@undefined
+\let\contentsline\oldcontentsline
+\let\newlabel\oldnewlabel
+\fi}
+\fi}
+\global\let\hyper@last\relax 
+\gdef\HyperFirstAtBeginDocument#1{#1}
+\providecommand\HyField@AuxAddToFields[1]{}
+\reset@newl@bel
+\select@language{USenglish}
+\@writefile{toc}{\select@language{USenglish}}
+\@writefile{lof}{\select@language{USenglish}}
+\@writefile{lot}{\select@language{USenglish}}
+\@writefile{lol}{\select@language{USenglish}}
+\@writefile{tdo}{\contentsline {todo}{Cover Image}{i}{section*.1}}
+\pgfsyspdfmark {pgfid1}{3356423}{37422719}
+\pgfsyspdfmark {pgfid4}{26091518}{37385340}
+\pgfsyspdfmark {pgfid5}{27473643}{37158586}
+\@writefile{tdo}{\contentsline {todo}{Date and coreferent}{ix}{section*.3}}
+\pgfsyspdfmark {pgfid6}{12703521}{8126892}
+\pgfsyspdfmark {pgfid9}{26091518}{8123126}
+\pgfsyspdfmark {pgfid10}{27473643}{7896372}
+\@writefile{toc}{\contentsline {chapter}{\numberline {1}Introduction}{1}{chapter.1}}
+\@writefile{lof}{\addvspace {10\p@ }}
+\@writefile{lot}{\addvspace {10\p@ }}
+\@writefile{lol}{\addvspace {10\p@ }}
+\@writefile{toc}{\contentsline {section}{\numberline {1.1}Motivation}{1}{section.1.1}}
+\newlabel{sec:mot}{{1.1}{1}{Motivation\relax }{section.1.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.1.1}Evolution of wireless communication}{1}{subsection.1.1.1}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.1.2}Spectrum scarcity problem}{1}{subsection.1.1.2}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.1.3}Cognitive radio}{1}{subsection.1.1.3}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.1.4}Overview of the small cell deployment}{1}{subsection.1.1.4}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.1.5}Cognitive relay as cognitive radio}{1}{subsection.1.1.5}}
+\@writefile{tdo}{\contentsline {todo}{Use case}{1}{section*.7}}
+\pgfsyspdfmark {pgfid11}{3356423}{9566120}
+\pgfsyspdfmark {pgfid14}{26091518}{9562354}
+\pgfsyspdfmark {pgfid15}{27473643}{9335600}
+\@writefile{toc}{\contentsline {section}{\numberline {1.2}Outline of Work}{2}{section.1.2}}
+\citation{strauss_dsp_market}
+\citation{strauss_dsp_market}
+\citation{dsp_high_level}
+\@writefile{toc}{\contentsline {chapter}{\numberline {2}Cognitive Relay}{3}{chapter.2}}
+\@writefile{lof}{\addvspace {10\p@ }}
+\@writefile{lot}{\addvspace {10\p@ }}
+\@writefile{lol}{\addvspace {10\p@ }}
+\newlabel{chap:wav}{{2}{3}{Cognitive Relay\relax }{chapter.2}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {2.1}Introduction}{3}{section.2.1}}
+\@writefile{toc}{\contentsline {section}{\numberline {2.2}Use Case}{3}{section.2.2}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.2.1}Platform Specific Development}{3}{subsection.2.2.1}}
+\@writefile{toc}{\contentsline {subsubsection}{Code Development on Processors}{3}{section*.8}}
+\@writefile{lof}{\contentsline {figure}{\numberline {\relax 2.1}{\ignorespaces DSP vendor market shares in 2006 \cite  {strauss_dsp_market}}}{3}{figure.2.1}}
+\newlabel{fig:dsp_market_share}{{\relax 2.1}{3}{DSP vendor market shares in 2006 \cite {strauss_dsp_market}\relax }{figure.2.1}{}}
+\citation{anderson_optimizing_C}
+\citation{ti_opt_C}
+\citation{amd_opt_C}
+\undonewlabel{acro:MAc}
+\newlabel{acro:MAc}{{2.2.1}{4}{Code Development on Processors\relax }{section*.9}{}}
+\acronymused{MAc}
+\newlabel{source_01}{{2.1}{4}{Example code in C\relax }{lstlisting.2.1}{}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {2.1}Example code in C}{4}{lstlisting.2.1}}
+\citation{lee_opt_C}
+\citation{pareto}
+\newlabel{unopt_ass_01}{{2.2}{5}{Unoptimized assembler code\relax }{lstlisting.2.2}{}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {2.2}Unoptimized assembler code}{5}{lstlisting.2.2}}
+\newlabel{opt_ass_01}{{2.3}{5}{Optimized assembler code\relax }{lstlisting.2.3}{}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {2.3}Optimized assembler code}{5}{lstlisting.2.3}}
+\citation{dsp_high_level}
+\citation{baese}
+\citation{verilog_vs_vhdl01}
+\citation{verilog_vs_vhdl_02}
+\undonewlabel{acro:FPGA}
+\newlabel{acro:FPGA}{{2.2.1}{6}{Code Development on \acp {FPGA}\relax }{section*.11}{}}
+\acronymused{FPGA}
+\@writefile{toc}{\contentsline {subsubsection}{Code Development on \acp {FPGA}}{6}{section*.10}}
+\acronymused{FPGA}
+\undonewlabel{acro:DSP}
+\newlabel{acro:DSP}{{2.2.1}{6}{Code Development on \acp {FPGA}\relax }{section*.12}{}}
+\acronymused{DSP}
+\acronymused{FPGA}
+\undonewlabel{acro:HDL}
+\newlabel{acro:HDL}{{2.2.1}{6}{Code Development on \acp {FPGA}\relax }{section*.13}{}}
+\acronymused{HDL}
+\acronymused{HDL}
+\acronymused{HDL}
+\acronymused{HDL}
+\acronymused{HDL}
+\citation{gnu_radio_art}
+\@writefile{toc}{\contentsline {subsubsection}{Portability with platform specific development}{7}{section*.14}}
+\acronymused{HDL}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.2.2}GNU Radio}{7}{subsection.2.2.2}}
+\newlabel{GNURadio}{{2.2.2}{7}{GNU Radio\relax }{subsection.2.2.2}{}}
+\newlabel{gnuradio_01}{{2.4}{8}{Dial tone example in GNU Radio\relax }{lstlisting.2.4}{}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {2.4}Dial tone example in GNU Radio}{8}{lstlisting.2.4}}
+\citation{gnu_radio_web}
+\citation{open_sdr}
+\citation{moores_law}
+\citation{moores_law_2}
+\undonewlabel{acro:GRC}
+\newlabel{acro:GRC}{{2.2.2}{9}{GNU Radio\relax }{section*.15}{}}
+\acronymused{GRC}
+\acronymused{GRC}
+\@writefile{lof}{\contentsline {figure}{\numberline {\relax 2.2}{\ignorespaces Dial tone example in the GNU Radio Companion}}{9}{figure.2.2}}
+\newlabel{fig:gnuradio_grc}{{\relax 2.2}{9}{Dial tone example in the GNU Radio Companion\relax }{figure.2.2}{}}
+\citation{SCA_Tutorial_VT}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.2.3}Software Communication Architecture}{10}{subsection.2.2.3}}
+\newlabel{sec:SCA}{{2.2.3}{10}{Software Communication Architecture\relax }{subsection.2.2.3}{}}
+\@writefile{toc}{\contentsline {subsubsection}{History of the Software Communication Architecture}{10}{section*.16}}
+\undonewlabel{acro:JTRS}
+\newlabel{acro:JTRS}{{2.2.3}{10}{History of the Software Communication Architecture\relax }{section*.17}{}}
+\acronymused{JTRS}
+\undonewlabel{acro:JPO}
+\newlabel{acro:JPO}{{2.2.3}{10}{History of the Software Communication Architecture\relax }{section*.18}{}}
+\acronymused{JPO}
+\undonewlabel{acro:SCA}
+\newlabel{acro:SCA}{{2.2.3}{10}{History of the Software Communication Architecture\relax }{section*.19}{}}
+\acronymused{SCA}
+\acronymused{JTRS}
+\@writefile{toc}{\contentsline {subsubsection}{Operating Environment}{10}{section*.20}}
+\undonewlabel{acro:OE}
+\newlabel{acro:OE}{{2.2.3}{10}{Operating Environment\relax }{section*.21}{}}
+\acronymused{OE}
+\acronymused{OE}
+\acronymused{CF}
+\undonewlabel{acro:AEP}
+\newlabel{acro:AEP}{{2.2.3}{10}{Operating Environment\relax }{section*.22}{}}
+\acronymused{AEP}
+\citation{rise_fall_corba}
+\@writefile{lof}{\contentsline {figure}{\numberline {\relax 2.3}{\ignorespaces Operating Environment with the connections to the platform and the waveform}}{11}{figure.2.3}}
+\newlabel{fig:OE}{{\relax 2.3}{11}{Operating Environment with the connections to the platform and the waveform\relax }{figure.2.3}{}}
+\@writefile{toc}{\contentsline {subsubsection}{Core Framework}{11}{section*.23}}
+\undonewlabel{acro:CF}
+\newlabel{acro:CF}{{2.2.3}{11}{Core Framework\relax }{section*.24}{}}
+\acronymused{CF}
+\acronymused{OE}
+\acronymused{CF}
+\citation{SCA222}
+\@writefile{toc}{\contentsline {subsubsection}{CORBA}{12}{section*.25}}
+\undonewlabel{acro:CORBA}
+\newlabel{acro:CORBA}{{2.2.3}{12}{CORBA\relax }{section*.26}{}}
+\acronymused{CORBA}
+\acronymused{CORBA}
+\acronymused{CORBA}
+\acronymused{SCA}
+\acronymused{CORBA}
+\undonewlabel{acro:API}
+\newlabel{acro:API}{{2.2.3}{12}{CORBA\relax }{section*.27}{}}
+\acronymused{API}
+\acronymused{SCA}
+\acronymused{OMG}
+\acronymused{CORBA}
+\@writefile{toc}{\contentsline {subsubsection}{Application Environment Profile}{12}{section*.28}}
+\undonewlabel{acro:IEEE}
+\newlabel{acro:IEEE}{{2.2.3}{12}{Application Environment Profile\relax }{section*.29}{}}
+\acronymused{IEEE}
+\acronymused{API}
+\undonewlabel{acro:POSIX}
+\newlabel{acro:POSIX}{{2.2.3}{12}{Application Environment Profile\relax }{section*.30}{}}
+\acronymused{POSIX}
+\acronymused{SCA}
+\acronymused{AEP}
+\acronymused{POSIX}
+\acronymused{API}
+\acronymused{CF}
+\acronymused{CORBA}
+\@writefile{toc}{\contentsline {subsubsection}{Domain Profile}{12}{section*.31}}
+\undonewlabel{acro:XML}
+\newlabel{acro:XML}{{2.2.3}{12}{Domain Profile\relax }{section*.32}{}}
+\acronymused{XML}
+\citation{scari:website}
+\citation{spectra:website}
+\citation{ce:website}
+\citation{ossie:website}
+\citation{ossie_fpga}
+\citation{ossie_omap}
+\citation{MDAGuide}
+\citation{MDAGuide}
+\@writefile{toc}{\contentsline {subsubsection}{SCA-compliant waveform development}{13}{section*.33}}
+\acronymused{SCA}
+\acronymused{CF}
+\@writefile{toc}{\contentsline {section}{\numberline {2.3}Model-Based Development}{13}{section.2.3}}
+\newlabel{sec:mbd}{{2.3}{13}{Model-Based Development\relax }{section.2.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.3.1}OMG's Model Driven Architecture}{13}{subsection.2.3.1}}
+\undonewlabel{acro:OMG}
+\newlabel{acro:OMG}{{2.3.1}{13}{OMG's Model Driven Architecture\relax }{section*.34}{}}
+\acronymused{OMG}
+\acronymused{CORBA}
+\acronymused{OMG}
+\undonewlabel{acro:MDA}
+\newlabel{acro:MDA}{{2.3.1}{13}{OMG's Model Driven Architecture\relax }{section*.35}{}}
+\acronymused{MDA}
+\citation{schober_mda}
+\citation{nagel_tetra}
+\undonewlabel{acro:CIM}
+\newlabel{acro:CIM}{{2.3.1}{14}{OMG's Model Driven Architecture\relax }{section*.36}{}}
+\acronymused{CIM}
+\undonewlabel{acro:PIM}
+\newlabel{acro:PIM}{{2.3.1}{14}{OMG's Model Driven Architecture\relax }{section*.37}{}}
+\acronymused{PIM}
+\undonewlabel{acro:PSM}
+\newlabel{acro:PSM}{{2.3.1}{14}{OMG's Model Driven Architecture\relax }{section*.38}{}}
+\acronymused{PSM}
+\acronymused{CIM}
+\acronymused{MDA}
+\acronymused{MDA}
+\acronymused{SCA}
+\acronymused{PSM}
+\acronymused{CORBA}
+\acronymused{CORBA}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.3.2}A new interpretation of the MDA}{14}{subsection.2.3.2}}
+\acronymused{CIM}
+\acronymused{PIM}
+\acronymused{PSM}
+\acronymused{MDA}
+\acronymused{CIM}
+\acronymused{IEEE}
+\undonewlabel{acro:ETSI}
+\newlabel{acro:ETSI}{{2.3.2}{14}{A new interpretation of the MDA\relax }{section*.39}{}}
+\acronymused{ETSI}
+\acronymused{CIM}
+\citation{simu_ug}
+\@writefile{lof}{\contentsline {figure}{\numberline {\relax 2.4}{\ignorespaces Overview of the models, which are defined by the MDA}}{15}{figure.2.4}}
+\newlabel{fig:mda_structure}{{\relax 2.4}{15}{Overview of the models, which are defined by the MDA\relax }{figure.2.4}{}}
+\acronymused{PIM}
+\acronymused{PIM}
+\acronymused{PSM}
+\acronymused{PIM}
+\undonewlabel{acro:ADC}
+\newlabel{acro:ADC}{{2.3.2}{15}{A new interpretation of the MDA\relax }{section*.40}{}}
+\acronymused{ADC}
+\acronymused{PSM}
+\undonewlabel{acro:TI}
+\newlabel{acro:TI}{{2.3.2}{15}{A new interpretation of the MDA\relax }{section*.41}{}}
+\acronymused{TI}
+\acronymused{MDA}
+\@writefile{lof}{\contentsline {figure}{\numberline {\relax 2.5}{\ignorespaces Dial tone example in Simulink}}{16}{figure.2.5}}
+\newlabel{fig:dial_tone_simu}{{\relax 2.5}{16}{Dial tone example in Simulink\relax }{figure.2.5}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.3.3}Model-Based Design with Simulink}{16}{subsection.2.3.3}}
+\@writefile{toc}{\contentsline {subsubsection}{Simulation}{16}{section*.42}}
+\acronymused{GRC}
+\citation{rtw_ug}
+\citation{rtwec_ug}
+\@writefile{lof}{\contentsline {figure}{\numberline {\relax 2.6}{\ignorespaces Comparison of latency and throughput for sample-based and frame-based processing}}{17}{figure.2.6}}
+\newlabel{fig:sample_frame}{{\relax 2.6}{17}{Comparison of latency and throughput for sample-based and frame-based processing\relax }{figure.2.6}{}}
+\undonewlabel{acro:ISR}
+\newlabel{acro:ISR}{{2.3.3}{17}{Simulation\relax }{section*.43}{}}
+\acronymused{ISR}
+\@writefile{toc}{\contentsline {subsubsection}{Code Generation from Simulink to C/C++}{17}{section*.44}}
+\newlabel{sec:codegen}{{2.3.3}{17}{Code Generation from Simulink to C/C++\relax }{section*.44}{}}
+\citation{rtw_ug}
+\citation{rtw_ug}
+\newlabel{rtw_01}{{2.5}{18}{Structure of a generated model in pseudo code \cite {rtw_ug}\relax }{lstlisting.2.5}{}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {2.5}Structure of a generated model in pseudo code \cite  {rtw_ug}}{18}{lstlisting.2.5}}
+\newlabel{rtw_02}{{2.6}{19}{Initialization of the model\relax }{lstlisting.2.6}{}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {2.6}Initialization of the model}{19}{lstlisting.2.6}}
+\newlabel{rtw_03}{{2.7}{19}{Signal processing in the dial tone\relax }{lstlisting.2.7}{}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {2.7}Signal processing in the dial tone}{19}{lstlisting.2.7}}
+\citation{hdl_ug}
+\newlabel{rtw_04}{{2.8}{20}{Update of the model's states\relax }{lstlisting.2.8}{}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {2.8}Update of the model's states}{20}{lstlisting.2.8}}
+\newlabel{rtw_05}{{2.9}{20}{Termination of the model\relax }{lstlisting.2.9}{}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {2.9}Termination of the model}{20}{lstlisting.2.9}}
+\@writefile{toc}{\contentsline {subsubsection}{Code generation from Simulink to Verilog/VHDL}{20}{section*.45}}
+\@writefile{lof}{\contentsline {figure}{\numberline {\relax 2.7}{\ignorespaces Structure of the generated \texttt  {dial\_tone} module}}{21}{figure.2.7}}
+\newlabel{fig:dial_tone_fpga}{{\relax 2.7}{21}{Structure of the generated \texttt {dial\_tone} module\relax }{figure.2.7}{}}
+\newlabel{hdl_01}{{2.10}{21}{Extraction of the generated Verilog code\relax }{lstlisting.2.10}{}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {2.10}Extraction of the generated Verilog code}{21}{lstlisting.2.10}}
+\citation{perf_overhead}
+\@writefile{toc}{\contentsline {section}{\numberline {2.4}Overhead of Code Generation}{22}{section.2.4}}
+\newlabel{sec:overhead}{{2.4}{22}{Overhead of Code Generation\relax }{section.2.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.4.1}Code Generation for GPPs}{22}{subsection.2.4.1}}
+\acronymused{ISR}
+\undonewlabel{acro:IPS}
+\newlabel{acro:IPS}{{2.4.1}{23}{Code Generation for GPPs\relax }{section*.46}{}}
+\acronymused{IPS}
+\undonewlabel{acro:LCC}
+\newlabel{acro:LCC}{{2.4.1}{23}{Code Generation for GPPs\relax }{section*.47}{}}
+\acronymused{LCC}
+\@writefile{lof}{\contentsline {figure}{\numberline {\relax 2.8}{\ignorespaces Processing times of the generated non-functional code, which was compiled with various compilers}}{23}{figure.2.8}}
+\newlabel{fig:empty_loop_gpp}{{\relax 2.8}{23}{Processing times of the generated non-functional code, which was compiled with various compilers\relax }{figure.2.8}{}}
+\undonewlabel{acro:FIR}
+\newlabel{acro:FIR}{{2.4.1}{23}{Code Generation for GPPs\relax }{section*.48}{}}
+\acronymused{FIR}
+\acronymused{FIR}
+\acronymused{MAc}
+\citation{fftw_paper}
+\undonewlabel{acro:VS}
+\newlabel{acro:VS}{{2.4.1}{24}{Code Generation for GPPs\relax }{section*.49}{}}
+\acronymused{VS}
+\acronymused{IPS}
+\acronymused{FIR}
+\acronymused{IPS}
+\acronymused{MAc}
+\@writefile{lof}{\contentsline {figure}{\numberline {\relax 2.9}{\ignorespaces Benchmark of an FIR filter on a GPP}}{24}{figure.2.9}}
+\newlabel{fig:fir_gpp}{{\relax 2.9}{24}{Benchmark of an FIR filter on a GPP\relax }{figure.2.9}{}}
+\undonewlabel{acro:FFT}
+\newlabel{acro:FFT}{{2.4.1}{24}{Code Generation for GPPs\relax }{section*.50}{}}
+\acronymused{FFT}
+\acronymused{FFT}
+\citation{fftw_bench}
+\@writefile{lof}{\contentsline {figure}{\numberline {\relax 2.10}{\ignorespaces Benchmark of the FFT on a GPP}}{25}{figure.2.10}}
+\newlabel{fig:fft_gpp}{{\relax 2.10}{25}{Benchmark of the FFT on a GPP\relax }{figure.2.10}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.4.2}Code Generation for DSPs}{26}{subsection.2.4.2}}
+\undonewlabel{acro:CCS}
+\newlabel{acro:CCS}{{2.4.2}{26}{Code Generation for DSPs\relax }{section*.51}{}}
+\acronymused{CCS}
+\acronymused{DSP}
+\acronymused{TI}
+\@writefile{lof}{\contentsline {figure}{\numberline {\relax 2.11}{\ignorespaces Overhead of the non-functional code on a DSP}}{26}{figure.2.11}}
+\newlabel{fig:empty_loop_dsp}{{\relax 2.11}{26}{Overhead of the non-functional code on a DSP\relax }{figure.2.11}{}}
+\acronymused{FIR}
+\acronymused{TI}
+\acronymused{FFT}
+\@writefile{lof}{\contentsline {figure}{\numberline {\relax 2.12}{\ignorespaces Benchmark of an FIR filter on a DSP}}{27}{figure.2.12}}
+\newlabel{fig:fir_dsp}{{\relax 2.12}{27}{Benchmark of an FIR filter on a DSP\relax }{figure.2.12}{}}
+\citation{virtex4}
+\citation{cyclone2}
+\@writefile{lof}{\contentsline {figure}{\numberline {\relax 2.13}{\ignorespaces Benchmark of the FFT on a DSP}}{28}{figure.2.13}}
+\newlabel{fig:fft_dsp}{{\relax 2.13}{28}{Benchmark of the FFT on a DSP\relax }{figure.2.13}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.4.3}Code Generation for FPGAs}{28}{subsection.2.4.3}}
+\acronymused{DSP}
+\undonewlabel{acro:GPP}
+\newlabel{acro:GPP}{{2.4.3}{28}{Code Generation for FPGAs\relax }{section*.52}{}}
+\acronymused{GPP}
+\acronymused{HDL}
+\acronymused{FPGA}
+\undonewlabel{acro:SDR}
+\newlabel{acro:SDR}{{2.4.3}{28}{Code Generation for FPGAs\relax }{section*.53}{}}
+\acronymused{SDR}
+\undonewlabel{acro:DAC}
+\newlabel{acro:DAC}{{2.4.3}{28}{Code Generation for FPGAs\relax }{section*.54}{}}
+\acronymused{DAC}
+\undonewlabel{acro:CIC}
+\newlabel{acro:CIC}{{2.4.3}{29}{Code Generation for FPGAs\relax }{section*.55}{}}
+\acronymused{CIC}
+\acronymused{VHDL}
+\@writefile{lof}{\contentsline {figure}{\numberline {\relax 2.14}{\ignorespaces Benchmark of a CIC decimation filter on different FPGAs}}{29}{figure.2.14}}
+\newlabel{fig:cic_fpga}{{\relax 2.14}{29}{Benchmark of a CIC decimation filter on different FPGAs\relax }{figure.2.14}{}}
+\undonewlabel{acro:LE}
+\newlabel{acro:LE}{{2.4.3}{29}{Code Generation for FPGAs\relax }{section*.56}{}}
+\acronymused{LE}
+\undonewlabel{acro:LUT}
+\newlabel{acro:LUT}{{2.4.3}{29}{Code Generation for FPGAs\relax }{section*.57}{}}
+\acronymused{LUT}
+\acronymused{LUT}
+\acronymused{LE}
+\acronymused{CIC}
+\acronymused{FIR}
+\@writefile{lof}{\contentsline {figure}{\numberline {\relax 2.15}{\ignorespaces Comparison of the resource usage for a 31-tap halfband filter}}{30}{figure.2.15}}
+\newlabel{fig:fir2_fpga}{{\relax 2.15}{30}{Comparison of the resource usage for a 31-tap halfband filter\relax }{figure.2.15}{}}
+\acronymused{LE}
+\@writefile{lof}{\contentsline {figure}{\numberline {\relax 2.16}{\ignorespaces Comparison of the resource usage of an FIR decimation filter with various tap lengths}}{31}{figure.2.16}}
+\newlabel{fig:fir_fpga}{{\relax 2.16}{31}{Comparison of the resource usage of an FIR decimation filter with various tap lengths\relax }{figure.2.16}{}}
+\citation{reed_SR}
+\citation{jon_SDR}
+\@writefile{toc}{\contentsline {chapter}{\numberline {3}SDR Platforms}{32}{chapter.3}}
+\@writefile{lof}{\addvspace {10\p@ }}
+\@writefile{lot}{\addvspace {10\p@ }}
+\@writefile{lol}{\addvspace {10\p@ }}
+\newlabel{chap:plat}{{3}{32}{SDR Platforms\relax }{chapter.3}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {3.1}SDR Platforms in General}{32}{section.3.1}}
+\acronymused{ADC}
+\acronymused{DAC}
+\acronymused{ADC}
+\acronymused{ADC}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1.1}RF Front Ends in SDR}{32}{subsection.3.1.1}}
+\@writefile{toc}{\contentsline {subsubsection}{Receiver Architectures}{32}{section*.58}}
+\acronymused{ADC}
+\undonewlabel{acro:RF}
+\newlabel{acro:RF}{{3.1.1}{32}{Receiver Architectures\relax }{section*.59}{}}
+\acronymused{RF}
+\undonewlabel{acro:IF}
+\newlabel{acro:IF}{{3.1.1}{32}{Receiver Architectures\relax }{section*.60}{}}
+\citation{razavi_RF}
+\@writefile{lof}{\contentsline {figure}{\numberline {\relax 3.1}{\ignorespaces Structure of a general SDR platform}}{33}{figure.3.1}}
+\newlabel{fig:SDR_platform}{{\relax 3.1}{33}{Structure of a general SDR platform\relax }{figure.3.1}{}}
+\acronymused{IF}
+\acronymused{IF}
+\acronymused{RF}
+\acronymused{RF}
+\acronymused{IF}
+\acronymused{RF}
+\acronymused{IF}
+\acronymused{IF}
+\acronymused{IF}
+\acronymused{IF}
+\acronymused{IF}
+\acronymused{IF}
+\citation{Rec_Comp}
+\citation{FPGA_CPLD}
+\citation{virtex4}
+\citation{cyclone2}
+\@writefile{toc}{\contentsline {subsubsection}{Transmitter Architectures}{34}{section*.61}}
+\acronymused{IF}
+\undonewlabel{acro:PA}
+\newlabel{acro:PA}{{3.1.1}{34}{Transmitter Architectures\relax }{section*.62}{}}
+\acronymused{PA}
+\undonewlabel{acro:LO}
+\newlabel{acro:LO}{{3.1.1}{34}{Transmitter Architectures\relax }{section*.63}{}}
+\acronymused{LO}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1.2}Digital Signal Processing in SDR}{34}{subsection.3.1.2}}
+\newlabel{sec:dsp_sdr}{{3.1.2}{34}{Digital Signal Processing in SDR\relax }{subsection.3.1.2}{}}
+\acronymused{SDR}
+\citation{dsp}
+\citation{ti_c64}
+\@writefile{toc}{\contentsline {subsubsection}{Field Programmable Gate Arrays}{35}{section*.64}}
+\acronymused{FPGA}
+\undonewlabel{acro:IC}
+\newlabel{acro:IC}{{3.1.2}{35}{Field Programmable Gate Arrays\relax }{section*.65}{}}
+\acronymused{IC}
+\acronymused{LUT}
+\acronymused{FPGA}
+\undonewlabel{acro:CLB}
+\newlabel{acro:CLB}{{3.1.2}{35}{Field Programmable Gate Arrays\relax }{section*.66}{}}
+\acronymused{CLB}
+\acronymused{CLB}
+\acronymused{LUT}
+\undonewlabel{acro:LAB}
+\newlabel{acro:LAB}{{3.1.2}{35}{Field Programmable Gate Arrays\relax }{section*.67}{}}
+\acronymused{LAB}
+\acronymused{FPGA}
+\acronymused{LAB}
+\acronymused{LE}
+\acronymused{LUT}
+\acronymused{FPGA}
+\acronymused{FPGA}
+\@writefile{toc}{\contentsline {subsubsection}{Digital Signal Processors}{35}{section*.68}}
+\acronymused{TI}
+\acronymused{DSP}
+\acronymused{MAc}
+\acronymused{DSP}
+\citation{ettus:website}
+\acronymused{DSP}
+\acronymused{DSP}
+\acronymused{DSP}
+\acronymused{MAc}
+\@writefile{toc}{\contentsline {subsubsection}{General Purpose Processors}{36}{section*.69}}
+\acronymused{GPP}
+\acronymused{SDR}
+\undonewlabel{acro:JTAG}
+\newlabel{acro:JTAG}{{3.1.2}{36}{General Purpose Processors\relax }{section*.70}{}}
+\acronymused{JTAG}
+\acronymused{GPP}
+\undonewlabel{acro:SIMD}
+\newlabel{acro:SIMD}{{3.1.2}{36}{General Purpose Processors\relax }{section*.71}{}}
+\acronymused{SIMD}
+\acronymused{GPP}
+\acronymused{DSP}
+\@writefile{toc}{\contentsline {section}{\numberline {3.2}Universal Software Radio Peripheral}{36}{section.3.2}}
+\newlabel{sec:USRP}{{3.2}{36}{Universal Software Radio Peripheral\relax }{section.3.2}{}}
+\undonewlabel{acro:USRP}
+\newlabel{acro:USRP}{{3.2}{36}{Universal Software Radio Peripheral\relax }{section*.72}{}}
+\acronymused{USRP}
+\undonewlabel{acro:PC}
+\newlabel{acro:PC}{{3.2}{36}{Universal Software Radio Peripheral\relax }{section*.73}{}}
+\acronymused{PC}
+\acronymused{PC}
+\acronymused{USRP}
+\acronymused{USRP}
+\citation{altera_cyclone}
+\citation{ad9862}
+\@writefile{lof}{\contentsline {figure}{\numberline {\relax 3.2}{\ignorespaces The USRP motherboard equipped with two daughter boards}}{37}{figure.3.2}}
+\newlabel{fig:USRP_photo}{{\relax 3.2}{37}{The USRP motherboard equipped with two daughter boards\relax }{figure.3.2}{}}
+\acronymused{USRP}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2.1}The USRP Motherboard}{37}{subsection.3.2.1}}
+\undonewlabel{acro:USB}
+\newlabel{acro:USB}{{3.2.1}{37}{The USRP Motherboard\relax }{section*.74}{}}
+\acronymused{USB}
+\acronymused{ADC}
+\acronymused{DAC}
+\acronymused{ADC}
+\acronymused{DAC}
+\acronymused{ADC}
+\citation{cypress_fx2}
+\citation{ettus:website}
+\citation{ettus:website}
+\citation{ettus:website}
+\citation{ad8348}
+\citation{ad8347}
+\undonewlabel{acro:PGA}
+\newlabel{acro:PGA}{{3.2.1}{38}{The USRP Motherboard\relax }{section*.75}{}}
+\acronymused{PGA}
+\acronymused{DAC}
+\acronymused{FPGA}
+\acronymused{USB}
+\acronymused{USB}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2.2}The USRP Daughter Boards}{38}{subsection.3.2.2}}
+\newlabel{subsec:USRP_DB}{{3.2.2}{38}{The USRP Daughter Boards\relax }{subsection.3.2.2}{}}
+\acronymused{USRP}
+\acronymused{USRP}
+\undonewlabel{acro:VCO}
+\newlabel{acro:VCO}{{3.2.2}{38}{The USRP Daughter Boards\relax }{section*.76}{}}
+\acronymused{VCO}
+\undonewlabel{acro:PLL}
+\newlabel{acro:PLL}{{3.2.2}{38}{The USRP Daughter Boards\relax }{section*.77}{}}
+\acronymused{PLL}
+\@writefile{lof}{\contentsline {figure}{\numberline {\relax 3.3}{\ignorespaces The USRP motherboard \cite  {ettus:website}}}{39}{figure.3.3}}
+\newlabel{fig:USRP_motherboard}{{\relax 3.3}{39}{The USRP motherboard \cite {ettus:website}\relax }{figure.3.3}{}}
+\citation{ad8345}
+\citation{ad9862}
+\@writefile{lof}{\contentsline {figure}{\numberline {\relax 3.4}{\ignorespaces Transfer function of the anti-aliasing filter for the Flex400 and Flex2400 daughter boards}}{40}{figure.3.4}}
+\newlabel{fig:transfer_function_flex400}{{\relax 3.4}{40}{Transfer function of the anti-aliasing filter for the Flex400 and Flex2400 daughter boards\relax }{figure.3.4}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {\relax 3.1}{\ignorespaces Minimum number of Logic Elements used in the FPGA}}{41}{table.3.1}}
+\newlabel{tab:MinimumAmountOfLogicElementsUsedInTheFPGA}{{\relax 3.1}{41}{Minimum number of Logic Elements used in the FPGA\relax }{table.3.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2.3}Platform Specific Constraints}{41}{subsection.3.2.3}}
+\acronymused{FPGA}
+\acronymused{LE}
+\undonewlabel{acro:DDC}
+\newlabel{acro:DDC}{{3.2.3}{41}{Platform Specific Constraints\relax }{section*.78}{}}
+\acronymused{DDC}
+\undonewlabel{acro:DUC}
+\newlabel{acro:DUC}{{3.2.3}{41}{Platform Specific Constraints\relax }{section*.79}{}}
+\acronymused{DUC}
+\acronymused{USB}
+\acronymused{GPP}
+\@writefile{lof}{\contentsline {figure}{\numberline {\relax 3.5}{\ignorespaces Signal flow in a USRP}}{43}{figure.3.5}}
+\newlabel{fig:signal_flow_USRP}{{\relax 3.5}{43}{Signal flow in a USRP\relax }{figure.3.5}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2.4}Integration in the design flow}{44}{subsection.3.2.4}}
+\@writefile{toc}{\contentsline {subsubsection}{Integration of the FPGA}{44}{section*.80}}
+\acronymused{PSM}
+\acronymused{PSM}
+\undonewlabel{acro:TCL}
+\newlabel{acro:TCL}{{3.2.4}{44}{Integration of the FPGA\relax }{section*.81}{}}
+\acronymused{TCL}
+\@writefile{lof}{\contentsline {figure}{\numberline {\relax 3.6}{\ignorespaces Transformation from the \ac {PSM} to the bitstream on the Cyclone FPGA}}{44}{figure.3.6}}
+\acronymused{PSM}
+\newlabel{fig:codegener_FPGA_USRP}{{\relax 3.6}{44}{Transformation from the \ac {PSM} to the bitstream on the Cyclone FPGA\relax }{figure.3.6}{}}
+\@writefile{toc}{\contentsline {subsubsection}{Integration of the GPP}{45}{section*.82}}
+\@writefile{lof}{\contentsline {figure}{\numberline {\relax 3.7}{\ignorespaces Example for the use of the APIs for integration of the USRP in a model}}{45}{figure.3.7}}
+\newlabel{fig:usrp_sink_source}{{\relax 3.7}{45}{Example for the use of the APIs for integration of the USRP in a model\relax }{figure.3.7}{}}
+\acronymused{ISR}
+\undonewlabel{acro:GUI}
+\newlabel{acro:GUI}{{3.2.4}{45}{Integration of the GPP\relax }{section*.83}{}}
+\acronymused{GUI}
+\acronymused{ISR}
+\@writefile{lof}{\contentsline {figure}{\numberline {\relax 3.8}{\ignorespaces GUI for the USRP sink with an example for configuration parameters}}{46}{figure.3.8}}
+\newlabel{fig:usrp_sink_mask_usrp}{{\relax 3.8}{46}{GUI for the USRP sink with an example for configuration parameters\relax }{figure.3.8}{}}
+\acronymused{ISR}
+\@writefile{lof}{\contentsline {figure}{\numberline {\relax 3.9}{\ignorespaces GUI for the USRP subdevice, showing configuration values}}{47}{figure.3.9}}
+\newlabel{fig:usrp_sink_mask_subdev}{{\relax 3.9}{47}{GUI for the USRP subdevice, showing configuration values\relax }{figure.3.9}{}}
+\acronymused{PSM}
+\acronymused{PSM}
+\citation{lyrtech_sff_sdr}
+\@writefile{lof}{\contentsline {figure}{\numberline {\relax 3.10}{\ignorespaces Transformation from the \ac {PSM} to an executable file for the GPP}}{48}{figure.3.10}}
+\acronymused{PSM}
+\newlabel{fig:codegener_GPP_USRP}{{\relax 3.10}{48}{Transformation from the \ac {PSM} to an executable file for the GPP\relax }{figure.3.10}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {3.3}Small Form Factor SDR}{48}{section.3.3}}
+\newlabel{sec:SFF}{{3.3}{48}{Small Form Factor SDR\relax }{section.3.3}{}}
+\undonewlabel{acro:SFF SDR DP}
+\newlabel{acro:SFF SDR DP}{{3.3}{48}{Small Form Factor SDR\relax }{section*.84}{}}
+\acronymused{SFF SDR DP}
+\undonewlabel{acro:SoC}
+\newlabel{acro:SoC}{{3.3}{48}{Small Form Factor SDR\relax }{section*.85}{}}
+\acronymused{SoC}
+\acronymused{ADC}
+\acronymused{DAC}
+\acronymused{SFF SDR DP}
+\undonewlabel{acro:DPM}
+\newlabel{acro:DPM}{{3.3}{48}{Small Form Factor SDR\relax }{section*.86}{}}
+\acronymused{DPM}
+\acronymused{GPP}
+\acronymused{DSP}
+\citation{virtex4}
+\citation{ti_dm6446}
+\@writefile{lof}{\contentsline {figure}{\numberline {\relax 3.11}{\ignorespaces Illustration of the SFF SDR DP, showing the three different modules}}{49}{figure.3.11}}
+\newlabel{fig:sff_sdr}{{\relax 3.11}{49}{Illustration of the SFF SDR DP, showing the three different modules\relax }{figure.3.11}{}}
+\acronymused{FPGA}
+\undonewlabel{acro:DCM}
+\newlabel{acro:DCM}{{3.3}{49}{Small Form Factor SDR\relax }{section*.87}{}}
+\acronymused{DCM}
+\acronymused{FPGA}
+\acronymused{ADC}
+\acronymused{DAC}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3.1}Digital Processing Module (DPM)}{49}{subsection.3.3.1}}
+\acronymused{DPM}
+\acronymused{SoC}
+\acronymused{SoC}
+\acronymused{DSP}
+\acronymused{GPP}
+\acronymused{DPM}
+\acronymused{FPGA}
+\acronymused{DSP}
+\@writefile{lof}{\contentsline {figure}{\numberline {\relax 3.12}{\ignorespaces Structure of the Digital Processing Module}}{50}{figure.3.12}}
+\newlabel{fig:Digital_Processing_Modul}{{\relax 3.12}{50}{Structure of the Digital Processing Module\relax }{figure.3.12}{}}
+\undonewlabel{acro:VPSS}
+\newlabel{acro:VPSS}{{3.3.1}{50}{Digital Processing Module (DPM)\relax }{section*.88}{}}
+\acronymused{VPSS}
+\acronymused{DSP}
+\acronymused{VPSS}
+\undonewlabel{acro:VPFE}
+\newlabel{acro:VPFE}{{3.3.1}{50}{Digital Processing Module (DPM)\relax }{section*.89}{}}
+\acronymused{VPFE}
+\undonewlabel{acro:VPBE}
+\newlabel{acro:VPBE}{{3.3.1}{50}{Digital Processing Module (DPM)\relax }{section*.90}{}}
+\acronymused{VPBE}
+\acronymused{FPGA}
+\acronymused{DSP}
+\undonewlabel{acro:EMIF}
+\newlabel{acro:EMIF}{{3.3.1}{50}{Digital Processing Module (DPM)\relax }{section*.91}{}}
+\acronymused{EMIF}
+\undonewlabel{acro:ASP}
+\newlabel{acro:ASP}{{3.3.1}{50}{Digital Processing Module (DPM)\relax }{section*.92}{}}
+\acronymused{ASP}
+\acronymused{FPGA}
+\acronymused{DCM}
+\@writefile{lot}{\contentsline {table}{\numberline {\relax 3.2}{\ignorespaces Properties of the digital processing units on DPM}}{51}{table.3.2}}
+\newlabel{tab:SFF_SDR_DPM}{{\relax 3.2}{51}{Properties of the digital processing units on DPM\relax }{table.3.2}{}}
+\citation{ads5500}
+\@writefile{lof}{\contentsline {figure}{\numberline {\relax 3.13}{\ignorespaces Structure of the Data Conversion Module}}{52}{figure.3.13}}
+\newlabel{fig:Data_Conversion_Modul}{{\relax 3.13}{52}{Structure of the Data Conversion Module\relax }{figure.3.13}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3.2}Data Conversion Module (DCM)}{52}{subsection.3.3.2}}
+\acronymused{DCM}
+\acronymused{DPM}
+\acronymused{ADC}
+\acronymused{DAC}
+\acronymused{FPGA}
+\acronymused{ADC}
+\acronymused{ADC}
+\undonewlabel{acro:RFM}
+\newlabel{acro:RFM}{{3.3.2}{52}{Data Conversion Module (DCM)\relax }{section*.93}{}}
+\acronymused{RFM}
+\acronymused{IF}
+\acronymused{ADC}
+\acronymused{FPGA}
+\citation{dac5687}
+\citation{ad9511}
+\acronymused{FPGA}
+\acronymused{TI}
+\acronymused{DAC}
+\acronymused{DAC}
+\acronymused{DCM}
+\acronymused{PLL}
+\acronymused{PLL}
+\acronymused{LO}
+\acronymused{VCO}
+\newlabel{eq:f_out_PLL}{{\relax 3.2}{53}{Data Conversion Module (DCM)\relax }{equation.3.3.2}{}}
+\acronymused{PLL}
+\acronymused{LO}
+\acronymused{VCO}
+\newlabel{eq:frac_N_R}{{\relax 3.3}{53}{Data Conversion Module (DCM)\relax }{equation.3.3.3}{}}
+\newlabel{eq:frac_N_R_2}{{\relax 3.4}{53}{Data Conversion Module (DCM)\relax }{equation.3.3.4}{}}
+\acronymused{FPGA}
+\acronymused{DSP}
+\@writefile{lof}{\contentsline {figure}{\numberline {\relax 3.14}{\ignorespaces Ratios between $N$ and $R$ over the target frequency for different divider values div}}{54}{figure.3.14}}
+\newlabel{fig:f_out_pll}{{\relax 3.14}{54}{Ratios between $N$ and $R$ over the target frequency for different divider values div\relax }{figure.3.14}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {\relax 3.15}{\ignorespaces Structure of the Tunable RF Module}}{55}{figure.3.15}}
+\newlabel{fig:Tunable_RF_Module}{{\relax 3.15}{55}{Structure of the Tunable RF Module\relax }{figure.3.15}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3.3}Radio Frequency Module}{55}{subsection.3.3.3}}
+\newlabel{subsec:RFM}{{3.3.3}{55}{Radio Frequency Module\relax }{subsection.3.3.3}{}}
+\acronymused{SFF SDR DP}
+\@writefile{toc}{\contentsline {subsubsection}{Tunable RF Module}{55}{section*.94}}
+\acronymused{IF}
+\acronymused{LO}
+\acronymused{PLL}
+\acronymused{VCO}
+\citation{trf3701}
+\citation{trf1115}
+\citation{trf1112}
+\citation{trf1121}
+\citation{trf1122}
+\acronymused{LO}
+\acronymused{IF}
+\acronymused{LO}
+\acronymused{PLL}
+\acronymused{VCO}
+\@writefile{toc}{\contentsline {subsubsection}{WiMAX RF Module}{56}{section*.95}}
+\acronymused{RF}
+\acronymused{IF}
+\acronymused{IC}
+\acronymused{TI}
+\acronymused{IF}
+\acronymused{PLL}
+\acronymused{IF}
+\acronymused{IC}
+\acronymused{IF}
+\acronymused{LO}
+\@writefile{lof}{\contentsline {figure}{\numberline {\relax 3.16}{\ignorespaces Structure of the WiMAX RF Module}}{57}{figure.3.16}}
+\newlabel{fig:WiMax_RF_module}{{\relax 3.16}{57}{Structure of the WiMAX RF Module\relax }{figure.3.16}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3.4}Platform Specific Constraints}{58}{subsection.3.3.4}}
+\acronymused{DSP}
+\undonewlabel{acro:SDRAM}
+\newlabel{acro:SDRAM}{{3.3.4}{58}{Platform Specific Constraints\relax }{section*.96}{}}
+\acronymused{SDRAM}
+\acronymused{DSP}
+\acronymused{FPGA}
+\acronymused{VPSS}
+\acronymused{FPGA}
+\acronymused{FPGA}
+\acronymused{USRP}
+\undonewlabel{acro:FIFO}
+\newlabel{acro:FIFO}{{3.3.4}{58}{Platform Specific Constraints\relax }{section*.97}{}}
+\acronymused{FIFO}
+\acronymused{VPFE}
+\acronymused{VPBE}
+\acronymused{ADC}
+\acronymused{DAC}
+\undonewlabel{acro:OPB}
+\newlabel{acro:OPB}{{3.3.4}{58}{Platform Specific Constraints\relax }{section*.98}{}}
+\acronymused{OPB}
+\acronymused{IF}
+\undonewlabel{acro:DDS}
+\newlabel{acro:DDS}{{3.3.4}{58}{Platform Specific Constraints\relax }{section*.99}{}}
+\citation{lyrtech_sff_sdr}
+\citation{lyrtech_sff_sdr}
+\@writefile{lot}{\contentsline {table}{\numberline {\relax 3.3}{\ignorespaces Space occupation with different RF modules and transmit receive configurations}}{59}{table.3.3}}
+\newlabel{tab:SFF_Virtex}{{\relax 3.3}{59}{Space occupation with different RF modules and transmit receive configurations\relax }{table.3.3}{}}
+\acronymused{DDS}
+\acronymused{IF}
+\acronymused{FPGA}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3.5}Integration in the design flow}{59}{subsection.3.3.5}}
+\@writefile{toc}{\contentsline {subsubsection}{Integration of the FPGA}{59}{section*.100}}
+\acronymused{PSM}
+\acronymused{VPSS}
+\acronymused{PSM}
+\@writefile{lof}{\contentsline {figure}{\numberline {\relax 3.17}{\ignorespaces Default configuration of the FPGA as in \cite  {lyrtech_sff_sdr}}}{60}{figure.3.17}}
+\newlabel{fig:sff_fpga}{{\relax 3.17}{60}{Default configuration of the FPGA as in \cite {lyrtech_sff_sdr}\relax }{figure.3.17}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {\relax 3.18}{\ignorespaces Transformation from the \ac {PSM} to the bitstream on the Virtex4 FPGA}}{61}{figure.3.18}}
+\acronymused{PSM}
+\newlabel{fig:codegener_FPGA_SFF_SDR}{{\relax 3.18}{61}{Transformation from the \ac {PSM} to the bitstream on the Virtex4 FPGA\relax }{figure.3.18}{}}
+\@writefile{toc}{\contentsline {subsubsection}{Integration of the DSP}{62}{section*.101}}
+\acronymused{DSP}
+\acronymused{VPSS}
+\acronymused{VPFE}
+\acronymused{DCM}
+\acronymused{RFM}
+\acronymused{DSP}
+\acronymused{USRP}
+\acronymused{DCM}
+\@writefile{lof}{\contentsline {figure}{\numberline {\relax 3.19}{\ignorespaces Example of the use of the APIs for the integration of the DSP on the \ac {SFF SDR DP}}}{62}{figure.3.19}}
+\acronymused{SFF SDR DP}
+\newlabel{fig:SFF_DSP_API}{{\relax 3.19}{62}{Example of the use of the APIs for the integration of the DSP on the \ac {SFF SDR DP}\relax }{figure.3.19}{}}
+\acronymused{PSM}
+\@writefile{lof}{\contentsline {figure}{\numberline {\relax 3.20}{\ignorespaces Transformation from the \ac {PSM} to the executable file for the DSP}}{63}{figure.3.20}}
+\acronymused{PSM}
+\newlabel{fig:codegener_DSP_SFF_SDR}{{\relax 3.20}{63}{Transformation from the \ac {PSM} to the executable file for the DSP\relax }{figure.3.20}{}}
+\citation{Steppler}
+\citation{Steppler}
+\@writefile{toc}{\contentsline {chapter}{\numberline {4}Proof of Concept: Portability of TETRA}{64}{chapter.4}}
+\@writefile{lof}{\addvspace {10\p@ }}
+\@writefile{lot}{\addvspace {10\p@ }}
+\@writefile{lol}{\addvspace {10\p@ }}
+\newlabel{chapter:wf}{{4}{64}{Proof of Concept: Portability of TETRA\relax }{chapter.4}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.1}Overview of the TETRA standard}{64}{section.4.1}}
+\undonewlabel{acro:TETRA}
+\newlabel{acro:TETRA}{{4.1}{64}{Overview of the TETRA standard\relax }{section*.102}{}}
+\acronymused{TETRA}
+\acronymused{ETSI}
+\undonewlabel{acro:PMR}
+\newlabel{acro:PMR}{{4.1}{64}{Overview of the TETRA standard\relax }{section*.103}{}}
+\acronymused{PMR}
+\acronymused{SDR}
+\undonewlabel{acro:V+D}
+\newlabel{acro:V+D}{{4.1}{64}{Overview of the TETRA standard\relax }{section*.104}{}}
+\acronymused{V+D}
+\undonewlabel{acro:PHY}
+\newlabel{acro:PHY}{{4.1}{64}{Overview of the TETRA standard\relax }{section*.105}{}}
+\acronymused{PHY}
+\undonewlabel{acro:MAC}
+\newlabel{acro:MAC}{{4.1}{64}{Overview of the TETRA standard\relax }{section*.106}{}}
+\acronymused{MAC}
+\acronymused{V+D}
+\acronymused{PHY}
+\acronymused{MAC}
+\@writefile{lof}{\contentsline {figure}{\numberline {\relax 4.1}{\ignorespaces Architecture of the V+D protocol stack, based on \cite  {Steppler}}}{65}{figure.4.1}}
+\newlabel{fig:architecture_VD}{{\relax 4.1}{65}{Architecture of the V+D protocol stack, based on \cite {Steppler}\relax }{figure.4.1}{}}
+\acronymused{PHY}
+\@writefile{toc}{\contentsline {section}{\numberline {4.2}Computational Independent Model}{66}{section.4.2}}
+\newlabel{sec:TETRA_CIM}{{4.2}{66}{Computational Independent Model\relax }{section.4.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.1}Media Access Control}{66}{subsection.4.2.1}}
+\acronymused{MAC}
+\@writefile{lof}{\contentsline {figure}{\numberline {\relax 4.2}{\ignorespaces Overview of the encoding and scrambling schemes, used in the transmit side of the traffic channel}}{67}{figure.4.2}}
+\newlabel{fig:MAC_TETRA}{{\relax 4.2}{67}{Overview of the encoding and scrambling schemes, used in the transmit side of the traffic channel\relax }{figure.4.2}{}}
+\newlabel{eq:pun}{{\relax 4.3}{68}{Media Access Control\relax }{equation.4.2.3}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {\relax 4.1}{\ignorespaces Mapping of the puncturing scheme for TCH/2.4 and TCH/4.8}}{68}{table.4.1}}
+\newlabel{tab:Punct_TCH}{{\relax 4.1}{68}{Mapping of the puncturing scheme for TCH/2.4 and TCH/4.8\relax }{table.4.1}{}}
+\citation{DigCom_tetra}
+\citation{ETSI07}
+\newlabel{eq:int_tx}{{\relax 4.7}{69}{Media Access Control\relax }{equation.4.2.7}{}}
+\citation{ETSI07}
+\@writefile{lof}{\contentsline {figure}{\numberline {\relax 4.3}{\ignorespaces Initialization of the scrambling registers with the \textsc  {Extended Colour Code}}}{70}{figure.4.3}}
+\newlabel{fig:ECC}{{\relax 4.3}{70}{Initialization of the scrambling registers with the \textsc {Extended Colour Code}\relax }{figure.4.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.2}Physical Layer}{70}{subsection.4.2.2}}
+\newlabel{sec:cim_phy}{{4.2.2}{70}{Physical Layer\relax }{subsection.4.2.2}{}}
+\undonewlabel{acro:GSM}
+\newlabel{acro:GSM}{{4.2.2}{70}{Physical Layer\relax }{section*.107}{}}
+\acronymused{GSM}
+\acronymused{TETRA}
+\undonewlabel{acro:TDMA}
+\newlabel{acro:TDMA}{{4.2.2}{70}{Physical Layer\relax }{section*.108}{}}
+\acronymused{TDMA}
+\undonewlabel{acro:FDMA}
+\newlabel{acro:FDMA}{{4.2.2}{70}{Physical Layer\relax }{section*.109}{}}
+\acronymused{FDMA}
+\acronymused{TDMA}
+\acronymused{TDMA}
+\acronymused{FDMA}
+\undonewlabel{acro:FDD}
+\newlabel{acro:FDD}{{4.2.2}{70}{Physical Layer\relax }{section*.110}{}}
+\acronymused{FDD}
+\undonewlabel{acro:TDD}
+\newlabel{acro:TDD}{{4.2.2}{70}{Physical Layer\relax }{section*.111}{}}
+\acronymused{TDD}
+\acronymused{CIM}
+\@writefile{lof}{\contentsline {figure}{\numberline {\relax 4.4}{\ignorespaces Overview of the FDMA/TDMA structure}}{71}{figure.4.4}}
+\newlabel{fig:physical_channel}{{\relax 4.4}{71}{Overview of the FDMA/TDMA structure\relax }{figure.4.4}{}}
+\undonewlabel{acro:AACH}
+\newlabel{acro:AACH}{{4.2.2}{71}{Physical Layer\relax }{section*.112}{}}
+\acronymused{AACH}
+\acronymused{AACH}
+\acronymused{AACH}
+\@writefile{lof}{\contentsline {figure}{\numberline {\relax 4.5}{\ignorespaces TETRA V+D uplink and downlink burst types}}{72}{figure.4.5}}
+\newlabel{fig:TETRA_bursts}{{\relax 4.5}{72}{TETRA V+D uplink and downlink burst types\relax }{figure.4.5}{}}
+\undonewlabel{acro:DQPSK}
+\newlabel{acro:DQPSK}{{4.2.2}{72}{Physical Layer\relax }{section*.113}{}}
+\acronymused{DQPSK}
+\undonewlabel{acro:SNR}
+\newlabel{acro:SNR}{{4.2.2}{73}{Physical Layer\relax }{section*.114}{}}
+\acronymused{SNR}
+\@writefile{lot}{\contentsline {table}{\numberline {\relax 4.2}{\ignorespaces Phase offset depending on the actual symbol}}{73}{table.4.2}}
+\newlabel{table:phase_offset}{{\relax 4.2}{73}{Phase offset depending on the actual symbol\relax }{table.4.2}{}}
+\newlabel{eq:g_rrc_f}{{\relax 4.13}{73}{Physical Layer\relax }{equation.4.2.13}{}}
+\acronymused{PSM}
+\@writefile{lof}{\contentsline {figure}{\numberline {\relax 4.6}{\ignorespaces Signal trajectory of the $\frac  {\pi }{4}$-DQPSK modulation scheme}}{74}{figure.4.6}}
+\newlabel{fig:sig_const}{{\relax 4.6}{74}{Signal trajectory of the $\frac {\pi }{4}$-DQPSK modulation scheme\relax }{figure.4.6}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.3}Platform Independent Model}{74}{section.4.3}}
+\newlabel{sec:PIM_TETRA}{{4.3}{74}{Platform Independent Model\relax }{section.4.3}{}}
+\acronymused{CIM}
+\@writefile{lot}{\contentsline {table}{\numberline {\relax 4.3}{\ignorespaces Overview of the TETRA system parameter}}{75}{table.4.3}}
+\newlabel{table:TETRA_overview}{{\relax 4.3}{75}{Overview of the TETRA system parameter\relax }{table.4.3}{}}
+\acronymused{CIM}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3.1}Transmitter}{75}{subsection.4.3.1}}
+\undonewlabel{acro:PN}
+\newlabel{acro:PN}{{4.3.1}{75}{Transmitter\relax }{section*.115}{}}
+\acronymused{PN}
+\citation{Kammeyer}
+\acronymused{DQPSK}
+\@writefile{lof}{\contentsline {figure}{\numberline {\relax 4.7}{\ignorespaces PIM of the TETRA transmit path}}{76}{figure.4.7}}
+\newlabel{fig:PIM_Tx}{{\relax 4.7}{76}{PIM of the TETRA transmit path\relax }{figure.4.7}{}}
+\undonewlabel{acro:RRC}
+\newlabel{acro:RRC}{{4.3.1}{76}{Transmitter\relax }{section*.116}{}}
+\acronymused{RRC}
+\acronymused{FIR}
+\acronymused{RRC}
+\newlabel{eq:g_rrc_t}{{\relax 4.15}{76}{Transmitter\relax }{equation.4.3.15}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {\relax 4.8}{\ignorespaces Relative energy loss of a windowed realization of an RRC in dependence of the group delay $D_\text  {RRC}$}}{78}{figure.4.8}}
+\newlabel{fig:RRC_group_delay}{{\relax 4.8}{78}{Relative energy loss of a windowed realization of an RRC in dependence of the group delay $D_\text {RRC}$\relax }{figure.4.8}{}}
+\citation{wnitl}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3.2}Channel}{79}{subsection.4.3.2}}
+\acronymused{PIM}
+\citation{oerder}
+\@writefile{lof}{\contentsline {figure}{\numberline {\relax 4.9}{\ignorespaces Structure of the channel, which works as a virtual front end}}{80}{figure.4.9}}
+\newlabel{fig:channel}{{\relax 4.9}{80}{Structure of the channel, which works as a virtual front end\relax }{figure.4.9}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3.3}Time Synchronization in TETRA}{80}{subsection.4.3.3}}
+\@writefile{lof}{\contentsline {figure}{\numberline {\relax 4.10}{\ignorespaces Spectrum of the squared magnitude of the receive signal}}{81}{figure.4.10}}
+\newlabel{fig:square_time}{{\relax 4.10}{81}{Spectrum of the squared magnitude of the receive signal\relax }{figure.4.10}{}}
+\acronymused{PSM}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3.4}Frequency Synchronization}{82}{subsection.4.3.4}}
+\acronymused{PIM}
+\@writefile{lof}{\contentsline {figure}{\numberline {\relax 4.11}{\ignorespaces Correlation of the receive signal $r[k]$ with the synchronization sequences: \textsc  {Synchronization Training Sequence} (STS) and \textsc  {Frequency Correction Field} (FC)}}{83}{figure.4.11}}
+\newlabel{fig:freq_peak}{{\relax 4.11}{83}{Correlation of the receive signal $r[k]$ with the synchronization sequences: \textsc {Synchronization Training Sequence} (STS) and \textsc {Frequency Correction Field} (FC)\relax }{figure.4.11}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3.5}Frame Synchronization}{84}{subsection.4.3.5}}
+\undonewlabel{acro:TCH}
+\newlabel{acro:TCH}{{4.3.5}{84}{Frame Synchronization\relax }{section*.117}{}}
+\acronymused{TCH}
+\acronymused{AACH}
+\@writefile{lof}{\contentsline {figure}{\numberline {\relax 4.12}{\ignorespaces Overview of the \ac {PIM} of the receiving \ac {PHY}}}{84}{figure.4.12}}
+\acronymused{PIM}
+\acronymused{PHY}
+\newlabel{fig:tetra_rx_pim}{{\relax 4.12}{84}{Overview of the \ac {PIM} of the receiving \ac {PHY}\relax }{figure.4.12}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3.6}MAC receiver}{84}{subsection.4.3.6}}
+\acronymused{TCH}
+\acronymused{AACH}
+\acronymused{TCH}
+\citation{Bossert}
+\newlabel{eq:deint}{{\relax 4.36}{85}{MAC receiver\relax }{equation.4.3.36}{}}
+\acronymused{PIM}
+\acronymused{AACH}
+\acronymused{AACH}
+\@writefile{toc}{\contentsline {section}{\numberline {4.4}Platform Specific Model for the USRP}{86}{section.4.4}}
+\newlabel{sec:PSM_USRP}{{4.4}{86}{Platform Specific Model for the USRP\relax }{section.4.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.4.1}Separation on different processing elements}{86}{subsection.4.4.1}}
+\acronymused{DAC}
+\acronymused{DAC}
+\acronymused{DAC}
+\newlabel{eq:res_usrp}{{\relax 4.38}{86}{Separation on different processing elements\relax }{equation.4.4.38}{}}
+\citation{hogenauer}
+\citation{cic_comp}
+\newlabel{eq:r}{{\relax 4.39}{87}{Separation on different processing elements\relax }{equation.4.4.39}{}}
+\acronymused{CIC}
+\acronymused{FIR}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.4.2}Resampling}{87}{subsection.4.4.2}}
+\@writefile{lof}{\contentsline {figure}{\numberline {\relax 4.13}{\ignorespaces Overview of the resampling on the USRP}}{88}{figure.4.13}}
+\newlabel{fig:tetra_rx_sampling_USRP}{{\relax 4.13}{88}{Overview of the resampling on the USRP\relax }{figure.4.13}{}}
+\acronymused{CIC}
+\newlabel{eq:g_cic_f}{{\relax 4.40}{88}{Resampling\relax }{equation.4.4.40}{}}
+\acronymused{CIC}
+\acronymused{CIC}
+\newlabel{eq:crit}{{\relax 4.42}{89}{Resampling\relax }{equation.4.4.42}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {\relax 4.4}{\ignorespaces TETRA spectrum mask with the maximum noise levels in dependence of the frequency offset}}{89}{table.4.4}}
+\newlabel{tab:TETRASpectrumMask}{{\relax 4.4}{89}{TETRA spectrum mask\index {Spectrum mask} with the maximum noise levels in dependence of the frequency offset\relax }{table.4.4}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {\relax 4.5}{\ignorespaces Parameters for the Resampling on the USRP}}{90}{table.4.5}}
+\newlabel{tab:usrp_res_par}{{\relax 4.5}{90}{Parameters for the Resampling on the USRP\relax }{table.4.5}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {\relax 4.14}{\ignorespaces Designed filter, which fulfills the tolerance scheme of the TETRA spectrum mask}}{91}{figure.4.14}}
+\newlabel{fig:tetra_usrp_resampling}{{\relax 4.14}{91}{Designed filter, which fulfills the tolerance scheme of the TETRA spectrum mask\relax }{figure.4.14}{}}
+\acronymused{LE}
+\acronymused{DDC}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.4.3}Timing Synchronization}{91}{subsection.4.4.3}}
+\citation{alberty}
+\@writefile{lot}{\contentsline {table}{\numberline {\relax 4.6}{\ignorespaces Number of Logic Elements used in the FPGA}}{92}{table.4.6}}
+\newlabel{tab:usrp_fpga}{{\relax 4.6}{92}{Number of Logic Elements used in the FPGA\relax }{table.4.6}{}}
+\acronymused{PIM}
+\acronymused{PIM}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.4.4}Frequency Synchronization}{92}{subsection.4.4.4}}
+\acronymused{USRP}
+\@writefile{lof}{\contentsline {figure}{\numberline {\relax 4.15}{\ignorespaces Measured time offset with maximum and minimum conditions for the timing error}}{93}{figure.4.15}}
+\newlabel{fig:usrp_time_offset}{{\relax 4.15}{93}{Measured time offset with maximum and minimum conditions for the timing error\relax }{figure.4.15}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {\relax 4.16}{\ignorespaces Block diagram of the frequency acquisition}}{94}{figure.4.16}}
+\newlabel{fig:frequ_acq}{{\relax 4.16}{94}{Block diagram of the frequency acquisition\relax }{figure.4.16}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {\relax 4.17}{\ignorespaces Illustration of the band pass filters and the raised cosine spectrum for the frequency acquisition}}{94}{figure.4.17}}
+\newlabel{fig:freq_acq_design}{{\relax 4.17}{94}{Illustration of the band pass filters and the raised cosine spectrum for the frequency acquisition\relax }{figure.4.17}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {\relax 4.18}{\ignorespaces Error signal $e(\nu )$ of the dual filter detector in dependence on the frequency offset $\nu $}}{95}{figure.4.18}}
+\newlabel{fig:freq_acq_error}{{\relax 4.18}{95}{Error signal $e(\nu )$ of the dual filter detector in dependence on the frequency offset $\nu $\relax }{figure.4.18}{}}
+\acronymused{PIM}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.4.5}MAC receiver}{95}{subsection.4.4.5}}
+\acronymused{AACH}
+\acronymused{PIM}
+\@writefile{toc}{\contentsline {section}{\numberline {4.5}Benchmarks for the waveform on the GPP}{96}{section.4.5}}
+\newlabel{sec:bench_gpp}{{4.5}{96}{Benchmarks for the waveform on the GPP\relax }{section.4.5}{}}
+\acronymused{PSM}
+\acronymused{USRP}
+\acronymused{GPP}
+\acronymused{VS}
+\@writefile{lof}{\contentsline {figure}{\numberline {\relax 4.19}{\ignorespaces Comparison of the processing time for the transceiver, transmitter and receiver}}{96}{figure.4.19}}
+\newlabel{fig:bench_gpp_trx}{{\relax 4.19}{96}{Comparison of the processing time for the transceiver, transmitter and receiver\relax }{figure.4.19}{}}
+\acronymused{MAC}
+\acronymused{PHY}
+\undonewlabel{acro:SRC}
+\newlabel{acro:SRC}{{4.5}{97}{Benchmarks for the waveform on the GPP\relax }{section*.118}{}}
+\acronymused{SRC}
+\@writefile{lof}{\contentsline {figure}{\numberline {\relax 4.20}{\ignorespaces Comparison of the processing times in the transmitter}}{98}{figure.4.20}}
+\newlabel{fig:bench_gpp_tx}{{\relax 4.20}{98}{Comparison of the processing times in the transmitter\relax }{figure.4.20}{}}
+\undonewlabel{acro:RCPC}
+\newlabel{acro:RCPC}{{4.5}{98}{Benchmarks for the waveform on the GPP\relax }{section*.119}{}}
+\acronymused{RCPC}
+\@writefile{lof}{\contentsline {figure}{\numberline {\relax 4.21}{\ignorespaces Comparison of the processing times within the MAC TCH in the transmitter}}{99}{figure.4.21}}
+\newlabel{fig:bench_gpp_tx_tch}{{\relax 4.21}{99}{Comparison of the processing times within the MAC TCH in the transmitter\relax }{figure.4.21}{}}
+\acronymused{SRC}
+\acronymused{SRC}
+\acronymused{SRC}
+\acronymused{PHY}
+\@writefile{lof}{\contentsline {figure}{\numberline {\relax 4.22}{\ignorespaces Comparison of the processing times in the receiver}}{100}{figure.4.22}}
+\newlabel{fig:bench_gpp_rx}{{\relax 4.22}{100}{Comparison of the processing times in the receiver\relax }{figure.4.22}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {\relax 4.23}{\ignorespaces Comparison of the processing times within the PHY in the receiver}}{101}{figure.4.23}}
+\newlabel{fig:bench_gpp_rx_phy}{{\relax 4.23}{101}{Comparison of the processing times within the PHY in the receiver\relax }{figure.4.23}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {\relax 4.24}{\ignorespaces Comparison of the processing times within the MAC TCH in the receiver}}{101}{figure.4.24}}
+\newlabel{fig:bench_gpp_rx_tch}{{\relax 4.24}{101}{Comparison of the processing times within the MAC TCH in the receiver\relax }{figure.4.24}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.6}Platform Specific Model for the SFF SDR}{102}{section.4.6}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.6.1}Separation on different Processing Units}{102}{subsection.4.6.1}}
+\acronymused{PSM}
+\acronymused{GPP}
+\acronymused{USRP}
+\acronymused{DCM}
+\acronymused{IF}
+\acronymused{PSM}
+\acronymused{USRP}
+\acronymused{CIC}
+\acronymused{FIR}
+\acronymused{RRC}
+\acronymused{IF}
+\acronymused{IF}
+\acronymused{IF}
+\acronymused{PSM}
+\acronymused{USRP}
+\acronymused{LUT}
+\acronymused{DSP}
+\@writefile{lof}{\contentsline {figure}{\numberline {\relax 4.25}{\ignorespaces Separation of the processing function in the SFF between DSP and FPGA}}{103}{figure.4.25}}
+\newlabel{fig:sep_sff}{{\relax 4.25}{103}{Separation of the processing function in the SFF between DSP and FPGA\relax }{figure.4.25}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.6.2}Sample Rate Conversion}{103}{subsection.4.6.2}}
+\@writefile{lot}{\contentsline {table}{\numberline {\relax 4.7}{\ignorespaces Parameters for the interpolation on the SFF}}{104}{table.4.7}}
+\newlabel{tab:sff_res_par}{{\relax 4.7}{104}{Parameters for the interpolation on the SFF\relax }{table.4.7}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.6.3}Timing error synchronization}{104}{subsection.4.6.3}}
+\citation{cordic}
+\@writefile{lof}{\contentsline {figure}{\numberline {\relax 4.26}{\ignorespaces Frequency response of the interpolation filter on the SFF with respect to the TETRA spectrum mask and an ideal RRC filter}}{105}{figure.4.26}}
+\newlabel{fig:tetra_sff_resampling}{{\relax 4.26}{105}{Frequency response of the interpolation filter on the SFF with respect to the TETRA spectrum mask and an ideal RRC filter\relax }{figure.4.26}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {\relax 4.27}{\ignorespaces Overview of the fixed point realization of the timing error detector for the FPGA}}{106}{figure.4.27}}
+\newlabel{fig:sff_ted}{{\relax 4.27}{106}{Overview of the fixed point realization of the timing error detector for the FPGA\relax }{figure.4.27}{}}
+\undonewlabel{acro:CORDIC}
+\newlabel{acro:CORDIC}{{4.6.3}{106}{Timing error synchronization\relax }{section*.120}{}}
+\acronymused{CORDIC}
+\@writefile{lof}{\contentsline {figure}{\numberline {\relax 4.28}{\ignorespaces Hardware efficient implementation of a running sum}}{107}{figure.4.28}}
+\newlabel{fig:sff_rs}{{\relax 4.28}{107}{Hardware efficient implementation of a running sum\relax }{figure.4.28}{}}
+\newlabel{eq:cordic_acc}{{\relax 4.55}{107}{Timing error synchronization\relax }{equation.4.6.55}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {\relax 4.29}{\ignorespaces Error for the phase calculation in relation to the number of steps $N_\varphi $, assuming an interpolation factor of $I_\text  {FIR}=8$}}{108}{figure.4.29}}
+\newlabel{fig:cordic_error}{{\relax 4.29}{108}{Error for the phase calculation in relation to the number of steps $N_\varphi $, assuming an interpolation factor of $I_\text {FIR}=8$\relax }{figure.4.29}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.6.4}PSM on the DSP}{108}{subsection.4.6.4}}
+\acronymused{PSM}
+\@writefile{toc}{\contentsline {section}{\numberline {4.7}Benchmarks for the waveform on the DSP}{109}{section.4.7}}
+\newlabel{sec:bench_dsp}{{4.7}{109}{Benchmarks for the waveform on the DSP\relax }{section.4.7}{}}
+\acronymused{PSM}
+\acronymused{PSM}
+\acronymused{GPP}
+\@writefile{lot}{\contentsline {table}{\numberline {\relax 4.8}{\ignorespaces Comparison of processing times and memory allocation for generated and hand-written part of the transmitter}}{109}{table.4.8}}
+\newlabel{tab:mac_tch_bench}{{\relax 4.8}{109}{Comparison of processing times and memory allocation for generated and hand-written part of the transmitter\relax }{table.4.8}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {\relax 4.30}{\ignorespaces Comparison of the processing times of the transmitter, receiver and transceiver for the DSP}}{110}{figure.4.30}}
+\newlabel{fig:bench_dsp_trx}{{\relax 4.30}{110}{Comparison of the processing times of the transmitter, receiver and transceiver for the DSP\relax }{figure.4.30}{}}
+\acronymused{FPGA}
+\acronymused{GPP}
+\@writefile{lof}{\contentsline {figure}{\numberline {\relax 4.31}{\ignorespaces Comparison of the processing times within the transmitter on the DSP}}{111}{figure.4.31}}
+\newlabel{fig:bench_dsp_tx}{{\relax 4.31}{111}{Comparison of the processing times within the transmitter on the DSP\relax }{figure.4.31}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {\relax 4.32}{\ignorespaces Comparison of the processing times within the receiver on the DSP}}{112}{figure.4.32}}
+\newlabel{fig:bench_dsp_rx}{{\relax 4.32}{112}{Comparison of the processing times within the receiver on the DSP\relax }{figure.4.32}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {\relax 4.33}{\ignorespaces Comparison of the processing times within the PHY in the receiver}}{113}{figure.4.33}}
+\newlabel{fig:bench_dsp_rx_phy}{{\relax 4.33}{113}{Comparison of the processing times within the PHY in the receiver\relax }{figure.4.33}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {\relax 4.34}{\ignorespaces Comparison of the processing times within the MAC TCH in the receiver}}{113}{figure.4.34}}
+\newlabel{fig:bench_dsp_rx_tch}{{\relax 4.34}{113}{Comparison of the processing times within the MAC TCH in the receiver\relax }{figure.4.34}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.8}Interoperability Tests}{114}{section.4.8}}
+\@writefile{lof}{\contentsline {figure}{\numberline {\relax 4.35}{\ignorespaces Received TETRA signal from the SFF, evaluated with an FSQ8}}{114}{figure.4.35}}
+\newlabel{fig:screenshot_tetra_01}{{\relax 4.35}{114}{Received TETRA signal from the SFF, evaluated with an FSQ8\relax }{figure.4.35}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {\relax 4.36}{\ignorespaces Measurement setup for the TETRA waveform testing}}{115}{figure.4.36}}
+\newlabel{fig:Interoperability}{{\relax 4.36}{115}{Measurement setup for the TETRA waveform testing\relax }{figure.4.36}{}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {5}Portability aspects of further waveform implementations}{116}{chapter.5}}
+\@writefile{lof}{\addvspace {10\p@ }}
+\@writefile{lot}{\addvspace {10\p@ }}
+\@writefile{lol}{\addvspace {10\p@ }}
+\newlabel{chap:further}{{5}{116}{Portability aspects of further waveform implementations\relax }{chapter.5}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {5.1}Family Radio Service}{116}{section.5.1}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.1.1}Overview of the standard}{116}{subsection.5.1.1}}
+\undonewlabel{acro:FRS}
+\newlabel{acro:FRS}{{5.1.1}{116}{Overview of the standard\relax }{section*.121}{}}
+\acronymused{FRS}
+\undonewlabel{acro:FM}
+\newlabel{acro:FM}{{5.1.1}{116}{Overview of the standard\relax }{section*.122}{}}
+\acronymused{FM}
+\newlabel{eq:fm}{{\relax 5.1}{116}{Overview of the standard\relax }{equation.5.1.1}{}}
+\undonewlabel{acro:FCC}
+\newlabel{acro:FCC}{{5.1.1}{116}{Overview of the standard\relax }{section*.123}{}}
+\acronymused{FCC}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.1.2}Digital signal approximation for the portability}{116}{subsection.5.1.2}}
+\citation{IEEE802.11}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.1.3}Results}{117}{subsection.5.1.3}}
+\acronymused{PIM}
+\@writefile{toc}{\contentsline {section}{\numberline {5.2}Wireless LAN in the version IEEE 802.11g}{117}{section.5.2}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.2.1}Overview of the standard}{117}{subsection.5.2.1}}
+\acronymused{IEEE}
+\undonewlabel{acro:WLAN}
+\newlabel{acro:WLAN}{{5.2.1}{117}{Overview of the standard\relax }{section*.124}{}}
+\acronymused{WLAN}
+\acronymused{MAC}
+\acronymused{PHY}
+\undonewlabel{acro:ISM}
+\newlabel{acro:ISM}{{5.2.1}{117}{Overview of the standard\relax }{section*.125}{}}
+\acronymused{ISM}
+\undonewlabel{acro:OFDM}
+\newlabel{acro:OFDM}{{5.2.1}{117}{Overview of the standard\relax }{section*.126}{}}
+\citation{schmidl_cox}
+\acronymused{OFDM}
+\acronymused{ISM}
+\acronymused{OFDM}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.2.2}Challenges for the portability of the waveform}{118}{subsection.5.2.2}}
+\acronymused{PIM}
+\acronymused{ADC}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.2.3}Results}{118}{subsection.5.2.3}}
+\citation{nagel_frequenz}
+\citation{pwd}
+\acronymused{PIM}
+\acronymused{PSM}
+\@writefile{lof}{\contentsline {figure}{\numberline {\relax 5.1}{\ignorespaces Separation of the waveform for the processing elements on USRP and SFF SDR}}{120}{figure.5.1}}
+\newlabel{fig:OFDM_b}{{\relax 5.1}{120}{Separation of the waveform for the processing elements on USRP and SFF SDR\relax }{figure.5.1}{}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {6}Conclusions}{121}{chapter.6}}
+\@writefile{lof}{\addvspace {10\p@ }}
+\@writefile{lot}{\addvspace {10\p@ }}
+\@writefile{lol}{\addvspace {10\p@ }}
+\@writefile{toc}{\contentsline {section}{\numberline {6.1}Contributions}{121}{section.6.1}}
+\citation{ti_fix_float}
+\citation{ti_vit}
+\@writefile{toc}{\contentsline {section}{\numberline {6.2}Outlook}{122}{section.6.2}}
+\acronymused{PSM}
+\@writefile{toc}{\contentsline {chapter}{\numberline {A}Source Code}{124}{appendix.A}}
+\@writefile{lof}{\addvspace {10\p@ }}
+\@writefile{lot}{\addvspace {10\p@ }}
+\@writefile{lol}{\addvspace {10\p@ }}
+\@writefile{toc}{\contentsline {section}{\numberline {A.1}Source Code of the unoptimized FIR filter}{124}{section.A.1}}
+\newlabel{sec:app_FIR}{{A.1}{124}{Source Code of the unoptimized FIR filter\relax }{section.A.1}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {A.2}Source Code of the unoptimized FFT}{125}{section.A.2}}
+\newlabel{sec:app_03}{{A.2}{125}{Source Code of the unoptimized FFT\relax }{section.A.2}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {A.3}Source Code of the optimized RCPC for the TCH/4.8}{126}{section.A.3}}
+\newlabel{sec:app_01}{{A.3}{126}{Source Code of the optimized RCPC for the TCH/4.8\relax }{section.A.3}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {A.4}Source Code of the optimized scrambling}{127}{section.A.4}}
+\newlabel{sec:app_02}{{A.4}{127}{Source Code of the optimized scrambling\relax }{section.A.4}{}}
+\@writefile{toc}{\contentsline {chapter}{Acronyms}{128}{appendix*.127}}
+\@writefile{lof}{\addvspace {10\p@ }}
+\@writefile{lot}{\addvspace {10\p@ }}
+\@writefile{lol}{\addvspace {10\p@ }}
+\newacro{AACH}[\AC@hyperlink{AACH}{AACH}]{Access Assignment CHannel}
+\newacro{ADC}[\AC@hyperlink{ADC}{ADC}]{Analog-to-Digital Converter}
+\newacro{AEP}[\AC@hyperlink{AEP}{AEP}]{Application Environment Profile}
+\newacro{AGC}[\AC@hyperlink{AGC}{AGC}]{Automatic Gain Control}
+\newacro{AM}[\AC@hyperlink{AM}{AM}]{Amplitude Modulation}
+\newacro{API}[\AC@hyperlink{API}{API}]{Application Programmable Interface}
+\newacro{ASP}[\AC@hyperlink{ASP}{ASP}]{Audio Serial Port}
+\newacro{BPSK}[\AC@hyperlink{BPSK}{BPSK}]{Binary Phase-Shift Keying}
+\newacro{CCS}[\AC@hyperlink{CCS}{CCS}]{Code Composer Studio}
+\newacro{CF}[\AC@hyperlink{CF}{CF}]{Core Framework}
+\newacro{CIC}[\AC@hyperlink{CIC}{CIC}]{Cascaded Integrator-Comb}
+\newacro{CIM}[\AC@hyperlink{CIM}{CIM}]{Computational Independent Model}
+\newacro{CLB}[\AC@hyperlink{CLB}{CLB}]{Configurable Logic Block}
+\newacro{CORBA}[\AC@hyperlink{CORBA}{CORBA}]{Common Object Request Broker Architecture}
+\newacro{CORDIC}[\AC@hyperlink{CORDIC}{CORDIC}]{COordinate Rotation DIgital Compute}
+\newacro{CPU}[\AC@hyperlink{CPU}{CPU}]{Central Processing Unit}
+\newacro{DAC}[\AC@hyperlink{DAC}{DAC}]{Digital-to-Analog Converter}
+\newacro{DCM}[\AC@hyperlink{DCM}{DCM}]{Data Conversion Module}
+\newacro{DDC}[\AC@hyperlink{DDC}{DDC}]{Digital Down Converter}
+\newacro{DDS}[\AC@hyperlink{DDS}{DDS}]{Direct Digital Synthesizer}
+\newacro{DPM}[\AC@hyperlink{DPM}{DPM}]{Digital Processing Module}
+\newacro{DQPSK}[\AC@hyperlink{DQPSK}{DQPSK}]{Differential Quadrature Phase-Shift Keying}
+\newacro{DSP}[\AC@hyperlink{DSP}{DSP}]{Digital Signal Processor}
+\newacro{DUC}[\AC@hyperlink{DUC}{DUC}]{Digital Up Converter}
+\newacro{EMIF}[\AC@hyperlink{EMIF}{EMIF}]{External Memory Interface}
+\newacro{ETSI}[\AC@hyperlink{ETSI}{ETSI}]{European Telecommunications Standards Institute}
+\newacro{FCC}[\AC@hyperlink{FCC}{FCC}]{Federal Communications Commission}
+\newacro{FDD}[\AC@hyperlink{FDD}{FDD}]{Frequency Division Duplex}
+\newacro{FDMA}[\AC@hyperlink{FDMA}{FDMA}]{Frequency Division Multiple Access}
+\newacro{FFT}[\AC@hyperlink{FFT}{FFT}]{Fast Fourier Transformation}
+\newacro{FIFO}[\AC@hyperlink{FIFO}{FIFO}]{First In, First Out}
+\newacro{FIR}[\AC@hyperlink{FIR}{FIR}]{Finite Impulse Response}
+\newacro{FM}[\AC@hyperlink{FM}{FM}]{Frequency Modulation}
+\newacro{FPGA}[\AC@hyperlink{FPGA}{FPGA}]{Field Programmable Gate Array}
+\newacro{FRS}[\AC@hyperlink{FRS}{FRS}]{Family Radio Service}
+\newacro{GPP}[\AC@hyperlink{GPP}{GPP}]{General Purpose Processor}
+\newacro{GRC}[\AC@hyperlink{GRC}{GRC}]{GNU Radio Companion}
+\newacro{GSM}[\AC@hyperlink{GSM}{GSM}]{Global System for Mobile Communications}
+\newacro{GUI}[\AC@hyperlink{GUI}{GUI}]{Graphical User Interface}
+\newacro{HDL}[\AC@hyperlink{HDL}{HDL}]{Hardware Description Language}
+\newacro{IC}[\AC@hyperlink{IC}{IC}]{Integrated Circuit}
+\newacro{IFFT}[\AC@hyperlink{IFFT}{IFFT}]{Inverse Fast Fourier Transformation}
+\newacro{IPS}[\AC@hyperlink{IPS}{IPS}]{Intel Parallel Studio}
+\newacro{ISM}[\AC@hyperlink{ISM}{ISM}]{Industrial, Scientific and Medical}
+\newacro{ISR}[\AC@hyperlink{ISR}{ISR}]{Interrupt Service Routine}
+\newacro{IEEE}[\AC@hyperlink{IEEE}{IEEE}]{Institute of Electrical and Electronics Engineers}
+\newacro{IF}[\AC@hyperlink{IF}{IF}]{Intermediate Frequency}
+\newacro{JTAG}[\AC@hyperlink{JTAG}{JTAG}]{Joint Test and Action Group}
+\newacro{JTRS}[\AC@hyperlink{JTRS}{JTRS}]{Joint Tactical Radio System}
+\newacro{JPO}[\AC@hyperlink{JPO}{JPO}]{Joint Program Office}
+\newacro{LAB}[\AC@hyperlink{LAB}{LAB}]{Logic Array Block}
+\newacro{LCC}[\AC@hyperlink{LCC}{LCC}]{Local C Compiler}
+\newacro{LE}[\AC@hyperlink{LE}{LE}]{Logic Element}
+\newacro{LMR}[\AC@hyperlink{LMR}{LMR}]{Land Mobile Radio}
+\newacro{LNA}[\AC@hyperlink{LNA}{LNA}]{Low Noise Amplifier}
+\newacro{LO}[\AC@hyperlink{LO}{LO}]{Local Oscillator}
+\newacro{LTE}[\AC@hyperlink{LTE}{LTE}]{Long Term Evolution}
+\newacro{LTS}[\AC@hyperlink{LTS}{LTS}]{Long Training Sequence}
+\newacro{LUT}[\AC@hyperlink{LUT}{LUT}]{Lookup Table}
+\newacro{MAc}[\AC@hyperlink{MAc}{MAc}]{Multiply and Accumulate}
+\newacro{MAC}[\AC@hyperlink{MAC}{MAC}]{Media Access Control}
+\newacro{MDA}[\AC@hyperlink{MDA}{MDA}]{Model Driven Architecture}
+\newacro{MSPS}[\AC@hyperlink{MSPS}{MSPS}]{Mega Samples Per Second}
+\newacro{OE}[\AC@hyperlink{OE}{OE}]{Operating Environment}
+\newacro{OFDM}[\AC@hyperlink{OFDM}{OFDM}]{Orthogonal Frequency Division Multiplex}
+\newacro{OMG}[\AC@hyperlink{OMG}{OMG}]{Object Management Group}
+\newacro{OPB}[\AC@hyperlink{OPB}{OPB}]{On-chip Peripheral Bus}
+\newacro{OSSIE}[\AC@hyperlink{OSSIE}{OSSIE}]{Open Source SCA Implementation: Embedded}
+\newacro{PA}[\AC@hyperlink{PA}{PA}]{Power Amplifier}
+\newacro{PC}[\AC@hyperlink{PC}{PC}]{Personal Computer}
+\newacro{PGA}[\AC@hyperlink{PGA}{PGA}]{Programmable Gain Amplifier}
+\newacro{PHY}[\AC@hyperlink{PHY}{PHY}]{Physical Layer}
+\newacro{PIM}[\AC@hyperlink{PIM}{PIM}]{Platform Independent Model}
+\newacro{PLCP}[\AC@hyperlink{PLCP}{PLCP}]{Physical Layer Convergence Protocol}
+\newacro{PLL}[\AC@hyperlink{PLL}{PLL}]{Phase Locked Loop}
+\newacro{PMR}[\AC@hyperlink{PMR}{PMR}]{Public Mobile Radio}
+\newacro{PN}[\AC@hyperlink{PN}{PN}]{Pseudo Noise}
+\newacro{POSIX}[\AC@hyperlink{POSIX}{POSIX}]{Portable Operating System Interface}
+\newacro{PPDU}[\AC@hyperlink{PPDU}{PPDU}]{Physical Protocol Data Unit}
+\newacro{PSDU}[\AC@hyperlink{PSDU}{PSDU}]{Physical layer Service Data Unit}
+\newacro{PSM}[\AC@hyperlink{PSM}{PSM}]{Platform Specific Model}
+\newacro{QAM}[\AC@hyperlink{QAM}{QAM}]{Quadrature Amplitude Modulation}
+\newacro{QPSK}[\AC@hyperlink{QPSK}{QPSK}]{Quadrature Phase-Shift Keying}
+\newacro{RCPC}[\AC@hyperlink{RCPC}{RCPC}]{Rate-Compatible Punctured Convolutional}
+\newacro{RF}[\AC@hyperlink{RF}{RF}]{Radio Frequency}
+\newacro{RFM}[\AC@hyperlink{RFM}{RFM}]{Radio Frequency Module}
+\newacro{RRC}[\AC@hyperlink{RRC}{RRC}]{Root Raised Cosine}
+\newacro{SCA}[\AC@hyperlink{SCA}{SCA}]{Software Communications Architecture}
+\newacro{SDR}[\AC@hyperlink{SDR}{SDR}]{Software Defined Radio}
+\newacro{SDRAM}[\AC@hyperlink{SDRAM}{SDRAM}]{Synchronous Dynamic Random Access Memory}
+\newacro{SFF SDR DP}[\AC@hyperlink{SFF SDR DP}{SFF SDR DP}]{Small Form Factor SDR Development Platform}
+\newacro{SIMD}[\AC@hyperlink{SIMD}{SIMD}]{Single-Instruction Multiple-Data}
+\newacro{SNR}[\AC@hyperlink{SNR}{SNR}]{Signal-to-Noise Ratio}
+\newacro{SoC}[\AC@hyperlink{SoC}{SoC}]{System on Chip}
+\newacro{SRC}[\AC@hyperlink{SRC}{SRC}]{Sample Rate Conversion}
+\newacro{STS}[\AC@hyperlink{STS}{STS}]{Short Training Sequence}
+\newacro{SVFuA}[\AC@hyperlink{SVFuA}{SVFuA}]{Streitkr\"aftegemeinsame Verbundf\"ahige Funkger\"ateausstattung}
+\newacro{TCH}[\AC@hyperlink{TCH}{TCH}]{Traffic CHannel}
+\newacro{TCL}[\AC@hyperlink{TCL}{TCL}]{Tool Command Language}
+\newacro{TDD}[\AC@hyperlink{TDD}{TDD}]{Time Division Duplex}
+\newacro{TDMA}[\AC@hyperlink{TDMA}{TDMA}]{Time Division Multiple Access}
+\bibstyle{../IEEEbib}
+\bibdata{../literatur/bibliography}
+\newacro{TETRA}[\AC@hyperlink{TETRA}{TETRA}]{Terrestrial Trunked Radio}
+\newacro{TI}[\AC@hyperlink{TI}{TI}]{Texas Instruments}
+\newacro{UMTS}[\AC@hyperlink{UMTS}{UMTS}]{Universal Mobile Telecommunications System}
+\newacro{USB}[\AC@hyperlink{USB}{USB}]{Universal Serial Bus}
+\newacro{USRP}[\AC@hyperlink{USRP}{USRP}]{Universal Software Radio Peripheral}
+\newacro{V+D}[\AC@hyperlink{V+D}{V+D}]{Voice and Data}
+\newacro{VCO}[\AC@hyperlink{VCO}{VCO}]{Voltage Controlled Oscillator}
+\undonewlabel{acro:VHSIC}
+\newlabel{acro:VHSIC}{{6.2}{132}{Acronyms\relax }{section*.128}{}}
+\acronymused{VHSIC}
+\newacro{VHDL}[\AC@hyperlink{VHDL}{VHDL}]{\ac {VHSIC} HDL}
+\newacro{VHF}[\AC@hyperlink{VHF}{VHF}]{Very High Frequency}
+\newacro{VHSIC}[\AC@hyperlink{VHSIC}{VHSIC}]{Very High Speed Integrated Circuit}
+\newacro{VPBE}[\AC@hyperlink{VPBE}{VPBE}]{Video Processing Back End}
+\newacro{VPFE}[\AC@hyperlink{VPFE}{VPFE}]{Video Processing Front End}
+\newacro{VPSS}[\AC@hyperlink{VPSS}{VPSS}]{Video Processing Sub-System}
+\newacro{VS}[\AC@hyperlink{VS}{VS}]{Visual Studio}
+\newacro{WINTSEC}[\AC@hyperlink{WINTSEC}{WINTSEC}]{WIreless INTeroperability for SECurity}
+\newacro{WLAN}[\AC@hyperlink{WLAN}{WLAN}]{Wireless Local Area Network}
+\newacro{XML}[\AC@hyperlink{XML}{XML}]{eXtensible Markup Language}
+\bibcite{strauss_dsp_market}{1}
+\bibcite{dsp_high_level}{2}
+\bibcite{anderson_optimizing_C}{3}
+\bibcite{ti_opt_C}{4}
+\bibcite{amd_opt_C}{5}
+\bibcite{lee_opt_C}{6}
+\bibcite{pareto}{7}
+\bibcite{baese}{8}
+\bibcite{verilog_vs_vhdl01}{9}
+\@writefile{toc}{\contentsline {chapter}{Bibliography}{133}{appendix*.129}}
+\@writefile{lof}{\addvspace {10\p@ }}
+\@writefile{lot}{\addvspace {10\p@ }}
+\@writefile{lol}{\addvspace {10\p@ }}
+\bibcite{verilog_vs_vhdl_02}{10}
+\bibcite{gnu_radio_art}{11}
+\bibcite{gnu_radio_web}{12}
+\bibcite{open_sdr}{13}
+\bibcite{moores_law}{14}
+\bibcite{moores_law_2}{15}
+\bibcite{SCA_Tutorial_VT}{16}
+\bibcite{rise_fall_corba}{17}
+\bibcite{SCA222}{18}
+\bibcite{scari:website}{19}
+\bibcite{spectra:website}{20}
+\bibcite{ce:website}{21}
+\bibcite{ossie:website}{22}
+\bibcite{ossie_fpga}{23}
+\bibcite{ossie_omap}{24}
+\bibcite{MDAGuide}{25}
+\bibcite{schober_mda}{26}
+\bibcite{nagel_tetra}{27}
+\bibcite{simu_ug}{28}
+\bibcite{rtw_ug}{29}
+\bibcite{rtwec_ug}{30}
+\bibcite{hdl_ug}{31}
+\bibcite{perf_overhead}{32}
+\bibcite{fftw_paper}{33}
+\bibcite{fftw_bench}{34}
+\bibcite{virtex4}{35}
+\bibcite{cyclone2}{36}
+\bibcite{reed_SR}{37}
+\bibcite{jon_SDR}{38}
+\bibcite{razavi_RF}{39}
+\bibcite{Rec_Comp}{40}
+\bibcite{FPGA_CPLD}{41}
+\bibcite{dsp}{42}
+\bibcite{ti_c64}{43}
+\bibcite{ettus:website}{44}
+\bibcite{altera_cyclone}{45}
+\bibcite{ad9862}{46}
+\bibcite{cypress_fx2}{47}
+\bibcite{ad8348}{48}
+\bibcite{ad8347}{49}
+\bibcite{ad8345}{50}
+\bibcite{lyrtech_sff_sdr}{51}
+\bibcite{ti_dm6446}{52}
+\bibcite{ads5500}{53}
+\bibcite{dac5687}{54}
+\bibcite{ad9511}{55}
+\bibcite{trf3701}{56}
+\bibcite{trf1115}{57}
+\bibcite{trf1112}{58}
+\bibcite{trf1121}{59}
+\bibcite{trf1122}{60}
+\bibcite{Steppler}{61}
+\bibcite{DigCom_tetra}{62}
+\bibcite{ETSI07}{63}
+\bibcite{Kammeyer}{64}
+\bibcite{wnitl}{65}
+\bibcite{oerder}{66}
+\bibcite{Bossert}{67}
+\bibcite{hogenauer}{68}
+\bibcite{cic_comp}{69}
+\bibcite{alberty}{70}
+\bibcite{cordic}{71}
+\bibcite{IEEE802.11}{72}
+\bibcite{schmidl_cox}{73}
+\bibcite{nagel_frequenz}{74}
+\bibcite{pwd}{75}
+\bibcite{ti_fix_float}{76}
+\bibcite{ti_vit}{77}
+\@writefile{toc}{\contentsline {chapter}{Supervised Theses}{141}{appendix*.130}}
+\@writefile{toc}{\contentsline {chapter}{Sponsorship}{142}{appendix*.131}}
+\@writefile{toc}{\contentsline {chapter}{Curriculum Vitae}{143}{appendix*.132}}
+\global\@altsecnumformattrue

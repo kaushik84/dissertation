@@ -1,0 +1,42 @@
+% Dieses File a5.sty ist durch énderungen des Files a4.sty aus "Helmut Kopka:
+% Latex-Erweiterungsmîglichkeiten", Seiten 285-286, hervorgegangen.
+% Jens Krause
+
+\typeout{Document Style Option `a5'  by Jens Krause}
+
+\newlength{\av@width} \setlength{\av@width}{148.5mm}
+\newlength{\tmp@width} \setlength{\tmp@width}{\av@width}
+
+\if@twocolumn \textwidth126mm \marginparsep2mm
+\else \textwidth116mm \marginparsep4mm \fi
+\addtolength{\tmp@width}{-\textwidth}
+
+\ifcase \@ptsize\relax \textheight 38\baselineskip
+       \or \textheight 35\baselineskip
+       \or \textheight 33\baselineskip \fi
+\addtolength{\textheight}{\topskip}
+
+\if@twoside \if@twocolumn \setlength{oddsidemargin}{0.6\tmp@width}
+              \setlength{\evensidemargin}{0.4\tmp@width}
+       \else  \setlength{\oddsidemargin}{0.4\tmp@width}
+              \setlength{\evensidemargin}{0.6\tmp@width} \fi
+\else  \setlength{\oddsidemargin}{0.5\tmp@width}
+       \setlength{\evensidemargin}{\oddsidemargin} \fi
+
+       \setlength{\oddsidemargin}{0.5\tmp@width}
+       \setlength{\evensidemargin}{\oddsidemargin} 
+
+
+
+
+
+\setlength{\marginparwidth}{\evensidemargin}
+\addtolength{\marginparwidth}{-\marginparsep}
+\addtolength{\marginparwidth}{-4mm}
+
+\topmargin8mm \columnsep5mm
+%\setlength{\parskip}{1.5ex plus0.5ex minus0.5ex}
+
+% Aufhebung der durch den Druckertreiber eingefÅgten RÑnder:
+\hoffset-1in
+\voffset-1in

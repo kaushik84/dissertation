@@ -1,0 +1,375 @@
+\section*{Notation und Formelzeichen}
+ 
+% a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a
+% a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a
+% a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a
+% a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a
+% a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a a
+
+\begin{longtable}{p{1.6cm} p{8.6cm} p{0.6cm}}
+$(\cdot)^*$		& Konjugiert komplexe Zahl des Arguments
+&\pageref{konj}\\
+$(\cdot)^T$ 		& Transponierte eines Vektors oder einer Matrix &
+\pageref{trans}\\
+$(\cdot)^H$ 		& Hermitesche eines Vektors oder einer Matrix &
+\pageref{herm}\\
+$\M \succeq 0$		& Matrix $\M$ ist PSD & \pageref{psd2}\\
+$\mathbf{0}_{M,N}$	& Matrix mit Nullen der Dimension $M \times N$ &
+\pageref{bnull}\\
+$\mathbf{1}_{M,N}$	& Matrix mit Einsen der Dimension $M \times N$ &
+\pageref{beins}\\
+$(\cdot)_N$		& Argument bezieht sich auf den Nutzer
+&\pageref{indexN}\\
+$(\cdot)_S$		& Argument bezieht sich auf den Störer
+&\pageref{indexS}\\
+$f*g$ 			& Faltung zwischen $f$ und $g$
+&\pageref{ast}\\
+$\inner{x(t)}{y(t)}$ & inneres Produkt der Funktionen $x(t)$ und $y(t)$ & \pageref{inner}\\
+$\|x(t)\|$ & $L^2$-Norm der Funktion $x(t)$ & \pageref{norm}\\
+\\
+$a$			& Schwellwert der Amplitude &\pageref{a}\\
+$\a$ & Koeffizienten der Fourierreihendarstellung des Spektrums & \pageref{veca}\\
+$\mathbf{A}$		& Matrix mit den Integrationsergebnissen der
+Kanalschätzung &\pageref{mathbfA}\\
+\ifthenelse{\boolean{draft}}{%
+$A$			& Amplitudennormierung eines Pulses &\pageref{A0}\\
+%$A_x$			& Amplitudennormierung der Korrelation zwischen Puls
+%und Template &\pageref{Ax}\\
+$\alpha$		& Markov-Lukacs &\pageref{alpha}\\
+}{}%
+$\alpha_{0,n}$, $\alpha_{1,n}$	& Modellierung binärer, stochastischer Daten
+& \pageref{alphan}\\
+\\
+\ifthenelse{\boolean{draft}}{%
+$b_n$			& Koeffizienten der Polynomdarstellung&
+\pageref{bn}\\
+$b_{i,j}$		& Ergebnis der $i$-ten Integration des $j$-ten Symbols
+bei inkohärenter Detektion\\
+}{}%
+$b(t)$			& Modifizierte Störfunktion & \pageref{bt}\\
+$\b$ && \pageref{bb}\\
+\ifthenelse{\boolean{draft}}{%
+$B_a$			& absolute Bandbreite &\pageref{Ba}\\
+$B_r$			& relative Bandbreite &\pageref{Br}\\
+}{}%
+$\mathbf{B}$		& Matrix mit den Integrationsergebnissen eines
+Datensymbols& \pageref{mathbfB}\\
+\ifthenelse{\boolean{draft}}{%
+$\beta$			& Markov-Lukacs &\pageref{beta}\\
+$\beta_{0,k,\ell}$, $\beta_{\ell}^g$, $\beta_{k,\ell}^m$ & Faktoren der
+Pfaddämpfung &\pageref{betakl}\\
+}{}%
+\\
+$c_1$, $c_2$, $\c_3$	& Konstanten zur Spektrumsoptimierung &
+\pageref{ckonst}\\
+\ifthenelse{\boolean{draft}}{%
+$\c_3$, $\c_4$		& Konstanten zur Spektrumsoptimierung &
+\pageref{c3c4}\\
+}{}%
+$c(t)$			& Modifiziertes Template &\pageref{ct}\\
+$c_n^f$			& Koeffizienten der Fourierreihennäherung einer
+reellen Funktion $f(t)$ &\pageref{cn}\\
+$\hat{c}_n^f$		& Koeffizienten der Fourierreihennäherung einer
+komplexen Funktion $f(t)$ &\pageref{hatcn}\\
+$\c$ & Minimierungsvektor zur Spektrumsoptimierung & \pageref{bc}\\
+$\mathbf{C}_k$		& Matrix mit den aktiven Integratoren bezüglich
+des Datensymbols $k$ &\pageref{mathbfC}\\
+\\
+$d_0$, $d_1$		& Konstanten im Markov-Lukacs-Theorem &\pageref{d0d1}\\
+$\mathbf{D}_k$		& Matrix mit den sortierten aktiven Integratoren
+bezüglich des Datensymbols $k$ &\pageref{mathbfD}\\
+$\delta$		& Maß für die Korrelation der Pulse &\pageref{delta}\\
+$\delta_{mn}$		& Kronecker-Symbol & \pageref{deltamn}\\
+$\delta(t)$		& Dirac-Stoß &\pageref{deltat}\\
+$\Delta$		& Verschiebung bei PPM &\pageref{Delta}\\
+%$\Delta_k$		& Verschiebung von PPM für das $k$
+%Symbol des Alphabets (bei höherwertiger Modulation)\\
+$\Delta_{opt}$		& Optimale Verschiebung bei PPM in AWGN
+&\pageref{Deltaopt}\\
+\\
+$\text{erfc}(x)$	& Komplementäre Fehler-Funktion
+&\pageref{erfc}\\
+$E_b$			& Bitenergie &\pageref{Eb}\\
+$E_p$			& Pulsenergie &\pageref{Ep}\\
+$E[x]$			& Erwartungswert einer Zufallsvariablen $x$
+&\pageref{Ex}\\
+$\E$ 			& Nebenbedingungsmatrix bei der Spektrumsoptimierung&
+\pageref{bE}\\
+$\epsilon$ & relativer quadratischer Fehler des Spektrum zur Frequenzmaske &
+\pageref{epsilon}\\
+$\eta$			& relative Leistung eines Pulses bezogen auf die
+Frequenzmaske & \pageref{eta}\\
+\\
+\ifthenelse{\boolean{draft}}{%
+$f$			& Variable der Frequenz\\
+}{}%
+$f_g$			& Grenzfrequenz zur Optimierung der Frequenzmaske
+&\pageref{fg}\\
+\ifthenelse{\boolean{draft}}{%
+$f_m$			& Mittenfrequenz &\pageref{fm}\\
+$f_o$			& obere 10dB-Grenzfrequenz &\pageref{fo}\\
+$f_u$			& untere 10dB-Grenzfrequenz &\pageref{fu}\\
+$f_0$			& Oszillations-/Mischfrequenz &\pageref{f0}\\
+}{}%
+$[f_{0,k},f_{1,k}]$	& Gültigkeitsbereich der Nebenbedingungen aus
+Gl. \eqref{eq5_opt6} & \pageref{f0kf1k}\\
+$\tilde{f}(t)$		& Fourierreihennäherung einer Funktion $f(t)$
+&\pageref{tildef}\\
+$\mathcal{F}\{f(t)\}$ 	& Fouriertransformierte von $f(t)$ &\pageref{mathcalF}\\
+$\mathcal{F}^{-1}\{F(f)\}$ & Inverse Fouriertransformierte von $F(f)$
+&\pageref{mathcalF1}\\
+$f_x$			& Dichte einer Zufallsvariablen $x$ &\pageref{fx}\\
+$f_{|x|}$		& Dichte des Betrags einer Zufallsvariablen $x$
+&\pageref{fax}\\
+$F_0$			& Integrationsbandbreite der Frequenzmaske
+&\pageref{F0}\\
+$\F_k$ & PSD Matrix als Nebenbedingung & \pageref{bF}\\
+\\
+\ifthenelse{\boolean{draft}}{%
+$\mathbf{g}_1$, $\mathbf{g}_2$, $\mathbf{g}_3$, $\mathbf{g}_4$	& Nebenbedingungen der Pulsoptimierung
+&\pageref{g1}\\
+$\mathbf{G}(\mathbf{x})$	& Nebenbedingung der Pulsoptimierung &\pageref{G}\\
+$\gamma_{k,\ell}$	& Dämpfung des $k$-ten Pfads in der $\ell$-ten Gruppe
+einer Kanalimpulsantwort &\pageref{gamma}\\
+$\gamma_w^{(k)}$	& Pfaddämpfung im $w$-ten Pfad des $k$-ten Nutzers &
+\pageref{gammaw}\\
+$\Gamma^g$		& Dämpfungsfaktoren der Pfadgruppen &\pageref{Gammag}\\
+$\Gamma^m$		& Dämpfungsfaktoren der Pfade &\pageref{Gammam}\\
+\\
+$h_n^{(k)}$		& TH-Code des $n$-ten Pulses des $k$-ten Nutzers &\pageref{hn}\\
+$h(t)$			& Kanalimpulsantwort &\pageref{ht}\\
+%$\mathbf{h}(\mathbf{x})$	& Nebenbedingung der Optimierung &\pageref{h}\\
+}{}%
+$H$			& Anzahl der Symbole zur Synchronisation und
+Kanalschätzung &\pageref{H}\\
+\\
+\ifthenelse{\boolean{draft}}{%
+$i_\ell$		& $\ell$-ter aktiver Integrator\\
+}{}%
+$I(x)$			& Intervall, in dem $a$ überschritten wird, als Funktion
+der Variable $x$ &\pageref{I}\\
+$\I_M$			& Einheitsmatrix der Größe $M \times M$ & \pageref{IM}\\
+\\
+\ifthenelse{\boolean{draft}}{%
+$j$			& $\sqrt{-1}$\\
+\\
+$k$			& Index\\
+}{}%
+$k(t)$			& Korrelationsfunktion am Empfänger &\pageref{k}\\
+$K$			& Größe des Symbolalphabets &\pageref{K}\\
+\ifthenelse{\boolean{draft}}{%
+$K_f$, $K_p$, $K_s$ & Parameter des Semidefinite Programming & \pageref{Kfps}\\
+$K_m$			& Anzahl der Mehrwege &\pageref{Km}\\
+$K_0$			& Konstante zur Unterdrückung des Gibbsschen
+Phänomens &\pageref{K0}\\
+}{}%
+$\bkappa$		& Koeffizienten der frequenzabhängigen Nebenbedingungen
+& \pageref{bkappa}\\
+\\
+\ifthenelse{\boolean{draft}}{%
+$\ell$			& Index\\
+}{}%
+$L$			& Anzahl der aktiven Integratoren &\pageref{L}\\
+\ifthenelse{\boolean{draft}}{%
+$L_g$			& Anzahl der Pfadgruppen &\pageref{Lg}\\
+$\lambda$		& Lagrange-Faktor\\
+$\lambda_0$		& Dämpfungskoeffizient &\pageref{lambda0}\\
+$\Lambda^g$		& Gruppenankunftsrate &\pageref{Lambdag}\\
+$\Lambda^m$		& Pfadankunftsrate &\pageref{Lambdam}\\
+}{}%
+\\
+\ifthenelse{\boolean{draft}}{%
+$m$			& Index\\
+}{}%
+$M$			& Anzahl der Fourier-/Polynomkoeffizienten
+&\pageref{M}\\
+\ifthenelse{\boolean{draft}}{%
+$\M(\P)$ & Nebenbedingung zur Spektrumsoptimierung & \pageref{bM}\\
+$\mu$			& Lagrange-Faktor\\
+}{}%
+$\mu_m$	& Amplitude des $m$-ten Pulses eines Symbolpulses &\pageref{mu}\\
+\ifthenelse{\boolean{draft}}{%
+$\mu_{\ell}^g$, $\mu_{k,\ell}^m$ & Parameter zur Berechnung des
+Kanalmodells &\pageref{mukl}\\
+}{}%
+\\
+\ifthenelse{\boolean{draft}}{%
+$n$			& Index\\
+}{}%
+$N$			& Anzahl der Pulse pro Symbol &\pageref{N}\\
+$N_h$			& Anzahl der Zeitschlitze des TH-Codes &\pageref{Nh}\\
+$N_0$			& Zweiseitige Rauschleistungsdichte &\pageref{N0}\\
+$\mathcal{N}(\mu,\sigma^2)$	& Normalverteilung mit dem Mittelwert $\mu$ und
+der Varianz $\sigma^2$ &\pageref{Nmysigma}\\
+\ifthenelse{\boolean{draft}}{%
+$\nabla$		& Nabla-Operator\\
+}{}%
+$\bnu$ & Koeffizienten des Pulsspektrums & \pageref{bnu}\\
+\\
+$O$			& Anzahl der Integratoren im Empfänger &\pageref{O}\\
+\ifthenelse{\boolean{draft}}{%
+$\omega$		& Phasengeschwindigkeit & \pageref{omega}\\
+}{}%
+\\
+$p(t)$			& Pulsform &\pageref{p}\\
+$p_a(t)$		& Symbolpuls &\pageref{pa}\\
+$p_e(t)$		& Pulsform im Empfänger &\pageref{pe}\\
+$p_k(t)$		& Pulsform im Kanal &\pageref{pk}\\
+$p_s(t)$		& Pulsform im Sender &\pageref{ps}\\
+$p_0(t)$, $p_1(t)$	& Pulsform für das Symbol 0 bzw. 1 &\pageref{p01}\\
+$p_T(t)$		& Pulsform des Templates &\pageref{pT}\\
+$p_{T,0}(t)$		& Optimales Template in AWGN &\pageref{pT0}\\
+$p_{T,opt}(t)$		& Optimales Template in MAI &\pageref{pTopt}\\
+$P(f)$			& Fouriertransformierte einer Pulsform $p(t)$
+&\pageref{Pf}\\
+$P$			& Anzahl der zur Störunterdrückung ignorierten Pulse
+&\pageref{P}\\
+\ifthenelse{\boolean{draft}}{%
+$\P$ & Nebenbedingung zur Spektrumsoptimierung & \pageref{bP}\\
+}{}%
+$\mathcal{P}(x)$	& Wahrscheinlichkeit eines Ereignisses $x$
+&\pageref{mathcalP}\\
+$\phi_n(t)$		& komplexe Basisfunktionen der Fourierreihe
+&\pageref{phi}\\
+$\phi_n'(t)$		& reelle Basisfunktionen der Fourierreihe
+&\pageref{phi2}\\
+\ifthenelse{\boolean{draft}}{%
+$\varphi$		& Variable der Phase\\
+}{}%
+$\varphi_{xx}$		& AKF des Signals x
+&\pageref{varphi2}, \pageref{varphixx}\\
+$\bar{\varphi}_{xx}$	& Mittlere AKF des Signals x &\pageref{barvarphixx}\\
+$\Phi_{xx}$		& LDS des Signals x &\pageref{Phixx}\\
+$\bar{\Phi}_{xx}$	& Mittleres LDS des Signals x &\pageref{barPhixx}\\
+\ifthenelse{\boolean{draft}}{%
+$\bar{\Phi}_{xx,F_0}$	& Mittleres LDS des Signals x nach der Integration
+mit $F_0$ &\pageref{PhiF0}\\
+$\hat{\Phi}_{xx}(f)$	& Hilfsfunktion zur Spektrumsanpassung &
+\pageref{hatPhi}\\
+%$\tilde{\Phi}_{xx}(f)$	& angenähertes Spektrum &
+%\pageref{tildePhi}\\
+}{}%
+\\
+$q(t)$			& Dichte von $\theta_n$ &\pageref{qt}\\
+$q_n$			& Koeffizient im Satz von Markov-Lukacs
+&\pageref{qn}\\
+$Q_n$			& Modifizierte Koeffizienten im Satz von
+Markov-Lukacs &\pageref{Qn}\\
+$Q(f)$			& Fouriertransformierte der Dichte $f_\theta(t)$
+&\pageref{Qf}\\
+\\
+\ifthenelse{\boolean{draft}}{%
+$r(m)$ 			& Koeffizienten in Satz \eqref{satz3} & \pageref{rm}\\
+}{}%
+$r(t)$			& Empfangssignal &\pageref{rt}\\
+$r_n$			& Koeffizient im Satz von Markov-Lukacs
+&\pageref{rn}\\
+$\text{rect}_T(t)$	& Rechteckfunktion der Breite $T$ &\pageref{rect}\\
+$R(f)$			& Komplexe Funktion in Satz \eqref{satz3} &
+\pageref{Rf}\\
+$R_n$			& Modifizierte Koeffizienten im Satz von
+Markov-Lukacs &\pageref{Rn}\\
+$\Re\{z\}$ 		& Realteil von $z$ &\pageref{Re}\\
+$\rho$			& Maß für das Verhältnis aus SNR und SIR im Kanal
+&\pageref{rho}\\
+$\rho_0$		& Vergleichswert für $\rho$ &\pageref{rho0}\\
+\\
+\ifthenelse{\boolean{draft}}{%
+$s^{(k)}(t)$		& allgemeines Signal & \pageref{skt}\\
+$s_m^{(k)}(t)$		& Signal nach Mehrwegekanal & \pageref{smkt}\\
+$s_{Rx}(t)$		& empfangenes Signal & \pageref{sRx}\\
+$\mbox{sgn}(x)$		& Signum-Funktion &\pageref{sgn}\\
+}{}%
+$S$			& Anzahl der Störer &\pageref{S}\\
+$S_h^m$			& Ergebnis des $m$-ten Integrators während der
+Kanalschätzung & \pageref{shm}\\
+\ifthenelse{\boolean{draft}}{%
+$S_{h,max}$		& maximales $S_h^m$\\
+$S_{h,min}$		& minimales $S_h^m$\\
+}{}%
+$S_d^k$			& Ergebnis der Schätzung des $k$-ten Symbols
+&\pageref{sdk}\\
+$\hat{S}_d^k$		& Ergebnis der Schätzung des $k$-ten Symbols mit
+Störunterdrückung &\pageref{tildesdk}\\
+$S_a(f)$		& Spektrum des Symbolpulses &\pageref{Saf}\\
+$S_d(f)$		& Spektrum der Frequenzmaske &\pageref{Sdf}\\
+\ifthenelse{\boolean{draft}}{%
+$\sigma^2$		& Varianz bzw. Leistung bei mittelwertfreien Signalen\\
+$\sigma_0^2$		& Varianz der mittelwertbefreiten Werte von
+$\mathbf{B}$ &\pageref{sigma0}\\
+$\sigma_1^2$, $\sigma_2^2$, $\sigma_X^2$ & Parameter des
+Kanalmodells &\pageref{sigma1}\\
+$\mathfrak{S}$		& Definitionsraum &\pageref{mathfrakS}\\
+}{}%
+\\
+\ifthenelse{\boolean{draft}}{%
+$t$			& Variable der Zeit\\
+}{}%
+$t_0, t_1$		& Start- und Endpunkt des Intervalls $I(x)$
+&\pageref{t0t1}\\
+$T$			& Nomineller Pulsabstand, Framedauer &\pageref{T}\\
+$T_a$			& Abstand der Pulse innerhalb eines Symbolpulses &\pageref{Ta}\\
+$T_c$			& Zeitspanne, in der $p_T(t)$ ungleich Null ist
+&\pageref{Tc}\\
+$T_h$			& Quantisierung des TH-Codes &\pageref{Th}\\
+\ifthenelse{\boolean{draft}}{%
+$T_\ell^g$		& Verzögerung der $l$-ten Gruppe einer
+Kanalimpulsantwort &\pageref{Tlg}\\
+$T_{k,\ell}^m$		& Verzögerung des $k$-ten Pfades relativ zur $l$-ten
+Gruppe einer Kanalimpulsantwort &\pageref{Tklm}\\
+}{}%
+$T_p$			& Pulslänge &\pageref{Tp}\\
+$T_I$			& Integrationszeit &\pageref{TI}\\
+$T_S$			& Abtastzeit &\pageref{TS}\\
+$T_T$			& Periode der Fourierreihe &\pageref{TT}\\
+$T_0$			& Zeitspanne, in der der Schwellwert $a$
+überschritten wird &\pageref{T0}\\
+\ifthenelse{\boolean{draft}}{%
+$\tau$			& Variable der Verschiebung\\
+}{}%
+$\tau_0$		& Zeitkonstante der Pulsform &\pageref{tau0}\\
+$\tau_1(i,j)$		&& \pageref{tau1}\\
+$\tau_2(i,j)$		&& \pageref{tau2}\\
+\ifthenelse{\boolean{draft}}{%
+$\tau_w^{(k)}$		& Pfadverzögerung im $w$-ten Pfad des $k$-ten Nutzers &
+\pageref{tauw}\\
+}{}%
+$\theta_n$		& Stochastische Verschiebung durch den TH-Code für
+das $n$-te Symbol &\pageref{thetan}\\
+$\theta_D$		& $\theta_N-\theta_S$ &\pageref{thetaD}\\
+\\
+\ifthenelse{\boolean{draft}}{%
+$u$			& (Substitutionsvariable)\\
+\\
+$v_\ell(t)$		& Hilfsfunktion: $v_\ell(t)=p_\ell(t)\,p_\ell(t+\tau)$
+&\pageref{vl}\\
+$V_\ell(F)$		& Fouriertransformierte von $v_\ell(t)$
+&\pageref{Vf}\\
+}{}%
+$V_x$			& Verteilungsfunktion einer Zufallsvariablen $x$
+&\pageref{Vx}\\
+$V_{|x|}$		& Verteilungsfunktion des Betrags einer
+Zufallsvariablen\\
+\\
+\ifthenelse{\boolean{draft}}{%
+$w$			& Laufvariable\\
+$W$			& Anzahl der Mehrwege & \pageref{W}\\
+$\W$			&& \pageref{bW}\\
+}{}%
+\\
+$x(t)$ & Spreizsequenz & \pageref{xt}\\
+$\mathbf{x}$		& Optimierungsvektor &\pageref{mathbfx}\\
+\ifthenelse{\boolean{draft}}{%
+%$\mathbf{x_s}$		& Kuhn-Tucker-Punkt des Optimierungsvektors
+%&\pageref{mathbfxs}\\
+$\mathbf{x}_0$		& Startvektor der Optimierung &\pageref{mathbfx}\\
+$X$			& Abschattung der Kanalimpulsantwort &\pageref{X}\\
+$\X$ && \pageref{bX}\\
+\\
+$\Y$ && \pageref{bY}\\
+\\
+$z,z_1,z_2$		& komplexe Variablen\\
+$\Z$ && \pageref{bZ}\\
+}{}%
+\end{longtable}
+%\end{tabbing}

@@ -1,0 +1,116 @@
+%\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{./input/units}[1995/05/24 -- write units like math operators]
+
+\RequirePackage{amstext}        % \text
+\RequirePackage{xspace}         % !PN, 1995/05/24
+                                % put after amstex because 
+                                % xspace should be loaded as late as possible
+
+% \PackageWarningNoLine{units}{%  % !PN, 1995/05/24
+%         This package loads xspace.sty,\MessageBreak
+%         therefore the same restrictions apply!\MessageBreak
+%         xspace.sty says:\MessageBreak
+%         \space\space\space
+%                 Note that this package must be\MessageBreak
+%         \space\space\space
+%                 loaded after any language (or other) packages\MessageBreak
+%         \space\space\space
+%                 that make punctuation characters `active'%.\MessageBreak
+% }
+
+% !PN 1995/05/24
+% move \xspace at end of complete macro, otherwise \xspace doesn't work!
+% doesn't seem to bother math mode....
+%\newcommand{\units@cmd}[1]{%
+%       \ifmmode\mathop{\text{#1}}\else\mbox{\,#1}\xspace\fi%
+%}
+\newcommand{\units@cmd}[1]{%
+        \ifmmode\mathop{\text{#1}}\else\mbox{\,#1}\fi\xspace%
+}
+
+\newcommand{\ms}{\units@cmd{ms}}
+\newcommand{\us}{\units@cmd{$\mu$s}}
+\newcommand{\ns}{\units@cmd{ns}}
+\newcommand{\ps}{\units@cmd{ps}}
+\newcommand{\s}{\units@cmd{s}}
+
+\newcommand{\Hz}{\units@cmd{Hz}}
+\newcommand{\kHz}{\units@cmd{kHz}}
+\newcommand{\MHz}{\units@cmd{MHz}}
+\newcommand{\GHz}{\units@cmd{GHz}}
+\newcommand{\THz}{\units@cmd{THz}}
+
+\newcommand{\K}{\units@cmd{K}}
+
+\newcommand{\kmh}{\units@cmd{km/h}}
+\newcommand{\mph}{\units@cmd{mph}}
+\newcommand{\mps}{\units@cmd{m/s}}
+
+\newcommand{\kbit}{\units@cmd{kbit}}
+\newcommand{\Mbit}{\units@cmd{Mbit}}
+\newcommand{\bits}{\units@cmd{bit/s}}
+\newcommand{\kbits}{\units@cmd{kbit/s}}
+\newcommand{\Mbits}{\units@cmd{Mbit/s}}
+\newcommand{\kchips}{\units@cmd{kchip/s}}
+\newcommand{\Mchips}{\units@cmd{Mchip/s}}
+\newcommand{\hops}{\units@cmd{hop/s}}
+\newcommand{\kbauds}{\units@cmd{kbaud/s}}
+
+
+\newcommand{\mW}{\units@cmd{mW}}
+\newcommand{\W}{\units@cmd{W}}
+\newcommand{\kW}{\units@cmd{kW}}
+
+\newcommand{\dB}{\units@cmd{dB}}
+\newcommand{\dBm}{\units@cmd{dBm}}
+\newcommand{\dBc}{\units@cmd{dBc}}
+\newcommand{\dBi}{\units@cmd{dBi}}
+\newcommand{\dBK}{\units@cmd{dB/K}}
+\newcommand{\dBcHz}{\units@cmd{dBc/Hz}}
+
+\newcommand{\nm}{\units@cmd{nm}}
+\newcommand{\um}{\units@cmd{$\mu$m}}
+\newcommand{\mm}{\units@cmd{mm}}
+\newcommand{\cm}{\units@cmd{cm}}
+\newcommand{\m}{\units@cmd{m}}
+\newcommand{\km}{\units@cmd{km}}
+\newcommand{\inch}{\units@cmd{inch}}
+\newcommand{\mil}{\units@cmd{mil}}
+
+\newcommand{\V}{\units@cmd{V}}
+\newcommand{\mV}{\units@cmd{mV}}
+
+\newcommand{\A}{\units@cmd{A}}
+\newcommand{\mA}{\units@cmd{mA}}
+
+\newcommand{\F}{\units@cmd{F}}
+\newcommand{\fF}{\units@cmd{fF}}
+\newcommand{\nF}{\units@cmd{nF}}
+\newcommand{\pF}{\units@cmd{pF}}
+
+\newcommand{\Sie}{\units@cmd{S}}
+\newcommand{\mSie}{\units@cmd{mS}}
+\newcommand{\Siem}{\units@cmd{S/m}}
+
+% some more:
+\newcommand{\Ohm}{\units@cmd{$\Omega$}}
+
+\newcommand{\Deg}{%
+ \ifmmode%
+  ^\circ%
+ \else%
+  %\mbox{\,$^\circ$}%
+  \mbox{$^\circ$}\xspace%
+ \fi%
+}
+\newcommand{\DegC}{%
+ \ifmmode%
+  ^\circ\text{C}%
+ \else%
+  \mbox{$^\circ$C}\xspace%
+ \fi%
+}
+
+
+
+%\endinput

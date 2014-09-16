@@ -1,0 +1,124 @@
+\indexentry{High-Level Language|hyperpage}{4}
+\indexentry{Optimization|hyperpage}{4}
+\indexentry{Pareto Principle|hyperpage}{5}
+\indexentry{FPGA|hyperpage}{6}
+\indexentry{HDL|hyperpage}{6}
+\indexentry{Verilog|hyperpage}{6}
+\indexentry{VHDL|hyperpage}{6}
+\indexentry{GNU Radio|hyperpage}{7}
+\indexentry{GRC|hyperpage}{9}
+\indexentry{SCA|hyperpage}{10}
+\indexentry{Operating Environment|hyperpage}{10}
+\indexentry{CORBA|hyperpage}{10}
+\indexentry{AEP|hyperpage}{10}
+\indexentry{Core Framework|hyperpage}{11}
+\indexentry{CORBA|hyperpage}{12}
+\indexentry{AEP|hyperpage}{12}
+\indexentry{Domain Profile|hyperpage}{12}
+\indexentry{MDA|hyperpage}{13}
+\indexentry{CIM|hyperpage}{14}
+\indexentry{PIM|hyperpage}{14}
+\indexentry{PSM|hyperpage}{14}
+\indexentry{Simulink|hyperpage}{16}
+\indexentry{Sample-based processing|hyperpage}{17}
+\indexentry{Frame-based processing|hyperpage}{17}
+\indexentry{FIR filter|hyperpage}{23}
+\indexentry{FFT|hyperpage}{24}
+\indexentry{FIR filter|hyperpage}{26}
+\indexentry{FFT|hyperpage}{26}
+\indexentry{CIC filter|hyperpage}{29}
+\indexentry{Logic Element|hyperpage}{29}
+\indexentry{Slice|hyperpage}{29}
+\indexentry{FIR filter|hyperpage}{30}
+\indexentry{Platform|hyperpage}{32}
+\indexentry{RF front end|hyperpage}{32}
+\indexentry{Receiver|hyperpage}{32}
+\indexentry{Superheterodyne receiver|hyperpage}{32}
+\indexentry{Intermediate frequency|hyperpage}{33}
+\indexentry{Direct-Concersion receiver|hyperpage}{33}
+\indexentry{Transmitter|hyperpage}{34}
+\indexentry{FPGA|hyperpage}{35}
+\indexentry{Slice|hyperpage}{35}
+\indexentry{Logic Element|hyperpage}{35}
+\indexentry{DSP|hyperpage}{35}
+\indexentry{GPP|hyperpage}{36}
+\indexentry{USRP|hyperpage}{36}
+\indexentry{GNU Radio|hyperpage}{36}
+\indexentry{OSSIE|hyperpage}{36}
+\indexentry{Simulink|hyperpage}{36}
+\indexentry{Flex400|hyperpage}{38}
+\indexentry{Flex2400|hyperpage}{38}
+\indexentry{USB|hyperpage}{41}
+\indexentry{Simulink|hyperpage}{45}
+\indexentry{Platform|hyperpage}{48}
+\indexentry{Digital Processing Module|hyperpage}{49}
+\indexentry{Data Conversion Module|hyperpage}{52}
+\indexentry{Tunable RF Module|hyperpage}{55}
+\indexentry{Superheterodyne receiver|hyperpage}{55}
+\indexentry{Intermediate frequency|hyperpage}{55}
+\indexentry{WiMAX RF Module|hyperpage}{56}
+\indexentry{Superheterodyne receiver|hyperpage}{56}
+\indexentry{TETRA|hyperpage}{64}
+\indexentry{Public Mobile Radio|hyperpage}{64}
+\indexentry{Traffic channel|hyperpage}{65}
+\indexentry{CIM|hyperpage}{66}
+\indexentry{Media Access Control|hyperpage}{66}
+\indexentry{Channel coding|hyperpage}{66}
+\indexentry{Interleaving|hyperpage}{66}
+\indexentry{Scrambling|hyperpage}{66}
+\indexentry{Puncturing|hyperpage}{68}
+\indexentry{Floor function|hyperpage}{68}
+\indexentry{Extended Colour Code|hyperpage}{69}
+\indexentry{Physical layer|hyperpage}{70}
+\indexentry{Normal Downlink Burst|hyperpage}{71}
+\indexentry{Access Assignment Channel|hyperpage}{71}
+\indexentry{Reed Muller code|hyperpage}{71}
+\indexentry{Phase-Shift keying|hyperpage}{72}
+\indexentry{Signal-to-Noise Ratio|hyperpage}{73}
+\indexentry{Pulse shaping|hyperpage}{73}
+\indexentry{Root raised cosine|hyperpage}{73}
+\indexentry{CIM|hyperpage}{74}
+\indexentry{Root raised cosine|hyperpage}{76}
+\indexentry{Channel|hyperpage}{79}
+\indexentry{Time synchronization|hyperpage}{80}
+\indexentry{Frequency synchronization|hyperpage}{82}
+\indexentry{Synchronization Training Sequence|hyperpage}{82}
+\indexentry{Frequency Correction Field|hyperpage}{82}
+\indexentry{Synchronization Downlink Burst|hyperpage}{82}
+\indexentry{Frame synchronization|hyperpage}{84}
+\indexentry{Extended Colour Code|hyperpage}{84}
+\indexentry{Viterbi decoding|hyperpage}{85}
+\indexentry{Platform Specific Model|hyperpage}{86}
+\indexentry{USRP|hyperpage}{86}
+\indexentry{CIC filter|hyperpage}{87}
+\indexentry{Decimation|hyperpage}{87}
+\indexentry{Interpolation|hyperpage}{87}
+\indexentry{Resampling|hyperpage}{87}
+\indexentry{CIC filter|hyperpage}{88}
+\indexentry{Roll-off factor|hyperpage}{89}
+\indexentry{Spectrum mask|hyperpage}{89}
+\indexentry{Time synchronization|hyperpage}{91}
+\indexentry{Frequency tolerance|hyperpage}{92}
+\indexentry{Frequency synchronization|hyperpage}{92}
+\indexentry{Frequency Correction Field|hyperpage}{92}
+\indexentry{Carrier acquisition|hyperpage}{92}
+\indexentry{Dual filter detector|hyperpage}{92}
+\indexentry{Reed Muller code|hyperpage}{97}
+\indexentry{Sample rate conversion|hyperpage}{97}
+\indexentry{Rate-Compatible punctured convolutional code|hyperpage}{98}
+\indexentry{Sample rate conversion|hyperpage}{99}
+\indexentry{Viterbi decoding|hyperpage}{100}
+\indexentry{Hardware multiplier|hyperpage}{102}
+\indexentry{CIC filter|hyperpage}{102}
+\indexentry{Intermediate frequency|hyperpage}{102}
+\indexentry{Lookup table|hyperpage}{103}
+\indexentry{Sample rate conversion|hyperpage}{103}
+\indexentry{CORDIC|hyperpage}{106}
+\indexentry{Interoperability|hyperpage}{114}
+\indexentry{Family Radio Service|hyperpage}{116}
+\indexentry{Frequency modulation|hyperpage}{116}
+\indexentry{WLAN|hyperpage}{117}
+\indexentry{IEEE 802.11g|hyperpage}{117}
+\indexentry{ISM radio band|hyperpage}{117}
+\indexentry{OFDM|hyperpage}{118}
+\indexentry{Schmidl and Cox synchronization|hyperpage}{118}

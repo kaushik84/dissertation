@@ -1,0 +1,17 @@
+clear all;
+close all;
+bench_dsp_trx;
+clear all;
+close all;
+bench_dsp_tx;
+clear all;
+close all;
+bench_dsp_rx;
+clear all;
+close all;
+bench_dsp_rx_phy;
+clear all;
+close all;
+bench_dsp_rx_tch;
+clear all;
+close all;
