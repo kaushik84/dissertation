@@ -1,18 +1,183 @@
-\chapter{Performance Analysis}
-\label{chap:Deploy}
-Using software defined radio.
-\section{Interweave System}
+\chapter{Field Analysis}
+\label{chap:Field}
+Implementation using software defined radio.
+\section{Interweave system}
+
+\subsection{System model}
+
+\subsection{Measurement setup}
+\begin{figure}[!t]
+        \centering
+        \includegraphics[trim=0.0cm 0.0cm 5.28cm 0.0cm,clip=true,width=\columnwidth]{../kapitel05/figures/Interweave_GUI.png}
+        \caption{Utilization probability for ranking the GSM subchannels.}
+        \label{fig:uti}
+\end{figure}
 Hardware demonstration \cite{Kaushik_ISWCS} of \ac{CR} that
 \begin{itemize}
 \item detects spectrum holes or temporal opportunities in \ac{PU} system 
 \item illustrates cognitive sensing ,i.e, it estimates the spectral occupancy for the multi-band \ac{PU} system
 \end{itemize}
-\section{Underlay System}
+
+\subsection{Analysis}
+
+\section{Underlay system}
+
+\subsection{System model}
+CR models the channel coefficients $h_\text{p}$, $h_\text{s}$, using Rayleigh or Nakagami-$m$ distribution for the indoor-indoor and indoor-outdoor links. In literature, Rayleigh distribution is mostly preferred due to its analytical tractability. In contrast to that, Nakagami-$m$ accounts for the severity in fading through $m$ parameter, thus, it is more applicable in indoor scenarios. For a fixed transmit power at CR, the received signal to noise power $\gamma$\footnote{Consider a transmission from a certain CR, then $\gamma$ is equivalent to signal to noise ratio (SNR) at ID and interference to noise ratio at PR. Therefore, the term SNR is not used to avoid confusion thereof. Moreover, the interference from unintended primary transmitters and other CRs at PR or ID is treated as white noise.} at PR or ID, corresponding to Rayleigh case, follows exponential distribution \cite{simon2005}
+\begin{equation}
+\label{eq:expo}
+F_{\gamma}(\gamma) = 1 - e^{- \frac{\gamma}{\bar{\gamma}} }
+\end{equation}
+and for Nakagami-$m$, it follows Gamma distribution \cite{simon2005}
+\begin{equation}
+\label{eq:gamma}
+F_{\gamma}(\gamma) = 1 - \frac{ \Gamma{ \left( m, m \frac{\gamma}{\bar{\gamma}} \right) }}{\Gamma(m)},
+\end{equation}
+where $\bar{\gamma} = \mathbb{E}[\gamma]$ and $m$ denotes the shape parameter. $\Gamma(\cdot)$ and $\Gamma(\cdot,\cdot)$ are the complete and incomplete Gamma functions. 
+
+
+\begin{figure}[!t]
+        \centering
+        \includegraphics[width = \columnwidth]{../kapitel05/figures/wo_channels_CR_Scenario_farbig_general}
+        \caption{A scenario demonstrating the interaction between the PU and the CR. The CR senses PUs channels in the outdoor to provide a dynamic access to the devices operating indoor.}
+        \label{fig:scenario}
+\end{figure}
+
+\begin{figure}[!t]
+        \centering
+        \includegraphics[width = 0.8\columnwidth]{../kapitel05/figures/setup}
+        \caption{Hardware setup.}
+        \label{fig:hw_setup}
+\end{figure}
+
+
 \ac{CR} operating as underlay system \cite{Kaushik_CROWNCOM}
 \begin{itemize}
 \item deploys propagation models to capture movements of \ac{PR} and \ac{ID}
 \item implements sharing constraints to access the \ac{PU} channel 
 \end{itemize}
+
+\subsection{Measurement setup}
+\begin{figure}[!t]
+        \centering
+        \includegraphics[width = \columnwidth]{../kapitel05/figures/floor_B}
+        \caption{The deployment scenario for the CR including ID and PR at different spatial positions. The circle around the PR and ID positions represents $\mathbb{R}$, which illustrates their small movements.}
+        \label{fig:deploymentScenario}
+\end{figure}
+
+\begin{figure}[!t]
+        \centering
+        \includegraphics[width = 0.8\columnwidth]{../kapitel05/figures/setup}
+        \caption{Hardware setup.}
+        \label{fig:hw_setup}
+\end{figure}
+
+\subsection{Analysis}
+
+\subsubsection{\ac{IC} at PR}
+
+\begin{table}
+\renewcommand{\arraystretch}{1.3}
+\caption{Parameters and MSE of the $F_{I}$ modeled using Rayleigh and Nakagami-$m$ distribution for different PR positions}
+\label{tb:MSE_II}
+\centering
+\begin{tabular}{c||c|c}
+\hline
+\bfseries Outdoor & \bfseries Rayleigh (\ref{eq:expo}) & \bfseries Nakagami-$m$ (\ref{eq:gamma}) \\
+\bfseries Position & [MSE, $\widehat{\bar{\gamma}}]$ & [MSE, $(\widehat{m}, \widehat{\bar{\gamma}}$)] \\
+\hline\hline
+PR1 & $[3.84 \cdot 10^{-4}, 2.66 \cdot 10^{2} ]$  & $[1.74 \cdot 10^{-4} , (1.13, 2.66 \cdot 10^{2})] $ \\ \hline
+PR2 & $[2.75 \cdot 10^{-4}, 4.89 \cdot 10^{2}]$  & $[2.40 \cdot 10^{-4} , (0.98, 4.89 \cdot 10^{2})] $ \\ \hline
+PR3 & $[2.75 \cdot 10^{-4}, 57.34]$  & $[2.31 \cdot 10^{-4} , (1.11, 57.34)] $ \\ \hline
+PR4 & $[9.36 \cdot 10^{-4}, 94.20]$  & $[2.18 \cdot 10^{-4} , (1.25, 94.20)] $ \\ \hline
+\end{tabular}
+\end{table}
+
+
+\subsubsection{\ac{CC} at ID}
+
+\begin{figure}%
+\centering
+\begin{tikzpicture}[scale = 1.2]
+\node[anchor=south west,inner sep=0] (image) at (0,0)
+{\includegraphics[trim=1.5cm 0.4cm 1.45cm 1.2cm,clip=true,width=\columnwidth]{../kapitel05/figures/Interference_CDF_ana_vs_sim_indoor_outdoor}};
+\begin{scope}[x={(image.south east)},y={(image.north west)}]
+\draw  (0.832,0.99) node[above=-0.1pt, font=\small] {$I_{\text{th}}$};
+%\draw  (.97,0.898) node[right=-2.2pt, font=\small] {$\epsilon_{\text{I,out}}$};
+\draw[black,thick,<->] (0.97,0.898) --  node[right=-2.2pt, font=\small] {$\epsilon_{\text{I,out}}$} (0.97,0.985);
+\draw [thick] (0.831,0.985) -- (0.831,0.096);
+\draw [thick] (0.08,0.898) -- (0.956,0.898);
+
+%Select channels for based on Interference Constraint   
+\draw (0.675,0.85) ellipse(24pt and 5pt)  node[left=28pt, font=\small] {IC};
+%\draw[help lines,xstep=.1,ystep=.1] (0,0) grid (1,1);
+%\foreach \x in {0,1,...,9} { \node [anchor=north] at (\x/10,0) {0.\x}; }
+%\foreach \y in {0,1,...,9} { \node [anchor=east] at (0,\y/10) {0.\y}; }
+\end{scope}
+\end{tikzpicture}
+\caption{Interference distribution function at different PR positions.}
+\label{subfig:indoor-outdoor}
+\end{figure}
+
+\begin{figure}
+\centering
+\begin{tikzpicture}[scale = 1.2]
+\node[anchor=south west,inner sep=0] (image) at (0,0)
+{\includegraphics[trim=1.5cm 0.4cm 1.45cm 1.2cm,clip=true,width=\columnwidth]{../kapitel05/figures/Capacity_CDF_ana_vs_sim_indoor_indoor}};
+\begin{scope}[x={(image.south east)},y={(image.north west)}]
+\draw  (0.255,0.99) node[above=-0.1pt, font=\small] {$C_{\text{th}}$};
+%\draw  (.97,0.178) node[right=-2.2pt, font=\small] {$\epsilon_{\text{C,out}}$};
+\draw[black,thick,<->] (0.97,0.095) --  node[right=-2.2pt, font=\small] {$\epsilon_{\text{C,out}}$} (0.97,0.186);
+\draw [thick] (0.255,0.985) -- (0.255,0.096);
+\draw [thick] (0.08,0.186) -- (0.956,0.186);
+%Select channels for based on Capacity Constraint       
+\draw (0.48,0.58) ellipse (38pt and 5pt)  node[right=48 pt, font=\small] {CC};
+%\draw[help lines,xstep=.1,ystep=.1] (0,0) grid (1,1);
+%\foreach \x in {0,1,...,9} { \node [anchor=north] at (\x/10,0) {0.\x}; }
+%\foreach \y in {0,1,...,9} { \node [anchor=east] at (0,\y/10) {0.\y}; }
+\end{scope}
+\end{tikzpicture}
+\label{subfig:indoor-indoor}
+\end{figure}
+
+\begin{table}
+\renewcommand{\arraystretch}{1.3}
+\caption{Parameters and MSE of the $F_{C}$ modeled using Rayleigh and Nakagami-$m$ distribution for different ID positions}
+\label{tb:MSE_IO}
+\centering
+\begin{tabular}{c||c|c}
+\hline
+\bfseries Indoor & \bfseries Rayleigh (\ref{eq:expo}) & \bfseries Nakagami-$m$ (\ref{eq:gamma}) \\
+\bfseries Position & [MSE, $\widehat{\bar{\gamma}}]$ & [MSE, $(\widehat{m}, \widehat{\bar{\gamma}}$)] \\
+\hline\hline
+ID1 & $[1.11 \cdot 10^{-3}, 9.52 \cdot 10^{2}]$  & $[1.74 \cdot 10^{-4} , (1.23, 9.52 \cdot 10^{2})] $ \\ \hline
+ID2 & $[1.60 \cdot 10^{-3}, 3.65 \cdot 10^{4}]$  & $[3.39 \cdot 10^{-4} , (1.28, 3.65 \cdot 10^{4})] $ \\ \hline
+ID3 & $[5.79 \cdot 10^{-4}, 1.79 \cdot 10^{2}]$  & $[1.35 \cdot 10^{-4} , (1.17, 1.79 \cdot 10^{2})] $ \\ \hline
+ID4 & $[9.35 \cdot 10^{-4}, 4.13 \cdot 10^{2}]$  & $[3.05 \cdot 10^{-4} , (1.16, 4.13 \cdot 10^{2})] $ \\ \hline
+ID5 & $[7.54 \cdot 10^{-4}, 6.99 \cdot 10^{4}]$  & $[2.96 \cdot 10^{-4} , (1.23, 6.99 \cdot 10^{4})] $ \\ \hline
+\end{tabular}
+\end{table}
+
+
+\begin{table}[!h]
+\renewcommand{\arraystretch}{1.3}
+\caption{Cognitive relay implementing AND rule for different PR and ID positions}
+\label{tb:BDecisions}
+\centering
+\begin{tabular}{c||c|c|c|c}
+\hline
+\bfseries & PR1 & PR2 & PR3 & PR4 \\
+\hline\hline
+ID1 & 1 $\cdot$ 0 = 0 & 0 $\cdot$ 0 = 0 & 1 $\cdot$ 0 = 0 & 1 $\cdot$ 0 = 0 \\ \hline
+ID2 & 1 $\cdot$ 1 = 1 & 0 $\cdot$ 1 = 0 & 1 $\cdot$ 1 = 1 & 1 $\cdot$ 1 = 1 \\ \hline
+ID3 & 1 $\cdot$ 1 = 1 & 0 $\cdot$ 1 = 0 & 1 $\cdot$ 1 = 1 & 1 $\cdot$ 1 = 1 \\ \hline
+ID4 & 1 $\cdot$ 0 = 0 & 0 $\cdot$ 0 = 0 & 1 $\cdot$ 0 = 0 & 1 $\cdot$ 0 = 0 \\ \hline
+ID5 & 1 $\cdot$ 1 = 1 & 0 $\cdot$ 1 = 0 & 1 $\cdot$ 1 = 1 & 1 $\cdot$ 1 = 1 \\ \hline
+\end{tabular}
+\end{table}
+
+
+
 
 %\index{Family Radio Service}
 %\subsection{Overview of the standard}

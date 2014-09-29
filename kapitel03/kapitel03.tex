@@ -5,8 +5,8 @@
 \section{Introduction}
 Sharing principle -- Orthogonal in time domain 
 
-\section{Primary user detection/Sensing}
-Sensing \\ 
+\subsection{Sensing}
+Primary user detection \\ 
 \begin{itemize}
 \item Energy detection
 \item Matched filtering
@@ -15,22 +15,35 @@ Sensing \\
 \end{itemize}
 Compare the \ac{ROC} for different detection principle 
 
-\section{Energy detection}
-\subsection{Noise Uncertainty}
-\subsection{Determining threshold} 
-\subsubsection{\ac{CFAR}}
+\subsection{Energy detection}
+\subsubsection{Determining threshold} 
+\subsubsection{Path loss}
+\subsubsection{Fading}
+Rayleigh fading \\
+Nakagammi-$m$ fading
 
-\subsection{Mixture Models}
-Combating noise uncertainty, where the parameters of the density representing the two Hypothesis are estimated to jointly characterize the \ac{ROC} and determine threshold. 
+\section{Single \ac{CR}}
+Briefly CFAR vs CDR
+Why determining CD is a problem?
+\begin{itemize}
+\item Knowledge of the channel 
+\item Difficult to tract the distribution of the detection probability analytically 
+\end{itemize}
+\subsection{Imperfect channel estimation}
+\subsection{Noise uncertainty}
+\subsection{Mixture models}
+Combating noise uncertainty, where the parameters of the density representing the two Hypothesis are estimated jointly to characterize the \ac{ROC} and determine threshold. 
 
 \section{Cognitive sensing}
-\subsection{Markov Model}
-\subsection{Estimation of modal parameter}
+\subsection{Markov model}
+\subsection{Estimation of modal parameters}
 \ac{MLE}
-\subsection{Complete data set}
-\subsection{Incomplete data set}
+\subsubsection{Complete data set}
+\subsubsection{Incomplete data set}
 \ac{EM}\cite{Kaushik_WCNC} 
+
 \section{Cognitive relay networks}
+\subsection{System model}
 Exclusion zone
 %This chapter gives an overview of the platforms and their components that are used in this work. The chapter starts with a general overview of SDR platforms and presents the different used platforms in detail. Furthermore, the integration in the development flow is shown, which was introduced in section \ref{sec:mbd}.
 %
