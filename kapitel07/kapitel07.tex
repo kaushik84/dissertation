@@ -1,0 +1,31 @@
+\chapter{Conclusions}
+
+\section{Contributions}
+%Chapter \ref{chap:wav} presented different possibilities of waveform development with all their assets and drawbacks for waveform portability. A design flow based on the Model Driven Architecture was proposed as the best choice for portable waveform development in combination with generated codes for various processing elements like DSPs, GPPs and FPGAs. Due to the fact that code generation is an important part of this concept, the overhead of generated code was measured in the sense of processing time and number of used logic elements. Especially for processing components that are used often like digital filters, there is no large overhead in the generated code. It could be seen that hand-written code is often much slower than the generated code. Even in  relation to highly optimized vendor specific libraries or components, there is no tremendous loss in performance of generated codes.  
+
+%Two platforms used for waveform development were introduced in chapter \ref{chap:plat}: the USRP and the SFF SDR. The possibilities and limitations of both platforms regarding the speed of interfaces, the clock frequencies as well as the processing capabilities are shown. Furthermore, the integration of the design flow based on the MDA is presented for both platforms.
+
+
+%A proof of concept is given in chapter \ref{chapter:wf} to demonstrate that the proposed design flow works. A TETRA waveform was realized and ported from the USRP to the SFF SDR. Results of the porting process are given as well as processing times for the generated code in comparison to an optimized code. 
+
+%Chapter \ref{chap:further} describes the challenges and results for the port of further waveforms, which were also ported from USRP to SFF. Since a detailed description would go beyond the scope of this work, only an overview of the results is given.
+
+%but for this work here only an overview of the results is given
+
+
+
+\section{Outlook}
+%One of the major questions in the Model Driven Architecture with code generation is: ``Can we generate the waveform for our platform without hand written modifications?''. The results from this work show that this depends on the waveform and on the platform. The FRS waveform can easily be ported without modifications from one of the presented platforms to another. Unfortunately, this is not possible for more complex waveforms like the \ac{PSM} for TETRA on the SFF SDR. Parts of this waveform had to be rewritten in C to fulfill the memory constraints of the processor.
+
+%The code generation for DSPs faces two problems: the low cache size and the fixed point architecture. Nevertheless, code generation and platform independent models in floating point arithmetic are the right direction in waveform development. This can also be confirmed with the current developments on the DSP market. TI releases a new DSP with an arithmetic to use fixed and floating point algorithms \cite{ti_fix_float}. The internal memory of this new branch is with approximately \SI{8}{MB} in the same range as GPPs running on a desktop. With these changes in DSP architecture, code generation for DSPs will result in lower processing times. The code size and memory usage will not decrease but due to the rising cache size, the processor is able to handle this.
+
+%One trend that can be seen in the development of new processors (DSPs as well as GPPs) are multiple cores. Regarding portability of waveforms it has to be verified that the same code can be executed on single-core  and multi-core processors. It furthermore must be checked that the code on multi-core processors runs faster with the number of cores. This can be achieved by the integration of OpenMP. OpenMP is an API that supports multi-platform shared-memory parallel programming in C/C++ on all architectures. The advantage is that the directives are ignored from single-core systems. Therefore, source codes can be generated that can be applied in multi-core systems but also be compatible for single-core processors.
+
+%The role for FPGAs will be the interface between the data converters and the processors. Therefore, sample rate conversion, pulse shaping, matched filtering and time synchronization will be the major tasks. Even if FPGAs are the faster processing units for digital signal processing, the configuration of the data is too complex and needs too much development time. One example for this is the OFDM transmitter that was evaluated in this work. The FPGA is able to handle the IFFT very efficiently, but the inclusion of the guard interval with cyclic prefix can only be accomplished with multiple FIFO buffers. This diminishes the advantage of the efficient IFFT processing. This is also valid for the Viterbi algorithm, which is the most time consuming process in each evaluated waveform. The shift of the Viterbi algorithm back to the FPGA would bring a tremendous speedup for the system. However, it would overload the bus between the processing elements. Solutions for this problem are already presented by the industry. The high performance DSP chips from TI for baseband processing provide hardware accelerators for time consuming functions like the Viterbi algorithm \cite{ti_vit} or a rake receiver.
+
+
+
+
+
+
+

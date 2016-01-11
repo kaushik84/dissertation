@@ -1,31 +1,258 @@
-\chapter{Conclusions}
+\chapter{Field Analysis}
+\label{chap:Field}
+Implementation using software defined radio.
+\section{Interweave system}
 
-\section{Contributions}
-%Chapter \ref{chap:wav} presented different possibilities of waveform development with all their assets and drawbacks for waveform portability. A design flow based on the Model Driven Architecture was proposed as the best choice for portable waveform development in combination with generated codes for various processing elements like DSPs, GPPs and FPGAs. Due to the fact that code generation is an important part of this concept, the overhead of generated code was measured in the sense of processing time and number of used logic elements. Especially for processing components that are used often like digital filters, there is no large overhead in the generated code. It could be seen that hand-written code is often much slower than the generated code. Even in  relation to highly optimized vendor specific libraries or components, there is no tremendous loss in performance of generated codes.  
+\subsection{System model}
 
-%Two platforms used for waveform development were introduced in chapter \ref{chap:plat}: the USRP and the SFF SDR. The possibilities and limitations of both platforms regarding the speed of interfaces, the clock frequencies as well as the processing capabilities are shown. Furthermore, the integration of the design flow based on the MDA is presented for both platforms.
+\subsection{Measurement setup}
+\begin{figure}[!t]
+        \centering
+        \includegraphics[trim=0.0cm 0.0cm 5.28cm 0.0cm,clip=true,width=\columnwidth]{../kapitel05/figures/Interweave_GUI.png}
+        \caption{Utilization probability for ranking the GSM subchannels.}
+        \label{fig:uti}
+\end{figure}
+Hardware demonstration \cite{Kaushik_ISWCS} of \ac{CR} that
+\begin{itemize}
+\item detects spectrum holes or temporal opportunities in \ac{PU} system 
+\item illustrates cognitive sensing ,i.e, it estimates the spectral occupancy for the multi-band \ac{PU} system
+\end{itemize}
+
+\subsection{Analysis}
+
+\section{Underlay system}
+
+\subsection{System model}
+CR models the channel coefficients $h_\text{p}$, $h_\text{s}$, using Rayleigh or Nakagami-$m$ distribution for the indoor-indoor and indoor-outdoor links. In literature, Rayleigh distribution is mostly preferred due to its analytical tractability. In contrast to that, Nakagami-$m$ accounts for the severity in fading through $m$ parameter, thus, it is more applicable in indoor scenarios. For a fixed transmit power at CR, the received signal to noise power $\gamma$\footnote{Consider a transmission from a certain CR, then $\gamma$ is equivalent to signal to noise ratio (SNR) at ID and interference to noise ratio at PR. Therefore, the term SNR is not used to avoid confusion thereof. Moreover, the interference from unintended primary transmitters and other CRs at PR or ID is treated as white noise.} at PR or ID, corresponding to Rayleigh case, follows exponential distribution \cite{simon2005}
+\begin{equation}
+\label{eq:expo}
+F_{\gamma}(\gamma) = 1 - e^{- \frac{\gamma}{\bar{\gamma}} }
+\end{equation}
+and for Nakagami-$m$, it follows Gamma distribution \cite{simon2005}
+\begin{equation}
+\label{eq:gamma}
+F_{\gamma}(\gamma) = 1 - \frac{ \Gamma{ \left( m, m \frac{\gamma}{\bar{\gamma}} \right) }}{\Gamma(m)},
+\end{equation}
+where $\bar{\gamma} = \mathbb{E}[\gamma]$ and $m$ denotes the shape parameter. $\Gamma(\cdot)$ and $\Gamma(\cdot,\cdot)$ are the complete and incomplete Gamma functions. 
 
 
-%A proof of concept is given in chapter \ref{chapter:wf} to demonstrate that the proposed design flow works. A TETRA waveform was realized and ported from the USRP to the SFF SDR. Results of the porting process are given as well as processing times for the generated code in comparison to an optimized code. 
+\begin{figure}[!t]
+        \centering
+        \includegraphics[width = \columnwidth]{../kapitel05/figures/wo_channels_CR_Scenario_farbig_general}
+        \caption{A scenario demonstrating the interaction between the PU and the CR. The CR senses PUs channels in the outdoor to provide a dynamic access to the devices operating indoor.}
+        \label{fig:scenario}
+\end{figure}
 
-%Chapter \ref{chap:further} describes the challenges and results for the port of further waveforms, which were also ported from USRP to SFF. Since a detailed description would go beyond the scope of this work, only an overview of the results is given.
-
-%but for this work here only an overview of the results is given
-
-
-
-\section{Outlook}
-%One of the major questions in the Model Driven Architecture with code generation is: ``Can we generate the waveform for our platform without hand written modifications?''. The results from this work show that this depends on the waveform and on the platform. The FRS waveform can easily be ported without modifications from one of the presented platforms to another. Unfortunately, this is not possible for more complex waveforms like the \ac{PSM} for TETRA on the SFF SDR. Parts of this waveform had to be rewritten in C to fulfill the memory constraints of the processor.
-
-%The code generation for DSPs faces two problems: the low cache size and the fixed point architecture. Nevertheless, code generation and platform independent models in floating point arithmetic are the right direction in waveform development. This can also be confirmed with the current developments on the DSP market. TI releases a new DSP with an arithmetic to use fixed and floating point algorithms \cite{ti_fix_float}. The internal memory of this new branch is with approximately \SI{8}{MB} in the same range as GPPs running on a desktop. With these changes in DSP architecture, code generation for DSPs will result in lower processing times. The code size and memory usage will not decrease but due to the rising cache size, the processor is able to handle this.
-
-%One trend that can be seen in the development of new processors (DSPs as well as GPPs) are multiple cores. Regarding portability of waveforms it has to be verified that the same code can be executed on single-core  and multi-core processors. It furthermore must be checked that the code on multi-core processors runs faster with the number of cores. This can be achieved by the integration of OpenMP. OpenMP is an API that supports multi-platform shared-memory parallel programming in C/C++ on all architectures. The advantage is that the directives are ignored from single-core systems. Therefore, source codes can be generated that can be applied in multi-core systems but also be compatible for single-core processors.
-
-%The role for FPGAs will be the interface between the data converters and the processors. Therefore, sample rate conversion, pulse shaping, matched filtering and time synchronization will be the major tasks. Even if FPGAs are the faster processing units for digital signal processing, the configuration of the data is too complex and needs too much development time. One example for this is the OFDM transmitter that was evaluated in this work. The FPGA is able to handle the IFFT very efficiently, but the inclusion of the guard interval with cyclic prefix can only be accomplished with multiple FIFO buffers. This diminishes the advantage of the efficient IFFT processing. This is also valid for the Viterbi algorithm, which is the most time consuming process in each evaluated waveform. The shift of the Viterbi algorithm back to the FPGA would bring a tremendous speedup for the system. However, it would overload the bus between the processing elements. Solutions for this problem are already presented by the industry. The high performance DSP chips from TI for baseband processing provide hardware accelerators for time consuming functions like the Viterbi algorithm \cite{ti_vit} or a rake receiver.
+\begin{figure}[!t]
+        \centering
+        \includegraphics[width = 0.8\columnwidth]{../kapitel05/figures/setup}
+        \caption{Hardware setup.}
+        \label{fig:hw_setup}
+\end{figure}
 
 
+\ac{CR} operating as underlay system \cite{Kaushik_CROWNCOM}
+\begin{itemize}
+\item deploys propagation models to capture movements of \ac{PR} and \ac{ID}
+\item implements sharing constraints to access the \ac{PU} channel 
+\end{itemize}
+
+\subsection{Measurement setup}
+\begin{figure}[!t]
+        \centering
+        \includegraphics[width = \columnwidth]{../kapitel05/figures/floor_B}
+        \caption{The deployment scenario for the CR including ID and PR at different spatial positions. The circle around the PR and ID positions represents $\mathbb{R}$, which illustrates their small movements.}
+        \label{fig:deploymentScenario}
+\end{figure}
+
+\begin{figure}[!t]
+        \centering
+        \includegraphics[width = 0.8\columnwidth]{../kapitel05/figures/setup}
+        \caption{Hardware setup.}
+        \label{fig:hw_setup}
+\end{figure}
+
+\subsection{Analysis}
+
+\subsubsection{\ac{IC} at PR}
+
+\begin{table}
+\renewcommand{\arraystretch}{1.3}
+\caption{Parameters and MSE of the $F_{I}$ modeled using Rayleigh and Nakagami-$m$ distribution for different PR positions}
+\label{tb:MSE_II}
+\centering
+\begin{tabular}{c||c|c}
+\hline
+\bfseries Outdoor & \bfseries Rayleigh (\ref{eq:expo}) & \bfseries Nakagami-$m$ (\ref{eq:gamma}) \\
+\bfseries Position & [MSE, $\widehat{\bar{\gamma}}]$ & [MSE, $(\widehat{m}, \widehat{\bar{\gamma}}$)] \\
+\hline\hline
+PR1 & $[3.84 \cdot 10^{-4}, 2.66 \cdot 10^{2} ]$  & $[1.74 \cdot 10^{-4} , (1.13, 2.66 \cdot 10^{2})] $ \\ \hline
+PR2 & $[2.75 \cdot 10^{-4}, 4.89 \cdot 10^{2}]$  & $[2.40 \cdot 10^{-4} , (0.98, 4.89 \cdot 10^{2})] $ \\ \hline
+PR3 & $[2.75 \cdot 10^{-4}, 57.34]$  & $[2.31 \cdot 10^{-4} , (1.11, 57.34)] $ \\ \hline
+PR4 & $[9.36 \cdot 10^{-4}, 94.20]$  & $[2.18 \cdot 10^{-4} , (1.25, 94.20)] $ \\ \hline
+\end{tabular}
+\end{table}
+
+
+\subsubsection{\ac{CC} at ID}
+
+\begin{figure}%
+\centering
+\begin{tikzpicture}[scale = 1.2]
+\node[anchor=south west,inner sep=0] (image) at (0,0)
+{\includegraphics[trim=1.5cm 0.4cm 1.45cm 1.2cm,clip=true,width=\columnwidth]{../kapitel05/figures/Interference_CDF_ana_vs_sim_indoor_outdoor}};
+\begin{scope}[x={(image.south east)},y={(image.north west)}]
+\draw  (0.832,0.99) node[above=-0.1pt, font=\small] {$I_{\text{th}}$};
+%\draw  (.97,0.898) node[right=-2.2pt, font=\small] {$\epsilon_{\text{I,out}}$};
+\draw[black,thick,<->] (0.97,0.898) --  node[right=-2.2pt, font=\small] {$\epsilon_{\text{I,out}}$} (0.97,0.985);
+\draw [thick] (0.831,0.985) -- (0.831,0.096);
+\draw [thick] (0.08,0.898) -- (0.956,0.898);
+
+%Select channels for based on Interference Constraint   
+\draw (0.675,0.85) ellipse(24pt and 5pt)  node[left=28pt, font=\small] {IC};
+%\draw[help lines,xstep=.1,ystep=.1] (0,0) grid (1,1);
+%\foreach \x in {0,1,...,9} { \node [anchor=north] at (\x/10,0) {0.\x}; }
+%\foreach \y in {0,1,...,9} { \node [anchor=east] at (0,\y/10) {0.\y}; }
+\end{scope}
+\end{tikzpicture}
+\caption{Interference distribution function at different PR positions.}
+\label{subfig:indoor-outdoor}
+\end{figure}
+
+\begin{figure}
+\centering
+\begin{tikzpicture}[scale = 1.2]
+\node[anchor=south west,inner sep=0] (image) at (0,0)
+{\includegraphics[trim=1.5cm 0.4cm 1.45cm 1.2cm,clip=true,width=\columnwidth]{../kapitel05/figures/Capacity_CDF_ana_vs_sim_indoor_indoor}};
+\begin{scope}[x={(image.south east)},y={(image.north west)}]
+\draw  (0.255,0.99) node[above=-0.1pt, font=\small] {$C_{\text{th}}$};
+%\draw  (.97,0.178) node[right=-2.2pt, font=\small] {$\epsilon_{\text{C,out}}$};
+\draw[black,thick,<->] (0.97,0.095) --  node[right=-2.2pt, font=\small] {$\epsilon_{\text{C,out}}$} (0.97,0.186);
+\draw [thick] (0.255,0.985) -- (0.255,0.096);
+\draw [thick] (0.08,0.186) -- (0.956,0.186);
+%Select channels for based on Capacity Constraint       
+\draw (0.48,0.58) ellipse (38pt and 5pt)  node[right=48 pt, font=\small] {CC};
+%\draw[help lines,xstep=.1,ystep=.1] (0,0) grid (1,1);
+%\foreach \x in {0,1,...,9} { \node [anchor=north] at (\x/10,0) {0.\x}; }
+%\foreach \y in {0,1,...,9} { \node [anchor=east] at (0,\y/10) {0.\y}; }
+\end{scope}
+\end{tikzpicture}
+\label{subfig:indoor-indoor}
+\end{figure}
+
+\begin{table}
+\renewcommand{\arraystretch}{1.3}
+\caption{Parameters and MSE of the $F_{C}$ modeled using Rayleigh and Nakagami-$m$ distribution for different ID positions}
+\label{tb:MSE_IO}
+\centering
+\begin{tabular}{c||c|c}
+\hline
+\bfseries Indoor & \bfseries Rayleigh (\ref{eq:expo}) & \bfseries Nakagami-$m$ (\ref{eq:gamma}) \\
+\bfseries Position & [MSE, $\widehat{\bar{\gamma}}]$ & [MSE, $(\widehat{m}, \widehat{\bar{\gamma}}$)] \\
+\hline\hline
+ID1 & $[1.11 \cdot 10^{-3}, 9.52 \cdot 10^{2}]$  & $[1.74 \cdot 10^{-4} , (1.23, 9.52 \cdot 10^{2})] $ \\ \hline
+ID2 & $[1.60 \cdot 10^{-3}, 3.65 \cdot 10^{4}]$  & $[3.39 \cdot 10^{-4} , (1.28, 3.65 \cdot 10^{4})] $ \\ \hline
+ID3 & $[5.79 \cdot 10^{-4}, 1.79 \cdot 10^{2}]$  & $[1.35 \cdot 10^{-4} , (1.17, 1.79 \cdot 10^{2})] $ \\ \hline
+ID4 & $[9.35 \cdot 10^{-4}, 4.13 \cdot 10^{2}]$  & $[3.05 \cdot 10^{-4} , (1.16, 4.13 \cdot 10^{2})] $ \\ \hline
+ID5 & $[7.54 \cdot 10^{-4}, 6.99 \cdot 10^{4}]$  & $[2.96 \cdot 10^{-4} , (1.23, 6.99 \cdot 10^{4})] $ \\ \hline
+\end{tabular}
+\end{table}
+
+
+\begin{table}[!h]
+\renewcommand{\arraystretch}{1.3}
+\caption{Cognitive relay implementing AND rule for different PR and ID positions}
+\label{tb:BDecisions}
+\centering
+\begin{tabular}{c||c|c|c|c}
+\hline
+\bfseries & PR1 & PR2 & PR3 & PR4 \\
+\hline\hline
+ID1 & 1 $\cdot$ 0 = 0 & 0 $\cdot$ 0 = 0 & 1 $\cdot$ 0 = 0 & 1 $\cdot$ 0 = 0 \\ \hline
+ID2 & 1 $\cdot$ 1 = 1 & 0 $\cdot$ 1 = 0 & 1 $\cdot$ 1 = 1 & 1 $\cdot$ 1 = 1 \\ \hline
+ID3 & 1 $\cdot$ 1 = 1 & 0 $\cdot$ 1 = 0 & 1 $\cdot$ 1 = 1 & 1 $\cdot$ 1 = 1 \\ \hline
+ID4 & 1 $\cdot$ 0 = 0 & 0 $\cdot$ 0 = 0 & 1 $\cdot$ 0 = 0 & 1 $\cdot$ 0 = 0 \\ \hline
+ID5 & 1 $\cdot$ 1 = 1 & 0 $\cdot$ 1 = 0 & 1 $\cdot$ 1 = 1 & 1 $\cdot$ 1 = 1 \\ \hline
+\end{tabular}
+\end{table}
 
 
 
 
-
+%\index{Family Radio Service}
+%\subsection{Overview of the standard}
+%\ac{FRS} is a communication system that is used for speech transmission within a range of less than one mile. Therefore, the transmitters have a maximum output power of \SI{500}{mW}. The signal is modulated with an \ac{FM}\index{Frequency modulation} scheme, where the envelope of the complex baseband signal $s_\text{tx}(t)$ can be described as follows:
+%\begin{equation}
+%s_\text{tx}(t) = \exp \left(j 2 \pi  f_\Delta \int_0^t v(t') dt' \right),
+%\label{eq:fm}
+%\end{equation} 
+%
+%where $v(t)$ is the audio signal that should be transmitted and $f_\Delta$ describes the frequency deviation. FRS is a narrowband FM system and is intended for channels with \SI{12.5}{kHz} bandwidth. Therefore, $f_\Delta$ is set to \SI{2.5}{kHz} while the maximum frequency of the audio signal $v(t)$ should not exceed \SI{3.5}{kHz}. The \ac{FCC} specified 14 channels between \SI{462.5625}{MHz} and 	\SI{467.7125}{MHz}. This means that the carrier frequency is in the same range as the TETRA waveform and can be achieved with the same RF front ends.
+%
+%\subsection{Digital signal approximation for the portability}
+%In a digital representation, the integral in equation (\ref{eq:fm}) can be replaced by a sum of the values coming from the sound card. These values are scaled with the frequency deviation factor and synthesize the angle for the complex base band signal. The receiver works vice versa. The angle of the incoming in-phase and quadrature component is determined and scaled. The audio signal can be retrieved by subtraction of the previous angle from the current angle. 
+%
+%
+%\subsection{Results}
+%Due to the narrow bandwidth of \SI{12.5}{kHz}, a high resampling has to be applied. However, the signal has just to be resampled to a data rate that the sound card supports. In case of the USRP this is \SI{32}{kHz}. Together with the ADC rate of \SI{64}{MHz}, this leads to a decimation rate of 2000 in the FPGA. The audio system on the SFF can be coupled to the FPGA data rate. Therefore, the same rates as for the TETRA waveform was applied leading to a reuse of the decimation, interpolation and downconversion.
+%
+%Since the transmitter comprises only an integration and the receiver consists only of a differentiator beside the resampling filters, the whole \ac{PIM} can be shifted to the GPP, DSP or even FPGA without any modifications. This shows that if the processing power of the underlying platform is amply dimensioned for the complexity and bandwidth of the waveform, the concerned waveform here can be ported without any knowledge of the underlying hardware.
+%
+%
+%\section{Wireless LAN in the version IEEE 802.11g}
+%\index{WLAN}
+%\index{IEEE 802.11g}
+%
+%\subsection{Overview of the standard}
+%Since 1980, the \ac{IEEE} releases specifications about Local Area Networks (LANs) in its project 802. In 1997, the first specification of a \ac{WLAN} was published within the working group eleven. This was the beginning of the standard IEEE 802.11, which specifies \ac{MAC} and \ac{PHY} for local radio networks. In the original version, data rates up to \SI{2}{Mbit/s} were reached with spread spectrum techniques in the \SI{2.4}{GHz} \ac{ISM}\index{ISM radio band} radio band. Just about two years later, in 1999, the standard was extended with two annexes. IEEE 802.11a specified an \ac{OFDM} transmission in the \SI{5}{GHz} \ac{ISM} band with data rates up to \SI{54}{Mbit/s} and 802.11b extended the transmission on \SI{2.4}{GHz} to data rates up to \SI{11}{Mbit/s}. The most common extension till the present day is annex g, which was released in 2003 and specified the \ac{OFDM}\index{OFDM} transmission with up to \SI{54}{Mbit/s} in the \SI{2.4}{GHz} range \cite{IEEE802.11}. This is a frequency range that is supported by the Flex2400 daughter board for the USRP and the WiMAX module RF front end for the SFF as described in sections \ref{sec:USRP} and \ref{sec:SFF}.
+%
+%\subsection{Challenges for the portability of the waveform}
+%The major challenge in implementing and porting the 802.11g waveform is its large bandwidth. The symbol duration of one OFDM symbol is specified to \SI{3.2}{\micro s}. This results in a bandwidth of \SI{20}{MHz} with 64 subcarriers. Even if the data converters on both platforms can support this bandwidth, the buses between DSP/GPP and FPGA are not fast enough. By assuming 16 bit in-phase and quadrature components, data rates of \SI{640}{Mbit/s} must be achieved, while the maximum data rate between GPP and FPGA on the USRP is \SI{228}{Mbit/s} and the maximum data rate on the SFF SDR DP is \SI{52}{Mbit/s}. This means that the complete waveform should be implemented on the FPGA. However, both platforms provide not enough logic to achieve this. Due to the fact that no real time implementation is possible with the given platforms, the maximum achievable bandwidths should be evaluated. Therefore, a \ac{PIM} was realized with the channel from section \ref{sec:PIM_TETRA}. To achieve a synchronization in time and frequency, an algorithm from Schmidl and Cox\index{Schmidl and Cox synchronization} \cite{schmidl_cox} was realized that uses training sequences in the beginning of each transmission to find the exact position of an OFDM symbol in the data stream coming from the \acp{ADC}. 
+%
+%\begin{figure}[htb]
+%	\centering
+%		\includegraphics[height=0.9\textheight]{../kapitel05/figures/OFDM_b.pdf}
+%	\caption{Separation of the waveform for the processing elements on USRP and SFF SDR}
+%	\label{fig:OFDM_b}
+%\end{figure}
+%
+%\subsection{Results}
+%To fulfill the real time constraints for 802.11g, the time for one OFDM symbol with the guard interval must not exceed \SI{4}{\micro s}. Measurements on the Intel P8400 showed that the processing time for the transmitter is approximately \SI{2.78}{\micro s}. Without the limitation due to the bus between GPP and FPGA, it is possible to implement the transmit side in software and support the real time constraints of a \SI{20}{MHz} bandwidth. However, due to the fact that the maximum data rate of the bus is at \SI{228}{Mbit/s}, only a bandwidth of \SI{6.4}{MHz} can be achieved. The spectrum of the transmitted signal was recorded with a Rohde \& Schwarz FSQ8 signal analyzer and is shown in figure \ref{fig:spec_ofdm_data}. To detect the 802.11g frame, a training sequence was transmitted where its spectrum is shown in figure \ref{fig:spec_ofdm_sts}. The representation of the spectrum shows the power in a logarithmic scale.
+%
+%The processing time for the receiver is \SI{58.9}{\micro s}. Therefore, with the used processor, a whole system comprising of transmitter and receiver with a USRP can only be realized with a complex bandwidth of up to \SI{1.3}{MHz}. This is due to the timing and error synchronization as well as the Viterbi decoding. These two processing blocks consume \SI{75}{\%} of the processing time for one OFDM symbol.
+%
+%When porting the code for the transmitter from the USRP to the SFF SDR a processing time of \SI{600}{\micro s} was measured for one OFDM symbol. As already mentioned in section \ref{sec:bench_dsp}, this is due to the floating point implementation. The data section of the code becomes too large for the internal memory and has to use the slow external SDRAM. The usage of external memory can be circumvented with a fixed point design and the use of optimized libraries as presented in section \ref{sec:overhead}. With these changes the processing time for an OFDM symbol decreases to \SI{18.9}{\micro s}.
+%
+%The transformation of the \ac{PIM} for the receiver yields similar results. The measurements of the floating point code lead to a processing time of \SI{222}{ms}. Even with a fixed point implementation of the model, the memory size exceeds the internal cache. Therefore, the timing and frequency synchronization must be shifted to the FPGA. The sample based processing on this reconfigurable logic requires a completely new modeling of the synchronization algorithm. Especially the peak detection of the correlation must be redesigned. Nevertheless, the processing time for one OFDM symbol in the receiver could be decreased to \SI{12.4}{ms}. This time could be further reduced with an optimized version of the Viterbi algorithm. Similar to the results on the USRP, this is the processing block that consumes most of the time.
+%
+%The realization of the \acp{PSM} for the USRP and the SFF SDR are shown in figure \ref{fig:OFDM_b}. The porting process for this waveform is described in more details in \cite{nagel_frequenz} and \cite{pwd}.
+%
+%
+%
+%%\begin{figure}
+%%\centering
+%%\subfigure[Power spectrum of the waveform data\label{fig:spec_ofdm_data}]{\includegraphics[width=0.8\textwidth]{../kapitel05/figures/Freq_FSQ8_Data.pdf}}
+%%\hfill
+%%\subfigure[Power spectrum of the training sequence\label{fig:spec_ofdm_sts}]{\includegraphics[width=0.8\textwidth]{../kapitel05/figures/Freq_FSQ8_STS.pdf}}
+%%\caption{Measured power spectrum in dBm of the OFDM waveform}
+%%\end{figure}
+%
+%%\section{Universal Mobile Telecommunication System}
+%%
+%%\subsection{Overview}
+%%UMTS
+%%CDMA
+%%DSSS
+%%channel versus OVSF
+%%cells versus gold codes
+%%two channels for synchronization: PSC and SSC
+%%
+%%\subsection{Challenges}
+%%timing synchronization and resampling through polyphase filters
+%%slot synchronization  over correlation with the PSC
+%%frame synchronization over ssc
+%%
+%%\subsection{Results}
+%%1.1 s
+%%no sff implementation
+%%similar results as for ofdm
