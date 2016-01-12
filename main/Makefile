@@ -1,4 +1,4 @@
-all: dissertation.tex bibliography.bib
+all: dissertation.tex ../literatur/bibliography.bib
 	latex dissertation.tex
 	bibtex dissertation
 	latex dissertation.tex
@@ -12,5 +12,5 @@ pdf: dissertation.tex bibliography.bib
 	pdflatex dissertation.tex
 
 clean:
-	rm *.log *.aux *.bbl *.blg *.pdf *.ps *.dvi *.out *.tcp *.idx *.toc *.tps
+	rm *.log *.aux *.bbl *.blg dissertation.pdf *.ps *.dvi *.out *.tcp *.idx *.toc *.tps
 

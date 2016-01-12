@@ -32,7 +32,7 @@ numbers=noenddot
 \usepackage{microtype} % stretches some words to get rid of some over/underfull boxes
 
 %\usepackage[pdftex, final]{graphicx} % figures for pdfLaTeX
-\usepackage{subfigure}
+%\usepackage{subfigure}
 
 \usepackage{amsmath} % amsmath
 \usepackage{amssymb} % amsmath symbols
@@ -52,7 +52,7 @@ numbers=noenddot
 \usepackage{acronym}
 \usepackage{makeidx}
 \usepackage{lscape} % for figures in landscape --> chapter 3 --> USRP signal flow
-\usepackage{sistyle}
+%\usepackage{sistyle}
 \usepackage{textcomp}
 \usepackage[final=true,bookmarks=true]{hyperref} % hyperrefs in pdf
 \usepackage{url}
@@ -66,8 +66,24 @@ numbers=noenddot
   pdfproducer={LaTeX und Co.},
   pdfkeywords={Cognitive Radio, Performance Analysis, Imperfect Channel Knowledge}
  }
+\usepackage{import}	% To provide relative paths
+\usepackage[caption=false,font=footnotesize]{subfig} %% Plotting Subfigures
+\usepackage{color,psfrag}  % Because most of matlab figures are generated with laprint that generates a .tex(with psfrag commands) and .eps
+
+
+\usepackage{tikz}   % Drawing tool that overlaps on the plotted figures
+\usepackage{siunitx} %SI notations looks nice
+\usepackage{cite} % Combining multiple citations
+\usepackage[retainorgcmds]{IEEEtrantools}
+
+\hyphenation{centra-lity}
+
 
 \makeindex
+
+
+%\graphicspath{{./../kapitel05/}}
+\input{../stuff/macro.tex}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% DOCUMENT
@@ -133,11 +149,10 @@ numbers=noenddot
 %\input{../sonstiges/vorwort}
 %\cleardoublepage
 
-\input{../sonstiges/titel}
+\input{../stuff/titel}
 \cleardoublepage
 
 %\input{../sonstiges/zusammenfassung}
-
 
 
 
@@ -150,16 +165,16 @@ numbers=noenddot
 %% Chapters %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \mainmatter
 
-\input{../kapitel01/kapitel01}
-\input{../kapitel02/kapitel02} 
-\input{../kapitel03/kapitel03}
-\input{../kapitel04/kapitel04}
-\input{../kapitel05/kapitel05}
+\import{../kapitel01/}{kapitel01}
+\import{../kapitel02/}{kapitel02} 
+\import{../kapitel03/}{kapitel03}
+\import{../kapitel04/}{kapitel04}
+\import{../kapitel05/}{kapitel05}
 %\input{../kapitel06/kapitel06}
 \input{../kapitel07/kapitel07}
-\begin{appendix}
+%\begin{appendix}
 %\input{../anhang/appendix.tex}
-\end{appendix}
+%\end{appendix}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -176,12 +191,12 @@ numbers=noenddot
 \bibliographystyle{../IEEEbib}
 \bibliography{../literatur/bibliography}
 
-\input{../anhang/students.tex}
+%\input{../anhang/students.tex}
 
 \printindex % index
 
 %\input{../anhang/sponsorship.tex}
-\input{../anhang/lebenslauf.tex}
+%\input{../anhang/lebenslauf.tex}
 
 
 
