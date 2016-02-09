@@ -59,7 +59,7 @@ numbers=noenddot
 \usepackage{scrhack} %removes warning by redefinition of macros float@addtolist etc
 \usepackage{todonotes}
 \hypersetup{ % properties of pdf
-  pdftitle={Cognitive Relay},
+  pdftitle={Performance Analysis of Cognitive Radio Systems with Imperfect Channel Knowledge},
   pdfauthor={M.Sc. Ankit Kaushik},
   pdfsubject={Dissertation},
   pdfcreator={LaTeX},
@@ -154,8 +154,8 @@ numbers=noenddot
 
 %\input{../sonstiges/zusammenfassung}
 
-
-
+%% Used to highlight text in the manuscript, will be used as dummy here
+\newcommand{\tc}[1]{#1}
 
 
 %% Inhaltsverzeichnis %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -168,8 +168,8 @@ numbers=noenddot
 \import{../kapitel01/}{kapitel01}
 \import{../kapitel02/}{kapitel02} 
 \import{../kapitel03/}{kapitel03}
-\import{../kapitel04/}{kapitel04}
-\import{../kapitel05/}{kapitel05}
+%\import{../kapitel04/}{kapitel04}
+%\import{../kapitel05/}{kapitel05}
 %\input{../kapitel06/kapitel06}
 \input{../kapitel07/kapitel07}
 %\begin{appendix}
@@ -197,6 +197,9 @@ numbers=noenddot
 
 %\input{../anhang/sponsorship.tex}
 %\input{../anhang/lebenslauf.tex}
+
+% Used to break the theorems, proof between the columns
+%\allowdisplaybreaks
 
 
 

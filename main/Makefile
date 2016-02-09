@@ -1,5 +1,12 @@
 all: dissertation.tex ../literatur/bibliography.bib
 	latex dissertation.tex
+	dvips dissertation.dvi -o dissertation.ps
+	ps2pdf dissertation.ps
+
+
+
+full: dissertation.tex ../literatur/bibliography.bib
+	latex dissertation.tex
 	bibtex dissertation
 	latex dissertation.tex
 	dvips dissertation.dvi -o dissertation.ps
