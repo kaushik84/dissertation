@@ -3,23 +3,29 @@
 \section{Motivation}
 \label{sec:mot}
 
-5G Requirements
+We are currently in the phase of conceptualizing the requirements of the fifth generation (5G) of mobile wireless systems. One of the major goals is to improve the areal capacity ($\SI{}{bits/s/m^2}$) by a factor of 1000 \cite{Andrews14}. \tc{To this end, an extension to the already allocated spectrum is of paramount importance.} 
+Recently, the spectrum beyond \SI{6}{GHz}, which largely entails the millimeter wave is envisaged as a powerful source of spectrum for 5G wireless systems. However, the millimeter wave technology is still in its initial stage and along with complex regulatory requirements in this regime, it has to address several challenges like propagation loss, low efficiency of radio frequency components such as power amplifiers, small size of the antenna and link acquisition \cite{Rapp13}. Therefore, in order to capture a deeper insight of its feasibility in 5G, it is essential to overcome the aforementioned challenges in the near future.
+
+\tc{Besides the spectrum beyond \SI{6}{GHz}, an efficient utilization of the spectrum below \SI{6}{GHz} presents an alternative solution. The use of the spectrum in this regime (below \SI{6}{GHz}) is fragmented and statically allocated, leading to inefficiencies and the shortage in the availability of spectrum for new services.} However, it is possible to overcome this scarcity if we manage to utilize this radio spectrum efficiently. In this perspective, \tc{cognitive radio (CR) is foreseen as one of the potential contenders that addresses the spectrum scarcity problem. Since its origin by Mitola \textit{et al.} in 1999, this notion has evolved at a significant pace, and consequently has acquired certain maturity.} However, from a deployment perspective, this technology is still in its preliminary phase. In this view, it is necessary to make substantial efforts that enable the placement of this concept over a hardware platform.
+
+An access to the licensed spectrum is an outcome to the paradigm employed by the \tc{secondary user (SU)}. Based on the paradigms described in the literature, all CR systems that provide dynamic access to the spectrum mainly fall under three categories, namely, interweave, underlay and overlay systems \cite{Goldsmith09}. In \tc{interweave systems (ISs)}, the SUs render an interference-free access to the licensed spectrum by exploiting spectral holes in different domains such as time, frequency, space and polarization, whereas underlay systems enable an interference-tolerant access under which the SUs are allowed to use the licensed spectrum (e.g. Ultra Wide Band) as long as they respect the interference constraints of the primary receivers (PRs). Besides that, overlay systems consider the participation of higher layers for enabling the spectral coexistence between two or more wireless networks. Due to its ease of deployment, the IS is mostly preferred not only for performing theoretical analysis but also for practical implementation as well. Motivated by these facts, this paper focuses on the performance analysis of the ISs from a deployment perspective. 
 
 
-\subsection{Small cell deployment}
-\begin{itemize}
-\item Capacity improvements -- femto cell base station -- frequency reuse -- interference coordination
-\item Coverage improvements -- relay -- transparent to the network
-\end{itemize}
 
-\subsection{\ac{CSC}}
-CSC is a network element that provides secondary usage of the spectrum to the devices operating indoor.
-\begin{itemize}
-\item Capacity improvements by reusing of the primary user channels
-\item Coverage improvements through indoor deployment
-\end{itemize}
+%\subsection{Small cell deployment}
+%\begin{itemize}
+%\item Capacity improvements -- femto cell base station -- frequency reuse -- interference coordination
+%\item Coverage improvements -- relay -- transparent to the network
+%\end{itemize}
 
-\subsection{Disposition of CSCs in 5G}
+%\subsection{\ac{CSC}}
+%CSC is a network element that provides secondary usage of the spectrum to the devices operating indoor.
+%\begin{itemize}
+%\item Capacity improvements by reusing of the primary user channels
+%\item Coverage improvements through indoor deployment
+%\end{itemize}
+
+%\subsection{Disposition of CSCs in 5G}
 
 %Two fields in electrical engineering formed the evolution of Software Defined Radios: the history of wireless communication principles and the development of digital processing technologies.
 

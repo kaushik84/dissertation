@@ -2,456 +2,1403 @@
 \label{chap:IS}
 \index{Interweave System}
 
-\section{Introduction}
-Sharing principle -- Orthogonal in time domain 
+In order to enable interference-free access to the licensed spectrum, ISs employ spectrum sensing at the ST. Spectrum sensing (or only sensing) is necessary for detecting the presence or the absence of a primary user (PU) signal. In this way, sensing assists the ISs in protecting the PRs against harmful interference. \tc{A sensing mechanism} at the ST can be accomplished by listening to the signal transmitted by the primary transmitter (PT).
+Baseline models investigated in the literature characterize the performance of IS in terms of a sensing-throughput tradeoff, however, this characterization assumes the perfect knowledge of the involved channels at the secondary transmitter, which is unavailable in practice. Motivated by this fact, a novel approach that incorporates channel estimation in the system model is established, and consequently the impact of imperfect channel knowledge on the performance of the IS is investigated. More particularly, the variation induced in the detection probability affects the detector's performance at the secondary transmitter, which may result in severe interference at the primary receivers. In order to control the excessive interference, average and outage constraints on the detection probability are proposed. 
 
-\subsection{Detection/Sensing}
-Primary user detection \\ 
-\begin{itemize}
-\item Energy detection
-\item Matched filtering
-\item Cyclostationary detection
-\item Feature based detection
-\end{itemize}
-Compare the \ac{ROC} for different detection principle 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\section{Introduction}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\subsection{Background}
+%Goldsmith \textit{et .al} \cite{Goldsmith09}
 
-%\subsection{Energy detection}
-%\subsubsection{Determining threshold} 
-%\subsubsection{Path loss}
-%\subsubsection{Fading}
-%Rayleigh fading \\
-%Nakagammi-$m$ fading
+\subsection{Related Work}
 
-%\section{Single \ac{CR}}
-%Briefly CFAR vs CDR
-%Why determining CD is a problem?
+For detecting a PU signal, several techniques such as energy detection, matched filtering, cyclostationary and feature-based detection exist \cite{Sharma15, Axell12}. Because of its versatility towards unknown PU signals and its low computational complexity, energy detection has been extensively investigated in the literature \cite{Urkowitz, Kostylev02, Alouini03, Herath09, Mariani10}. In this technique, the decision is accomplished by comparing the power received at the ST to a decision threshold. In reality, the ST encounters variations in the received power due to the existence of thermal noise at the receiver and fading in the channel. Subsequently, these variations lead to sensing errors described as misdetection and false alarm, %The characterization of sensing errors as detection probability and false alarm probability has been studied in \cite{tan08}. 
+which limit the performance of the IS. In order to determine the performance of a detector, it is essential to obtain the expressions of detection probability and false alarm probability.
+
+In particular, detection probability is critical for ISs because it protects the PR from the interference induced by the ST. As a result, the ISs have to ensure that they operate above a target detection probability \cite{peh07}. Therefore, the characterization of the detection probability becomes absolutely necessary for the performance analysis of the IS. In this context, Urkowitz \cite{Urkowitz} introduced a probabilistic framework for characterizing the sensing errors, however, the characterization accounts only for the noise in the system. To encounter the variation caused by channel fading, a frame structure has been introduced in \cite{Liang08} \tc{assuming that the channel remains} constant over the frame duration, however, upon exceeding the frame duration, the system may observe a different realization of the channel. \tc{Based on this frame structure, the performance of the IS has been investigated in terms of a deterministic channel \cite{Liang08, Sharma14, Pradhan15} and a random channel\footnote{\tc{In the literature, deterministic and random channels are interpreted as path-loss and fading channels, respectively.}} \cite{Kostylev02, Alouini03, Herath09}. Complementing the analysis in \cite{Liang08, Sharma14, Pradhan15}, the involved channels are considered to be deterministic and random.} 
+
+%The long-term characterization is a classical approach that applies a fading model to average out the variation in the received power. Subject to the deployment scenarios\footnote{These scenarios include urban, suburban and rural, or indoor and outdoor from a different perspective.}, different fading models -- Rice, Rayleigh, Nakagami-$m$ and Log-normal can be employed \cite{Simon00}. The analytical expressions for the expected detection probability for these fading models are characterized in \cite{Kostylev02, Alouini03, Herath09}. Considering a CR system, this approach has some major drawbacks. Fading models depict a long-term characterization of the system, however, short-term or bursty interference that may lead to outage is ignored, thereby deteriorating the performance of a primary system. Moreover, fading models are specific to the deployment scenario, hence, knowledge of the fading model is necessary when designing a CR system. Apart from that, every fading model contains certain model parameters. As a result, estimation of these parameters at the ST \cite{Kaushik14}, particularly during the initial phase of the deployment, imposes an additional overhead on the secondary system. In practice, due to mobility, most systems are likely to violate stationarity over a long duration. Thus, it becomes challenging to track these model parameters. As a consequence, these drawbacks restrict the applicability of this approach to practical CR systems. 
+
+%To overcome the aforementioned drawbacks, an alternative approach that considers the short-term characterization has been established \cite{Liang08, Sharma14, Pradhan15} in such a way that the performance can be analyzed for a single frame\footnote{By a single frame, we refer to the statistical realizations of the received power, whereas \cite{Liang08, Sharma14, Pradhan15} consider the temporal realizations of the same across several frames. Considering ergodic behaviour of the noise, the performance characterization under these two scenarios are equivalent.}. In this way, unlike long-term approach, we preclude the variation due to the channel and consider the variation due to noise in the system. Subsequently, this approach does not need to consider the deployment of the fading model and its complexities thereafter. Motivated by these facts, we focus on the short-term approach for performance analysis.  
+
+
+Besides the detection probability, false alarm probability has a large influence on the achievable throughput of the secondary system. %Further, the characterization of the false alarm probability requires the knowledge of the noise power. Subject to a given uncertainty \cite{Tan08}, this knowledge can be acquired through hardware calibration. 
+%\subsection{Problem Formulation}
+Recently, the performance characterization of CR systems in terms of a sensing-throughput tradeoff has received significant attention \cite{Liang08, Juarez11, Sharkasi12, Pradhan15}. According to Liang \textit{et al.} \cite{Liang08}, the ST assures a reliable detection of a PU signal by retaining the detection probability above a desired level with an objective of maximizing the throughput at the secondary receiver (SR). In this way, the sensing-throughput tradeoff depicts a suitable sensing time that achieves a maximum secondary throughput. However, to characterize the detection probability and the secondary throughput, the system requires the knowledge of interacting channels, namely, a \textit{sensing} channel, an \textit{access} channel and an \textit{interference} channel, \tc{refer to} \figurename~\ref{fig:scenario}\footnote{As the interference to the PR is controlled by a regulatory constraint over the detection probability, in this view, the interaction with the PR is excluded in the considered scenario \cite{Liang08}.}. The baseline models investigated in the literature assume the knowledge of these channels to be available at the ST. 
+However, in practice, this knowledge is not available, thus, needs to be estimated by the secondary system. As a result, from a deployment perspective, the existing solutions for the IS are considered inaccurate for the performance analysis. 
+
+
+%\tc{Following the previous discussion, it is apparent that the knowledge of the sensing, interference and access channels is crucial for characterizing the detection probability and the secondary throughput. 
+\tc{In practice, the knowledge about the involved channels can be estimated either (i) directly by using the conventional channel estimation techniques such as training sequence based \cite{Stoica03} and pilot based \cite{Gifford05, Gifford08} channel estimation or (ii) indirectly by estimating the received signal to noise ratio \cite{Chav11, Sharma13}. It is worthy to note that the sensing and interference channels represent the channels between two different (primary and secondary) systems. In this context, it becomes challenging to select the estimation methods in such a way that low complexity and versatility (towards different PU signals) requirements are satisfied. These issues, discussed later in Section \ref{ssec:pa}, render the existing estimation techniques \cite{Stoica03, Gifford05, Gifford08, Chav11, Sharma13} unsuitable for hardware implementations. 
+%Existing works assume it to be known at the ST. In reality, due to  this knowledge is not available at the ST. 
+%The channel, regarded as deterministic and unknown, is expected to remain constant over a frame duration, 
+To this end, a received power based estimation at the ST and at the SR for the sensing and interference channels is employed, respectively.
+Considering the fact that the access channel corresponds to the link between the ST and the SR, conventional channel estimation techniques such as pilot based channel estimation at the SR is employed.}
+
+\tc{  
+Inherent to the estimation process, the variations due the channel estimation translate to variations in the performance parameters, namely detection probability and secondary throughput. In particular, the variations induced in the detection probability may result in harmful interference at the PR, hence, severely degrading the performance of a CR system. In this context, the performance characterization of an IS with imperfect channel knowledge remains an open problem. %As a result, we apply received power estimation that entails the knowledge of the channel for the sensing channel, \tc{refer} \figurename~\ref{fig:scenario}. 
+%Upon sustaining the detection probability at a desired level, the ST aims to optimize its throughput. This phenomenon is characterized as a sensing-throughput tradeoff by Liang \textit{et al.} \cite{Liang08}. At the ST, the sensing-throughput tradeoff renders a suitable sensing time that achieves an optimum throughput for a given received power. Several contributions \cite{Liang08, Juarez11, Sharkasi12, Pradhan15} have considered this tradeoff to characterize the performance of the IS. These contributions investigated in the literature assume the knowledge of the interacting channels at the ST, which include an access channel from the ST and an interference channel from PT to the SR, \tc{refer} \figurename~\ref{fig:scenario}. Hence, are considered idealistic and implausible for deployment. 
+%The knowledge of these channels is not available in reality, thus, needs to be estimated by the SR and made available to the ST through a feedback channel. Moreover, due to the presence of noise in the system, this knowledge is never perfect. 
+%Considering a hardware deployment, it is important to determine the performance of the IS based on channel estimation. %A similar analysis is performed in \cite{Kaushik15}, where the authors employ the received power estimation to control transmit power at the ST deployed as an underlay system. However, in this paper, we intend to capture the effect of estimation on the performance of an IS. %Furthermore, the effect of received power estimation on the performance of the system is an open problem.
+%Moreover, the knowledge of the channels are not directly available. 
+%The knowledge for the channel  For the channel (PT-SR), the channel knowledge is not directly available  
+%In parallel to that, the variations in the further translates to the variation in the secondary system's throughput. Moreover, the estimation of the access and the interference channels imposes an additional variation on the throughput. 
+In this regard, this chapter focuses on the performance characterization of the IS in terms of sensing-throughput tradeoff taking these aforementioned aspects into account.}
+
+%Recently, sensing throughput tradeoff has been considered as an important metric to evaluate the performance of the IS. However, the influence of received power estimation on the performance of the system is an open research problem. %Hence, we tend to include the receiver power estimation.  
+%With the inclusion of estimation error, the IS intends to operate at an suitable estimation time such that a maximum distortion remains below a desired level. 
+%For a fixed the detection probability, the threshold and sensing time are determined. %Apart from these, the characterization of the false alarm probability requires the perfect knowledge of noise power at the ST. Considering a practical scenario, this is a rarely the situation. Hence, it is important to include the effect of noise uncertainty on the performance of the system. 
+\subsection{Contributions}
+The major contributions of this chapter can be summarized as follows:
 %\begin{itemize}
-%\item Knowledge of the channel 
-%\item Difficult to tract the distribution of the detection probability analytically 
+\subsubsection{\tc{Analytical framework}}
+%\item 
+\tc{In contrast to the existing models that assume the perfect knowledge of the channels, the main goal of this chapter is to derive an analytical framework that constitutes the estimation of: (i) sensing channel at the ST, (ii) access channel and (iii) interference channel at the SR. Under this framework, a novel integration of the channel estimation in the secondary system's frame structure is proposed, according to which, the samples considered for channel estimation (of the sensing channel) are accounted also for the sensing such that the time resources within the frame are utilized efficiently. Furthermore, the estimation techniques are selected in such a way that the hardware complexity and the versatility towards unknown PU signals requirements (as considered while employing an energy based detection) are not compromised. In this context, a received power based estimation for the sensing and interference channels is proposed. Based on this framework, this chapter characterizes the performance of the IS by considering: (i) the variations due to imperfect channel knowledge and (ii) the performance degradation due to the inclusion of channel estimation.}%, which delivers a decent tradeoff between reliability, complexity and versatility (to a larger range of primary systems) of the proposed framework, and consequently facilitates the hardware realizability of the proposed framework.} 
+ The proposed analytical framework is further complemented by considering a random behaviour of the interacting channels (or channel fading). Based on the derived expressions, the performance of the IS that employs channel estimation, where the interacting channels are subject to Nakagami-$m$ fading, is evaluated.
+
+
+%\item
+\subsubsection{\tc{Imperfect channel knowledge}}
+\tc{To capture the variations induced due to imperfect channel knowledge, the cumulative distribution functions of performance parameters such as detection probability and achievable secondary throughput are characterized. More importantly, the cumulative distribution function of the detection probability is utilized to incorporate two primary user (PU) constraints, namely, an average constraint and an outage constraint on the detection probability. In this way, the proposed approach controls the amount of excessive interference caused at the PR due to the imperfect channel knowledge.} 
+%\item 
+\subsubsection{\tc{Estimation-sensing-throughput tradeoff}}
+Subject to the average and the outage constraints, the expressions of sensing-throughput tradeoff that capture the aforementioned variations and evaluate the performance loss (in terms of the achievable secondary throughput) are established. \tc{In particular, two different optimization approaches for countering the variations in sensing-throughput tradeoff and determining a suitable sensing time, which attains a maximum secondary throughput are proposed.} Finally, a fundamental tradeoff between estimation time, sensing time and achievable secondary throughput is depicted. This tradeoff is exploited to determine a suitable estimation time and a suitable sensing time that depicts the maximum achievable performance of the IS. 
+In order to capture the variations due to the channel estimation and the channel fading, an outage constraint on the detection probability is proposed. Subsequently, an expression of the sensing-throughput tradeoff subject to the aforementioned constraint is obtained.
+In addition, a estimation-sensing-throughput tradeoff is established for the random scenario. In this regard, the estimation-sensing-throughput tradeoff is adapted to the scenarios with channel fading to determine the suitable estimation and the suitable sensing time such the maximum secondary throughput is achieved.
+ 
 %\end{itemize}
 
-\section{Performance Characterization}
-\subsection{System Model}
-\subsection{Sensing-Throughput Tradeoff}
-%\subsection{Imperfect channel estimation}
-%\subsection{Noise uncertainty}
-%\subsection{Mixture models}
-Combating noise uncertainty, where the parameters of the density representing the two Hypothesis are estimated jointly to characterize the \ac{ROC} and determine threshold. 
+%\subsection{Organization}
+%The subsequent sections of the paper are organized as follows: Section \ref{sec:sys_mod} describes the system model that includes the deployment scenario and the signal model. \tc{Section \ref{sec:pr_mod} presents the problem description and the proposed approach.} Section \ref{sec:ana} characterizes the distribution functions of the performance parameters and establishes the sensing-throughput tradeoff subject to average and outage constraints. Section \ref{sec:num_ana} analyzes the numerical results based on the obtained expressions. Finally, Section \ref{sec:conc} concludes the paper. Table \ref{tb:tb1} lists the definitions of acronyms and important mathematical notations used throughput the paper.
 
-\section{Cognitive sensing}
-\subsection{Markov model}
-Estimation of modal parameters
-\ac{MLE}
-\subsubsection{Complete data set}
-\subsubsection{Incomplete data set}
-\ac{EM}\cite{Kaushik_WCNC} 
+\begin{table}
+%\vspace{-0.4cm}
+\renewcommand{\arraystretch}{1.4}
+\caption{Definitions of Acronyms and Notations used}
+%\vspace{-0.6cm}
+\label{tb:tb1}
+\centering
+\scriptsize{
+%\begin{tabular}{l||l}
+\begin{tabular}{p{0.25\columnwidth}||p{0.6\columnwidth}}
+\hline
+\bfseries Acronyms and Notations & \bfseries Definitions \\
+\hline\hline
+AC, OC & average constraint, outage constraint \\ \hline
+%AWGN & Additive White Gaussian Noise  \\ \hline
+CR & cognitive radio\\ \hline
+CSC, CSC-BS, MC-BS, MS & cognitive small cell, cognitive small cell-base station, macro cell-base station, mobile station\\ \hline
+IM, EM & ideal model, estimation model \\ \hline
+IS & interweave system \\ \hline
+PU - PT, PR & primary user - primary transmitter, primary receiver \\ \hline
+SU - ST, SR & secondary user - secondary transmitter, secondary receiver \\ \hline
+$\mathcal H_1, \mathcal H_0$ & Signal plus noise hypothesis, noise only hypothesis\\ \hline
+$\fsam$ & Sampling frequency\\ \hline
+$\test, \tsen$ & Estimation time, sensing time interval\\ \hline
+$T$ & Frame duration\\ \hline
+$\pd, \pfa$ & Detection probability, false alarm probability \\ \hline
+$\pdd$ & Target detection probability\\ \hline
+$\mpd$ & Outage constraint over detection probability\\ \hline
+$\hpo, \hpt, \hs$ & Channel coefficient for the link PT-ST, PT-SR, ST-SR \\ \hline
+$\snrrcvd, \snrso$ & Signal to noise ratio for the link PT-ST, ST-SR \\ \hline
+$\snrpt$ & Interference (from PT) to noise ratio for the link PT-SR \\ \hline
+$\rs$ & Throughput at SR\\ \hline
+$\cz,\co$ & Date rate at SR without and with interference from PT  \\ \hline
+$\mu$ & Threshold for the energy detector\\ \hline
+$F_{(\cdot)}$ & Cumulative distribution function of random variable $(\cdot)$\\ \hline
+$f_{(\cdot)}$ & Probability density function of random variable $(\cdot)$\\ \hline
+$\hat{(\cdot)}$ & Estimated value of ($\cdot$)\\ \hline
+$\tilde{(\cdot)}$ & Suitable value of the parameter ($\cdot$) that achieves maximum performance \\ \hline
+$\mathbb E_{(\cdot)}$ & Expectation with respect to ($\cdot$) \\ \hline
+$\p$ & Probability measure \\ \hline
+\textbf{T}$(\cdot)$ & Test statistics\\ \hline
+%$x_{(\cdot)}[n], y_{(\cdot)}[n]$ & $n\supe{th}$ sample of the transmitted discrete and real signal, received discrete and real signal at ($\cdot$) \\ \hline
+%$P\sub{Tx, $(\cdot)$},  P\sub{Rx, $(\cdot)$}$ & Power transmitted, power received at ($\cdot$) \\ \hline
+$\spo,  \npo$ & Signal variance at PT, noise variance at ST and SR\\ \hline
+%$\Gamma(\cdot)$ & Gamma function\\ \hline
+%$\Gamma(\cdot, \cdot)$ & Regularized incomplete upper Gamma function\\ \hline
+%$\Gamma^{-1}(\cdot, \cdot)$ & Inverse of regularized incomplete upper Gamma function\\ \hline
+%$\mathcal N, \cchi2, \ncchi2$ & Normal, central chi-squared, non-central chi-squared distribution\\ \hline
+$ \Ks$ & Number of pilot symbols used for pilot based estimation at the SR for $\hs$ \\ \hline
+$ \Kp$ & Number of samples used for received power based estimation at the SR for $\hpt$ \\ \hline
+%$\as, \bs, \ap, \bp$ & Model parameters of Gamma distribution \\ \hline
+%$\ls$ & Non-centrality parameter of  $\ncchi2$ distribution \\ \hline
+\end{tabular}}
+\end{table}
+ 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{System Model} \label{sec:sys_mod}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Deployment Scenario}
 
-\section{Cognitive relay networks ?}
-\subsection{System model}
-Exclusion zone
-%This chapter gives an overview of the platforms and their components that are used in this work. The chapter starts with a general overview of SDR platforms and presents the different used platforms in detail. Furthermore, the integration in the development flow is shown, which was introduced in section \ref{sec:mbd}.
-%
-%\section{SDR Platforms in General}
-%
-%Software Defined Radio is associated with digital signal processing, implemented on reconfigurable processors. The interface to the analog world is done by the \ac{ADC} and \ac{DAC}, which are as close as possible to the antenna. It should be highlighted that reconfigurable digital signal processing is the core part of any SDR. The RF signals in the physical analog world are on high frequencies at low power and the \ac{ADC} sampling rate, dynamic range and power consumption are limited \cite{reed_SR}. Therefore, the RF front end should only extract a dedicated frequency band of interest and convert it into a signal suitable for the \ac{ADC}. After AD conversion the digital signal processing is in dependence on the underlying digital hardware. This scheme is represented in figure \ref{fig:SDR_platform}.
-%
-%\begin{figure}
-%	\centering
-%		\includegraphics{../kapitel03/figures/SDR_platform.pdf}
-%	\caption{Structure of a general SDR platform}
-%	\label{fig:SDR_platform}
-%\end{figure}
-%
-%
-%\subsection{RF Front Ends in SDR}
-%\index{RF front end}
-%\subsubsection{Receiver Architectures}
-%\index{Receiver}
-%The receive side in RF front ends is for down conversion of desired signals in a form that the \ac{ADC} can handle the signals and further to suppress interferences in the band of interest. The most common architecture to achieve this is the superheterodyne receiver\index{Superheterodyne receiver} \cite{jon_SDR}. It converts the signal from the desired \ac{RF} into a fix \ac{IF}\index{Intermediate frequency}. The \ac{IF} is lower than the \ac{RF} but higher than the bandwidth of the signal. This fact is also the origin of the name ``superheterodyne'' where hetero and dynamis are the greek words for ``different'' and ``power''. This means the superposition of different forces: the desired signal on \ac{RF} and the mixing signal in the distance of \ac{IF} from \ac{RF}. There are plenty of commercial components available on the market for standard \acp{IF} like \SI{10.7}{MHz} for FM broadcast. Two examples of superheterodyne topologies are shown in figure \ref{fig:Tunable_RF_Module} and \ref{fig:WiMax_RF_module}.
-%
-%A serious problem in superheterodyne receivers is the presence of image spectra, which are symmetrically located above and below the mixing frequency in the distance to the \ac{IF}. Therefore, image rejection filters are mandatory for superheterodyne architectures. This leads to a trade-off in the choice of the \ac{IF}. On high \acp{IF} image suppression is not very demanding but channel filtering is more difficult at these frequencies and the same is true vice versa: On relative low \acp{IF} the requirements for channel selection are relaxed but the filters for image suppression are more demanding \cite{razavi_RF}. To circumvent this problem, downconversion is realized over multiple stages with the presence of a filter after each downconversion step. This yields to merely partial channel selection at each step and as a result the relaxation of the quality of the filters.
-%
-%Another way to circumvent the problem of images is the homodyne architecture, which is also called direct-conversion\index{Direct-Concersion receiver} or zero-IF. The principle is to mix the desired signal with a carrier on its center frequency. This yields to an \ac{IF} with a frequency of zero and to the circumvention of the problem of image frequencies. Furthermore, high quality IF filters and subsequent downconversion stages can be replaced with baseband amplifiers and low-pass filters, which eases the monolithic integration. An example of such a receiver topology is presented in figure \ref{fig:signal_flow_USRP}. Nevertheless, having here the advantages of image rejection and monolithic integration, other problems occur. DC offsets can corrupt the signal due to the baseband location. Another problem is the I/Q phase shift mismatch due to errors in the ninety degree phase shifter.
-%
-%\subsubsection{Transmitter Architectures}
-%\index{Transmitter}
-%The transmit path of an RF front end converts the signal from \ac{IF} or baseband up to the desired carrier frequency. It furthermore amplifies the signal before transmitting through the antenna, where in-phase and quadrature components are provided by quadrature modulation. Compared to receiver architectures, the requirements for transmitters are lower regarding noise, interference rejection or band selectivity. Two types of transmitters are of interest: the direct-conversion transmitter and the two step transmitter.
-%
-%Similar to the direct-conversion receiver, the mixing frequency of a direct-conversion transmitter is equal to the transmitted carrier frequency. Examples of this architecture can be found in figures \ref{fig:signal_flow_USRP} and \ref{fig:Tunable_RF_Module}. The problems described for the direct-conversion receiver remain for the transmitter: leakage of the power amplifier and I/Q phase mismatch. These disadvantages can be circumvented by the two-step transmitter, which is shown in figure \ref{fig:WiMax_RF_module}. The quadrature modulation is done digitally and the \ac{PA} works on different frequencies as the carrier from the \acp{LO}.
-%
-%\subsection{Digital Signal Processing in SDR}
-%\label{sec:dsp_sdr}
-%The digital signal processing part is the core of an \ac{SDR} to provide the computational performance. The SDR consists of various processors and reconfigurable logic to fulfill the underlying radio communication standards and baseband processing algorithms. The most common components in this field are: FPGAs, DSPs and GPPs.
-%
-%\subsubsection{Field Programmable Gate Arrays}
-%\index{FPGA}
-%An \ac{FPGA} is an \ac{IC} consisting of thousands of programmable logic blocks with reconfigurable interconnections to route signals between them \cite{Rec_Comp}. A general logic block includes a \ac{LUT} for the combinatorial logic, a programmable register to store elements and a multiplexer for internal routing \cite{FPGA_CPLD}. However, there are slight differences in actual designs from different vendors to this general structure. The two major companies on the world market for \acp{FPGA} are Xilinx and Altera. Xilinx's main logic resources are named \acp{CLB}, which are connected to switch fabrics. Any \ac{CLB} itself contains four slices, which are grouped in pairs. The slices\index{Slice} are comparable with the general custom logic blocks described above. Each slice contains two \acp{LUT}, two programmable registers and one carry chain for multiplexing and adding \cite{virtex4}. This structure is similar to the actual Altera design that comprises several \acp{LAB} grouped into rows and columns on the \ac{FPGA}. Each \ac{LAB} contains 16 \acp{LE}\index{Logic Element}, which include themselves one \ac{LUT}, one programmable register and one carry chain \cite{cyclone2}. Due to these differences in architecture it is hard to compare measurement results for \acp{FPGA} from different vendors. Furthermore, most vendors provide their \acp{FPGA} in various configurations: with several multiplication cores and embedded micro controllers or with embedded bus systems. The different structures make it even harder to compare.  
-%
-%
-%\subsubsection{Digital Signal Processors}
-%\index{DSP}
-%In the evolution of microcomputers special architectures for digital signal processing appeared first in 1982 on the market with \ac{TI}'s TMS32010 \cite{dsp}. This was the first commercial \ac{DSP} that made use of specialized hardware for multiplication and accumulation in one single cycle. Today, \ac{MAc} units are mandatory for modern \acp{DSP} but at that time comparable processors required multiple add and shift operations each consuming one cycle. But not only add and shift operations became the bottleneck for high speed, real time processing. In early processors there was generally one single bus interface to the memory, which could only be accessed once per cycle. The Harvard architecture circumvents this by changing the memory structure to use separate buses: one for the data memory and the other for the instructions. This memory architecture is still used, but the memory access was accelerated over the years. Beside the faster underlying hardware, there are also algorithms that are adapted to the memory structure in \ac{DSP} applications in order to find memory addresses more quickly. Further, \acp{DSP} are mostly working on vector bases in block processing. The high end \acp{DSP} of today provide up to eight arithmetic units and support multiple \ac{MAc} operations in one single cycle. Other features in the present high end processors are specialized arithmetic units like Viterbi accelerators or video codecs \cite{ti_c64}.
-%
-%\subsubsection{General Purpose Processors}
-%\index{GPP}
-%Today, more and more \acp{GPP} are used to handle signal processing tasks in the \ac{SDR} environment. On the one hand, this is due to the possibility to write software with high-level languages and to debug directly on the host instead of using a \ac{JTAG} device. On the other hand, \acp{GPP} made huge steps in their capability to process digital signals. This is due to extensions like \ac{SIMD} capabilities, which can process one instruction on multiple data segments in a single cycle. Other reasons are high clock speeds and multiple cores that \acp{GPP} became alternatives to \acp{DSP} in digital signal processing.
-%
-%
-%\section{Universal Software Radio Peripheral}
-%\label{sec:USRP}
-%The \ac{USRP} \index{USRP} is not itself a Software Radio Platform, it only provides an interface from a host \ac{PC} to several RF front ends. The real baseband processing is calculated on the \ac{PC}. The \ac{USRP} was originally developed by Matt Ettus \cite{ettus:website} as a cheap interface for the GNU Radio\index{GNU Radio} software, which anyone could afford or even build himself. The schematics and the source code for the firmware can be downloaded for free. Today, the \ac{USRP} is not only an interface for the GNU Radio community. Users can utilize it with various software radio development tools like OSSIE\index{OSSIE}, MATLAB/Simulink\index{Simulink}, LabView or they build their applications in C++. The company Ettus Research became the dominant seller of low cost software radio platforms and has been acquired by National Instruments in February 2010.
-%
-%In the following sections, the \ac{USRP} is named as the motherboard, while the RF front ends are named as the daughter boards. A fully equipped USRP motherboard with two FLEX400 daughter boards is shown in figure \ref{fig:USRP_photo}. You can also see at the front side of the case the power connection and the USB cable for high speed data connection to the host.
-%   
-%\begin{figure}
-%	\centering
-%		\includegraphics[width=0.8\textwidth]{../kapitel03/figures/USRP_DB_small.pdf}
-%	\caption{The USRP motherboard equipped with two daughter boards}
-%	\label{fig:USRP_photo}
-%\end{figure}
-%
-%\subsection{The USRP Motherboard}
-%The motherboard is equipped with a Cyclone EP1C12 FPGA from Altera \cite{altera_cyclone}, which provides the interfaces to the \ac{USB} and to the \acp{ADC} and \acp{DAC}. Two \acp{ADC} and two \acp{DAC} are integrated in a single AD9862 \cite{ad9862} conversion chip. Due to the fact that the board is equipped with two AD9862, the motherboard provides a total of four transmit and four receive paths. The \acp{ADC} support a sample rate of \SI{64}{MHz} with a quantization resolution of \SI{12}{bit}. Furthermore they provide \acp{PGA}, bypassable low pass decimation filters and a bypassable Hilbert filter. The transmit side of the AD9862 provides two \SI{128}{MHz} \acp{DAC} with \SI{14}{bit} resolution as well as interpolation filters and digitally tunable real or complex up-converters.
-%
-%Figure \ref{fig:USRP_motherboard} shows the motherboard in more details. The \ac{FPGA} is located at the center of the board and the two ADC/DAC combinations are in adjacency on the right and left side. The chip, shown in figure \ref{fig:USRP_motherboard}, below the FPGA is a Cypress' FX2 \ac{USB} microcontroller \cite{cypress_fx2}, which supports the connection to the \ac{USB} peripheral. The white plug-ins over and under the AD9862 conversion chips are the connectors to the daughter boards.
-%
-%\begin{figure}
-%	\centering
-%	\includegraphics[width=1.0\textwidth]{../kapitel03/figures/USRP_MB_small.pdf}
-%	\caption{The USRP motherboard \cite{ettus:website}}
-%	\label{fig:USRP_motherboard}
-%\end{figure}
-%
-%\subsection{The USRP Daughter Boards}
-%\label{subsec:USRP_DB}
-%Ettus Research provides a variety of daughter boards for the \ac{USRP}, working in a frequency range from baseband up to  \SI{5}{GHz}. In this subsection only the Flex400\index{Flex400} and Flex2400\index{Flex2400} daughter boards are described. These front ends were used for the implemented waveforms in chapter \ref{chapter:wf} and chapter \ref{chap:further}.
-%
-%The Flex400 supports a frequency range from \SI{400}{MHz} to \SI{500}{MHz} while the Flex2400 is designed for RF signals between \SI{2400}{MHz} and \SI{2500}{MHz}. Other  \ac{USRP} daughter boards are described in \cite{ettus:website}. The Flex400 and Flex2400 are designed similarly in a way that they are using a single conversion topology for upconversion and downconversion.
-%
-%For the Flex400, the received signal is sent to the AD8348 direct quadrature demodulator \cite{ad8348}. The demodulator needs a carrier for mixing the RF signal into baseband. This signal comes from a \ac{VCO}/\ac{PLL} combination, which is able to tune the frequency in steps of \SI{4}{MHz}. This does not achieve an exact direct-conversion architecture but results in a low IF topology, where the intermediate frequency varies between baseband and \SI{4}{MHz}. The last step for downconversion of the in-phase and quadrature components into baseband is done on the motherboard inside the FPGA with a Digital Down Converter (DDC).
-%
-%The architecture of the Flex2400 is equal but an AD8347 \cite{ad8347} quadrature modulator replaces the AD8348 due to the higher frequency range. The receiver structure is shown in figure \ref{fig:signal_flow_USRP}. The Anti-aliasing filter is the same for both daughter boards and comprises resistances, capacitors and inductors with known values due to the open source schematics. The transfer function was calculated and is shown in figure \ref{fig:transfer_function_flex400}. The 6 dB cut off frequency is at \SI{22}{MHz}.
-%
-%\begin{figure}
-%\centering
-%\includegraphics[width = 1.0\textwidth]{../kapitel03/figures/transfer_function_flex400.pdf}
-%\caption{Transfer function of the anti-aliasing filter for the Flex400 and Flex2400 daughter boards}
-%\label{fig:transfer_function_flex400}
-%\end{figure}
-%
-%The transmit path is designed analogically to the receive path as shown in figure \ref{fig:signal_flow_USRP}. The AD8345 quadrature modulator \cite{ad8345} converts the signals to a radio frequency between \SI{400}{MHz} and \SI{500}{MHz} for the Flex400. The local oscillator is the same version as for the receive path, where digital up conversion of the baseband signal to an intermediate frequency between baseband and \SI{4}{MHz} is necessary. This can be done with the internal Digital Up Converter in the AD9862 \cite{ad9862}. The difference between Flex2400 and Flex400 daughter board is again the different frequency range of the modulator.
-%
-%
-%\subsection{Platform Specific Constraints}
-%
-%Figure \ref{fig:signal_flow_USRP} shows a signal flow graph for a software radio platform with a Flex400/Flex2400 front end. As described before, both daughter boards have the same structure but with different modulators and demodulators as well as different VCO/PLL combinations. The USRP motherboard works as a conversion module. Custom signal processing can be implemented either on the FPGA or on the GPP respectively.
-%
-%\begin{table}
-%	\centering
-%		\begin{tabular}{|c||c|c|}
-%		\hline
-%		\multirow{2}{*} {EP1C12} & \multicolumn{2} {|c|}{Logic Elements}\\
-%				&	12060 &	100 \% \\
-%		\hline
-%		Tx				&	1214	&	10 \%	\\
-%		Rx				&	3448	&	29 \% \\		
-%		Tx \& Rx	&	3895	& 32 \% \\
-%		\hline
-%		\end{tabular}
-%	\caption{Minimum number of Logic Elements used in the FPGA}
-%	\label{tab:MinimumAmountOfLogicElementsUsedInTheFPGA}
-%\end{table}
-%
-%Table \ref{tab:MinimumAmountOfLogicElementsUsedInTheFPGA} gives an overview how much space the \ac{FPGA} provides. Without any logic usage, Altera's Cyclone EP1C12 has a total of 12060 \acp{LE}. However, all these elements cannot be used for signal processing due to the fact that the interfaces to the AD9862 as well as buffers and interfaces to the USB chip have to be implemented. With the transmit and receive sides, approximately \SI{68}{\%} of the internal logic can be used for signal processing. The space occupancy for a receive only configuration is about three times higher than for a pure transmitter. This is due to the fact that in the receive side a \ac{DDC} has to be implemented. This is not the same for the transmit side, since the internal \ac{DUC} on the AD9862 can be used. These results are summarized in table \ref{tab:MinimumAmountOfLogicElementsUsedInTheFPGA}.
-%
-%Another platform specific limitation is the \ac{USB}\index{USB} connection between motherboard and \ac{GPP}. While USB 2.0 supports data rates up to \SI{480}{Mbps}, the USB controller from Cypress together with the library: \emph{libusb} on the GPP achieves a maximum throughput of \SI{228}{Mbps}. With this, a complex bandwidth of approximately \SI{7}{MHz} with \SI{16}{bit} wide in-phase and quadrature samples is achieved. To get the lower sample rate in comparison to the conversion rate of the ADCs, a decimation filter has to be implemented with a factor not less than eight on the receive side. On the transmit side an interpolation filter with an upsampling rate not less than four is necessary. These filters have to be implemented for in-phase and quadrature signal components.
-%
-%\begin{landscape}
-%\begin{figure}
-%    \centering
-%    \includegraphics[width=1.4\textheight]{../kapitel03/figures/signal_flow_USRP.pdf}
-%    \begin{flushright}
-%    \caption{Signal flow in a USRP}
-%    \label{fig:signal_flow_USRP}
-%    \end{flushright}
-%\end{figure}
-%\end{landscape}
-%
-%\subsection{Integration in the design flow}
-%
-%\subsubsection{Integration of the FPGA}
-%
-%%Figure \ref{fig:USRP_FPGA_Black_Box} gives an overview of the FPGA, where it should be highlighted that the baseband data are coming from the ADC and are passing to the DAC with fixed data rates and word lengths. Therefore, on the receive side a \ac{DDC} is implemented that can be configured through a register by the \ac{GPP}. As mentioned previously, a \ac{DUC} is already included at the transmit side on the \ac{DAC}. The \emph{Rx Chain} and \emph{Tx Chain} blocks are black boxes with interfaces to in-phase and quadrature signal components as well as to the clock. This makes the integration of the generated Verilog code possible. The generated time scopes inside the black boxes are connected automatically with buffers at the transmit or receive side of the \ac{USB}. In addition, interrupt commands for the GPP are provided in a form that the GPP can handle the sample rate. 
-%
-%
-%%\begin{figure}[htbp]
-%%	\centering
-%%		\includegraphics{../kapitel03/figures/USRP_FPGA_Black_Box.pdf}
-%%	\caption{Black boxes in the FPGA on the USRP}
-%%	\label{fig:USRP_FPGA_Black_Box}
-%%\end{figure}
-%
-%
-%The transformation from \ac{PSM} to the raw binary file for the FPGA is presented in figure \ref{fig:codegener_FPGA_USRP}. The functional code is generated from the \ac{PSM}. This is the code that is integrated in the \emph{RX Chain} at the receive path and in the \emph{TX Chain} at the transmit path. A template makefile, written in \ac{TCL}, is doing the synthesizing and mapping of the code. It includes information concerning the FPGA, the synthesizer and mapper as well as the physical connections to the chip. Additional Verilog code for the platform specific functions like buffers are integrated in the development flow. The resulting file can be uploaded to the FPGA.  
-%
-%\begin{figure}[htbp]
-%	\centering
-%		\includegraphics{../kapitel03/figures/codegener_FPGA_USRP.pdf}
-%	\caption{Transformation from the \ac{PSM} to the bitstream on the Cyclone FPGA}
-%	\label{fig:codegener_FPGA_USRP}
-%\end{figure}
-%
-%
-%\subsubsection{Integration of the GPP}
-%The integration of the GPP is done by implementing an interface which is based on the USRP API from GNU Radio. This interface must be extended for code generation and inclusion in Simulink. Therefore two APIs are build: a \texttt{usrp\_source} object that handles the data transfer from the USRP to the GPP and a \texttt{usrp\_sink} object that handles the connection from GPP to USRP. Figure \ref{fig:usrp_sink_source} shows these interfaces in the Simulink\index{Simulink} environment.
-%
-%\begin{figure}[htbp]
-%	\centering
-%		\includegraphics[width=0.6\textwidth]{../kapitel03/figures/usrp_sink_source.PNG}
-%	\caption{Example for the use of the APIs for integration of the USRP in a model}
-%	\label{fig:usrp_sink_source}
-%\end{figure}
-%
-%The interfaces are implemented such that for code generation, the platform specific objects are linked to the functional code. According to the example in figure \ref{fig:usrp_sink_source} the \texttt{usrp\_sink} receives the data from the sine wave and sends it to the USB buffer and then to the FPGA. The \texttt{usrp\_source} gets new data from the USB buffer and passes it to the spectrum scope. To maintain real time processing, the USRP sends interrupts when a new frame of data can be accessed in the USB buffer. An error is produced if these data are not used or not passed over before the next interrupt arrives. This \ac{ISR} controls the timing and the scheduling of the code running on the GPP.
-%
-%For configuring the data, a \ac{GUI} was developed shown in figures \ref{fig:usrp_sink_mask_usrp} and \ref{fig:usrp_sink_mask_subdev}. The parameters for timing and scheduling can be configured via the GUI shown in figure \ref{fig:usrp_sink_mask_usrp}. The \ac{ISR} time period $T_{\text{ISR}}$ can be calculated as follows:
+\begin{figure}[!ht]
+\centering
+\includegraphics[width = \figscale]{figures/CR_Scenario_Interweave}
+\caption{A cognitive small cell scenario demonstrating: (i) the interweave paradigm, (ii) the associated network elements, which constitute cognitive small cell-base station/secondary transmitter (CSC-BS/ST), mobile station/secondary receiver (MS/SR), macro cell-base station (MC-BS) and primary transmitter (PT), (iii) the interacting channels: sensing ($\hpo$), access ($\hs$) and interference ($\hpt$).} 
+\label{fig:scenario}
+%\vspace{-0.3cm}
+\end{figure}
+The cognitive small cell (CSC), a CR application, characterizes a small cell deployment that fulfills the spectral requirements for mobile stations (MSs) operating indoor, \tc{refer to} \figurename~\ref{fig:scenario}. For the disposition of the CSC in the network, the following key elements are essential: a CSC-base station (CSC-BS), a macro cell-base station (MC-BS) and MS, refer to \figurename~\ref{fig:scenario}. MSs are the indoor devices served by the CSC-BS over an access channel ($\hs$). Furthermore, the MC-BS is connected to several CSC-BSs over a wireless backhaul\footnote{A wireless backhaul is a point-to-point wireless link between the CSC-BS and MC-BS that relays the traffic generated from the CSC to the core network.}. Moreover, the transmissions from the PT can be listened by the CSC-BS and the MS over sensing ($\hpo$) and interference channel ($\hpt$), respectively. %Although the MC-BS and the MS already exist in the conventional cellular architecture, to incorporate the opportunistic access inside the CSC, it is necessary to consider a functionality upgrade. 
+Considering the fact that the IS is employed at the CSC-BS, the CSC-BS and the MS represent ST and SR, respectively. A hardware prototype of the CSC-BS operating as IS was presented in \cite{Kaushik13}. For simplification, a PU constraint based on false alarm probability was considered in \cite{Kaushik13}. With the purpose of improving system's reliability, we extend the analysis to employ a PU constraint on the detection probability. 
+
+\tc{Complementing the analysis depicted in \cite{Liang08},} a slotted medium access for the IS is considered, where the time axis is segmented into frames of length $T$, according to which, the ST employs periodic sensing. Hence, each frame consists of a sensing slot $\tsen$ and the remaining duration $T - \tsen$ is utilized for data transmission. For small $T$ relative to the PUs' expected ON/OFF period, the requirement of the ST to be in alignment to PUs' medium access can be relaxed \cite{Wang09, Tang11, Zhao12}.  
+ 
+\subsection{Signal model}
+%According to interweave system, ST considers a hypothesis testing to determine the presence ($\mathcal{H}_1$) or absence $(\mathcal{H}_0)$ of a signal transmitted by the PR. 
+Subject to the underlying hypothesis that illustrates the presence $(\mathcal{H}_1)$ or absence ($\mathcal{H}_0$) of a PU signal, the discrete and real signal received at the ST is given by  
+\begin{equation}
+\yrcvd[n] = 
+\begin{cases}
+\hpo \cdot \xp[n] + w[n] & : \mathcal{H}_1 \\
+w[n] & :\mathcal{H}_0
+\end{cases},
+\label{eq:sys_mod_p1s}
+\end{equation}
+where $\xp[n]$ corresponds to a discrete and real sample transmitted by the PT, $|\hpo|^2$ represents the power gain of the sensing channel for a given frame and $w[n]$ is additive white Gaussian noise at the ST. \tc{According to \cite{Liang08}, the signal $\xp[n]$ transmitted by the PUs} can be modelled as: (i) phase shift keying modulated signal, or (ii) Gaussian signal. The signals that are prone to high inter-symbol interference or entail precoding can be modelled as Gaussian signals. In this chapter, the analysis is focussed on the latter case. As a result, the mean and the variance for the signal and the noise are determined as $\e{}{\xp[n]} = 0$, $\e{}{w[n]} = 0$, $\e{}{|\xp[n]|^2} = \spo$ and $\e{}{|w[n]|^2} = \npo$. The channel $\hpo$ is considered to be independent of $\xp[n]$ and $w[n]$, thus, $\yrcvd$ is also an independent and identically distributed (i.i.d.) random process. %The true received power is defined as
+%\begin{align}
+%\bprcvd = \e{}{|\yrcvd|^2}.
+%\label{eq:tprcvd}
+%\end{align}
+%Based on (\ref{eq:tprcvd}), the received SNR at the ST is $\snrrcvd = \frac{\bprcvd}{\npo} - 1$.
+
+Similar to (\ref{eq:sys_mod_p1s}), during data transmission, the discrete and real received signal at the SR conditioned on the detection probability ($\pd$) and false alarm probability ($\pfa$) is given by
+\begin{equation}
+\ys[n] = 
+\begin{cases}
+\hs \cdot \xs[n] + \hpt \cdot \xp[n] + w[n] & : 1 - \pd \\
+\hs \cdot \xs[n] + w[n] & : 1 - \pfa
+\end{cases},
+\label{eq:sys_mod_ss}
+\end{equation}
+%and on the other side, the interference signal at the SR, transmitted by the PR follows 
 %\begin{equation}
-%	T_{\text{ISR}} = \frac{f_{DAC}}{I} \cdot N_{\text{frame}},
+%\yp[n] = \sqrt{\gpt \cdot \apt}/ \cdot \xp[n] + w[n],
+%\label{eq:sys_mod_p2s}
 %\end{equation}
-%where $f_{DAC}$ is the sampling rate of the DAC, $I$ is the interpolation factor and $N_{\text{frame}}$ is the vector length.
-%This would lead to an \ac{ISR} time period of \SI{4.096}{ms} for the configuration shown in figure \ref{fig:usrp_sink_mask_usrp}.
-% 
-%
-%\begin{figure}
-%	\centering
-%		\includegraphics[width=0.75\textwidth]{../kapitel03/figures/usrp_sink_mask_usrp.png}
-%	\caption{GUI for the USRP sink with an example for configuration parameters}
-%	\label{fig:usrp_sink_mask_usrp}
-%\end{figure}
-%
-%Figure \ref{fig:usrp_sink_mask_subdev} shows the configuration for the USRP daughter boards. The daughter board ID is  written to the text field and gives additional information like the maximum tuning frequency and the range of the gain. All these data are written to the APIs. The interfaces for the daughter board expect the tuning of the frequency and the gain as input data. Additionally, the data type can be configured as well as the selection of the antenna type through the antenna ID. The setting of the configuration can be done for both daughter boards by selecting one of the two tabs: \emph{Side A} or \emph{Side B}.
-%
-%
-%\begin{figure}
-%	\centering
-%		\includegraphics[width=0.75\textwidth]{../kapitel03/figures/usrp_sink_mask_subdev.png}
-%	\caption{GUI for the USRP subdevice, showing configuration values}
-%	\label{fig:usrp_sink_mask_subdev}
-%\end{figure}
-%
-%Figure \ref{fig:codegener_GPP_USRP} gives an overview of the transformation from \ac{PSM} to executable code, according to the transformation from \ac{PSM} to bitstream shown in figure \ref{fig:codegener_FPGA_USRP}. As described in section \ref{sec:codegen}, the functional code is generated in a C++ code. With the integration of the \texttt{usrp\_sink} or \texttt{usrp\_source} objects, the functional code can be linked to the source code of the interfaces. The template makefile starts the development environment as well as the compiler and linker. The output is a file that can be executed on any host PC operating with Windows or Linux operating system. 
-%
-%\begin{figure}[htbp]
-%	\centering
-%		\includegraphics{../kapitel03/figures/codegener_GPP_USRP.pdf}
-%	\caption{Transformation from the \ac{PSM} to an executable file for the GPP}
-%	\label{fig:codegener_GPP_USRP}
-%\end{figure}
-%
-%
-%
-%
-%\section{Small Form Factor SDR}
-%\label{sec:SFF}
-%Lyrtech's \ac{SFF SDR DP} \cite{lyrtech_sff_sdr} was one of the first embedded development platforms for Software Defined Radios. The platform\index{Platform} was originally developed as an evaluation board for Texas Instrument's Da Vinci \ac{SoC}. Lyrtech used the processing power of the included processors for Software Radio applications and extended it with \acp{ADC}, \acp{DAC} and various RF front ends. The \ac{SFF SDR DP} consists of three modules, which are shown in figure \ref{fig:sff_sdr}. The \ac{DPM} is the signal processing layer at the bottom with a \ac{GPP}/\ac{DSP} combination in addition to an \ac{FPGA}. The \ac{DCM} is the middle layer and is equipped with an additional \ac{FPGA} for sample rate conversion as well as \acp{ADC} and \acp{DAC}. The Radio Frequency Module (RFM) finally is the RF front end on the top. 
-%\begin{figure}
-%	\centering
-%		\includegraphics[]{../kapitel03/figures/sff_sdr.pdf}
-%	\caption{Illustration of the SFF SDR DP, showing the three different modules}
-%	\label{fig:sff_sdr}
-%\end{figure}
-%
-%\subsection{Digital Processing Module (DPM)}
-%\index{Digital Processing Module}
-%As the name indicates, the whole signal processing on the SFF SDR is placed on the \ac{DPM}. Therefore, the board is equipped with a Virtex 4 SX35 FPGA \cite{virtex4} and TI's TMS320DM6446 \ac{SoC} \cite{ti_dm6446} as the central processing units. The \ac{SoC} comprises two processing cores: a C64x+ fixed point \ac{DSP} and an ARM \ac{GPP}. An overview of the architecture of the \ac{DPM} is given in figure \ref{fig:Digital_Processing_Modul}. The exact properties of the components are described in table \ref{tab:SFF_SDR_DPM}. The \ac{FPGA} and the \ac{DSP} are connected via the \ac{VPSS}. This is a 16-bit synchronous video data transfer port for the \ac{DSP}, which was originally designed as a video processing chip. The \ac{VPSS} was adapted to provide high data rates between both processing units with the \ac{VPFE} as the interface towards the DSP and the \ac{VPBE} in the opposite direction back to the FPGA. Both interfaces are independent from another. Furthermore, there are two additional connections between \ac{FPGA} and \ac{DSP}: The \ac{EMIF} allows access to read from and to write to registers, while the \ac{ASP} is connected to the on board PCM3008 audio stereo codec through the \ac{FPGA}. Beside the audio codec, the Virtex 4 allows access to several buttons, switches, LEDs and to the \ac{DCM} over a proprietary bus system. The peripherals of the DSP consists of the RS232 interface to configure the IP-address, the DDR2 RAM external memory with \SI{128}{MB} and a high speed USB bus, which is not supported by the firmware right now. Further peripheral equipments are an Ethernet connection for board access over a host PC, a slot for an SD card and another \SI{128}{MB} memory, which stores the bootloader and a kernel image of the operating system and the file system.
-%
-%
-%\begin{table}
-%	\centering
-%		\begin{tabular}{|c|c||c|}
-%		\hline
-%		\multicolumn{3}{|c|}{ \textbf{TMS320DM6446 DMP SoC}} \\
-%		\hline
-%		\hline
-%		\multicolumn{2} {|c||}{Core Frequency}	&	{\SI{594}{MHz}}\\
-%		\hline
-%		\multicolumn{2} {|c||}{Peak MMAcs}			&	{4752} \\
-%		\hline
-%		\multirow{2}{*}{On-chip L1/SRAM}	& DSP									& \SI{112}{kB} \\
-%																			& GPP									&  \SI{40}{kB} \\
-%		\hline
-%		\multirow{2}{*}{On-chip L2/SRAM}	& DSP									&  \SI{64}{kB} \\
-%																			& GPP									&   \SI{0}{kB} \\
-%		\hline
-%		ROM																& GPP 								&  \SI{16}{kB} \\
-%		\hline
-%		\multirow{2}{*}{EMIF}							& EMIFA								& \SI{16}{bit} / \SI{8}{bit} \\
-%																			& DDR2								& \SI{32}{bit} / \SI{16}{bit} \\
-%		\hline
-%		\multirow{2}{*}{Timer}						& GP									& \SI{64}{bit} \\
-%																			& WD									& \SI{64}{bit} \\
-%		\hline
-%		\hline		\multicolumn{3}{|c|}{ \textbf{Virtex 4 XC4VSX35 FPGA}} \\ 
-%		\hline
-%		\hline
-%		\multicolumn{2} {|c||} {CLB array}							& 96x40	\\
-%		\hline
-%		\multicolumn{2} {|c||} {Slices}								& 15360 \\
-%		\hline
-%		\multicolumn{2} {|c||} {Block RAM bits (\#)} 	& 3456 (192) \\
-%		\hline
-%		\multicolumn{2} {|c||} {18 x 18 multpliers}		& 192 \\
-%		\hline
-%		\multicolumn{2} {|c||} {Digtal Clock Manager}										& 8 \\
-%		\hline
-%		\end{tabular}
-%	\caption{Properties of the digital processing units on DPM}
-%	\label{tab:SFF_SDR_DPM}
-%\end{table}
-%
-%\begin{figure}[tbp]
-%	\centering
-%		\includegraphics[width=1.0\textwidth]{../kapitel03/figures/Digital_Processing_Modul.pdf}
-%	\caption{Structure of the Digital Processing Module}
-%	\label{fig:Digital_Processing_Modul}
-%\end{figure}
-%
-%\subsection{Data Conversion Module (DCM)}
-%\index{Data Conversion Module}
-%\begin{figure}[tbp]
-%	\centering
-%		\includegraphics[width=1.00\textwidth]{../kapitel03/figures/Data_Conversion_Modul.pdf}
-%	\caption{Structure of the Data Conversion Module}
-%	\label{fig:Data_Conversion_Modul}
-%\end{figure}
-%
-%The \ac{DCM} is the interface between the digital world of the \ac{DPM} and the analog RF front end. The DCM is equipped with two \acp{ADC}, two \acp{DAC}, an \ac{FPGA} and a clock distribution unit. The \ac{ADC} is a Texas Instruments ADS5500 \acl{ADC} \cite{ads5500} with a maximum sampling frequency of \SI{125}{MHz} and a resolution of \SI{14}{bit}. As shown in figure \ref{fig:Data_Conversion_Modul}, two ADS5500 are needed for a complex baseband signal received from a direct-conversion receiver. This is different to the \acp{RFM} described in section \ref{subsec:RFM}, where the incoming signal on an \ac{IF} on \SI{30}{MHz} or \SI{44}{MHz} is real. Therefore, the second input port and the second \ac{ADC} is not used. After sampling, the digitized data are passed to Xilinx's Virtex-4 LX25 \ac{FPGA}, which is the interface between the conversion chips and the proprietary expansion connector. This \ac{FPGA} here is not designated for custom signal processing and its logic cannot be changed.
-%
-%The transmit side of the board consists mainly of \ac{TI}'s DAC5687 Dual\--Chan\-nel \ac{DAC} \cite{dac5687}. This chip comprises two \acp{DAC} with a bit resolution of 16 at a maximum sampling rate of \SI{500}{MHz}. Furthermore, it provides an interpolation filter for upsampling by a factor of 2, 4 or 8, as well as a complex modulator and a programmable amplifier. 
-%
-%The clock of the \ac{DCM} controls the sample rate converters. It is based on Analog Device's AD9511 \ac{PLL} \cite{ad9511}. The reference clock for the \ac{PLL} is supported from the on-board \SI{10}{MHz} internal \ac{LO} or from an external clock. With the limited frequency range from \SI{800}{MHz} to \SI{1400}{MHz} of the \ac{VCO}, the target clock frequency $f_{out}$ can be calculated by
+where $\xs[n]$ corresponds to discrete and real sample transmitted by the ST. Further, $|\hs|^2$ and $|\hpt|^2$ represent the power gains for the access and the interference channels, \tc{refer to} \figurename~\ref{fig:scenario}. 
+%The %received powers at the SR from ST and PR are evaluated as $\ps = \s{\test \fsam}{|\ys[n]^2|}$ and $\pp = \s{\test \fsam}{|\yp[n]^2|}$ %Likewise (\ref{eq:sys_mod_p1s}), $\nap[n]$ and $\nas[n]$ represents circularly symmetric AWGN at PR and ST with zero mean and variance $\e{}{|\nap[n]|^2} = \npp$ and $\e{}{|\nas[n]|^2} = \nps$ correspondingly. Consider that $\ps$, $\ps$ and $\pp$ correspond to power for a given frame. 
+%\subsubsection{Channel}
+%, where $\bpp = \e{}{\pp}$ and $\bps = \e{}{\ps}$ correspond to their true value. Similar to ST-PR, the 
+%received SNRs over the links ST-SR and PT-ST are $\snrs = \frac{\e{}{|\sqrt{\hs} \cdot \xs[n]|^2}}{ \npo}$ and $\snrp = \frac{\e{}{|\sqrt{\hpt} \cdot \xp[n]|^2}}{\npo}$.
+
+
+\section{\tc{Problem Description and Proposed Approach}} \label{sec:pr_mod}
+\subsection{\tc{Problem Description}}\label{ssec:pd}
+%\subsection{Sensing}
+\tc{In accordance with the conventional frame structure}, the ST performs sensing for a duration of $\tsen$. The test statistics $\ts$ at the ST is evaluated as   
+\begin{align}
+\ts = \s{\tsen \fsam}{ |\yrcvd[n]|^2} \mathop{\gtrless}_{\mathcal{H}_0}^{\mathcal{H}_1} \mu, 
+\label{eq:test_st}
+\end{align}
+where $\mu$ is the decision threshold and $\textbf{y}$ is a vector with $\tsen \fsam$ samples. $\ts$ represents a random variable, whereby the characterization of the distribution function depends on the underlying hypothesis. Corresponding to $\mathcal{H}_0$ and $\mathcal{H}_1$, $\ts$ follows a central chi-squared ($\cchi2$) distribution \cite{Kay}. 
 %\begin{equation}
-%	f_{\textnormal{out}} =  \frac{f_{\textnormal{VCO}}}{\text{div}} = \frac{N}{R\cdot \text{div}}\cdot f_{\textnormal{ref}}\; .
-%	\label{eq:f_out_PLL}
+%\ts = 
+%\begin{cases}
+%\sim \ncchi2  : \mathcal{H}_1 \\
+%\sim \cchi2  : \mathcal{H}_0 \\
+%\end{cases},
+%\label{eq:sys_mod_ss}
 %\end{equation}
-%In equation (\ref{eq:f_out_PLL}), div is the clock divider, which is realized as a 5-bit counter. This leads to a division range of $[1\dots32]$. $R$ is the \ac{PLL} reference divider with a division range between one and 16383 due to the implemented 14-bit counter. The feedback divider $N$ is a combination of a 3-bit prescaler and two counters $A$ (\SI{6}{bit}) and $B$ (\SI{13}{bit}). Through combinations in the prescaler, any integer value for $N$ in the range of $[1\dots262112]$ can be selected.
-%Figure \ref{fig:f_out_pll} gives an example for the possible division factors between $N$ and $R$ with a given reference \ac{LO} at \SI{10}{MHz}. Due to the limitations of the \ac{VCO} in the interval between \SI{800}{MHz} to \SI{1400}{MHz}, the ratio between feedback and reference divider is limited to
+%Considering large number of samples $\fsam \tsen$ are used to evaluate $\ts$. It is possible to apply Central Limit Theorem to approximate the distribution functions of the mentioned hypotheses as Gaussian distribution. 
+As a result, the detection probability $(\pd)$ and the false alarm probability $(\pfa)$ corresponding to (\ref{eq:test_st}) are determined as \cite{Tan08}
+\begin{align}
+%\pd(\mu, \tsen, \prcvd) &= \mathcal{Q}\left( \frac{\mu - \prcvd}{ \sqrt{\frac{2}{\tsen \fsam}} \prcvd} \right),  \label{eq:pd} 
+\pd(\mu, \tsen, \prcvd) &= \Gamma\left( \frac{\tsen \fsam}{2}, \frac{\tsen \fsam \mu}{2 \prcvd} \right),  \label{eq:pd} 
+\end{align}
+\begin{align}
+\pfa(\mu, \tsen) &= \Gamma\left( \frac{\tsen \fsam}{2}, \frac{\tsen \fsam \mu}{2 \npo} \right),  \label{eq:pfa} 
+%\pfa(\mu, \tsen) &= \mathcal{Q}\left( \frac{\mu - \npo}{ \sqrt{\frac{2}{\tsen \fsam}} \npo} \right), \label{eq:pfa}
+\end{align}
+where $\prcvd$ is the power received over the sensing channel and $\Gamma(\cdot, \cdot)$ represents a regularized incomplete upper Gamma function \cite{grad}.% and $\bprcvd$ signifies the true received power defined as
+%\begin{align}
+%\bprcvd = \e{}{|\yrcvd|^2}.
+%\label{eq:tprcvd}
+%\end{align}
+ %Due to the presence of the estimation received power $\prcvd$ in (\ref{eq:pd}), $\pd$ corresponds to a random variable.
+
+%The detection probability of the primary signal and the throughput achieved at the SR depict the performance of the IS. 
+
+%\subsection{Sensing-Throughput tradeoff}
+Following the characterization of $\pfa$ and $\pd$, Liang \textit{et al.} \cite{Liang08} established a tradeoff between the sensing time and secondary throughput $(\rs)$ subject to a target detection probability $(\pdd)$. This tradeoff is represented as  
+\begin{align}
+\trs(\ttsen) &= \maxi_{\tsen} \rs(\tsen) = \frac{T- \tsen}{T} \bigg[ \cz (1 - \pfa) \phz + \nonumber \\ \quad & \co (1 - \pd) \pho  \bigg], \label{eq:thr_id} \\
+\text{s.t.} & \text{ } \pd \ge \pdd, \label{eq:thr_id_con} \\ 
+\text{where } & \cz = \log_2 \left(1 + |\hs|^2 \frac{\ptranst}{\npo}\right) = \log_2 \left( 1 + \snrso \right) \label{eq:Cap0}\\ 
+{\text{ and }} & \co = \log_2 \left(1 + \frac{|\hs|^2 \ptranst }{|\hpt|^2 \ptranpt  + \npo} \right) \nonumber \\ \quad & = \log_2 \left(1 + \frac{|\hs|^2 \ptranst }{\prcvdsr} \right) = \log_2 \left(1 + \frac{\snrso}{\snrpt + 1}  \right), \label{eq:Cap1} 
+\end{align}
+where $\phz$ and $\pho$ are the occurrence probabilities for the respective hypothesis, whereas $\snrrcvd$ and $\snrso$ represent the signal to noise ratio for the links PT-ST and ST-SR, respectively, and $\snrpt$ corresponds to interference (from the PT) to noise ratio for the link PT-SR. Moreover, $\ptranpt$ and $\ptranst$ represent the transmit power at the PT and the ST, whereas $\prcvdsr$ corresponds to the received power (which includes the interference power from the PT and the noise power) at the SR. In addition, $\cz$ and $\co$ represent the data rate without and with the interference from the PT. In other words, using (\ref{eq:thr_id}), the ST determines a suitable sensing time $\tsen = \ttsen$, such that the secondary throughput is maximized subject to a target detection probability, \tc{refer to} (\ref{eq:thr_id_con}). From the deployment perspective, the tradeoff depicted above has the following fundamental issues:
+\begin{itemize}
+\item Without the knowledge of the received power $\prcvd$ over the sensing channel, it is not feasible to characterize $\pd$, refer to (\ref{eq:pd}). This leaves the characterization of the throughput (\ref{eq:thr_id}) impossible and the constraint defined in (\ref{eq:thr_id_con}) inappropriate. 
+\item Moreover, the knowledge of the interference and the access channels is required at the ST, \tc{refer to} (\ref{eq:Cap0}) and (\ref{eq:Cap1}) for characterizing the throughput in terms of $\cz$ and $\co$ at the SR. 
+\end{itemize}
+%Hence, At An optimum performance is achieved when the ST operates at the desired level, i.e., $\pd = \pdd$. %Hence, based on the expression in (\ref{eq:pd}) and constraint in (\ref{eq:thr_id}), the threshold is evaluated as
+%\begin{align}
+%\mu(\pdd, \tsen, \bprcvd) = \left( \mathcal{Q}^{-1} (\pdd) \sqrt{\frac{2}{\tsen \fsam}} + 1 \right) \bprcvd. \label{eq:lambda} 
+%\end{align}
+Taking these issues into account, it is not feasible to employ the performance analysis depicted by this model \tc{(referred as ideal model, hereafter)} for hardware implementation. In the subsequent section, an analytical framework \tc{(also referred as estimation model)} that addresses the aforementioned issues, thereby including the estimation of the sensing channel at the ST, and the interference and the access channels at the SR is proposed. Based on the proposed approach, the performance of the IS in terms of the sensing-throughput tradeoff is investigated. 
+
+\subsection{\tc{Proposed Approach}} \label{ssec:pa}
+
+\tc{In order to overcome the difficulties discussed in Section \ref{ssec:pd}, the following strategy is proposed.
+\begin{enumerate}
+\item As a first step, we consider the estimation of the involved channels. In order to characterize the detection probability, a received power based estimation at the ST for the sensing channel is employed. This is done to ensure that detection probability remains above a desired level. Further, a pilot based estimation and a received power based estimation for the access channel and the interference channel, respectively, are employed at the SR, to characterize the secondary throughput. 
+\item Next, the variations due to channel estimation in the estimated parameters, namely, received power (for the sensing and the interference channels) and the power gain (for the access channel) are characterized in terms of their cumulative distribution functions. 
+\item In order to investigate the performance of the IS subject to the channel estimation, these variations in the performance parameters, which include detection probability and secondary throughput, are characterized in terms of their cumulative distribution functions. 
+\item Finally, the derived cumulative distribution functions are utlilized to obtain the expressions of sensing-throughput tradeoff. Hence, based on these expressions, the impact of imperfect channel knowledge on performance of the ISs is quatified, and subsequently the achievable secondary throughput at a suitable sensing time is deteremined. 
+\end{enumerate}
+}
+
+It is well-known that systems with transmitter information (which includes the filter parameters, pilot symbols, modulation type and time-frequency synchronization) at the receiver acquire the channel knowledge by listening to the pilot data sent by the ST \cite{Gans71, Gifford05, Gifford08, Anna05}. Other systems, where the receiver possesses either no access to this information or limited by hardware complexity, procure channel knowledge indirectly by estimating a different parameter that entails the channel knowledge, for instance, received signal power \cite{Kaushik15_CC} or received signal to noise ratio \cite{Chav11, Sharma13}. Recently, estimation techniques such as pilot based estimation \cite{Suraweera10, Kim12} and received power based estimation \cite{Kaushik15} have been applied to obtain channel knowledge for CR systems. However, the performance analysis has been limited to underlay systems, where the emphasis has been given on modelling the interference at the PR. 
+
+Since the pilot based estimation requires the knowledge of the PU signal at the secondary system, the versatility (in terms of PU signals) of the secondary system is compromised. On the other side, for the estimation of the received signal to noise ratio, Eigenvalue (which involves matrix operations) based approach \cite{Sharma13} or iterative approaches such as expectation-maximization have been proposed \cite{Chav11}. Due to the complicated mathematical operations or the complexity of the iterative algorithms, such approaches tend to increase the hardware complexity of the ISs. In order to resolve these issues, a received power based estimation for the sensing and interference channels, and pilot based estimation for the access channel is employed. Similar to the energy based detection, since the received power based estimation involves simple operations on the obtained samples such as magnitude squared followed by summation, the proposed estimation provides a reasonable tradoff between complexity and versatility. %Unlike the sensing channel, the access and interference channels have to be estimated at the SR and made available at the ST over a low-rate feedback channel. 
+%As a result, by proposing the received power estimation and the pilot based estimation, we the versatility and the low complexity requirements of the CR system, which are absolutely essential from the deployment perspective. 
+
+However, with the inclusion of this estimation, the system anticipates: (i) a performance loss in terms of temporal resources used and (ii) variations in the aforementioned performance parameters due to channel estimation. A preliminary analysis of this performance loss was carried out in \cite{Kaushik15_CC}, where it was revealed that in low signal to noise ratio regime, imperfect knowledge of received power corresponds to large variation in detection probability, hence, causes a severe degradation in the performance of the IS. However, this performance degradation was determined by means of lower and upper bounds. In this chapter, a more exact analysis is considered, whereby the variations in detection probability are captured by characterizing its cumulative distribution function, and subsequently apply new probabilistic constraints on the detection probability, which allow ISs to operate at low signal to noise ratio regime. %These constraints are categorized as average and outage constraints corresponds to an conservative or aggressive approach followed by the SU towards the primary system.   
+
+%Besides that, we include channel estimation at the SR to acquire the knowledge of the access and interference channels. 
+
+
+%The inclusion of estimation of the interacting channels causes variations in the parameters $\pd$, $\cz$ and $\co$. Unless characterized, these variations may seriously degrade the performance of the hardware deployed. In this view, we include the estimation of the interacting channels in the system model, thereby characterizing the variations in $\pd$, $\cz$ and $\co$ by means of their their distribution functions $\fpd$, $\fcz$ and $\fco$. By utilizing these expressions, we finally obtain a characterization of sensing-throughput tradeoff. %that depicts an deployment scenario. 
+In order to include channel estimation, a frame structure that constitutes an estimation $\test$, a sensing $\tsen$ and data transmission $T - \tsen$ is proposed, where $\test$ and $\tsen$ correspond to time intervals and \tc{$0 < \test \le \tsen < T$, refer to} \figurename~{\ref{fig:fs}}. Since the estimated values of the interacting channels are required for determining the suitable sensing time (the duration of the sensing phase), the sequence depicted in \figurename~{\ref{fig:fs}}, whereby estimation followed by sensing is reasonable for the hardware deployment. 
+\tc{Particularly for the sensing channel, it is worthy to note that the samples used for estimation can be combined with the samples acquired for sensing\footnote{\tc{Therefore, the sensing phase incorporates the estimation phase, see \figurename~\ref{fig:fs}}.} such that the time resources within the frame duration can be utilized efficiently, as shown in the frame structure in \figurename~\ref{fig:fs}.} 
+To acuqire the estimates for the interference and access channels at the ST, a low-rate feedback channel from the SR to the ST is required for the proposed approach. 
+In the following paragraphs, the estimation of the involved channels is considered. %As $\tsen^{*}$ is dependent on $\prcvd$ or the state of $\hpo$ in particular, under this situation, $\tsen^{*}$ is lower bounded by $\test$, consequently translating $\fpd$ from a continuous function to a piecewise continuous function, thereby complicating the analytical tractability of $\fpd$. Hence, to simplify the analysis, in this work, we consider estimation and sensing as disjoint events in time. In this regard, the derived expressions based on our proposed model represents a lower performance bound. Next, in the following subsections, we present the estimation of the interacting channels. 
+\subsubsection{Estimation of sensing channel ($\hpo$)}
+\begin{figure}[!ht]
+\centering
+\includegraphics[width = \figscale]{figures/Frame_Structure_grau}
+\caption{\tc{An illustration of the proposed frame structure for an interweave system depicting the estimation phase and the sensing phase for the sensing channel.}}
+\label{fig:fs}
+%\vspace{-0.5cm}
+\end{figure}
+%To incorporate the effect of fading in the model, we assume that the channel remains constant for $T$. 
+Following the previous discussions, the ST acquires the knowledge of $\hpo$ by estimating its received power. The estimated received power is required for the characterization of $\pd$, thereby evaluating the detector performance. %, an vital performance parameter for the cognitive radio system. %Implicit to estimation, the variation in the received power are translated to the $\pd$. Hence, the characterization of the $\pd$ in terms of distribution function is essential. 
+%Characterized by the fading process, each frame witnesses a different received power. In order to sustain a desired detection probability, it is important to acquire the knowledge of $\prcvd$. As a result, received power estimation $\test$ precedes sensing $\tsen$ for each frame. The remaining time $T - (\test + \tsen)$ is utilized for data transmission. 
+
+Under $\mathcal H_1$, the received power based estimated during the estimation phase at the ST is given as \cite{Urkowitz} 
+\begin{align}
+\eprcvd = \s{\test \fsam}{ |\yrcvd[n]|^2}.
+\label{eq:eprcvd} 
+\end{align}
+$\eprcvd$ determined in (\ref{eq:eprcvd}) using $\test \fsam$ samples follows a central chi-squared distribution $\cchi2$ \cite{Kay}. %Applying the central limit theorem, this distribution can be approximated as the Gaussian distribution 
+The cumulative distribution function (CDF) of $\eprcvd$ is given by  
+\begin{align}
+%\eprcvd \sim \mathcal{N}\left( \prcvd, \frac{2}{\test \fsam} \prcvd^2 \right).
+%\eprcvd \sim  \cchi\left( \prcvd, \frac{2}{\test \fsam} \prcvd^2 \right).
+\feprcvd(x) = 1 - \Gamma\left(\frac{\test \fsam}{2}, \frac{ \test \fsam x}{2 \prcvd}  \right). 
+\label{eq:dprcvd}
+\end{align}
+
+%Besides estimation of the received power at the ST, the channel estimation of $\hpt$ and $\hs$ is dealt in the following sub-sections. 
+
+\subsubsection{Estimation of access channel ($\hs$)}
+%This information is essential for characterize the throughput $\cz$ and $\co$. 
+%However, this information is not directly available at the SR.
+%To accomplish this, we employ a pilot based estimation for $\hs$ and received power based estimation $\hpt$. 
+%Channel estimation is a fundamental aspect to most wireless communication systems. 
+The signal received from the ST undergoes matched filtering and demodulation at the SR, hence, it is reasonable to employ pilot based estimation for $\hs$. Unlike received power based estimation, pilot based estimation renders a direct estimation of the channel. 
+Now, to accomplish pilot based estimation, the SR aligns itself to pilot symbols transmitted by the ST. Under $\mathcal H_0$, the discrete and real pilot symbols at the output of the demodulator is given by \cite{Gifford08} 
+\begin{align}
+p[n] = \sqrt{E\sub{s}} \hs + w[n], 
+\label{eq:pilot_sig}
+\end{align}
+where $E\sub{s}$ denotes the pilot energy. Without loss of generality, the pilot symbols are considered to be +1. The maximum likelihood estimate, representing a sample average of $\Ks$ pilot symbols, is given by \cite{Gifford05}
+\begin{align}
+\hs = \ehs + \smash[b]{\underbrace{\frac{\sum^{\Ks}_{n} p[n]}{2 \Ks}}_{\epsilon}},
+\label{eq:pilot_MLE}
+\end{align}\\[-0.00em]
+where $\epsilon$ denotes the estimation error. 
+%(\ref{eq:pilot_MLE}) illustrates a correlation between the $\hs$ and $\ehs$. 
+The estimate $\ehs$ is unbiased, efficient and achieves a Cram\'er-Rao bound with equality, with variance $\e{}{|\hs -\ehs|^2} = \npo/(2 \Ks)$ \cite{Gifford08}. Consequently, $\ehs$ conditioned on $\hs$ follows a Gaussian distribution.
+\begin{align}
+\ehs|\hs \sim \mathcal{N}\left( \hs,\evar \right).
+\label{eq:ehs} 
+\end{align}
+As a result, the power gain $|\ehs|^2$ follows a non-central chi-squared ($\ncchi2$) distribution with 1 degree of freedom and non-centrality parameter $\ls = \frac{2 \Ks |\hs|^2}{\npo}$.  
+
+\subsubsection{Estimation of interference channel ($\hpt$)}
+Analog to sensing channel, the SR performs received power based estimation by listening to the transmission from the PT. The knowledge of $\hpt$ is required to characterize interference from the PT. Under $\mathcal H_1$, the discrete signal model at the SR is given as 
+\begin{align}
+\ys[n] = \hpt \cdot \xp[n] + w[n].
+\label{eq:sys_mod_p2s}
+\end{align}
+The received power at the SR from the PT given by  
+\begin{align} 
+\eprcvdsr &= \frac{1}{\Kp} \sum\limits_{n = 1}^{\Kp} |\ys[n]|^2,
+\label{eq:ehp2}
+\end{align}
+follows a $\cchi2$ distribution, where $\Kp$ corresponds to the number of samples used for estimation.
+
+\subsection{\tc{Validation}}
+\tc{
+It is now clear that the estimates $\eprcvd$, $|\ehs|^2$ and $\eprcvdsr$ exhibit the knowledge corresponding to the involved channels, however, it is essential to validate them, mainly $\eprcvd$ and $\eprcvdsr$. In this context, it is necessary to ensure the presence of the PU signal ($\mathcal H_1$) for that particular frame. In this direction, Chavali \textit{et al.} \cite{Chav11} recently proposed a detection followed by the estimation of the signal to noise ratio, while \cite{Cao14} implemented a blind technique for estimating the signal power of non-coherent PU signals. In this thesis, a different methodology is proposed, according to which, a coarse detection\footnote{\tc{For the coarse detection, an energy detection is employed whose threshold can be determined by means of a constant false alarm rate.}} on the estimates $\eprcvd$, $\eprcvdsr$ at the end of the estimation phase $\test$ is applied. Through an appropriate selection of the time interval $\test$ (for instance, $\test \in [1, 10]\SI{}{ms}$) during the system design, the reliability of the coarse detection can be ensured. With the existence of a separate control channel such as cognitive pilot channel, the reliability of the coarse detection can be further enhanced by exchanging the detection results between the ST and the SR.} 
+
+\tc{
+Since the estimation and the coarse detection processes in the proposed method are equivalent in terms of their mathematical operations (which include magnitude squared and summation), the validity of the channel estimates with certain reliability and without comprising the complexity of the estimators employed by the secondary system is considered. Moreover, by performing a joint estimation and (coarse) detection, an efficient way of utilizing the time resources within the frame duration is proposed. The ST considers these estimates to determine a suitable sensing time based on the sensing-throughput tradeoff such that the desired detector's performance is ensured. At the end of the detection phase, a fine detection\footnote{\tc{In accordance with the proposed frame structure in Fig. 2, fine detection represents the main detection which also includes the samples acquired during the estimation phase.}} of the PU signals is carried out, thereby improving the performance of the detector.} 
+  
+\subsection{Assumptions and Approximations}
+%We consider the estimation of $\bprcvd$ at the ST. To simplify the analysis for the proposed model, it is assumed that the ST acquires the perfect knowledge about $\snrp$ and $ \snrs$ from the SR over a feedback channel. 
+To simplify the analysis and sustain analytical tractability for the proposed approach, several assumptions considered in the chapter are summarized as follows:
+\begin{itemize}
+\item All transmitted signals are subjected to distance dependent path loss and small scale fading gain. %The small scale fading gains $\gpo, \gpt, \gs$ are modelled as frequency-flat fading. %Hence, the $\gpo, \gpt, \gs$ follow a unit-mean exponential distribution \cite{Tse05}.
+With no loss of generality, it is considered that the channel gains include distance dependent path loss and small scale gain. Moreover, the coherence time for the channel gain is considered to be greater than the frame duration\footnote{In the scenarios where the coherence time exceeds the frame duration, in such cases, the proposed characterization depicts a lower performance bound.}. 
+%Finally, we target short-term policy, we optimize the performance for each frame.
+%\item We consider that all transmitted signals are subjected to distance dependent path loss and the small scale fading gains. The coherence time for the channel gain is greater than the frame duration. %The small scale fading gains $\gpo, \gpt, \gs$ are modelled as frequency-flat fading. Hence, the $\gpo, \gpt, \gs$ follow a unit-mean exponential distribution \cite{Tse05}.
+%With no loss of generality, we consider that the channel gains include distance dependent path loss and small scale gain. %Finally, we target short-term policy, we optimize the performance for each frame.
+%\item To ensure mathematical tractability of the proposed model, we consider disjoint sets of samples for estimation and sensing for a certain frame. However, in practice, it is possible to utilize the samples used in the estimation phase for sensing purpose as well, which leads to an improvement in the detector's performance in terms of the number of samples utilized for sensing. 
+%\item As the estimation and sensing involves the summation of a large number of samples, where each sample is independent and follows $\ncchi2$ distribution, we apply Central limit theorem to approximate the $\ncchi2$ distribution as Gaussian ($\mathcal N$) distribution \cite{Tan08, Liang08}. The parameters of $\mathcal N$ distribution is computed by comparing its first two central moments with the $\ncchi2$.  
+\item Perfect knowledge of the noise power is assumend in the system, however, the uncertainty in noise power can be captured as a bounded interval \cite{Tan08}. Inserting this interval in the derived expressions, \tc{refer to} Section \ref{sec:ana}, the performance of the IS can be expressed in terms of the upper and the lower bounds. 
+\item For all degrees of freedom, $\ncchi2$ distribution can be approximated by Gamma distribution \cite{abramo}. The parameters of the Gamma distribution are obtained by matching the first two central moments to those of $\ncchi2$. 
+%\item Analog to \cite{Liang08, Juarez11, Sharkasi12, Pradhan15}, the proposed model stipulates the knowledge of the underlying hypothesis at the ST and the SR. With the knowledge of occurrence probabilities $\phz$ and $\pho$ and subsequently applying PU traffic models proposed in \cite{Wang09, Tang11, Zhao12}, it is possible to acquire this knowledge with high probability. 
+%Moreover, it is reasonable that the ST and the SR perform estimation independently. 
+%\item Considering a realistic situation, it is possible that SR might not accomplish estimation in each frame, under such circumstances, the ST utilizes the previous estimation value for the sensing-throughput analysis. %Hence, it is sufficient to incorporate $\test \fsam$ in the expression of the throughput.  
+\end{itemize}
+
+
+\section{Theoretical Analysis} \label{sec:ana}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\subsection*{Characterizing the performance parameters}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%The estimation of received power at the ST and interacting channels translate to the distortion in the performance parameters $\pd$ and $\trs$. 
+%While substituting estimated received power $\prcvd$ in (\ref{eq:pd}), a certain distortion is induced in the $\pd$. In order capture this distortion, it is essential to characterize its distribution function $\fpd$. 
+
+\subsection{Deterministic Channel} \label{ssec:det_th}
+At first, the performance of the proposed framework in context to the deterministic channel is evaluated.
+It is evident that the variation due to the imperfect channel knowledge translates to the variations of the performance parameters $\epd, \ecz$ and $\eco$, which are fundamental to sensing-throughput tradeoff. Below, these variations are captured by characterizing their cumulative distribution functions $\fpd$, $\fcz$ and $\fco$, respectively.  
+\begin{lemma} \label{lm:lem1}
+\normalfont
+The cumulative distribution function of $\epd$ is characterized as 
+\begin{align}
+\fpd(x) = 1 - \Gamma \left(\frac{\test \fsam}{2}, \frac{\test \tsen \fsam^2 \mu}{4 \prcvd \Gamma^{-1}(x, \frac{\tsen \fsam}{2}) } \right), 
+%\fpd(x) = 1 - \mathcal{Q} \left( {\frac{\mu}{ \left( \sqrt{\frac{2}{\tsen \fsam}} \mathcal{Q}^{-1}(x) + 1 \right) }}\Bigg/{ \sqrt{\frac{2}{\test \fsam}} \prcvd }  \right).
+%\dpd = \mu \frac{\exp \left( \frac{\left(\mathcal{Q}^{-1}(x)\right)^2}{2}  - \left( \frac{\frac{\lambda}{1 + \sqrt{\frac{2}{\tsen \fsam}} \mathcal{Q}^{-1}(x)} - \bprcvd}{ \bprcvd \sqrt{\frac{4}{\test \fsam}}}    \right)^2 \right)}{ \bprcvd \sqrt{\frac{2}{\tsen \fsam}} \left( 1 + \sqrt{\frac{2}{\test \fsam}} \mathcal{Q}^{-1}(x) \right)^2 }
+\label{eq:fpd}
+\end{align}
+where $\Gamma^{-1}(\cdot, \cdot)$ is inverse function of regularized upper incomplete Gamma function \cite{grad}.  
+\end{lemma} 
+\begin{IEEEproof}
+The cumulative distribution function of $\epd$ is defined as 
+\begin{align}
+\fpd(x) = \p(\epd \le x).
+\end{align}
+Using (\ref{eq:pd})
+\begin{align}
+\quad =  \p \left( \Gamma \left( \frac{\tsen \fsam}{2}, \frac{\tsen \fsam \mu}{2 \eprcvd} \right) \le x \right), 
+\end{align}
+\begin{align}
+\quad =  1- \p \left( \eprcvd \ge \frac{\mu \tsen \fsam}{2 {\Gamma}^{-1}\left( x, \frac{\tsen \fsam}{2} \right) } \right). \label{eq:lem1} 
+%\quad &=  \p \left( \mathcal{Q} \left( \frac{\mu - \eprcvd}{\sqrt{\frac{2}{\tsen \fsam} }} \right) \le x \right) \\ 
+%\quad &=  1- \p \left( \eprcvd \le \frac{\mu}{\mathcal{Q}^{-1}(x) \sqrt{\frac{2}{\tsen \fsam}}} \right) 
+\end{align}
+Replacing the cumulative distribution function of $\eprcvd$ in (\ref{eq:lem1}), an expression of $\fpd$ is obtained.
+\end{IEEEproof}
+%From (\ref{eq:fpd}), it is clearly observed that $\fpd$ depends on $\prcvd$, $\tsen$ and $\test$. %This insight will be discussed in later analysis.
+%Now, ST precludes the primary system by sustaining the $\pd$ above a certain desired level $\pdd$
+%\begin{align}
+%\pd(\mu, \tsen, \bprcvd) \ge \pdd. \label{eq:pdc}  
+%\end{align}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\subsection*{Distortion in throughput}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Due to the estimation of the interacting channels a certain amount of distortion is introduced in the throughput. 
+
+\captionsetup[subfigure]{position=top}
+\begin{figure}[!ht]
+\centering
+\subfloat[]{
+\input{figures/fig_CDF_pd_diff_test.tex}
+\begin{tikzpicture}[scale=1]
+\node[anchor=south west,inner sep=0] (image) at (0,0)
+{
+	\includegraphics[width = \figscale]{figures/fig_CDF_pd_diff_test}
+};
+\begin{scope}[x={(image.south east)},y={(image.north west)}]
+\draw[black,->] (0.62,0.3) -- (0.82,0.13);
+\node[draw=none, font=\scriptsize] at (0.57,0.35) {$\test \in \{1,5,10\} \SI{}{ms}$};
+%\draw[help lines,xstep=.1,ystep=.1] (0,0) grid (1,1);
+%\foreach \x in {0,1,...,9} { \node [anchor=north] at (\x/10,0) {0.\x}; }
+%\foreach \y in {0,1,...,9} { \node [anchor=east] at (0,\y/10) {0.\y}; }
+\end{scope}
+\end{tikzpicture} 
+\quad \label{fig:CDF_pd_test}
+}
+\hfil
+\subfloat[]{
+\input{figures/fig_CDF_pd_diff_tsen.tex}
+\begin{tikzpicture}[scale=1]
+\node[anchor=south west,inner sep=0] (image) at (0,0)
+{
+	\includegraphics[width = \figscale]{figures/fig_CDF_pd_diff_tsen}
+};
+\begin{scope}[x={(image.south east)},y={(image.north west)}]
+\draw[black,<-] (0.5,0.45) -- (0.68,0.21); 
+\node[draw=none, font=\scriptsize] at (0.73,0.16) {$\tsen \in \{1,5,10\} \SI{}{ms}$};
+%\draw[help lines,xstep=.1,ystep=.1] (0,0) grid (1,1);
+%\foreach \x in {0,1,...,9} { \node [anchor=north] at (\x/10,0) {0.\x}; }
+%\foreach \y in {0,1,...,9} { \node [anchor=east] at (0,\y/10) {0.\y}; }
+\end{scope}
+\end{tikzpicture}
+\quad
+\label{fig:CDF_pd_tsen}}
+\vspace{0.3cm}
+\caption{CDF of $\epd$ for different $\test$ and $\tsen$. (a) $\test \in \{1,5,10\} \SI{}{ms}$ and $\tsen = \SI{1}{ms}$, (b) $\test = \SI{1}{ms}$ and $\tsen \in \{1,5,10\} \SI{}{ms}$.}
+\label{fig:CDF_pd}
+%\vspace{-0.5cm}
+\end{figure}
+
+
+\begin{lemma} \label{lm:lem2}
+\normalfont
+The cumulative distribution function of $\ecz$ is defined as
+\begin{align}
+\fcz(x) &= \int\limits_{0}^{x} \dcz(t) dt, \label{eq:dis_C0} 
+\end{align}
+where
+\begin{align}
+\dcz(x) &= 2^x \ln 2 \frac{(2^x - 1)^{\as - 1}}{\Gamma(\as) \bs^{\as}} \exp\left(-\frac{2^x - 1}{\bs}\right),  \label{eq:den_C0}
+\end{align}
+and  
+\begin{align}
+\quad & \as = \frac{\left(\lambdas + |\hs|^2  \right)^2 }{ \lambdas \left(2 \lambdas + 4 |\hs|^2  \right)}   \text{  and  } \nonumber \\ \quad & \bs = \frac{\lambdas \left(2 \lambdas + 4  |\hs|^2 \right)}{\left( \lambdas + |\hs|^2  \right) } \label{eq:para_s}. 
+\end{align}
+\end{lemma} 
+\begin{IEEEproof}
+\tc{See Section \ref{ssec:lem2}}
+\end{IEEEproof}
+
+\begin{figure}[!ht]
+
+%% Add psfrag entries
+\input{figures/fig_CDF_C0_diff_SNR_s.tex}
+\centering
+\begin{tikzpicture}[scale=1]
+\node[anchor=south west,inner sep=0] (image) at (0,0)
+{
+\includegraphics[width= \figscale]{figures/fig_CDF_C0_diff_SNR_s}
+};
+\begin{scope}[x={(image.south east)},y={(image.north west)}]
+
+\draw (0.748,0.52) arc(-250:70:0.04 and 0.02);
+\node[draw,fill=gray!10,font=\scriptsize] (text1) at (0.55,0.50) {$\snrso = \SI{10}{dB}$};
+\draw[black, <-] (text1.east) -- (0.72,0.50);
+\draw (0.31,0.7) arc(-250:70:0.04 and 0.02);
+\node[draw,fill=gray!10,font=\scriptsize] (text2) at (0.55,0.68) {$\snrso = \SI{0}{dB}$};
+\draw[black, <-] (text2.west) -- (0.365,0.68);
+\draw (0.20,0.9) arc(-250:70:0.04 and 0.02);
+\node[draw,fill=gray!10,font=\scriptsize] (text3) at (0.55,0.88) {$\snrso = \SI{-10}{dB}$};
+\draw[black, <-] (text3.west) -- (0.26,0.88);
+
+%\draw[help lines,xstep=.1,ystep=.1] (0,0) grid (1,1);
+%\foreach \x in {0,1,...,9} { \node [anchor=north] at (\x/10,0) {0.\x}; }
+%\foreach \y in {0,1,...,9} { \node [anchor=east] at (0,\y/10) {0.\y}; }
+\end{scope}
+\end{tikzpicture}
+
+\caption{CDF of $\ecz$ for different values of $\snrso \in \{-10,0,10 \} \SI{}{dB}$.}
+\label{fig:CDF_C0}
+\vspace{-0.0cm}
+\end{figure}
+
+
+\begin{lemma} \label{lm:lem3}
+\normalfont
+The cumulative distribution function of $\eco$ is given by  
+\begin{align}
+\fco(x) &= \int\limits_{0}^{x} \dco(t) dt, \label{eq:dis_C1} 
+\end{align}
+where
+\begin{align}
+\dco(x) &= 2^x \ln 2 \frac{(2^x - 1)^{\as - 1} \Gamma(\as + \ap)}{\Gamma(\as) \Gamma(\ap) \bs^{\as} \bp^{\ap}} \left(\frac{1}{\bp} + \frac{2^x - 1}{\bs}\right)^{(\as + \ap)}, \label{eq:den_C1}
+\end{align}
+and 
+\begin{align}
+%\quad & \ap = \frac{N (1 + \snrp)^2}{(2 + 4 \snrp)} \text{  and  } \bp = \frac{\sigma^2 (2+ 4 \snrp)}{N (1 + \snrp)}, \label{eq:para_p} 
+\quad & \ap = \frac{\Kp}{2}  \text{  and  } \bp = \frac{2 \prcvdsr}{\npo \Kp}, \label{eq:para_p} 
+\end{align}
+where $\as$ and $\bs$ are defined in (\ref{eq:para_s}). 
+\end{lemma} 
+\begin{IEEEproof}
+See Section \ref{ssec:lem3}
+\end{IEEEproof}
+
+\begin{figure}[!ht]
+\centering
+\subfloat[]{
+\input{figures/fig_CDF_C1_diff_SNR_s_SNR_p2_10.tex}
+
+\begin{tikzpicture}[scale=1]
+\node[anchor=south west,inner sep=0] (image) at (0,0)
+{
+	\includegraphics[width = \figscale]{figures/fig_CDF_C1_diff_SNR_s_SNR_p2_10} 
+};
+\begin{scope}[x={(image.south east)},y={(image.north west)}]
+
+\draw (0.618,0.52) arc(-250:70:0.04 and 0.02);
+\node[draw,fill=gray!10,font=\scriptsize] (text1) at (0.41,0.50) {$\snrso = \SI{10}{dB}$};
+\draw[black, <-] (text1.east) -- (0.592,0.50);
+\draw (0.167,0.7) arc(-250:70:0.04 and 0.02);
+\node[draw,fill=gray!10,font=\scriptsize] (text2) at (0.41,0.68) {$\snrso = \SI{0}{dB}$};
+\draw[black, <-] (text2.west) -- (0.223,0.68);
+\draw (0.115,0.9) arc(-250:70:0.04 and 0.02);
+\node[draw,fill=gray!10,font=\scriptsize] (text3) at (0.41,0.88) {$\snrso = \SI{-10}{dB}$};
+\draw[black, <-] (text3.west) -- (0.175,0.88);
+
+
+%\draw[help lines,xstep=.1,ystep=.1] (0,0) grid (1,1);
+%\foreach \x in {0,1,...,9} { \node [anchor=north] at (\x/10,0) {0.\x}; }
+%\foreach \y in {0,1,...,9} { \node [anchor=east] at (0,\y/10) {0.\y}; }
+\end{scope}
+\end{tikzpicture}
+
+\label{fig:CDF_C1_s}}
+\hfil
+\subfloat[]{
+\input{figures/fig_CDF_C1_diff_SNR_p2_SNR_s_00.tex}
+\begin{tikzpicture}[scale=1]
+\node[anchor=south west,inner sep=0] (image) at (0,0)
+{
+	\includegraphics[width = \figscale]{figures/fig_CDF_C1_diff_SNR_p2_SNR_s_00} 
+};
+\begin{scope}[x={(image.south east)},y={(image.north west)}]
+
+\draw (0.34,0.52) arc(-250:70:0.04 and 0.02);
+\node[draw,fill=gray!10,font=\scriptsize] (text1) at (0.72,0.5) {$\snrpt = \SI{-10}{dB}$};
+\draw[black, <-] (text1.west) -- (0.395,0.5);
+\draw (0.287,0.7) arc(-250:70:0.04 and 0.02);
+\node[draw,fill=gray!10,font=\scriptsize] (text2) at (0.72,0.68) {$\snrpt = \SI{0}{dB}$};
+\draw[black, <-] (text2.west) -- (0.345,0.68);
+\draw (0.145,0.9) arc(-250:70:0.04 and 0.02);
+\node[draw,fill=gray!10,font=\scriptsize] (text3) at (0.72,0.88) {$\snrpt = \SI{10}{dB}$};
+\draw[black, <-] (text3.west) -- (0.205,0.88);
+
+%\draw[help lines,xstep=.1,ystep=.1] (0,0) grid (1,1);
+%\foreach \x in {0,1,...,9} { \node [anchor=north] at (\x/10,0) {0.\x}; }
+%\foreach \y in {0,1,...,9} { \node [anchor=east] at (0,\y/10) {0.\y}; }
+\end{scope}
+\end{tikzpicture}
+\label{fig:CDF_C1_p2}}
+\vspace{0.3cm}
+\caption{CDF of $\eco$ for different $\snrso$ and $\snrpt$. (a) $\snrso \in \{-10, 0, 10\} \SI{}{dB}$ and $\snrpt = \SI{10}{dB}$, (b) $\snrso = \SI{0}{dB}$ and $\snrpt \in \{-10, 0, 10\} \SI{}{dB}$.}
+\label{fig:CDF_C1}
+%\vspace{-0.5cm}
+\end{figure}
+The theoretical expressions of the distribution functions depicted in Lem- ma \ref{lm:lem1}, Lemma \ref{lm:lem2} and Lemma \ref{lm:lem3} are validated by means of simulations in \figurename~\ref{fig:CDF_pd}, \figurename~\ref{fig:CDF_C0} and \figurename~\ref{fig:CDF_C1}, respectively, with different choices of system parameters, these include $\test \in \{1,5,10\} \SI{}{ms}$, $\tsen = \{1,5,10\}$ $\SI{}{ms}$, $\snrso \in \{-10, 0, 10\} \SI{}{dB}$ and  $\snrpt \in \{-10, 0, 10\} \SI{}{dB}$. 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\subsection{Sensing-throughput tradeoff} \label{sec:st_ana}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\subsection{Estimation Model (EM)} 
+Next, a sensing-throughput tradeoff for the estimation model is established that includes the estimation time and incorporates variations in the performance parameter. Most importantly, to restrain the harmful interference at the PR due to the variations in the detection probability%Unless investigated, these distortions may result in harmful interference at the PR and/or reduction in the throughput at the SR. In this regard, we capture these distortions induced in the system, thereby characterizing the true performance of the IS. 
+, two new PU constraints at the PR, namely, an average constraint and an outage constraint on the detection probability are proposed. Based on these constraints, we characterize the sensing-throughput tradeoff for the IS. 
+
+
+%In order to sustain the effect of the distortion induced due to the estimation of the received power, an outage constraint on the detection probability is proposed. 
+%\subsection*{Average Constraint}
+%The average constraint on the detection probability is defined as
 %\begin{equation}
-%	\frac{N}{R} =  \frac{f_{\textnormal{VCO}}}{f_{\textnormal{ref}}} = [80 \dots 140] \;.
-%	\label{eq:frac_N_R}
+%\e{}{\pd} \le \pdd
+%\label{eq:AC}
 %\end{equation}
-%These are the upper and lower bounds for the ratio, shown in figure \ref{fig:f_out_pll}. The curves represent any possible value for the clock divider div. The remaining parameters can finally be chosen as follows:
+%The transformed sensing-throughput tradeoff subject to the average constraint is presented as
+%\begin{figure*}
+\begin{theorem} \label{th:th1}
+\normalfont
+Subject to an average constraint on $\pd$ at the PR, the sensing-throughput tradeoff for the IS that employs channel estimation corresponding to the deterministic behavior of the interacting channels, is given by  
+\begin{align}
+\trsac(\ttest, \ttsenac) &= \maxi_{\tc{\test}, \tsen} \e{\epd, \ecz, \eco}{\rs(\test, \tsen)}, \nonumber \\ 
+\quad &= \frac{T- \tsen}{T} \bigg[ \e{\ecz}{\ecz} (1 - \pfa) \phz + \nonumber \\ \quad & \e{\eco}{\eco} (1 - \e{\epd}{\epd}) \pho  \bigg], \label{eq:thr_AC} \\
+\text{s.t.} & \text{ }  \e{\epd}{\epd} \le \pdd, \label{eq:AC} \\
+\tc{\text{s.t.}} & \text{ }  \tc{0 < \test \le \tsen \le T,} \nonumber
+\end{align}
+\end{theorem} 
+% IEEE uses as a separator
+%\hrulefill
+% The spacer can be tweaked to stop underfull vboxes.
+%\vspace*{4pt}
+%\end{figure*}
+%In this regard, we analyze the performance of IS based on this constraint.
+where $\e{\epd}{\cdot}$ represents the expectation with respect to $\epd$, $\e{\epd, \ecz, \eco}{\cdot}$ denotes the expectation with respect to $\epd$, $\ecz$ and $\eco$. Unlike (\ref{eq:thr_id_con}), $\pdd$ in (\ref{eq:thr_AC}) represents the constraint on expected detection probability.
+
+\begin{IEEEproof} 
+\tc{See Section \ref{ssec:th1} 
+For simplification, the proof of Theorem \ref{th:th1} is included in the proof of Theorem \ref{th:th2}.} 
+\end{IEEEproof}
+%\subsection*{Outage Constraint}
+%Here, we consider the outage constraint on the detection probability is defined as 
 %\begin{equation}
-%	\frac{N}{R} =  \frac{P\cdot B+A}{R}
-%	\label{eq:frac_N_R_2}
+%P(\pd \le \pdd) \le \mpd
+%\label{eq:OC}
 %\end{equation}
-%With this clock distribution circuit any sampling frequency with high accuracy can be achieved. Therefore no more complex resampling algorithms have to be implemented on the \ac{FPGA} or on the \ac{DSP} to provide the system's base sampling rate.
-%
-%\begin{figure}
-%	\centering
-%		\includegraphics[width = 1.0\textwidth]{../kapitel03/figures/f_out_pll.pdf}
-%	\caption{Ratios between $N$ and $R$ over the target frequency for different divider values div}
-%	\label{fig:f_out_pll}
+
+\begin{theorem} \label{th:th2}
+\normalfont
+Subject to an outage constraint on $\pd$ at the PR, the sensing-throughput tradeoff for the IS that employs channel estimation corresponding to the deterministic behavior of the interacting channels, is given by  
+\begin{align}
+\trsoc(\ttest, \ttsenoc) &= \maxi_{\tc{\test}, \tsen} \e{\epd, \ecz, \eco}{\rs(\test, \tsen)}, \nonumber \\ 
+\quad &= \frac{T- \tsen}{T} \bigg[ \e{\ecz}{\ecz} (1 - \pfa) \phz + \nonumber \\ \quad & \e{\eco}{\eco} (1 - \e{\epd}{\epd}) \pho  \bigg], \label{eq:thr_OC} \\
+\text{s.t.} & \text{ }  \p(\epd \le \pdd) \le \mpd, \label{eq:OC} \\
+\tc{\text{s.t.}} & \text{ }  \tc{0 < \test \le \tsen \le T,} \nonumber
+\end{align}
+\end{theorem} 
+%In this regard, we analyze the performance of IS based on this constraint. 
+where $\mpd$ represents the outage constraint. 
+%\subsubsection*{Methodology of analysis}
+
+\begin{IEEEproof} 
+See Section \ref{ssec:th1}
+\end{IEEEproof} 
+\tc{In contrast to the ideal model, the sensing-throughput tradeoff investigated by the estimation model (refer to Theorems \ref{th:th1} and \ref{th:th2}) incorporates the imperfect channel knowledge, in this context, the performance characterization considered by the proposed framework are closer to the realistic situations.} 
+
+
+\begin{remark} \label{rem:rem1}
+\normalfont
+%Subsequently, following the variation of optimum expected throughput $\trs(\test,\ttsen)$ (optimized over the sensing time) against the estimation time, 
+Herein, based on the estimation model, a fundamental relation between estimation time (regulates the variation in the detection probability according to the PU constraint), sensing time (represents the detector performance) and achievable throughput is established, this relationship is characterized as \textit{estimation-sensing-throughput tradeoff}. Based on this tradeoff, a suitable estimation $\test = \ttest$ and a suitable sensing time $\tsen = \ttsen$ that attains a maximum achievable throughput $\trs(\ttest,\ttsen)$ for the IS is determined.  
+\end{remark}
+
+\begin{coro} \label{cor:cor1}
+\normalfont
+\tc{Theorems \ref{th:th1} and \ref{th:th2} consider the optimization of the average throughput to incorporate the effect of variations due to channels estimation, and subsequently determine the suitable sensing and the suitable estimation time. Here, an alternative approach to the optimization problem described in (\ref{eq:thr_id}) is investigated to capture these variations, whereby for a certain estimation time $\test$, the suitable sensing time subject to the average constraint is determined as} 
+\tc{
+\begin{align}
+\ttsen &= \argmaxi_{\tsen} \rs(\test, \tsen), \label{eq:C_sen_AC} \\ 
+\quad &= \frac{T- \tsen}{T} \bigg[ \ecz (1 - \pfa) \phz + \eco (1 - \epd) \pho  \bigg], \nonumber \\
+\text{s.t.} & \text{ }  \e{\epd}{\epd} \le \pdd, \nonumber \\
+\tc{\text{s.t.}} & \text{ }  \tc{0 < \test \le \tsen \le T.} \nonumber
+\end{align}
+}
+\tc{
+Similarly, the suitable sensing time subject to the outage constraint is determined as}
+\tc{
+\begin{align}
+\ttsen &= \argmaxi_{\tsen} \rs(\test, \tsen), \label{eq:C_sen_OC} \\ 
+\quad &= \frac{T- \tsen}{T} \bigg[ \ecz (1 - \pfa) \phz + \eco (1 - \epd) \pho  \bigg], \nonumber \\
+\text{s.t.} & \text{ }   \p(\epd \le \pdd) \le \mpd, \nonumber \\
+\tc{\text{s.t.}} & \text{ }  \tc{0 < \test \le \tsen \le T.} \nonumber
+\end{align}
+}
+In contrast to (\ref{eq:thr_AC}) and (\ref{eq:thr_OC}), the suitable sensing time evaluated in (\ref{eq:C_sen_AC}) and (\ref{eq:C_sen_OC}) entails the variations due to channel estimation from the performance parameters ($\epd, \ecz, \eco$). Hence, the secondary throughput subject to the average and the outage constraints captures the variations in the suitable sensing time and the performance parameters is determined as 
+\begin{align}
+\e{\epd, \ecz, \eco, \ttsen}{\rs(\test, \ttsen)} \label{eq:C_thr},
+\end{align}
+where $\e{\epd, \ecz, \eco, \ttsen}{\cdot}$ corresponds to an expectation over $\epd, \ecz, \eco, \ttsen$.
+Following Remark \ref{rem:rem1}, the average throughput, defined in (\ref{eq:C_thr}), are further optimized over the estimation time 
+\begin{align}
+\trs(\ttest, \ttsenac) &= \maxi_{\test} \e{\epd, \ecz, \eco, \ttsen}{\rs(\test, \ttsen)} \label{eq:C_thr_AC}. 
+\end{align}
+In this way, an estimation-sensing-throughput tradeoff for the alternative approach is established that determines the suitable estimation time.    
+\end{coro}
+\begin{remark} \label{rm:rem2} 
+\normalfont
+Complementing the analysis in \cite{Liang08}, it is complicated to obtain a closed-form expression of $\ttsen$, thereby rendering the analytical tractability of its cumulative distribution function difficult. In view of this, the performance of the alternative approach is captured by means of simulations.
+\end{remark} 
+%Replacing the expression of $\pd$ from (\ref{eq:pd}) in (\ref{eq:OC}) by including gives
+%\begin{align}
+%P\left( \mathcal{Q}\left( \frac{\mu - \prcvd}{ \sqrt{\frac{2}{\tsen \fsam}} \prcvd} \right)  \le \pdd \right) \le \mpd, \nonumber \\
+%\intertext{Rearranging,}
+%P\left( \prcvd \ge \frac{1}{ \sqrt{\frac{2}{\tsen \fsam}} \mathcal{Q}^{-1}(\pdd)}  + 1 \right)  \le \mpd, \nonumber
+%\intertext{Inserting the characterization of $\prcvd$ depicted in (\ref{eq:CLT}) and rearranging results in} 
+%\mu(\tsen, \test) = \frac{ \left( \mathcal{Q}^{-1}(\mpd) \sqrt{\frac{2}{\test \fsam}} + 1 \right) \bprcvd}{ \frac{1}{ \sqrt{\frac{2}{\tsen \fsam}} \mathcal{Q}^{-1}(\pdd)}  + 1 }. \label{eq:lambda_EM} 
+%\end{align} 
+%Good news it that the $\mu$ is not a random variable. 
+
+\subsection{Random Channel} \label{ssec:ran_th}
+In this section, the purpose is to extend the performance analysis of the proposed framework, where the interacting channels encounter quasi-static block fading. In this view, the channel gains $\phpo$, $\phpt$ and $\phs$ according to Nakagami-$m$ fading model are characterized. As a consequence, the power gains $\phpo$, $\phpt$ and $\phs$ follow a Gamma distribution \cite{Goldsmith05}, whose corresponding cumulative distribution functions are defined as
+\begin{align}
+\fphpo(x) = 1 - \Gamma\left(\mpo, \frac{\mpo x}{\phpo}\right), \label{eq:dis_phpo}\\
+\fphpt(x) = 1 - \Gamma\left(\mpt, \frac{\mpt x}{\phpt}\right), \label{eq:dis_pght}\\  
+\fphs(x) = 1 - \Gamma\left(\ms , \frac{\ms x}{\phs}\right), \label{eq:dis_phs}
+\end{align}
+where $\mpo$, $\mpt$ and $\ms$ represent the Nakagami-$m$ parameter for $\phpo$, $\phpt$ and $\phs$, respectively, and $\Gamma(\cdot, \cdot)$ is a regularized upper-incomplete Gamma function \cite{abramo}.
+
+\subsubsection{Perfect Channel Knowledge}
+First a scenario (also represented as ideal model) that precludes channel estimation is considered, in other words, the ST assumes the perfect knowledge of the interacting channels. In this context, the ST encounters variations caused due to the channel fading only. These variations translate to the variations in the detection probability, more specifically those variations that do not meet the desired detection probability $(\pdd)$ results in harmful interference at the PR. To overcome this issue, \cite{Juarez11} proposed to employ an outage constraint over $\pd$, given as
+\begin{align}
+\p( \pd \le \pdd) \le \mpd, \label{eq:OC_i}
+\end{align}
+where $\mpd$ represents the outage constraint. Using (\ref{eq:OC_i}), the ST is able to regulate harmful interference at the PR. As a result, a decision threshold ($\mu$) on the $\prcvd$ is obtained such that it satisfies the constraint defined (\ref{eq:OC_i}) for a certain value of $\tsen$.
+
+Besides the interference at the PR, the throughput at the SR is given by %(refer to (\ref{eq:thr_i}), see top of the next page),
+%\begin{figure*}
+\begin{align}
+%\hspace{-8mm}
+\rs(\tau) &= \frac{T - \tsen}{T} \mathbb{E}_{\phs \phpt} \bigg[ \phz (1 - \pfa) \smash[b]{\overbrace{\log_2 \bigg( 1 + \frac{\phs \ptranst}{\npo} \bigg)}^{\cz}} + \nonumber \\ & \pho (1 - \pd) \smash[b]{\overbrace{\log_2 \bigg( 1 + \frac{\phs \ptranst}{\phpt \ptranpt + \npo} \bigg)}^{\co}} \bigg], \label{eq:thr_i} 
+\end{align}
+%\hrulefill
 %\end{figure}
+where $\cz$ and $\co$ correspond to the data rate at the SR with and without interference from the PT. %Where the signal to noise ratio for the link PT-ST and ST-SR is defined as $\snrrcvd = \frac{\prcvd}{\npo} - 1$ and $\snrso = \frac{\phs \ptranst}{\npo}$, and the interference to noise ratio for the link PT-SR is given by $\snrpt = \frac{\prcvdsr}{\npo} - 1$. %It is worth noticing the fact that the authors in \cite{Juarez11} did not consider fading over the access and interference channels.
+Since the detection probability and the secondary throughput are related through the sensing time, this relationship is exploited to determine a sensing-throughput tradeoff for the case with the perfect channel estimation.
+\begin{theorem} \label{th:th3}
+\normalfont
+Subject to an outage constraint on $\pd$ at the PR, the sensing-throughput tradeoff for the IS that considers perfect channel estimation and random behaviour of the interacting channels, is given by
+\begin{align}
+\trsoc(\ttest, \ttsenoc) &= \maxi_{\tc{\test}, \tsen} \e{\pd, \phs, \phpt}{\rs(\tsen)}, \label{eq:STT_i} \\
+\text{s.t.} & \text{ }  (\ref{eq:OC_i}) \nonumber \\ 
+\text{s.t.} & \text{ }  0 < \tsen \le T. \nonumber
+\end{align}
+\end{theorem}
+\begin{remark} \label{rem:rem1}
+\normalfont
+It is worth noticing the fact the authors in \cite{Juarez11} applied channel fading only to the sensing channel, however, according to Theorem \ref{th:th3}, here, a more practical approach is considered, whereby, the channel fading also over the access and the interference channels is employed. Since the perfect channel knowledge scenario is employed to benchmark the performance of those ISs that employ channel estimation (discussed later in Section \ref{ssec:ice}), the parameters such as threshold (which is used for evaluating $\pd$ and $\pfa$) and the expected throughput are evaluated numerically.%\footnote{In our future work, we plan to obtain analytical expressions of the aforementioned parameters.}.
+\end{remark}
+
+\subsubsection{Imperfect Channel Knowledge} \label{ssec:ice}
+%At this stage, it is clear that channel fading causes harmful interference at PR. Next, the estimation of the involved channels performed by considering the random behaviour of the involved channels (or channel fading). 
+Now, the estimation of the interacting channels in context to the channel fading is considered. To incorporate channel estimation, the similar frame structure depicted in \figurename~\ref{fig:fs} is employed. In contrast to the deterministic channel, here the IS incorporates variations in the performance parameters ($\pd$ and $\rs$) due to the channel estimation and the channel fading. 
+%Now, to facilitate the hardware complexity and the versatility to unknown PU signals (as proposed by the energy detector) requirements at the secondary system, we propose to employ received power-based estimation $(\eprcvd, \eprcvdsr)$ for the sensing and the interference channel at the ST and the SR and the pilot-based estimation $\ephs$ for the access channel. 
+The characterization of the estimated parameters $\eprcvd$ and $\eprcvdsr$ for the sensing and the interference channel, and $\ephs$ for the access channel in terms of their cdfs, for the deterministic case, has been determined in Section \ref{ssec:det_th}. In addition, the estimated parameters are used to estimated the performance parameters $\epd$, $\ecz$ and $\eco$, their cdfs $\fpd$, $\fcz$ and $\fco$ are characterized in Lemma 1, Lemma 2 and Lemma 3 of Section \ref{ssec:det_th}.
+
+The outage constraint that jointly captures the variations due to channel estimation and channel fading, which may result in harmful interference at the PR, is defined as 
+%In order to protect the PR against harmful interference that arieses due to variations in context to channel estimation and channel fading, an outage constraint that jointly captures these variations is defined as
+\begin{align}
+\smash[b]{\underbrace{\mathbb{E}_{\phpo}{\smash[b]{\overbrace{[\p( \pd \le \pdd)]}^{\text{Channel Estimation}}}}}_{\text{Channel fading}}} &\le \mpd, \label{eq:OC_p} \\[-0.1em] \nonumber 
+\end{align}
+where $\e{\phpo}{\cdot}$ represents the expectation over the sensing channel. 
+
+The variations due to the channel estimation only ($\p(\pd \le \pdd)$) are characterized in terms of cdf in (\ref{eq:fpd}.
+%\begin{align}
+%\fpd(x) = 1 - \Gamma \left( \frac{\tsen \fsam}{2}, \frac{\tsen \fsam}{4 \prcvd \Gamma^{-1}\left(x, \frac{\tsen \fsam}{2} \right)} \right), \label{eq:dis_pd}
+%\end{align}
+%where $\Gamma^{-1}(\cdot)$ represents the inverse function of regularized upper incomplete Gamma function. 
+It is worth noticing that $\e{\phpo}{\cdot}$ in (\ref{eq:OC_p}) acts on $\prcvd$, as $\prcvd$ incorporates the variations due to fading in the sensing channel $\phpo$.
+
+Next, the expression of the secondary throughput for the random channel is characterized as 
+\begin{align}
+\rs(\test, \tsen) &= \mathbb{E}_{\epd,\ecz,\eco,\phpo, \phs, \phpt} \bigg[ \frac{T - \tsen}{T} \times \nonumber \\ & \bigg( \phz (1 - \pfa) \ecz + \pho (1 -\epd) \eco \bigg) \bigg] \label{eq:thr_p} \\
+  \quad &= \frac{T - \tsen}{T} \bigg[ \phz (1 - \pfa) \e{\eco, \phs}{\eco} + \nonumber \\ & \pho \e{\epd, \phpo}{\epd} \e{\eco, \phs, \phpt}{\eco} \bigg] \nonumber 
+\end{align}
+where $\e{\pd,\ecz,\eco,\phpo, \phs, \phpt}{\cdot}$ corresponds to an expectation over the estimated parameters $\left( \epd, \ecz, \eco \right)$ and the channel fading $\big(\phpo, \phs,$ $\phpt \big)$. Please note that the channel fading is included in the system parameters $\epd$, $\ecz$ and $\eco$, refer to (\ref{eq:thr_i}).
+
+\begin{theorem} \label{th:th4}
+\normalfont
+Subject to an outage constraint on $\pd$ at the PR, the sensing-throughput tradeoff for the IS that considers imperfect channel estimation and random behaviour of the interacting channels, is given by
+\begin{align}
+\trsoc(\ttest, \ttsen) &= \maxi_{\tc{\test}, \tsen} \e{\pd, \ecz, \eco, \phpo, \phs, \phpt}{\rs(\test, \tsen)}, \nonumber \\ 
+\text{s.t.} & \text{ }  (\ref{eq:OC_p}),  \\
+\tc{\text{s.t.}} & \text{ }  \tc{0 < \test \le \tsen \le T.} \nonumber
+\end{align}
+\end{theorem}
+%In this regard, we analyze the performance of IS based on this constraint. 
+%where $\mpd$ represents the outage constraint.  
+%\subsubsection*{Methodology of analysis}
+
+\begin{IEEEproof}
+In order to solve the constrained optimization problem, the following approach is considered. First the underlying constraint (\ref{eq:OC_p}) is exploited to determine the decision threshold $\mu$. Since it is complicated to obtain a closed form expression of $\mu$, in this regard, its value numerically is obtained.
+
+Using $\mu$ to determine $\epd$ and $\pfa$ and evaluating an expectation over $\epd, \ecz, \eco, \phpo, \phs, \phpt$, the expected throughput as function of estimation and sensing time is determined. Finally, this function is used to determine the suitable estimation time ($\ttest$) and sensing time ($\ttsen$).
+\end{IEEEproof}
+\tc{In contrast to the ideal model (refer to Theorem \ref{th:th3}), the sensing-throughput tradeoff investigated by the proposed approach (refer to Theorem \ref{th:th4}) incorporates the imperfect channel knowledge, in this context, the performance characterization considered by the proposed framework are closer to the realistic situations.}
+
+
+\begin{remark} \label{rem:rem2}
+%Subsequently, following the variation of optimum expected throughput $\trs(\test,\ttsen)$ (optimized over the sensing time) against the estimation time, 
+\normalfont
+Similar to the deterministic channel, the expression $\rs(\test, \tsen)$ derived by the estimation model (referred as the proposed approach) establishes a fundamental relation between estimation time, sensing time and achievable throughput  characterized as estimation-sensing-throughput tradeoff for the random channel that incorporates channel estimation. Based on this tradeoff, a suitable estimation $\test = \ttest$ and a sensing time $\tsen = \ttsen$ that attains a maximum achievable throughput $\trs(\ttest,\ttsen)$ for the IS is determined.
+\end{remark}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Numerical Results} \label{sec:num_ana}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Here, the performance of the IS based on the proposed approach is investigated. To accomplish this: (i) the simulations are performed to validate the expressions obtained, (ii) the performance loss incurred due to the channel estimation is analyzed. In this regard, the ideal model is considered to benchmark and evaluate the performance loss, (iii) the mathematical justification to the considered approximations is established. Although the expressions derived in this chapter depicting the sensing-throughput analysis are general and applicable to all CR systems, the parameters are selected in such a way that they closely relate to the deployment scenario described in \figurename~{\ref{fig:scenario}. Unless stated explicitly, the choice of the parameters given in Table \ref{tb:tb2} is considered for the analysis. 
+\begin{table}
+%\vspace{-0.4cm}
+\renewcommand{\arraystretch}{1.4}
+\caption{Parameters for Numerical Analysis}
+%\vspace{-0.6cm}
+\label{tb:tb2}
+\centering
+%\scriptsize{
+\begin{tabular}{c||c}
+\hline
+\bfseries Parameter & \bfseries Value \\
+\hline\hline
+$\fsam$  & $\SI{1}{MHz}$ \\ \hline
+$\phpo, \phpt$ & $\SI{-100}{dB}$ \\ \hline
+$\phs$ & $\SI{-80}{dB}$ \\ \hline 
+$T$ & $\SI{100}{ms}$ \\ \hline 
+$\pdd$ & 0.9 \\ \hline 
+$\mpd$ & $0.05$ \\ \hline 
+$\npo$ & $\SI{-100}{dBm}$ \\ \hline
+$\snrrcvd$ & $\SI{-10}{dB}$ \\ \hline
+$\snrpt$ & $\SI{-10}{dB}$ \\ \hline
+$\snrso$ & $\SI{10}{dB}$ \\ \hline
+$\spo = \ptranpt$ & $-\SI{10}{dBm}$ \\ \hline
+$\ptranst$ & $-\SI{10}{dBm}$ \\ \hline
+$\pho = 1 - \phz$ & 0.2 \\ \hline
+$\test$ & $\SI{5}{ms}$ \\ \hline
+$\Ks$ & 10 \\ \hline 
+$\Kp$ & $1000$ \\ \hline
+\end{tabular}
+%}
+\end{table}
+%Here, we analyze the performance of the IS in terms of sensing-throughput tradoff subject to new interference constraints.  
+\subsection{Deterministic Channel} %\label{ssec:ran_na}
+
+\begin{figure}[!ht]
+\centering
+%% Add psfrag entries
+\input{figures/fig_thr_sen_time_tradeoff_AWGN.tex}
+
+\begin{tikzpicture}[scale=1]
+\node[anchor=south west,inner sep=0] (image) at (0,0)
+{
+        \includegraphics[width= \figscale]{figures/fig_thr_sen_time_tradeoff_AWGN}
+};
+\begin{scope}[x={(image.south east)},y={(image.north west)}]
+
+%\node[draw,fill=gray!10,font=\small] (senid) at (0.232,0.83) {$\trs$};
+%\draw[black, ->] (senid.north) -- (0.232,0.93);
+%\node[draw,fill=gray!10,font=\small] (senac) at (0.378,0.882) {$\trsac$};
+%\draw[black, ->] (senac.east) -- (0.478,0.882);
+%\node[draw,fill=gray!10,font=\small] (senoc) at (0.614,0.733) {$\trsoc$};
+%\draw[black, ->] (senoc.north) -- (0.614,0.833);
+
+\draw[black,thick,<->] (0.088,0.1) --  node[above, font=\small] {$\test$} (0.512,0.1);
+
+%\draw[help lines,xstep=.1,ystep=.1] (0,0) grid (1,1);
+%\foreach \x in {0,1,...,9} { \node [anchor=north] at (\x/10,0) {0.\x}; }
+%\foreach \y in {0,1,...,9} { \node [anchor=east] at (0,\y/10) {0.\y}; }
+\end{scope}
+\end{tikzpicture}
+\caption{\tc{Sensing-throughput tradeoff for the ideal model (IM) and estimation model (EM), $\snrrcvd = \SI{-10}{dB}$, $\test = \SI{5}{ms}$ and $\mpd = 0.05$.}}
+\label{fig:ST_gen}
+\vspace{-0.0cm}
+\end{figure}
+
+At first, the performance of the IS in terms of sensing-throughput tradeoff corresponding to the ideal model (IM) and estimation model (EM) for a fixed $\test = \SI{5}{ms}$ is analyzed, \tc{refer to} \figurename~\ref{fig:ST_gen}. In contrast to constraint on $\pd$ for the ideal model, the average constraint (EM-AC) and the outage constraint (EM-OC) for the proposed estimation model are employed. With the inclusion of received power based estimation in the frame structure, the ST achieves no throughput at the SR for the interval $\test$. For the given cases, namely, IM, EM-AC and EM-OC, a suitable sensing time that results in a maximum throughput $\trs(\test = \SI{5}{ms},\ttsen)$ is determined. Apart from that, a performance degradation is depicted in terms of the achievable throughput, refer to \figurename~\ref{fig:ST_gen}. For $\mpd = 0.05$, it is observed that the outage constraint is more sensitive to the performance loss in comparison to average constraint. It is clear that the analysis illustrated in \figurename~\ref{fig:ST_gen} is obtained for a certain choice of system parameters, particularly $\snrrcvd = -\SI{10}{dB}$, $\test = \SI{5}{ms}$ and $\mpd = 0.05$. To acquire more insights, the effect of variation of these parameters on the performance of the IS is considered, subsequently. 
+
+\begin{figure}[!ht]
+
+%% Add psfrag entries
+\input{figures/fig_opt_thr_vs_SNR_AWGN.tex}
+\centering
+\includegraphics[width= \figscale]{figures/fig_opt_thr_vs_SNR_AWGN}
+\caption{\tc{Achievable secondary throughput versus $\snrrcvd$ with $\tau\sub{est} = \SI{5}{ms}$ for the deterministic channel.}}
+\label{fig:optT_snr}
+\vspace{-0.7cm}
+\end{figure}
+
+Hereafter, the theoretical expressions are considered for the analysis, in addition, the suitable sensing time is chosen to be as operation point. Next, the variation in the achievable throughput $\rs(\test, \ttsen)$ against the received signal to noise ratio $\snrrcvd$ at the ST with $\test = \SI{5}{ms}$, \tc{refer to} \figurename~\ref{fig:optT_snr}. For $\snrrcvd < -\SI{10}{dB}$, the estimation model incurs a significant performance loss. This clearly reveals that the ideal model overestimates the performance of IS. \tc{From the previous discussion, it is concluded that the inclusion of the average and the outage constraints (depicted by the proposed framework) preclude the excessive interference at the PR arising due to channel estimation without considerably degrading the performance of the IS.} 
+
+
+\begin{figure}[!ht]
+\centering
+\subfloat[]{
+%% Add psfrag entries
+\input{figures/fig_opt_thr_vs_est_time_sen_time_ac_AWGN.tex}
+\centering
+\begin{tikzpicture}[scale=1]
+\node[anchor=south west,inner sep=0] (image) at (0,0)
+{
+\includegraphics[width= \figscale]{figures/fig_opt_thr_vs_est_time_sen_time_ac_AWGN}
+};
+\begin{scope}[x={(image.south east)},y={(image.north west)}]
+%\draw[black,->] (0.6,0.44) node[above=0.0,  font=\scriptsize] {$\mpd \in \{0.05,0.10,0.15\}$} -- (0.56,0.33);
+\draw[black,->] (0.389,0.83) -- (0.389,0.656);
+\node[draw=none, font=\scriptsize] at (0.389, 0.86) {$\rs(\ttest, \ttsen)$};
+ 
+%\draw[help lines,xstep=.1,ystep=.1] (0,0) grid (1,1);
+%\foreach \x in {0,1,...,9} { \node [anchor=north] at (\x/10,0) {0.\x}; }
+%\foreach \y in {0,1,...,9} { \node [anchor=east] at (0,\y/10) {0.\y}; }
+\end{scope}
+\end{tikzpicture}
+
+\label{fig:EST_ac}}
+\hfil
+\subfloat[]{
+%% Add psfrag entries
+\input{figures/fig_opt_thr_vs_est_time_sen_time_oc_AWGN.tex}
+\centering
+\begin{tikzpicture}[scale=1]
+\node[anchor=south west,inner sep=0] (image) at (0,0)
+{
+\includegraphics[width= \figscale]{figures/fig_opt_thr_vs_est_time_sen_time_oc_AWGN}
+};
+\begin{scope}[x={(image.south east)},y={(image.north west)}]
+%\draw[black,->] (0.6,0.44) node[above=0.0,  font=\scriptsize] {$\mpd \in \{0.05,0.10,0.15\}$} -- (0.56,0.33);
+\draw[black,->] (0.353,0.83) -- (0.353,0.699);
+\node[draw=none, font=\scriptsize] at (0.353, 0.86) {$\rs(\ttest, \ttsen)$};
+ 
+%\draw[help lines,xstep=.1,ystep=.1] (0,0) grid (1,1);
+%\foreach \x in {0,1,...,9} { \node [anchor=north] at (\x/10,0) {0.\x}; }
+%\foreach \y in {0,1,...,9} { \node [anchor=east] at (0,\y/10) {0.\y}; }
+\end{scope}
+\end{tikzpicture}
+\label{fig:EST_oc}}
+\vspace{4mm}
+\caption{\tc{Estimation-sensing-throughput tradeoff for the estimation model for (a) average constraint and (b) outage constraint with $\mpd = 0.05$.}}
+\label{fig:EST}
+%\vspace{-0.7cm}
+\end{figure}
+
+
+Upon maximizing the secondary throughput, it is interesting to analyze the variation of the achievable throughput with the estimation time. Corresponding to the estimation model, \figurename~\ref{fig:EST} illustrates a tradeoff among the estimation time, the sensing time and the secondary throughput, \tc{refer to} Remark \ref{rem:rem1}. \tc{From \figurename~\ref{fig:EST}, it can be noticed that the function $\rs(\test, \tsen)$ is well-behaved in the region $0 < \test \le \tsen \le T$ and consists of a global maximum. This tradeoff depicted by the proposed framework, presented in \figurename~\ref{fig:optT_test}, can be explained from the fact that low values of estimation time result in large variations in $\epd$.} To counteract and satisfy the average and the outage constraints, the corresponding thresholds shift to a lower value. This causes an increase in $\pfa$, thereby increasing the sensing-throughput curvature. As a result, the suitable sensing time is obtained at a higher value. However, beyond a certain value ($\ttest$), a further increase in estimation time slightly contributes to performance improvement and largely consumes the time resources. As a consequence to the estimation-sensing-throughput tradeoff, the suitable estimation time that yields an achievable throughput $\trs(\ttest,\ttsen)$ is determined. 
+
+\begin{figure}[!ht]
+
+%% Add psfrag entries
+\input{figures/fig_opt_thr_vs_est_time_diff_mu_AWGN.tex}
+\centering
+\begin{tikzpicture}[scale=1]
+\node[anchor=south west,inner sep=0] (image) at (0,0)
+{
+\includegraphics[width= \figscale]{figures/fig_opt_thr_vs_est_time_diff_mu_AWGN}
+};
+\begin{scope}[x={(image.south east)},y={(image.north west)}]
+\draw[black,->] (0.25,0.64) -- (0.18,0.84);
+\node[draw=none, font=\scriptsize] at (0.35, 0.58) {$\mpd \in \{0.05,0.10,0.15\}$};
+ 
+%\draw[black,->] (0.25,0.6) node[below =12.0,right=-20.0,  font=\scriptsize] {$\mpd \in \{0.05,0.10,0.15\}$} -- (0.18,0.8);
+
+%\draw[help lines,xstep=.1,ystep=.1] (0,0) grid (1,1);
+%\foreach \x in {0,1,...,9} { \node [anchor=north] at (\x/10,0) {0.\x}; }
+%\foreach \y in {0,1,...,9} { \node [anchor=east] at (0,\y/10) {0.\y}; }
+\end{scope}
+\end{tikzpicture}
+
+\caption{\tc{Estimation-sensing-throughput tradeoff for the average and the outage constraints with $\snrrcvd = \SI{-10}{dB}$, where the throughput is maximized over the sensing time, $\trs(\test,\ttsen)$. The estimation-sensing-throughput tradeoff is utilized to determine a suitable estimation time $\ttest$ that maximizes the throughput, $\trs(\ttest,\ttsen)$.}}
+\label{fig:optT_test}
+%\vspace{-0.7cm}
+\end{figure}
+
+Besides that, the variation in the achievable throughput for different values of the outage constraint is illustrated, refer to \figurename~\ref{fig:optT_test}. It is observed that for the selected choice of $\mpd$, the outage constraint is severe as compared to the average constraint, hence, results in a lower throughput or achieves greater performance degradation. Thus, depending on the nature of policy (aggressive or conservative) followed by the regulatory bodies towards the interference at the primary system, it is possible to define $\mpd$ accordingly during the system design. \tc{Moreover, it is observed that the alternative approach proposed in Corollary \ref{cor:cor1} does not present any noticeable performance difference depicted in terms of the achievable throughput corresponding to the one characterized in the Theorems \ref{th:th1} and \ref{th:th2}. 
+}
+
+\begin{figure}[!ht]
+\centering
+%\subfloat[]{
+\input{figures/fig_P_d_vs_est_time_diff_mu_AWGN.tex}
+\begin{tikzpicture}[scale=1]
+\node[anchor=south west,inner sep=0] (image) at (0,0)
+{
+\includegraphics[width = \figscale]{figures/fig_P_d_vs_est_time_diff_mu_AWGN} 
+};
+\begin{scope}[x={(image.south east)},y={(image.north west)}]
+\draw[black,->] (0.25,0.68) -- (0.14,0.92);
+\node[draw=none,font=\scriptsize] at (0.25,0.62) {$\mpd \in \{0.05,0.10,0.15\}$}; 
+
+%\draw[help lines,xstep=.1,ystep=.1] (0,0) grid (1,1);
+%\foreach \x in {0,1,...,9} { \node [anchor=north] at (\x/10,0) {0.\x}; }
+%\foreach \y in {0,1,...,9} { \node [anchor=east] at (0,\y/10) {0.\y}; }
+\end{scope}
+\end{tikzpicture}
+\caption{Variation of $\e{\pd}{\pd}$ versus the $\test$, where the secondary throughput is maximized over the sensing time, $\trs(\test,\ttsen)$.} 
+\label{fig:pd_test}%}
+\end{figure}
+
+%\hfil
+%\subfloat[]{
+\begin{figure}
+\centering
+\input{figures/fig_P_f_vs_est_time_diff_mu_AWGN.tex}
+\begin{tikzpicture}[scale=1]
+\node[anchor=south west,inner sep=0] (image) at (0,0)
+{
+\includegraphics[width = \figscale]{figures/fig_P_f_vs_est_time_diff_mu_AWGN} 
+};
+\begin{scope}[x={(image.south east)},y={(image.north west)}]
+%\draw[black,->] (0.6,0.44) node[above=0.0,  font=\scriptsize] {$\mpd \in \{0.05,0.10,0.15\}$} -- (0.56,0.33);
+\draw[black,->] (0.75,0.47) -- (0.6,0.33);
+\node[draw=none, rotate=-50, font=\scriptsize] at (0.78,0.5) {$\mpd \in \{0.05,0.10,0.15\}$}; 
+
+%\draw[help lines,xstep=.1,ystep=.1] (0,0) grid (1,1);
+%\foreach \x in {0,1,...,9} { \node [anchor=north] at (\x/10,0) {0.\x}; }
+%\foreach \y in {0,1,...,9} { \node [anchor=east] at (0,\y/10) {0.\y}; }
+\end{scope}
+\end{tikzpicture}
+
+%\vspace{0.3cm}
+\caption{Variation of $\pfa$ versus the $\test$, where the secondary throughput is maximized over the sensing time, $\trs(\test,\ttsen)$.} 
+\label{fig:pf_tsen}%}
+%\label{fig:ROC_test}
+%\vspace{-0.9cm}
+\end{figure}
+
+To procure further insights, the variations of expected $\pd$ and $\pfa$ with the estimation time are studied. From \figurename~\ref{fig:pd_test}, it is observed that the expected $\pd$ corresponding to the outage constraint is strictly above the desired level $\pdd$ for all values of estimation time, however, for lower values of estimation time, this margin reduces. This is based on the fact that lower estimation time shifts the probability mass of $\pd$, to a lower value, \tc{refer to} \figurename~\ref{fig:CDF_pd_test}. %On the other side, \figurename~\ref{fig:pf_tsen} illustrates $\pfa$, thereby revealing the performance loss incurred by the IS for the mentioned cases. Clearly, for $\test < \SI{3}{ms}$ depicts a large deviation from the ideal scenario. 
+%Besides that, based on the previous discussion, it was analyzed that $\pfa$ accounts for a large contribution to the throughput. 
+\tc{According to \figurename~\ref{fig:pf_tsen}, the system notices a considerable improvement in $\pfa$ at small values of $\test$, which saturates for a certain period and falls drastically beyond a certain value. To understand this, it is important to study the dynamics between the estimation and the sensing time. Low $\test$ increases the variations in the detection probability, these variations are compensated by an increase in the suitable sensing time, and vice versa. The performance improves until a maximum ($\ttest$, $\ttsen$) is reached, beyond this, the time resources (allocated in terms of the sensing and the estimation time) contribute more in improving the detector's performance (in terms of $\pfa$ as $\pd$ is already constrained) and less in reducing the variations due to channel estimation.}%further justification to the variation of $\trs(\test,\ttsen)$ against $\test$ characterized as estimation-sensing-throughput tradeoff depicted in \figurename~\ref{fig:optT_test}.  
+
+\subsection{Random Channel} %\label{ssec:ran_na}
+In contrast to the deterministic scenario, the choice of the system parameters is slightly modified, $\snrrcvd = \SI{0}{dB}$, $\snrpt = \SI{0}{dB}$, $\snrso = \SI{10}{dB}$, $\spo = \ptranpt = \SI{0}{dBm}$, $\ptranst = -\SI{10}{dBm}$, $\pho = 1 - \phz = 0.2$, $\test = \SI{1}{ms}$ and $\Ks =  \test$. This is done to illustrate the effectiveness of the proposed approach. In addition, the performance of the IS under the following fading scenarios is evaluated: (i) severe fading $m = 1$ (Rayleigh fading), and (ii) mild fading $m = 1.5$. 
+
+\begin{figure}[!ht]
+\centering
+%% Add psfrag entries
+\input{figures/fig_thr_sen_time_tradeoff_fading.tex}
+
+\begin{tikzpicture}[scale=1]
+\node[anchor=south west,inner sep=0] (image) at (0,0)
+{
+        \includegraphics[width= \figscale]{figures/fig_thr_sen_time_tradeoff_fading}
+};
+\begin{scope}[x={(image.south east)},y={(image.north west)}]
+
+%\node[draw,fill=gray!10,font=\small] (senid) at (0.232,0.83) {$\trs$};
+%\draw[black, ->] (senid.north) -- (0.232,0.93);
+%\node[draw,fill=gray!10,font=\small] (senac) at (0.378,0.882) {$\trsac$};
+%\draw[black, ->] (senac.east) -- (0.478,0.882);
+%\node[draw,fill=gray!10,font=\small] (senoc) at (0.614,0.733) {$\trsoc$};
+%\draw[black, ->] (senoc.north) -- (0.614,0.833);
+
+\draw[black,thick,<->] (0.082,0.12) --  node[above, font=\small] {$\test$} (0.14,0.12);
+\draw (0.82,0.8) arc(-160:160:0.007 and 0.021);
+\node[draw, fill=gray!10, font=\scriptsize] (text4) at (0.72,0.74) {$m = 1$};
+\draw[black, ->] (text4.east) -- (0.82,0.795);
+
+\draw (0.38,0.907) arc(-160:160:0.007 and 0.021);
+\node[draw, fill=gray!10, font=\scriptsize] (text5) at (0.27,0.847) {$m = 1.5$};
+\draw[black, ->] (text5.east) -- (0.38,0.902);
+
+%\draw[help lines,xstep=.1,ystep=.1] (0,0) grid (1,1);
+%\foreach \x in {0,1,...,9} { \node [anchor=north] at (\x/10,0) {0.\x}; }
+%\foreach \y in {0,1,...,9} { \node [anchor=east] at (0,\y/10) {0.\y}; }
+\end{scope}
+\end{tikzpicture}
+\caption{\tc{Sensing-throughput tradeoff for the ideal model (IM) and estimation model (EM), $\snrrcvd = \SI{0}{dB}$, $\test = \SI{1}{ms}$ and $\mpd = 0.05$.}}
+\label{fig:ST_gen_fad}
+%\vspace{-0.4cm}
+\end{figure}
+First, the sensing-throughput tradeoff for a certain value of estimation time $\test = \SI{1}{ms}$ is studied, corresponding to the IM and the EM that represent the perfect and the imperfect channel estimation, respectively, refer to \figurename~\ref{fig:ST_gen_fad}. Again like the deterministic channel, it is observed that with the inclusion of $\test$ in the frame structure, the EM procure no throughput at the SR for the time interval $\test$. Furthermore, it is noticed that the suitable sensing time increases with severity in the fading. To further understand the effect of the channel fading on the performance of the IS, the variation of other parameters on the performance of the IS are considered.
+
+\begin{figure}[!ht]
+
+%% Add psfrag entries
+\input{figures/fig_opt_thr_vs_SNR_fading.tex}
+\centering
+\begin{tikzpicture}[scale=1]
+\node[anchor=south west,inner sep=0] (image) at (0,0)
+{
+\includegraphics[width= \figscale]{figures/fig_opt_thr_vs_SNR_fading.eps}
+};
+\begin{scope}[x={(image.south east)},y={(image.north west)}]
+
+
+\draw (0.84,0.86) arc(-160:160:0.009 and 0.027);
+\node[draw, fill=gray!10, font=\scriptsize] (text4) at (0.84,0.81) {$m = 1$};
+%\draw[black, ->] (text4.east) -- (0.54,0.735);
+
+\draw (0.53,0.85) arc(-160:160:0.009 and 0.027);
+\node[draw, fill=gray!10, font=\scriptsize] (text5) at (0.53,0.92) {$m = 1.5$};
+%\draw[black, ->] (text5.east) -- (0.302,0.913);
+
+
+%\draw[black,->] (0.25,0.64) node[below =12.0,right=-20.0,  font=\scriptsize] {$\mpd \in \{0.05,0.10,0.15\}$} -- (0.18,0.84);
+%%\draw[black,->] (0.25,0.6) node[below =12.0,right=-20.0,  font=\scriptsize] {$\mpd \in \{0.05,0.10,0.15\}$} -- (0.18,0.8);
 %
-% 
-%\subsection{Radio Frequency Module}
-%\label{subsec:RFM}
-%In the following two subsections the Tunable Low Band RF module and the WiMAX RF module are described. These two modules are used in conjunction with the \ac{SFF SDR DP}.
+%%\draw[help lines,xstep=.1,ystep=.1] (0,0) grid (1,1);
+%%\foreach \x in {0,1,...,9} { \node [anchor=north] at (\x/10,0) {0.\x}; }
+%%\foreach \y in {0,1,...,9} { \node [anchor=east] at (0,\y/10) {0.\y}; }
+\end{scope}
+\end{tikzpicture}
+\caption{Achievable secondary throughput versus $\snrrcvd$ with $\test = \SI{1}{ms}$ for the random channel.}
+\label{fig:optT_SNR_fad}
+%\vspace{-0.4cm}
+\end{figure}
+
+After maximizing the secondary throughput for a certain estimation time, the variation of $\rs(\test, \ttsen)$ along the received signal to noise ratio for the different choice of aforementioned fading scenarios is analyzed, refer to \figurename~\ref{fig:optT_SNR_fad}. It is evident that for a certain choice of estimation time, the performance degrades severely below $\snrrcvd = \SI{0}{dB}$. More specifically, the performance degradation decreases with the severity in the fading. This concludes that the scenarios with mild fading and low $\snrrcvd$ are more sensitive to the choice of estimation time. Complementing the analysis for the deterministic channel depicted in \figurename~\ref{fig:EST}, \figurename~\ref{fig:EST_fad} presents the variation of the secondary throughput along the estimation and the sensing time that jointly incorporates the variations due to channel estimation and channel fading. Clearly, it is noticed that the mild fading scenario are sensitive to the performance degradation around the suitable estimation and the suitable sensing time.
+
+\begin{figure}[!ht]
+
+%% Add psfrag entries
+\input{figures/fig_opt_thr_vs_est_time_fading.tex}
+\centering
+\begin{tikzpicture}[scale=1]
+\node[anchor=south west,inner sep=0] (image) at (0,0)
+{
+\includegraphics[width= \figscale]{figures/fig_opt_thr_vs_est_time_fading.eps}
+};
+\begin{scope}[x={(image.south east)},y={(image.north west)}]
+
+
+\draw (0.54,0.74) arc(-160:160:0.007 and 0.021);
+\node[draw, fill=gray!10, font=\scriptsize] (text4) at (0.44,0.68) {$m = 1$};
+\draw[black, ->] (text4.east) -- (0.54,0.735);
+
+\draw (0.3,0.92) arc(-160:160:0.009 and 0.027);
+\node[draw, fill=gray!10, font=\scriptsize] (text5) at (0.19,0.86) {$m = 1.5$};
+\draw[black, ->] (text5.east) -- (0.302,0.913);
+
+
+%\draw[black,->] (0.25,0.64) node[below =12.0,right=-20.0,  font=\scriptsize] {$\mpd \in \{0.05,0.10,0.15\}$} -- (0.18,0.84);
+%%\draw[black,->] (0.25,0.6) node[below =12.0,right=-20.0,  font=\scriptsize] {$\mpd \in \{0.05,0.10,0.15\}$} -- (0.18,0.8);
 %
-%\subsubsection{Tunable RF Module}
-%\index{Tunable RF Module}
+%%\draw[help lines,xstep=.1,ystep=.1] (0,0) grid (1,1);
+%%\foreach \x in {0,1,...,9} { \node [anchor=north] at (\x/10,0) {0.\x}; }
+%%\foreach \y in {0,1,...,9} { \node [anchor=east] at (0,\y/10) {0.\y}; }
+\end{scope}
+\end{tikzpicture}
+\caption{\tc{Estimation-sensing-throughput tradeoff subject to the random channel with $\snrrcvd = \SI{0}{dB}$, where the throughput is maximized over the sensing time, $\trs(\test,\ttsen)$. Estimation-sensing-throughput tradeoff is utilized to determine a suitable estimation time $\ttest$ that maximizes the throughput, $\trs(\ttest,\ttsen)$.}}
+\label{fig:optT_test_fad}
+%\vspace{-0.4cm}
+\end{figure}
+
+\begin{figure}[!ht]
+\centering
+\subfloat[]{
+%% Add psfrag entries
+\input{figures/fig_opt_thr_vs_est_time_sen_time_fading_m_1.tex}
+\centering
+\begin{tikzpicture}[scale=1]
+\node[anchor=south west,inner sep=0] (image) at (0,0)
+{
+\includegraphics[width= \figscale]{figures/fig_opt_thr_vs_est_time_sen_time_fading_m_1}
+};
+\begin{scope}[x={(image.south east)},y={(image.north west)}]
+%\draw[black,->] (0.6,0.44) node[above=0.0,  font=\scriptsize] {$\mpd \in \{0.05,0.10,0.15\}$} -- (0.56,0.33);
+\draw[black,->] (0.44,0.89) -- (0.44,0.762);
+\node[draw=none, font=\scriptsize] at (0.44, 0.93) {$\rs(\ttest, \ttsen)$};
+
+%\draw[help lines,xstep=.1,ystep=.1] (0,0) grid (1,1);
+%\foreach \x in {0,1,...,9} { \node [anchor=north] at (\x/10,0) {0.\x}; }
+%\foreach \y in {0,1,...,9} { \node [anchor=east] at (0,\y/10) {0.\y}; }
+\end{scope}
+\end{tikzpicture}
+
+\label{fig:EST_m1}}
+\hfil
+\subfloat[]{
+%% Add psfrag entries
+\input{figures/fig_opt_thr_vs_est_time_sen_time_fading_m_1_5.tex}
+\centering
+\begin{tikzpicture}[scale=1]
+\node[anchor=south west,inner sep=0] (image) at (0,0)
+{
+\includegraphics[width= \figscale]{figures/fig_opt_thr_vs_est_time_sen_time_fading_m_1_5}
+};
+\begin{scope}[x={(image.south east)},y={(image.north west)}]
+%\draw[black,->] (0.6,0.44) node[above=0.0,  font=\scriptsize] {$\mpd \in \{0.05,0.10,0.15\}$} -- (0.56,0.33);
+\draw[black,->] (0.429,0.87) -- (0.429,0.653);
+\node[draw=none, font=\scriptsize] at (0.429, 0.9) {$\rs(\ttest, \ttsen)$};
+
+%\draw[help lines,xstep=.1,ystep=.1] (0,0) grid (1,1);
+%\foreach \x in {0,1,...,9} { \node [anchor=north] at (\x/10,0) {0.\x}; }
+%\foreach \y in {0,1,...,9} { \node [anchor=east] at (0,\y/10) {0.\y}; }
+\end{scope}
+\end{tikzpicture}
+\label{fig:EST_m1_5}}
+\vspace{4mm}
+\caption{Estimation-sensing-throughput tradeoff for the estimation model for different fading scenarios (a) $m = 1$ (b) $m = 1.5$.} 
+\label{fig:EST_fad}
+%\vspace{-0.7cm}
+\end{figure}
+
+
+
+
+ 
+ 
+
+\begin{figure}[!ht]
+
+%% Add psfrag entries
+\input{figures/fig_P_d_vs_est_time_fading.tex}
+\centering
+\begin{tikzpicture}[scale=1]
+\node[anchor=south west,inner sep=0] (image) at (0,0)
+{
+\includegraphics[width= \figscale]{figures/fig_P_d_vs_est_time_fading.eps}
+};
+\begin{scope}[x={(image.south east)},y={(image.north west)}]
+\draw (0.64,0.632) arc(-160:160:0.0095 and 0.0285);
+\node[draw, fill=gray!10, font=\scriptsize] (text4) at (0.54,0.572) {$m = 1$};
+\draw[black, ->] (text4.east) -- (0.6425,0.624);
+
+\draw (0.12,0.60) arc(-160:160:0.007 and 0.021);
+\draw (0.12,0.685) arc(-160:160:0.007 and 0.021);
+\node[draw, fill=gray!10, font=\scriptsize] (text5) at (0.34,0.8) {$m = 1.5$};
+\draw[black, ->] (text5.west) -- (0.132,0.708);
+\draw[black, ->] (text5.west) -- (0.132,0.623);
+
+
+%\draw[black,->] (0.25,0.64) node[below =12.0,right=-20.0,  font=\scriptsize] {$\mpd \in \{0.05,0.10,0.15\}$} -- (0.18,0.84);
+%%\draw[black,->] (0.25,0.6) node[below =12.0,right=-20.0,  font=\scriptsize] {$\mpd \in \{0.05,0.10,0.15\}$} -- (0.18,0.8);
 %
-%\begin{figure}
-%	\centering
-%		\includegraphics[width=1.00\textwidth]{../kapitel03/figures/Tunable_RF_Module.pdf}
-%	\caption{Structure of the Tunable RF Module}
-%	\label{fig:Tunable_RF_Module}
-%\end{figure}
+%\draw[help lines,xstep=.1,ystep=.1] (0,0) grid (1,1);
+%\foreach \x in {0,1,...,9} { \node [anchor=north] at (\x/10,0) {0.\x}; }
+%\foreach \y in {0,1,...,9} { \node [anchor=east] at (0,\y/10) {0.\y}; }
+\end{scope}
+\end{tikzpicture}
+
+\caption{Expected detection probability versus estimation time.}
+\label{fig:Pd_test_fad}
+%\vspace{-0.4cm}
+\end{figure}
+
+Next, the variation of $\rs(\test, \ttsen)$ along the estimation time is depicted, refer to \figurename~\ref{fig:optT_test_fad}. It is noticed that $\trs(\test, \ttsen)$ increases for low values of $\test$ and then decreases beyond $\ttest$. This can explained as follows, low $\test$ increases the variations in $\epd$, shifting the threshold to lower values, which subsequently increases $\pfa$, hence, degrading the achievable secondary throughput. Beyond $\ttest$, the variations are largely dominated by the channel fading, therefore, the IS observes no improvement by increasing $\test$. Moreover, it is again observed that the mild fading scenarios are more sensitive to the performance degradation in terms of the achievable secondary throughput. \figurename~\ref{fig:Pd_test_fad}, the variation of expected detection probability against $\test$ is presented. It is indicated that the EM compensates for the variations due to the channel estimation and the channel fading to satisfy the outage constraint.
+
+\begin{figure}[!ht]
 %
-%The Tunable RF module consists of a superheterodyne receiver\index{Superheterodyne receiver} with three stages, which converts signals between \SI{200}{MHz} and \SI{1}{GHz} to an \ac{IF} of \SI{30}{MHz}\index{Intermediate frequency}. It is equipped with five analog filters and three local oscillators. The first filter, close to the antenna, is a low-pass filter that suppresses all frequencies above \SI{1}{GHz}. The following \ac{LO} is a combination of \ac{PLL} and \ac{VCO}, which supports frequencies between \SI{1775}{MHz} and \SI{2575}{MHz} and converts the RF signal to a fixed frequency of \SI{1575}{MHz}. This is the center frequency of the second \SI{20}{MHz} wide bandpass filter. With a switch, two filters with different signal bandwidths of \SI{5}{MHz} or \SI{20}{MHz} can be selected. These bandpass filters have a center frequency of \SI{300}{MHz}. Before the bandpass filters, the signal is down converted with the second \ac{LO} with a mixing frequency of \SI{1275}{MHz}. The last step to an \ac{IF} of \SI{30}{MHz} is achieved with the third conversion stage of \SI{330}{MHz} and the final low pass filter for the images.
+%%% Add psfrag entries
+\input{figures/fig_P_f_vs_est_time_fading.tex}
+\centering
+\begin{tikzpicture}[scale=1]
+\node[anchor=south west,inner sep=0] (image) at (0,0)
+{
+\includegraphics[width= \figscale]{figures/fig_P_f_vs_est_time_fading.eps}
+};
+\begin{scope}[x={(image.south east)},y={(image.north west)}]
+\draw (0.2,0.53) arc(-160:160:0.009 and 0.027);
+\node[draw, fill=gray!10, font=\scriptsize] (text4) at (0.2,0.465) {$m = 1$};
+%\draw[black, ->] (text4.east) -- (0.24,0.52);
+
+\draw (0.41,0.665) arc(-160:160:0.009 and 0.027);
+\node[draw, fill=gray!10, font=\scriptsize] (text5) at (0.41,0.74) {$m = 1.5$};
+%\draw[black, ->] (text5.east) -- (0.312,0.658);
+
+
 %
-%The transmit side of the RF front end is built according to a direct-conversion transmitter, using TI's quadrature modulator TRF3701 \cite{trf3701}. An in-phase and a quadrature signal are mixed with the incoming signal from the \ac{LO}, which is composed of a \ac{PLL}, a \ac{VCO} and a didivide-by-two prescaler. In case when the prescaler is activated, a frequency of \SI{262}{MHz} up to \SI{483}{MHz} is generated while a frequency of \SI{523}{MHz} up to \SI{876}{MHz} is generated when the prescaler is deactivated.
+%%%\draw[help lines,xstep=.1,ystep=.1] (0,0) grid (1,1);
+%%%\foreach \x in {0,1,...,9} { \node [anchor=north] at (\x/10,0) {0.\x}; }
+%%%\foreach \y in {0,1,...,9} { \node [anchor=east] at (0,\y/10) {0.\y}; }
+\end{scope}
+\end{tikzpicture}
+
+\caption{False alarm probability versus estimation time.}
+\label{fig:Pf_test_fad}
+%%%\vspace{-0.7cm}
+\end{figure}
+
+\begin{figure}[!ht]
+
+%% Add psfrag entries
+\input{figures/fig_opt_thr_vs_m_fading.tex}
+\centering
+\begin{tikzpicture}[scale=1]
+\node[anchor=south west,inner sep=0] (image) at (0,0)
+{
+\includegraphics[width= \figscale]{figures/fig_opt_thr_vs_m_fading.eps}
+};
+\begin{scope}[x={(image.south east)},y={(image.north west)}]
+%\draw[black,->] (0.25,0.64) node[below =12.0,right=-20.0,  font=\scriptsize] {$\mpd \in \{0.05,0.10,0.15\}$} -- (0.18,0.84);
+%%\draw[black,->] (0.25,0.6) node[below =12.0,right=-20.0,  font=\scriptsize] {$\mpd \in \{0.05,0.10,0.15\}$} -- (0.18,0.8);
 %
-%\subsubsection{WiMAX RF Module}
-%\index{WiMAX RF Module}
-%\begin{figure}
-%	\centering
-%		\includegraphics[width=1.00\textwidth]{../kapitel03/figures/WiMax_RF_module.pdf}
-%	\caption{Structure of the WiMAX RF Module}
-%	\label{fig:WiMax_RF_module}
-%\end{figure}
+%%\draw[help lines,xstep=.1,ystep=.1] (0,0) grid (1,1);
+%%\foreach \x in {0,1,...,9} { \node [anchor=north] at (\x/10,0) {0.\x}; }
+%%\foreach \y in {0,1,...,9} { \node [anchor=east] at (0,\y/10) {0.\y}; }
+\end{scope}
+\end{tikzpicture}
+
+\caption{Variation of the achievable throughput $R(\ttest, \ttsen)$ with Nakagami-$m$ parameter for $\snrrcvd = \SI{0}{dB}$.}
+\label{fig:optT_m}
+%\vspace{-0.7cm}
+\end{figure}
+
+
+Lastly, the performance degradation in terms of achievable secondary throughput $\rs(\ttest, \tsen)$ versus the Nakagami-$m$ parameter (that accounts for severity in the fading) is investigated, refer to \figurename~\ref{fig:optT_m}. While comparing the IM and the EM, it can be concluded that, for situations where the variations in the system are largely dominated by the channel estimation, the EM notices a greater performance degradation.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Summary} \label{sec:conc}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+In this chapter, we have investigated the performance of cognitive radio as an interweave system from a deployment perspective. It has been argued that the knowledge of the interacting channels is a key aspect that enables the performance characterization of the interweave system in terms of sensing-throughput tradeoff. In this regard, a novel framework that facilitates channel estimation and captures the effect of estimation in the system model has been proposed. As a major outcome of the analysis, it has been justified that the existing model, illustrating an ideal scenario, overestimates the performance of the interweave system, hence, less suitable for deployment. Moreover, it has been clearly stated that the variations induced in the system, specially in the detection probability may severely degrade the performance of the primary system. To overcome this situation, average and outage constraints as primary user constraints have been employed. As a consequence, for the proposed estimation model, novel expressions for sensing-throughput tradeoff based on the mentioned constraints have been established. More importantly, by analyzing the estimation-sensing-throughput tradeoff, the suitable estimation time and the suitable sensing time that maximize the secondary throughput have been determined. %In our future work, we plan to extend the proposed analysis for the hybrid cognitive radio system that combines the advantages of interweave and underlay techniques.  
+
+In addition to this, we characterized the performance of the interweave systems that incorporate imperfect knowledge of the involved channels, where these channels are subject to Nakagam-$m$ fading. An outage constraint that jointly captures the variations in the IS due to channel estimation and channel fading has been employed. Subject to this constraint, a sensing-throughput tradeoff that incorporates channel estimation and channel fading has been characterized that yields a maximum secondary throughput at a suitable estimation and a sensing time. Finally, it has been concluded that the suitable choice of the estimation time is essential for controlling the performance degradation in terms of the achievable secondary throughput, particularly for scenarios that encounter less severe (mild) fading.
+
+ 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\appendix[Moment Generating Function]
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%We intend to find the exact closed form expression of the moment generating function (mgf) of $\prcvd$ such that the received SNR $\gamma$ is subjected to small scale fading. To obtain its expression, we first consider the mgf of the received power $\prcvd$ for constant channel, that is $\gamma =$ constant. In this case, $\prcvd$ follows a non central chi-square distribution. The mgf of $\prcvd$ is given as   
+%\begin{align}
+%m_{\prcvd}(t) &= \frac{\exp\left( \frac{N \gamma t}{1- 2t}\right)}{(1 - 2t)^{N/2}}, 
+%\text{where } 2t < N.    
+%\label{eq:MGF_WOC} 
+%\end{align}
+%$N$ is the number of samples used for computing $\prcvd$. \\
+%Considering Nakagami-$m$ fading, the probability density function (pdf) of $\gamma$ is given as
+%\begin{equation}
+%f(x) = \frac{\bar{\gamma}^{-m}}{\Gamma m}  x^{m-1} e^{-\frac{x}{\bar{\gamma}}}
+%\label{eq:dis_ch}
+%\end{equation}  
+%where $\bar{\gamma}$ is the average received SNR and $m$ is the scaling factor. 
 %
-%Similar to the Tunable RF module, the WiMAX RF module is a superheterodyne receiver\index{Superheterodyne receiver}. The supported frequency range of the front end is from \SI{2.3}{GHz} to \SI{2.7}{GHz}. This is also the frequency range for the wireless communication standard WiMAX. However, the WiMAX RF module has no bearing with the WiMAX specification but the frequency range. It converts signals from the \ac{RF} over two stages to an \ac{IF} of \SI{44}{MHz}. As shown in figure \ref{fig:WiMax_RF_module}, most components are integrated in \acp{IC}. The RF signal is limited by a \SI{400}{MHz} wide bandpass filter working on \SI{2.5}{GHz}. The first downconversion is done by \ac{TI}'s TRF1115 \cite{trf1115} low-noise down converter. It mixes the signal with an incoming carrier on a fixed frequency of \SI{456}{MHz}. On this frequency, the signal is filtered by a bandpass with a bandwidth of \SI{24}{MHz}. The final conversion on the \ac{IF} to \SI{44}{MHz} is done by a combination of \ac{PLL} and \ac{IF} down-converter (TRF1112 \cite{trf1112}) and is followed by the last filtering on a bandwidth of \SI{7}{MHz} or \SI{22}{MHz}. These last bandpass filters are switchable and controlled by TRF1112.
-%
-%The transmit side of the WiMAX RF module is designed as a two stage architecture composed of two \acp{IC} and two bandpass filters similar to the receive side architecture. The first up-converter (TRF1121 \cite{trf1121}) expects the transmit signal on a \SI{18}{MHz} \ac{IF} and mixes it up to a fixed frequency of \SI{325}{MHz}. Furthermore, it works as a \ac{LO} distributor for the second upconversion stage, where the mixing on frequencies between \SI{2.3}{GHz} and \SI{2.7}{GHz} is done (TRF1122 \cite{trf1122}). The bandpass filter between the upconversion stages limits the signal to a bandwidth of \SI{24}{MHz}, while the last bandpass filter on \SI{2.5}{GHz} limits the frequency on a  bandwidth of \SI{400}{MHz}.
-%
-%\subsection{Platform Specific Constraints}
-%The C64x+ DSP is one of the processing units for the SFF SDR DP. This is in contrast to the USRP concept, where any GPP with an operating system can be used as a processing unit. With a clock frequency of \SI{594}{MHz}, the \ac{DSP} runs very fast, but the memory space for the signal processing code is limited to approximately \SI{176}{kB}. Code lengths that exceed this size have to be partitioned and moved to the external \ac{SDRAM}. Although it is dimensioned with a size of \SI{128}{MB}, the access time for read and write operations takes several cycles. This can slow down the running code until violating the real time constraints.
-%
-%Another limit for waveform development on the platform is the interface between \ac{DSP} and \ac{FPGA}. Originally intended to connect the processor to video peripherals, the \ac{VPSS} was rebuilt for data transfers from and to the \ac{FPGA}. With the underlying firmware it is not possible to achieve higher data rates than \SI{64}{Mbps}. This yields to a bandwidth of \SI{2}{MHz} assuming \SI{16}{bit} wide in-phase and quadrature components. Waveforms with higher bandwidths have to be processed on the \ac{FPGA}.
-%
-%As shown in table \ref{tab:SFF_SDR_DPM}, the Virtex4 provides 15360 slices and 192 multiplier components. Similar to the platform constraints for the \ac{USRP}, shown in table \ref{tab:MinimumAmountOfLogicElementsUsedInTheFPGA}, not all logic cells can be used for waveform development. Table \ref{tab:SFF_Virtex} summarizes the number of logic cells for different RF modules for the following configurations: single transmitter, single receiver or transceiver. It is remarkable that approximately \SI{15}{\%} of the resources are used for internal logic. This is due to the implementation of several \ac{FIFO} queus for the \ac{VPFE}, \ac{VPBE}, \ac{ADC} and \ac{DAC}. These buffers are built independently of the actual existence of a transmit or receive side. Further logic resources are used to implement the \ac{OPB} subsystem which provides access to the different peripherals. The differences for transmit and receive paths are due to the archiecture of the connected front end. The receive signal from the tunable RF module is a real signal on a \SI{30}{MHz} \ac{IF}. This makes downconverting and the implementation of a \ac{DDS} and two multipliers necessary. For the transmit side, a quadrature modulator is necessary on the tunable front end. The transmit side for the WiMAX module expects a real signal on \SI{18}{MHz} \ac{IF}. In this case upconversion and quadrature modulation have to be implemented on the \ac{FPGA}.
-%
-%\begin{table}
-%	\centering
-%		\begin{tabular}{|c|c||c|c|c|c|}
-%		\hline
-%		\multicolumn{2} {|c||} {\multirow{2}{*} {Virtex 4 SX35}} & \multicolumn{2} {c|}{Slices}			&	\multicolumn{2} {c|}{Multipliers} \\
-%		\multicolumn{2}{|c||}{}																& 15360	& 100\%											& 192	& 100\%	\\
-%		\hline
-%		\multirow{3}{*}{WiMAX RF}					& TX								& 1942	& 12\%	 										& 7		& 3\% \\
-%																			& RX								& 1981	& 12\% 											& 7	  & 3\% \\
-%																			& TX \& RX					& 2046	& 13\%	 										& 9		& 4\% \\
-%		\hline
-%		\multirow{3}{*}{Tunable RF}				& TX								& 1907	& 12\% 											& 5 	& 2\% \\
-%																			& RX								& 1981	& 13\%											& 7		& 3\% \\
-%																			& TX \& RX					& 2016	& 13\% 											& 7		& 3\% \\
-%		\hline
-%		\end{tabular}
-%	\caption{Space occupation with different RF modules and transmit receive configurations}
-%	\label{tab:SFF_Virtex}
-%\end{table}
-%
-%\subsection{Integration in the design flow}
-%\subsubsection{Integration of the FPGA}
-%Similar as for the USRP flow, the code generated for the \ac{PSM} is integrated in the existent environment. Figure \ref{fig:sff_fpga} gives an overview of the FPGA environment in the SFF SDR. The custom logic can be seen as a black box for the individual signal processing functions. Therefore, it provides interfaces to the data converters and to the \ac{VPSS} buses. Additional interfaces are for registers, interrupts and control strobes.
-%
-%\begin{figure}[htbp]
-%	\centering
-%		\includegraphics[width=1.00\textwidth]{../kapitel03/figures/sff_fpga.pdf}
-%	\caption{Default configuration of the FPGA as in \cite{lyrtech_sff_sdr}}
-%	\label{fig:sff_fpga}
-%\end{figure}
-%
-%The transformation from \ac{PSM} to bitstream is shown in figure \ref{fig:codegener_FPGA_SFF_SDR}. The functional VHDL code is generated such that the interfaces to the data and control ports are connected automatically. The template makefile includes the entities and connects them with the provided netlists for the data buses and the additional platform specific functions. Furthermore physical properties and connections are given in the makefile that finally scripts the synthesizing and mapping of the code to a bitstream.
-%
-%\begin{figure}[htbp]
-%	\centering
-%		\includegraphics{../kapitel03/figures/codegener_FPGA_SFF_SDR.pdf}
-%	\caption{Transformation from the \ac{PSM} to the bitstream on the Virtex4 FPGA}
-%	\label{fig:codegener_FPGA_SFF_SDR}
-%\end{figure}
-%
-%
-%\subsubsection{Integration of the DSP}
-%
-%The integration of the \ac{DSP} in the design flow is done with APIs that connect the model with the data buses. An example of these APIs in the Simulink nevironment is shown in figure \ref{fig:SFF_DSP_API}. The interface to the \ac{VPSS} is implemented as a single block, where in the example of figure \ref{fig:SFF_DSP_API} a block in transmit direction is shown. The \ac{VPFE} interfaces are linked after code generation and compiling. The other platform specific interfaces are for configuration of the following modules: DSP, \ac{DCM} and \ac{RFM}. The configuration of the \ac{DSP} consists of building properties and arguments for the compiler. In contrast to the data conversion section on the \ac{USRP}, an own parametrization is needed for the \ac{DCM} to distribute the clock frequency or to adjust the gain. The configuration of the front end is similar to the USRP: the important parameters are the carrier frequency and the cutting frequencies of the bandpass filters. 
-%
-%\begin{figure}[htbp]
-%	\centering
-%		\includegraphics[width=0.85\textwidth]{../kapitel03/figures/SFF_DSP_API.PNG}
-%	\caption{Example of the use of the APIs for the integration of the DSP on the \ac{SFF SDR DP}}
-%	\label{fig:SFF_DSP_API}
-%\end{figure}
-%
-%Figure \ref{fig:codegener_DSP_SFF_SDR} shows the transformation from \ac{PSM} to executable code, which is similar to the transformation shown in figure \ref{fig:codegener_GPP_USRP}. In this transformation the C code is generated and linked to the buses and APIs. The resulting code is compiled with the vendor specific development environment (Code Composer Studio) and loaded on the platform.
-% 
-%\begin{figure}[htbp]
-%	\centering
-%		\includegraphics{../kapitel03/figures/codegener_DSP_SFF_SDR.pdf}
-%	\caption{Transformation from the \ac{PSM} to the executable file for the DSP}
-%	\label{fig:codegener_DSP_SFF_SDR}
-%\end{figure}
-%
-%
+%Considering the case where $\gamma$ is distributed according to (\ref{eq:dis_ch}), the mgf for the $\prcvd$ is determined as  
+%\begin{align}
+%m'_{\prcvd}(t) &= \e{\gamma}{m_{\prcvd}(t)},  \nonumber \\ 
+%	       &= \int\limits_{0}^{\infty} \frac{\bar{\gamma}^{-m}}{\Gamma m}  x^{m-1} e^{-\frac{x}{\bar{\gamma}}} \frac{\exp\left( \frac{N x t}{1- 2t}\right)}{(1 - 2t)^{N/2}} dx, \nonumber \\
+%	       &= \frac{\bar{\gamma}^{-m}}{(1 - 2t)^{N/2}} \left( \frac{1}{\bar{\gamma}} - \frac{N t}{1 -2t} \right)^{-m}, \label{eq:MGF_WC} \\
+%\quad & \text{where } {\frac{1}{\bar{\gamma}} - \frac{N t}{1 -2t} > 0} \text{ and } 2t < N. \nonumber
+%\end{align}
+%Based on (\ref{eq:MGF_WC}) the $n^{\text{th}}$ central moment can be evaluated as
+%\begin{align}
+%\psi_n &= \e{\prcvd}{ (\prcvd - \e{\prcvd}{\prcvd})^n}, \nonumber  \\ 
+%\quad &= \lim_{t\to\infty} \frac{d^n}{dt^n} \log(m'_{\prcvd}(t)). 
+%\label{eq:MGF_ME}
+%\end{align}
+%According to (\ref{eq:MGF_ME}), we obtain the expressions of the first four central moments as follows
+%\begin{align}
+%\psi_1 &= (1 + m \bar{\gamma}) \sigma^2, \label{eq:MGF_M1} \\ 
+%\psi_2 &= \frac{1}{N} (2 + m \bar{\gamma} (4 + \bar{\gamma})) \sigma^4 , \label{eq:MGF_M2} \\ 
+%\psi_3 &= \frac{2}{N^2} (4 + m \bar{\gamma} (12 + 6 \bar{\gamma} + \bar{\gamma}^2)) \sigma^6, \label{eq:MGF_M3}  \\ 
+%\psi_4 &= \frac{6}{N^3} (8 + m \bar{\gamma} (32 + 24 \bar{\gamma} + 8 \bar{\gamma}^2 + \bar{\gamma}^3)) \sigma^8. \label{eq:MGF_M4}  
+%\end{align}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Appendix
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{\tc{Proofs}}
+
+
+\subsection{Proof of Lemma \ref{lm:lem2}} \label{ssec:lem2} 
+\begin{IEEEproof}
+Following the probability density function (pdf) of $|\ehs|^2$ in (\ref{eq:ehs}), the pdf $|\ehs|^2 \frac{\ptranst}{\npo}$ is given by
+\begin{align}
+\dsnrs(x) &= \lambdasinv \frac{1}{2} \exp\left[-\frac{1}{2} \left( x \lambdas + \ls \right)\right] \times \nonumber \\ \quad  & \left( \frac{x}{\ls} \lambdas \right)^{\frac{\Ks}{4} - \frac{1}{2}} I_{\frac{\Ks}{2}  - 1}  \left( \sqrt{\ls x \lambdas }  \right), \nonumber 
+\end{align}
+where $I_{(\cdot)}(\cdot)$ represents the modified Bessel function of first kind \cite{grad}. Approximating $\ncchi2(\cdot, \cdot)$ with Gamma distribution $\Gamma(\as, \bs)$ \cite{abramo} gives 
+\begin{align}
+\dsnrs & \approx \frac{1}{\Gamma(\as)} \frac{x^{\as - 1}}{\bs^{\as}} \exp\left(-\frac{x}{\bs}\right), 
+\label{eq:dsnrs}
+\end{align} 
+where the parameters $\as$ and $\bs$ in (\ref{eq:dsnrs}) are determined by comparing the first two central moments of the two distributions. Finally, by substituting the expression of $\cz$ in (\ref{eq:Cap0}) yields (\ref{eq:den_C0}). 
+\end{IEEEproof}
+
+\subsection{Proof of Lemma \ref{lm:lem3}} \label{ssec:lem3} 
+\begin{IEEEproof}
+For simplification, we break down the expression $\left( \frac{|\ehs|^2 \ptranst}{\eprcvdsr} \right)$ in (\ref{eq:Cap1}), as $E_1 = \left( \frac{|\ehs|^2 \ptranst}{\npo} \right)$ and $E_2 = \left(\frac{\eprcvdsr}{\npo} \right)$, where $\co = \log_2 \left(1 + \frac{E_1}{E_2} \right)$. The pdf of the expression $E_1$ is determined in (\ref{eq:dsnrs}).
+
+Following the characterization $\eprcvdsr$ in (\ref{eq:ehp2}), the pdf of $E_2$ is determined as 
+\begin{align}
+\dsnrp &= \frac{\Kp \npo}{\prcvdsr} \frac{1}{ 2^{\frac{\Kp}{2}} \Gamma\left(\frac{\Kp}{2}\right)} \left(x \frac{\Kp \npo}{ \prcvdsr} \right)^{\frac{\Kp}{2} - 1} \times \nonumber  \\ \quad & \exp \left(- x \frac{\Kp \npo}{2 \prcvdsr}  \right) \label{eq:dsnrp}. 
+\end{align}
+%\dsnrp &= \frac{\Kp}{\sigma^2} \frac{1}{2} \exp\left[-\frac{1}{2} \left( \frac{x \Kp}{\sigma^2} + \lp \right)\right] \left( \frac{x \Kp}{\sigma^2 \ls} \right)^{\frac{\Ks}{4} - \frac{1}{2}} I_{\frac{\Kp}{2}  - 1}  \left( \sqrt{\frac{\lp x \sigma^2}{\Kp} }  \right) \nonumber
+%\intertext{Following the approach similar to Lemma \ref{lm:lem2}, we approximate the $\ncchi2(\cdot,\cdot)$ with Gamma distribution $\Gamma (\ap, \bp)$ gives}
+%\dsnrp & \approx \frac{1}{\Gamma(\ap)} \frac{x^{\ap - 1}}{\bp^{\ap}} \exp\left(-\frac{x}{\bp}\right). \label{eq:dsnrp} 
+%\intertext{Analogous to Lemma \ref{lm:lem2}, the parameters $\ap, \bp$ are determined by comparing the first two central moments.}
+Using the characterizations of pdfs $\dsnrs$ and $\dsnrp$, we apply Mellin transform \cite{NIST} to determine the pdf of $\frac{E_1}{E_2}$ as
+\begin{align}
+\dsnrsp(x) &= \frac{x^{\as - 1} \Gamma(\as + \ap)}{\Gamma(\as) \Gamma(\ap) \bs^{\as} \bp^{\ap}} \left(\frac{1}{\bp} + \frac{x}{\bs}\right)^{(\as + \ap)}. \label{eq:dsnrsp} 
+\end{align} 
+Finally, substituting the expression $\frac{E_1}{E_2}$ in $\co$ yields (\ref{eq:den_C1}).
+\end{IEEEproof}
+
+
+
+\subsection{Proof of Theorems \ref{th:th1} and \ref{th:th2}} \label{ssec:th1} 
+\begin{IEEEproof} 
+In order to solve the constrained optimization problems illustrated in Theorem \ref{th:th1} and Theorem \ref{th:th2}, the following approach is considered. As a first step, an underlying constraint is employed to determine $\mu$ as a function of the $\tsen$ and $\test$. %Its value is substituted in (\ref{eq:pd}) and (\ref{eq:pfa}) to determine $\pfa$ and $\pd$. Finally, replacing $\pd$ and $\pfa$ in (\ref{eq:thr_AC}) and (\ref{eq:thr_OC}), we obtain an expression of the throughput in terms of $\tsen$, $\test$ and the system parameters. As the final step, the distribution functions characterized in Lemma \ref{lm:lem1}, Lemma \ref{lm:lem2} and Lemma \ref{lm:lem3} are utilized to determine an expression of expected throughput in terms of $\test$ and $\tsen$. %Consequently, we evaluate the performance at the ST by characterizing the expected throughput in terms of $\test$ and $\tsen$.  
+
+For the average constraint, the expression $\e{\pd}{\pd}$ in (\ref{eq:AC}) did not lead to a closed form expression, consequently, no analytical expression of $\thrac$ is obtained. In this context, we procure $\thrac$ for the average constraint numerically from (\ref{eq:AC}). 
+%\end{coro}
+%\begin{coro} \label{coro:coro2}
+
+Next, we determine $\throc$ based on the outage constraint. This is accomplished by combining the expression of $\fpd$ in (\ref{eq:fpd}) with the outage constraint (\ref{eq:OC}) 
+\begin{align}
+P(\pd \le \pdd) = \fpd(\pdd) \le \mpd. 
+\label{eq:int1}
+\end{align}
+Rearranging (\ref{eq:int1}) gives
+\begin{align}
+\throc &\ge \frac{4 \prcvd \Gamma^{-1} \left(1 - \mpd, \frac{\test \fsam}{2}\right) \Gamma^{-1} \left(\pdd, \frac{\tsen \fsam}{2}\right)}{ \test \tsen (\fsam)^2  }. 
+%\throc &\ge \prcvd \left( 1 + \mathcal{Q}^{-1}(1 - \mpd)\sqrt{\frac{2}{\test \fsam}} \right) \cdot \left( 1 + \mathcal{Q}^{-1}(\pdd)\sqrt{\frac{2}{\tsen \fsam}} \right). 
+\label{eq:throc}
+\end{align}
+%\end{coro}
+\tc{Clearly, the random variables $\pd(\eprcvd)$, and $\cz(|\ehs|^2)$ and $\co(|\ehs|^2$, $\eprcvdsr)$ are functions of the independent random variables $\eprcvd$, and $|\ehs|^2$ and $\eprcvdsr$, respectively. In this context, we apply the independence property on $\pd$, $\cz$ and $\co$ to obtain 
+\begin{align*}
+\e{\pd, \cz, \co}{\cz (1- \pfa) + \co (1 - \pd)} &= \e{\cz}{\cz} (1 - \pfa) + \\ \quad & \e{\co}{\co} \e{\pd}{(1 - \pd)}\end{align*}
+in (\ref{eq:thr_AC}) and (\ref{eq:thr_OC}).} Upon replacing the respective thresholds in $\pd$ and $\pfa$ and evaluating the expectation over $\pd$, $\cz$ and $\co$ using the distribution functions characterized in Lemma \ref{lm:lem1}, Lemma \ref{lm:lem2} and Lemma \ref{lm:lem3}, we determine the expected throughput as a function of sensing and estimation time. 
+\end{IEEEproof}
+}
