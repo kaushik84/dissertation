@@ -801,7 +801,7 @@ Similar to the deterministic channel, the expression $\rs(\test, \tsen)$ derived
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Numerical Results} \label{sec:num_ana}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-Here, the performance of the IS based on the proposed approach is investigated. To accomplish this: (i) the simulations are performed to validate the expressions obtained, (ii) the performance loss incurred due to the channel estimation is analyzed. In this regard, the ideal model is considered to benchmark and evaluate the performance loss, (iii) the mathematical justification to the considered approximations is established. Although the expressions derived in this chapter depicting the sensing-throughput analysis are general and applicable to all CR systems, the parameters are selected in such a way that they closely relate to the deployment scenario described in \figurename~{\ref{fig:scenario}. Unless stated explicitly, the choice of the parameters given in Table \ref{tb:tb2} is considered for the analysis. 
+Here, the performance of the IS based on the proposed approach is investigated. In this regard: (i) the simulations are performed to validate the expressions obtained, (ii) the performance degradation incurred due to the channel estimation is evaluated and analyzed. In this regard, the ideal model is considered to benchmark and evaluate the performance loss, (iii) the mathematical justification to the considered approximations is established. Although the expressions derived in this chapter depicting the sensing-throughput analysis are general and applicable to all CR systems, the parameters are selected in such a way that they closely relate to the deployment scenario described in \figurename~{\ref{fig:scenario}. Unless stated explicitly, the choice of the parameters given in Table \ref{tb:tb2} is considered for the analysis. 
 \begin{table}
 %\vspace{-0.4cm}
 \renewcommand{\arraystretch}{1.4}
@@ -1097,42 +1097,8 @@ First, the sensing-throughput tradeoff for a certain value of estimation time $\
 %\vspace{-0.4cm}
 \end{figure}
 
-After maximizing the secondary throughput for a certain estimation time, the variation of $\rs(\test, \ttsen)$ along the received signal to noise ratio for the different choice of aforementioned fading scenarios is analyzed, refer to \figurename~\ref{fig:optT_SNR_fad}. It is evident that for a certain choice of estimation time, the performance degrades severely below $\snrrcvd = \SI{0}{dB}$. More specifically, the performance degradation decreases with the severity in the fading. This concludes that the scenarios with mild fading and low $\snrrcvd$ are more sensitive to the choice of estimation time. Complementing the analysis for the deterministic channel depicted in \figurename~\ref{fig:EST}, \figurename~\ref{fig:EST_fad} presents the variation of the secondary throughput along the estimation and the sensing time that jointly incorporates the variations due to channel estimation and channel fading. Clearly, it is noticed that the mild fading scenario are sensitive to the performance degradation around the suitable estimation and the suitable sensing time.
+After maximizing the secondary throughput for a certain estimation time, the variation of $\rs(\test, \ttsen)$ along the received signal to noise ratio for the different choice of the aforementioned fading scenarios is analyzed. From \figurename~\ref{fig:optT_SNR_fad}, it is evident that for a certain choice of estimation time, the performance degrades severely below $\snrrcvd = \SI{0}{dB}$. More specifically, the performance degradation decreases with the severity in the fading. This concludes that the scenarios with mild fading and low $\snrrcvd$ are more sensitive to the choice of estimation time. Complementing the analysis for the deterministic channel depicted in \figurename~\ref{fig:EST}, \figurename~\ref{fig:EST_fad} presents the variation of the secondary throughput along the estimation and the sensing time. In contrast to the deterministic channel, \figurename~\ref{fig:EST_fad} jointly incorporates the variations due to channel estimation and channel fading. It is clearly noticed that the mild fading scenario are sensitive to the performance degradation around the suitable estimation and the suitable sensing time.
 
-\begin{figure}[!ht]
-
-%% Add psfrag entries
-\input{figures/fig_opt_thr_vs_est_time_fading.tex}
-\centering
-\begin{tikzpicture}[scale=1]
-\node[anchor=south west,inner sep=0] (image) at (0,0)
-{
-\includegraphics[width= \figscale]{figures/fig_opt_thr_vs_est_time_fading.eps}
-};
-\begin{scope}[x={(image.south east)},y={(image.north west)}]
-
-
-\draw (0.54,0.74) arc(-160:160:0.007 and 0.021);
-\node[draw, fill=gray!10, font=\scriptsize] (text4) at (0.44,0.68) {$m = 1$};
-\draw[black, ->] (text4.east) -- (0.54,0.735);
-
-\draw (0.3,0.92) arc(-160:160:0.009 and 0.027);
-\node[draw, fill=gray!10, font=\scriptsize] (text5) at (0.19,0.86) {$m = 1.5$};
-\draw[black, ->] (text5.east) -- (0.302,0.913);
-
-
-%\draw[black,->] (0.25,0.64) node[below =12.0,right=-20.0,  font=\scriptsize] {$\mpd \in \{0.05,0.10,0.15\}$} -- (0.18,0.84);
-%%\draw[black,->] (0.25,0.6) node[below =12.0,right=-20.0,  font=\scriptsize] {$\mpd \in \{0.05,0.10,0.15\}$} -- (0.18,0.8);
-%
-%%\draw[help lines,xstep=.1,ystep=.1] (0,0) grid (1,1);
-%%\foreach \x in {0,1,...,9} { \node [anchor=north] at (\x/10,0) {0.\x}; }
-%%\foreach \y in {0,1,...,9} { \node [anchor=east] at (0,\y/10) {0.\y}; }
-\end{scope}
-\end{tikzpicture}
-\caption{\tc{Estimation-sensing-throughput tradeoff subject to the random channel with $\snrrcvd = \SI{0}{dB}$, where the throughput is maximized over the sensing time, $\trs(\test,\ttsen)$. Estimation-sensing-throughput tradeoff is utilized to determine a suitable estimation time $\ttest$ that maximizes the throughput, $\trs(\ttest,\ttsen)$.}}
-\label{fig:optT_test_fad}
-%\vspace{-0.4cm}
-\end{figure}
 
 \begin{figure}[!ht]
 \centering
@@ -1186,7 +1152,40 @@ After maximizing the secondary throughput for a certain estimation time, the var
 
 
 
+\begin{figure}[!ht]
 
+%% Add psfrag entries
+\input{figures/fig_opt_thr_vs_est_time_fading.tex}
+\centering
+\begin{tikzpicture}[scale=1]
+\node[anchor=south west,inner sep=0] (image) at (0,0)
+{
+\includegraphics[width= \figscale]{figures/fig_opt_thr_vs_est_time_fading.eps}
+};
+\begin{scope}[x={(image.south east)},y={(image.north west)}]
+
+
+\draw (0.54,0.74) arc(-160:160:0.007 and 0.021);
+\node[draw, fill=gray!10, font=\scriptsize] (text4) at (0.44,0.68) {$m = 1$};
+\draw[black, ->] (text4.east) -- (0.54,0.735);
+
+\draw (0.3,0.92) arc(-160:160:0.009 and 0.027);
+\node[draw, fill=gray!10, font=\scriptsize] (text5) at (0.19,0.86) {$m = 1.5$};
+\draw[black, ->] (text5.east) -- (0.302,0.913);
+
+
+%\draw[black,->] (0.25,0.64) node[below =12.0,right=-20.0,  font=\scriptsize] {$\mpd \in \{0.05,0.10,0.15\}$} -- (0.18,0.84);
+%%\draw[black,->] (0.25,0.6) node[below =12.0,right=-20.0,  font=\scriptsize] {$\mpd \in \{0.05,0.10,0.15\}$} -- (0.18,0.8);
+%
+%%\draw[help lines,xstep=.1,ystep=.1] (0,0) grid (1,1);
+%%\foreach \x in {0,1,...,9} { \node [anchor=north] at (\x/10,0) {0.\x}; }
+%%\foreach \y in {0,1,...,9} { \node [anchor=east] at (0,\y/10) {0.\y}; }
+\end{scope}
+\end{tikzpicture}
+\caption{\tc{Estimation-sensing-throughput tradeoff subject to the random channel with $\snrrcvd = \SI{0}{dB}$, where the throughput is maximized over the sensing time, $\trs(\test,\ttsen)$. Estimation-sensing-throughput tradeoff is utilized to determine a suitable estimation time $\ttest$ that maximizes the throughput, $\trs(\ttest,\ttsen)$.}}
+\label{fig:optT_test_fad}
+%\vspace{-0.4cm}
+\end{figure}
  
  
 
@@ -1226,7 +1225,6 @@ After maximizing the secondary throughput for a certain estimation time, the var
 %\vspace{-0.4cm}
 \end{figure}
 
-Next, the variation of $\rs(\test, \ttsen)$ along the estimation time is depicted, refer to \figurename~\ref{fig:optT_test_fad}. It is noticed that $\trs(\test, \ttsen)$ increases for low values of $\test$ and then decreases beyond $\ttest$. This can explained as follows, low $\test$ increases the variations in $\epd$, shifting the threshold to lower values, which subsequently increases $\pfa$, hence, degrading the achievable secondary throughput. Beyond $\ttest$, the variations are largely dominated by the channel fading, therefore, the IS observes no improvement by increasing $\test$. Moreover, it is again observed that the mild fading scenarios are more sensitive to the performance degradation in terms of the achievable secondary throughput. \figurename~\ref{fig:Pd_test_fad}, the variation of expected detection probability against $\test$ is presented. It is indicated that the EM compensates for the variations due to the channel estimation and the channel fading to satisfy the outage constraint.
 
 \begin{figure}[!ht]
 %
@@ -1285,16 +1283,17 @@ Next, the variation of $\rs(\test, \ttsen)$ along the estimation time is depicte
 %\vspace{-0.7cm}
 \end{figure}
 
+Next, the variation of $\rs(\test, \ttsen)$ along the estimation time is depicted, refer to \figurename~\ref{fig:optT_test_fad}. It is noticed that $\trs(\test, \ttsen)$ increases for low values of $\test$ and then decreases beyond $\ttest$. This can explained as follows, low $\test$ increases the variations in $\epd$, shifting the threshold to lower values, which subsequently increases $\pfa$, hence, degrading the achievable secondary throughput. Beyond $\ttest$, the variations are largely dominated by the channel fading, therefore, the IS observes no improvement by increasing $\test$. From the analysis, it is again depicted that the mild fading scenarios are more sensitive to the performance degradation in terms of the achievable secondary throughput. \figurename~\ref{fig:Pd_test_fad} presents the variation of expected detection probability against $\test$. It is indicated that the EM compensates for the variations due to the channel estimation and the channel fading to satisfy the outage constraint. Subsequently, \figurename~\ref{fig:Pd_test_fad} illustrates the performance in terms of the false alarm probability. The random channel case encounters a similar behaviour as depicted by the deterministic channel, where $\pfa$ severely reduces beyond a certain $\test$. Since $1 - \pfa \approx 1$ beyond the aforementioned $\test$, this reduction in $\pfa$ does not influence the performance of the IS in terms of secondary throughput.  
 
-Lastly, the performance degradation in terms of achievable secondary throughput $\rs(\ttest, \tsen)$ versus the Nakagami-$m$ parameter (that accounts for severity in the fading) is investigated, refer to \figurename~\ref{fig:optT_m}. While comparing the IM and the EM, it can be concluded that, for situations where the variations in the system are largely dominated by the channel estimation, the EM notices a greater performance degradation.
+Lastly, the performance degradation in terms of achievable secondary throughput $\rs(\ttest, \tsen)$ versus the Nakagami-$m$ parameter (that accounts for severity in the fading) is investigated, refer to \figurename~\ref{fig:optT_m}. For both scenarios, i.e., perfect (IM) and imperfect channel estimation (EM), the performance decreases with the severity in fading. In addition, by comparing the IM and the EM, it can be concluded that, for situations where the variations in the system are largely dominated by the channel estimation, the EM notices a greater performance degradation.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Summary} \label{sec:conc}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-In this chapter, we have investigated the performance of cognitive radio as an interweave system from a deployment perspective. It has been argued that the knowledge of the interacting channels is a key aspect that enables the performance characterization of the interweave system in terms of sensing-throughput tradeoff. In this regard, a novel framework that facilitates channel estimation and captures the effect of estimation in the system model has been proposed. As a major outcome of the analysis, it has been justified that the existing model, illustrating an ideal scenario, overestimates the performance of the interweave system, hence, less suitable for deployment. Moreover, it has been clearly stated that the variations induced in the system, specially in the detection probability may severely degrade the performance of the primary system. To overcome this situation, average and outage constraints as primary user constraints have been employed. As a consequence, for the proposed estimation model, novel expressions for sensing-throughput tradeoff based on the mentioned constraints have been established. More importantly, by analyzing the estimation-sensing-throughput tradeoff, the suitable estimation time and the suitable sensing time that maximize the secondary throughput have been determined. %In our future work, we plan to extend the proposed analysis for the hybrid cognitive radio system that combines the advantages of interweave and underlay techniques.  
+In this chapter, the performance of cognitive radio as an interweave system from a deployment perspective is investigated. It has been argued that the knowledge of the interacting channels is a key aspect that enables the performance characterization of the interweave system in terms of sensing-throughput tradeoff. In this regard, a novel framework that facilitates channel estimation and captures the effect of estimation in the system model has been proposed. As a major outcome of the analysis, it has been justified that the existing model, illustrating an ideal scenario, overestimates the performance of the interweave system, hence, less suitable for deployment. Moreover, it has been clearly stated that the variations induced in the system, specially in the detection probability may severely degrade the performance of the primary system. To overcome this situation, average and outage constraints as primary user constraints have been employed. As a consequence, for the proposed estimation model, novel expressions for sensing-throughput tradeoff based on the mentioned constraints have been established. More importantly, by analyzing the estimation-sensing-throughput tradeoff, the suitable estimation time and the suitable sensing time that maximize the secondary throughput have been determined. %In our future work, we plan to extend the proposed analysis for the hybrid cognitive radio system that combines the advantages of interweave and underlay techniques.  
 
-In addition to this, we characterized the performance of the interweave systems that incorporate imperfect knowledge of the involved channels, where these channels are subject to Nakagam-$m$ fading. An outage constraint that jointly captures the variations in the IS due to channel estimation and channel fading has been employed. Subject to this constraint, a sensing-throughput tradeoff that incorporates channel estimation and channel fading has been characterized that yields a maximum secondary throughput at a suitable estimation and a sensing time. Finally, it has been concluded that the suitable choice of the estimation time is essential for controlling the performance degradation in terms of the achievable secondary throughput, particularly for scenarios that encounter less severe (mild) fading.
+In addition to this, the performance of the interweave systems that incorporate imperfect knowledge of the involved channels, where these channels are subject to Nakagam-$m$ fading is characterized. In addition, an outage constraint that jointly captures the variations in the IS due to channel estimation and channel fading has been employed. Subject to this constraint, a sensing-throughput tradeoff that incorporates channel estimation and channel fading has been characterized that yields a maximum secondary throughput at a suitable estimation and a sensing time. Finally, it has been concluded that the suitable choice of the estimation time is essential for controlling the performance degradation in terms of the achievable secondary throughput, particularly for scenarios that encounter less severe (mild) fading.
 
  
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
