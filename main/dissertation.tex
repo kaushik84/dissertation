@@ -54,10 +54,10 @@ numbers=noenddot
 \usepackage{lscape} % for figures in landscape --> chapter 3 --> USRP signal flow
 %\usepackage{sistyle}
 \usepackage{textcomp}
-\usepackage[final=true,bookmarks=true]{hyperref} % hyperrefs in pdf
 \usepackage{url}
 \usepackage{scrhack} %removes warning by redefinition of macros float@addtolist etc
 \usepackage{todonotes}
+\usepackage[final=true,bookmarks=true]{hyperref} % hyperrefs in pdf
 \hypersetup{ % properties of pdf
   pdftitle={Performance Analysis of Cognitive Radio Systems with Imperfect Channel Knowledge},
   pdfauthor={M.Sc. Ankit Kaushik},
@@ -80,6 +80,13 @@ numbers=noenddot
 
 
 \makeindex
+
+%% Redefine Spacing for the table of contents 
+\usepackage[subfigure]{tocloft}
+\renewcommand\cftchapafterpnum{\vskip4pt}
+\renewcommand\cftsecafterpnum{\vskip4pt}
+\renewcommand\cftsubsecafterpnum{\vskip4pt}
+%\setlength{\cftsubsecnumwidth}{10em}
 
 
 %\graphicspath{{./../kapitel05/}}
@@ -167,11 +174,11 @@ numbers=noenddot
 
 \import{../kapitel01/}{kapitel01}
 %\import{../kapitel02/}{kapitel02} 
-\import{../kapitel03/}{kapitel03}
+%\import{../kapitel03/}{kapitel03}
 %\import{../kapitel04/}{kapitel04}
-%\import{../kapitel05/}{kapitel05}
+\import{../kapitel05/}{kapitel05}
 %\input{../kapitel06/kapitel06}
-\input{../kapitel07/kapitel07}
+%\import{../kapitel07/}{kapitel07}
 %\begin{appendix}
 %\input{../anhang/appendix.tex}
 %\end{appendix}
@@ -184,8 +191,8 @@ numbers=noenddot
 
 \backmatter
 
-\chapter{Acronyms}
-\input{../anhang/akronyme.tex}
+\chapter{Acronyms, Abbreviations and Notations}
+\import{../anhang/}{akronyme.tex}
 
 
 \bibliographystyle{../IEEEbib}
