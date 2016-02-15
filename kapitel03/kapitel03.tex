@@ -11,7 +11,7 @@ Baseline models investigated in the literature characterize the performance of I
 %\subsection{Background}
 %Goldsmith \textit{et .al} \cite{Goldsmith09}
 
-\subsection{Related Work}
+\section{Related Work}
 
 For detecting a PU signal, several techniques such as energy detection, matched filtering, cyclostationary and feature-based detection exist \cite{Sharma15, Axell12}. Because of its versatility towards unknown PU signals and its low computational complexity, energy detection has been extensively investigated in the literature \cite{Urkowitz, Kostylev02, Alouini03, Herath09, Mariani10}. In this technique, the decision is accomplished by comparing the power received at the ST to a decision threshold. In reality, the ST encounters variations in the received power due to the existence of thermal noise at the receiver and fading in the channel. Subsequently, these variations lead to sensing errors described as misdetection and false alarm, %The characterization of sensing errors as detection probability and false alarm probability has been studied in \cite{tan08}. 
 which limit the performance of the IS. In order to determine the performance of a detector, it is essential to obtain the expressions of detection probability and false alarm probability.
@@ -49,20 +49,20 @@ In this regard, this chapter focuses on the performance characterization of the 
 %Recently, sensing throughput tradeoff has been considered as an important metric to evaluate the performance of the IS. However, the influence of received power estimation on the performance of the system is an open research problem. %Hence, we tend to include the receiver power estimation.  
 %With the inclusion of estimation error, the IS intends to operate at an suitable estimation time such that a maximum distortion remains below a desired level. 
 %For a fixed the detection probability, the threshold and sensing time are determined. %Apart from these, the characterization of the false alarm probability requires the perfect knowledge of noise power at the ST. Considering a practical scenario, this is a rarely the situation. Hence, it is important to include the effect of noise uncertainty on the performance of the system. 
-\subsection{Contributions}
+\section{Contributions}
 The major contributions of this chapter can be summarized as follows:
 %\begin{itemize}
-\subsubsection{\tc{Analytical framework}}
+\subsection{\tc{Analytical framework}}
 %\item 
 \tc{In contrast to the existing models that assume the perfect knowledge of the channels, the main goal of this chapter is to derive an analytical framework that constitutes the estimation of: (i) sensing channel at the ST, (ii) access channel and (iii) interference channel at the SR. Under this framework, a novel integration of the channel estimation in the secondary system's frame structure is proposed, according to which, the samples considered for channel estimation (of the sensing channel) are accounted also for the sensing such that the time resources within the frame are utilized efficiently. Furthermore, the estimation techniques are selected in such a way that the hardware complexity and the versatility towards unknown PU signals requirements (as considered while employing an energy based detection) are not compromised. In this context, a received power based estimation for the sensing and interference channels is proposed. Based on this framework, this chapter characterizes the performance of the IS by considering: (i) the variations due to imperfect channel knowledge and (ii) the performance degradation due to the inclusion of channel estimation.}%, which delivers a decent tradeoff between reliability, complexity and versatility (to a larger range of primary systems) of the proposed framework, and consequently facilitates the hardware realizability of the proposed framework.} 
  The proposed analytical framework is further complemented by considering a random behaviour of the interacting channels (or channel fading). Based on the derived expressions, the performance of the IS that employs channel estimation, where the interacting channels are subject to Nakagami-$m$ fading, is evaluated.
 
 
 %\item
-\subsubsection{\tc{Imperfect channel knowledge}}
+\subsection{\tc{Imperfect channel knowledge}}
 \tc{To capture the variations induced due to imperfect channel knowledge, the cumulative distribution functions of performance parameters such as detection probability and achievable secondary throughput are characterized. More importantly, the cumulative distribution function of the detection probability is utilized to incorporate two primary user (PU) constraints, namely, an average constraint and an outage constraint on the detection probability. In this way, the proposed approach controls the amount of excessive interference caused at the PR due to the imperfect channel knowledge.} 
 %\item 
-\subsubsection{\tc{Estimation-sensing-throughput tradeoff}}
+\subsection{\tc{Estimation-sensing-throughput tradeoff}}
 Subject to the average and the outage constraints, the expressions of sensing-throughput tradeoff that capture the aforementioned variations and evaluate the performance loss (in terms of the achievable secondary throughput) are established. \tc{In particular, two different optimization approaches for countering the variations in sensing-throughput tradeoff and determining a suitable sensing time, which attains a maximum secondary throughput are proposed.} Finally, a fundamental tradeoff between estimation time, sensing time and achievable secondary throughput is depicted. This tradeoff is exploited to determine a suitable estimation time and a suitable sensing time that depicts the maximum achievable performance of the IS. 
 In order to capture the variations due to the channel estimation and the channel fading, an outage constraint on the detection probability is proposed. Subsequently, an expression of the sensing-throughput tradeoff subject to the aforementioned constraint is obtained.
 In addition, a estimation-sensing-throughput tradeoff is established for the random scenario. In this regard, the estimation-sensing-throughput tradeoff is adapted to the scenarios with channel fading to determine the suitable estimation and the suitable sensing time such the maximum secondary throughput is achieved.
@@ -72,61 +72,61 @@ In addition, a estimation-sensing-throughput tradeoff is established for the ran
 %\subsection{Organization}
 %The subsequent sections of the paper are organized as follows: Section \ref{sec:sys_mod} describes the system model that includes the deployment scenario and the signal model. \tc{Section \ref{sec:pr_mod} presents the problem description and the proposed approach.} Section \ref{sec:ana} characterizes the distribution functions of the performance parameters and establishes the sensing-throughput tradeoff subject to average and outage constraints. Section \ref{sec:num_ana} analyzes the numerical results based on the obtained expressions. Finally, Section \ref{sec:conc} concludes the paper. Table \ref{tb:tb1} lists the definitions of acronyms and important mathematical notations used throughput the paper.
 
-\begin{table}
-%\vspace{-0.4cm}
-\renewcommand{\arraystretch}{1.4}
-\caption{Definitions of Acronyms and Notations used}
-%\vspace{-0.6cm}
-\label{tb:tb1}
-\centering
-\scriptsize{
-%\begin{tabular}{l||l}
-\begin{tabular}{p{0.25\columnwidth}||p{0.6\columnwidth}}
-\hline
-\bfseries Acronyms and Notations & \bfseries Definitions \\
-\hline\hline
-AC, OC & average constraint, outage constraint \\ \hline
-%AWGN & Additive White Gaussian Noise  \\ \hline
-CR & cognitive radio\\ \hline
-CSC, CSC-BS, MC-BS, MS & cognitive small cell, cognitive small cell-base station, macro cell-base station, mobile station\\ \hline
-IM, EM & ideal model, estimation model \\ \hline
-IS & interweave system \\ \hline
-PU - PT, PR & primary user - primary transmitter, primary receiver \\ \hline
-SU - ST, SR & secondary user - secondary transmitter, secondary receiver \\ \hline
-$\mathcal H_1, \mathcal H_0$ & Signal plus noise hypothesis, noise only hypothesis\\ \hline
-$\fsam$ & Sampling frequency\\ \hline
-$\test, \tsen$ & Estimation time, sensing time interval\\ \hline
-$T$ & Frame duration\\ \hline
-$\pd, \pfa$ & Detection probability, false alarm probability \\ \hline
-$\pdd$ & Target detection probability\\ \hline
-$\mpd$ & Outage constraint over detection probability\\ \hline
-$\hpo, \hpt, \hs$ & Channel coefficient for the link PT-ST, PT-SR, ST-SR \\ \hline
-$\snrrcvd, \snrso$ & Signal to noise ratio for the link PT-ST, ST-SR \\ \hline
-$\snrpt$ & Interference (from PT) to noise ratio for the link PT-SR \\ \hline
-$\rs$ & Throughput at SR\\ \hline
-$\cz,\co$ & Date rate at SR without and with interference from PT  \\ \hline
-$\mu$ & Threshold for the energy detector\\ \hline
-$F_{(\cdot)}$ & Cumulative distribution function of random variable $(\cdot)$\\ \hline
-$f_{(\cdot)}$ & Probability density function of random variable $(\cdot)$\\ \hline
-$\hat{(\cdot)}$ & Estimated value of ($\cdot$)\\ \hline
-$\tilde{(\cdot)}$ & Suitable value of the parameter ($\cdot$) that achieves maximum performance \\ \hline
-$\mathbb E_{(\cdot)}$ & Expectation with respect to ($\cdot$) \\ \hline
-$\p$ & Probability measure \\ \hline
-\textbf{T}$(\cdot)$ & Test statistics\\ \hline
-%$x_{(\cdot)}[n], y_{(\cdot)}[n]$ & $n\supe{th}$ sample of the transmitted discrete and real signal, received discrete and real signal at ($\cdot$) \\ \hline
-%$P\sub{Tx, $(\cdot)$},  P\sub{Rx, $(\cdot)$}$ & Power transmitted, power received at ($\cdot$) \\ \hline
-$\spo,  \npo$ & Signal variance at PT, noise variance at ST and SR\\ \hline
-%$\Gamma(\cdot)$ & Gamma function\\ \hline
-%$\Gamma(\cdot, \cdot)$ & Regularized incomplete upper Gamma function\\ \hline
-%$\Gamma^{-1}(\cdot, \cdot)$ & Inverse of regularized incomplete upper Gamma function\\ \hline
-%$\mathcal N, \cchi2, \ncchi2$ & Normal, central chi-squared, non-central chi-squared distribution\\ \hline
-$ \Ks$ & Number of pilot symbols used for pilot based estimation at the SR for $\hs$ \\ \hline
-$ \Kp$ & Number of samples used for received power based estimation at the SR for $\hpt$ \\ \hline
-%$\as, \bs, \ap, \bp$ & Model parameters of Gamma distribution \\ \hline
-%$\ls$ & Non-centrality parameter of  $\ncchi2$ distribution \\ \hline
-\end{tabular}}
-\end{table}
- 
+%\begin{table}
+%%\vspace{-0.4cm}
+%\renewcommand{\arraystretch}{1.4}
+%\caption{Definitions of Acronyms and Notations used}
+%%\vspace{-0.6cm}
+%\label{tb:tb1}
+%\centering
+%\scriptsize{
+%%\begin{tabular}{l||l}
+%\begin{tabular}{p{0.25\columnwidth}||p{0.6\columnwidth}}
+%\hline
+%\bfseries Acronyms and Notations & \bfseries Definitions \\
+%\hline\hline
+%AC, OC & average constraint, outage constraint \\ \hline
+%%AWGN & Additive White Gaussian Noise  \\ \hline
+%CR & cognitive radio\\ \hline
+%CSC, CSC-BS, MC-BS, MS & cognitive small cell, cognitive small cell-base station, macro cell-base station, mobile station\\ \hline
+%IM, EM & ideal model, estimation model \\ \hline
+%IS & interweave system \\ \hline
+%PU - PT, PR & primary user - primary transmitter, primary receiver \\ \hline
+%SU - ST, SR & secondary user - secondary transmitter, secondary receiver \\ \hline
+%$\mathcal H_1, \mathcal H_0$ & Signal plus noise hypothesis, noise only hypothesis\\ \hline
+%$\fsam$ & Sampling frequency\\ \hline
+%$\test, \tsen$ & Estimation time, sensing time interval\\ \hline
+%$T$ & Frame duration\\ \hline
+%$\pd, \pfa$ & Detection probability, false alarm probability \\ \hline
+%$\pdd$ & Target detection probability\\ \hline
+%$\mpd$ & Outage constraint over detection probability\\ \hline
+%$\hpo, \hpt, \hs$ & Channel coefficient for the link PT-ST, PT-SR, ST-SR \\ \hline
+%$\snrrcvd, \snrso$ & Signal to noise ratio for the link PT-ST, ST-SR \\ \hline
+%$\snrpt$ & Interference (from PT) to noise ratio for the link PT-SR \\ \hline
+%$\rs$ & Throughput at SR\\ \hline
+%$\cz,\co$ & Date rate at SR without and with interference from PT  \\ \hline
+%$\mu$ & Threshold for the energy detector\\ \hline
+%$F_{(\cdot)}$ & Cumulative distribution function of random variable $(\cdot)$\\ \hline
+%$f_{(\cdot)}$ & Probability density function of random variable $(\cdot)$\\ \hline
+%$\hat{(\cdot)}$ & Estimated value of ($\cdot$)\\ \hline
+%$\tilde{(\cdot)}$ & Suitable value of the parameter ($\cdot$) that achieves maximum performance \\ \hline
+%$\mathbb E_{(\cdot)}$ & Expectation with respect to ($\cdot$) \\ \hline
+%$\p$ & Probability measure \\ \hline
+%\textbf{T}$(\cdot)$ & Test statistics\\ \hline
+%%$x_{(\cdot)}[n], y_{(\cdot)}[n]$ & $n\supe{th}$ sample of the transmitted discrete and real signal, received discrete and real signal at ($\cdot$) \\ \hline
+%%$P\sub{Tx, $(\cdot)$},  P\sub{Rx, $(\cdot)$}$ & Power transmitted, power received at ($\cdot$) \\ \hline
+%$\spo,  \npo$ & Signal variance at PT, noise variance at ST and SR\\ \hline
+%%$\Gamma(\cdot)$ & Gamma function\\ \hline
+%%$\Gamma(\cdot, \cdot)$ & Regularized incomplete upper Gamma function\\ \hline
+%%$\Gamma^{-1}(\cdot, \cdot)$ & Inverse of regularized incomplete upper Gamma function\\ \hline
+%%$\mathcal N, \cchi2, \ncchi2$ & Normal, central chi-squared, non-central chi-squared distribution\\ \hline
+%$ \Ks$ & Number of pilot symbols used for pilot based estimation at the SR for $\hs$ \\ \hline
+%$ \Kp$ & Number of samples used for received power based estimation at the SR for $\hpt$ \\ \hline
+%%$\as, \bs, \ap, \bp$ & Model parameters of Gamma distribution \\ \hline
+%%$\ls$ & Non-centrality parameter of  $\ncchi2$ distribution \\ \hline
+%\end{tabular}}
+%\end{table}
+% 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{System Model} \label{sec:sys_mod}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
