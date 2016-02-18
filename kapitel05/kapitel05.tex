@@ -206,7 +206,7 @@ Following Approximation \ref{ap:ap1}, the CDF of $\ephs$ is characterized as
 Besides the access channel, the knowledge of the interference channel to the SR from the PT is required for determining the SU throughput. It is worthy to note that the expression $\phptw \spo + \npo$ in $\rso$ and $\rsth$, cf. (\ref{eq:Cap1}) and (\ref{eq:Cap3}), which corresponds to the interference and the noise power, represents $\prcvdsr$. Hence, by estimating $\eprcvdsr$, it is possible to jointly characterize the interference and the noise, and consequently characterize $\rso$ and $\rsth$.  
 In this view, the SR estimates received power by listening to the control-based transmission from the PT. Similar to the sensing channel, the CDF of the estimated interference power received $\eprcvdsr$ at the ST is characterized as
 \begin{align}
-\feprcvdsr(x) = 1 - \Gamma \left( \frac{\testpt \fsam}{2}, \frac{\testpt \fsam x}{2 \prcvdsr} \right) \label{eq:fprcvdsr}.
+\feprcvdsr(x) = 1 - \Gamma \left( \frac{\testptsr \fsam}{2}, \frac{\testptsr \fsam x}{2 \prcvdsr} \right) \label{eq:fprcvdsr}.
 \end{align}
 
   
@@ -295,7 +295,7 @@ and $a_0$, $b_0$ are defined in (\ref{eq:den_C0_para}).
 Following the characterization of the pdfs for $\cz$ and $\co$, the pdfs for $\ctw$ and $\cth$ can be obtained by substituting $\preg$ for $\pfull$ in (\ref{eq:den_C0}) and (\ref{eq:den_C1}).
 \begin{lemma} \label{lm:lem5}
 \normalfont
-The pdf of $\ctw$ is defined as
+The pdf of $\ectw$ is defined as
 \begin{align}
 \dctw(x) &= 2^x \ln 2 \frac{(2^x - 1)^{a_2 - 1}}{\Gamma(a_2) b^{a_2}} \exp\left(-\frac{2^x - 1}{b_2}\right),  \label{eq:den_C2}
 \end{align}
@@ -307,7 +307,7 @@ The pdf of $\ctw$ is defined as
 
 \begin{lemma} \label{lm:lem6}
 \normalfont
-The pdf of $\cth$ is defined as 
+The pdf of $\ecth$ is defined as 
 \begin{align}
 %\hspace{-2mm}
 \dcth(x) &= 2^x \ln 2 \frac{(2^x - 1)^{a_2 - 1} \Gamma(a_2 + a_1)}{\Gamma(a_2) \Gamma(a_1) b_2^{a_2} b_1^{a_1}} \left(\frac{1}{b_1} + \frac{2^x - 1}{b_2}\right), \label{eq:den_C3}
@@ -318,9 +318,9 @@ Subsequently, the variations arising due to $\epd$ are captured by considering $
 %\begin{figure*}
 \begin{align}
 &\e{\Omega}{\rs(\tsen)} = \frac{T - (\testpt  + \testpr) - \tsen}{T} \times \nonumber \\ 
-&\Bigg[ (1 - \pfa) \cdot \phz \cdot \e{\cz}{\cz} +  (1 - \e{\pd}\pd) \cdot \pho \cdot \e{\co}{\co} \nonumber \\ &+  \pfa \cdot \phz \cdot \e{\ctw}{\ctw} +  \e{\pd}{\pd} \cdot \pho \cdot \e{\cth}{\cth} \Bigg]. \label{eq:exp_thr} 
+&\Bigg[ (1 - \pfa) \cdot \phz \cdot \e{\ecz}{\ecz} +  (1 - \e{\epd}\epd) \cdot \pho \cdot \e{\eco}{\eco} \nonumber \\ &+  \pfa \cdot \phz \cdot \e{\ectw}{\ectw} +  \e{\epd}{\epd} \cdot \pho \cdot \e{\ecth}{\ecth} \Bigg]. \label{eq:exp_thr} 
 \end{align}
-The random variables $\epd$ and  $\eco, \ecth$ are functions of independent random variables $\eprcvd$ and, $\ephs$ and $\eprcvdsr$, respectively. In this context, we apply the independence property to operate the expectation on $\epd$, $\eco$ and $\ecth$ in (\ref{eq:exp_thr}) separately.
+The random variables $\epd$ and  $\eco, \ecth$ are functions of independent random variables $\eprcvd$ and, $\ephs$ and $\eprcvdsr$, respectively. In this context, the independence property is applied to carry out the expectation on $\epd$, $\eco$ and $\ecth$ in (\ref{eq:exp_thr}) individually.
 %\hrulefill
 % The spacer can be tweaked to stop underfull vboxes.
 %\vspace*{-4pt}
@@ -332,12 +332,12 @@ The random variables $\epd$ and  $\eco, \ecth$ are functions of independent rand
 %\subsubsection*{Outage Constraint on Detection Probability}
 
 \subsection{Sensing-Throughput Tradeoff}
-Here, we establish a sensing-throughput tradeoff for the proposed model that incorporates variations in the performance parameters. 
+Here, a sensing-throughput tradeoff for the proposed approach that incorporates variations in the performance parameters is established. 
 \begin{theorem} \label{th:th1}
 \normalfont
 The expected achievable SU throughput subject to an outage constraint on detection probability at the ST and an outage constraint on interference power at the PR given by
 \begin{align}
-\rs(\ttestpt  = \ttestpr, \ttsen) &= \maxi_{\substack{\testpt = \testpr, \\ \tsen, \preg}} \e{\Omega}{\rs(\tsen)} \label{eq:opT_em}\\
+\rs(\ttestpt, \ttestptsr, \ttestpr, \ttsen) &= \maxi_{\substack{\testpt, \testptsr, \testpr, \\ \tsen, \preg}} \e{\Omega}{\rs(\tsen)} \label{eq:opT_em}\\
 \text{s.t.} & \text{ } (\ref{eq:oc_pd}), (\ref{eq:oc_it}). \nonumber 
 \end{align}
 \end{theorem}
@@ -351,15 +351,15 @@ In order to solve the constrained optimization problem, we make the following re
 Next, using the constraint (\ref{eq:oc_it}), the controlled transmit power at the SR is determined as  
 \begin{align}
 %\hspace{-2mm}
-\fprcvdpr(\ite) \ge \opc %\le \nonumber \\ & \int\limits_0^1 \Gamma \Bigg( \frac{\ite}{(1 - \pd) \pfull + \pd \preg} + \npo , \frac{\testpr \fsam}{2}  \Bigg) d\fpd.
+\e{\epd}{\fprcvdpr(\epd, \ite)} \ge \opc %\le \nonumber \\ & \int\limits_0^1 \Gamma \Bigg( \frac{\ite}{(1 - \pd) \pfull + \pd \preg} + \npo , \frac{\testpr \fsam}{2}  \Bigg) d\fpd.
 \label{eq:preg}
 \end{align}
 Solving numerically (\ref{eq:preg}) yields $\preg$ for the HS.
-Finally, by substituting $\mu$ and $\preg$ computed in (\ref{eq:preg}) and (\ref{eq:thr}), and using the density functions of $\epd$, $\ecz, \eco, \ectw$ and $\ecth$ determined in Lemma \ref{lm:lem1}, Lemma \ref{lm:lem3}, Lemma \ref{lm:lem4}, Lemma \ref{lm:lem5} and Lemma \ref{lm:lem6} yield an expression of $\e{\Omega}{\rs}$ as a function of $\testpt$, $\testpr$ and $\tsen$, cf. (\ref{eq:exp_thr}). Solving numerically $\e{\Omega}\rs$ against the $\tsen$ delivers $\ttsen$ that achieves the maximum expected SU throughput.  
+Finally, by substituting $\mu$ and $\preg$ computed in (\ref{eq:preg}) and (\ref{eq:thr}), and using the density functions of $\epd$, $\ecz, \eco, \ectw$ and $\ecth$ determined in Lemma \ref{lm:lem1}, Lemma \ref{lm:lem3}, Lemma \ref{lm:lem4}, Lemma \ref{lm:lem5} and Lemma \ref{lm:lem6} yield an expression of $\e{\Omega}{\rs}$ as a function of $\testpt$, $\testptsr$, $\testpr$ and $\tsen$, cf. (\ref{eq:exp_thr}). Solving numerically $\e{\Omega}\rs$ delivers $\ttestpt$, $\ttestptsr$, $\ttestpr$ and $\ttsen$ that achieves the maximum expected SU throughput.  
 \end{IEEEproof}
 \begin{remark} \label{co:coro1} 
 \normalfont
-Herein, using the estimation model, we establish a fundamental relation between estimation time (regulates the variations in the detection probability and interference power received at the PR according to the PU constraint), sensing time (represents the detector's performance) and SU throughput, this relationship is characterized as an estimation-sensing-throughput tradeoff.
+Herein, using the estimation model, a fundamental relation between estimation time (regulates the variations in the detection probability and interference power received at the PR according to the PU constraint), sensing time (represents the detector's performance) and SU throughput is established, this relationship is characterized as an estimation-sensing-throughput tradeoff. Based on this tradeoff, suitable estimation and suitable sensing times are determined that yields an optimum performance for the IS in terms of achievable SU throughput. 
 \end{remark} 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Numerical Analysis} \label{sec:num_ana}
@@ -396,7 +396,7 @@ $\Ks$ & 10 \\ \hline
 %\vspace{-2mm}
 \end{table}
 
-In this section, we evaluate the performance of the HS for the proposed model. In this view, we perform simulations: (i) to validate the expressions obtained in the previous section, (ii) to analyze the performance loss incurred due to channel estimation. In order to illustrate the performance loss, we consider the ideal model for benchmarking the performance of the proposed model. Unless stated explicitly, the choice of parameters given in Table \ref{tb:tb2} is considered for analysis. We first analyze the performance of the HS in terms of a sensing-throughput tradeoff, cf. Theorem \ref{th:th1}, corresponding to the Ideal Model (IM) and Estimation Model (EM) by fixing $\testpt = \testptsr =  \testpr = \SI{5}{ms}$, cf. \figurename~\ref{fig:STT}. As indicated by the margin between the IM and the EM, a certain performance degradation is witnessed by the EM due to the incorporation of channel estimation. Moreover, the sensing-throughput tradeoff yields a suitable sensing time $\ttsen$ that achieves the maximum performance in terms of SU throughput $\rs(\ttsen)$. Hereafter, we consider theoretical expressions for the analysis and intend to operate at the suitable sensing time. 
+In this section, the performance of the HS for the proposed approach is evaluated. In this view, the simulations are performed: (i) to validate the expressions obtained in the previous section, (ii) to analyze the performance loss incurred due to channel estimation. In order to illustrate the performance degradation, the ideal model is considered to benchmark the performance of the proposed approach. Unless stated explicitly, the choice of parameters given in Table \ref{tb:tb2} is considered for analysis. We first analyze the performance of the HS in terms of a sensing-throughput tradeoff, cf. Theorem \ref{th:th1}, corresponding to the Ideal Model (IM) and Estimation Model (EM) by fixing $\testpt = \testptsr =  \testpr = \SI{5}{ms}$, cf. \figurename~\ref{fig:STT}. As indicated by the margin between the IM and the EM, a certain performance degradation is witnessed by the EM due to the incorporation of channel estimation. Moreover, the sensing-throughput tradeoff yields a suitable sensing time $\ttsen$ that achieves the maximum performance in terms of SU throughput $\rs(\ttsen)$. Hereafter, theoretical expressions  are considered for the analysis and intend to operate at the suitable sensing time. 
 \begin{figure}[!t]
 %% Add psfrag entries
 \input{figures/fig_thr_sen_time_tradeoff_AWGN.tex}
