@@ -1,7 +1,7 @@
 \chapter{Hardware Implementation}
 \label{chap:Field}
 
-In previous chapters (chapter \ref{chap:IS}, chapter \ref{chap:US} and chapter \ref{chap:HS}), the focus has been on characterizing the performance of the CR systems jointly in terms of interference power received by the primary receiver and throughput at the secondary receiver by taking the estimation of the involved channels into account. In addition, it is motivated that the low complexity and the versatility towards unknown primary user signals requirements can be satisfied by employing unconventional channel estimation techniques such as received power-based estimation for acquiring the knowledge of the interacting channels, particularly the channels between the primary and the secondary systems. However, the aforementioned analysis in the previous chapters has been limited to the theoretical expressions. This chapter further extends the performance analysis by deploying the proposed channel estimation techniques on a hardware. In this sense, this chapters examines the feasibility of the assumptions considered while deriving the analytical expressions, thereby facilitating the evolution of the proposed framework. %Without loss of generality, an underlay system is considered for the deployment.    
+In previous chapters (chapter \ref{chap:IS}, chapter \ref{chap:US} and chapter \ref{chap:HS}), the focus has been on characterizing the performance of the CR systems jointly in terms of interference power received by the primary receiver and throughput at the secondary receiver by taking the estimation of the involved channels into account. In addition, it is motivated that the low complexity and the versatility towards unknown primary user signals requirements can be satisfied by employing unconventional channel estimation techniques such as received power-based estimation for acquiring the knowledge of the interacting channels, particularly the channels between the primary and the secondary systems. However, the aforementioned analysis in the previous chapters has been limited to the theoretical expressions. This chapter further extends the performance analysis by deploying the proposed channel estimation techniques on a hardware. In this sense, this chapters examines the feasibility of the assumptions considered while deriving the analytical expressions, thereby facilitating the evolution of the proposed framework. With no loss of generality, an underlay system is considered for the deployment.    
 %\begin{abstract}        % give a summary of your paper
 %Cognitive radio is one of the potential contenders that address the problem of spectrum scarcity by making efficient use of the currently allocated spectrum below \SI{6}{GHz}. A secondary access to the licensed spectrum is only possible, if the cognitive radio systems restrict the interference to the primary systems. However, the performance analysis of such a cognitive radio system is a challenging task. Currently, performance evaluation of underlay systems is limited to theoretical analysis. Most of the existing theoretical investigations make certain assumptions in order to sustain analytical tractability, which could be unrealistic from the deployment perspective. Motivated by this fact, in this work, we validate the performance of an underlay system by means of laboratory measurements, and consequently propose a hardware demonstrator of such a system. Moreover, we present a graphical user interface to provide insights to the working of the proposed demonstrator and highlight the main issues faced during this experimental study.
 %\blfootnote{This work was partially supported by the National Research Fund, Luxembourg under the CORE projects "SeMIGod" and "SATSENT".} 
@@ -24,22 +24,65 @@ In previous chapters (chapter \ref{chap:IS}, chapter \ref{chap:US} and chapter \
 %The existing investigations in \cite{Ghasemi07, Xin09, Musa09} depicted the performance limits in terms of throughput achieved at the secondary receiver for the underlay system. However, the performance evaluation has been limited to theoretical analysis, which tends to make certain assumptions (for instance, perfect knowledge of channel), that are not applicable in hardware implementations \cite{Sharma15}. Recently, hardware implementations in context to cognitive radio systems have started to receive significant attention \cite{Ngu13, Anas12, Combes15}, however these deployments are mainly concerned with the interweave system. In this regard, we provide insights for the deployment of underlay systems, in this paper. More specifically, we extend the mathematical framework derived in \cite{Kaushik15} to validate the performance of underlay systems by means of experimental analysis. To complement the analysis presented in \cite{Kaushik15}, 
 
 This chapter provides the following contributions:
-\begin{enumerate}
-	\item Empirical validation: The performance of the underlay systems subject to the employment of received power-based estimation for the channel between the PR and the ST is validated by means of a hardware deployment. The variations (induced due to incorporation of channel estimation) in the system parameters are validated by comparing their probability density functions obtained from the measurements to the one computed analytically. In addition, the performance of the underlay system is validate in terms of the estimation-throughput tradeoff proposed in chapter \ref{chap:US}. %A suitable hardware environment is establish to perform measurements and evaluate their results by comparing them with the theoretical expressions.
-	\item Upon validating the theoretical expressions, a hardware demonstrator is deployed of the underlay system. We present a graphical user interface to provide further insights to the working of the demonstrator.	
-\end{enumerate}
+\begin{itemize}
+	\item Empirical validation: The performance of the underlay systems subject to the employment of received power-based between the PR and the ST is validated by means of a hardware deployment. The variations (induced due to incorporation of channel estimation) in the system parameters are validated by comparing their probability density functions obtained from the measurements to the one computed analytically. Moreover, the joint performance of the underlay system is validate in terms of estimation-throughput tradeoff proposed in chapter \ref{chap:US}. %A suitable hardware environment is establish to perform measurements and evaluate their results by comparing them with the theoretical expressions.
+	\item Demonstrator: Upon validating the theoretical expressions, a hardware demonstrator following the guidelines of an underlay system is deployed. Further insights to the working of the demonstrator are procured by means of a graphical user interface.	
+\end{itemize}
 
 %This paper is organized as follows: Section \ref{sysmod} introduces the system model. Section \ref{val} describes the experimental setup and the validation of the mathematical model. Section \ref{demo} portrays the implementation of the underlay system's hardware demonstrator. Finally, Section \ref{con} concludes the paper.
 
 
 \section{System Model}
 \label{sysmod}
+In contrast to the framework presented in chapter \ref{chap:US}, following simplifications and modifications are considered for the hardware implementation.
+\begin{itemize}
+\item The channel estimation (received power-based) is deployed is only for the link between the PR and the ST, which is associated with the regulation of the interference (power) received at the PR. In order to simplify the deployment in terms of the elements involved, the interference from the PTs at the SR is neglected. In addition, perfect knowledge of the access channel between the ST and the SR that employs the pilot-based channel estimation is considered. 
+\item The measurements of the validation and the demonstrator consider the deterministic behaviour of the interference channel.  
+\item In contrast to the outage constraint proposed, a confidence probability constraint is employed for capturing the variations due to channel estimation. %Moreover, previous analysis considers the realization of the power control over multiple frame. Here, the power control subject  
+\end{itemize}
 
-The analysis done is this paper is based on the signal model illustrated in \cite{Kaushik15}.
+Subject to aforementioned modifications, the system model for the underlay system is modified. 
 
 \subsection{Underlay Scenario}
 \label{scenario}
-Cognitive Relay (CR) is a cognitive radio small cell deployment that facilitates secondary access to indoor devices (IDs) \cite{Kaushik14}. Fig. \ref{szenarioA} shows such a scenario, where the CR acts as a secondary transmitter (ST), transmitting data to a secondary receiver (SR) represented by an ID. The channels between the primary receiver (PR) and ST and between the ST and SR are modeled in terms of path loss factors ($\alpha_\textrm{p}, \alpha_\textrm{s}$) and small-scale fading gains ($g_\textrm{p}, g_\textrm{s}$). A power control mechanism is employed at the ST to ensure that interference received at the PR is below a certain level. For this mechanism, it is necessary to acquire the knowledge of the channel between the ST and the PR. As proposed in \cite{Kaushik15}, the ST can retrieve this information by listening to a pilot or beacon signal transmitted by the PR. %For the received pilot signal ($y_\textrm{rcvd}$) and its power, we use the model and notations from \cite{Kaushik15}.
+\figurename\ref{szenarioA} depicts a small cell deployment consisting of a CSC-BS, a MS, a PR and a MC-BS. Analog to the previous scenarios, CSC-BS and MS act as a ST. The channels between the primary receiver (PR) and ST and between the ST and SR are fading gains ($g_\textrm{p}, g_\textrm{s}$). A power control mechanism is employed at the ST to ensure that interference received at the PR is below a certain level. For this mechanism, it is necessary to acquire the knowledge of the channel between the ST and the PR. As proposed in \cite{Kaushik15}, the ST can retrieve this information by listening to a pilot or beacon signal transmitted by the PR. %For the received pilot signal ($y_\textrm{rcvd}$) and its power, we use the model and notations from \cite{Kaushik15}.
+
+\subsection{Signal Model}
+
+%ived signal at the ST, transmitted by the PR cf. \figurename~\ref{fig:scenario}, is sampled with a sampling frequency of $\fsam$ and is given by
+\begin{equation}
+\yrcvd[n] = \gpo \cdot \xtran[n] + \nas[n],
+\label{eq:sys_mod_st}
+\end{equation}
+where $\xtran$ corresponds to a fixed discrete samples transmitted by the PR, $|\pgpo$ represents the power gain for the channel PR-ST and $\nas[n]$ is circularly symmetric complex Additive White Gaussian Noise (AWGN) at the ST.
+The transmitted power at PR is $\ptran = \s{\tau \fsam}{|\xtran[n]|^2}$, considering that $\tau \fsam$ $(= N)$ is the number of samples used for estimation. $\nas[n]$ is an independent identically distributed (i.i.d.) Gaussian random process with zero mean and variance $\e{}{|\nas[n]|^2} = \nps$. The power received at the ST is given as
+\begin{align}
+\prcvd = \s{\tau \fsam}{ |\gpo \xtran[n] + \nas|^2}.
+\label{eq:prcvd} 
+\end{align}
+Analog to (\ref{eq:sys_mod_st}), the received signal at the PR, transmitted by the ST, is given by
+\begin{equation}
+\yp[n] = \gpo \cdot \xreg[n] + \nap[n],
+\label{eq:sys_mod_pr}
+\end{equation}
+and on the other side, the received signal at the SR follows
+\begin{equation}
+\ys[n] = \gs \cdot \xreg[n] + \nas[n],
+\label{eq:sys_mod_sr}
+\end{equation}
+where $\xreg[n]$ is an i.i.d random process. 
+\begin{align}
+\preg = \s{(T - \tau) \fsam}{|\xreg[n]|^2} 
+\label{eq:preg} 
+\end{align}
+corresponds to controlled power at the ST. Further, $\pgpo$ and $\pgs$ represent the power gains for channel ST-PR and ST-SR, cf. \figurename~\ref{fig:scenario}.
+Considering (\ref{eq:sys_mod_pr}) and \ref{eq:sys_mod_sr}, the powers received at the PR and SR are evaluated as $\pp = \s{(T - \tau) \fsam}{|\yp[n]^2|}$ and $\ps = \s{(T - \tau) \fsam}{|\ys[n]^2|}$. Likewise (\ref{eq:sys_mod_st}), $\nap[n]$ and $\nas[n]$ represents circularly symmetric AWGN at PR and ST with zero mean and variance $\e{}{|\nap[n]|^2} = \npp$ and $\e{}{|\nas[n]|^2} = \nps$, correspondingly. %Consider that $\ptran$, $\preg$ and $\pp$ correspond to power for a given frame. 
+%For (\ref{eq:sys_mod_sr}), we assume that the interference at SR from the PR via beacon or pilot channel is $< \nps$, which is a valid assumption considering the indoor scenario depicted in \figurename~\ref{fig:scenario}. 
+%For (\ref{eq:sys_mod_sr}), we consider a perfect allignment of the ST to the beacon or pilot channe
+%\subsubsection{Channel}
+
+We consider that all transmitted signals are subjected to distance dependent path loss and small scale fading gains depicted as $\pgpo, \pgs$. In the analysis, the coherence time of the channels $\approx T$ is considered. But, there will be scenarios where the coherence time exceeds $T$, in such cases our characterization depicts a lower performance bound.
+
 
 %\begin{figure}
 	%\vspace{-10 pt}
@@ -131,7 +174,7 @@ The CR/ST is implemented in a Universal Software Radio Peripherals (USRP) B210 f
 \end{figure}
 
 
-\subsection{Validation of System Variables}
+\subsection{Validation of System Parameters}
 
 Since the stochastic model is the basis of the further performance analysis that will be carried out over $P_\textrm{c}$ and $R_\textrm{s}$, as a first step, we validate the pdfs of the system variables $P_\textrm{rcvd}$, $P_\textrm{cont}$, $P_\textrm{p}$, and $R_\textrm{s}$, from Section \ref{model} and \cite{Kaushik15}. To this end, measurements with the setup in Fig. \ref{messaufbau} have been performed for different values of received signal-to-noise ratio at the ST over the primary link ($\snrrcvd$\footnote{As noise power, we used the measured receiver noise floor.}). The measurement data was plotted in terms of histograms and scaled such that it represented the relative frequency ($f_\textrm{rel}$). Fig. \ref{hrel_pdf} compares the histograms from the measurements and plotted pdfs using the analytical expressions for different system parameters. The plots show that the theoretical expressions very accurately capture the performance of real world cognitive radio systems.
 
