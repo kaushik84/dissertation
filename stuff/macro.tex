@@ -1,0 +1,269 @@
+%% Important macros and notations used in the dissertation are defined here
+
+\makeatletter
+\if@twocolumn
+	\newcommand{\figscalet}{0.71 \columnwidth}
+	\newcommand{\figscalett}{\columnwidth}
+	\newcommand{\figscale}{0.77 \columnwidth}
+\else
+	\newcommand{\figscale}{0.73\columnwidth}
+	\newcommand{\figscalet}{0.7 \columnwidth}
+	\newcommand{\figscalett}{\columnwidth}
+\fi
+\makeatother
+
+% General Commands  
+\newcommand{\e}[2]{{\mathbb E}_{#1}\left[ #2 \right]}    % Expectation
+\newcommand{\s}[2]{{\frac{1}{{#1}}\sum_n^{#1}} {#2}}     % Summation 
+\newcommand{\q}[2]{{\mathcal Q}_{#1}\left( #2 \right)}   % Macum Q function 
+\newcommand{\p}{\mathbb P}				 % Probability
+\newcommand{\sub}[1]{_{\text{#1}}}		         % Subscript as text
+\newcommand{\supe}[1]{^{\text{#1}}}
+
+
+% Probability 
+\newcommand{\pd}{\text{P}\sub{d}}			 % Dectection Probability 
+\newcommand{\pfa}{\text{P}\sub{fa}}			 % False alarm Probability 
+\newcommand{\phz}{\p(\mathcal{H}_0)}                     % 0 Hypothesis  
+\newcommand{\pho}{\p(\mathcal{H}_1)}			 % 1 Hypothesis  
+
+%% Discrete Signals
+\newcommand{\yrcvd}{y\sub{ST}}
+\newcommand{\xp}{x\sub{PT}}
+\newcommand{\xsfull}{x\sub{ST,full}}
+\newcommand{\xscont}{x\sub{ST,cont}}
+\newcommand{\ps}{P\sub{s}}
+\newcommand{\ys}{y\sub{SR}}
+\newcommand{\nap}{w\sub{p}}
+\newcommand{\nas}{w\sub{s}}
+\newcommand{\yp}{y\sub{PR}}
+\newcommand{\xreg}{x\sub{cont}}
+\newcommand{\xtran}{x\sub{tran}}
+\newcommand{\xs}{x\sub{ST}}
+
+
+
+
+% Signal to noise ratio
+\newcommand{\snrp}{\frac{\ptranpt}{\npo}}
+\newcommand{\snrs}{\frac{\ptranst}{\npo}}
+\newcommand{\snrsi}{\frac{\npo}{\ptranst}}
+\newcommand{\snrst}{\frac{\ps}{\sigma^2}}
+\newcommand{\snrrcvd}{{\gamma}\sub{p,1}}
+\newcommand{\snrso}{{\gamma}\sub{s}}
+\newcommand{\snrpt}{{\gamma}\sub{p,2}}
+\newcommand{\snrfull}{{\gamma}\sub{s, full}}
+\newcommand{\snrcont}{{\gamma}\sub{s, cont}}
+\newcommand{\snrsp}{\frac{|\ehs|^2 \ptranst}{\npo}\Big /\frac{\eprcvdsr}{\npo}}
+
+
+% Distribution parameters 
+\newcommand{\ls}{\lambda\sub{s}}
+\newcommand{\Ks}{N\sub{s}}
+\newcommand{\lp}{\lambda\sub{p}}
+\newcommand{\Kp}{N\sub{p,2}}
+\newcommand{\lpo}{\lambda\sub{p,1}}
+\newcommand{\lpt}{\lambda\sub{p,2}}
+
+\newcommand{\apo}{a\sub{p,1}}
+\newcommand{\bpo}{b\sub{p,1}}
+\newcommand{\apt}{a\sub{p,2}}
+\newcommand{\bpt}{b\sub{p,2}}
+\newcommand{\as}{a\sub{s}}
+\newcommand{\bs}{b\sub{s}}
+\newcommand{\ap}{a\sub{2}}
+\newcommand{\bp}{b\sub{2}}
+
+\newcommand{\mpo}{m\sub{p,1}}
+\newcommand{\mpt}{m\sub{p,2}}
+\newcommand{\ms}{m\sub{s}}
+
+
+% Channel gain and power gain 
+\newcommand{\hpo}{h\sub{p,1}}
+\newcommand{\hptw}{h\sub{p,2}}
+\newcommand{\hpth}{h\sub{p,3}}
+\newcommand{\hs}{h\sub{s}}
+\newcommand{\hpt}{h\sub{p,2}}
+
+% Power
+\newcommand{\ptran}{P\sub{Tx,PR}}
+\newcommand{\preg}{P\sub{Tx,ST,cont}}
+\newcommand{\pfull}{P\sub{Tx,ST,full}}
+\newcommand{\npp}{\sigma^2\sub{p}}
+\newcommand{\nps}{\sigma^2\sub{s}}
+\newcommand{\npu}{\Delta\sigma^2}
+\newcommand{\npo}{\sigma^2\sub{w}}
+\newcommand{\spo}{\sigma^2\sub{s}}
+\newcommand{\prcvdstpt}{P\sub{Rx,ST,$\hpo$}}
+\newcommand{\prcvdsr}{P\sub{Rx,SR}}
+\newcommand{\prcvdstpr}{P\sub{Rx,ST,$\hpth$}}
+\newcommand{\ptranst}{P\sub{Tx,ST}}
+\newcommand{\ptranpt}{P\sub{Tx,PT}}
+\newcommand{\ptranpr}{P\sub{Tx,PR}}
+\newcommand{\prcvdpr}{P\sub{Rx,PR}}
+\newcommand{\prcvd}{P\sub{Rx,ST}}
+\newcommand{\pp}{P\sub{p}}
+\newcommand{\evar}{\frac{\npo}{2 \Ks}}
+
+
+% Estimated parameters 
+\newcommand{\eprcvdstpt}{\hat{P}\sub{Rx,ST,$\hpo$}}
+\newcommand{\eprcvdstpr}{\hat{P}\sub{Rx,ST,$\hpth$}}
+\newcommand{\eprcvdsr}{\hat{P}\sub{Rx,SR}}
+\newcommand{\eprcvdpr}{\hat{P}\sub{Rx,PR}}
+\newcommand{\ephs}{|\hat{h}\sub{s}|^2}
+\newcommand{\egpo}{\hat{h}\sub{p,1}}
+\newcommand{\egpt}{\hat{h}\sub{p,2}}
+\newcommand{\epgpo}{|\hat{h}\sub{p,1}|^2}
+\newcommand{\epgpt}{|\hat{h}\sub{p,2}|^2}
+\newcommand{\epgs}{|\hat{h}\sub{s}|^2}
+\newcommand{\ehs}{\hat{h}\sub{s}}
+\newcommand{\eprcvd}{\hat{P}\sub{Rx,ST}}
+\newcommand{\ecz}{\hat{\text{C}}\sub{0}}
+\newcommand{\eco}{\hat{\text{C}}\sub{1}}
+\newcommand{\ectw}{\hat{\text{C}}\sub{2}}
+\newcommand{\ecth}{\hat{\text{C}}\sub{3}}
+\newcommand{\epd}{\hat{\text{P}}\sub{d}}
+\newcommand{\eca}{\hat{\text{{C}}}\sub{s}}
+\newcommand{\ers}{\hat{\text{{R}}}\sub{s}}
+
+% Channels parameters
+\newcommand{\phpo}{|h\sub{p,1}|^2}
+\newcommand{\phptw}{|h\sub{p,2}|^2}
+\newcommand{\phpth}{|h\sub{p,3}|^2}
+\newcommand{\phs}{|h\sub{s}|^2}
+\newcommand{\gpo}{h\sub{p,1}}
+\newcommand{\gpt}{h\sub{p,2}}
+\newcommand{\gs}{h\sub{s}}
+\newcommand{\pgpo}{|h\sub{p,1}|^2}
+\newcommand{\pgpt}{|h\sub{p,2}|^2}
+\newcommand{\egs}{\hat{h}\sub{s}}
+\newcommand{\pgs}{|h\sub{s}|^2}
+\newcommand{\phpt}{|h\sub{p,2}|^2}
+
+
+% System and performance paramters
+\newcommand{\fsam}{f\sub{s}}
+\newcommand{\tsen}{\tau\sub{sen}}
+\newcommand{\testpt}{\tau\sub{est, $\hpo$}}
+\newcommand{\testptsr}{\tau\sub{est, $\hptw$}}
+\newcommand{\testpr}{\tau\sub{est, $\hpth$}}
+\newcommand{\ttestpt}{\tilde{\tau}\sub{est, $\hpo$}}
+\newcommand{\ttestptsr}{\tilde{\tau}\sub{est, $\hptw$}}
+\newcommand{\ttestpr}{\tilde{\tau}\sub{est, $\hpth$}}
+\newcommand{\ttest}{\tilde{\tau}\sub{est}}
+\newcommand{\ttsen}{\tilde{\tau}\sub{sen}}
+\newcommand{\rs}{R\sub{s}}
+\newcommand{\rsz}{R\sub{0}}
+\newcommand{\rso}{R\sub{1}}
+\newcommand{\rstw}{R\sub{2}}
+\newcommand{\rsth}{R\sub{3}}
+\newcommand{\trs}{R\sub{s}}
+%\newcommand{\ers}{\e{}{\rs}}
+
+\newcommand{\ca}{\text{C}\sub{s}}
+\newcommand{\ttau}{\tilde{\tau}}
+
+\newcommand{\test}{\tau\sub{est}}
+\newcommand{\ttsenac}{\tilde{\tau}\sub{sen}\supe{}}
+\newcommand{\ttsenoc}{\tilde{\tau}\sub{sen}\supe{}}
+
+\newcommand{\rsac}{R\sub{s}\supe{AC}}
+\newcommand{\rsoc}{R\sub{s}\supe{OC}}
+\newcommand{\trsac}{{R}\sub{s}\supe{}}
+\newcommand{\trsoc}{{R}\sub{s}\supe{}}
+
+
+\newcommand{\cz}{\text{C}\sub{0}}
+\newcommand{\co}{\text{C}\sub{1}}
+\newcommand{\ctw}{\text{C}\sub{2}}
+\newcommand{\cth}{\text{C}\sub{3}}
+
+% Constraints and Thresholds
+\newcommand{\ite}{\theta\sub{I}}     				% Interference Threshold
+\newcommand{\opc}{\rho\sub{cont}}                               % Outage Probability Constraint on Controlled Power   
+\newcommand{\opdc}{\rho\sub{d}}
+\newcommand{\pdd}{\bar{\text{P}}\sub{d}}
+\newcommand{\pc}{P\sub{Tx,ST,full}}
+\newcommand{\mpd}{\kappa}
+\newcommand{\thric}{\mu\sub{IC}}
+\newcommand{\thrac}{\mu\supe{}}
+\newcommand{\throc}{\mu\supe{}}
+
+
+
+% Distribution functions
+\newcommand{\feprcvdstpt}{F_{\eprcvdstpt}}			% Estimated received power for the link ST - PT
+\newcommand{\feprcvdstpr}{F_{\eprcvdstpr}}                      % Estimated received power for the link ST - PR 
+\newcommand{\feprcvdsr}{F_{\eprcvdsr}}                          % Estimated received power for the link PT - SR 
+\newcommand{\fprcvdpr}{F_{\eprcvdpr}}
+\newcommand{\fephs}{F_{\ephs}}                                  % Estimated received power for the link ST - SR 
+\newcommand{\fpd}{F_{\epd}}
+\newcommand{\fcz}{F_{\ecz}}
+\newcommand{\fco}{F_{\eco}}
+\newcommand{\fctw}{F_{\ectw}}
+\newcommand{\fcth}{F_{\ecth}}
+\newcommand{\fprcvd}{F_{\eprcvd}}
+\newcommand{\fgs}{F_{\epgs}}
+\newcommand{\fgp}{F_{\epgpo}}
+\newcommand{\fc}{F_{\ca}}
+\newcommand{\fprcvdsr}{F_{\eprcvdsr}}
+\newcommand{\fpreg}{F_{\preg}}
+\newcommand{\fpgpo}{F_{\pgpo}}
+\newcommand{\fpgpt}{F_{\pgpt}}
+\newcommand{\fpgs}{F_{\pgs}}
+\newcommand{\feprcvd}{F_{\eprcvd}}
+\newcommand{\fphpo}{F_{\phpo}}
+\newcommand{\fphpt}{F_{\phpt}}
+\newcommand{\fphs}{F_{\phs}}
+
+
+% Density functions
+\newcommand{\dprcvdstpt}{f_{\prcvdstpt}}
+\newcommand{\dhs}{f_{\hs}}
+\newcommand{\dcz}{f_{\ecz}}
+\newcommand{\dco}{f_{\eco}}
+\newcommand{\dctw}{f_{\ectw}}
+\newcommand{\dcth}{f_{\ecth}}
+\newcommand{\dpd}{f_{\epd}}
+\newcommand{\dc}{f_{\ca}}
+\newcommand{\dsnrs}{f_{\frac{ |\ehs|^2 \ptranst}{\npo}}}
+\newcommand{\dsnrp}{f_{\frac{\eprcvdsr}{\npo}}}
+\newcommand{\dsnrsp}{f_{\frac{|\ehs|^2 \ptranst}{\npo}\Big /\frac{\eprcvdsr}{\npo}}}
+\newcommand{\deprcvd}{f_{\eprcvd}}
+
+
+\newcommand{\imp}{\uline}
+\newcommand{\ur}{\uuline}
+\newcommand{\ns}{\uwave} 
+\newcommand{\ws}{\sout}
+\newcommand{\fl}{\dashuline}
+\newcommand{\un}{\dotuline}
+
+% Define new mathmatical operators 
+\DeclareMathOperator*{\maxi}{max}
+\DeclareMathOperator*{\gthan}{\ge}
+\DeclareMathOperator*{\eqto}{=}
+\DeclareMathOperator*{\cchi2}{\mathcal{X}^2}
+\DeclareMathOperator*{\ncchi2}{\mathcal{X}_1^2}
+\DeclareMathOperator*{\ts}{\text{T}(\textbf{y})}
+\DeclareMathOperator*{\argmaxi}{argmax}
+
+
+% Theorem Stuff
+\newtheorem{theorem}{Theorem}
+\newtheorem{case}{Case}
+\newtheorem{constraint}{Constraint}
+\newtheorem{lemma}{Lemma}
+\newtheorem{prop}{Proposition}
+\newtheorem{remark}{Remark}
+\newtheorem{coro}{Corollary}
+\newtheorem{defi}{Definition}
+\newtheorem{approxi}{Approximation}
+
+% derrived Expressions
+\newcommand{\lambdas}{\frac{\sigma_w^4}{ 2 \Ks \ptranst}}
+\newcommand{\lambdasinv}{\frac{2 \Ks \ptranst}{\sigma_w^4}}
+
+
