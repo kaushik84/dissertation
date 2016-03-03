@@ -36,7 +36,7 @@ This chapter provides the following contributions:
 \label{sysmod}
 In contrast to the framework presented in chapter \ref{chap:US}, following simplifications and modifications are considered for the hardware implementation.
 \begin{itemize}
-\item The channel estimation (received power-based) is only deployed for the link between the PR and the ST, which is associated with the regulation of the interference (power) received at the PR. In order to simplify the deployment, the interference from the PTs at the SR is neglected. In addition, perfect knowledge of the access channel between the ST and the SR that employs the pilot-based channel estimation is considered\footnote{Since the effect due to the pilot-based channel estimation in terms of time allocated within the frame structure and the amount of variations induced has negligible effect of the performance degradation of the CR system, perfect channel estimation for access channel is a valid argument.}.  
+\item The channel estimation (received power-based) is only deployed for the link between the PR and the ST, which is associated with the regulation of the interference (power) received at the PR. In order to simplify the deployment, the interference from the PTs at the SR is neglected. In addition, perfect knowledge of the access channel between the ST and the SR that employs the pilot-based channel estimation is considered\footnote{Since the effect due to the pilot-based channel estimation in terms of time allocated within the frame structure and the amount of variations induced has negligible effect on the performance degradation of the CR system, perfect channel estimation for access channel is a valid argument.}.  
 \item The measurements for the validation and the demonstrator consider the deterministic behaviour of the interference channel.  
 \item In contrast to the outage constraint proposed in chapter \ref{chap:US}, a confidence probability constraint is employed for capturing the variations due to channel estimation around the interference temperature. %Moreover, previous analysis considers the realization of the power control over multiple frame. Here, the power control subject  
 \item Lastly, in contrast to the OFDM signal considered in chapter \ref{chap:US} for the modelling the pilot and the data signals at the primary and the secondary systems, in a PSK signal is considered in this chapter. 
@@ -44,89 +44,97 @@ In contrast to the framework presented in chapter \ref{chap:US}, following simpl
 
 Subject to the aforementioned simplifications and the modifications, in this chapter, the system model for the underlay system depicted in chapter \ref{chap:US} is slightly modified. 
 
-\subsection{Underlay Scenario}
+\subsection{Underlay Scenario and Medium Access}
 \label{scenario}
+
+\begin{figure}
+	%\vspace{-10 pt}
+	\centering
+	\subfloat[]{
+	\includegraphics[width=0.55\textwidth]{figures/CR_Scenario_Underlay}%
+	}
+	\subfloat[]{
+	\includegraphics[width=0.45\textwidth]{figures/Frame_Structure_grau_U}%
+	}
+	\caption{(a) An illustration of a small cell scenarios demonstrating an underlay paradigm. (b) Frame structure at the ST that presents a time duration ($\tau$) allocated within the frame duration for the estimation of the interference channel.} 
+	\label{szenarioA}
+	%\vspace{-10 pt}
+\end{figure}
+
+
+
 \figurename~\ref{szenarioA} depicts a small cell deployment consisting of a CSC-BS, a MS, a PR and a MC-BS. Analog to the previous scenarios, the CSC-BS and the MS represent a ST and a SR. The channels between the PR and the ST and between the ST and SR are designated as interference and access channels with channel gains $\gpo$ and $\gs$, respectively. A power control mechanism is employed at the ST to ensure that interference received at the PR is below a certain level. For this mechanism, it is necessary to acquire the knowledge of the channel between the ST and the PR. As proposed in \cite{Kaushik15}, the ST can retrieve this information by listening to a pilot or beacon signal transmitted by the PR. %For the received pilot signal ($y_\textrm{rcvd}$) and its power, we use the model and notations from \cite{Kaushik15}.
+
+
+A slotted medium access is implemented at the ST with a frame duration of $T$. The knowledge of the interference channel is acquired by employing channel reciprocity over the link PR-ST. $T$ is designed such that the channel can be assumed to remain constant within it. %Based on this premise, $g_\textrm{p}$ and $g_\textrm{s}$ are constant within one frame and included in $\alpha_\textrm{p}$ and $\alpha_\textrm{s}$ for further analysis.
+In order to implement a power control mechanism, the frame interval is divided in two phases, refer to Fig. \ref{szenarioA}. During the estimation phase of duration $\test$ (estimation time), the ST measures the received power of the pilot signal transmitted by the PR. Based on this received power, the ST estimates $\ehpo$ and control its transmit power for the secondary link in order to satisfy the interference constraint at the PR. During the data transmission phase $T-\test$, the ST transmits data with the controlled power to the SR.
 
 \subsection{Signal Model}
 
 %ived signal at the ST, transmitted by the PR cf. \figurename~\ref{fig:scenario}, is sampled with a sampling frequency of $\fsam$ and is given by
 \begin{equation}
-\yrcvd[n] = \gpo \cdot \xtran[n] + \nas[n],
+\yrcvd[n] = \gpo \cdot \xtranpr[n] + \nas[n],
 \label{eq:sys_mod_st}
 \end{equation}
-where $\xtran[n]$ corresponds to a discrete constant power signal transmitted by the PR, $\pgpo$ represents the power gain for the channel PR-ST and $\nas[n]$ is circularly symmetric complex Additive White Gaussian Noise (AWGN) at the ST.
-The transmitted power at PR is $\ptran = \s{\tau \fsam}{|\xtran[n]|^2}$, considering that $\tau \fsam$ $(= N)$ is the number of samples used for estimation. $\nas[n]$ is an independent identically distributed (i.i.d.) Gaussian random process with zero mean and variance $\e{}{|\nas[n]|^2} = \nps$. The power received at the ST is given as
+where $\xtranpr[n]$ corresponds to a discrete constant power signal transmitted by the PR, $\pgpo$ represents the power gain for the channel PR-ST and $\nas[n]$ is circularly symmetric complex Additive White Gaussian Noise (AWGN) at the ST.
+The transmitted power at PR is $\ptranpr = \s{\tau \fsam}{|\xtranpr[n]|^2}$, considering that $\tau \fsam$ $(= N)$ is the number of samples used for estimation. $\nas[n]$ is an independent identically distributed (i.i.d.) Gaussian random process with mean $\e{}{\nas[n]} = 0$ and variance $\e{}{|\nas[n]|^2} = \nps$. The estimated received power at the ST is given as
 \begin{align}
-\prcvd = \s{\tau \fsam}{ |\gpo \xtran[n] + \nas|^2}.
+\prcvd = \s{\tau \fsam}{ |\gpo \xtranpr[n] + \nas|^2}.
 \label{eq:prcvd} 
 \end{align}
-Analog to (\ref{eq:sys_mod_st}), the received signal at the PR, transmitted by the ST, is given by
+During the data transmission with controlled power at the ST, the received signal at the PR is given by
 \begin{equation}
-\yp[n] = \gpo \cdot \xreg[n] + \nap[n],
+\yp[n] = \gpo \cdot \xscont[n] + \nap[n],
 \label{eq:sys_mod_pr}
 \end{equation}
 and on the other side, the received signal at the SR follows
 \begin{equation}
-\ys[n] = \gs \cdot \xreg[n] + \nas[n],
+\ys[n] = \gs \cdot \xscont[n] + \nas[n],
 \label{eq:sys_mod_sr}
 \end{equation}
-where $\xreg[n]$ is an i.i.d random process. 
+where $\xscont[n]$ is an i.i.d. random process. The controlled power at the ST is determined as 
 \begin{align}
-\preg = \s{(T - \tau) \fsam}{|\xreg[n]|^2} 
+\preg = \s{(T - \tau) \fsam}{|\xscont[n]|^2} 
 \label{eq:preg} 
 \end{align}
-corresponds to controlled power at the ST. Further, $\pgpo$ and $\pgs$ represent the power gains for channel ST-PR and ST-SR, cf. \figurename~\ref{fig:scenario}.
-Considering (\ref{eq:sys_mod_pr}) and \ref{eq:sys_mod_sr}, the powers received at the PR and SR are evaluated as $\pp = \s{(T - \tau) \fsam}{|\yp[n]^2|}$ and $\ps = \s{(T - \tau) \fsam}{|\ys[n]^2|}$. Likewise (\ref{eq:sys_mod_st}), $\nap[n]$ and $\nas[n]$ represents circularly symmetric AWGN at PR and ST with zero mean and variance $\e{}{|\nap[n]|^2} = \npp$ and $\e{}{|\nas[n]|^2} = \nps$, correspondingly. %Consider that $\ptran$, $\preg$ and $\pp$ correspond to power for a given frame. 
+Further, $\pgpo$ and $\pgs$ represent the power gains for channel ST-PR and ST-SR, cf. \figurename~\ref{szenarioA}.
+The powers received at the PR and the SR are evaluated as $\prcvdpr = \s{(T - \tau) \fsam}{|\yp[n]^2|}$ and $\prcvdsr = \s{(T - \tau) \fsam}{|\ys[n]^2|}$. Likewise (\ref{eq:sys_mod_st}), $\nap[n]$ and $\nas[n]$ represents circularly symmetric AWGN at PR and ST with zero mean and variance $\e{}{|\nap[n]|^2} = \npp$ and $\e{}{|\nas[n]|^2} = \nps$, correspondingly. %Consider that $\ptran$, $\preg$ and $\pp$ correspond to power for a given frame. 
 %For (\ref{eq:sys_mod_sr}), we assume that the interference at SR from the PR via beacon or pilot channel is $< \nps$, which is a valid assumption considering the indoor scenario depicted in \figurename~\ref{fig:scenario}. 
 %For (\ref{eq:sys_mod_sr}), we consider a perfect allignment of the ST to the beacon or pilot channe
 %\subsubsection{Channel}
 
-We consider that all transmitted signals are subjected to distance dependent path loss and small scale fading gains depicted as $\pgpo, \pgs$. In the analysis, the coherence time of the channels $\approx T$ is considered. But, there will be scenarios where the coherence time exceeds $T$, in such cases our characterization depicts a lower performance bound.
+All transmitted signals are subjected to distance dependent path loss and small scale fading gains depicted as $\gpo, \gs$. In the analysis, the coherence time of the channels $\approx T$ is considered. But, there will be scenarios where the coherence time exceeds $T$, in such cases the expressions derived in this chapter depicts a lower performance bound.
 
 
-%\begin{figure}
-	%\vspace{-10 pt}
-%	\centering
-%	\includegraphics[width=0.55\textwidth]{figures/CR_Scenario_Underlay}%
-%	\includegraphics[width=0.45\textwidth]{figures/Frame}%
-%	\caption{Underlay scenario and frame structure \cite{Kaushik15}}
-%	\label{szenarioA}
-	%\vspace{-10 pt}
-%\end{figure}
-
-We consider slotted medium access for the secondary system with a frame duration of $T$. For the ST to be able to satisfy the interference constraints at the PR, we consider channel reciprocity of the primary link. $T$ is designed such that the channel can be assumed to remain constant within it. Based on this premise, $g_\textrm{p}$ and $g_\textrm{s}$ are constant within one frame and included in $\alpha_\textrm{p}$ and $\alpha_\textrm{s}$ for further analysis.
-
-In order to implement a power control mechanism, we have divided the frame interval in two phases, refer to Fig. \ref{szenarioA}. During the first phase of duration $\tau_\textrm{est}$ (estimation time), the ST measures the received power of the pilot signal transmitted by the PR. Based on this received power, the ST estimates $\alpha_\textrm{p}$ by relating it to the known PR transmit power ($P_\textrm{tran}$) and adapts its own transmit power for the secondary link ($P_\textrm{cont}$) accordingly. During the second phase duration i.e., $T-\tau_\textrm{est}$, the ST transmits data to the ID with the controlled power $P_\textrm{cont}$.
-
-The sequence of events portrayed by the underlay scenario from Fig. \ref{szenarioA} can be summarized as:
+\section{Stochastic Model}
+\label{model}
+The sequence of events followed by the underlay scenario from Fig. \ref{szenarioA} can be summarized as:
 
 \begin{enumerate}
-	\item The PR sends a pilot signal with power $P_\textrm{tran}$ to the ST.
-	\item The ST measures the power received ($P_\textrm{rcvd}$) from this signal.
-	\item From $P_\textrm{rcvd}$, the ST estimates $\alpha_\textrm{p}$. We assume that the ST has the knowledge of  $P_\textrm{tran}$. 
-	\item From $\alpha_\textrm{p}$, the ST calculates $P_\textrm{cont}$. It is scaled such that, in case of perfect channel reciprocity and the absence of noise on the primary link, the interference power arriving at the PR ($P_\textrm{p}$) has the value of the interference temperature ($\theta_\textrm{I}$). In control theory terms, $\theta_\textrm{I}$ is the setpoint for $P_\textrm{p}$.
-	\item The ST transmits data to the SR with $P_\textrm{cont}$. In the context of this work, we send an unmodulated sinusoidal signal. This is mathematically equivalent to the constant power signal sent by the PR (refer to \cite{Kaushik15} and the references therein).
+	\item The PR sends a pilot signal with power $\ptranpr$ to the ST.
+	\item The ST estimates the power received $\eprcvd$ by listening to the signal received from the PR over the interference channel.
+	\item With the knowledge of the $\ptranpr$, the ST estimates $\epgpo$ from the $\prcvdpr$. 
+	\item Upon acquiring the knowledge of $\epgpo$, a power control with power $\preg$ is employed at the ST. It is scaled such that, in case of perfect channel reciprocity and the absence of noise on the primary link, the interference power arriving at the PR ($\prcvdpr$) has the value of the interference temperature ($\ite$). %In control theory terms, $\ite$ is the setpoint for $\prcvdpr$.
+	\item The ST transmits data to the SR with $\preg$. In the context of this hardware implementation, an unmodulated sinusoidal signal is sent\footnote{The sinusoidal signal is mathematically equivalent to the constant power signal sent by the PR, which resembles a constant phase modulated signal or a perfectly downsampled PSK signal.}.
 	\item The SR receives the data signal with power $P_\textrm{s}$. It provides this value back over a feedback channel to the ST, where it is used to estimate the expected throughput of the secondary link ($R_\textrm{s}$).
-	\item Due to the presence of noise at the ST, the ST encounters variations in $P_\textrm{rcvd}$, which further affects $P_\textrm{cont}$ and, in addition with noise at the PR, finally translates to variations in $P_\textrm{p}$ around $\theta_\textrm{I}$. This may severely degrade the performance of the cognitive radio system. In order to control these variations, an interference constraint in terms of probability of confidence ($P_\textrm{c}$) has been proposed in \cite{Kaushik15}.
+	\item Due to the presence of noise at the ST, the ST encounters variations in $\prcvdpr$, which translates to the variations in $\preg$. These variations are finally translated to the variations in $\prcvdpr$ around $\ite$. The variations in $\prcvdpr$ causes excessive interference at the PR, unless captured, it may severely degrade the performance of the US. The variations in the system parameters $\prcvd$, $\preg$, $\prcvdpr$ and secondary throughput $\rs$ are characterized in terms of their probability density functions.  
+	\item Utilizing the pdfs of $\prcvdpr$ and $\rs$, an interference constraint in terms of confidence probability $\pco$ is imposed at the ST that allows it to control the excessive interference at the PR. In addition, the performance for the access link is determined in terms of the expected $\rs$. Finally, the performance the performance of the US is jointly characterized in terms of the estimation-throughput tradoff. 
 \end{enumerate}
 
-
-\subsection{Stochastic Model}
-\label{model}
-According to \cite{Kaushik15}, $P_\textrm{rcvd}$ can be modeled as a non-central chi-squared distribution with the following probability density function (pdf) \cite{cha99}:
+\subsection{Characterization of the System Parameters}
+In accordance to the employed signal model, $\prcvd$ is modeled as a non-central chi-squared distribution $\ncchi2$ with the following pdf \cite{Char99}
 \begin{equation}
 	\label{nxc2equ}
-	f_{P_\textrm{rcvd}} \left(x\right) = 
+	\dprcvd (x) = 
 	\frac{N}{2\sigma_\textrm{p}^2} \left(\frac{N x}{\lambda}\right)^\frac{N-2}{4}  
 	\exp\left(-\frac{N x+\lambda}{2\sigma_\textrm{p}^2}\right)  I_{\frac{N}{2}-1}\left(\frac{\sqrt{N x\lambda}}{\sigma_\textrm{p}^2}\right) \;  ,
 \end{equation}
-where $N$ is the degree of freedom, i.e. the number of samples used for determining ${P_\textrm{rcvd}}$, $\sigma_\textrm{p}^2$ is the noise variance of the in-phase or quadrature-phase component of the received pilot signal ($y_\textrm{rcvd}$, refer to \cite{Kaushik15}), and $I_{\frac{N}{2}-1}(\cdot)$ is the modified Bessel function of the first kind of order $\frac{N}{2}-1$ \cite{Jef00}. Furthermore,
+where $N$ is the degree of freedom and the number of samples used for estimating $\prcvd$, $\npp$ is the noise variance of the in-phase or quadrature-phase component of the received pilot signal ($\yrcvd$, refer to \cite{Kaushik15}), and $I_{\frac{N}{2}-1}(\cdot)$ is the modified Bessel function of the first kind of order $\frac{N}{2}-1$ \cite{Jef00}. Furthermore, the non-centrality parameter is defined as
 \begin{equation}
 	\label{lambda}
-	\lambda = \sum_{n=1}^N |\mathbb{E}\left[y_\textrm{rcvd}[n]\right]|^2 = N \times A^2
+	\lambda = \sum_{n=1}^N |\mathbb{E}[|\yrcvd[n]|^2] = N \times A^2
 \end{equation}
-is the non-centrality parameter, where $y_\textrm{rcvd}[n]$ represents the discrete sample at the ST \cite{Kaushik15}. As our pilot signal is a sinusoid with a constant amplitude which is down-converted by an IQ demodulator at the ST, the complex samples have a constant envelope of value $A$, which explains the simplification in (\ref{lambda}).
+The simplification in  (\ref{lambda}) is explained as follows: a sinusoidal signal that represents a pilot signal consists of a constant amplitude, which is down-converted by an IQ demodulator at the ST. In this regard, the complex samples $\yrcvd[n]$ have a constant envelope of value $A$. 
 
 The system variables $P_\textrm{cont}$, $P_\textrm{p}$, and $R_\textrm{s}$ are derived from $P_\textrm{rcvd}$ in \cite{Kaushik15}, where the respective pdfs $f_{P_\textrm{cont}}(\cdot)$ and $f_{P_\textrm{p}}(\cdot)$ are also provided. In \cite{Kaushik15}, $f_{R_\textrm{s}}(\cdot)$ represented a pdf of the capacity. Here, we modify this expression to determine the pdf of the secondary throughput
 
@@ -155,6 +163,7 @@ with parameters defined in \cite{Kaushik15}. $Q_{\frac{N}{2}}(\cdot)$ is the Mar
 
 It is challenging to determine the parameter $\sigma_\textrm{p}^2$ utilized in most of the theoretical expressions, accurately. We decided to approximate $\sigma_\textrm{p}^2$ by setting it equal to the variance of the envelope of $y_\textrm{rcvd}$, as this provided the best fit of the model function to the measurement values.
 
+\subsection{Estimation-Throughput Tradeoff}
 
 \section{Validation}
 \label{val}
@@ -199,31 +208,49 @@ e_\textrm{rel} = \frac{1}{n_\textrm{bins}} \times \sum_{n=1}^{n_\textrm{bins}} \
 \end{equation}
 where $n_\textrm{bins}$ is the number of histogram bins with $f_\textrm{rel}[n] \neq 0$.
 
-%\begin{table}
+\begin{table}
 %	\vspace{-10 pt}
-%	\setlength{\tabcolsep}{6pt} % spacing between columns
-%	\centering
-%	\caption{Values of the parameters used for the performing experiments.}
-%	\label{param}
-%	\begin{tabular}{@{}r|rrrrrrrrr@{}}
-%		Parameter & $\snrrcvd$ & $N$/$\tau_\textrm{est}$ & $\theta_\textrm{I}$ & $T$ & $\alpha_\textrm{s}$ & $\sigma_\textrm{s}^2$ \\ \hline
-%		Value & \SI{22}{dB} & 100/\SI{0.5}{ms} & \SI{-110}{dBm} & \SI{100]{ms} & 1 \tablefootnote{The channel gain of the ST-SR link $\alpha_\textrm{s} \in (0,1)$ was set to its maximum theoretical value for this analysis.} & $2.1355\times10^{-10}$ \tablefootnote{The value represents the measured receiver noise floor (digital value) of the in-phase or quadrature-phase components.} \\ 
-%	\end{tabular}
+	%\setlength{\tabcolsep}{6pt} % spacing between columns
+	\renewcommand{\arraystretch}{1.4}
+	\centering
+	\caption{Values of the parameters used for the performing experiments.}
+	\label{param}
+	\begin{tabular}{c||c}
+		\bfseries Parameter & \bfseries Value \\ \hline \hline
+		$\snrrcvd$ & \SI{22}{dB} \\
+		$N$ & 100 \\
+		$\test$ & \SI{0.5}{ms}\\
+		$\ite$ & \SI{-110}{dBm}\\
+		$T$ & \SI{100}{ms}\\
+		$\pgs$ & 1 \\
+		$\npp$ & $2.1355\times10^{-10}$\\ \hline
+		%Value & \SI{22}{dB} & 100/\SI{0.5}{ms} & \SI{-110}{dBm} & \SI{100]{ms} & 1 \tablefootnote{The channel gain of the ST-SR link $\alpha_\textrm{s} \in (0,1)$ was set to its maximum theoretical value for this analysis.} & $2.1355\times10^{-10}$ \tablefootnote{The value represents the measured receiver noise floor (digital value) of the in-phase or quadrature-phase components.} \\ 
+	\end{tabular}
 %	%\vspace{-10 pt} 
-%\end{table}
+\end{table}
 
-%\begin{table}
+\begin{table}
 %	%\vspace{-10 pt}
-%	\setlength{\tabcolsep}{3pt} % spacing between columns
-%	\centering
-%	\caption{$e_\textrm{rel}$ from \ref{fr} for various $\snrrcvd$ (parameters from Table \ref{param})}
-%	\label{nichtzentral}
-%	\begin{tabular}{@{}r|rrrrrrrrr@{}}
-%		$\snrrcvd$/[dB] & $4.08$ & $9.10$ & $14.11$ &	$19.12$ & $24.09$ &	$29.09$ & $34.03$ &	$39.38$ & $45.08$ \\ \hline
-%		$e_\textrm{rel}$ & $0.0568$ & $0.0601$ & $0.0522$ & $0.0437$ &	$0.0506$ & $0.0634$ & $0.1179$ & $0.0800$ & $0.1695$ \\ 
-%	\end{tabular}
+	%\setlength{\tabcolsep}{3pt} % spacing between columns
+        \renewcommand{\arraystretch}{1.4}
+	\centering
+	\caption{$e\sub{rel}$ for different values of $\snrrcvd$}
+	\label{nichtzentral}
+	\begin{tabular}{c||c} 
+		\bfseries $\snrrcvd$/[dB] &  \bfseries $e_\textrm{rel}$ \\ \hline \hline
+		$4.08$ &  $0.0568$ \\
+		$9.10$ &  $0.0601$ \\
+		$14.11$ & $0.0522$ \\
+		$19.12$ & $0.0437$ \\
+		$24.09$ & $0.0506$ \\
+		$29.09$ & $0.0634$ \\
+		$34.03$ & $0.1179$ \\
+		$39.38$ & $0.0800$ \\
+		$45.08$ & $0.1695$ \\ \hline
+		%$e_\textrm{rel}$ & $0.0568$ & $0.0601$ & $0.0522$ & $0.0437$ &	$0.0506$ & $0.0634$ & $0.1179$ & $0.0800$ & $0.1695$ \\ 
+	\end{tabular}
 %	\vspace{-10 pt} 
-%\end{table}
+\end{table}
 
 
 \subsection{Validation of the Estimation-Throughput Tradeoff}

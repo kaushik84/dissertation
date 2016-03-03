@@ -24,6 +24,7 @@
 % Probability 
 \newcommand{\pd}{\text{P}\sub{d}}			 % Dectection Probability 
 \newcommand{\pfa}{\text{P}\sub{fa}}			 % False alarm Probability 
+\newcommand{\pco}{\text{P}\sub{c}}			 % False alarm Probability 
 \newcommand{\phz}{\p(\mathcal{H}_0)}                     % 0 Hypothesis  
 \newcommand{\pho}{\p(\mathcal{H}_1)}			 % 1 Hypothesis  
 
@@ -39,6 +40,8 @@
 \newcommand{\yp}{y\sub{PR}}
 \newcommand{\xreg}{x\sub{cont}}
 \newcommand{\xtran}{x\sub{tran}}
+\newcommand{\xtranpr}{x\sub{PR}}
+\newcommand{\xtranst}{x\sub{ST}}
 \newcommand{\xs}{x\sub{ST}}
 
 
@@ -112,7 +115,9 @@
 \newcommand{\eprcvdstpr}{\hat{P}\sub{Rx,ST,$\hpth$}}
 \newcommand{\eprcvdsr}{\hat{P}\sub{Rx,SR}}
 \newcommand{\eprcvdpr}{\hat{P}\sub{Rx,PR}}
+\newcommand{\epreg}{\hat{P}\sub{Tx,ST,cont}}
 \newcommand{\ephs}{|\hat{h}\sub{s}|^2}
+\newcommand{\ehpo}{\hat{h}\sub{p,1}}
 \newcommand{\egpo}{\hat{h}\sub{p,1}}
 \newcommand{\egpt}{\hat{h}\sub{p,2}}
 \newcommand{\epgpo}{|\hat{h}\sub{p,1}|^2}
@@ -209,7 +214,7 @@
 \newcommand{\fgp}{F_{\epgpo}}
 \newcommand{\fc}{F_{\ca}}
 \newcommand{\fprcvdsr}{F_{\eprcvdsr}}
-\newcommand{\fpreg}{F_{\preg}}
+\newcommand{\fpreg}{F_{\epreg}}
 \newcommand{\fpgpo}{F_{\pgpo}}
 \newcommand{\fpgpt}{F_{\pgpt}}
 \newcommand{\fpgs}{F_{\pgs}}
@@ -218,9 +223,9 @@
 \newcommand{\fphpt}{F_{\phpt}}
 \newcommand{\fphs}{F_{\phs}}
 
-
 % Density functions
 \newcommand{\dprcvdstpt}{f_{\prcvdstpt}}
+\newcommand{\dpreg}{f_{\epreg}}
 \newcommand{\dhs}{f_{\hs}}
 \newcommand{\dcz}{f_{\ecz}}
 \newcommand{\dco}{f_{\eco}}
@@ -231,7 +236,7 @@
 \newcommand{\dsnrs}{f_{\frac{ |\ehs|^2 \ptranst}{\npo}}}
 \newcommand{\dsnrp}{f_{\frac{\eprcvdsr}{\npo}}}
 \newcommand{\dsnrsp}{f_{\frac{|\ehs|^2 \ptranst}{\npo}\Big /\frac{\eprcvdsr}{\npo}}}
-\newcommand{\deprcvd}{f_{\eprcvd}}
+\newcommand{\dprcvd}{f_{\eprcvd}}
 
 
 \newcommand{\imp}{\uline}
