@@ -107,27 +107,46 @@ respectively. Likewise (\ref{eq:sys_mod_st}), $\nap[n]$ and $\nas[n]$ represents
 %For (\ref{eq:sys_mod_sr}), we consider a perfect allignment of the ST to the beacon or pilot channe
 %\subsubsection{Channel}
 
+Upon utilizing $\tau$ for channel estimation, the throughput at the SR (secondary throughput) over the access channel is given by
+\begin{equation}
+\rs = \frac{T - \tau}{T} \log_2 \left(1 + \frac{\gs \preg }{\nps} \right). 
+\label{eq:sthr}
+\end{equation}
+
+
 All transmitted signals are subjected to distance dependent path loss and small scale fading gains depicted as $\gpo, \gs$. In the analysis, the coherence time of the channels $\approx T$ is considered. But, there will be scenarios where the coherence time exceeds $T$, in such cases the expressions derived in this chapter depicts a lower performance bound.
 
 
-\section{Stochastic Model}
+\section{Theoretical Analysis}
 \label{model}
 The sequence of events followed by the underlay scenario from Fig. \ref{szenarioA} can be summarized as:
 
 \begin{enumerate}
-	\item The PR sends a pilot signal with power $\ptranpr$ to the ST.
-	\item The ST estimates the power received $\eprcvd$ by listening to the signal received from the PR over the interference channel.
-	\item With the knowledge of the $\ptranpr$, the ST estimates $\epgpo$ from the $\prcvdpr$. 
-	\item Upon acquiring the knowledge of $\epgpo$, a power control with power $\preg$ is employed at the ST. It is scaled such that, in case of perfect channel reciprocity and the absence of noise on the primary link, the interference power arriving at the PR ($\prcvdpr$) has the value of the interference temperature ($\ite$). %In control theory terms, $\ite$ is the setpoint for $\prcvdpr$.
-	\item The ST transmits data to the SR with $\preg$. In the context of this hardware implementation, an unmodulated sinusoidal signal is sent\footnote{The sinusoidal signal is mathematically equivalent to the constant power signal sent by the PR, which resembles a constant phase modulated signal or a perfectly downsampled PSK signal.}.
-	\item The SR receives the data signal with power $\preg$ It provides this value back over a feedback channel to the ST, where it is used to estimate the expected secondary throughput $\e{\rs}{\rs}$ over the access channel.
-	\item Due to the presence of noise at the ST, the ST encounters variations in $\prcvdpr$, which translates to the variations in $\preg$. These variations are finally translated to the variations in $\prcvdpr$ around $\ite$. The variations in $\prcvdpr$ causes excessive interference at the PR, unless captured, it may severely degrade the performance of the US. The variations in the system parameters $\prcvd$, $\preg$, $\prcvdpr$ and secondary throughput $\rs$ are characterized in terms of their probability density functions.  
-	\item Utilizing the pdfs of $\prcvdpr$ and $\rs$, an interference constraint in terms of confidence probability $\pco$ is imposed at the ST that allows it to control the excessive interference at the PR. In addition, the performance for the access link is determined in terms of the expected $\rs$. Finally, the performance the performance of the US is jointly characterized in terms of the estimation-throughput tradoff. 
+	%\item The PR sends a pilot signal with power $\ptranpr$ to the ST.
+	\item The ST estimates the power received $\eprcvd$ by listening to the pilot signal received from the PR over the interference channel. In the context of the hardware implementation, an unmodulated sinusoidal signal is sent as a pilot or beacon signal\footnote{The sinusoidal signal is mathematically equivalent to the constant power signal sent by the PR, which resembles a constant phase modulated signal or a perfectly downsampled (satisfies Niquist criterion) PSK signal.}.
+	\item With the knowledge of the $\ptranpr$ and the estimate $\eprcvd$, the ST indirectly acquires the knowledge of $\epgpo$. 
+	Upon acquiring this knowledge, a power control is employed at the ST. Using $\eprcvd$, $\epreg$ is determined as 
+\begin{align}
+\epreg = \frac{\ite K}{\eprcvd}, \label{eq:preg} 
+\end{align}
+where $K$ represents a scaling factor. The scaling factor is required at the ST to hold $\e{}{\eprcvdpr}$ at $\ite$. It is defined as
+\begin{align}
+K = \frac{1}{ \e{\eprcvd}{\frac{\gpo}{\eprcvd}}},% = \fr
+\end{align}
+where, $\e{\eprcvd}{\cdot}$ represents the expectation over $\eprcvd$.
+	%It is scaled such that, in case of perfect channel reciprocity and the absence of noise on the primary link, the interference power arriving at the PR ($\prcvdpr$) has the value of the interference temperature ($\ite$). %In control theory terms, $\ite$ is the setpoint for $\prcvdpr$.
+	\item The ST transmits data to the SR with $\preg$. 
+	%\item The SR receives the data signal with power $\preg$ It provides this value back over a feedback channel to the ST, where it is used to estimate the expected secondary throughput $\e{\rs}{\rs}$ over the access channel.
+	The received power-based estimation ($\eprcvd$) over the interference channel induces variations in $\preg$. Following the relation between the controlled power at the ST and the received power at the PR 
+\begin{align}
+\eprcvdpr  = \hpo \epreg,
+\end{align}
+the variations in $\epreg$ are translated to the variations in $\prcvdpr$ around $\ite$. The variations in $\prcvdpr$ causes excessive interference at the PR, unless captured, it may severely degrade the performance of the US. In contrast to variations in $\eprcvdpr$, due to the relationship between between controlled power and secondary throughput defined (\ref{eq:sthr}), the variations are further translated to the secondary throughput. These variations in the system parameters ($\eprcvd$, $\epreg$, $\eprcvdpr$ and $\ers$) are characterized in terms of their probability density functions (pdfs).  
+	\item In particular, the pdf of $\prcvdpr$ is utilized to employ an interference constraint in terms of confidence probability $\pco$ at the ST such that the excessive interference at the PR can be regulated. In addition, the performance of the access channel is determined in terms of the expected secondary throughput. Finally, subject to the interference constraint on the confidence probability the performance of the US is jointly characterized in terms of the estimation-throughput tradoff. 
 \end{enumerate}
 
 \subsection{Characterization of the System Parameters}
-In order to capture the variations induced due to estimation of interference channel, the pdfs of the system parameters are characterized.
-In accordance to the employed signal model, $\prcvd$ is modeled as a non-central chi-squared distribution $\ncchi2$ and the pdf is characterized as \cite{Char99}
+In order to capture the variations induced due to channel estimation, the pdfs of the aforementioned system parameters ($\prcvd$, $\preg$, $\prcvdpr$, $\rs$) are characterized, subsequently. In accordance to the employed signal model, $\prcvd$ is modeled as a non-central chi-squared distribution $\ncchi2$, whose pdf is characterized as \cite{Char99}
 \begin{equation}
 	\label{nxc2equ}
 	\dprcvd (x) = 
@@ -141,14 +160,14 @@ where $N$ is the degree of freedom and the number of samples used for estimating
 \end{equation}
 The simplification in  (\ref{lambda}) is explained as follows: a sinusoidal signal that represents a pilot signal consists of a constant amplitude, which is down-converted by an IQ demodulator at the ST. In this regard, the complex samples $\yrcvd[n]$ have a constant envelope of value $A$. 
 
-According to (\ref{eq:preg}), $\preg$ follows an inverse non-central chi-squared distribution. The pdf for $\preg$  is given by
+Corresponding to (\ref{eq:preg}), $\preg$ follows an inverse non-central chi-squared distribution. The pdf for $\preg$  is given by
 \begin{align}
-\dpreg(x) =& \frac{N K \ite}{2\npp x^2} e^{- \frac{N}{2 \npp}\left( \frac{K  \ite}{x} + \ap \ptran \right)} \left( \frac{K \ite}{x \ap \ptran}   \right)^{\frac{N}{4} - \frac{1}{2}} \label{eq:dpreg_pl} \times \\
-\quad & I_{\frac{N}{2}  - 1}\left( \frac{N}{\npp} \sqrt{\frac{ K \ite \ap \ptran}{x}}  \right), \nonumber
+\dpreg(x) =& \frac{N K \ite}{2\npp x^2} e^{- \frac{N}{2 \npp}\left( \frac{K  \ite}{x} + \gpo \ptran \right)} \left( \frac{K \ite}{x \gpo \ptran}   \right)^{\frac{N}{4} - \frac{1}{2}} \label{eq:dpreg_pl} \times \\
+\quad & I_{\frac{N}{2}  - 1}\left( \frac{N}{\npp} \sqrt{\frac{ K \ite \gpo \ptran}{x}}  \right). \nonumber
 %\fpreg(x) = \q{\frac{N}{2} - 1}{\sqrt{\frac{N \ptran \ap}{\npp}},\sqrt{\frac{N \cdot x}{\npp}} }, 
 \end{align}
 %where $\q{\frac{N}{2} - 1}{\cdot, \cdot}$ is the Marcum-Q function \cite{grad}.
-where $I_{\frac{N}{2}  - 1}(\cdot)$ represents the Bessel function of order $\frac{N}{2} - 1$ \cite{grad}.
+%where $I_{\frac{N}{2}  - 1}(\cdot)$ represents the Bessel function of order $\frac{N}{2} - 1$ \cite{grad}.
 
 Following the pdf $\dpreg$ and the relation (\ref{eq:preg}), the pdf of $\prcvdpr$ is given by
 \begin{align}
@@ -183,12 +202,26 @@ Next, the pdf of the secondary throughput $\rs$ is determined as
 
 
 
-It is challenging to determine the parameter $\sigma_\textrm{p}^2$ utilized in most of the theoretical expressions, accurately. We decided to approximate $\sigma_\textrm{p}^2$ by setting it equal to the variance of the envelope of $y_\textrm{rcvd}$, as this provided the best fit of the model function to the measurement values.
+From the deployment perspective, it is challenging to determine the noise power at the PR ($\sigma_\textrm{p}^2$), which characterizes the theoretical expressions, accurately. In this regard, an approximate value of $\sigma_\textrm{p}^2$ is determined using the variance of the envelope of $\yrcvd[n]$\footnote{The value of the noise power evaluated during the calibration (with no signal power) differed from the one determined while performance the measurements with different values of $\snrrcvd$. It was noticed that the latter approach (will be presented later in section \ref{ssec:val}) provided a closer fit to the derived expressions.}
 
 \subsection{Estimation-Throughput Tradeoff}
+It is clear that small $\tau$ results in large variations for the $\eprcvdpr$, which subsequently causes $\eprcvdpr$ to deviate from $\ite$. If not considered, these variations may affect the performance of the US. To deal with this, a confidence probability $\pco$ and accuracy $\mu$ that captures the variations of $\eprcvdpr$ at the PR. In order to restrict the excessive interference due to channel estimation, it is important to restrain $\pco$ above a certain desired level $\pcod$ for a given $\mu$. Hence, the confidence probability constraint is defined as
+\begin{align}
+\pco = \fprcvdpr \left( {(1 + \mu) \ite}\right)  - \fprcvdpr \left({(1 - \mu) \ite} \right) \ge \pcod, \label{eq:pc} 
+\end{align}
+where $\left( {(1 + \mu) \ite}\right)$ and $\left({(1 - \mu) \ite} \right)$ represent confidence interval around $\ite$.
+
+Clearly, there exits a tradeoff that involves maximizing the expected throughput at the SR subject to a probability of confidence constraint given by
+\begin{align}
+\maxi_{\tau}  & \text{      } \e{\preg}{\rs(\tau)} 
+ \label{eq:sys} \\
+\text{s.t.} & \text{ } \pco(\tau \fsam, \mu) = \p \left( \frac{\left| \prcvdpr - \ite \right|}{\ite} < \mu \right) \ge \pcod, \nonumber  
+\end{align}
+
+
 
 \section{Validation}
-\label{val}
+\label{ssec:val}
 
 \subsection{Experimental Setup}
 
