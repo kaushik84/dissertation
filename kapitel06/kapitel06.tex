@@ -63,7 +63,7 @@ Subject to the aforementioned simplifications and the modifications, in this cha
 
 
 
-\figurename~\ref{szenarioA} depicts a small cell deployment consisting of a CSC-BS, a MS, a PR and a MC-BS. Analog to the previous scenarios, the CSC-BS and the MS represent a ST and a SR. The channels between the PR and the ST and between the ST and SR are designated as interference and access channels with channel gains $\gpo$ and $\gs$, respectively. A power control mechanism is employed at the ST to ensure that interference received at the PR is below a certain level. For this mechanism, it is necessary to acquire the knowledge of the channel between the ST and the PR. As proposed in \cite{Kaushik15}, the ST can retrieve this information by listening to a pilot or beacon signal transmitted by the PR. %For the received pilot signal ($y_\textrm{rcvd}$) and its power, we use the model and notations from \cite{Kaushik15}.
+\figurename~\ref{szenarioA} depicts a small cell deployment consisting of a CSC-BS, a MS, a PR and a MC-BS. Analog to the previous scenarios, the CSC-BS and the MS represent a ST and a SR. The channels between the PR and the ST and between the ST and SR are designated as interference and access channels with channel gains $\gpo$ and $\gs$, respectively. A power control mechanism is employed at the ST to ensure that interference received at the PR is below a certain level. In order to carry out power control mechanism, it is necessary to acquire the knowledge of the channel between the ST and the PR. As proposed in chapter \ref{chap:US}, the ST can retrieve this information by listening to a pilot or beacon signal transmitted by the PR. %For the received pilot signal ($y_\textrm{rcvd}$) and its power, we use the model and notations from \cite{Kaushik15}.
 
 
 A slotted medium access is implemented at the ST with a frame duration of $T$. The knowledge of the interference channel is acquired by employing channel reciprocity over the link PR-ST. $T$ is designed such that the channel can be assumed to remain constant within it. %Based on this premise, $g_\textrm{p}$ and $g_\textrm{s}$ are constant within one frame and included in $\alpha_\textrm{p}$ and $\alpha_\textrm{s}$ for further analysis.
@@ -98,7 +98,11 @@ where $\xscont[n]$ is an i.i.d. random process. The controlled power at the ST i
 \label{eq:preg} 
 \end{align}
 Further, $\pgpo$ and $\pgs$ represent the power gains for channel ST-PR and ST-SR, cf. \figurename~\ref{szenarioA}.
-The powers received at the PR and the SR are evaluated as $\prcvdpr = \s{(T - \tau) \fsam}{|\yp[n]^2|}$ and $\prcvdsr = \s{(T - \tau) \fsam}{|\ys[n]^2|}$. Likewise (\ref{eq:sys_mod_st}), $\nap[n]$ and $\nas[n]$ represents circularly symmetric AWGN at PR and ST with zero mean and variance $\e{}{|\nap[n]|^2} = \npp$ and $\e{}{|\nas[n]|^2} = \nps$, correspondingly. %Consider that $\ptran$, $\preg$ and $\pp$ correspond to power for a given frame. 
+The received powers at the PR and the SR are evaluated as 
+\begin{align}
+\prcvdpr = \s{(T - \tau) \fsam}{|\yp[n]^2|}  \intertext{ and} \prcvdsr = \s{(T - \tau) \fsam}{|\ys[n]^2|}, 
+\end{align}
+respectively. Likewise (\ref{eq:sys_mod_st}), $\nap[n]$ and $\nas[n]$ represents circularly symmetric AWGN at PR and ST with zero mean and variance $\e{}{|\nap[n]|^2} = \npp$ and $\e{}{|\nas[n]|^2} = \nps$, correspondingly. %Consider that $\ptran$, $\preg$ and $\pp$ correspond to power for a given frame. 
 %For (\ref{eq:sys_mod_sr}), we assume that the interference at SR from the PR via beacon or pilot channel is $< \nps$, which is a valid assumption considering the indoor scenario depicted in \figurename~\ref{fig:scenario}. 
 %For (\ref{eq:sys_mod_sr}), we consider a perfect allignment of the ST to the beacon or pilot channe
 %\subsubsection{Channel}
@@ -116,13 +120,14 @@ The sequence of events followed by the underlay scenario from Fig. \ref{szenario
 	\item With the knowledge of the $\ptranpr$, the ST estimates $\epgpo$ from the $\prcvdpr$. 
 	\item Upon acquiring the knowledge of $\epgpo$, a power control with power $\preg$ is employed at the ST. It is scaled such that, in case of perfect channel reciprocity and the absence of noise on the primary link, the interference power arriving at the PR ($\prcvdpr$) has the value of the interference temperature ($\ite$). %In control theory terms, $\ite$ is the setpoint for $\prcvdpr$.
 	\item The ST transmits data to the SR with $\preg$. In the context of this hardware implementation, an unmodulated sinusoidal signal is sent\footnote{The sinusoidal signal is mathematically equivalent to the constant power signal sent by the PR, which resembles a constant phase modulated signal or a perfectly downsampled PSK signal.}.
-	\item The SR receives the data signal with power $P_\textrm{s}$. It provides this value back over a feedback channel to the ST, where it is used to estimate the expected throughput of the secondary link ($R_\textrm{s}$).
+	\item The SR receives the data signal with power $\preg$ It provides this value back over a feedback channel to the ST, where it is used to estimate the expected secondary throughput $\e{\rs}{\rs}$ over the access channel.
 	\item Due to the presence of noise at the ST, the ST encounters variations in $\prcvdpr$, which translates to the variations in $\preg$. These variations are finally translated to the variations in $\prcvdpr$ around $\ite$. The variations in $\prcvdpr$ causes excessive interference at the PR, unless captured, it may severely degrade the performance of the US. The variations in the system parameters $\prcvd$, $\preg$, $\prcvdpr$ and secondary throughput $\rs$ are characterized in terms of their probability density functions.  
 	\item Utilizing the pdfs of $\prcvdpr$ and $\rs$, an interference constraint in terms of confidence probability $\pco$ is imposed at the ST that allows it to control the excessive interference at the PR. In addition, the performance for the access link is determined in terms of the expected $\rs$. Finally, the performance the performance of the US is jointly characterized in terms of the estimation-throughput tradoff. 
 \end{enumerate}
 
 \subsection{Characterization of the System Parameters}
-In accordance to the employed signal model, $\prcvd$ is modeled as a non-central chi-squared distribution $\ncchi2$ with the following pdf \cite{Char99}
+In order to capture the variations induced due to estimation of interference channel, the pdfs of the system parameters are characterized.
+In accordance to the employed signal model, $\prcvd$ is modeled as a non-central chi-squared distribution $\ncchi2$ and the pdf is characterized as \cite{Char99}
 \begin{equation}
 	\label{nxc2equ}
 	\dprcvd (x) = 
@@ -136,8 +141,31 @@ where $N$ is the degree of freedom and the number of samples used for estimating
 \end{equation}
 The simplification in  (\ref{lambda}) is explained as follows: a sinusoidal signal that represents a pilot signal consists of a constant amplitude, which is down-converted by an IQ demodulator at the ST. In this regard, the complex samples $\yrcvd[n]$ have a constant envelope of value $A$. 
 
-The system variables $P_\textrm{cont}$, $P_\textrm{p}$, and $R_\textrm{s}$ are derived from $P_\textrm{rcvd}$ in \cite{Kaushik15}, where the respective pdfs $f_{P_\textrm{cont}}(\cdot)$ and $f_{P_\textrm{p}}(\cdot)$ are also provided. In \cite{Kaushik15}, $f_{R_\textrm{s}}(\cdot)$ represented a pdf of the capacity. Here, we modify this expression to determine the pdf of the secondary throughput
+According to (\ref{eq:preg}), $\preg$ follows an inverse non-central chi-squared distribution. The pdf for $\preg$  is given by
+\begin{align}
+\dpreg(x) =& \frac{N K \ite}{2\npp x^2} e^{- \frac{N}{2 \npp}\left( \frac{K  \ite}{x} + \ap \ptran \right)} \left( \frac{K \ite}{x \ap \ptran}   \right)^{\frac{N}{4} - \frac{1}{2}} \label{eq:dpreg_pl} \times \\
+\quad & I_{\frac{N}{2}  - 1}\left( \frac{N}{\npp} \sqrt{\frac{ K \ite \ap \ptran}{x}}  \right), \nonumber
+%\fpreg(x) = \q{\frac{N}{2} - 1}{\sqrt{\frac{N \ptran \ap}{\npp}},\sqrt{\frac{N \cdot x}{\npp}} }, 
+\end{align}
+%where $\q{\frac{N}{2} - 1}{\cdot, \cdot}$ is the Marcum-Q function \cite{grad}.
+where $I_{\frac{N}{2}  - 1}(\cdot)$ represents the Bessel function of order $\frac{N}{2} - 1$ \cite{grad}.
 
+Following the pdf $\dpreg$ and the relation (\ref{eq:preg}), the pdf of $\prcvdpr$ is given by
+\begin{align}
+\dprcvdpr(x) =& \frac{\ap N K \ite}{2\npp x^2} e^{- \frac{N \ap}{2 \npp}\left( \frac{K  \ite}{x} + \ptran \right)} \left( \frac{K \ite}{x \ptran}   \right)^{\frac{N}{4} - \frac{1}{2}} \times \label{eq:dpp_pl} \\
+\quad & I_{\frac{N}{2}  - 1}\left( \frac{N \ap}{\npp} \sqrt{\frac{ K \ite \ptran}{x}}  \right). \nonumber
+\end{align}
+
+%The definition of $P_\textrm{c}$ can be retrieved from \cite{Kaushik15}. 
+Consequently, the cumulative distribution function (cdf) of $\prcvdpr$ is given by %\footnote{In \cite{Kaushik15}, we discovered a small typing error in the cdf of $P_\textrm{p}$, in this paper, we present the exact version of it.}
+\begin{equation}
+	\label{kumu}
+	\fprcvdpr = Q_{\frac{N}{2}}\left(\sqrt{\frac{N P_\textrm{tran} \alpha_\textrm{p}}{\sigma_\textrm{p}^2}},\sqrt{\frac{N \alpha_\textrm{p} \theta_\textrm{I} K}{\sigma_\textrm{p}^2 x}}\right) \;  ,
+\end{equation}
+with parameters defined in \cite{Kaushik15}. $Q_{\frac{N}{2}}(\cdot)$ is the Marcum Q-function \cite{Jef00}.
+
+%The system variables $P_\textrm{cont}$, $P_\textrm{p}$, and $R_\textrm{s}$ are derived from $P_\textrm{rcvd}$ in \cite{Kaushik15}, where the respective pdfs $f_{P_\textrm{cont}}(\cdot)$ and $f_{P_\textrm{p}}(\cdot)$ are also provided. In \cite{Kaushik15}, $f_{R_\textrm{s}}(\cdot)$ represented a pdf of the capacity. Here, we modify this expression to determine the pdf of the secondary throughput
+Next, the pdf of the secondary throughput $\rs$ is determined as
 \begin{equation}
 	\label{Rspdf}
 	f_{R_\textrm{s}}\left(x\right) =
@@ -154,12 +182,6 @@ The system variables $P_\textrm{cont}$, $P_\textrm{p}$, and $R_\textrm{s}$ are d
 \end{equation*} 
 
 
-The definition of $P_\textrm{c}$ can be retrieved from \cite{Kaushik15}. It is based on the cumulative distribution function (cdf) of $P_\textrm{p}$\footnote{In \cite{Kaushik15}, we discovered a small typing error in the cdf of $P_\textrm{p}$, in this paper, we present the exact version of it.}
-\begin{equation}
-	\label{kumu}
-	F_{P_\textrm{p}}\left(x\right) = Q_{\frac{N}{2}}\left(\sqrt{\frac{N P_\textrm{tran} \alpha_\textrm{p}}{\sigma_\textrm{p}^2}},\sqrt{\frac{N \alpha_\textrm{p} \theta_\textrm{I} K}{\sigma_\textrm{p}^2 x}}\right) \;  ,
-\end{equation}
-with parameters defined in \cite{Kaushik15}. $Q_{\frac{N}{2}}(\cdot)$ is the Marcum Q-function \cite{Jef00}.
 
 It is challenging to determine the parameter $\sigma_\textrm{p}^2$ utilized in most of the theoretical expressions, accurately. We decided to approximate $\sigma_\textrm{p}^2$ by setting it equal to the variance of the envelope of $y_\textrm{rcvd}$, as this provided the best fit of the model function to the measurement values.
 
