@@ -1,7 +1,7 @@
 \chapter{Hardware Implementation}
 \label{chap:Field}
 
-Previous chapters (chapter \ref{chap:IS}, chapter \ref{chap:US} and chapter \ref{chap:HS}) focussed on characterizing the performance of different CR systems jointly in terms of interference power received by the primary receiver and throughput at the secondary receiver by taking the estimation of the involved channels into account. In addition, it is motivated that the low complexity and the versatility towards unknown primary user signals requirements can be satisfied by employing unconventional channel estimation techniques such as received power-based estimation for acquiring the knowledge of the interacting channels, particularly the channels between the primary and the secondary systems. However, the aforementioned analysis in the previous chapters has been limited to the theoretical expressions. This chapter further extends the performance analysis by deploying the proposed channel estimation techniques on a hardware. In this sense, this chapters examines the feasibility of the assumptions considered while deriving the analytical expressions, thereby facilitating the evolution of the proposed framework. With no loss of generality, an underlay system is considered for the deployment.    
+Previous chapters (chapter \ref{chap:IS}, chapter \ref{chap:US} and chapter \ref{chap:HS}) focussed on characterizing the performance of different CR systems jointly in terms of interference power received by the primary receiver and throughput at the secondary receiver by taking the estimation of the involved channels into account. In addition, it is motivated that the low complexity and the versatility towards unknown primary user signals requirements can be satisfied by employing unconventional channel estimation techniques such as received power-based estimation for acquiring the knowledge of the interacting channels, particularly the channels between the primary and the secondary systems. However, the aforementioned analysis in the previous chapters has been limited to the theoretical expressions. This chapter complements the performance analysis by deploying the proposed channel estimation techniques on a hardware. In this sense, the feasibility of the assumptions considered while deriving the analytical expressions can be examined, thereby facilitating the evolution of the proposed framework. With no loss of generality, an underlay system is considered for the deployment.    
 %\begin{abstract}        % give a summary of your paper
 %Cognitive radio is one of the potential contenders that address the problem of spectrum scarcity by making efficient use of the currently allocated spectrum below \SI{6}{GHz}. A secondary access to the licensed spectrum is only possible, if the cognitive radio systems restrict the interference to the primary systems. However, the performance analysis of such a cognitive radio system is a challenging task. Currently, performance evaluation of underlay systems is limited to theoretical analysis. Most of the existing theoretical investigations make certain assumptions in order to sustain analytical tractability, which could be unrealistic from the deployment perspective. Motivated by this fact, in this work, we validate the performance of an underlay system by means of laboratory measurements, and consequently propose a hardware demonstrator of such a system. Moreover, we present a graphical user interface to provide insights to the working of the proposed demonstrator and highlight the main issues faced during this experimental study.
 %\blfootnote{This work was partially supported by the National Research Fund, Luxembourg under the CORE projects "SeMIGod" and "SATSENT".} 
@@ -25,8 +25,8 @@ Previous chapters (chapter \ref{chap:IS}, chapter \ref{chap:US} and chapter \ref
 
 This chapter provides the following contributions:
 \begin{itemize}
-	\item Empirical validation: The performance of the underlay systems subject to the employment of received power-based between the PR and the ST is validated by means of a hardware deployment. The variations (induced due to incorporation of channel estimation) in the system parameters are validated by comparing their probability density functions obtained from the measurements to the one computed analytically. Moreover, the joint performance of the underlay system is validate in terms of estimation-throughput tradeoff proposed in chapter \ref{chap:US}. %A suitable hardware environment is establish to perform measurements and evaluate their results by comparing them with the theoretical expressions.
-	\item Demonstrator: Upon validating the theoretical expressions, a hardware demonstrator following the guidelines of an underlay system is deployed. Further insights to the working of the demonstrator are procured by means of a graphical user interface.	
+	\item Empirical validation: The performance of the underlay systems subject to the employment of received power-based between the PR and the ST is validated by means of a hardware deployment. The variations (induced due to incorporation of channel estimation) in the system parameters are validated by comparing their probability density functions obtained from the measurements to the one computed analytically. Moreover, the joint performance of the underlay system is validated in terms of estimation-throughput tradeoff proposed in chapter \ref{chap:US}. %A suitable hardware environment is establish to perform measurements and evaluate their results by comparing them with the theoretical expressions.
+	\item Demonstrator: Upon validating the theoretical expressions, a hardware demonstrator following the guidelines of an underlay system is deployed. In this context, the applicability of the proposed framwork in realistic scenarios can be justified. A graphical user interference is designed to procure insights to the working of the demonstrator.	
 \end{itemize}
 
 %This paper is organized as follows: Section \ref{sysmod} introduces the system model. Section \ref{val} describes the experimental setup and the validation of the mathematical model. Section \ref{demo} portrays the implementation of the underlay system's hardware demonstrator. Finally, Section \ref{con} concludes the paper.
@@ -142,8 +142,8 @@ where, $\e{\eprcvd}{\cdot}$ represents the expectation over $\eprcvd$.
 \eprcvdpr  = \hpo \epreg,
 \label{eq:eprcvdpr}
 \end{align}
-the variations in $\epreg$ translate to the variations in $\prcvdpr$ (defined as $\eprcvdpr$) around $\ite$, which result in excessive interference at the PR. Unless captured, these variations may severely degrade the performance of the US. Besides this, due to the relationship between between controlled power and secondary throughput defined (\ref{eq:sthr}), a certain amount of the variations are further translated to the secondary throughput. These variations in the system parameters ($\eprcvd$, $\epreg$, $\eprcvdpr$ and $\ers$) are characterized in terms of their probability density functions (pdfs).  
-	\item In particular, the pdf of $\prcvdpr$ is utilized to employ an interference constraint in terms of confidence probability $\pco$ at the ST such that the excessive interference at the PR can be regulated. In addition, the performance of the access channel is determined in terms of the expected secondary throughput. Finally, subject to the interference constraint on the confidence probability the performance of the US is jointly characterized in terms of a tradeoff between the estimation time and secondary throughput tradoff. 
+the variations in $\epreg$ translate to the variations in $\prcvdpr$ (defined as $\eprcvdpr$) around $\ite$, which result in excessive interference at the PR. Unless captured, these variations may severely degrade the performance of the US. Besides this, due to the relationship between between the controlled power and the secondary throughput defined in (\ref{eq:sthr}), a certain amount of the variations are further translated to the secondary throughput. These variations in the system parameters ($\eprcvd$, $\epreg$, $\eprcvdpr$ and $\ers$) are characterized in terms of their probability density functions (pdfs).  
+	\item In particular, the pdf of $\eprcvdpr$ is utilized to employ an interference constraint in terms of confidence probability $\pco$ at the ST such that the excessive interference at the PR can be regulated. In addition, by utilzing the pdf of $\ers$, the performance of the access channel is determined in terms of the expected secondary throughput. Finally, subject to the interference constraint on the confidence probability the performance of the US is jointly characterized in terms of a tradeoff between the estimation time and secondary throughput tradoff. 
 \end{enumerate}
 
 \subsection{Characterization of the System Parameters}
@@ -228,9 +228,6 @@ where $\left( {(1 + \mu) \ite}\right)$ and $\left({(1 - \mu) \ite} \right)$ repr
 This section illustrates the validation of the theoretical expression derived in the previous section. The measurements necessary for the validation is carried out by means of a software defined platform. The experimental setup for acquiring the measurements is presented subsequently. 
  
 \subsection{Experimental Setup}
-Fig. \ref{messaufbau} illustrates the experimental setup used for the validation. In order to obtain large number of realizations under similar conditions, the interference channel is implemented by means of a cable. In addition, attenuators are used to realize different values of $\snrrcvd$. %By doing so, we were able to acquire a large number of system variable realizations measured under similar conditions, which we needed for validating the stochastic model. 
-
-The CSC-BS/ST is implemented in a Universal Software Radio Peripherals (USRP) B210 from Ettus Research \cite{Ettus}. The pilot signal received at the ST is down-converted to an intermediate frequency, band-pass filtered, down-converted to baseband and decimated. The first two steps were carried out to avoid I/Q imbalance and remove the receiver's DC offset and the flicker noise (1/f) around the DC. Due to the small bandwidth of the pilot signal, these effects were the bottleneck of our validation and had to be accounted for. The decimation is performed to reduce the effect of correlation between the samples due to oversampling, since the model function $f_{P_\textrm{rcvd}}(\cdot)$ required independent and identically distributed energy samples. Finally, the measurement data is analyzed offline using Matlab.
 
 \begin{figure}
 	%\vspace{-10 pt}
@@ -242,9 +239,43 @@ The CSC-BS/ST is implemented in a Universal Software Radio Peripherals (USRP) B2
 \end{figure}
 
 
+\begin{figure}
+        %\vspace{-10 pt}
+        \centering
+        \subfloat[Original signal]
+	{
+		\includegraphics[width=0.9\textwidth]{figures/Spektrum}
+	} \\
+        \subfloat[Signal after bandpass filtering]
+	{
+		\includegraphics[width=0.9\textwidth]{figures/bpf}
+	} \\
+        \subfloat[Signal after down conversion]
+	{
+		\includegraphics[width=0.9\textwidth]{figures/runtergemischt}
+	} \\
+        \subfloat[Signal after decimation]
+	{
+		\includegraphics[width=0.9\textwidth]{figures/dezimiert}
+	}
+        \label{fig:SP}
+        %\vspace{-10 pt}
+	\caption{An illustration of signal processing carried at the host computer to preclude the spurious effects such as DC Offset and flicker noise, which are significant for signal at low signal to noise ratio.}
+\end{figure}
+
+
+Fig. \ref{messaufbau} presents the experimental setup deployed for performing the validation process. It has been previously claimed that the experimental validation considers the deterministic behaviour of the channel. In this sense, with the employment of the transmit and the receive antennas, the signal received at the at the ST \footnote{The experiments were performed over the ISM bands with center frequency fixed at \SI{2.45}{GHz}, an interference signal from the operational wireless LAN was observed within the band of interest (in-band) or as an out-of-band emissions from the neighbouring channels.} can influence the measurements, thereby resulting in the deviation of the empirical results from their analytical counterpart. To avoid this issue, the interference channel is implemented by means of a coaxial cable. In addition, attenuators are used to realize different values of $\snrrcvd$. %By doing so, we were able to acquire a large number of system variable realizations measured under similar conditions, which we needed for validating the stochastic model. 
+
+The CSC-BS/ST is emulated using a Universal Software Radio Peripherals (USRP) B210 from Ettus Research \cite{Ettus} and a host computer connected by means of USB cable. %Since the characterization of the system parameters, which is associated with the power control is implemented at the ST, therefore it is reasonable to deploy only ST for the validation process. 
+The PR is realized using a Rhode $\&$ Schwarz 200A vector signal generator (later the PR is replaced with an USRP for the demonstrator). Since the USRP employs a homodyne receiver\footnote{A homodyne receiver implements a direct down conversion of the bandpass to the baseband signal.}, hence spurious effect of the front-end affects the validation process. These spurious effect, particularly, the DC-Offset and the flicker noise around DC become significant at low signal to noise ratio. In order to retrieve the complex samples close to those proposed while deriving the theoretical expressions, following signal processing is proposed at the host computer. The received signal is oversampled and the local oscillate is tunned at a certain offset frequency defined as $\flo$. By doing this, bandpass filtering of the desired signal at the $\flo$ can be employed to filter out the DC-Offset and the flicker noise. In order to obtain the low pass signal of the transmit signal, the bandpass filtered signal undergoes a digital down conversion. %These four steps depicted in \figurename~\ref{fig:SP} are carried out to remove the receiver's DC offset and the flicker noise (1/f) around the DC. Due to the small bandwidth of the pilot signal, these effects form the bottleneck of our validation and had to be accounted for. 
+Moreover, decimation is performed to reduce the effect of correlation between the samples due to oversampling, since the proposed framework considers independent and identically distributed samples required for characterizing the pdfs of the corresponding systems parameters. Finally, the measurement data is analyzed offline using Matlab.
+
+
 \subsection{Validation of System Parameters}
 
 Since the stochastic model is the basis of the further performance analysis that will be carried out over $P_\textrm{c}$ and $R_\textrm{s}$, as a first step, we validate the pdfs of the system variables $P_\textrm{rcvd}$, $P_\textrm{cont}$, $P_\textrm{p}$, and $R_\textrm{s}$, from Section \ref{model} and \cite{Kaushik15}. To this end, measurements with the setup in Fig. \ref{messaufbau} have been performed for different values of received signal-to-noise ratio at the ST over the primary link ($\snrrcvd$\footnote{As noise power, we used the measured receiver noise floor.}). The measurement data was plotted in terms of histograms and scaled such that it represented the relative frequency ($f_\textrm{rel}$). Fig. \ref{hrel_pdf} compares the histograms from the measurements and plotted pdfs using the analytical expressions for different system parameters. The plots show that the theoretical expressions very accurately capture the performance of real world cognitive radio systems.
+
+
 
 \begin{figure}
 	%\vspace{-10 pt}
