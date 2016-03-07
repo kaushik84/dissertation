@@ -137,30 +137,33 @@ where, $\e{\eprcvd}{\cdot}$ represents the expectation over $\eprcvd$.
 	%It is scaled such that, in case of perfect channel reciprocity and the absence of noise on the primary link, the interference power arriving at the PR ($\prcvdpr$) has the value of the interference temperature ($\ite$). %In control theory terms, $\ite$ is the setpoint for $\prcvdpr$.
 	\item The ST transmits data to the SR with $\preg$. 
 	%\item The SR receives the data signal with power $\preg$ It provides this value back over a feedback channel to the ST, where it is used to estimate the expected secondary throughput $\e{\rs}{\rs}$ over the access channel.
-	The received power-based estimation ($\eprcvd$) over the interference channel induces variations in $\preg$. Following the relation between the controlled power at the ST and the received power at the PR 
+	The received power-based estimation ($\eprcvd$) over the interference channel induces variations in controlled power defined as $\epreg$. Following the relation between the controlled power at the ST and the received power at the PR 
 \begin{align}
 \eprcvdpr  = \hpo \epreg,
+\label{eq:eprcvdpr}
 \end{align}
-the variations in $\epreg$ are translated to the variations in $\prcvdpr$ around $\ite$. The variations in $\prcvdpr$ causes excessive interference at the PR, unless captured, it may severely degrade the performance of the US. In contrast to variations in $\eprcvdpr$, due to the relationship between between controlled power and secondary throughput defined (\ref{eq:sthr}), the variations are further translated to the secondary throughput. These variations in the system parameters ($\eprcvd$, $\epreg$, $\eprcvdpr$ and $\ers$) are characterized in terms of their probability density functions (pdfs).  
-	\item In particular, the pdf of $\prcvdpr$ is utilized to employ an interference constraint in terms of confidence probability $\pco$ at the ST such that the excessive interference at the PR can be regulated. In addition, the performance of the access channel is determined in terms of the expected secondary throughput. Finally, subject to the interference constraint on the confidence probability the performance of the US is jointly characterized in terms of the estimation-throughput tradoff. 
+the variations in $\epreg$ translate to the variations in $\prcvdpr$ (defined as $\eprcvdpr$) around $\ite$, which result in excessive interference at the PR. Unless captured, these variations may severely degrade the performance of the US. Besides this, due to the relationship between between controlled power and secondary throughput defined (\ref{eq:sthr}), a certain amount of the variations are further translated to the secondary throughput. These variations in the system parameters ($\eprcvd$, $\epreg$, $\eprcvdpr$ and $\ers$) are characterized in terms of their probability density functions (pdfs).  
+	\item In particular, the pdf of $\prcvdpr$ is utilized to employ an interference constraint in terms of confidence probability $\pco$ at the ST such that the excessive interference at the PR can be regulated. In addition, the performance of the access channel is determined in terms of the expected secondary throughput. Finally, subject to the interference constraint on the confidence probability the performance of the US is jointly characterized in terms of a tradeoff between the estimation time and secondary throughput tradoff. 
 \end{enumerate}
 
 \subsection{Characterization of the System Parameters}
-In order to capture the variations induced due to channel estimation, the pdfs of the aforementioned system parameters ($\prcvd$, $\preg$, $\prcvdpr$, $\rs$) are characterized, subsequently. In accordance to the employed signal model, $\prcvd$ is modeled as a non-central chi-squared distribution $\ncchi2$, whose pdf is characterized as \cite{Char99}
+In order to capture the variations induced due to channel estimation, the pdfs of the aforementioned system parameters ($\eprcvd$, $\epreg$, $\eprcvdpr$, $\ers$) are characterized, subsequently. 
+
+In accordance to the employed signal model, $\prcvd$ is modeled as a non-central chi-squared distribution $\ncchi2$, whose pdf is characterized as \cite{Char99}
 \begin{equation}
 	\label{nxc2equ}
 	\dprcvd (x) = 
 	\frac{N}{2\sigma_\textrm{p}^2} \left(\frac{N x}{\lambda}\right)^\frac{N-2}{4}  
 	\exp\left(-\frac{N x+\lambda}{2\sigma_\textrm{p}^2}\right)  I_{\frac{N}{2}-1}\left(\frac{\sqrt{N x\lambda}}{\sigma_\textrm{p}^2}\right) \;  ,
 \end{equation}
-where $N$ is the degree of freedom and the number of samples used for estimating $\prcvd$, $\npp$ is the noise variance of the in-phase or quadrature-phase component of the received pilot signal ($\yrcvd$, refer to \cite{Kaushik15}), and $I_{\frac{N}{2}-1}(\cdot)$ is the modified Bessel function of the first kind of order $\frac{N}{2}-1$ \cite{Jef00}. Furthermore, the non-centrality parameter is defined as
+where $N$ is the degree of freedom and the number of samples used for estimating $\eprcvd$, $\npp$ is the noise variance of the in-phase or quadrature-phase component of the received pilot signal ($\yrcvd[n]$, refer to \ref{eq:sys_mod_st}), and $I_{\frac{N}{2}-1}(\cdot)$ is the modified Bessel function of the first kind of order $\frac{N}{2}-1$ \cite{Jef00}. Furthermore, the non-centrality parameter is defined as
 \begin{equation}
 	\label{lambda}
 	\lambda = \sum_{n=1}^N |\mathbb{E}[|\yrcvd[n]|^2] = N \times A^2
 \end{equation}
-The simplification in  (\ref{lambda}) is explained as follows: a sinusoidal signal that represents a pilot signal consists of a constant amplitude, which is down-converted by an IQ demodulator at the ST. In this regard, the complex samples $\yrcvd[n]$ have a constant envelope of value $A$. 
+The simplification in (\ref{lambda}) is explained as follows: a sinusoidal signal that represents a pilot signal consists of a constant amplitude, which is down-converted by an I/Q demodulator at the ST. In this regard, the complex samples $\yrcvd[n]$ have a constant envelope of value $A$. 
 
-Corresponding to (\ref{eq:preg}), $\preg$ follows an inverse non-central chi-squared distribution. The pdf for $\preg$  is given by
+Corresponding to (\ref{eq:preg}), $\epreg$ follows an inverse non-central chi-squared distribution. The pdf for $\epreg$  is given by
 \begin{align}
 \dpreg(x) =& \frac{N K \ite}{2\npp x^2} e^{- \frac{N}{2 \npp}\left( \frac{K  \ite}{x} + \gpo \ptran \right)} \left( \frac{K \ite}{x \gpo \ptran}   \right)^{\frac{N}{4} - \frac{1}{2}} \label{eq:dpreg_pl} \times \\
 \quad & I_{\frac{N}{2}  - 1}\left( \frac{N}{\npp} \sqrt{\frac{ K \ite \gpo \ptran}{x}}  \right). \nonumber
@@ -169,19 +172,19 @@ Corresponding to (\ref{eq:preg}), $\preg$ follows an inverse non-central chi-squ
 %where $\q{\frac{N}{2} - 1}{\cdot, \cdot}$ is the Marcum-Q function \cite{grad}.
 %where $I_{\frac{N}{2}  - 1}(\cdot)$ represents the Bessel function of order $\frac{N}{2} - 1$ \cite{grad}.
 
-Following the pdf $\dpreg$ and the relation (\ref{eq:preg}), the pdf of $\prcvdpr$ is given by
+Considering the $\dpreg(x)$ defined in (\ref{eq:dpreg_pl}) and the relation described in (\ref{eq:eprcvdpr}), the pdf of $\eprcvdpr$ is determined as 
 \begin{align}
 \dprcvdpr(x) =& \frac{\ap N K \ite}{2\npp x^2} e^{- \frac{N \ap}{2 \npp}\left( \frac{K  \ite}{x} + \ptran \right)} \left( \frac{K \ite}{x \ptran}   \right)^{\frac{N}{4} - \frac{1}{2}} \times \label{eq:dpp_pl} \\
 \quad & I_{\frac{N}{2}  - 1}\left( \frac{N \ap}{\npp} \sqrt{\frac{ K \ite \ptran}{x}}  \right). \nonumber
 \end{align}
 
 %The definition of $P_\textrm{c}$ can be retrieved from \cite{Kaushik15}. 
-Consequently, the cumulative distribution function (cdf) of $\prcvdpr$ is given by %\footnote{In \cite{Kaushik15}, we discovered a small typing error in the cdf of $P_\textrm{p}$, in this paper, we present the exact version of it.}
+Consequently, the cumulative distribution function (cdf) of $\eprcvdpr$ is given by %\footnote{In \cite{Kaushik15}, we discovered a small typing error in the cdf of $P_\textrm{p}$, in this paper, we present the exact version of it.}
 \begin{equation}
 	\label{kumu}
 	\fprcvdpr = Q_{\frac{N}{2}}\left(\sqrt{\frac{N P_\textrm{tran} \alpha_\textrm{p}}{\sigma_\textrm{p}^2}},\sqrt{\frac{N \alpha_\textrm{p} \theta_\textrm{I} K}{\sigma_\textrm{p}^2 x}}\right) \;  ,
 \end{equation}
-with parameters defined in \cite{Kaushik15}. $Q_{\frac{N}{2}}(\cdot)$ is the Marcum Q-function \cite{Jef00}.
+where $Q_{\frac{N}{2}}(\cdot)$ is the Marcum Q-function \cite{Jef00}.
 
 %The system variables $P_\textrm{cont}$, $P_\textrm{p}$, and $R_\textrm{s}$ are derived from $P_\textrm{rcvd}$ in \cite{Kaushik15}, where the respective pdfs $f_{P_\textrm{cont}}(\cdot)$ and $f_{P_\textrm{p}}(\cdot)$ are also provided. In \cite{Kaushik15}, $f_{R_\textrm{s}}(\cdot)$ represented a pdf of the capacity. Here, we modify this expression to determine the pdf of the secondary throughput
 Next, the pdf of the secondary throughput $\rs$ is determined as
@@ -202,32 +205,32 @@ Next, the pdf of the secondary throughput $\rs$ is determined as
 
 
 
-From the deployment perspective, it is challenging to determine the noise power at the PR ($\sigma_\textrm{p}^2$), which characterizes the theoretical expressions, accurately. In this regard, an approximate value of $\sigma_\textrm{p}^2$ is determined using the variance of the envelope of $\yrcvd[n]$\footnote{The value of the noise power evaluated during the calibration (with no signal power) differed from the one determined while performance the measurements with different values of $\snrrcvd$. It was noticed that the latter approach (will be presented later in section \ref{ssec:val}) provided a closer fit to the derived expressions.}
+From the deployment perspective, it is challenging to determine the noise power at the PR ($\sigma_\textrm{p}^2$), which characterizes the theoretical expressions, accurately. In this regard, an approximate value of $\sigma_\textrm{p}^2$ is determined using the variance of the envelope of $\yrcvd[n]$\footnote{The value of the noise power evaluated during the calibration (that involves no signal transmission) differed from the one determined while performance the measurements for different values of $\snrrcvd$. It is noticed that the latter approach (as presented later in section \ref{ssec:val}) provided a closer fit to the analytical expressions.}
 
 \subsection{Estimation-Throughput Tradeoff}
-It is clear that small $\tau$ results in large variations for the $\eprcvdpr$, which subsequently causes $\eprcvdpr$ to deviate from $\ite$. If not considered, these variations may affect the performance of the US. To deal with this, a confidence probability $\pco$ and accuracy $\mu$ that captures the variations of $\eprcvdpr$ at the PR. In order to restrict the excessive interference due to channel estimation, it is important to restrain $\pco$ above a certain desired level $\pcod$ for a given $\mu$. Hence, the confidence probability constraint is defined as
+It is clear that small $\tau$ results in large variations for the $\eprcvdpr$, and subsequently results in the deviation of $\eprcvdpr$ from $\ite$. If not considered, these variations may affect the performance of the US. To capture these variations, an interference constraint defined in terms of a confidence probability $\pco$ and an accuracy $\mu$\footnote{In order to scale the confidence interval relative to $\ite$.} is proposed. In order to restrict the excessive interference due to channel estimation, it is important to restrain $\pco$ above a certain desired level $\pcod$ for a fixed value of $\mu$. In this regard, the interference constraint is defined as
 \begin{align}
 \pco = \fprcvdpr \left( {(1 + \mu) \ite}\right)  - \fprcvdpr \left({(1 - \mu) \ite} \right) \ge \pcod, \label{eq:pc} 
 \end{align}
-where $\left( {(1 + \mu) \ite}\right)$ and $\left({(1 - \mu) \ite} \right)$ represent confidence interval around $\ite$.
+where $\left( {(1 + \mu) \ite}\right)$ and $\left({(1 - \mu) \ite} \right)$ represent confidence interval around $\ite$. Using (\ref{eq:pc}) and given set of parameters, it is possible to determine $\pco$ for a certain $\mu$. It is worthy to note that $\pco$ depends $\test$, through $\fprcvdpr(x)$. Besides this, $\e{\ers}{\ers}$ is also related to the estimation time. Hence, from the design perspective, it is essential to select the estimation time appropriately such that the ST the maximum secondary throughput is achieved as well as the interference constraint is satisfied. This relationship is characterized as \textit{estimation-throughput tradeoff} is given by 
 
-Clearly, there exits a tradeoff that involves maximizing the expected throughput at the SR subject to a probability of confidence constraint given by
+%Clearly, there exits a tradeoff that involves maximizing the expected throughput at the SR subject to a probability of confidence constraint given by
 \begin{align}
-\maxi_{\tau}  & \text{      } \e{\preg}{\rs(\tau)} 
+\maxi_{\test}  & \text{      } \e{\ers}{\ers(\test)} 
  \label{eq:sys} \\
-\text{s.t.} & \text{ } \pco(\tau \fsam, \mu) = \p \left( \frac{\left| \prcvdpr - \ite \right|}{\ite} < \mu \right) \ge \pcod, \nonumber  
+\text{s.t.} & (\ref{eq:pc}), \nonumber  
 \end{align}
 
 
 
 \section{Validation}
 \label{ssec:val}
-
+This section illustrates the validation of the theoretical expression derived in the previous section. The measurements necessary for the validation is carried out by means of a software defined platform. The experimental setup for acquiring the measurements is presented subsequently. 
+ 
 \subsection{Experimental Setup}
+Fig. \ref{messaufbau} illustrates the experimental setup used for the validation. In order to obtain large number of realizations under similar conditions, the interference channel is implemented by means of a cable. In addition, attenuators are used to realize different values of $\snrrcvd$. %By doing so, we were able to acquire a large number of system variable realizations measured under similar conditions, which we needed for validating the stochastic model. 
 
-Fig. \ref{messaufbau} illustrates the experimental setup used for validation. The primary link is implemented via a cable and attenuators. By doing so, we were able to acquire a large number of system variable realizations measured under similar conditions, which we needed for validating the stochastic model. 
-
-The CR/ST is implemented in a Universal Software Radio Peripherals (USRP) B210 from Ettus Research \cite{Ettus}. There, upon arrival, the pilot signal is down-converted to an intermediate frequency, band-pass filtered, down-converted to baseband and decimated. The first two steps were carried out to avoid I/Q imbalance and remove the receiver's DC offset and the flicker noise (1/f) around the DC. Due to the small bandwidth of the pilot signal, these effects were the bottleneck of our validation and had to be accounted for. The decimation is performed to reduce the effect of correlation between the samples due to oversampling, since the model function $f_{P_\textrm{rcvd}}(\cdot)$ required independent and identically distributed energy samples \cite{Kaushik15}. Finally, the measurement data is analyzed offline using Matlab.
+The CSC-BS/ST is implemented in a Universal Software Radio Peripherals (USRP) B210 from Ettus Research \cite{Ettus}. The pilot signal received at the ST is down-converted to an intermediate frequency, band-pass filtered, down-converted to baseband and decimated. The first two steps were carried out to avoid I/Q imbalance and remove the receiver's DC offset and the flicker noise (1/f) around the DC. Due to the small bandwidth of the pilot signal, these effects were the bottleneck of our validation and had to be accounted for. The decimation is performed to reduce the effect of correlation between the samples due to oversampling, since the model function $f_{P_\textrm{rcvd}}(\cdot)$ required independent and identically distributed energy samples. Finally, the measurement data is analyzed offline using Matlab.
 
 \begin{figure}
 	%\vspace{-10 pt}
@@ -324,8 +327,8 @@ Fig. \ref{RspocstricheA} also includes a validation of $P_\textrm{c}$. This is a
 
 \section{Implementation of a Demonstrator}
 \label{demo}
-
-In this section, we provide the details on the implementation of a demonstrator for the underlay system. 
+Upon validating the proposed approach, it is interesting to realize the functioning of the underlay paradigm by means of a demonstr 
+This section provides insights and outline the involved issues while implementing the proposed approach by means of a demonstrator. 
 
 \subsection{Estimation Time}
 \label{esttime}
