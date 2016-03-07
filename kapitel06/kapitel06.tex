@@ -245,18 +245,22 @@ This section illustrates the validation of the theoretical expression derived in
         \subfloat[Original signal]
 	{
 		\includegraphics[width=0.9\textwidth]{figures/Spektrum}
+        	\label{fig:SP_os}
 	} \\
         \subfloat[Signal after bandpass filtering]
 	{
 		\includegraphics[width=0.9\textwidth]{figures/bpf}
+        	\label{fig:SP_bp}
 	} \\
         \subfloat[Signal after down conversion]
 	{
 		\includegraphics[width=0.9\textwidth]{figures/runtergemischt}
+        	\label{fig:SP_dc}
 	} \\
         \subfloat[Signal after decimation]
 	{
 		\includegraphics[width=0.9\textwidth]{figures/dezimiert}
+        	\label{fig:SP_de}
 	}
         \label{fig:SP}
         %\vspace{-10 pt}
@@ -266,8 +270,10 @@ This section illustrates the validation of the theoretical expression derived in
 
 Fig. \ref{messaufbau} presents the experimental setup deployed for performing the validation process. It has been previously claimed that the experimental validation considers the deterministic behaviour of the channel. In this sense, with the employment of the transmit and the receive antennas, the signal received at the at the ST \footnote{The experiments were performed over the ISM bands with center frequency fixed at \SI{2.45}{GHz}, an interference signal from the operational wireless LAN was observed within the band of interest (in-band) or as an out-of-band emissions from the neighbouring channels.} can influence the measurements, thereby resulting in the deviation of the empirical results from their analytical counterpart. To avoid this issue, the interference channel is implemented by means of a coaxial cable. In addition, attenuators are used to realize different values of $\snrrcvd$. %By doing so, we were able to acquire a large number of system variable realizations measured under similar conditions, which we needed for validating the stochastic model. 
 
-The CSC-BS/ST is emulated using a Universal Software Radio Peripherals (USRP) B210 from Ettus Research \cite{Ettus} and a host computer connected by means of USB cable. %Since the characterization of the system parameters, which is associated with the power control is implemented at the ST, therefore it is reasonable to deploy only ST for the validation process. 
-The PR is realized using a Rhode $\&$ Schwarz 200A vector signal generator (later the PR is replaced with an USRP for the demonstrator). Since the USRP employs a homodyne receiver\footnote{A homodyne receiver implements a direct down conversion of the bandpass to the baseband signal.}, hence spurious effect of the front-end affects the validation process. These spurious effect, particularly, the DC-Offset and the flicker noise around DC become significant at low signal to noise ratio. In order to retrieve the complex samples close to those proposed while deriving the theoretical expressions, following signal processing is proposed at the host computer. The received signal is oversampled and the local oscillate is tunned at a certain offset frequency defined as $\flo$. By doing this, bandpass filtering of the desired signal at the $\flo$ can be employed to filter out the DC-Offset and the flicker noise. In order to obtain the low pass signal of the transmit signal, the bandpass filtered signal undergoes a digital down conversion. %These four steps depicted in \figurename~\ref{fig:SP} are carried out to remove the receiver's DC offset and the flicker noise (1/f) around the DC. Due to the small bandwidth of the pilot signal, these effects form the bottleneck of our validation and had to be accounted for. 
+The CSC-BS/ST is emulated using a Universal Software Radio Peripherals (USRP) B210 from Ettus Research \cite{Ettus} and a host computer connected to the USRP by means of USB cable. The host computer performs the following tasks: (i) it enables the software defined access to the USRP by controlling certain RF parameters such as, tunning frequency and sampling frequency, (ii) it allows baseband processing on the complex samples. %Since the characterization of the system parameters, which is associated with the power control is implemented at the ST, therefore it is reasonable to deploy only ST for the validation process. 
+The PR is realized using a Rhode $\&$ Schwarz 200A vector signal generator (later the PR is replaced with an USRP and a host for the implementation of the demonstrator). Since the USRP employs a homodyne receiver\footnote{A homodyne receiver implements a direct down conversion of the bandpass to the baseband signal.}, hence spurious effects arising from the analog front-end can influence the validation process. These spurious effects, particularly, the DC-Offset and the flicker noise around DC become significant at low signal to noise ratio. 
+
+Now, to retrieve the complex samples close to those proposed while deriving the theoretical expressions (which does take these spurious effects into account), following signal processing is proposed at the host computer. The received signal is oversampled (with sampling frequency $\SI{200}{KHz}$, which corresponds to a oversampling factor = 4, since an bandpass filter of $\SI{50}{KHz}$ is employed) to include a large bandwidth and the local oscillator is tunned at a certain offset frequency defined as $\flo = \SI{50}{KHz}$. By doing this, it is possible to employ a bandpass filter (with bandwidth = $\SI{50}{KHz}$, where corresponds a oversampling factor 4) on the desired signal at the $\flo$ to filter out the DC-Offset and the flicker noise present at low frequencies. In order to obtain the low pass signal of the transmit signal, the bandpass filtered signal undergoes a digital down conversion (multiplying with a complex sinusoid with frequency $\flo$). %These four steps depicted in \figurename~\ref{fig:SP} are carried out to remove the receiver's DC offset and the flicker noise (1/f) around the DC. Due to the small bandwidth of the pilot signal, these effects form the bottleneck of our validation and had to be accounted for. 
 Moreover, decimation is performed to reduce the effect of correlation between the samples due to oversampling, since the proposed framework considers independent and identically distributed samples required for characterizing the pdfs of the corresponding systems parameters. Finally, the measurement data is analyzed offline using Matlab.
 
 
@@ -424,8 +430,14 @@ The response to the dynamic conditions can be verified by changing the distance 
 \begin{figure}
 	%\vspace{-10 pt}
 	\centering
-	\includegraphics[width=1\textwidth]{figures/interface}
-	\caption{A snapshot of the performance parameters displayed in the user interfaces}
+	\subfloat[]
+	{
+		\includegraphics[width=0.5\textwidth]{figures/crinterface}
+	}
+	\subfloat[]{
+	\includegraphics[width=0.5\textwidth]{figures/printerface}
+	}
+	\caption{A snapshot of the performance parameters displayed in the graphical user interface}
 	\label{interface}
 	%\vspace{-10 pt}
 \end{figure}
