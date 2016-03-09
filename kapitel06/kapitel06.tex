@@ -242,17 +242,30 @@ This section illustrates the validation of the theoretical expression derived in
 \begin{figure}
         %\vspace{-10 pt}
         \centering
-        \subfloat[Original signal]
+        \subfloat[Signal with oversampling, where the local oscillator is tunned at $\flo = \SI{55}{KHz}$]
 	{
-		\includegraphics[width=0.9\textwidth]{figures/Spektrum}
-        	\label{fig:SP_os}
+		\begin{tikzpicture}[scale=1]
+		\node[anchor=south west,inner sep=0] (image) at (0,0)
+		{
+
+			\includegraphics[width=0.9\textwidth]{figures/Spektrum}
+        	};
+		\begin{scope}[x={(image.south east)},y={(image.north west)}]
+		\draw[black,thick,<->] (0.498,0.98) --  node[above, font=\footnotesize] {$\flo = \SI{55}{KHz}$} (0.718,0.98);
+
+		%\draw[help lines,xstep=.1,ystep=.1] (0,0) grid (1,1);
+		%\foreach \x in {0,1,...,9} { \node [anchor=north] at (\x/10,0) {0.\x}; }
+		%\foreach \y in {0,1,...,9} { \node [anchor=east] at (0,\y/10) {0.\y}; }
+		\end{scope}
+		\end{tikzpicture}	
+		\label{fig:SP_os}
 	} \\
-        \subfloat[Signal after bandpass filtering]
+        \subfloat[Signal after bandpass filtering, filter bandwidth  $= \SI{50}{KHz}$]
 	{
 		\includegraphics[width=0.9\textwidth]{figures/bpf}
         	\label{fig:SP_bp}
 	} \\
-        \subfloat[Signal after down conversion]
+        \subfloat[Signal after digital down conversion]
 	{
 		\includegraphics[width=0.9\textwidth]{figures/runtergemischt}
         	\label{fig:SP_dc}
@@ -268,18 +281,24 @@ This section illustrates the validation of the theoretical expression derived in
 \end{figure}
 
 
-Fig. \ref{messaufbau} presents the experimental setup deployed for performing the validation process. It has been previously claimed that the experimental validation considers the deterministic behaviour of the channel. In this sense, with the employment of the transmit and the receive antennas, the signal received at the at the ST \footnote{The experiments were performed over the ISM bands with center frequency fixed at \SI{2.45}{GHz}, an interference signal from the operational wireless LAN was observed within the band of interest (in-band) or as an out-of-band emissions from the neighbouring channels.} can influence the measurements, thereby resulting in the deviation of the empirical results from their analytical counterpart. To avoid this issue, the interference channel is implemented by means of a coaxial cable. In addition, attenuators are used to realize different values of $\snrrcvd$. %By doing so, we were able to acquire a large number of system variable realizations measured under similar conditions, which we needed for validating the stochastic model. 
+Fig. \ref{messaufbau} presents the experimental setup deployed for performing the validation process. It has been previously claimed that the experimental validation considers the deterministic behaviour of the channel. In this sense, with the employment of the transmit and the receive antennas, the signal received at the at the ST\footnote{The experiments were performed over the ISM bands with center frequency fixed at \SI{2.45}{GHz}, an interference signal from the operational wireless LAN was observed within the band of interest (in-band) or as an out-of-band emissions from the neighbouring channels.} can influence the measurements, thereby resulting in the deviation of the empirical results from their analytical counterpart. To avoid this issue, the interference channel is implemented by means of a coaxial cable. In addition, attenuators are used to realize different values of $\snrrcvd$. %By doing so, we were able to acquire a large number of system variable realizations measured under similar conditions, which we needed for validating the stochastic model. 
 
-The CSC-BS/ST is emulated using a Universal Software Radio Peripherals (USRP) B210 from Ettus Research \cite{Ettus} and a host computer connected to the USRP by means of USB cable. The host computer performs the following tasks: (i) it enables the software defined access to the USRP by controlling certain RF parameters such as, tunning frequency and sampling frequency, (ii) it allows baseband processing on the complex samples. %Since the characterization of the system parameters, which is associated with the power control is implemented at the ST, therefore it is reasonable to deploy only ST for the validation process. 
-The PR is realized using a Rhode $\&$ Schwarz 200A vector signal generator (later the PR is replaced with an USRP and a host for the implementation of the demonstrator). Since the USRP employs a homodyne receiver\footnote{A homodyne receiver implements a direct down conversion of the bandpass to the baseband signal.}, hence spurious effects arising from the analog front-end can influence the validation process. These spurious effects, particularly, the DC-Offset and the flicker noise around DC become significant at low signal to noise ratio. 
+The CSC-BS/ST is emulated using a Universal Software Radio Peripherals (USRP) B210, a software defined radio, from Ettus Research \cite{Ettus} and a host computer connected to the USRP by means of USB cable. The host computer performs the following tasks: (i) it enables the access to the USRP by controlling certain RF parameters such as, tunning frequency and sampling frequency, (ii) it allows baseband processing on the complex samples. %Since the characterization of the system parameters, which is associated with the power control is implemented at the ST, therefore it is reasonable to deploy only ST for the validation process. 
+The PR is realized using a Rhode $\&$ Schwarz 200A vector signal generator (later for the implementation of the demostartor, the signal generator emulating the PR is replaced with an USRP and a host computer, like the ST). Since the USRP employs a homodyne receiver\footnote{A homodyne receiver implements a direct down conversion of the bandpass to the baseband signal.}, hence spurious effects arising from the analog front-end can influence the validation process. These spurious effects, particularly, the DC-Offset and the flicker noise around DC become significant at low signal to noise ratio. 
 
-Now, to retrieve the complex samples close to those proposed while deriving the theoretical expressions (which does take these spurious effects into account), following signal processing is proposed at the host computer. The received signal is oversampled (with sampling frequency $\SI{200}{KHz}$, which corresponds to a oversampling factor = 4, since an bandpass filter of $\SI{50}{KHz}$ is employed) to include a large bandwidth and the local oscillator is tunned at a certain offset frequency defined as $\flo = \SI{50}{KHz}$. By doing this, it is possible to employ a bandpass filter (with bandwidth = $\SI{50}{KHz}$, where corresponds a oversampling factor 4) on the desired signal at the $\flo$ to filter out the DC-Offset and the flicker noise present at low frequencies. In order to obtain the low pass signal of the transmit signal, the bandpass filtered signal undergoes a digital down conversion (multiplying with a complex sinusoid with frequency $\flo$). %These four steps depicted in \figurename~\ref{fig:SP} are carried out to remove the receiver's DC offset and the flicker noise (1/f) around the DC. Due to the small bandwidth of the pilot signal, these effects form the bottleneck of our validation and had to be accounted for. 
-Moreover, decimation is performed to reduce the effect of correlation between the samples due to oversampling, since the proposed framework considers independent and identically distributed samples required for characterizing the pdfs of the corresponding systems parameters. Finally, the measurement data is analyzed offline using Matlab.
+Now, to retrieve the complex samples close to those proposed while deriving the theoretical expressions (which does not take such spurious effects into account), following signal processing is proposed at the host computer. 
+\begin{itemize}
+\item The received signal is oversampled (with sampling frequency $200$ $\SI{}{KHz}$, for a bandpass filter with bandpass frequency of $\SI{50}{KHz}$ applied subsequently, this sampling corresponds to a oversampling factor = 4) and the local oscillator is tunned at a certain offset frequency defined as $\flo = \SI{50}{KHz}$, refer to \figurename~\ref{fig:SP_os}. 
+\item Subsequently, a bandpass filter (with bandwidth = $\SI{50}{KHz}$) is employed to obtain the desired bandpass signal at the $\flo$, which filters out the DC-Offset and the flicker noise present at low frequencies, cf. \figurename~\ref{fig:SP_bp}. 
+\item In order to obtain the low pass equivalent of the desired signal, a digital down conversion\footnote{Multiplying with a complex sinusoid with frequency $\flo$.} over the bandpass filtered signal is performed, cf. \figurename~\ref{fig:SP_dc}. %These four steps depicted in \figurename~\ref{fig:SP} are carried out to remove the receiver's DC offset and the flicker noise (1/f) around the DC. Due to the small bandwidth of the pilot signal, these effects form the bottleneck of our validation and had to be accounted for. 
+\item In the end, decimation (refer to \figurename~\ref{fig:SP_de}) of the oversampled down converted signal is performed to reduce the correlation between the samples due to oversampling, since the proposed framework considers independent and identically distributed samples for characterizing the pdfs of the corresponding systems parameters. 
+\end{itemize}
+To complement the validation process, the measurement data is analyzed offline using Matlab.
 
 
 \subsection{Validation of System Parameters}
 
-Since the stochastic model is the basis of the further performance analysis that will be carried out over $P_\textrm{c}$ and $R_\textrm{s}$, as a first step, we validate the pdfs of the system variables $P_\textrm{rcvd}$, $P_\textrm{cont}$, $P_\textrm{p}$, and $R_\textrm{s}$, from Section \ref{model} and \cite{Kaushik15}. To this end, measurements with the setup in Fig. \ref{messaufbau} have been performed for different values of received signal-to-noise ratio at the ST over the primary link ($\snrrcvd$\footnote{As noise power, we used the measured receiver noise floor.}). The measurement data was plotted in terms of histograms and scaled such that it represented the relative frequency ($f_\textrm{rel}$). Fig. \ref{hrel_pdf} compares the histograms from the measurements and plotted pdfs using the analytical expressions for different system parameters. The plots show that the theoretical expressions very accurately capture the performance of real world cognitive radio systems.
+Since the stochastic model is the basis of the performance analysis of the proposed framework. It is reasonable to first validate the pdfs of the system variables $\eprcvd$, $\epreg$, $\eprcvdpr$, and $\ers$ derived in Section \ref{model}. To this end, measurements with the setup in Fig. \ref{messaufbau} have been performed for different values of received signal-to-noise ratio at the ST over the interference channel link ($\snrrcvd$\footnote{As noise power, the measured receiver noise floor.}). The measurement data was plotted in terms of histograms and scaled such that it represented the relative frequency ($f_\textrm{rel}$). Fig. \ref{hrel_pdf} compares the histograms from the measurements and plotted pdfs using the analytical expressions for different system parameters. The plots show that the theoretical expressions very accurately capture the performance of the CR systems operating under realistic situations.
 
 
 
@@ -296,12 +315,12 @@ Since the stochastic model is the basis of the further performance analysis that
 	%\vspace{-10 pt}
 \end{figure}
 
-We repeated the experiment for different values of $\snrrcvd$. It was observed that for a considerable range of $\snrrcvd \in (4,30)\SI{}{dB}$, the theoretical expressions depicted a significant accuracy to the experimental data, refer to Table \ref{nichtzentral}. The accuracy was quantified in terms of relative error ($e_\textrm{rel}$) defined as
+The experiments were repeated for different values of $\snrrcvd$. It was observed that for a considerable range of $\snrrcvd \in (4,30)\SI{}{dB}$, the theoretical expressions depicted a significant accuracy to the experimental data, refer to Table \ref{nichtzentral}. The accuracy was quantified in terms of relative error ($e_\textrm{rel}$) defined as
 \begin{equation}
 \label{fr}
-e_\textrm{rel} = \frac{1}{n_\textrm{bins}} \times \sum_{n=1}^{n_\textrm{bins}} \frac{f_{P_\textrm{rcvd}}[n] - f_\textrm{rel}[n]}{f_\textrm{rel}[n]} \;  , 
+e_\textrm{rel} = \frac{1}{|\mathcal X\sub{bins}|} \times \sum_{x \in \mathcal X\sub{bins}} \frac{\dprcvd(x) - f\sub{hist}[x]}{f\sub{hist}[x]} \;  , 
 \end{equation}
-where $n_\textrm{bins}$ is the number of histogram bins with $f_\textrm{rel}[n] \neq 0$.
+where $f\sub{hist}(x)$ corresponds to a histogram evaluated over a set of bins $\mathcal X\sub{bib}$. $|\mathcal X\sub{bins}|$ represents the cardinality of $\mathcal X\sub{bins}$, which excludes bins with $f\sub{hist}[x] \neq 0$. 
 
 \begin{table}
 %	\vspace{-10 pt}
@@ -350,7 +369,7 @@ where $n_\textrm{bins}$ is the number of histogram bins with $f_\textrm{rel}[n] 
 
 \subsection{Validation of the Estimation-Throughput Tradeoff}
 
-Finally, we validate the performance in terms of estimation-throughput tradeoff to yield a suitable estimation time that satisfies the interference constraint on $P_\textrm{c}$ and maximizes the achievable throughput. In contrast to the theoretical analysis presented in \cite{Kaushik15}, in Fig. \ref{RspocstricheA} we provide an empirical validation to the performance of the underlay system. Clearly, this tradeoff considers that a large $\tau_\textrm{est}$ will improve the performance of the primary system by reducing the variations in $P_\textrm{p}$. This improvement is depicted in terms of an increase in $P_\textrm{c}$. On the other hand, the increase in $\tau_\textrm{est}$ reduces the achievable secondary throughput.
+Here, the performance in terms of estimation-throughput tradeoff is validated, that yields a suitable estimation time that satisfies the interference constraint on $\pco$ and maximizes the achievable throughput. In contrast to the theoretical analysis presented in Fig. \ref{RspocstricheA}, an empirical validation to the performance of the underlay system is provided. As discussed previously, this tradeoff illustrates that a large $\test$ improves the performance of the primary system by reducing the variations in $\eprcvdpr$, depicted in terms of an increase in $\pco$. From the perspective of the secondary system, the increase in $\test$ reduces the achievable secondary throughput.
 \begin{figure}
 	%\vspace{-10 pt}
 	\centering
@@ -359,17 +378,15 @@ Finally, we validate the performance in terms of estimation-throughput tradeoff 
 	\label{RspocstricheA}
 	%\vspace{-10 pt}
 \end{figure}
-Fig. \ref{RspocstricheA} also includes a validation of $P_\textrm{c}$. This is achieved by comparing its empirical values with its analytical expressions for different $\tau_\textrm{est}$. In contrast to the analytical model \cite{Kaushik15}, the empirical values of $P_\textrm{c}$ were determined using a numerical integration in the region within the confidence interval $(1  \pm \mu)\times \theta_\textrm{I}$, where $\mu$ is the accuracy as defined in \cite{Kaushik15}. Hence, with this verification, we conclude that the estimation-throughput tradeoff proposed in \cite{Kaushik15} is suitable for hardware implementation.
-
+Fig. \ref{RspocstricheA} presents the joint validation of the performance parameter $\pco$ and $\e{\ers}{\ers}$. This is achieved by comparing its empirical values with its analytical expressions for different $\test$. In contrast to the analytical framework presented in Section \ref{model}, the empirical values of $\pco$ were determined by computing a numerical integration in the region within the confidence interval $(1  \pm \mu)  \theta_\textrm{I}$. Hence, with this verification, it is concluded that the received power based-technique and consequently the analytical framework proposed for determining the performance of the US is suitable for hardware implementation.
 
 \section{Implementation of a Demonstrator}
 \label{demo}
-Upon validating the proposed approach, it is interesting to realize the functioning of the underlay paradigm by means of a demonstr 
-This section provides insights and outline the involved issues while implementing the proposed approach by means of a demonstrator. 
+Upon validating the proposed approach, which considers the offline verification of the proposed approach. From the deployment perspective, it is interesting to demonstrate the online operation of the underlay paradigm on a real hardware. This section provides insights and outline the involved issues while deploying the proposed approach by means of a demonstrator. 
 
 \subsection{Estimation Time}
 \label{esttime}
-As we already verified the dependence of $P_\textrm{c}$ and $R_\textrm{s}$ on $\tau_\textrm{est}$ (refer to Fig. \ref{RspocstricheA}), it is challenging to select $\tau_\textrm{est}$ such that the system adheres to the interference constraints at the PR and still achieves the highest possible secondary throughput. To analyze this problem, we introduce a new parameter called the optimized estimation time ($\tau_\textrm{opt}$). It is the $\tau_\textrm{est}$ that maximizes the secondary throughput according to equation (11) in \cite{Kaushik15} for a certain value of $\snrrcvd$, $\mu$ and a target value of $P_\textrm{c}$ defined as $\bar{P_\textrm{c}}$. In Fig. \ref{RspocstricheA}, this optimization process is indicated graphically by the dotted lines, where, from a fixed $\bar{P_\textrm{c}} = 0.95$, we acquire $\tau_\textrm{opt} \approx \SI{0.75}{ms}$, which corresponds to $\mathbb{E}\left[R_\textrm{s}\right] \approx \SI{7.02}{bits/s/Hz}$.
+The verification illustrated the dependency of the performance parameters $\pco$ and $\e{\ers}{\ers}$ on $\test$ (refer to Fig. \ref{RspocstricheA}), it is challenging to select $\tau_\textrm{est}$ such that the system adheres to the interference constraints at the PR and still achieves the highest possible secondary throughput. To analyze this problem, a new parameter called the estimation time ($\testo$) is introduced. It is $\test$ that maximizes the secondary throughput according to (\ref{eq:}) in \cite{Kaushik15} for a certain value of $\snrrcvd$, $\mu$ and a target value of $P_\textrm{c}$ defined as $\bar{P_\textrm{c}}$. In Fig. \ref{RspocstricheA}, this optimization process is indicated graphically by the dotted lines, where, from a fixed $\bar{P_\textrm{c}} = 0.95$, we acquire $\tau_\textrm{opt} \approx \SI{0.75}{ms}$, which corresponds to $\mathbb{E}\left[R_\textrm{s}\right] \approx \SI{7.02}{bits/s/Hz}$.
 
 However, this analysis is carried out for a fixed value of $\snrrcvd$. Under real conditions, due to channel fading, $\snrrcvd$ is not known. In this sense, it is not possible to determine $\tau_\textrm{opt}$. To resolve this issue, we propose a procedure, whereby we analyze the variations of $\tau_\textrm{opt}$ for different values of $\snrrcvd$, refer to Fig. \ref{Tausnr}, and select $\tau_\textrm{opt}$'s maximum value. By doing this, we are able to satisfy the interference constraint for all realizations of the channel. In addition, we consider different values of $\bar{P_\textrm{c}}$. It is observed that $\tau_\textrm{opt}$ increases with the decrease in $\snrrcvd$ and attains saturation below a certain $\snrrcvd$\footnote{For varying $\theta_\textrm{I}$, while the shape of the curves changed slightly, the upper limits for $\tau_\textrm{opt}$ remained constant.} 
 
