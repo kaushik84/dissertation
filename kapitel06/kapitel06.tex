@@ -26,7 +26,7 @@ Previous chapters (chapter \ref{chap:IS}, chapter \ref{chap:US} and chapter \ref
 This chapter provides the following contributions:
 \begin{itemize}
 	\item Empirical validation: The performance of the underlay systems subject to the employment of received power-based between the PR and the ST is validated by means of a hardware deployment. The variations (induced due to incorporation of channel estimation) in the system parameters are validated by comparing their probability density functions obtained from the measurements to the one computed analytically. Moreover, the joint performance of the underlay system is validated in terms of estimation-throughput tradeoff proposed in chapter \ref{chap:US}. %A suitable hardware environment is establish to perform measurements and evaluate their results by comparing them with the theoretical expressions.
-	\item Demonstrator: Upon validating the theoretical expressions, a hardware demonstrator following the guidelines of an underlay system is deployed. In this context, the applicability of the proposed framwork in realistic scenarios can be justified. A graphical user interference is designed to procure insights to the working of the demonstrator.	
+	\item Demonstrator: Upon validating the theoretical expressions, a hardware demonstrator following the guidelines of an underlay system is deployed. In this context, the applicability of the proposed framework in realistic scenarios can be justified. A graphical user interference is designed to procure insights to the working of the demonstrator.	
 \end{itemize}
 
 %This paper is organized as follows: Section \ref{sysmod} introduces the system model. Section \ref{val} describes the experimental setup and the validation of the mathematical model. Section \ref{demo} portrays the implementation of the underlay system's hardware demonstrator. Finally, Section \ref{con} concludes the paper.
@@ -311,35 +311,14 @@ To filter out the spurious effects, the local oscillator is tunned at a certain 
 \item In the end, decimation filter is applied (decimation factor = 4) over the down converted signal, cf. \figurename~\ref{fig:SP_de}. This is done to reduce the correlation between the samples due to oversampling, since the proposed framework considers independent and identically distributed samples while characterizing the pdfs of the corresponding systems parameters. 
 \end{itemize}
 
-Besides these spurious effects, it is challenging to accurately determine the noise power ($\sigma_\textrm{p}^2$), which characterizes the theoretical expressions. In this regard, an approximate value of $\sigma_\textrm{p}^2$ is determined using the variance of the envelope of $\yrcvd[n]$. This is done because the value of the noise power evaluated during the calibration (that involves no signal transmission) differed from the one determined while performance the measurements for different values of $\snrrcvd$. It is noticed that the latter approach (as presented later in section \ref{ssec:val}) provided a closer fit to the analytical expressions.
+Besides these spurious effects, it is challenging to accurately determine the noise power ($\sigma_\textrm{p}^2$), which characterizes the theoretical expressions. In this regard, an approximate value of $\sigma_\textrm{p}^2$ is determined using the variance of the envelope of $\yrcvd[n]$. This is done because the value of the noise power evaluated during the calibration (that involves no signal transmission) differed from the one determined while performance the measurements for different values of signal to noise ratio $\snrrcvd$ received at the ST over the interference channel. It is noticed that the latter approach (as presented later in section \ref{ssec:val}) provided a closer fit to the analytical expressions.
 
 Finally, to complement the validation process, the measurement data is analyzed offline using Matlab.
 
 \subsection{Validation of System Parameters}
 
-Since the stochastic model is the basis of the performance analysis of the proposed framework. It is reasonable to first validate the pdfs of the system variables $\eprcvd$, $\epreg$, $\eprcvdpr$, and $\ers$ derived in Section \ref{model}. To this end, measurements with the setup in Fig. \ref{messaufbau} have been performed for different values of received signal-to-noise ratio at the ST over the interference channel link ($\snrrcvd$\footnote{As noise power, the measured receiver noise floor.}). The measurement data was plotted in terms of histograms and scaled such that it represented the relative frequency ($f_\textrm{hist}[x]$), which are evaluated over a certain set of bins $x \in \mathcal X_\text{bins}$. \figurename~\ref{hrel_pdf} compares the histograms from the measurements and plotted pdfs using the analytical expressions for different system parameters. The plots show that the theoretical expressions accurately capture the performance of the CR systems operating under realistic situations. 
+Since the stochastic model is the basis of the performance analysis of the proposed framework. It is reasonable to first validate the pdfs of the system variables $\eprcvd$, $\epreg$, $\eprcvdpr$, and $\ers$ derived in Section \ref{model}. To this end, measurements with the setup illustrated in Fig. \ref{messaufbau} is performed. The measurement data is plotted in terms of histograms and scaled such that it represents the relative frequency ($f_\textrm{hist}[x]$), which are evaluated over a certain set of bins $x \in \mathcal X_\text{bins}$. \figurename~\ref{hrel_pdf} compares the histograms from the measurements and pdfs determined using the analytical expressions for a certain set system parameters depicted in Table \ref{params}. The plots show that the theoretical expressions accurately capture the performance of the CR systems operating under realistic situations. 
 
-
-
-\begin{figure}
-	%\vspace{-10 pt}
-	\centering
-	\includegraphics[width=0.5\textwidth]{figures/40}%
-	\includegraphics[width=0.5\textwidth]{figures/P_cont_40dBm_k100}%
-	
-	\includegraphics[width=0.5\textwidth]{figures/P_p_40dBm_k100}%
-	\includegraphics[width=0.5\textwidth]{figures/R_s_40dBm_k100}%
-	\caption{Theoretical expressions of the pdf and experimental results of different system variables (parameters from Table \ref{param})}
-	\label{hrel_pdf}
-	%\vspace{-10 pt}
-\end{figure}
-
-The experiments were repeated for different values of $\snrrcvd$. It was observed that for a considerable range of $\snrrcvd \in (4,30)\SI{}{dB}$, the theoretical expressions depicted a significant accuracy to the experimental data, refer to Table \ref{nichtzentral}. The accuracy was quantified in terms of relative error ($\epsilon$) defined as
-\begin{equation}
-\label{fr}
-\epsilon = \frac{1}{|\mathcal X\sub{bins}|} \times \sum_{x \in \mathcal X\sub{bins}} \frac{\dprcvd(x) - f\sub{hist}[x]}{f\sub{hist}[x]} \;  , 
-\end{equation}
-$|\mathcal X\sub{bins}|$ represents the cardinality of $\mathcal X\sub{bins}$, which excludes bins with $f\sub{hist}[x] \neq 0$. 
 
 \begin{table}
 %	\vspace{-10 pt}
@@ -361,6 +340,51 @@ $|\mathcal X\sub{bins}|$ represents the cardinality of $\mathcal X\sub{bins}$, w
 	\end{tabular}
 %	%\vspace{-10 pt} 
 \end{table}
+
+\begin{figure}
+	%\vspace{-10 pt}
+	\centering
+	\input{figures/P_ST_Rx}
+	\begin{tikzpicture}[scale=1]
+                \node[anchor=south west,inner sep=0] (image) at (0,0)
+        	{
+			\includegraphics[width=0.5\textwidth]{figures/P_ST_Rx} 
+                };
+
+		\begin{scope}[x={(image.south east)},y={(image.north west)}]
+                \draw[black,thick,<->] (0.605,0.98) --  node[above, font=\footnotesize] {Band pass filter = $\SI{50}{KHz}$} (0.825,0.98);
+
+                %\draw[help lines,xstep=.1,ystep=.1] (0,0) grid (1,1);
+                %\foreach \x in {0,1,...,9} { \node [anchor=north] at (\x/10,0) {0.\x}; }
+                %\foreach \y in {0,1,...,9} { \node [anchor=east] at (0,\y/10) {0.\y}; }
+                \end{scope}
+        \end{tikzpicture}\\[6pt] %
+
+	
+	\input{figures/P_ST_Tx}
+	\includegraphics[width=0.5\textwidth]{figures/P_ST_Tx} \\[6pt] %
+	
+	\input{figures/P_PR_Rx}
+	\includegraphics[width=0.5\textwidth]{figures/P_PR_Rx} \\[6pt]%
+	\input{figures/R_s}
+	\includegraphics[width=0.5\textwidth]{figures/R_s}%
+	%\includegraphics[width=0.5\textwidth]{figures/40}%
+	%\includegraphics[width=0.5\textwidth]{figures/P_cont_40dBm_k100}%
+	
+	%\includegraphics[width=0.5\textwidth]{figures/P_p_40dBm_k100}%
+	%\includegraphics[width=0.5\textwidth]{figures/R_s_40dBm_k100}%
+	\caption{Theoretical expressions of the pdf and experimental results with the system parameters presented in Table \ref{param}.}
+	\label{hrel_pdf}
+	%\vspace{-10 pt}
+\end{figure}
+
+The experiments were repeated for different values of $\snrrcvd$. It was observed that for a considerable range of $\snrrcvd \in (4,30)\SI{}{dB}$, the theoretical expressions depicted a significant accuracy to the experimental data, refer to Table \ref{nichtzentral}. The accuracy was quantified in terms of relative error ($\epsilon$) defined as
+\begin{equation}
+\label{fr}
+\epsilon = \frac{1}{|\mathcal X\sub{bins}|} \times \sum_{x \in \mathcal X\sub{bins}} \frac{\dprcvd(x) - f\sub{hist}[x]}{f\sub{hist}[x]} \;  , 
+\end{equation}
+$|\mathcal X\sub{bins}|$ represents the cardinality of $\mathcal X\sub{bins}$, which excludes bins with $f\sub{hist}[x] \neq 0$. 
+
 
 \begin{table}
 %	%\vspace{-10 pt}
