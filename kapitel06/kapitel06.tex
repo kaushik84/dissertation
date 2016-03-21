@@ -317,7 +317,7 @@ Finally, to complement the validation process, the measurement data is analyzed 
 
 \subsection{Validation of System Parameters}
 
-Since the stochastic model is the basis of the performance analysis of the proposed framework. It is reasonable to first validate the pdfs of the system variables $\eprcvd$, $\epreg$, $\eprcvdpr$, and $\ers$ derived in Section \ref{model}. To this end, measurements with the setup illustrated in Fig. \ref{messaufbau} is performed. The measurement data is plotted in terms of histograms and scaled such that it represents the relative frequency ($f_\textrm{hist}[x]$), which are evaluated over a certain set of bins $x \in \mathcal X_\text{bins}$. \figurename~\ref{hrel_pdf} compares the histograms from the measurements and pdfs determined using the analytical expressions for a certain set system parameters depicted in Table \ref{params}. The plots show that the theoretical expressions accurately capture the performance of the CR systems operating under realistic situations. 
+Since the stochastic model is the basis of the performance analysis of the proposed framework. It is reasonable to first validate the pdfs of the system variables $\eprcvd$, $\epreg$, $\eprcvdpr$, and $\ers$ derived in Section \ref{model}. To this end, measurements with the setup illustrated in Fig. \ref{messaufbau} is performed. The measurement data is plotted in terms of histograms and scaled such that it represents the relative frequency ($f_\textrm{hist}[x]$), which are evaluated over a certain set of bins $x \in \mathcal X_\text{bins}$. \figurename~\ref{hrel_pdf} compares the histograms from the measurements and pdfs determined using the analytical expressions for a certain set system parameters depicted in Table \ref{param}. The plots show that the theoretical expressions are valid and can be employed for capturing the performance of the CR systems operating under realistic situations. 
 
 
 \begin{table}
@@ -331,18 +331,18 @@ Since the stochastic model is the basis of the performance analysis of the propo
 		\bfseries Parameter & \bfseries Value \\ \hline \hline
 		$\snrrcvd$ & \SI{22}{dB} \\
 		$N$ & 100 \\
-		$\test$ & \SI{0.5}{ms}\\
+		$\test$ & \SI{2}{ms}\\
 		$\ite$ & \SI{-110}{dBm}\\
 		$T$ & \SI{100}{ms}\\
 		$\pgs$ & 1 \\
-		$\npp$ & $2.1355\times10^{-10}$\\ \hline
+		$\npp$ & $\SI{-96.74}{dBm}$\\ \hline
 		%Value & \SI{22}{dB} & 100/\SI{0.5}{ms} & \SI{-110}{dBm} & \SI{100]{ms} & 1 \tablefootnote{The channel gain of the ST-SR link $\alpha_\textrm{s} \in (0,1)$ was set to its maximum theoretical value for this analysis.} & $2.1355\times10^{-10}$ \tablefootnote{The value represents the measured receiver noise floor (digital value) of the in-phase or quadrature-phase components.} \\ 
 	\end{tabular}
 %	%\vspace{-10 pt} 
 \end{table}
 
 \begin{figure}
-	%\vspace{-10 pt}
+	\vspace{-10 pt}
 	\centering
 	\input{figures/P_ST_Rx}
 	\begin{tikzpicture}[scale=1]
@@ -352,20 +352,50 @@ Since the stochastic model is the basis of the performance analysis of the propo
                 };
 
 		\begin{scope}[x={(image.south east)},y={(image.north west)}]
-                \draw[black,thick,<->] (0.605,0.98) --  node[above, font=\footnotesize] {Band pass filter = $\SI{50}{KHz}$} (0.825,0.98);
+                \node[above, font=\footnotesize] at (0.13,0.92) {$ \times 10^{-9}$};
 
                 %\draw[help lines,xstep=.1,ystep=.1] (0,0) grid (1,1);
                 %\foreach \x in {0,1,...,9} { \node [anchor=north] at (\x/10,0) {0.\x}; }
                 %\foreach \y in {0,1,...,9} { \node [anchor=east] at (0,\y/10) {0.\y}; }
                 \end{scope}
-        \end{tikzpicture}\\[6pt] %
+        \end{tikzpicture}\\[4pt] %
 
 	
 	\input{figures/P_ST_Tx}
-	\includegraphics[width=0.5\textwidth]{figures/P_ST_Tx} \\[6pt] %
+	\begin{tikzpicture}[scale=1]
+                \node[anchor=south west,inner sep=0] (image) at (0,0)
+        	{
+			\includegraphics[width=0.5\textwidth]{figures/P_ST_Tx} 
+                };
+
+		\begin{scope}[x={(image.south east)},y={(image.north west)}]
+                \node[above, font=\footnotesize] at (0.13,0.92) {$ \times 10^{-8}$};
+
+                %\draw[help lines,xstep=.1,ystep=.1] (0,0) grid (1,1);
+                %\foreach \x in {0,1,...,9} { \node [anchor=north] at (\x/10,0) {0.\x}; }
+                %\foreach \y in {0,1,...,9} { \node [anchor=east] at (0,\y/10) {0.\y}; }
+                \end{scope}
+        \end{tikzpicture}\\[4pt] %
+
 	
 	\input{figures/P_PR_Rx}
-	\includegraphics[width=0.5\textwidth]{figures/P_PR_Rx} \\[6pt]%
+	\begin{tikzpicture}[scale=1]
+                \node[anchor=south west,inner sep=0] (image) at (0,0)
+        	{
+			\includegraphics[width=0.5\textwidth]{figures/P_PR_Rx} 
+                };
+
+		\begin{scope}[x={(image.south east)},y={(image.north west)}]
+                \node[above, font=\footnotesize] at (0.13,0.92) {$ \times 10^{-11}$};
+
+		\draw[black,thick,<-] (0.56,0.57) --  node[above, font=\footnotesize] {$\ite (1 + \mu)$} (0.76,0.57);
+		\draw[black,thick,<-] (0.353,0.57) --  node[above, font=\footnotesize] {$\ite (1 - \mu)$} (0.153,0.57);
+                %\draw[help lines,xstep=.1,ystep=.1] (0,0) grid (1,1);
+                %\foreach \x in {0,1,...,9} { \node [anchor=north] at (\x/10,0) {0.\x}; }
+                %\foreach \y in {0,1,...,9} { \node [anchor=east] at (0,\y/10) {0.\y}; }
+                \end{scope}
+        \end{tikzpicture}\\[4pt] %
+
 	\input{figures/R_s}
 	\includegraphics[width=0.5\textwidth]{figures/R_s}%
 	%\includegraphics[width=0.5\textwidth]{figures/40}%
@@ -373,17 +403,17 @@ Since the stochastic model is the basis of the performance analysis of the propo
 	
 	%\includegraphics[width=0.5\textwidth]{figures/P_p_40dBm_k100}%
 	%\includegraphics[width=0.5\textwidth]{figures/R_s_40dBm_k100}%
-	\caption{Theoretical expressions of the pdf and experimental results with the system parameters presented in Table \ref{param}.}
+	\caption{Validationg the theoretical expressions of the pdf and the experimental results with a certain choice of the system parameters depicted in Table \ref{param}.}
 	\label{hrel_pdf}
 	%\vspace{-10 pt}
 \end{figure}
 
-The experiments were repeated for different values of $\snrrcvd$. It was observed that for a considerable range of $\snrrcvd \in (4,30)\SI{}{dB}$, the theoretical expressions depicted a significant accuracy to the experimental data, refer to Table \ref{nichtzentral}. The accuracy was quantified in terms of relative error ($\epsilon$) defined as
+The experiments were repeated for different values of $\snrrcvd$. It was observed that for a considerable range of $\snrrcvd \in (4,30)\SI{}{dB}$, the theoretical expressions depicted a significant accuracy to the experimental data, refer to Table \ref{nichtzentral}. The accuracy was quantified in terms of relative error defined as
 \begin{equation}
 \label{fr}
 \epsilon = \frac{1}{|\mathcal X\sub{bins}|} \times \sum_{x \in \mathcal X\sub{bins}} \frac{\dprcvd(x) - f\sub{hist}[x]}{f\sub{hist}[x]} \;  , 
 \end{equation}
-$|\mathcal X\sub{bins}|$ represents the cardinality of $\mathcal X\sub{bins}$, which excludes bins with $f\sub{hist}[x] \neq 0$. 
+$|\mathcal X\sub{bins}|$ represents the cardinality of $\mathcal X\sub{bins}$, which excludes the bins with $f\sub{hist}[x] \neq 0$. Different values of $\snrrcvd$ can be translated to different channel conditions, hence, this observation further concludes that the proposed framework is robust to the fluctuations in the channel gain. 
 
 
 \begin{table}
@@ -394,7 +424,7 @@ $|\mathcal X\sub{bins}|$ represents the cardinality of $\mathcal X\sub{bins}$, w
 	\caption{$e\sub{rel}$ for different values of $\snrrcvd$}
 	\label{nichtzentral}
 	\begin{tabular}{c||c} 
-		\bfseries $\snrrcvd$/[dB] &  \bfseries $e_\textrm{rel}$ \\ \hline \hline
+		\bfseries $\snrrcvd$/[dB] &  \bfseries $\epsilon$ \\ \hline \hline
 		$4.08$ &  $0.0568$ \\
 		$9.10$ &  $0.0601$ \\
 		$14.11$ & $0.0522$ \\
@@ -411,8 +441,7 @@ $|\mathcal X\sub{bins}|$ represents the cardinality of $\mathcal X\sub{bins}$, w
 
 
 \subsection{Validation of the Estimation-Throughput Tradeoff}
-
-Here, the performance in terms of estimation-throughput tradeoff is validated, that yields a suitable estimation time that satisfies the interference constraint on $\pco$ and maximizes the achievable throughput. In contrast to the theoretical analysis presented in Fig. \ref{RspocstricheA}, an empirical validation to the performance of the underlay system is provided. As discussed previously, this tradeoff illustrates that a large $\test$ improves the performance of the primary system by reducing the variations in $\eprcvdpr$, depicted in terms of an increase in $\pco$. From the perspective of the secondary system, the increase in $\test$ reduces the achievable secondary throughput.
+Following the validation of the pdfs that captures the variations in the system parameters, it is interesting to validate the performance of the CR system in terms of the estimation-throughput tradeoff, characterized in (\ref{eq:sys}). Thus, the feasibility of the optimization problem that yields a suitable estimation time and satisfies the interference constraint on $\pco$ and maximizes the achievable throughput is validated by means of hardware. As discussed previously, a large $\test$ improves the performance of the primary system by reducing the variations in $\eprcvdpr$, depicted in terms of an increase in $\pco$, cf. \figurename~\ref{RspocstricheA}. From the perspective of the secondary system, the increase in $\test$ reduces the achievable secondary throughput. These variations of the expected throughput $\e{\ers}{\ers}$ and the confidence probability $\pco$ versus the estimation time $\test$ are depicted \figurename~\ref{RspocstricheA}, which illustrates a joint validation of the performance of a underlay CR system. Again, the validation is achieved by comparing the mesurements of the performance parameters ($\e{\ers}{\ers}$ and $\pco$) with their analytical expressions for different $\test$. In contrast to the analytical framework presented in Section \ref{model}, the measurements of $\pco$ are determined by computing a numerical integration in the region within the confidence interval $(1  \pm \mu)  \theta_\textrm{I}$, cf. \figurename~\ref{hrel_pdf}. 
 \begin{figure}
 	%\vspace{-10 pt}
 	\centering
@@ -421,7 +450,6 @@ Here, the performance in terms of estimation-throughput tradeoff is validated, t
 	\label{RspocstricheA}
 	%\vspace{-10 pt}
 \end{figure}
-Fig. \ref{RspocstricheA} presents the joint validation of the performance parameter $\pco$ and $\e{\ers}{\ers}$. This is achieved by comparing its empirical values with its analytical expressions for different $\test$. In contrast to the analytical framework presented in Section \ref{model}, the empirical values of $\pco$ were determined by computing a numerical integration in the region within the confidence interval $(1  \pm \mu)  \theta_\textrm{I}$. 
 
 Based on this validation described in this section, following conclusions can be outlined: 
 \begin{itemize}
