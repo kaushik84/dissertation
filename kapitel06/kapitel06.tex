@@ -523,21 +523,60 @@ Mapping the principle working of the underlay paradigm described in Section \ref
 As expected, upon changing the value of $\ite$ at the ST also changes the measured value of $\eprcvd$ at the PR to approximately the same value. This indicates the expected $\prcvdpr$ is fixed to the interference temperature, as proposed in the analytical framework. This phenomenon is highlighted in \figurename~\ref{interface}. In addition, due to the modification of interference constraint\footnote{Changing the interference temperature changes the confidence interval.}, the ST adapts its $\preg$ according to the new parameters that define the interference constraint. The change in the $\preg$ further changes the expected secondary throughput $\e{\ers}{\ers}$. These observations demonstrate that the received power estimation is performed at the ST by listening to the pilot based channel, to acquire the channel knowledge and perform the power control, is working in accordance to the underlay principle. The response of the demonstrator to the dynamic conditions can be analyzed by varying the distance, thereby varying the channel gain for the link between the PR and the ST. The effect can be captured by observing the changes in $\eprcvd$ and other corresponding parameters that are depending on it. As the distance is increased beyond a certain value, the ST operates at its maximum transmit power. This event is indicated in graphical the user interface.
 
 \begin{figure}
-	%\vspace{-10 pt}
+	\vspace{-15 pt}
 	\centering
-	\subfloat[]
+	\subfloat[User interface to the ST]
 	{
-		\includegraphics[width=0.5\textwidth]{figures/crinterface}
+		\begin{tikzpicture}[scale=1]
+                \node[anchor=south west,inner sep=0] (image) at (0,0)
+                {
+			\includegraphics[width=0.5\textwidth]{figures/crinterface}
+                };
+
+                \begin{scope}[x={(image.south east)},y={(image.north west)}]
+                \node[draw, fill=gray!10,font=\scriptsize] at (0.49,0.99) {Secondary Transmitter (CSC-BS)};
+                \node[draw, fill=gray!10,font=\scriptsize] at (0.355,0.93) {Received Power at the ST, $\eprcvd$};
+                \node[draw, fill=gray!10,font=\scriptsize] at (0.143,0.745) {Noise Floor,$\npp$};
+                \node[draw, fill=gray!10,font=\scriptsize] at (0.35,0.69) {Control power at the ST, $\epreg$};
+                \node[draw, fill=gray!10,font=\scriptsize] at (0.32,0.49) {Secondary throughput at the SR, $\ers$};
+                \node[draw, fill=gray!10,font=\scriptsize] at (0.32,0.28) {Interference temperature, $\ite$ = [dBm]};
+                \node[draw, fill=gray!10,font=\scriptsize] at (0.11,0.20) {Frame duration = [ms]};
+                \node[draw, fill=gray!10,font=\scriptsize] at (0.145,0.125) {Estimation time = [ms]};
+                \node[draw, fill=gray!10,font=\scriptsize] at (0.3,0.08) {Gain for the access channel, $\hs$ = [mV]};
+
+                %\draw[help lines,xstep=.1,ystep=.1] (0,0) grid (1,1);
+                %\foreach \x in {0,1,...,9} { \node [anchor=north] at (\x/10,0) {0.\x}; }
+                %\foreach \y in {0,1,...,9} { \node [anchor=east] at (0,\y/10) {0.\y}; }
+                \end{scope}
+        \end{tikzpicture}	
+	}\\[4pt]
+	\subfloat[User interface to the PR]{
+	   \begin{tikzpicture}[scale=1]
+                \node[anchor=south west,inner sep=0] (image) at (0,0)
+                {
+			\includegraphics[width=0.5\textwidth]{figures/printerface}
+                };
+
+                \begin{scope}[x={(image.south east)},y={(image.north west)}]
+                \node[draw, fill=gray!10,font=\scriptsize] at (0.49,0.995) {Primary Receiver};
+                \node[draw, fill=gray!10,font=\scriptsize] at (0.35,0.93) {Interference Power at the PR, $\eprcvdpr$};
+                \node[draw, fill=gray!10,font=\scriptsize] at (0.32,0.725) {Confidence probability constraint, $\pcod$};
+                \node[draw, fill=gray!10,font=\scriptsize] at (0.23,0.47) {$\p(\eprcvdpr \ge \ite (1 + \mu))$};
+                \node[draw, fill=gray!10,font=\scriptsize] at (0.23,0.225) {$\p(\eprcvdpr \le \ite (1 - \mu))$};
+		
+		%\draw[help lines,xstep=.1,ystep=.1] (0,0) grid (1,1);
+                %\foreach \x in {0,1,...,9} { \node [anchor=north] at (\x/10,0) {0.\x}; }
+                %\foreach \y in {0,1,...,9} { \node [anchor=east] at (0,\y/10) {0.\y}; }
+                \end{scope}
+        \end{tikzpicture}
+
 	}
-	\subfloat[]{
-	\includegraphics[width=0.5\textwidth]{figures/printerface}
-	}
-	\caption{A snapshot of the performance parameters displayed in the graphical user interface}
+	\vspace{-10pt}
+	\caption{A snapshot of the GUI illustrating the performance parameters at the ST and the PR}
 	\label{interface}
-	%\vspace{-10 pt}
 \end{figure}
 
-At $\mu = 0.05$, it is observed that the demonstrator fails to achieve the target value of the confidence probability constraint $\pcod = 0.95$. Certainly, this issue is largely caused due to the simplifications undertaken in Section \ref{ssec:simp2}. In future, it is important to relax these simplifications. Another possible reason for such kind of behaviour can be speculated as follows: Since a pilot signal produced by a signal generator has been used for the hardware validation, which offers a higher signal quality than the one produced by a USRP in the demonstrator. 
+At $\mu = 0.05$, it is observed that the demonstrator fails to achieve the target value of the confidence probability constraint $\pcod = 0.95$. Certainly, this issue is largely caused due to the simplifications undertaken in Section \ref{ssec:simp2}. In future, it is important to relax these simplifications. Another possible reason for this behaviour can be speculated as follows: Since a pilot signal produced by a signal generator has been used for the hardware validation, which offers a higher signal quality than the one produced by a USRP in the demonstrator. 
 %Moreover, because of the separate links for sensing and transmission and the frequency separation of \SI{1}{MHz}, the channel reciprocity of the demonstrator may be compromised compared with the theoretical model. 
 In order to sustain the interference constraint, the tolerance limit was increased to $\mu = 0.20$, which leads to the desired $\pco$ of 0.95, which satisfied the proposed interference constraint, refer to \figurename~\ref{interface} the PR interface. Despite this deviation from the theoretical behaviour, it can be concluded that the USRPs considered for the deployment of the demonstrator represent the viable choice for signal transmissions. In addition, the demonstrator deployed captures the principle working of an underlay system that employs a power control mechanism at the ST to limit the excessive interference at the PR under quasi realistic situations. 
 
