@@ -233,8 +233,25 @@ This section illustrates the validation of the theoretical expression derived in
 \begin{figure}
 	%\vspace{-10 pt}
 	\centering
-	\includegraphics[width=0.8\textwidth]{figures/setup}
-	\caption{Measurement setup for the validation of the stochastic model, laptop image from \cite{Laptop}}
+	%\includegraphics[width=0.8\textwidth]{figures/setup}
+	  \begin{tikzpicture}[scale=1]
+                \node[anchor=south west,inner sep=0] (image) at (0,0)
+                {
+			\includegraphics[width=0.5\textwidth]{figures/ValidationSetUp}
+                };
+
+                \begin{scope}[x={(image.south east)},y={(image.north west)}]
+                \node[draw, fill=gray!10,font=\scriptsize] at (0.49,0.965) {Signal Generator};
+
+                \node[draw, fill=gray!10,font=\scriptsize] at (0.49,0.09) {Host Computer};
+                \node[draw, fill=gray!10,font=\scriptsize, text width = 1cm, align = center] at (0.13,0.11) {SDR platform};
+                \node[draw, fill=gray!10,font=\scriptsize, text width = 1cm, align = center] at (0.87,0.24) {USB Interface};
+                %\draw[help lines,xstep=.1,ystep=.1] (0,0) grid (1,1);
+                %\foreach \x in {0,1,...,9} { \node [anchor=north] at (\x/10,0) {0.\x}; }
+                %\foreach \y in {0,1,...,9} { \node [anchor=east] at (0,\y/10) {0.\y}; }
+                \end{scope}
+        \end{tikzpicture}
+	\caption{Measurement setup for the validation of the stochastic model}
 	\label{messaufbau}
 	%\vspace{-10 pt}
 \end{figure}
@@ -571,9 +588,6 @@ As expected, upon changing the value of $\ite$ at the ST shifts the variations i
                 \end{scope}
         \end{tikzpicture}
 
-	}
-	\subfloat[]{
-	\includegraphics[width=0.5\textwidth]{figures/printerface}
 	}
 	\caption{A snapshot of the performance parameters displayed in the graphical user interface}
 	\label{interface}
