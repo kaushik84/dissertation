@@ -241,7 +241,7 @@ This section illustrates the validation of the theoretical expression derived in
                 };
 
                 \begin{scope}[x={(image.south east)},y={(image.north west)}]
-                \node[draw, fill=gray!10,font=\scriptsize] at (0.49,0.965) {Signal Generator};
+                \node[draw, fill=gray!10,font=\scriptsize] at (0.49,0.765) {Signal Generator};
 
                 \node[draw, fill=gray!10,font=\scriptsize] at (0.49,0.09) {Host Computer};
                 \node[draw, fill=gray!10,font=\scriptsize, text width = 1cm, align = center] at (0.13,0.11) {SDR platform};
@@ -251,7 +251,7 @@ This section illustrates the validation of the theoretical expression derived in
                 %\foreach \y in {0,1,...,9} { \node [anchor=east] at (0,\y/10) {0.\y}; }
                 \end{scope}
         \end{tikzpicture}
-	\caption{Measurement setup for the validation of the stochastic model}
+	\caption{Measurement setup for the validation of the analytical framework consisting of:(i) Signal Generator (Rhode \& Schwarz 200A), (ii) Software defined radio platform (USRP B 210), (iii) USB interference to the host computer and (iv) host computer.}
 	\label{messaufbau}
 	%\vspace{-10 pt}
 \end{figure}
@@ -462,7 +462,8 @@ Following the validation of the pdfs that captures the variations in the system 
 \begin{figure}
 	%\vspace{-10 pt}
 	\centering
-	\includegraphics[width=0.8\textwidth]{figures/Rs_poc_striche}
+	\input{figures/ETT.tex}
+	\includegraphics[width=\figscale]{figures/ETT}
 	\caption{Estimation-throughput tradeoff (parameters from Table \ref{param}), $P_\textrm{c,meas}$: empirical values of $P_\textrm{c}$, $P_\textrm{c,model}$: analytical values of $P_\textrm{c}$.}
 	\label{RspocstricheA}
 	%\vspace{-10 pt}
@@ -490,7 +491,8 @@ By doing this, it is assured that the interference constraint is satisfied for d
 \begin{figure}
 	%\vspace{-10 pt}
 	\centering
-	\includegraphics[width=0.85\textwidth]{figures/tau_snr}
+	\input{figures/test_SNR.tex}
+	\includegraphics[width=\figscale]{figures/test_SNR}
 	\caption{$\tau_\textrm{opt}$ over $\snrrcvd$, $\theta_\textrm{I}$ = \SI{-110}{dBm}, $\mu$ = 0.05}
 	\label{fig:Tausnr}
 	%\vspace{-10 pt}
