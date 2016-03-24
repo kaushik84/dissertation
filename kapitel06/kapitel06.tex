@@ -134,7 +134,7 @@ In order establish a close relationship between the analytical framework and the
 \end{align}
 where $K$ represents a scaling factor. The scaling factor is required at the ST to hold $\e{}{\eprcvdpr}$ at $\ite$. It is defined as
 \begin{align}
-K = \frac{1}{ \e{\eprcvd}{\frac{\gpo}{\eprcvd}}},% = \fr
+K = \frac{1}{ \e{\eprcvd}{\frac{\gpo}{\eprcvd}}}, \label{eq:sca} 
 \end{align}
 where, $\e{\eprcvd}{\cdot}$ represents the expectation over $\eprcvd$.
 	%It is scaled such that, in case of perfect channel reciprocity and the absence of noise on the primary link, the interference power arriving at the PR ($\prcvdpr$) has the value of the interference temperature ($\ite$). %In control theory terms, $\ite$ is the setpoint for $\prcvdpr$.
@@ -509,7 +509,7 @@ By doing this, it is assured that the interference constraint is satisfied for d
 From \figurename~\ref{fig:Tausnr}, it is further observed that $\ttest$ decreases with $\snrrcvd$ and attains saturation below a certain $\snrrcvd$. %\footnote{For varying $\theta_\textrm{I}$, while the shape of the curves changed slightly, the upper limits for $\tau_\textrm{opt}$ remained constant.} 
 This behaviour can be explained as follows: For large values of $\snrrcvd$, $\preg$ is low, hence reduces the variations of $\eprcvdpr$ around $\ite$ and consequently a lower value of $\ttest$ is needed to maintain these variations within the confidence interval. On the other hand, the signals received with low $\snrrcvd$, which correspond to a higher $\preg$, however, considering the limited number of samples used for the estimation process and sensitivity of the deployed hardware (USRP), it is difficult to distinguish such signals from the noise. This is why, $\ttest$ saturates below a certain $\snrrcvd$. However, increasing the number of samples for the channel estimation or selecting the hardware with higher sensitivity extend the saturation region to the lower $\snrrcvd$. 
 
-In the end, this analysis can be used for determining $\ttesto$ in the implementation of our demonstrator. Since the confidence probability constraint $\pcod = 0.95$ is targeted, $\ttesto = \SI{24}{ms}$ is chosen to be estimation time for the channel estimation, cf. \figurename~\ref{fig:Tausnr}. With this, the interference constraints at the PR is satisfied for all $\snrrcvd$ at the cost of a decreased performance in expected secondary throughput, particularly for the situation with high $\snrrcvd$ that achieves the suitable estimation time at lower value.
+The aforementioned analysis is used to determine $\ttesto$ for the demonstrator. For a confidence probability constraint $\pcod = 0.95$, $\ttesto = \SI{24}{ms}$ is chosen to be estimation time for the channel estimation, cf. \figurename~\ref{fig:Tausnr}. With this, the interference constraint at the PR is satisfied for all $\snrrcvd$ at the cost of a decreased performance in expected secondary throughput, particularly for the situation with high $\snrrcvd$ that achieves the suitable estimation time at lower value.
 
 
 \subsection{Simplifications}
@@ -519,7 +519,7 @@ In order to successfully deploy the demonstrator, in addition to the simplificat
 
 \begin{enumerate}
 	%\item The hardware implementation of the SR is not considered, that is, it is regarded virtual in the system (refer to Fig. \ref{demo_blockA}).
-	\item According the proposed framework the controlled power can be evaluated using (\ref{eq:preg}). However, it requires knowledge of the scaling parameter $K$, which further requires the computation of the expected received power $\e{\eprcvd}{\eprcvd}$. Again analog to estimation time, it is difficult to carry out such a computation while the system is operating. To resolve this issue, the control power is computed based on a single realization of the $\eprcvd$ for the demonstrator. Such a simplification, however, increases the variation in the system. As a result, a certain deviation in the performance depicted by the demonstrator (in terms of the confidence probability and expected secondary throughput) from the one computed using the theoretical expression is expected. 
+	\item The controlled power, according to the proposed framework, can be evaluated using (\ref{eq:preg}). However, this requires knowledge of the scaling parameter $K$. Now, $K$ can be computed by averaging the received power $\eprcvd$, which corresponds to the expected received power $\e{\eprcvd}{\eprcvd}$), cf. (\ref{eq:sca}). Again analog to the estimation time, it is difficult to carry out such a computation while the system is operating. To resolve this issue, the control power is computed based on a single realization of the $\eprcvd$ for the demonstrator. Such a simplification, however, increases the variation in the system. As a result, a certain deviation in the performance depicted by the demonstrator (in terms of the confidence probability and expected secondary throughput) from the one computed using the theoretical expression is expected. 
 In this regard, the estimated channel gain, evaluated from $\eprcvd$, is determined as 
 	\begin{equation}
 		\epgpo = \frac{\e{\eprcvd}{\eprcvd}-\npp}{\ptran} \approx \frac{\eprcvd-\npp}{\ptran}. 
