@@ -253,7 +253,7 @@ This section illustrates the validation of the theoretical expression derived in
                 %\foreach \y in {0,1,...,9} { \node [anchor=east] at (0,\y/10) {0.\y}; }
                 \end{scope}
         \end{tikzpicture}
-	\caption{Measurement setup for the validation of the analytical framework consisting of:(i) Signal Generator (Rhode \& Schwarz 200A), (ii) Software defined radio platform (USRP B 210), (iii) USB interference to the host computer and (iv) host computer.}
+	\caption{An illustration of the measurement setup required for the validation process, consisting of: (i) Signal Generator (Rhode \& Schwarz 200A), (ii) Software defined radio platform (USRP B 210), (iii) USB interference to the host computer and (iv) host computer.}
 	\label{messaufbau}
 	%\vspace{-10 pt}
 \end{figure}
@@ -460,20 +460,39 @@ $|\mathcal X\sub{bins}|$ represents the cardinality of $\mathcal X\sub{bins}$, w
 
 
 \subsection{Validation of the Estimation-Throughput Tradeoff}
-Following the validation of the pdfs that captures the variations in the system parameters, it is interesting to validate the performance of the CR system in terms of the estimation-throughput tradeoff, characterized in (\ref{eq:sys}). Thus, the feasibility of the optimization problem that yields a suitable estimation time and satisfies the interference constraint on $\pco$ and maximizes the achievable throughput is validated by means of hardware. As discussed previously, a large $\test$ improves the performance of the primary system by reducing the variations in $\eprcvdpr$, depicted in terms of an increase in $\pco$, cf. \figurename~\ref{RspocstricheA}. From the perspective of the secondary system, the increase in $\test$ reduces the achievable secondary throughput. These variations of the expected throughput $\e{\ers}{\ers}$ and the confidence probability $\pco$ versus the estimation time $\test$ are depicted \figurename~\ref{RspocstricheA}, which illustrates a joint validation of the performance of a underlay CR system. Again, the validation is achieved by comparing the mesurements of the performance parameters ($\e{\ers}{\ers}$ and $\pco$) with their analytical expressions for different $\test$. In contrast to the analytical framework presented in Section \ref{model}, the measurements of $\pco$ are determined by computing a numerical integration in the region within the confidence interval $(1  \pm \mu)  \theta_\textrm{I}$, cf. \figurename~\ref{hrel_pdf}. 
+Following the validation of the pdfs that captures the variations in the system parameters, it is interesting to validate the performance of the CR system in terms of the estimation-throughput tradeoff, characterized in (\ref{eq:sys}). Thus, the feasibility of the optimization problem that yields a suitable estimation time and satisfies the interference constraint on $\pco$ to achieve a maximum secondary throughput is validated by means of hardware. As discussed previously, a large $\test$ improves the performance of the primary system by reducing the variations in $\eprcvdpr$, depicted by observing an increase in $\pco$, cf. \figurename~\ref{RspocstricheA}. Conversely, from the perspective of the secondary system, the increase in $\test$ reduces the achievable secondary throughput. These variations of the expected throughput $\e{\ers}{\ers}$ and the confidence probability $\pco$ versus the estimation time $\test$ are depicted \figurename~\ref{RspocstricheA}, which illustrates a joint validation of the performance of a underlay CR system. Again, the validation is achieved by comparing the measurements of the performance parameters ($\e{\ers}{\ers}$ and $\pco$) with their analytical expressions for different $\test$. In contrast to the analytical framework presented in Section \ref{model}, the measurements of $\pco$ are determined by computing a numerical integration in the region within the confidence interval $(1  \pm \mu)  \theta_\textrm{I}$, cf. \figurename~\ref{hrel_pdf}. 
 \begin{figure}
-	%\vspace{-10 pt}
+	%\vspace{-20 pt}
 	\centering
 	\input{figures/ETT.tex}
-	\includegraphics[width=\figscale]{figures/ETT}
-	\caption{Validating the estimation-throughput tradeoff for the choice of parameters depicted in Table \ref{param}.} 
+	\begin{tikzpicture}[scale=1]
+        \node[anchor=south west,inner sep=0] (image) at (0,0)
+        {
+		\includegraphics[width=\figscale]{figures/ETT}
+	};
+        \begin{scope}[x={(image.south east)},y={(image.north west)}]
+        \node[draw, fill=gray!10,font=\scriptsize] (text1) at (0.98,0.872) {$\pcod$};
+	\draw[black, ->] (text1.west) -- (0.913,0.872);
+        
+	\node[draw, fill=gray!10,font=\scriptsize] (text2) at (0.3275,0.01) {$\ttest$};
+	\draw[black, ->] (text2.north) -- (0.3275,0.086);
+        
+	\node[draw, fill=gray!10,font=\scriptsize] (text3) at (-0.06,0.9) {$\maxi\e{\ers}{\ers}$};
+	\draw[black, ->] (text3.south) -- (0.084,0.7);
+
+                %\draw[help lines,xstep=.1,ystep=.1] (0,0) grid (1,1);
+                %\foreach \x in {0,1,...,9} { \node [anchor=north] at (\x/10,0) {0.\x}; }
+                %\foreach \y in {0,1,...,9} { \node [anchor=east] at (0,\y/10) {0.\y}; }
+                \end{scope}
+        \end{tikzpicture}
+	\caption{Validating the estimation-throughput tradeoff for the choice of parameters depicted in Table \ref{param}. The figure illustrates the suitable estimation time $\ttest$ at which the confidence probability is satisfied, see the projection of $\square$ on the curve $\pco$, at the same time achieves the maximum expected secondary throughput, see the projection of $\Box$ on the curve $\e{\ers}{\ers}$.} 
+
 	\label{RspocstricheA}
-	%\vspace{-10 pt}
 \end{figure}
 
 After performing the validation described in this section, following conclusions can be outlined: 
 \begin{itemize}
-\item The accuracy of the derived expressions and the feasibility of the received power-based estimation (proposed and investigated in this and previous chapters) have been jsutified by means of the hardware.
+\item The accuracy of the derived expressions and the feasibility of the received power-based estimation (proposed and investigated in this and previous chapters) have been justified by means of the hardware.
 \item Furthermore, the applicability of the simplifications and solutions proposed, cf. Section \ref{ssec:simp1}, to perform the validation process has been accounted.    
 \end{itemize}
 Hence, the analytical framework proposed is capable of illustrating the underlay principle by means of a demonstrator.
@@ -535,14 +554,16 @@ As $\npp$ is negligible compared to $\eprcvd$, (\ref{eq:approx1}) can be further
 	\item Furthermore, the analytical framework employs a TDD, hence, assumes a perfect frame synchronization between the PR and the ST. Since, the synchronization between two different systems is challenging\footnote{It is cumbersome to deploy two different system and realize TDD for the preliminary analysis.}. To simplify this matter, Frequency Division Duplexing between the PR and the ST is proposed as follows: The signals are transmitted and received using two different frequencies (\SI{2.422}{GHz} and \SI{2.423}{GHz}) over two separate antennas, as illustrated in \figurename~\ref{demo_blockA}. With this technique, the channel reciprocity may be compromised.	
 \end{enumerate}
 In order to realize these simplifications, it is utmost necessary to observe the impact of these simplifications on the performance of the demonstrator, specially, in terms of the violation of the interference constraint. 
-\begin{figure}
+%\begin{sidewaysfigure}
+	\begin{figure}
 	%\vspace{-10 pt}
 	\centering
-	\includegraphics[width=0.9\textwidth]{figures/demo_block}
-	\caption{Setup and block diagram of demonstrator}
+	\includegraphics[width=0.9\textwidth, angle = 90]{figures/demo_block}
+	\caption{Setup and block diagram of demonstrator.}
 	\label{demo_blockA}
 	%\vspace{-10 pt}
-\end{figure}
+	\end{figure}
+%\end{sidewaysfigure}
 In this regard, the principle operation of the underlay paradigm described in Section \ref{scenario} is mapped onto the hardware and the above mentioned simplifications are applied. The signal flow is illustrated in \figurename~\ref{demo_blockA} is depicted. The techniques such as the channel estimation (received power-based estimation), the power control mechanism, the interference constraint are implemented over the host computer using GNU Radio and the available signal processing blocks therein.
 
 
@@ -550,7 +571,7 @@ In this regard, the principle operation of the underlay paradigm described in Se
 
 \figurename~\ref{interface} presents the graphical user interfaces of the demonstrator that provides insights to the parameters evaluated at the PR (which include, $\prcvdpr$ and $\pco$) and the ST (which include, $\eprcvd$, $\epreg$, and $\ers$). A hardware calibration of the demonstrator is performed to provide physical significance to the digital values obtained from the USRPs. Because the SR has not been implemented over the hardware, a slider to modify the gain for the access channel ($\gs$) has been employed to demostrate the effect of variations in the $\gs$ on the performance of the system. %$R_\textrm{s}$ is affected by changing the value of $\alpha_\textrm{s}$ or $T$. 
 
-As expected, upon changing the value of $\ite$ at the ST causes the variations, in the measurements of $\eprcvdpr$ at the PR, to shift approximately to the same value. This indicates the expected receiver power $\e{\prcvdpr}{\prcvdpr}$ is fixed to the interference temperature, as proposed in the analytical framework. A snapshop of this phenomenon is presented in \figurename~\ref{interface}. In addition, due to the modification of the interference constraint\footnote{Changing the interference temperature changes the confidence interval.}, the ST adapts its $\preg$ according to the new parameters that define the interference constraint. The change in the $\preg$ further changes the expected secondary throughput $\e{\ers}{\ers}$. These observations demonstrate that the received power-based estimation (which enables the ST to procure the channel knowledge) implemented at the ST by listening to the pilot signal transmitted by the PR to perform the power control mechanism is operating in accordance to the underlay principle. Finally, the response of the demonstrator to the dynamic conditions can be analyzed by varying the distance, which consequently varies the channel gain for the link between the PR and the ST. The effect can be captured by observing the changes in $\eprcvd$ and other corresponding parameters that depend on $\hpo$. As the distance is increased beyond a certain value, the ST operates at its maximum transmit power. Such events during which the ST operates at the maximum transmit power are interesting to understand the behaviour of the demonstrator, hence, included in the graphical the user interface of the ST.
+As expected, upon changing the value of $\ite$ at the ST causes the variations, in the measurements of $\eprcvdpr$ at the PR, to shift approximately to the same value. This indicates the expected receiver power $\e{\prcvdpr}{\prcvdpr}$ is fixed to the interference temperature, as proposed in the analytical framework. A snapshot of this phenomenon is presented in \figurename~\ref{interface}. In addition, due to the modification of the interference constraint\footnote{Changing the interference temperature changes the confidence interval.}, the ST adapts its $\preg$ according to the new parameters that define the interference constraint. The change in the $\preg$ further changes the expected secondary throughput $\e{\ers}{\ers}$. These observations demonstrate that the received power-based estimation (which enables the ST to procure the channel knowledge) implemented at the ST by listening to the pilot signal transmitted by the PR to perform the power control mechanism is operating in accordance to the underlay principle. Finally, the response of the demonstrator to the dynamic conditions can be analyzed by varying the distance, which consequently varies the channel gain for the link between the PR and the ST. The effect can be captured by observing the changes in $\eprcvd$ and other corresponding parameters that depend on $\hpo$. As the distance is increased beyond a certain value, the ST operates at its maximum transmit power. Such events during which the ST operates at the maximum transmit power are interesting to understand the behaviour of the demonstrator, hence, included in the graphical the user interface of the ST.
 
 \begin{figure}
 	\vspace{-15 pt}
@@ -617,8 +638,8 @@ For the preliminary deployment, the proposed interference constraint can be sust
 
 In this chapter, the performance of an underlay system from a deployment perspective has been analyzed. To this end, an analytical framework has been validated by means of hardware measurements. 
 %In this regard, the validation of a stochastic model that incorporates the pdfs of the system parameters has been considered. In addition, the performance analysis in terms of estimation-throughput tradeoff has been validated. 
-Investigating the deployment process, it has been argued that the knowledge of the interacting channels is absolutely necessary to realize the CR systems, which is main aspect considered in the thesis. 
-Following the validation process, it has been indicated that the proposed framework that incorporates the channel estimation technique, which includes the received power-based estimation for the link between the primary and secondary systems, supports the hardware feasibility of a CR system in terms of low complexity and the versatility to unknown primary user signals. Based on the experimental validation, a hardware demonstrator that depicts the principle working of the underlay system has been proposed. More importantly, in this chapter, the challenges considered while deploying the demonstrator have been briefly discussed and consequently the corresponding solutions and simplifications have been proposed.  
+While investigating the deployment process, it has been argued that the knowledge of the interacting channels is absolutely necessary to realize the CR systems, the main aspect outlined in the thesis. 
+Following the validation process, it has been indicated that the proposed framework that incorporates the channel estimation technique, which includes the received power-based estimation for the links between the primary and the secondary systems, is significant for supporting the hardware feasibility of a CR system in terms of low complexity and the versatility to unknown primary user signals. Based on the experimental validation, a hardware demonstrator that depicts the principle working of the underlay system has been proposed. More importantly, in this chapter, the challenges considered while deploying the demonstrator have been briefly discussed, and consequently the corresponding solutions and simplifications that overcome these challenges have been proposed.  
 
 
 %In the future, we intend to reconsider certain simplifications made while deploying the demonstrator, for instance, we propose to deploy a USRP for the SR and try to synchronize the frame structure at the ST and the PR in order to respect channel reciprocity.
