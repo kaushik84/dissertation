@@ -554,19 +554,51 @@ As $\npp$ is negligible compared to $\eprcvd$, (\ref{eq:approx1}) can be further
 	\item Furthermore, the analytical framework employs a TDD, hence, assumes a perfect frame synchronization between the PR and the ST. Since, the synchronization between two different systems is challenging\footnote{It is cumbersome to deploy two different system and realize TDD for the preliminary analysis.}. To simplify this matter, Frequency Division Duplexing between the PR and the ST is proposed as follows: The signals are transmitted and received using two different frequencies (\SI{2.422}{GHz} and \SI{2.423}{GHz}) over two separate antennas, as illustrated in \figurename~\ref{demo_blockA}. With this technique, the channel reciprocity may be compromised.	
 \end{enumerate}
 In order to realize these simplifications, it is utmost necessary to observe the impact of these simplifications on the performance of the demonstrator, specially, in terms of the violation of the interference constraint. 
-%\begin{sidewaysfigure}
-	\begin{figure}
-	%\vspace{-10 pt}
+\begin{figure}
 	\centering
-	\def\svgwidth{300pt}
-	\resizebox{100mm}{!}{\import{../kapitel06/figures/}{BlockDiagram_Demo.ps_tex}}
-	%\includegraphics[width=0.9\textwidth, angle = 90]{figures/BlockDiagram_Demo}
+	%\begin{landscape}
+	%\vspace{-10 pt}
+	
+	%\def\svgwidth{400pt}
+	%\resizebox{0.85 \columnwidth}{!}{\import{../kapitel06/figures/}{BlockDiagram_Demo.ps_tex}}
+	\begin{tikzpicture}[scale=1]
+                \node[anchor=south west,inner sep=0] (image) at (0,0)
+                {
+			\includegraphics[width=0.94 \textheight, angle = 90]{figures/BlockDiagram_Demo}
+                };
+
+                \begin{scope}[x={(image.south east)},y={(image.north west)}]
+	 
+                \node[draw, fill=gray!10, font=\scriptsize, rotate = 90, align = center] at (-0.10,0.51) {Software Defined Platform};
+	
+		% Transmit and receive signals	
+		\node[draw=none, font=\scriptsize, rotate = 90, align = center] at (0.03,0.28) {Rx Signal};
+                \node[draw=none, font=\scriptsize, rotate = 90, align = center] at (0.16,0.28) {Tx Signal};
+                \node[draw=none, font=\scriptsize, rotate = 90, align = center] at (0.03,0.72) {Tx Signal};
+                \node[draw=none, font=\scriptsize, rotate = 90, align = center] at (0.16,0.72) {Rx Signal};
+		% Channels
+                \node[draw=none, font=\scriptsize, rotate = 90, align = center] at (0.00,0.51) {$\hpo$};
+                \node[draw=none, font=\scriptsize, rotate = 90, align = center] at (0.13,0.51) {$\hpt$};
+		% Fill Empty Boxes
+		% PR Interface
+		\node[draw=none, font=\scriptsize, rotate = 90, align = center] at (0.514,0.13) {Pilot Signal \\ $(\ptran)$};
+                \node[draw=none, font=\scriptsize, rotate = 90, align = center] at (0.81,0.13) {$\sum |\cdot|^2$ \\ $(= \eprcvdpr)$};
+                \node[draw=none, font=\scriptsize, rotate = 90, align = center] at (0.81,0.268) {1000 \\ Measurements};
+                \node[draw, fill=gray!10, font=\scriptsize, rotate = 90, align = center] at (0.95,0.268) {Buffer};
+                \node[draw=none, font=\scriptsize, rotate = 90, align = center] at (0.81,0.41) {Compute $\pco$};
+                
+		% ST Interface
+		\node[draw=none, font=\scriptsize, rotate = 90, align = center] at (0.514,0.885) {Compute $\pco$};
+                \node[draw=none, font=\scriptsize, rotate = 90, align = center] at (0.81,0.885) {Compute $\pco$};
+		\end{scope}
+        \end{tikzpicture}
+
 	%\includegraphics[width=0.9\textwidth, angle = 90]{figures/Demo_Block}
-	\caption{Setup and block diagram of demonstrator.}
 	\label{demo_blockA}
 	%\vspace{-10 pt}
-	\end{figure}
-%\end{sidewaysfigure}
+	%\end{landscape}
+	\caption{Setup and block diagram of demonstrator.}
+\end{figure}
 In this regard, the principle operation of the underlay paradigm described in Section \ref{scenario} is mapped onto the hardware and the above mentioned simplifications are applied. The signal flow is illustrated in \figurename~\ref{demo_blockA} is depicted. The techniques such as the channel estimation (received power-based estimation), the power control mechanism, the interference constraint are implemented over the host computer using GNU Radio and the available signal processing blocks therein.
 
 
