@@ -569,27 +569,30 @@ In order to realize these simplifications, it is utmost necessary to observe the
 
                 \begin{scope}[x={(image.south east)},y={(image.north west)}]
 	 
-                \node[draw, fill=gray!10, font=\scriptsize, rotate = 90, align = center] at (-0.10,0.51) {Software Defined Platform};
+                \node[draw, fill=gray!10, font=\scriptsize, rotate = 90, align = center] at (0.95,0.39) {Primary Receiver};
+                \node[draw, fill=gray!10, font=\scriptsize, rotate = 90, align = center] at (0.95,0.588) {Secondary Transmitter};
 	
 		% Transmit and receive signals	
-		\node[draw=none, font=\scriptsize, rotate = 90, align = center] at (0.03,0.28) {Rx Signal};
-                \node[draw=none, font=\scriptsize, rotate = 90, align = center] at (0.16,0.28) {Tx Signal};
-                \node[draw=none, font=\scriptsize, rotate = 90, align = center] at (0.03,0.72) {Tx Signal};
-                \node[draw=none, font=\scriptsize, rotate = 90, align = center] at (0.16,0.72) {Rx Signal};
+		\node[draw=none, font=\scriptsize, rotate = 90, align = center] at (0.03,0.27) {Rx Signal};
+                \node[draw=none, font=\scriptsize, rotate = 90, align = center] at (0.13,0.27) {Tx Signal};
+                \node[draw=none, font=\scriptsize, rotate = 90, align = center] at (0.03,0.68) {Tx Signal};
+                \node[draw=none, font=\scriptsize, rotate = 90, align = center] at (0.13,0.68) {Rx Signal};
 		% Channels
-                \node[draw=none, font=\scriptsize, rotate = 90, align = center] at (0.00,0.51) {$\hpo$};
-                \node[draw=none, font=\scriptsize, rotate = 90, align = center] at (0.13,0.51) {$\hpt$};
+                \node[draw=none, font=\scriptsize, rotate = 90, align = center] at (0.00,0.48) {$\hpo$};
+                \node[draw=none, font=\scriptsize, rotate = 90, align = center] at (0.12,0.48) {$\hpt$};
 		% Fill Empty Boxes
 		% PR Interface
-		\node[draw=none, font=\scriptsize, rotate = 90, align = center] at (0.514,0.13) {Pilot Signal \\ $(\ptran)$};
-                \node[draw=none, font=\scriptsize, rotate = 90, align = center] at (0.81,0.13) {$\sum |\cdot|^2$ \\ $(= \eprcvdpr)$};
-                \node[draw=none, font=\scriptsize, rotate = 90, align = center] at (0.81,0.268) {1000 \\ Measurements};
-                \node[draw, fill=gray!10, font=\scriptsize, rotate = 90, align = center] at (0.95,0.268) {Buffer};
-                \node[draw=none, font=\scriptsize, rotate = 90, align = center] at (0.81,0.41) {Compute $\pco$};
+		\node[draw=none, font=\scriptsize, rotate = 90, align = center] at (0.43,0.136) {Pilot Signal \\ $(\ptran)$};
+                \node[draw=none, font=\scriptsize, rotate = 90, align = center] at (0.66,0.136) {$\sum |\cdot|^2$ \\ $(= \eprcvdpr)$};
+                \node[draw=none, font=\scriptsize, rotate = 90, align = center] at (0.66,0.264) {1000 \\ Measurements};
+                \node[draw, fill=gray!10, font=\scriptsize, rotate = 90, align = center] at (0.78,0.264) {Buffer};
+                \node[draw=none, font=\scriptsize, rotate = 90, align = center] at (0.66,0.394) {Compute $\pco$};
                 
 		% ST Interface
-		\node[draw=none, font=\scriptsize, rotate = 90, align = center] at (0.514,0.885) {Compute $\pco$};
-                \node[draw=none, font=\scriptsize, rotate = 90, align = center] at (0.81,0.885) {Compute $\pco$};
+		\node[draw=none, font=\scriptsize, rotate = 90, align = center] at (0.43,0.823) {$\sum |\cdot|^2$ \\ $(= \eprcvd)$};
+                \node[draw=none, font=\scriptsize, rotate = 90, align = center] at (0.43,0.695) {Compute \\ $\epreg$ \\ based on $\ite, \pcod$};
+                \node[draw=none, font=\scriptsize, rotate = 90, align = center] at (0.43,0.695) {Compute \\ $\epreg$ \\ based on $\ite, \pcod$};
+                \node[draw=none, font=\scriptsize, rotate = 90, align = center] at (0.66,0.823) {Data Signal \\ $\epreg$};
 		\end{scope}
         \end{tikzpicture}
 
