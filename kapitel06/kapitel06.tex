@@ -253,7 +253,7 @@ This section illustrates the validation of the theoretical expression derived in
                 %\foreach \y in {0,1,...,9} { \node [anchor=east] at (0,\y/10) {0.\y}; }
                 \end{scope}
         \end{tikzpicture}
-	\caption{An illustration of the measurement setup required for the validation process, consisting of: (i) Signal Generator (Rhode \& Schwarz 200A), (ii) Software defined radio platform (USRP B 210), (iii) USB interference to the host computer and (iv) host computer.}
+	\caption{An illustration of the measurement setup required for the calibration and the validation process, consisting of: (i) Signal Generator (Rhode \& Schwarz 200A), (ii) Software defined radio platform (USRP B210), (iii) USB interference to the host computer and (iv) host computer.}
 	\label{messaufbau}
 	%\vspace{-10 pt}
 \end{figure}
@@ -330,7 +330,7 @@ To filter out the spurious effects, the local oscillator is tunned at a certain 
 \item In the end, decimation filter is applied (decimation factor = 4) over the down converted signal, cf. \figurename~\ref{fig:SP_de}. This is done to reduce the correlation between the samples due to oversampling, since the proposed framework considers independent and identically distributed samples while characterizing the pdfs of the corresponding systems parameters. 
 \end{itemize}
 
-\subsection{Noise Callibration}
+\subsection{Knowledge of Noise Power}
 
 \begin{figure}
 	%\vspace{-10 pt}
@@ -343,17 +343,17 @@ To filter out the spurious effects, the local oscillator is tunned at a certain 
                 };
 
                 \begin{scope}[x={(image.south east)},y={(image.north west)}]
-                \node[draw, fill=gray!10,font=\scriptsize] at (0.49,0.765) {Signal Generator};
+                \node[draw, fill=gray!10,font=\scriptsize] at (0.59,0.765) {Host Computer};
 
-                \node[draw, fill=gray!10,font=\scriptsize] at (0.49,0.09) {Host Computer};
-                \node[draw, fill=gray!10,font=\scriptsize, text width = 1cm, align = center] at (0.13,0.11) {SDR platform};
-                \node[draw, fill=gray!10,font=\scriptsize, text width = 1cm, align = center] at (0.87,0.24) {USB Interface};
+                \node[draw, fill=gray!10,font=\scriptsize, align = center] at (0.15,0.31) {SDR Platform};
+                \node[draw, fill=gray!10,font=\scriptsize, align = center, rotate = 90] at (1.03,0.25) {USB Interface};
+                \node[draw, fill=gray!10,font=\scriptsize, align = center] at (0.08,-0.01) {50 $\Omega$ Resistor};
                 %\draw[help lines,xstep=.1,ystep=.1] (0,0) grid (1,1);
                 %\foreach \x in {0,1,...,9} { \node [anchor=north] at (\x/10,0) {0.\x}; }
                 %\foreach \y in {0,1,...,9} { \node [anchor=east] at (0,\y/10) {0.\y}; }
                 \end{scope}
         \end{tikzpicture}
-	\caption{An illustration of the measurement setup required for the validation process, consisting of: (i) Signal Generator (Rhode \& Schwarz 200A), (ii) Software defined radio platform (USRP B 210), (iii) USB interference to the host computer and (iv) host computer.}
+	\caption{A measurement setup for acquiring the noise power, consisting of: (i) 50 $\Omega$ resistor connected to the SMA port of the USRP, (ii) Software defined radio platform (USRP B210), (iii) USB interference to the host computer and (iv) host computer.}
 	\label{messaufbau}
 	%\vspace{-10 pt}
 \end{figure}
@@ -533,7 +533,7 @@ Although the validation is an important part of the system design, it considers 
 \label{esttime}
 The analytical expression (\ref{eq:sys}) and \figurename~\ref{RspocstricheA} illustrate a dependency of the performance parameters ($\pco$ and $\e{\ers}{\ers}$) on the estimation time $\test$. This dependency (depicted as the estimation-throughput tradeoff) is utilized to determine the suitable estimation time $\ttest$ that achieves the maximum secondary throughput. However, $\ttest$ can be determined for a certain value of the $\snrrcvd$ (for a given channel gain). In practice, the mobility of the ST or the PR, or the surroundings objects can affect the channel gain, and consequently the received $\snrrcvd$. Under this situation, it is challenging to select $\ttest$ such that the system adheres to the interference constraint and still achieves the maximum secondary throughput for the corresponding values of $\snrrcvd$. To approach this issue, the variation of $\ttest$ for a certain range of $\snrrcvd$ and different values of the confidence probability constraint $\pcod \in \{0.90, 0.95, 0.99\}$ is investigated\footnote{Such investigations can be performed during the validation process, which is normally included at the system design.}, cf. \figurename~\ref{fig:Tausnr}. %a new parameter called the estimation time ($\testo$) is introduced. It is $\test$ that maximizes the secondary throughput according to (\ref{eq:}) in \cite{Kaushik15} for a certain value of $\snrrcvd$, $\mu$ and a target value of $P_\textrm{c}$ defined as $\bar{P_\textrm{c}}$. In Fig. \ref{RspocstricheA}, this optimization process is indicated graphically by the dotted lines, where, from a fixed $\bar{P_\textrm{c}} = 0.95$, we acquire $\tau_\textrm{opt} \approx \SI{0.75}{ms}$, which corresponds to $\mathbb{E}\left[R_\textrm{s}\right] \approx \SI{7.02}{bits/s/Hz}$.
 %However, this analysis is carried out for a fixed value of $\snrrcvd$. Under real conditions, due to channel fading, $\snrrcvd$ is not known. In this sense, it is not possible to determine $\tau_\textrm{opt}$. To resolve this issue, we propose a procedure, whereby we analyze the variations of $\tau_\textrm{opt}$ for different values of $\snrrcvd$, refer to Fig. \ref{Tausnr}, and select $\tau_\textrm{opt}$'s maximum value. 
-Thus, the maximum value of the suitable estimation time for a certain range of $\snrrcvd$ and $\pcod$ is selected as the estimation time for the demostrator, given by, $\ttesto = \maxi\{ \ttest | \snrrcvd \in (-10,20 )\SI{}{dB}; \text{and} \pco = \pcod \}$\footnote{Since the $\ttesto$ is not optimal for all $\snrrcvd$, it is different from $\ttest$ and assigned a different notation.}.  
+Thus, the maximum value of the suitable estimation time for a certain range of $\snrrcvd$ and $\pcod$ is selected as the estimation time for the demonstrator, given by, $\ttesto = \maxi\{ \ttest | \snrrcvd \in (-10,20 )\SI{}{dB}; \text{and} \pco = \pcod \}$\footnote{Since the $\ttesto$ is not optimal for all $\snrrcvd$, it is different from $\ttest$ and assigned a different notation.}.  
 By doing this, it is assured that the interference constraint is satisfied for different realizations of the channel gain, which correspond to $\snrrcvd \in (-10,20)\SI{}{dB}$. 
 %In addition, we consider different values of $\bar{P_\textrm{c}}$. 
 %\begin{figure}
@@ -598,35 +598,37 @@ In order to realize these simplifications, it is utmost necessary to observe the
 
                 \begin{scope}[x={(image.south east)},y={(image.north west)}]
 	 
-                \node[draw, fill=gray!10, font=\scriptsize, rotate = \anglee, align = center] at (0.48,1.1) {Air Interface};
-                \node[draw, fill=gray!10, font=\scriptsize, rotate = \anglee, align = center] at (0.391,0.05) {Primary Receiver};
-                \node[draw, fill=gray!10, font=\scriptsize, rotate = \anglee, align = center] at (0.5858,0.05) {Secondary Transmitter};
-                \node[draw, fill=gray!10, font=\scriptsize, rotate = 90, align = center] at (0.98,0.978) {Software Defined \\ Radio Interface};
-                \node[draw, fill=gray!10, font=\scriptsize, rotate = 90, align = center] at (0.98,0.566) {Host Interface};
+                \node[draw, fill=gray!10, font=\scriptsize, rotate = \anglee, align = center] at (0.48,1.08) {Air Interface};
+                \node[draw, fill=gray!10, font=\scriptsize, rotate = \anglee, align = center] at (0.391,0.037) {Primary Receiver};
+                \node[draw, fill=gray!10, font=\scriptsize, rotate = \anglee, align = center] at (0.5858,0.037) {Secondary Transmitter};
+                \node[draw, fill=gray!10, font=\scriptsize, rotate = 90, align = center] at (0.986,0.97) {SDR Interface};
+                \node[draw, fill=gray!10, font=\scriptsize, rotate = 90, align = center] at (0.986,0.592) {Host Interface};
 	
 		% Transmit and receive signals	
 		\node[draw=none, font=\scriptsize, rotate = \anglee, align = center] at (0.27,0.97) {Rx Signal};
-                \node[draw=none, font=\scriptsize, rotate = \anglee, align = center] at (0.27,0.87) {Tx Signal};
+                \node[draw=none, font=\scriptsize, rotate = \anglee, align = center] at (0.27,0.879) {Tx Signal};
                 \node[draw=none, font=\scriptsize, rotate = \anglee, align = center] at (0.68,0.97) {Tx Signal};
-                \node[draw=none, font=\scriptsize, rotate = \anglee, align = center] at (0.68,0.87) {Rx Signal};
+                \node[draw=none, font=\scriptsize, rotate = \anglee, align = center] at (0.68,0.879) {Rx Signal};
 		% Channels
                 \node[draw=none, font=\scriptsize, rotate = \anglee, align = center] at (0.48,1.00) {$\hpo$};
-                \node[draw=none, font=\scriptsize, rotate = \anglee, align = center] at (0.48,0.88) {$\hpt$};
+                \node[draw=none, font=\scriptsize, rotate = \anglee, align = center] at (0.48,0.889) {$\hpt$};
 		% Fill Empty Boxes
 		% PR Interface
-		\node[draw=none, font=\scriptsize, rotate = \anglee, align = center] at (0.136, 0.57) {Pilot Signal \\ $(\ptran)$};
-                \node[draw=none, font=\scriptsize, rotate = \anglee, align = center] at (0.136,0.34) {$\sum |\cdot|^2$ \\ $(= \eprcvdpr)$};
-                \node[draw=none, font=\scriptsize, rotate = \anglee, align = center] at (0.264,0.34) {Compute $\pco$ \\ based on $\mu, \ite$ };
-                \node[draw=none, font=\scriptsize, rotate = \anglee, align = center] at (0.394,0.34) {Validate\\ $\pco \ge \pcod$};
+		\node[draw=none, font=\scriptsize, rotate = \anglee, align = center] at (0.136, 0.616) {Pilot Signal \\ $(\ptran)$};
+                \node[draw=none, font=\scriptsize, rotate = \anglee, align = center] at (0.136,0.40) {$\sum |\cdot|^2$ \\ $(= \eprcvdpr)$};
+                \node[draw=none, font=\scriptsize, rotate = \anglee, align = center] at (0.264,0.40) {Compute $\pco$ \\ based on $\mu, \ite$ };
+                \node[draw=none, font=\scriptsize, rotate = \anglee, align = center] at (0.394,0.40) {Validate\\ $\pco \ge \pcod$};
                 
 		% ST Interface
-		\node[draw=none, font=\scriptsize, rotate = \anglee, align = center] at (0.823,0.572) {$\sum |\cdot|^2$ \\ $(= \eprcvd)$};
-                \node[draw=none, font=\scriptsize, rotate = \anglee, align = center] at (0.695,0.572) {Compute \\ $\epreg$ \\ based on $\ite, \pcod$};
-                \node[draw=none, font=\scriptsize, rotate = \anglee, align = center] at (0.567,0.572) {Compute  $\ers$  \\ based on \\ $\ttesto, \epreg$};
-                \node[draw=none, font=\scriptsize, rotate = \anglee, align = center] at (0.823,0.34) {Data Signal \\ $\epreg$};
-                \node[draw=none, font=\scriptsize, rotate = \anglee, align = center] at (0.567,0.34) {Emulate \\ Access Channel \\ $(\hs)$ from SR};
-                \node[draw, fill=gray!10, font=\scriptsize, rotate = \anglee, align = center] at (0.695,0.69) {Power Control};
-                \node[draw, fill=gray!10, font=\scriptsize, rotate = \anglee, align = center] at (0.825,0.69) {Channel Estimation};
+		\node[draw=none, font=\scriptsize, rotate = \anglee, align = center] at (0.8234,0.616) {Eliminate \\ DC offset, \\ flicker Noise};
+		\node[draw=none, font=\scriptsize, rotate = \anglee, align = center] at (0.695,0.616) {$\sum |\cdot|^2$ \\ $(= \eprcvd)$};
+                \node[draw=none, font=\scriptsize, rotate = \anglee, align = center] at (0.567,0.616) {Compute \\ $\epreg$ \\ based on $\ite, \pcod$};
+                \node[draw=none, font=\scriptsize, rotate = \anglee, align = center] at (0.567,0.40) {Compute  $\ers$  \\ based on \\ $\ttesto, \epreg$};
+                \node[draw=none, font=\scriptsize, rotate = \anglee, align = center] at (0.8234,0.40) {Data Signal \\ $\epreg$};
+                \node[draw=none, font=\scriptsize, rotate = \anglee, align = center] at (0.567,0.184) {Emulate \\ Access Channel \\ $(\hs)$ from SR};
+                \node[draw, fill=gray!10, font=\scriptsize, rotate = \anglee, align = center] at (0.8234,0.73) {Preprocessing};
+                \node[draw, fill=gray!10, font=\scriptsize, rotate = \anglee, align = center] at (0.695,0.44) {Power Control};
+                \node[draw, fill=gray!10, font=\scriptsize, rotate = \anglee, align = center] at (0.695,0.73) {Channel Estimation};
 		\end{scope}
         \end{tikzpicture}
 
@@ -634,7 +636,7 @@ In order to realize these simplifications, it is utmost necessary to observe the
 	\label{demo_blockA}
 	%\vspace{-10 pt}
 	%\end{landscape}
-	\caption{Setup and block diagram of demonstrator.}
+	\caption{Setup and block diagram of the deployed demonstrator.}
 \end{sidewaysfigure}
 
 %\begin{figure}
