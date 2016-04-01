@@ -16,7 +16,8 @@ toc = index,
 toc = bibliography,
 draft = false, %instead of final
 pagesize=pdftex, % scrguide s.52 einstellung des papierformats
-numbers=noenddot
+numbers=noenddot,
+version=last
 ]{scrbook}
 
 
@@ -87,14 +88,22 @@ numbers=noenddot
 %\usepackage{rotating} % Rotate the text sideways
 %\usepackage{adjustbox}% Rotate the text sideways
 
-\makeindex
+%\makeindex
 
 %% Redefine Spacing for the table of contents 
-\usepackage[subfigure]{tocloft}
-\renewcommand\cftchapafterpnum{\vskip4pt}
-\renewcommand\cftsecafterpnum{\vskip4pt}
-\renewcommand\cftsubsecafterpnum{\vskip4pt}
+%\usepackage[subfigure]{tocloft}
+%\renewcommand\cftchapafterpnum{\vskip4pt}
+%\renewcommand\cftsecafterpnum{\vskip4pt}
+%\renewcommand\cftsubsecafterpnum{\vskip4pt}
 %\setlength{\cftsubsecnumwidth}{10em}
+
+\usepackage{titlesec}
+\titleformat{\chapter}[display]
+  {\huge}
+  {\filcenter\MakeUppercase{\chaptertitlename} \huge\thechapter}
+  {2ex}
+  {\titlerule[0.8pt]\vspace{1ex}\filcenter}
+  [\vspace{1ex}{\titlerule[0.8pt]}]
 
 
 %\graphicspath{{./../kapitel05/}}
@@ -104,6 +113,9 @@ numbers=noenddot
 %% DOCUMENT
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}
+
+
+
 
 \frontmatter
 
@@ -167,7 +179,7 @@ numbers=noenddot
 \input{../stuff/titel}
 \cleardoublepage
 
-%\input{../sonstiges/zusammenfassung}
+\input{../stuff/zusammenfassung}
 
 %% Used to highlight text in the manuscript, will be used as dummy here
 \newcommand{\tc}[1]{#1}
