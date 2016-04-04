@@ -97,6 +97,13 @@ version=last
 %\renewcommand\cftsubsecafterpnum{\vskip4pt}
 %\setlength{\cftsubsecnumwidth}{10em}
 
+\usepackage{etoolbox}
+
+\makeatletter
+\pretocmd{\chapter}{\addtocontents{toc}{\protect\addvspace{15\p@}}}{}{}
+\pretocmd{\section}{\addtocontents{toc}{\protect\addvspace{15\p@}}}{}{}
+\makeatother
+
 \usepackage{titlesec}
 \titleformat{\chapter}[display]
   {\huge}
