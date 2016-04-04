@@ -72,7 +72,7 @@ In accordance to these simplifications and the modifications, the system model f
 
 
 A slotted medium access is implemented at the ST with a frame duration of $T$. The knowledge of the interference channel is acquired by employing channel reciprocity over the link PR-ST. $T$ is selected such that the channel can be assumed to remain constant for the frame duration. %Based on this premise, $g_\textrm{p}$ and $g_\textrm{s}$ are constant within one frame and included in $\alpha_\textrm{p}$ and $\alpha_\textrm{s}$ for further analysis.
-In order to incorporate channel estimation in context to the power control mechanism, the frame interval is divided in two phases, refer to \figurename~\ref{szenarioA}. During the estimation phase $\test$ (also refered as estimation time), the ST measures the received power of the pilot signal transmitted by the PR. Based on this received power, the ST estimates $\ehpo$ and control its transmit power for the secondary link in order to satisfy the interference constraint at the PR. During the data transmission phase $T-\test$, the ST transmits data with the controlled power to the SR.
+In order to incorporate channel estimation in context to the power control mechanism, the frame interval is divided in two phases, refer to \figurename~\ref{szenarioA}. During the estimation phase $\test$ (also referred as estimation time), the ST measures the received power of the pilot signal transmitted by the PR. Based on this received power, the ST estimates $\ehpo$ and control its transmit power for the secondary link in order to satisfy the interference constraint at the PR. During the data transmission phase $T-\test$, the ST transmits data with the controlled power to the SR.
 
 \subsection{Signal Model}
 The discrete and complex signal received at the ST is given by
@@ -211,11 +211,11 @@ Next, the pdf of the secondary throughput $\rs$ is determined as
 
 
 \subsection{Estimation-Throughput Tradeoff}
-Following the estimation theory, it is clear that small $\test$ results in large variations for the $\eprcvdpr$, and subsequently results in the deviation of $\eprcvdpr$ from $\ite$. If not considered, these variations may affect the performance of the US. To capture these variations, an interference constraint defined in terms of a confidence probability $\pco$ and an accuracy $\mu$\footnote{In order to scale the confidence interval relative to $\ite$.} is proposed. In order to restrict the excessive interference due to channel estimation, it is important to restrain $\pco$ above a certain desired level $\pcod$ for a fixed value of $\mu$. In this regard, the interference constraint is defined as
+Following the estimation theory, it is clear that small $\test$ results in large variations for the $\eprcvdpr$, and subsequently results in the deviation of $\eprcvdpr$ from $\ite$. If not considered, these variations may affect the performance of the US. To capture these variations, an interference constraint defined in terms of a confidence probability $\pco$ and an accuracy $\acc$\footnote{In order to scale the confidence interval relative to $\ite$.} is proposed. In order to restrict the excessive interference due to channel estimation, it is important to restrain $\pco$ above a certain desired level $\pcod$ for a fixed value of $\acc$. In this regard, the interference constraint is defined as
 \begin{align}
-\pco = \fprcvdpr \left( {(1 + \mu) \ite}\right)  - \fprcvdpr \left({(1 - \mu) \ite} \right) \ge \pcod, \label{eq:pc} 
+\pco = \fprcvdpr \left( {(1 + \acc) \ite}\right)  - \fprcvdpr \left({(1 - \acc) \ite} \right) \ge \pcod, \label{eq:pc} 
 \end{align}
-where $\left( {(1 + \mu) \ite}\right)$ and $\left({(1 - \mu) \ite} \right)$ represent the confidence interval around $\ite$. According to (\ref{eq:pc}), the confidence probability can be computed by inserting confidence interval in $\fprcvdpr(x)$, which is defined in (\ref{eq:cdf}). It is worthy to note that $\pco$ depends on $\test$, through $\fprcvdpr(x)$. Besides this, $\e{\ers}{\ers}$ is also related to the estimation time. Hence, from the design perspective, it is essential to select the estimation time appropriately such that the ST the maximum secondary throughput is achieved and the interference constraint is satisfied simultaneously. This relationship is characterized as \textit{estimation-throughput tradeoff} is given by 
+where $\left( {(1 + \acc) \ite}\right)$ and $\left({(1 - \acc) \ite} \right)$ represent the confidence interval around $\ite$. According to (\ref{eq:pc}), the confidence probability can be computed by inserting confidence interval in $\fprcvdpr(x)$, which is defined in (\ref{eq:cdf}). It is worthy to note that $\pco$ depends on $\test$, through $\fprcvdpr(x)$. Besides this, $\e{\ers}{\ers}$ is also related to the estimation time. Hence, from the design perspective, it is essential to select the estimation time appropriately such that the ST the maximum secondary throughput is achieved and the interference constraint is satisfied simultaneously. This relationship is characterized as \textit{estimation-throughput tradeoff} is given by 
 
 %Clearly, there exits a tradeoff that involves maximizing the expected throughput at the SR subject to a probability of confidence constraint given by
 \begin{align}
@@ -434,8 +434,8 @@ Since the stochastic model is the basis of the performance analysis of the propo
 		\begin{scope}[x={(image.south east)},y={(image.north west)}]
                 \node[above, font=\footnotesize] at (0.16,0.93) {$ \times 10^{-11}$};
 
-		\draw[black,thick,<-] (0.577,0.57) --  node[above, font=\footnotesize] {$\ite (1 + \mu)$} (0.777,0.57);
-		\draw[black,thick,<-] (0.379,0.57) --  node[above, font=\footnotesize] {$\ite (1 - \mu)$} (0.179,0.57);
+		\draw[black,thick,<-] (0.577,0.57) --  node[above, font=\footnotesize] {$\ite (1 + \acc)$} (0.777,0.57);
+		\draw[black,thick,<-] (0.379,0.57) --  node[above, font=\footnotesize] {$\ite (1 - \acc)$} (0.179,0.57);
                 %\draw[help lines,xstep=.1,ystep=.1] (0,0) grid (1,1);
                 %\foreach \x in {0,1,...,9} { \node [anchor=north] at (\x/10,0) {0.\x}; }
                 %\foreach \y in {0,1,...,9} { \node [anchor=east] at (0,\y/10) {0.\y}; }
@@ -487,7 +487,7 @@ $|\mathcal X\sub{bins}|$ represents the cardinality of $\mathcal X\sub{bins}$, w
 
 
 \subsection{Validation of the Estimation-Throughput Tradeoff}
-Following the validation of the pdfs that captures the variations in the system parameters, it is interesting to validate the performance of the CR system in terms of the estimation-throughput tradeoff, characterized in (\ref{eq:sys}). Thus, the feasibility of the optimization problem that yields a suitable estimation time and satisfies the interference constraint on $\pco$ to achieve a maximum secondary throughput is validated by means of the deployed hardware. As discussed previously, a large $\test$ improves the performance of the primary system by reducing the variations in $\eprcvdpr$, depicted by observing an increase in $\pco$, cf. \figurename~\ref{RspocstricheA}. Conversely, from the perspective of the secondary system, the increase in $\test$ reduces the achievable secondary throughput. These variations of the expected throughput $\e{\ers}{\ers}$ and the confidence probability $\pco$ versus the estimation time $\test$ are depicted \figurename~\ref{RspocstricheA}, which illustrates a joint validation of the performance of a underlay CR system. Again, the validation is achieved by comparing the measurements of the performance parameters ($\e{\ers}{\ers}$ and $\pco$) with their analytical expressions for different $\test$. In contrast to the analytical framework presented in Section \ref{model}, the measurements of $\pco$ are determined by computing a numerical integration in the region within the confidence interval $(1  \pm \mu)  \theta_\textrm{I}$, cf. \figurename~\ref{hrel_pdf}. 
+Following the validation of the pdfs that captures the variations in the system parameters, it is interesting to validate the performance of the CR system in terms of the estimation-throughput tradeoff, characterized in (\ref{eq:sys}). Thus, the feasibility of the optimization problem that yields a suitable estimation time and satisfies the interference constraint on $\pco$ to achieve a maximum secondary throughput is validated by means of the deployed hardware. As discussed previously, a large $\test$ improves the performance of the primary system by reducing the variations in $\eprcvdpr$, depicted by observing an increase in $\pco$, cf. \figurename~\ref{RspocstricheA}. Conversely, from the perspective of the secondary system, the increase in $\test$ reduces the achievable secondary throughput. These variations of the expected throughput $\e{\ers}{\ers}$ and the confidence probability $\pco$ versus the estimation time $\test$ are depicted \figurename~\ref{RspocstricheA}, which illustrates a joint validation of the performance of a underlay CR system. Again, the validation is achieved by comparing the measurements of the performance parameters ($\e{\ers}{\ers}$ and $\pco$) with their analytical expressions for different $\test$. In contrast to the analytical framework presented in Section \ref{model}, the measurements of $\pco$ are determined by computing a numerical integration in the region within the confidence interval $(1  \pm \acc)  \theta_\textrm{I}$, cf. \figurename~\ref{hrel_pdf}. 
 \begin{figure}
 	%\vspace{-20 pt}
 	\centering
@@ -549,7 +549,7 @@ By doing this, it is assured that the interference constraint is satisfied for d
 	\centering
 	\input{figures/test_SNR.tex}
 	\includegraphics[width=\figscale]{figures/test_SNR}
-	\caption{The variation of the estimation $\ttest$ versus the received signal to noise ratio at ST $\snrrcvd$ for different values of confidence probability constraint $\pcod \in \{0.90,0.95,0.99 \}$.}
+	\caption{The variation of the suitable estimation time ($\ttest$) versus the received signal to noise ratio at ST ($\snrrcvd$) for different values of confidence probability constraint $\pcod \in \{0.90,0.95,0.99 \}$.}
 	\label{fig:Tausnr}
 	%\vspace{-10 pt}
 \end{figure}
@@ -616,7 +616,7 @@ In order to realize these simplifications, it is utmost necessary to observe the
 		% PR Interface
 		\node[draw=none, font=\scriptsize, rotate = \anglee, align = center] at (0.136, 0.616) {Pilot Signal \\ $(\ptran)$};
                 \node[draw=none, font=\scriptsize, rotate = \anglee, align = center] at (0.136,0.40) {$\sum |\cdot|^2$ \\ $(= \eprcvdpr)$};
-                \node[draw=none, font=\scriptsize, rotate = \anglee, align = center] at (0.264,0.40) {Compute $\pco$ \\ based on $\mu, \ite$ };
+                \node[draw=none, font=\scriptsize, rotate = \anglee, align = center] at (0.264,0.40) {Compute $\pco$ \\ based on $\acc, \ite$ };
                 \node[draw=none, font=\scriptsize, rotate = \anglee, align = center] at (0.394,0.40) {Validate\\ $\pco \ge \pcod$};
                 
 		% ST Interface
@@ -716,15 +716,15 @@ As expected, upon changing the value of $\ite$ at the ST causes the variations (
                 };
 
                 \begin{scope}[x={(image.south east)},y={(image.north west)}]
-                \node[draw, fill=gray!10,font=\scriptsize] at (0.49,0.99) {Secondary Transmitter (CSC-BS)};
-                \node[draw, fill=gray!10,font=\scriptsize] at (0.355,0.93) {Received Power at the ST, $\eprcvd$};
-                \node[draw, fill=gray!10,font=\scriptsize] at (0.143,0.745) {Noise Floor,$\npp$};
-                \node[draw, fill=gray!10,font=\scriptsize] at (0.35,0.69) {Control power at the ST, $\epreg$};
-                \node[draw, fill=gray!10,font=\scriptsize] at (0.32,0.49) {Secondary throughput at the SR, $\ers$};
-                \node[draw, fill=gray!10,font=\scriptsize] at (0.32,0.28) {Interference temperature, $\ite$ = [dBm]};
-                \node[draw, fill=gray!10,font=\scriptsize] at (0.11,0.20) {Frame duration = [ms]};
-                \node[draw, fill=gray!10,font=\scriptsize] at (0.145,0.125) {Estimation time = [ms]};
-                \node[draw, fill=gray!10,font=\scriptsize] at (0.3,0.08) {Gain for the access channel, $\hs$ = [mV]};
+                \node[draw=none, fill=gray!10,font=\scriptsize] at (0.49,0.977) {Secondary Transmitter (CSC-BS)};
+                \node[draw=none, fill=gray!10,font=\scriptsize, text width = 102pt, align = center] at (0.349,0.93) {Received Power at the ST, $\eprcvd$};
+                \node[draw=none, fill=gray!10,font=\scriptsize, text width = 40pt, align = center] at (0.151,0.745) {Noise Floor};
+                \node[draw=none, fill=gray!10,font=\scriptsize, text width = 102pt, align = center] at (0.349,0.69) {Control power at the ST, $\epreg$};
+                \node[draw=none, fill=gray!10,font=\scriptsize, text width = 103pt, align =  center] at (0.352,0.50) {Secondary throughput at the SR, $\ers$};
+                \node[draw=none, fill=gray!10,font=\scriptsize] at (0.356,0.28) {Interference temperature, $\ite$ = [dBm]};
+                \node[draw=none, fill=gray!10,font=\scriptsize, text width = 48pt, align = center] at (0.176,0.20) {$T$ = [ms]};
+                \node[draw=none, fill=gray!10,font=\scriptsize, text width = 54pt, align = center] at (0.196,0.125) {$\ttesto$ = [ms]};
+                \node[draw=none, fill=gray!10,font=\scriptsize, text width = 102pt, align = center] at (0.349,0.08) {Access channel gain, $\hs$ = [mV]};
 
                 %\draw[help lines,xstep=.1,ystep=.1] (0,0) grid (1,1);
                 %\foreach \x in {0,1,...,9} { \node [anchor=north] at (\x/10,0) {0.\x}; }
@@ -740,11 +740,11 @@ As expected, upon changing the value of $\ite$ at the ST causes the variations (
                 };
 
                 \begin{scope}[x={(image.south east)},y={(image.north west)}]
-                \node[draw, fill=gray!10,font=\scriptsize] at (0.49,0.995) {Primary Receiver};
-                \node[draw, fill=gray!10,font=\scriptsize] at (0.35,0.93) {Interference Power at the PR, $\eprcvdpr$};
-                \node[draw, fill=gray!10,font=\scriptsize] at (0.32,0.725) {Confidence probability constraint, $\pcod$};
-                \node[draw, fill=gray!10,font=\scriptsize] at (0.23,0.47) {$\p(\eprcvdpr \ge \ite (1 + \mu))$};
-                \node[draw, fill=gray!10,font=\scriptsize] at (0.23,0.225) {$\p(\eprcvdpr \le \ite (1 - \mu))$};
+                \node[draw=none, fill=gray!30,font=\scriptsize] at (0.49,0.9712) {Primary Receiver};
+                \node[draw=none, fill=gray!30,font=\scriptsize] at (0.352,0.925) {Interference Power at the PR, $\eprcvdpr$};
+                \node[draw=none, fill=gray!30,font=\scriptsize] at (0.355,0.695) {Confidence probability constraint, $\pcod$};
+                \node[draw=none, fill=gray!30,font=\scriptsize] at (0.25,0.45) {$\p(\eprcvdpr \ge \ite (1 + \acc))$};
+                \node[draw=none, fill=gray!30,font=\scriptsize] at (0.25,0.21) {$\p(\eprcvdpr \le \ite (1 - \acc))$};
 		
 		%\draw[help lines,xstep=.1,ystep=.1] (0,0) grid (1,1);
                 %\foreach \x in {0,1,...,9} { \node [anchor=north] at (\x/10,0) {0.\x}; }
@@ -759,10 +759,10 @@ As expected, upon changing the value of $\ite$ at the ST causes the variations (
 	%\vspace{-10 pt}
 \end{figure}
 
-Conversely, for the given accuracy $\mu = 0.05$, it is observed that the demonstrator fails to achieve the target value of the confidence probability constraint $\pcod = 0.95$. Certainly, this issue is largely caused due to the simplifications undertaken in Section \ref{ssec:simp2}. 
+Conversely, for the given accuracy $\acc = 0.05$, it is observed that the demonstrator fails to achieve the target value of the confidence probability constraint $\pcod = 0.95$. Certainly, this issue is largely caused due to the simplifications undertaken in Section \ref{ssec:simp2}. 
 Another possible reason for this kind of behaviour can be speculated as follows: Since a pilot signal produced by a signal generator has been used for the hardware validation, which offers a higher signal quality than the one produced by a USRP in the demonstrator. 
 %Moreover, because of the separate links for sensing and transmission and the frequency separation of \SI{1}{MHz}, the channel reciprocity of the demonstrator may be compromised compared with the theoretical model. 
-For the preliminary deployment, the proposed interference constraint can be sustained by increasing the tolerance limit to $\mu = 0.20$. However, in the future, it is important to relax these simplifications. As a result, the confidence probability reaches the target value $\pco = 0.95$, thereby satisfying the interference constraint, refer to \figurename~\ref{interface} the PR interface. Despite this deviation from the theoretical behaviour, it can be concluded that the USRPs considered for the deployment of the demonstrator represent the viable choice for signal transmissions. In addition, the important observations considered while deploying the demonstrator for the US are summarized as follows: \begin{itemize} \item it demonstrates the principle operation of an US that employs a power control mechanism at the ST and limits the excessive interference at the PR by employing an interference constraint. \item it further illustrates the capability of adapting to the changes in the environment in terms of channel between the ST and the PR.  \end{itemize}
+For the preliminary deployment, the proposed interference constraint can be sustained by increasing the tolerance limit to $\acc = 0.20$. However, in the future, it is important to relax these simplifications. As a result, the confidence probability reaches the target value $\pco = 0.95$, thereby satisfying the interference constraint, refer to \figurename~\ref{interface} the PR interface. Despite this deviation from the theoretical behaviour, it can be concluded that the USRPs considered for the deployment of the demonstrator represent the viable choice for signal transmissions. In addition, the important observations considered while deploying the demonstrator for the US are summarized as follows: \begin{itemize} \item it demonstrates the principle operation of an US that employs a power control mechanism at the ST and limits the excessive interference at the PR by employing an interference constraint. \item it further illustrates the capability of adapting to the changes in the environment in terms of channel between the ST and the PR.  \end{itemize}
 
 \section{Summary}
 \label{con}
