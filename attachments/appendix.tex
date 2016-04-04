@@ -1,0 +1,130 @@
+\chapter{Source Code}
+
+\section{Source Code of the unoptimized FIR filter}
+\label{sec:app_FIR}
+
+
+\begin{lstlisting}[columns=flexible]
+static void mdlOutputs(SimStruct *S, int_T tid)
+{
+  int_T             i, j;
+  int_T             width;
+        
+  creal_T *input = (creal_T *) ssGetInputPortSignal(S, 0);
+  creal_T *output = (creal_T *) ssGetOutputPortSignal(S, 0);
+
+  width = ssGetOutputPortWidth(S,0);
+       
+  for (i=0; i<width; i++) {
+        
+    buffer[position] = input[i];
+    output[i].re = 0;
+    output[i].im = 0;
+
+    for(j = 0;j<NUM_COEF;j++){
+      output[i].re +=		filter_coef[j].re*buffer[(position+j)%NUM_COEF].re -filter_coef[j].im*buffer[(position+j)%NUM_COEF].im;
+      output[i].im += 	filter_coef[j].re*buffer[(position+j)%NUM_COEF].im +filter_coef[j].re*buffer[(position+j)%NUM_COEF].im;
+    }
+    position = (position+1)%NUM_COEF;
+  }   
+}
+
+\end{lstlisting}
+
+
+\section{Source Code of the unoptimized FFT}
+\label{sec:app_03}
+
+
+
+\begin{lstlisting}[columns=flexible]
+std::complex <float> * my_fft(int length, std::complex <float>* input)
+{
+  using namespace std;
+  complex <float> *output   = new complex <float> [length];
+  complex <float> *even_in  = new complex <float> [length/2];
+  complex <float> *odd_in   = new complex <float> [length/2];
+  complex <float> *even_out = new complex <float> [length/2];
+  complex <float> *odd_out  = new complex <float> [length/2];
+  complex <float> odd_factor;
+  int i;
+
+  if(length == 1)
+    output = input;
+  else
+    {
+    for(i = 0;i<length/2; i++){
+      even_in[i] = input[2*i];
+      odd_in[i]  = input[2*i+1];
+      }
+    even_out = my_fft(length/2,even_in);
+    odd_out =  my_fft(length/2,odd_in);
+		    
+    for(i = 0;i<length/2; i++){
+      odd_factor = polar(1.0,-2*PI*i/length) ;
+      odd_factor = odd_out[i]* odd_factor;
+      output[i] =          even_out[i] + odd_factor;
+      output[i+length/2] = even_out[i] - odd_factor;
+    }
+  }
+return output;
+}
+
+\end{lstlisting}
+
+
+\section{Source Code of the optimized RCPC for the TCH/4.8}
+\label{sec:app_01}
+
+
+\begin{lstlisting}[columns=flexible]
+void tch4_8_rcpc(unsigned char inVar[432], unsigned char outVar[255])
+{
+  unsigned char *state = malloc(292+4);
+  unsigned char init[] = {0U,0U,0U,0U};
+  short k,j,i;
+      
+  memcpy(state,init,4);
+  memcpy(state + 4, inVar, 292);
+
+  j = 0;
+  i = 0;
+  for (k=0; k < 146; k++){
+    outVar[j+i] = (state[2*k+4] + state[2*k+3] + state[2*k])%2;
+    outVar[j+i+1] = (state[2*k+4] + state[2*k+2] + state[2*k+1] + state[2*k])%2;
+    if((i+2)!=65){
+      outVar[j+i+2] = (state[2*k+5] + state[2*k+4] + state[2*k+1])%2;
+      i+=3;
+      }
+    else{
+      i=0;
+      j+=65;
+      }
+    }
+}
+\end{lstlisting}
+
+
+\pagebreak
+
+\section{Source Code of the optimized scrambling}
+\label{sec:app_02}
+
+
+\begin{lstlisting}[columns=flexible]
+void tch_scrambling(unsigned char inVar[432], unsigned char outVar[432])
+{
+  unsigned int init = 0x4183E8B7;
+  unsigned int new;
+  int k;
+       
+  for(k=0;k<432;k++){
+    new = 0x80000000&(init ^ (init << 1) ^ (init << 3) ^ (init << 4) ^ (init << 6) ^ (init << 7) ^ (init << 9) ^ (init << 10) ^ (init << 11) ^ (init << 15) ^ (init << 21) ^ (init << 22) ^ (init << 25) ^ (init << 31));
+    init = init >> 1 | new;
+    outVar[k] = inVar[k] ^ (init >> 31);
+    }   
+}
+\end{lstlisting}
+
+
+
