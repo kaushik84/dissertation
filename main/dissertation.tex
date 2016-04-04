@@ -54,8 +54,11 @@ version=last
 
 \usepackage{booktabs}
 \usepackage{multirow} % for cells over multiple rows in tables
-\usepackage{tabularx}
-\usepackage{acronym}
+%\usepackage{tabularx}
+\usepackage{longtable}
+%\usepackage{acronym}
+%\usepackage[acronym]{glossaries} % acronyms, glossary and notations 
+
 \usepackage{makeidx}
 \usepackage{lscape} % for figures in landscape --> chapter 3 --> USRP signal flow
 \usepackage{rotating} % for figures in landscape --> chapter 3 --> USRP signal flow
@@ -99,10 +102,10 @@ version=last
 
 \usepackage{etoolbox}
 
-\makeatletter
-\pretocmd{\chapter}{\addtocontents{toc}{\protect\addvspace{15\p@}}}{}{}
-\pretocmd{\section}{\addtocontents{toc}{\protect\addvspace{15\p@}}}{}{}
-\makeatother
+%\makeatletter
+%\pretocmd{\chapter}{\addtocontents{toc}{\protect\addvspace{15\p@}}}{}{}
+%\pretocmd{\section}{\addtocontents{toc}{\protect\addvspace{15\p@}}}{}{}
+%\makeatother
 
 \usepackage{titlesec}
 \titleformat{\chapter}[display]
@@ -115,6 +118,7 @@ version=last
 
 %\graphicspath{{./../kapitel05/}}
 \input{../stuff/macro.tex}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% DOCUMENT
@@ -218,8 +222,13 @@ version=last
 
 \backmatter
 
-\chapter{Acronyms, Abbreviations and Notations}
-\import{../attachments/}{acronyme.tex}
+%\chapter{Acronyms}
+\input{../attachments/acronyms.tex}
+
+
+%\chapter{Notations}
+\input{../attachments/notations.tex}
+
 
 
 \bibliographystyle{../IEEEbib}
