@@ -1,7 +1,7 @@
 \chapter{Hardware Implementation}
 \label{chap:Field}
 
-Previous chapters (chapter \ref{chap:IS}, chapter \ref{chap:US} and chapter \ref{chap:HS}) focused on characterizing the performance of different CR systems jointly in terms of the interference power received by the primary receiver and the throughput at the secondary receiver by taking the estimation of the involved channels into account. In addition, it has been motivated that the low complexity and the versatility towards unknown primary user signals requirements can be satisfied by employing unconventional channel estimation techniques such as received power-based estimation for acquiring the knowledge of the interacting channels, particularly the channels between the primary and the secondary systems that corresponds two different systems. However, the aforementioned analysis in the previous chapters has been limited to the theoretical expressions. Along with the analytical expressions necessary for characterizing the performance of a CR system, it is essential at the same time challenging to depict its hardware realizability. 
+Previous chapters (chapter \ref{chap:IS}, chapter \ref{chap:US} and chapter \ref{chap:HS}) focused on characterizing the performance of different CR systems jointly in terms of the interference power received by the primary receiver and the throughput at the secondary receiver by taking the estimation of the involved channels into account. In addition, it has been motivated that the low complexity and the versatility towards unknown primary user signals requirements can be satisfied by employing unconventional channel estimation techniques such as received power-based estimation for acquiring the knowledge of the interacting channels, particularly the channels between the primary and the secondary systems that corresponds two different systems. However, the aforementioned analysis in the previous chapters has been limited to the theoretical expressions. With regard to the analytical expressions that are necessary for the performance analysis, it is essential as-well-as challenging to depict the hardware realizability of CR systems. 
 
 Motivated by this fact, this chapter demonstrates the hardware feasibility of the CSC-BS as a CR system. As a result, it complements the performance analysis by deploying the proposed channel estimation techniques on a hardware. By doing this, the applicability of the assumptions considered while deriving the analytical expressions can be examined. These investigations are essential to facilitate the evolution of the proposed analytical framework. Without any specific argumentation, an underlay system is considered for the deployment.    
 %%\begin{abstract}        % give a summary of your paper
@@ -178,15 +178,15 @@ Corresponding to (\ref{eq:preg}), $\epreg$ follows an inverse non-central chi-sq
 
 Following the relation in (\ref{eq:eprcvdpr}) and substituting $\dpreg(x)$ defined in (\ref{eq:dpreg_pl}), the pdf of $\eprcvdpr$ is determined as 
 \begin{align}
-\dprcvdpr(x) =& \frac{\ap N K \ite}{2\npp x^2} e^{- \frac{N \ap}{2 \npp}\left( \frac{K  \ite}{x} + \ptran \right)} \left( \frac{K \ite}{x \ptran}   \right)^{\frac{N}{4} - \frac{1}{2}} \times \label{eq:dpp_pl} \\
-\quad & I_{\frac{N}{2}  - 1}\left( \frac{N \ap}{\npp} \sqrt{\frac{ K \ite \ptran}{x}}  \right). \nonumber
+\dprcvdpr(x) =& \frac{\hpo N K \ite}{2\npp x^2} e^{- \frac{N \hpo}{2 \npp}\left( \frac{K  \ite}{x} + \ptran \right)} \left( \frac{K \ite}{x \ptran}   \right)^{\frac{N}{4} - \frac{1}{2}} \times \label{eq:dpp_pl} \\
+\quad & I_{\frac{N}{2}  - 1}\left( \frac{N \hpo}{\npp} \sqrt{\frac{ K \ite \ptran}{x}}  \right). \nonumber
 \end{align}
 
 %The definition of $P_\textrm{c}$ can be retrieved from \cite{Kaushik15}. 
 Consequently, the cumulative distribution function (cdf) of $\eprcvdpr$ is given by %\footnote{In \cite{Kaushik15}, we discovered a small typing error in the cdf of $P_\textrm{p}$, in this paper, we present the exact version of it.}
 \begin{equation}
 	\label{eq:cdf}
-	\fprcvdpr(x) = Q_{\frac{N}{2}}\left(\sqrt{\frac{N P_\textrm{tran} \alpha_\textrm{p}}{\sigma_\textrm{p}^2}},\sqrt{\frac{N \alpha_\textrm{p} \theta_\textrm{I} K}{\sigma_\textrm{p}^2 x}}\right) \;  ,
+	\fprcvdpr(x) = Q_{\frac{N}{2}}\left(\sqrt{\frac{N  \hpo}{\sigma_\textrm{p}^2}},\sqrt{\frac{N \alpha_\textrm{p} \theta_\textrm{I} K}{\sigma_\textrm{p}^2 x}}\right) \;  ,
 \end{equation}
 where $Q_{\frac{N}{2}}(\cdot)$ is the Marcum Q-function \cite{Jef00}.
 
