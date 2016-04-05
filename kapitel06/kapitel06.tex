@@ -317,7 +317,7 @@ This section illustrates the validation of the theoretical expression derived in
 
 \figurename~\ref{messaufbau} presents the experimental setup deployed for performing the validation process. It has been previously claimed that the experimental validation considers the deterministic behaviour of the channel. With the employment of the transmit and the receive antennas the interference signal received\footnote{The experiments were performed over the ISM bands with center frequency fixed at \SI{2.45}{GHz}, an interference signal from the operational wireless LAN was observed within the band of interest (in-band) or as an out-of-band emissions from the neighbouring channels.} at the ST can influence the measurements, thereby resulting in the deviation of the empirical results from their analytical counterpart. To avoid this issue, the interference channel is implemented by means of a coaxial cable. In addition, attenuators are used to realize different values of $\snrrcvd$. The use of the coaxial cable is limited to the validation process. For the deployment of the demonstrator later in Section \ref{sec:demo}, the coaxial cable is replaced with antennas. %By doing so, we were able to acquire a large number of system variable realizations measured under similar conditions, which we needed for validating the stochastic model. 
 
-The CSC-BS/ST is emulated using a Universal Software Radio Peripherals (USRP) B210, a Software Defined Radio (SDR) platform from Ettus Research \cite{Ettus} and a host computer, which is connected to the USRP by means of USB cable. The host computer performs the following tasks: (i) it enables the access to the USRP by controlling certain Radio frequency (RF) parameters such as, center frequency and sampling frequency, (ii) it allows the baseband processing over the complex samples. %Since the characterization of the system parameters, which is associated with the power control is implemented at the ST, therefore it is reasonable to deploy only ST for the validation process. 
+The CSC-BS/ST is emulated using a Universal Software Radio Peripheral (USRP) B210, a Software Defined Radio (SDR) platform from Ettus Research \cite{Ettus} and a host computer, which is connected to the USRP by means of USB cable. The host computer performs the following tasks: (i) it enables the access to the USRP by controlling certain Radio frequency (RF) parameters such as, center frequency and sampling frequency, (ii) it allows the baseband processing over the complex samples. %Since the characterization of the system parameters, which is associated with the power control is implemented at the ST, therefore it is reasonable to deploy only ST for the validation process. 
 The PR is realized using a Rhode $\&$ Schwarz 200A vector signal generator (again, for the implementation of the demonstrator later in Section \ref{sec:demo}, the signal generator emulating the PR is replaced with an USRP and a host computer, like the ST). Since the USRP employs a homodyne receiver\footnote{A homodyne receiver implements a direct down conversion of the bandpass to the baseband signal.}, spurious effects such as DC offset, flicker noise $(1/f)$ and I/Q imbalance arising from the analog front-end can affect the accuracy of the analytical expressions, thereby influencing the validation process. These spurious effects, particularly, the DC offset and the flicker noise become significant at low signal to noise ratio. 
 
 In oder to retrieve the complex samples close to the one obtained while characterizing the system model (which does not take such spurious effects into account), following signal processing is proposed at the host computer.\begin{itemize}
@@ -718,7 +718,7 @@ As expected, upon changing the value of $\ite$ at the ST causes the variations (
                 \begin{scope}[x={(image.south east)},y={(image.north west)}]
                 \node[draw=none, fill=gray!10,font=\scriptsize] at (0.49,0.977) {Secondary Transmitter (CSC-BS)};
                 \node[draw=none, fill=gray!10,font=\scriptsize, text width = 102pt, align = center] at (0.349,0.93) {Received Power at the ST, $\eprcvd$};
-                \node[draw=none, fill=gray!10,font=\scriptsize, text width = 40pt, align = center] at (0.151,0.745) {Noise Floor};
+                \node[draw=none, fill=gray!10,font=\scriptsize, text width = 41pt, align = center] at (0.154,0.745) {Noise Floor};
                 \node[draw=none, fill=gray!10,font=\scriptsize, text width = 102pt, align = center] at (0.349,0.69) {Control power at the ST, $\epreg$};
                 \node[draw=none, fill=gray!10,font=\scriptsize, text width = 103pt, align =  center] at (0.352,0.50) {Secondary throughput at the SR, $\ers$};
                 \node[draw=none, fill=gray!10,font=\scriptsize] at (0.356,0.28) {Interference temperature, $\ite$ = [dBm]};
@@ -740,11 +740,11 @@ As expected, upon changing the value of $\ite$ at the ST causes the variations (
                 };
 
                 \begin{scope}[x={(image.south east)},y={(image.north west)}]
-                \node[draw=none, fill=gray!30,font=\scriptsize] at (0.49,0.9712) {Primary Receiver};
-                \node[draw=none, fill=gray!30,font=\scriptsize] at (0.352,0.925) {Interference Power at the PR, $\eprcvdpr$};
-                \node[draw=none, fill=gray!30,font=\scriptsize] at (0.355,0.695) {Confidence probability constraint, $\pcod$};
-                \node[draw=none, fill=gray!30,font=\scriptsize] at (0.25,0.45) {$\p(\eprcvdpr \ge \ite (1 + \acc))$};
-                \node[draw=none, fill=gray!30,font=\scriptsize] at (0.25,0.21) {$\p(\eprcvdpr \le \ite (1 - \acc))$};
+                \node[draw=none, fill=gray!40,font=\scriptsize] at (0.49,0.9712) {Primary Receiver};
+                \node[draw=none, fill=gray!40,font=\scriptsize] at (0.352,0.92) {Interference Power at the PR, $\eprcvdpr$};
+                \node[draw=none, fill=gray!40,font=\scriptsize] at (0.355,0.695) {Confidence probability constraint, $\pcod$};
+                \node[draw=none, fill=gray!40,font=\scriptsize] at (0.25,0.45) {$\p(\eprcvdpr \ge \ite (1 + \acc))$};
+                \node[draw=none, fill=gray!40,font=\scriptsize] at (0.25,0.21) {$\p(\eprcvdpr \le \ite (1 - \acc))$};
 		
 		%\draw[help lines,xstep=.1,ystep=.1] (0,0) grid (1,1);
                 %\foreach \x in {0,1,...,9} { \node [anchor=north] at (\x/10,0) {0.\x}; }
