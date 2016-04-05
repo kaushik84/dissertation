@@ -8,6 +8,8 @@ all: dissertation.tex ../literatur/bibliography.bib
 full: dissertation.tex ../literatur/bibliography.bib
 	latex dissertation.tex
 	bibtex dissertation
+	bibtex K 
+	latex dissertation.tex
 	latex dissertation.tex
 	dvips dissertation.dvi -o dissertation.ps
 	ps2pdf dissertation.ps

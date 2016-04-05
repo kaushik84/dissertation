@@ -67,6 +67,10 @@ version=last
 \usepackage{url}
 \usepackage{scrhack} %removes warning by redefinition of macros float@addtolist etc
 \usepackage{todonotes}
+
+\usepackage[resetlabels, labeled]{multibib}	%% Generate document with multiple bibliography
+\newcites{K}{Related Publications} 
+
 \usepackage{hyperref} % hyperrefs in pdf
 \hypersetup{ % properties of pdf
   pdftitle={Performance Analysis of Cognitive Radio Systems with Imperfect Channel Knowledge},
@@ -231,9 +235,11 @@ version=last
 
 
 
-\bibliographystyle{../IEEEbib}
+\bibliographystyle{ieeetr}
 \bibliography{../literatur/bibliography}
 
+\bibliographystyleK{ieeetr}
+\bibliographyK{../literatur/mypaper}
 %\input{../anhang/students.tex}
 
 \printindex % index
