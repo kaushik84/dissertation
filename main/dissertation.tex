@@ -46,11 +46,11 @@ version=last
 \usepackage{nicefrac} % makes nice view of 1/2 or 1/4 especially in text
 
 
-\usepackage{listings} % sourcecode listings
-\lstloadlanguages{C, Python}
-\lstset{numbers=left, numberstyle=\tiny, numbersep=5pt, basicstyle=\ttfamily, breaklines=true}
-\lstset{language=C}
-\usepackage{multicol}
+%\usepackage{listings} % sourcecode listings
+%\lstloadlanguages{C, Python}
+%\lstset{numbers=left, numberstyle=\tiny, numbersep=5pt, basicstyle=\ttfamily, breaklines=true}
+%\lstset{language=C}
+%\usepackage{multicol}
 
 \usepackage{booktabs}
 \usepackage{multirow} % for cells over multiple rows in tables
@@ -68,8 +68,7 @@ version=last
 \usepackage{scrhack} %removes warning by redefinition of macros float@addtolist etc
 \usepackage{todonotes}
 
-\usepackage[resetlabels, labeled]{multibib}	%% Generate document with multiple bibliography
-\newcites{K}{Related Publications} 
+
 
 \usepackage{hyperref} % hyperrefs in pdf
 \hypersetup{ % properties of pdf
@@ -87,8 +86,13 @@ version=last
 
 \usepackage{tikz}   % Drawing tool that overlaps on the plotted figures
 \usepackage{siunitx} %SI notations looks nice
-\usepackage{cite} % Combining multiple citations
 \usepackage[retainorgcmds]{IEEEtrantools}
+
+%\usepackage[numbers]{natbib}
+\usepackage[resetlabels, labeled]{multibib}	%% Generate document with multiple bibliography
+\newcites{K}{Related Publications} 
+\usepackage{cite} % Combining multiple citations
+%\include{cite}
 
 \hyphenation{centra-lity know-ledge throu-ghput}
 
@@ -110,7 +114,7 @@ version=last
 %\pretocmd{\chapter}{\addtocontents{toc}{\protect\addvspace{15\p@}}}{}{}
 %\pretocmd{\section}{\addtocontents{toc}{\protect\addvspace{15\p@}}}{}{}
 %\makeatother
-
+%% Modifying chapter style
 \usepackage{titlesec}
 \titleformat{\chapter}[display]
   {\huge}
@@ -118,6 +122,8 @@ version=last
   {2ex}
   {\titlerule[0.8pt]\vspace{1ex}\filcenter}
   [\vspace{1ex}{\titlerule[0.8pt]}]
+
+
 
 
 %\graphicspath{{./../kapitel05/}}
@@ -194,7 +200,7 @@ version=last
 \input{../stuff/titel}
 \cleardoublepage
 
-\input{../stuff/summary}
+%\input{../stuff/summary}
 
 %% Used to highlight text in the manuscript, will be used as dummy here
 \newcommand{\tc}[1]{#1}
@@ -207,11 +213,11 @@ version=last
 %% Chapters %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \mainmatter
 
-%\import{../kapitel01/}{kapitel01}
+\import{../kapitel01/}{kapitel01}
 %\import{../kapitel02/}{kapitel02} 
 %\import{../kapitel03/}{kapitel03}
 %\import{../kapitel04/}{kapitel04}
-\import{../kapitel05/}{kapitel05}
+%\import{../kapitel05/}{kapitel05}
 %\import{../kapitel06/}{kapitel06}
 %\import{../kapitel07/}{kapitel07}
 %\begin{appendix}
@@ -240,6 +246,7 @@ version=last
 
 \bibliographystyleK{ieeetr}
 \bibliographyK{../literatur/mypaper}
+%\bibNoteK{This thesis contains material from the following publications. Reprinted with permission.}
 %\input{../anhang/students.tex}
 
 \printindex % index
