@@ -14,9 +14,9 @@
        $\cz,\co$               & &          Date rate at SR without and with interference from PT  \\
       
 %% Channel parameters 
-       $\hpo$                  & &             Channel coefficient for the link PT-ST for IS \\
-       $\hs$                   & &             Channel coefficient for the link ST-SR for IS \\
-       $\hpt$                  & &             Channel coefficient for the link PT-SR for IS \\
+       $\hpo$                  & US &             Channel coefficient for the link PT-ST \\
+       $\hs$                   & US &             Channel coefficient for the link ST-SR \\
+       $\hpt$                  & US &             Channel coefficient for the link PT-SR \\
        $\snrrcvd, \snrso$      & &             Signal to noise ratio for the link PT-ST, ST-SR for IS \\
  %\acro{}[$$]{}
        $\snrpt$                & &             Interference (from PT) to noise ratio for the link PT-SR for IS \\
@@ -34,15 +34,24 @@
        $\epsilon$	       & &             Relative error between the normalized histogram bins and probability density function  \\	
 
 %% Signals
+	$\xtranpr[\cdot]$       & &             Discrete and complex signal transmitted by PR \\	
+	$\xscont[\cdot]$       & &             Discrete and complex signal transmitted by ST with controlled power \\	
 
+	$\yrcvd[\cdot]$       & &             Discrete and complex signal received at ST \\	
+	
+	$\nas[\cdot]$       & &             Discrete and complex noise signal at ST and SR\\	
+	$\nap[\cdot]$       & &             Discrete and complex noise signal at PR \\	
 
+	$\yp[\cdot]$       & &             Discrete and complex signal recived at PR \\	
 %% Powers
 	$\prcvd$  		& &		Power received at ST over the PT-SR link (IS) PR-ST (US) \\ 
 	$\prcvdpr$  		& &		Power received at PR over the SR-PT link \\
 
-	$\preg$	  		& &  	Transmit power at ST, where power control mechanism is enabled	\\
-	$\ptranst$ or $\pfull$ 	& &  	Transmit power at ST, where power control mechanism is disabled	\\
-	
+	$\preg$	  		& US &  	Transmit power at ST with power control \\
+	$\ptranst$ 		& US &  	Transmit power at ST with full transmit control \\
+
+	$\npp$	 		& US &  	Noise power at PR \\
+	$\nps$	 		& US &  	Noise power at ST and SR \\
 %% Notations 
        $F_{(\cdot)}$            & &          Cumulative distribution function of random variable $(\cdot)$ \\
        $f_{(\cdot)}$            & &          Probability density function of random variable $(\cdot)$ \\
@@ -62,7 +71,7 @@
 %% Special Functions
        $I_{N}(\cdot)$	        & &	Modified Bessel function of first kind of order $N$ \\		
        $Q_{N}(\cdot, \cdot)$	& &	Marcum Q-function \\		
-       $\Gamma(\cdot, \cdot)$	& &	\\		
+       $\Gamma(\cdot, \cdot)$	& &	Regularized incomplete upper-Gamma function\\		
 \end{longtable}
   
 

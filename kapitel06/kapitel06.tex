@@ -82,7 +82,7 @@ The discrete and complex signal received at the ST is given by
 \label{eq:sys_mod_st}
 \end{equation}
 where $\xtranpr[n]$ corresponds to a discrete constant power signal transmitted by the PR, $\pgpo$ represents the power gain for the channel PR-ST and $\nas[n]$ is circularly symmetric Additive White Gaussian Noise (AWGN) at the ST.
- $\ptranpr$  corresponds to the transmit power at the PR and $\nas[n]$ is an independent identically distributed (i.i.d.) Gaussian random process with mean $\e{}{\nas[n]} = 0$ and variance $\e{}{|\nas[n]|^2} = \nps$. By the listening to the transitions from the PR, the estimated received power at the ST, computed using $\test \fsam (= N)$ samples, is given as
+ $\ptranpr$  corresponds to the transmit power at the PR and $\nas[n]$ is an independent identically distributed (i.i.d.) Gaussian random process with mean $\e{}{\nas[n]} = 0$ and variance $\e{}{|\nas[n]|^2} = \nps$. By the listening to the transitions from the PR, the estimated received power at the ST, computed using $\test \fsam$ samples, is given as
 \begin{align}
 \eprcvd = \s{\test \fsam}{ |\gpo \xtranpr[n] + \nas|^2},
 \label{eq:prcvd} 
@@ -577,7 +577,7 @@ As $\npp$ is negligible compared to $\eprcvd$, (\ref{eq:approx1}) can be further
 		\epgpo = \frac{\eprcvd-\npp}{\ptran} \approx \frac{\eprcvd}{\ptran}.
 		\label{eq:approx2}
 	\end{equation}	
-	\item Furthermore, in order to exercise channel reciprocity, the analytical framework employs a TDD across the primary and secondary system. Hence, a perfect frame synchronization between the PR and the ST is assumed. Since, the synchronization between two different systems is challenging\footnote{It is cumbersome to deploy two different system and realize TDD for the preliminary analysis.}. To simplify this matter, Frequency Division Duplexing between the PR and the ST is proposed as follows: The signals are transmitted and received using two different frequencies (\SI{2.422}{GHz} and \SI{2.423}{GHz}) over two separate antennas, as illustrated in \figurename~\ref{fig:BD}. With this technique, the channel reciprocity may be compromised.	
+	\item Furthermore, in order to exercise channel reciprocity, the analytical framework employs a TDD across the primary and secondary system. Hence, a perfect frame synchronization between the PR and the ST is assumed. Since, the synchronization between two different systems is challenging\footnote{For the preliminary analysis, it is cumbersome to deploy two different system and realize TDD.}. To simplify this matter, Frequency Division Duplexing between the PR and the ST is proposed as follows: The signals are transmitted and received using two different frequencies (\SI{2.422}{GHz} and \SI{2.423}{GHz}) over two separate antennas, as illustrated in \figurename~\ref{fig:BD}. With this technique, the channel reciprocity may be compromised.	
 \end{enumerate}
 In order to realize these simplifications, it is utmost necessary to observe the impact of these simplifications on the performance of the demonstrator, specially, in terms of the violation of the interference constraint.
 

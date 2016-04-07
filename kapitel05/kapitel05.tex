@@ -28,11 +28,11 @@ More specifically, this chapter provides the following contributions:
 %\item 
 
 \subsection{Analytical framework}
-A novel analytical framework for the HS that constitutes the estimation of interacting channels, namely: (i) sensing channel, (ii) interference channels and (iii) access channel is established. Clearly, due to incorporation of channel estimation, the variations are induced in the performance parameters (which include aggregate interference received at the PR and throughput at SR) can lead to violation of the existing constraints. As a result, with the inclusion of channel estimation, excessive interference is encountered at the PR. 
+A novel analytical framework for the HS that constitutes the estimation of interacting channels, namely: (i) sensing channel, (ii) interference channels and (iii) access channel is established. Clearly, due to incorporation of channel estimation, the variations induced in the performance parameters (which include interference received at the PR and throughput at SR) can lead to violation of the existing constraints. As a result, with the inclusion of channel estimation, excessive interference is encountered at the PR. 
 %This excessive interference is investigated as a part of the proposed framework. 
 In order to combat this excessive interference, an outage constraints on the detection probability at the ST and on the interference power received at the PR is employed. Consequently, the performance of the HS in terms of the achievable secondary throughput is analyzed.
 \subsection{Estimation-sensing-throughput tradeoff}
-Finally, the performance of the proposed HS that incorporates channel estimation are analyzed by establishing a fundamental tradeoff between estimation time, sensing time and achievable throughput. This tradeoff is exploited to determine suitable estimation and sensing durations that achieve a maximum performance for the HS in terms of the secondary throughput. This tradeoff further assists in evaluating the performance degradation, encountered by the HSs due to inappropriate selection of the estimation time. The performance degradation in terms of secondary throughput is determined by comparing the proposed framework to those scenarios that consider perfect channel knowledge (Ideal Model).  
+The performance of the proposed framework that incorporates channel estimation is analyzed by considering a fundamental tradeoff between estimation time, sensing time and achievable throughput. This tradeoff is exploited to determine suitable estimation and sensing durations that achieve a maximum performance for the HS in terms of the secondary throughput. In addition, this tradeoff assists in evaluating the performance degradation, encountered by the HSs due to inappropriate selection of the estimation time. This degradation (depicted in terms of secondary throughput) is determined by comparing the proposed framework to those scenarios that consider perfect channel knowledge (Ideal Model).  
 %Finally, the performance of the HS is characterized based on analytical expressions.
 %\end{itemize}
 %\subsection{Organization}
@@ -79,10 +79,10 @@ The channel $\hpo$ is considered to be independent of $\xp[n]$ and $w[n]$, thus,
 Following the conventional frame structure, ST performs periodic sensing for a duration of $\tsen$. The test statistics $\ts$ at the ST is evaluated as $\ts = \s{\tsen \fsam}{ |\yrcvd[n]|^2} \mathop{\gtrless}_{\mathcal{H}_0}^{\mathcal{H}_1} \mu$, where $\mu$ is the decision threshold and $\textbf{y}$ is a vector with $\tsen \fsam$ samples. $\ts$ represents a random variable, whereby the characterization of the distribution function depends on the underlying hypothesis. Corresponding to the considered PU signal model, $\ts$ follows a central chi-squared ($\cchi2$) distribution for both hypotheses $\mathcal H_0$ and $\mathcal H_1$ \cite{Kay}.
 Consequently, the detection probability $(\pd)$ and the false alarm probability $(\pfa)$ are determined as \cite{Tan08}
 \begin{align}
-\pd(\mu, \tsen, \prcvdstpt) &= \Gamma\left( \frac{\tsen \fsam}{2}, \frac{\tsen \fsam \mu}{2 \prcvdstpt} \right),  \label{eq:pd} 
+\pd(\mu, \tsen \fsam, \prcvdstpt) &= \Gamma\left( \frac{\tsen \fsam}{2}, \frac{\tsen \fsam \mu}{2 \prcvdstpt} \right),  \label{eq:pd} 
 \end{align}
 \begin{align}
-\pfa(\mu, \tsen) &= \Gamma\left( \frac{\tsen \fsam}{2}, \frac{\tsen \fsam \mu}{2 \npo} \right),  \label{eq:pfa} 
+\pfa(\mu, \tsen \fsam) &= \Gamma\left( \frac{\tsen \fsam}{2}, \frac{\tsen \fsam \mu}{2 \npo} \right),  \label{eq:pfa} 
 \end{align}
 where $\prcvdstpt$ is the power received over the sensing channel and $\Gamma(\cdot, \cdot)$ represents a regularized upper incomplete Gamma function \cite{grad}.
 
