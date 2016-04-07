@@ -1,7 +1,10 @@
 
 \chapter{Notations and Symbols}
+
+Please note that, there exists certain notations that are specific or follow a slightly different definition corresponding to the underlying cognitive radio system (interweave system (IS), underlay system (US) and hybrid system (HS)). In both the cases, such notations have been outlined by their underlying systems.  
+
 \renewcommand{\arraystretch}{1.4}
-\begin{longtable}{p{0.15\columnwidth}p{0.05\columnwidth}p{0.8\columnwidth}}
+\begin{longtable}{p{0.15\columnwidth}p{0.10\columnwidth}p{0.75\columnwidth}}
 
 %% System parameters
        $T$                     & &             Frame duration \\
@@ -10,14 +13,19 @@
        $\tsen$                 & &             Sensing time interval \\
        $\test$                 & &             Estimation time interval \\      
        $\ttesto$               & &             Estimation time interval for the demonstrator \\      
-       $\rs$                   & &          Secondary throughput at SR \\
-       $\cz,\co$               & &          Date rate at SR without and with interference from PT  \\
-      
+       $\rs$                   & &             Throughput at SR (secondary throughput) \\
+       $\cz$                   & IS, HS &      Date rate at SR without interference from PT, where no power control is employed at ST  \\
+       $\co$                   & IS, HS &      Date rate at SR without interference from PT, where no power control is employed at ST \\ 
+       $\ca$                   & US &          Date rate at SR, where power control is employed at ST \\
+       $\ctw$                   & IS, HS &      Date rate at SR without interference from PT, where power control is employed at ST  \\
+       $\cth$                   & IS, HS &      Date rate at SR with interference from PT, where power control is employed at ST  \\ 
+
 %% Channel parameters 
-       $\hpo$                  & US &             Channel coefficient for the link PT-ST \\
-       $\hs$                   & US &             Channel coefficient for the link ST-SR \\
-       $\hpt$                  & US &             Channel coefficient for the link PT-SR \\
-       $\snrrcvd, \snrso$      & &             Signal to noise ratio for the link PT-ST, ST-SR for IS \\
+       $\hpo$                  & IS, HS &         Channel coefficient for the link PT-ST \\
+       $\hpo$                  & US &             Channel coefficient for the link PR-ST \\
+       $\hs$                   &  &     Channel coefficient for the link ST-SR \\
+       $\hpt$                  &  &     Channel coefficient for the link PT-SR \\
+       $\hpth$                 & HS &             Channel coefficient for the link PR-ST \\
  %\acro{}[$$]{}
        $\snrpt$                & &             Interference (from PT) to noise ratio for the link PT-SR for IS \\
 
@@ -35,23 +43,32 @@
 
 %% Signals
 	$\xtranpr[\cdot]$       & &             Discrete and complex signal transmitted by PR \\	
-	$\xscont[\cdot]$       & &             Discrete and complex signal transmitted by ST with controlled power \\	
+	$\xscont[\cdot]$       & US, HS &             Discrete and complex signal transmitted by ST with controlled power \\	
+	$\xs[\cdot]$       & IS, HS &             Discrete and complex signal transmitted by ST with no power control\\	
 
 	$\yrcvd[\cdot]$       & &             Discrete and complex signal received at ST \\	
 	
-	$\nas[\cdot]$       & &             Discrete and complex noise signal at ST and SR\\	
-	$\nap[\cdot]$       & &             Discrete and complex noise signal at PR \\	
+	$\nas[\cdot]$       & &             Discrete and complex noise signal \\	
+	%$\nap[\cdot]$       & &             Discrete and complex noise signal at PR \\	
 
 	$\yp[\cdot]$       & &             Discrete and complex signal recived at PR \\	
 %% Powers
-	$\prcvd$  		& &		Power received at ST over the PT-SR link (IS) PR-ST (US) \\ 
-	$\prcvdpr$  		& &		Power received at PR over the SR-PT link \\
+	$\prcvd$  		& IS &		Power received at ST over the PT-ST \\ 
+	$\prcvd$  		& US &		Power received at ST over the PR-ST \\ 
+	$\prcvdstpt$  		& HS &		Power received at ST over the PT-ST over $\hpo$ \\ 
+	$\prcvdstpr$  		& HS &		Power received at ST over the PR-ST over $\hpth$ \\ 
+	$\prcvdpr$  		& US &		Interference power received at PR over the SR-PR link \\
+	$\prcvdsr$  		& &		Interference power received at SR over the PT-SR link\\ 
 
 	$\preg$	  		& US &  	Transmit power at ST with power control \\
-	$\ptranst$ 		& US &  	Transmit power at ST with full transmit control \\
+	$\ptranst$ 		& IS, HS&  	Transmit power at ST with full transmit control \\
 
-	$\npp$	 		& US &  	Noise power at PR \\
-	$\nps$	 		& US &  	Noise power at ST and SR \\
+	$\npo$	 		& & 	Noise power \\
+	$\spo$	 		& &  Transmit power at ST and SR, when transmit signal is modeled as OFDM  \\
+
+%% Signal to noise ratio
+	$\snrrcvd$  		& IS &		Signal to noise power received at ST over PT-ST link \\ 
+	$\snrrcvd$  		& US &		Signal to noise power received at ST over PR-ST link \\ 
 %% Notations 
        $F_{(\cdot)}$            & &          Cumulative distribution function of random variable $(\cdot)$ \\
        $f_{(\cdot)}$            & &          Probability density function of random variable $(\cdot)$ \\
@@ -61,8 +78,8 @@
        $\tilde{(\cdot)}$        & &		Suitable value of the parameter ($\cdot$) that achieves maximum performance \\
        $\tilde{(\cdot)}$        & &		Suitable value of the parameter ($\cdot$) that achieves maximum performance \\
        $K$                      & &      Scaling factor that holds the expected power received at the PR at interference temperature  \\
-       $\Ks$                    & &      Number of pilot symbols used for pilot based estimation at the SR for $\hs$ \\
-       $\Kp$                    & &      Number of samples used for received power based estimation at the SR for $\hpt$ \\
+       $\Ks$                    & &      Number of pilot symbols used for pilot based estimation at the SR \\
+       $\Kp$                    & &      Number of samples used for received power based estimation at the SR \\
        $\cchi2$                & &      Central chi-squared distribution \\
        $\ncchi2$                & &      Non-central chi-squared distribution \\
        $\lambda_{(\cdot)}$ or $\lambda$  &     &       Non-centrality parameter of a non-central chi-squared distribution \\
@@ -71,7 +88,10 @@
 %% Special Functions
        $I_{N}(\cdot)$	        & &	Modified Bessel function of first kind of order $N$ \\		
        $Q_{N}(\cdot, \cdot)$	& &	Marcum Q-function \\		
-       $\Gamma(\cdot, \cdot)$	& &	Regularized incomplete upper-Gamma function\\		
+       $\Gamma(\cdot, \cdot)$	& &	Regularized upper-incomplete Gamma function\\		
+       $\gamma(\cdot, \cdot)$	& &	Regularized lower-incomplete Gamma function\\		
+       $\phz$			& &	Hypothesis illustarting the prescence of primary user\\	
+       $\pho$			& &	Hypothesis illustarting the absence of primary user (noise only) \\		
 \end{longtable}
   
 
