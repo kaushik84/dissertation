@@ -1,7 +1,7 @@
 
 \chapter{Notations and Symbols}
 
-Please note that, there exists certain notations that are specific or follow a slightly different definition corresponding to the underlying cognitive radio system (interweave system (IS), underlay system (US) and hybrid system (HS)). In both the cases, such notations have been outlined by their underlying systems.  
+Please note that, there exists certain notations that are specific or follow a slightly different definition corresponding to the underlying cognitive radio system (interweave system (IS), underlay system (US) and hybrid system (HS)). Here, these notations have been signfied by their underlying systems.  
 
 \renewcommand{\arraystretch}{1.4}
 \begin{longtable}{p{0.15\columnwidth}p{0.10\columnwidth}p{0.75\columnwidth}}
@@ -12,6 +12,9 @@ Please note that, there exists certain notations that are specific or follow a s
        $\flo$                  & & 	       Local oscillator offset frequency \\
        $\tsen$                 & &             Sensing time interval \\
        $\test$                 & &             Estimation time interval \\      
+       $\testpt$                 & HS &             Estimation time interval allocated for $\hpo$ \\      
+       $\testptsr$                 & HS &             Estimation time interval allocated for $\hptw$ \\      
+       $\testpr$                 & HS &             Estimation time interval allocated for $\hpth$ \\      
        $\ttesto$               & &             Estimation time interval for the demonstrator \\      
        $\rs$                   & &             Throughput at SR (secondary throughput) \\
        $\cz$                   & IS, HS &      Date rate at SR without interference from PT, where no power control is employed at ST  \\
@@ -27,7 +30,6 @@ Please note that, there exists certain notations that are specific or follow a s
        $\hpt$                  &  &     Channel coefficient for the link PT-SR \\
        $\hpth$                 & HS &             Channel coefficient for the link PR-ST \\
  %\acro{}[$$]{}
-       $\snrpt$                & &             Interference (from PT) to noise ratio for the link PT-SR for IS \\
 
 %% Probabilities and constraints
        $\pd$                   & &             Detection probability \\ 
@@ -36,12 +38,14 @@ Please note that, there exists certain notations that are specific or follow a s
        $\pdd$                  & &             Target detection probability \\ 
        $\pcod$                 & &             Target confidence probability \\ 
        $\mu$                   & &             Decision threshold \\ 
-       $\mpd$                  & &             Outage constraint over detection probability \\ 
-       $\ite$                  & &             Interference temperature at the PR \\ 
+       $\mpd$                  & &             Outage constraint over detection probability at ST \\ 
+       $\opc$                  & &             Outage constraint on controlled power at ST \\ 
+       $\ite$                  & &             Interference temperature at PR \\ 
        $\acc$	               & &             Accuracy of the parameter \\	
        $\epsilon$	       & &             Relative error between the normalized histogram bins and probability density function  \\	
 
 %% Signals
+	$\xp[\cdot]$       & &             Discrete and complex signal transmitted by PT \\	
 	$\xtranpr[\cdot]$       & &             Discrete and complex signal transmitted by PR \\	
 	$\xscont[\cdot]$       & US, HS &             Discrete and complex signal transmitted by ST with controlled power \\	
 	$\xs[\cdot]$       & IS, HS &             Discrete and complex signal transmitted by ST with no power control\\	
@@ -57,11 +61,12 @@ Please note that, there exists certain notations that are specific or follow a s
 	$\prcvd$  		& US &		Power received at ST over the PR-ST \\ 
 	$\prcvdstpt$  		& HS &		Power received at ST over the PT-ST over $\hpo$ \\ 
 	$\prcvdstpr$  		& HS &		Power received at ST over the PR-ST over $\hpth$ \\ 
-	$\prcvdpr$  		& US &		Interference power received at PR over the SR-PR link \\
+	$\prcvdpr$  		& US, HS &		Interference power received at PR over the ST-PR link \\
 	$\prcvdsr$  		& &		Interference power received at SR over the PT-SR link\\ 
 
 	$\preg$	  		& US &  	Transmit power at ST with power control \\
 	$\ptranst$ 		& IS, HS&  	Transmit power at ST with full transmit control \\
+	$\ptranpr$  		& &		Transmit power at PR \\
 
 	$\npo$	 		& & 	Noise power \\
 	$\spo$	 		& &  Transmit power at ST and SR, when transmit signal is modeled as OFDM  \\
@@ -69,6 +74,7 @@ Please note that, there exists certain notations that are specific or follow a s
 %% Signal to noise ratio
 	$\snrrcvd$  		& IS &		Signal to noise power received at ST over PT-ST link \\ 
 	$\snrrcvd$  		& US &		Signal to noise power received at ST over PR-ST link \\ 
+        $\snrpt$                & &             Interference (from PT) to noise ratio for PT-SR link \\
 %% Notations 
        $F_{(\cdot)}$            & &          Cumulative distribution function of random variable $(\cdot)$ \\
        $f_{(\cdot)}$            & &          Probability density function of random variable $(\cdot)$ \\
@@ -80,7 +86,8 @@ Please note that, there exists certain notations that are specific or follow a s
        $K$                      & &      Scaling factor that holds the expected power received at the PR at interference temperature  \\
        $\Ks$                    & &      Number of pilot symbols used for pilot based estimation at the SR \\
        $\Kp$                    & &      Number of samples used for received power based estimation at the SR \\
-       $\cchi2$                & &      Central chi-squared distribution \\
+       $\mathcal N$                & &      Gaussian or normal distribution\\
+       $\cchi2 $                & &      Central chi-squared distribution \\
        $\ncchi2$                & &      Non-central chi-squared distribution \\
        $\lambda_{(\cdot)}$ or $\lambda$  &     &       Non-centrality parameter of a non-central chi-squared distribution \\
        $a_{(\cdot)}, b_{(\cdot)}$ or $a, b$ &  &       Shape and scale parameters of a Gamma distribution \\
@@ -89,9 +96,10 @@ Please note that, there exists certain notations that are specific or follow a s
        $I_{N}(\cdot)$	        & &	Modified Bessel function of first kind of order $N$ \\		
        $Q_{N}(\cdot, \cdot)$	& &	Marcum Q-function \\		
        $\Gamma(\cdot, \cdot)$	& &	Regularized upper-incomplete Gamma function\\		
-       $\gamma(\cdot, \cdot)$	& &	Regularized lower-incomplete Gamma function\\		
-       $\phz$			& &	Hypothesis illustarting the prescence of primary user\\	
-       $\pho$			& &	Hypothesis illustarting the absence of primary user (noise only) \\		
+       $\Gamma^{-1}(\cdot, \cdot)$	& &	Inverse function of regularized upper-incomplete Gamma function\\		
+       $\gamma(\cdot, \cdot)$	& &	Regularized lower-incomplete Gamma function or Gamma distribution function\\		
+       $\mathcal H_1$			& &	Hypothesis illustarting the prescence of primary user\\	
+       $\mathcal H_0$			& &	Hypothesis illustarting the absence of primary user (noise only) \\		
 \end{longtable}
   
 
