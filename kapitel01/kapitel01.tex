@@ -1,69 +1,68 @@
 \chapter{Introduction}
 
+With the invention of smart devices, an extensive growth in mobile traffic has been witnessed by the network operators. According to the recent surveys on mobile traffic by prominent market leaders (Cisco \cite{CISCO14} and Ericsson\cite{Eric15}), it is predicted that the existing mobile traffic will grow $11$-times by 2021. The state-of-the-art standards (Fourth-Generation (4G) -- LTE, WiMAX) are not capable of sustaining these demands in the upcoming decade. With this situation in hand, the standardization bodies are currently in the phase of conceptualizing the requirements of the fifth-generation (5G) of mobile wireless systems.
+Some of these major requirements are: (i) areal capacity in $\SI{}{bits/sec/m^2}$ must increase by a factor of $1000$ compared to 4G, (ii) low latency of approximately \SI{1}{ms}, and, (iii) energy- and cost-efficient deployment \cite{Qual13, Andrews14}.
+ %One of the major goals is to improve the areal capacity ($\SI{}{bits/s/m^2}$) by a factor of 1000 \cite{Qual13, Andrews14}. \tc{To this end, an extension to the already allocated spectrum is of paramount importance.} 
+Small cell deployments and an extension to the already allocated spectrum are the major promising approaches that allow us to sustain the aforementioned requirements. These approaches are closely examined in the following paragraphs. 
+
+\subsubsection*{Why Small Cell?}
+
+In the recent past, Small Cells (SCs) have emerged as a potential solution for coverage and capacity enhancements in a network. An SC represents a low power station that ranges from $\SI{10}{m}$ to $\SI{100}{m}$, comparable to the size of a femtocell. The reduced transmit distance accomplished with the deployment of SCs enhances the link quality and aids spatial reuse \cite{Chander08}.
+%SC is particularly deployed in a indoor or outdoor environments, these include enterprise, shopping complex or residential \cite{SSF14}. 
+As a result, ultra-densification via SCs is envisaged as the absolute paramount for the Fifth-Generation (5G) of wireless systems \cite{Andrews14}.
+The capacity, however, increases linearly with the number of SCs, hence, it is implausible to procure the factor of $1000$ in the areal capacity with ultra-densification alone.
+Additionally, backhaul deployment and operation of these substantial number of SCs are cost- and energy-intensive for the mobile operator.
+
+
+
+
+\subsubsection*{Spectrum extension}
+Complementing the link quality, the spectrum procures a large contribution to the areal capacity. Considering the current situation of the spectrum allocated for mobile communications, an extension in the available spectrum is imperative. In this regard, the following classification for the spectrum extension is considered:
+%\begin{itemize}
+(i) $\ge \SI{6}{GHz}$;
+(ii) $\le \SI{6}{GHz}$.
+%\end{itemize}
+The prime objective of this sort of classification is to shift the focus on the propagation characteristics and the issues thereof.
+
+
+The spectrum beyond \SI{6}{GHz} largely entails the millimeter Wave (mmW), which is well-known for point-to-point communications. Recently, it is envisaged as a powerful source of spectrum for 5G wireless systems. However, the millimeter wave technology is still in its initial stage and along with complex regulatory requirements in this regime, it has to address several challenges like propagation loss, low efficiency of radio frequency components such as power amplifiers, small size of the antenna and link acquisition \cite{Rapp13}. Therefore, in order to capture a deeper insight of its feasibility in 5G, it is essential to overcome the aforementioned challenges in the near future\nociteK{Kaushik13, Kaushik14_W, Kaushik14_CC, Kaushik14_P, Kaushik15_CC,Kaushik15_ICC, Kaushik15_D, Kaushik16_TWC, Kaushik16_ICC, Kaushik16_CC}.
+
+\tc{Besides the spectrum beyond \SI{6}{GHz}, an efficient utilization of the spectrum below \SI{6}{GHz} presents an alternative solution. The use of the spectrum in this regime (below \SI{6}{GHz}) is fragmented and statically allocated, leading to inefficiencies and the shortage in the availability of the spectrum for new services.} However, it is possible to overcome this scarcity if we manage to utilize this radio spectrum efficiently. In this perspective, \tc{cognitive radio (CR) is foreseen as one of the potential contenders that addresses the spectrum scarcity problem. Since its origin by Mitola \textit{et al.} in 1999, this notion has evolved at a significant pace, and consequently has acquired certain maturity.} However, from a deployment perspective, this technology is still in its preliminary phase. In this view, it is necessary to make substantial efforts that enable the placement of this concept over a hardware platform. In this regard, this thesis capitalizes on the deployment of the CR system. 
+
+\subsubsection*{Cognitive Radio Systems}
+In order to proceed further, it is essential to understand the different CR systems that classified in the literature. An access to the licensed spectrum is an outcome to the paradigm employed by the \tc{secondary user (SU)}. Based on the paradigms described in the literature, all CR systems that provide dynamic access to the spectrum mainly fall under three categories, namely, interweave, underlay and overlay systems \cite{Goldsmith09}. 
+\begin{itemize}
+\item In Interweave Systems (ISs), the SUs render an interference-free access to the licensed spectrum by exploiting spectral holes in different domains such as time, frequency, space and polarization. 
+\item Underlay Systems (US) enable an interference-tolerant access under which the SUs are allowed to use the licensed spectrum (e.g. Ultra Wide Band) as long as they respect the interference constraints of the Primary Receivers (PRs). 
+\item Hybrid Systems (HSs) combine the benefits of the IS (agility to detect spectrum holes in different domains) and the US (interference-tolerant capability) to enhance the spectral usage efficiency.  
+\item Overlay systems consider the participation of higher layers for enabling the spectral coexistence between two or more wireless networks. 
+\end{itemize}
+Since the IS, US are HS are closely associated with the physical layer, these systems are mostly considered not only for the theoretical analysis but for practical implementations as-well \citeK{Kaushik13,Kaushik14_CC,Kaushik15_D, Kaushik16_CC}, \cite{Cabric06, Kim10}. Motivated by these facts, this thesis focuses on the performance analysis of these CR systems from a deployment perspective. 
+
+
 \section{Motivation}
 \label{sec:mot}
 
-We are currently in the phase of conceptualizing the requirements of the fifth generation (5G) of mobile wireless systems. One of the major goals is to improve the areal capacity ($\SI{}{bits/s/m^2}$) by a factor of 1000 \cite{Andrews14}. \tc{To this end, an extension to the already allocated spectrum is of paramount importance.} 
-Recently, the spectrum beyond \SI{6}{GHz}, which largely entails the millimeter wave is envisaged as a powerful source of spectrum for 5G wireless systems. However, the millimeter wave technology is still in its initial stage and along with complex regulatory requirements in this regime, it has to address several challenges like propagation loss, low efficiency of radio frequency components such as power amplifiers, small size of the antenna and link acquisition \cite{Rapp13}. Therefore, in order to capture a deeper insight of its feasibility in 5G, it is essential to overcome the aforementioned challenges in the near future\nociteK{Kaushik13, Kaushik14_W, Kaushik14_CC, Kaushik14_P, Kaushik15_CC,Kaushik15_ICC, Kaushik15_D, Kaushik16_TWC, Kaushik16_ICC, Kaushik16_CC}.
 
-\tc{Besides the spectrum beyond \SI{6}{GHz}, an efficient utilization of the spectrum below \SI{6}{GHz} presents an alternative solution. The use of the spectrum in this regime (below \SI{6}{GHz}) is fragmented and statically allocated, leading to inefficiencies and the shortage in the availability of the spectrum for new services.} However, it is possible to overcome this scarcity if we manage to utilize this radio spectrum efficiently. In this perspective, \tc{cognitive radio (CR) is foreseen as one of the potential contenders that addresses the spectrum scarcity problem. Since its origin by Mitola \textit{et al.} in 1999, this notion has evolved at a significant pace, and consequently has acquired certain maturity.} However, from a deployment perspective, this technology is still in its preliminary phase. In this view, it is necessary to make substantial efforts that enable the placement of this concept over a hardware platform.
-
-An access to the licensed spectrum is an outcome to the paradigm employed by the \tc{secondary user (SU)}. Based on the paradigms described in the literature, all CR systems that provide dynamic access to the spectrum mainly fall under three categories, namely, interweave, underlay and overlay systems \cite{Goldsmith09}. In \tc{interweave systems (ISs)}, the SUs render an interference-free access to the licensed spectrum by exploiting spectral holes in different domains such as time, frequency, space and polarization, whereas underlay systems enable an interference-tolerant access under which the SUs are allowed to use the licensed spectrum (e.g. Ultra Wide Band) as long as they respect the interference constraints of the primary receivers (PRs). Besides that, overlay systems consider the participation of higher layers for enabling the spectral coexistence between two or more wireless networks. Due to its ease of deployment, the IS is mostly preferred not only for performing theoretical analysis but also for practical implementation. Motivated by these facts, this paper focuses on the performance analysis of the ISs from a deployment perspective. 
-
-
-
-%\subsection{Small cell deployment}
-%\begin{itemize}
-%\item Capacity improvements -- femto cell base station -- frequency reuse -- interference coordination
-%\item Coverage improvements -- relay -- transparent to the network
-%\end{itemize}
-
-%\subsection{\ac{CSC}}
-%CSC is a network element that provides secondary usage of the spectrum to the devices operating indoor.
-%\begin{itemize}
-%\item Capacity improvements by reusing of the primary user channels
-%\item Coverage improvements through indoor deployment
-%\end{itemize}
-
-%\subsection{Disposition of CSCs in 5G}
-
-%Two fields in electrical engineering formed the evolution of Software Defined Radios: the history of wireless communication principles and the development of digital processing technologies.
-
-%The wireless transmission of information started at the end of the 19th century. In 1886, Heinrich Hertz was the first who generated and detected electromagnetic radiation, with which he verified Maxwell's theory of the existence of electromagnetic waves. Nicola Tesla gave a public demonstration of wireless radio communications in 1893 and ten years later Marconi succeeded in the first wireless transmission over the Atlantic. Even if these milestones in the history of wireless communications took place more than hundred years ago, the principles of the transmission of amplitude modulated (AM) analog signals are still existent today: Most broadcast radio receivers provide an AM tuner for the radio frequency (RF) band and the signal for analog broadcast television is also amplitude modulated. In 1933, Edwin Armstrong patented a method to integrate the information in the frequency component of an electromagnetic wave instead in the amplitude. Hence, radios with \ac{FM} occurred and are still used in the \ac{VHF} band for audio broadcast.
-
-%The fact that old communication schemes are still used today is also true for digital communications. The \ac{GSM} was created 1981 and thirty years later it has a market share of \SI{80.4}{\%} for cellular mobile networks \cite{gsm}. With the standards that were released in the last two decades like the 802.11 family, \ac{UMTS} or \ac{LTE}, a normal user faces plenty of complete different wireless communication schemes. It is a fact that more and more communication schemes emerge while the older ones still must be maintained. From a normal user perspective this is not problematic due to the fact that the communication devices are cheap and can be replaced immediately.
-
-%From a military perspective this is a huge challenge. The number of radio communication standards in this area are in the range of several hundreds and a legacy radio device supports only a few of them. These devices should additionally operate over decades. New devices should not only be interoperable with the older devices they should also be interoperable with communication schemes from other countries for international operations. The present situation with the need for a radio device can be summarized as follows: There are plenty of radio communication standards and the optimum would be a device that supports present standards and also communication schemes for the future.
-
-%\subsection{History of digital processing technology}
-%The development of programmable devices for data processing started in 1971 with the Intel 4004. This was the first single chip microprocessor on the market with an integrated \ac{CPU}, a memory unit, as well as input and output control ports \cite{intel4004}. Eleven years later the first commercial microprocessor with a special architecture for multiplying and accumulating was released \cite{dsp}. With these \acp{DSP} \index{DSP} a new branch of processors intended for digital processing purposes evolved. At the same time, the company Xilinx was founded and developed the first \ac{FPGA} \index{FPGA} for the commercial market \cite{xc2064}. These inventions and the development of the \ac{ADC} \index{ADC} and \ac{DAC} \index{DAC} technology formed the basis of processing radio signals with software.
-
-%\subsection{Evolution of Software Defined Radio}
-
-%With the development in processing technology in the last thirty years, the architecture of radio devices changed from application specific integrated circuits to processors and reconfigurable logic. With these programmable devices, the radio standards could be realized by software and could be changed according to the user's need. Although many people contributed in this idea like Ulrich Rohde in 1984 \cite{rohde}, Joe Mitola coined the term ``Software Defined Radio'' in 1991 \cite{mitola}.
-
-%At the same time, the first \ac{SDR} \index{SDR} project was initiated by the U.S. military to produce an SDR that could be tuned to frequencies between \SI{2}{MHz} and \SI{2}{GHz} and provide furthermore interoperability between several different standards of the armed forces. Today, the principle of \ac{SDR} is present in many fields of wireless communication. In the military environment, \ac{SDR} projects are launched around the world. In the U.S. military, the project \ac{JTRS} should produce devices that are interoperable to many existing military and civilian communication standards and should successively replace existing legacy radios. The German equivalent: ``\ac{SVFuA}'' is a software defined joint radio system that works in a frequency range between \SI{3}{MHz} and \SI{3}{GHz} and should also replace existing legacy devices in the German army.
-
-%The advantage of an SDR is the reconfigurability and the interoperability to old radio communication standards. Legacy radios can still be used and the SDR has even the possibility to work as a gateway between existent and new wireless standards \cite{sdr_pgs}. These advantages were also recognized by various European agencies of public and governmental security, which face the problem to replace their old analog communication structure with a new digital system. The European project ``\ac{WINTSEC}'' proposed \ac{SDR} as the key enabler for this step \cite{europ_system}. But not only the replacement of legacy to new devices can be accomplished. An \ac{SDR} can also enable the wireless communication among rescue teams, firefighters and police. It can furthermore establish a connection with rescue teams across a country's borders.
-
-%With the company Vanu Inc., \acp{SDR} are also existent on the commercial market for mobile communication. Vanu Inc. was the first company that developed base stations with \acp{GPP}\index{GPP}. The wireless standards are written in high level languages and can be configured and maintained online \cite{vanu}.
-
-%\subsection{Problem of portability \index{Portability}}
-%The difference between a legacy radio device and a \acl{SDR} is in principle the distribution of the \ac{SDR} in a waveform \index{Waveform} part and in a platform \index{Platform} part. It is therefore named: ``The waveform/platform paradigm''. The platform consists of the hardware with various processing elements, memory and user interfaces. However, it is not only the hardware that comprises a platform, it is also the software connected to it like the operating system, the firmware and \index{API} \acp{API}. The waveform is an application that is supported by the SDR platform and configures it in accordance to the dedicated radio communication standard. Therefore, the waveform enables the platform to be part of the related radio communication system. The waveform developer is able to build multiple waveforms for his platform.
-
-%In the past years several new SDR platforms were released and each waveform developer build applications for his own system. The question evolved: ``How can be assured that waveforms can be moved from one platform to another?'' This portability problem is not only valid for the exchange of waveforms. It is also existent when SDR platforms are modernized and upgraded with new processors. How can be assured that waveforms running on the old platform can be ported to the new platform with a minimum of effort?
-
-%This work focuses on these questions. It proposes a development flow and shows that waveforms can be ported. A proof of concept is given with an exemplary waveform and two platforms. It additionally investigates the overhead of automatically generated code, which is a key term for waveform portability.
+\subsection{Cognitive Small Cell: A Prominent Use-case}
+\begin{figure}[!t]
+\centering
+\includegraphics[width = \columnwidth]{figures/Cellular_Scenario_CR6F}
+\caption{An illustration of the CSC deployment in a 5G network.}
+\label{fig:scenario}
+\end{figure}
 
 
-\section{Outline of Work}
-%Chapter 2 gives an overview of existing waveform development flows and compares them with respect to portability issues. The Model-Based Design is introduced for baseband processing and measurements are presented about the overhead of automatically generated codes.
 
-%In this work about portability of SDR waveforms also an overview of SDR platforms are given in chapter 3, concerning a general and a detailed description of two special platforms that are used for waveform porting. These are the USRP and the SFF SDR. Furthermore, chapter 3 describes how the model-based waveform design was integrated in these platforms.
+Following the previous discussion, it is evident that spectrum extension and SCs are key-enablers for the 5G system.
+%Recently, ElSawy \textit{et al.} \cite{Elsawy13} have presented Cognitive Small Cell (CSC), a concept that fulfills the capacity demands of the future wireless networks. 
+Motivated by this fact, a preliminary concept of Cognitive Small Cell (CSC), a promising approach that jointly enhances the SC deployment and the efficient usage of the spectrum below \SI{6}{GHz}. The notion of CSC has been previously investigated by Elsawy \textit{et al.} \cite{Elsawy13}, where the authors primarily emphasized on the modelling techniques that illustrate the positioning of several CSCs inside the network. In the view of this, the performance analysis of the CSC was constricted mainly to network abstraction. In this article, we provide a deployment-centric viewpoint to ensure a successful integration of CSCs in the 5G network. Consequently, by considering different CR paradigms to enable secondary usage of the licensed spectrum, we illustrate a deeper comprehension of the concept. %, thereby, making it accessible to 5G systems. 
+%To strengthen our understanding of CSC, we demonstrate the feasibility of the respective paradigms by means of hardware implementations.
+%Pertaining to the deployment, we analyze the true performance of the CSC as a CR application for the mentioned paradigms.  
 
-%With the knowledge of the waveform development flow and the SDR platforms, the next step is the design and the port of a real world waveform. For this proof of concept, the professional mobile radio waveform for public and governmental security systems was chosen, known as TETRA. Chapter 4 therefore gives an overview of TETRA and describes the development of the waveform according to the design flow, introduced in chapter 2. Furthermore, the port of this waveform from one platform to another is described. It presents results and benchmarks of the generated code for TETRA on both platforms and introduce the tests for evaluating the real time waveform with measurement equipment.
+A comprehensive incorporation of CSC in a preliminary 5G architecture is illustrated in \figurename~\ref{fig:scenario}. From the market analysis, it has been depicted that $70\%$ of the data traffic is originated indoor \cite{Chander08}. In addition, a new range of wireless services, categorized as Internet of Things, will operate from indoor. Thus, the effects will be far more consequential if we consolidate these sources of data traffic by means of SCs deployment. In this regard, it is sensible to consider the residential and enterprise as the main deployment scenarios for the CSC, cf. \figurename~\ref{fig:scenario}. Except for a different coverage regime, the operating principles of these scenarios are analogous.
 
-%The detailed description of further ports that were realized is not necessary for this work. Therefore, chapter 5 gives an overview of the challenges and results from other waveform ports.
 
-%Chapter 6 finally concludes the work and gives an outlook of waveform development in the future.
+\section{Main Contributions}
 
+\section{Organization}
