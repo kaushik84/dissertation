@@ -185,10 +185,10 @@ During data transmission phase, the signal received at the PR\footnote{With no l
 \end{equation}
 and on the other side, the received signal at the SR follows 
 \begin{equation}
-\ys[n] = \gs \cdot \xreg[n] + \gpt \cdot \xtran[n] + \nas[n],
+\ys[n] = \gs \cdot \xreg[n] + \gpt \cdot \xp[n] + \nas[n],
 \label{eq:sys_mod_sr}
 \end{equation}
-where $\xreg[n]$ corresponds to a discrete and complex sample transmitted by the ST with controlled power $\preg$, and $\xtran[n]$ is the transmit signal from the PT with transmit power $\ptran$\footnote{To avoid the use of an extra notation, the transmit power is chosen to be the same for the PT and the PR, however, in practice, it might be different from the PR. In such situations also, for the proposed framework, its ignorance at the SR doesn't affect the analysis of the secondary interference.}. Further, $\pgs$ and $\pgpt$ represent the power gain for the access channel and the secondary interference channel, respectively and $\nap[n]$ is AWGN at the PR with $\mathcal{CN}(0, \nps)$. %The power received at the ST is given as 
+where $\xreg[n]$ corresponds to a discrete and complex sample transmitted by the ST with controlled power $\preg$, and $\xp[n]$ is the transmit signal from the PT with transmit power $\ptran$\footnote{To avoid the use of an extra notation, the transmit power is chosen to be the same for the PT and the PR, however, in practice, it might be different from the PR. In such situations also, for the proposed framework, its ignorance at the SR doesn't affect the analysis of the secondary interference.}. Further, $\pgs$ and $\pgpt$ represent the power gain for the access channel and the secondary interference channel, respectively and $\nap[n]$ is AWGN at the PR with $\mathcal{CN}(0, \nps)$. %The power received at the ST is given as 
 %Considering (\ref{eq:sys_mod_pr}), the powers received at the PR and SR are evaluated as $\pp = \s{(T - \tau) \fsam}{|\yp[n]^2|}$ and $\ps = \s{(T - \tau) \fsam}{|\yp[n]^2|}$. Likewise (\ref{eq:sys_mod_st}), $\nap[n]$ and $\nas[n]$ represents circularly symmetric AWGN at PR and ST with zero mean and variance $\e{}{|\nap[n]|^2} = \npp$ and $\e{}{|\nas[n]|^2} = \nps$ correspondingly. Consider that $\ptran$, $\preg$ and $\pp$ correspond to power for a given frame. 
 %\subsubsection{Channel}
 
