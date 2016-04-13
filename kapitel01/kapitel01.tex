@@ -28,6 +28,10 @@ The spectrum beyond \SI{6}{GHz} largely entails the millimeter Wave (mmW), which
 
 \tc{Besides the spectrum beyond \SI{6}{GHz}, an efficient utilization of the spectrum below \SI{6}{GHz} presents an alternative solution. The use of the spectrum in this regime (below \SI{6}{GHz}) is fragmented and statically allocated, leading to inefficiencies and the shortage in the availability of the spectrum for new services.} However, it is possible to overcome this scarcity if we manage to utilize this radio spectrum efficiently. In this perspective, Cognitive Radio (CR) is foreseen as one of the potential contenders that addresses the spectrum scarcity problem. Since its origin by Mitola \textit{et al.} in 1999, this notion has evolved at a significant pace, and consequently has acquired certain maturity. Despite the existence of the theoretical analysis, from a deployment perspective, this technology is still in its preliminary phase. Due to this large gap between the theoretical models and practical implementations, recently, the wireless community has started showing huge inclination towards models and/or techniques that enable the placement of this concept over a hardware platform, thereby facilitating the disposition of CR systems in the upcoming 5G wireless networks. Understanding the significance these facts, this thesis capitalizes on the deployment of the CR system. 
 
+
+\section{Background and Motivation}
+\label{sec:mot}
+
 \subsubsection*{Cognitive Radio Systems}
 In order to proceed further, it is essential to understand the classification of different CR systems described in the literature. An access to the licensed spectrum is an outcome to the paradigm employed by the \tc{Secondary User (SU)}. In this context, all CR systems that provide dynamic access to the spectrum mainly fall under three categories, namely, interweave, underlay and overlay systems \cite{Goldsmith09}. 
 \begin{itemize}
@@ -39,8 +43,6 @@ In order to proceed further, it is essential to understand the classification of
 Since the IS, US are HS are closely associated with the physical layer, these systems are mostly considered not only for the theoretical analysis but for practical implementations as-well \citeK{Kaushik13,Kaushik14_CC,Kaushik15_D, Kaushik16_CC}, \cite{Cabric06, Kim10}. Taking this into account, the thesis focuses on the performance analysis of these CR systems from a deployment perspective. In order to illustrate the successful incorporation of a CR technique in a 5G network, a specific use-case (deployment scenario) is presented subsequently. 
 
 
-\section{Motivation}
-\label{sec:mot}
 
 
 \subsection{Cognitive Small Cell: A Prominent Use-case}
@@ -95,9 +97,10 @@ Whereas, the outdoor antenna secures a narrow beam transmission to enhance the l
 
 
 \subsubsection*{Indoor Deployment}
-From the market analysis, it has been depicted that $70\%$ of the mobile traffic is originated indoor \cite{Chander08}. In addition, a new range of wireless services, categorized as Internet of Things, will operate from indoor. Thus, the effects will be far more consequential if we manage to consolidate these sources of traffic by means of SCs deployment. Hence, it is sensible to consider the residential and enterprise as the main deployment scenarios for the CSC, cf. \figurename~\ref{fig:scenario}. Except for a different coverage regime, the operating principles of these scenarios are analogous. Besides, in context with the CR, where the interference mitigation between the primary and secondary systems is a significant aspect, exercising the CR communication within the walls\footnote{This, however, does not signifies that CR communication can accomplished through indoor deployments. As a mater of fact, the indoor deployment only utilizes the behaviour perspective of the MS (where most traffic is originated) to spatially reuse the available spectrum.} (which attributes to an indoor deployment) provides a spatial separation between the two systems. Based on these facts, an indoor scenario is considered for the deployment of the CSC, cf. \figurename~\ref{fig:scenario}.  
+From the market analysis, it has been depicted that $70\%$ of the mobile traffic is originated indoor \cite{Chander08}. In addition, a new range of wireless services, categorized as Internet of Things, will operate from indoor. Thus, the effects will be far more consequential if we manage to consolidate these sources of traffic by means of SCs deployment. Hence, it is sensible to consider the residential and enterprise as the main deployment scenarios for the CSC, cf. \figurename~\ref{fig:scenario}. Except for a different coverage regime, the operating principles of these scenarios are analogous. Besides, in context with the CR, where the interference mitigation between the primary and secondary systems is a significant aspect, exercising the CR communication within the walls\footnote{This, however, does not signifies that CR communications are only feasible for indoor scenarios. As the matter of fact, the indoor deployment exploits the behavioural aspect of the traffic source for CR communication, and facilitate co-existence with the licensed users.} (which attributes to an indoor deployment) provides a spatial separation between the two systems. Based on this knowledge, an indoor scenario is considered for the deployment of the CSC, cf. \figurename~\ref{fig:scenario}.  
 
 \subsection{Performance Analysis}
+With 
 
 \section{Main Contributions}
 
