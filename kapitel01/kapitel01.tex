@@ -63,27 +63,27 @@ Motivated by this fact, a preliminary concept of Cognitive Small Cell (CSC), a p
  A comprehensive incorporation of CSC in a preliminary 5G architecture is illustrated in \figurename~\ref{fig:scenario}. In order to enhance the plausibility of the proposed network architecture, it is interesting to highlight some of the essential ingredients pertaining to the deployment of the CSC.
 
 \subsubsection*{Network Elements}
- The following key elements are essential: a CSC-Base Station (CSC-BS), a Macro Cell-Base Station (MC-BS) and Mobile Stations (MSs), cf. \figurename~\ref{fig:scenario}. MSs are the devices either served by the MC-BS over a \textit{Direct Access} link or the CSC-BS over an \textit{Indirect Access} (IA) link\footnote{DA and IA are the nomenclature used to distinguish a start-of-the-art access between the MS and the MC-BS from an access between the CSC-BS and MS that represents a CR communication, respectively.}. Furthermore, the MC-BS is connected to several CSC-BSs over a \textit{Wireless Backhaul} (WB) link. Although the MC-BS and the MS already exist in the conventional cellular architecture, to incorporate the opportunistic access inside the CSC, it is necessary to consider a functionality upgrade.
+ The following key elements are essential: a CSC-Base Station (CSC-BS), a Macro Cell-Base Station (MC-BS) and Mobile Stations (MSs), cf. \figurename~\ref{fig:scenario}. MSs are the devices either served by the MC-BS over a \textit{direct access} link or the CSC-BS over an \textit{indirect access} link. The direct access and the indirect access are the nomenclature used to distinguish a start-of-the-art access between the MC-BS and the MS from an access between the CSC-BS and the MS that represents a CR communication, respectively. Furthermore, the MC-BS is connected to several CSC-BSs over a \textit{wireless backhaul} link. Although the MC-BS and the MS already exist in the conventional cellular architecture, to incorporate the opportunistic access inside the CSC, it is necessary to consider a functionality upgrade.
 
 \subsubsection*{Spectrum Access}
-In the proposed network architecture, the access to the spectrum is realized over the WB, the DA and the IA links, cf. \figurename~\ref{fig:scenario}.
+In the proposed network architecture, the access to the spectrum is realized over the wireless backhaul, the direct access and the indirect access links, cf. \figurename~\ref{fig:scenario}.
 \begin{enumerate}
-\item A WB is a
+\item A wireless backhaul is a
 %quasi-line of sight\footnote{It allows limited number of objects between the direct link.} 
-point-to-point wireless link between the CSC-BS and MC-BS that relays the traffic generated from the CSC to the core network. Accounting the feasibility of ultra-dense CSC, the WB link presents a cost-effective and energy-efficient alternative to the mobile operator.
+point-to-point wireless link between the CSC-BS and MC-BS that relays the traffic generated from the CSC to the core network. Accounting the feasibility of ultra-dense CSC, the wireless backhaul link presents a cost-effective and energy-efficient alternative to the mobile operator.
 With the limited infrastructure required for deployment, it accelerates installation and promotes scalability of the network.
-For the WB link, an exclusive spectrum for a longer duration is desired, hence, it is sensible to nominate a mmW band; alternatively, an exclusive band below \SI{6}{GHz} can be acquired using the principles of Licensed Shared Access \cite{ETSI13}.
+For the wireless backhaul link, an exclusive spectrum for a longer duration is desired, hence, it is sensible to nominate a mmW band; alternatively, an exclusive band below \SI{6}{GHz} can be acquired using the principles of Licensed Shared Access \cite{ETSI13}.
 %These WB links encourage ultra-densification as they brings down the capital expenditure and offer scalability to the vendor. 
 
-\item A DA link represents a direct access of the MS at the MC-BS over the allocated spectrum. Consequently, the spectrum access for this link is analogous to the one existing in the state-of-art wireless standards.
-\item The CSC elements (the CSC-BS and the MS) are responsible for executing secondary access to the licensed spectrum. The additional spectrum acquired is used for the communication between the CSC-BS and the MS over the IA link.
+\item A direct access link represents a direct access of the MS at the MC-BS over the allocated spectrum. Consequently, the spectrum access for this link is analogous to the one existing in the state-of-art wireless standards.
+\item The CSC elements (the CSC-BS and the MS) are responsible for executing secondary access to the licensed spectrum. The additional spectrum acquired is used for the communication between the CSC-BS and the MS over the indirect access link.
 \end{enumerate}
 
 \subsubsection*{Network Compatibility}
 Besides secondary access, CSC has to co-exist harmoniously with the other elements existing in the network. In this context, the network elements are embedded with additional functionality such as:
 \begin{itemize}
-\item The MS procures the control information (signalling and synchronization) over the IA link after connecting to the near-by CSC-BS.
-\item To sustain a logical placement of CSCs inside the network, the CSC employs S1 and X2 interfaces over the WB link.
+\item The MS procures the control information (signalling and synchronization) over the indirect access link after connecting to the near-by CSC-BS.
+\item In order to accomplish a logical placement of CSCs inside the network, the CSC employs S1 and X2 interfaces over the wireless backhaul link.
 %Under this situation, the MC-BS, however, remains transparent to the additional spectrum acquired by the CSC over the IA link. 
 %For the co-exisitence it is necessary to consider the co-existence of CSCs under the MC. 
 \item For situations where several CSC-BSs co-exist under a MC-BS, operations like seamless cross-tier and co-tier mobility constitute a challenging task for the network.
@@ -91,17 +91,17 @@ Besides secondary access, CSC has to co-exist harmoniously with the other elemen
 
 
 \subsubsection*{Hardware Feasibility}
-Here, the main aspects that pertain to the hardware realizability of the CSC are outlined. For the CSC-BS, an antenna mount system consisting of an indoor and outdoor antenna is proposed. Whereby, the indoor antenna exploits the walls of the building to physically separate the indoor transmissions over the IA link, in this way, it curtails the interference to the primary system and neighbouring CSCs.
-Whereas, the outdoor antenna secures a narrow beam transmission to enhance the link quality for the WB link. In order realize cognitive functionality on a real hardware to exercise rapid prototyping, Software Defined Radio (SDR) platform is a viable solution. SDR has played a vital role in the genesis of the CR \cite{Jondral05}. Taking this into account, 
-
+Along with other ingredients, it is essential to outline certain aspects that pertain to the hardware realizability of the CSC. For the CSC-BS, an antenna mount system consisting of an indoor and outdoor antenna is proposed. Whereby, the indoor antenna exploits the walls of the building to physically separate the indoor transmissions over the indirect access link, in this way, it curtails the interference to the primary system and neighbouring CSCs. Whereas, the outdoor antenna secures a narrow beam transmission to enhance the link quality for the wireless backhaul link. It is a well-known fact that Software Defined Radio (SDR) has played an important role in the genesis of the CR \cite{Jondral05}. In other words, in context with the CR, the SDR provides a suitable platform to approach rapid prototyping. Taking this into account, the SDR presents a viable solution for realizing (or demonstrating) the cognitive functionality pursued by the CSC-BS on a real hardware.
 
 
 \subsubsection*{Indoor Deployment}
-From the market analysis, it has been depicted that $70\%$ of the mobile traffic is originated indoor \cite{Chander08}. In addition, a new range of wireless services, categorized as Internet of Things, will operate from indoor. Thus, the effects will be far more consequential if we manage to consolidate these sources of traffic by means of SCs deployment. Hence, it is sensible to consider the residential and enterprise as the main deployment scenarios for the CSC, cf. \figurename~\ref{fig:scenario}. Except for a different coverage regime, the operating principles of these scenarios are analogous. Besides, in context with the CR, where the interference mitigation between the primary and secondary systems is a significant aspect, exercising the CR communication within the walls\footnote{This, however, does not signifies that CR communications are only feasible for indoor scenarios. As the matter of fact, the indoor deployment exploits the behavioural aspect of the traffic source for CR communication, and facilitate co-existence with the licensed users.} (which attributes to an indoor deployment) provides a spatial separation between the two systems. Based on this knowledge, an indoor scenario is considered for the deployment of the CSC, cf. \figurename~\ref{fig:scenario}.  
+From the market analysis, it has been depicted that $70\%$ of the mobile traffic is originated indoor \cite{Chander08}. In addition, a new range of wireless services, categorized as Internet of Things, will operate from indoor. Thus, the effects will be far more consequential if we manage to consolidate these sources of traffic by means of SCs deployment. Hence, it is sensible to consider the residential and enterprise as the main deployment scenarios for the CSC, cf. \figurename~\ref{fig:scenario}. Except for a different coverage regime, the operating principles of these scenarios are analogous. Besides, in context with the CR, where the interference mitigation between the primary and secondary systems is a significant aspect, exercising the CR communication within the walls (which attributes to an indoor deployment) provides a spatial separation between the two systems. This, however, does not signifies that CR communications are only feasible for indoor scenarios. As the matter of fact, the indoor deployment is a technique for exploiting the behavioral dimension of the traffic source for a CR communication so that co-existence with the licensed users is facilitated. 
+Based on this knowledge, an indoor scenario is considered for the deployment of the CSC, cf. \figurename~\ref{fig:scenario}.  
 
 \subsection{Performance Analysis}
-With 
-
+Since the evolution of wireless systems, understanding the performance of novel algorithms/techniques related to the wireless systems has always been a challenge task for the community. With regard to this, for a CR system, the task becomes even more challenging because it involves two different systems namely primary and secondary systems. On one side, it is engaging a large number of researches to find solutions to a new set of problems. 
+%However, with the lack of concrete guidelines, different perspective have forward for the performance analysis.
+Due to the sharing of a license between the two system, it has been getting huge attention from regulatory bodies and the mobile operators. With a different perspective, on the other side, the performance becomes critical from the perspective of regulatory bodies and industry\footnote{For those who are wiling to share their license as primary system and those who are willing to perform secondary access to licensed spectrum.}    
 \section{Main Contributions}
 
 \section{Organization}
