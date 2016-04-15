@@ -64,13 +64,20 @@ version=last
 \usepackage{rotating} % for figures in landscape --> chapter 3 --> USRP signal flow
 %\usepackage{sistyle}
 \usepackage{textcomp}
-\usepackage{url}
+
+%% Use url and break them if they are too long for the page
+\usepackage[hyphens]{url}
+
+% Removes the highliting around the hyperlinks 
+%\usepackage[pdfborder={0 0 0},bookmarksopen]{hyperref}
+\usepackage{hyperref}
+\usepackage[hyphenbreaks]{breakurl}
+
 \usepackage{scrhack} %removes warning by redefinition of macros float@addtolist etc
 \usepackage{todonotes}
 
 
 
-\usepackage{hyperref} % hyperrefs in pdf
 \hypersetup{ % properties of pdf
   pdftitle={Performance Analysis of Cognitive Radio Systems with Imperfect Channel Knowledge},
   pdfauthor={M.Sc. Ankit Kaushik},
@@ -122,8 +129,6 @@ version=last
   {1ex}
   {\titlerule[1pt]\vspace{1ex}\filcenter}
   [\vspace{1ex}{\titlerule[1pt]}]
-
-
 
 
 %\graphicspath{{./../kapitel05/}}
@@ -239,10 +244,11 @@ version=last
 %\chapter{Notations}
 \input{../attachments/notations.tex}
 
-
-
+\begingroup
+\sloppy
 \bibliographystyle{ieeetr}
 \bibliography{../literatur/bibliography}
+\endgroup
 
 \bibliographystyleK{ieeetr}
 \bibliographyK{../literatur/mypaper}
