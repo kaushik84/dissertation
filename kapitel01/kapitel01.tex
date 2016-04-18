@@ -114,9 +114,20 @@ Despite the numerous theoretical models that exists in the literature, when it c
 
 In order to approach the co-existence between the primary and secondary systems, it is important to quantify the performance of the two systems. In a nutshell, the CR systems can successfully co-exist with the primary system, only if they respect the interference at the primary system caused due to the access to their spectrum. This can be achieved by following certain constraints defined by the primary system or the regulatory bodies. With regard to these constraints over the interference, the CR system intend to deliver a certain Quality of Service/Quality of Experience (QoS/QoE) in the form of throughput to their users (SR/MS). As a result, the performance of a CR system can by jointly characterized in terms of the interference received by the primary system and the throughput achieved by the secondary system. 
 
-It is well-known that \textit{a CR is an agile system possesses the ability to adapt to the changes in the environment}. From a physical layer perspective, this corresponds to its response to the variations in the parameters that play a crucial role in characterizing the performance of the CR system. Inherent to the wireless systems, these variations arise due to the presence of the thermal noise at the receiver and the fading in the channel. In particular, performance degradation due to channel fading is inevitable. Since the performance of the CR systems is jointly depends on the two systems, channel knowledge is absolutely essential from the deployment perspective. 
+It is well-known that \textit{a CR is an agile system possesses the ability to adapt to the changes in the environment}. From a physical layer perspective, this corresponds to its response to the variations in the parameters that are crucial for characterizing the performance of the CR system. Inherent to the wireless systems, these variations arise due to the presence of the thermal noise at the receiver and the fading in the channel. It is widely known and discussed in several text books related to wireless communications \cite{simon2005, Goldsmith05, Tse05}, the channel fading, in particular, has been a critical for a wireless system. Besides, its knowledge (in the form of Channel State Information at the Transmitter (CSIT)) available through a feedback from the receivers has rendered a substantial improvement in the performance, for instance multiplexing gains for a MIMO systems \cite{Ali12}. 
 
-Role of channel for the performance characterization  
+
+\begin{figure}[!t]
+\centering
+\includegraphics[width = \figscalet]{figures/CR_Scenario_Hybrid}
+\caption{A cognitive small cell scenario demonstrating: (i) the CR systems employed at the CSC-BS, (ii) the associated network elements, which constitute Cognitive Small Cell-Base Station/Secondary Transmitter (CSC-BS/ST), Mobile Station/Secondary Receiver (MS/SR), Macro Cell-Base Station (MC-BS) and Primary Transmitter (PT), (iii) the interacting channels: sensing ($\hpo$), interference ($\hptw, \hpth$) and access ($\hs$) channels.}
+\label{fig:scenario}
+%\vspace{-6mm}
+\end{figure}
+
+
+In context with the CR systems, the channel knowledge, unlike conventional or state-of-the-art wireless systems, is not confined to a single transmitter-receiver link, it rather includes all the related channels present within as-well-as across the primary and secondary systems. Now, since the performance of CR system jointly depends on these two systems, the channel knowledge represents crucial component for the performance characterization. Despite significant advancement towards characterization of its performance that exists in the literature, its performance with regard to the estimation of all the involved channels has never been understood. Also, from a deployment perspective, the absence of their knowledge renders the most essential performance characterization existing in the literature questionable. In this thesis, the performance of a CR system has been   
+
 
 \section{Main Contributions}
 
