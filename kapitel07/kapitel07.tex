@@ -6,24 +6,32 @@ Looking backwards, one can easily figure out that an extensive amount of literat
 From a physical layer perspective, it has been identified that the channel knowledge is extremely necessary for the realization of the CR techniques on a hardware, thus, allows a CR system to control the interference accumulated by the primary system. In this thesis, this notion has been carefully argued and justified through numerical analysis. %As a matter of concern, an extensive investigation in this direction is still lacking in the literature. 
 
 %Motivated by this fact, this thesis incorporate channel estimation that facilitate hardware deployment. 
-Above all, the inclusion of the channel estimation requires a proper allocation of time resources in the frame structure and appropriate measures to counter variations due to the estimation error induced the system. Surely, these factors have a detrimental effect on the performance of a CR system, leading to performance degradation. These channel estimation related issues have been carefully identified and characterized in this thesis, which ultimately allows us to depict the performance of the CR systems in a fairly realistic scenario. Besides, following the deployment perspective, a received power based channel estimation technique is proposed for the estimation particularly for the channels that exists between the two systems. Finally, the theoretical analysis performed in the thesis not only allow us to counter the excessive interference induced in the system but also helps us evaluate the suitable estimation time and suitable sensing time that yields the maximum throughput achieved by the secondary system. 
+Above all, the inclusion of the channel estimation requires a proper allocation of time resources in the frame structure and appropriate measures to counter variations due to the estimation error induced the system. Surely, these factors have a detrimental effect on the performance of a CR system, leading to performance degradation. These channel estimation related issues have been carefully identified and characterized in this thesis, which ultimately allows us to depict the performance of the CR systems in a fairly realistic scenario. Besides, following the deployment perspective, a received power based channel estimation technique is proposed for the estimation particularly for the channels that exists between the two systems. In a nutshell, the analysis performed in the thesis does not only provide answers to specific questions related to imperfect channel knowledge, such as (i) how to counter the excessive interference induced in different CR systems?, (ii) how to evaluate the amount of performance degradation?, (iii) how to determine the suitable estimation time and suitable sensing time that yields the maximum throughput achieved?, but also develops a deployment perspective towards the CR communication, thereby encouraging the hardware implementation. 
 
 
 \section{Summary}
+\todo{This section needs reconsideration}
+This section enlist the major findings from each chapter. 
 
-This section enlist the main findings from each chapter. 
+The chapter \ref{chap:IS} illustrated the fact that the spectrum sensing mechanism can be performed by the ST only if the knowledge of the involved channels (namely, sensing, interference and access channels) is accessible at the ST. Through analysis (theoretical as-well-as numerical), it is clearly identified that the channel estimation degrades the performance of the IS. In this context, an estimation-sensing-throughput tradeoff is established that captured this performance degradation, and consequently determined the achievable throughput at the SR.
 
-The chapter \ref{chap:IS} justified that the spectrum sensing mechanism can be performed by the ST only if the knowledge of the involved channels (namely, sensing, interference and access channels) is accessible at the ST. It is well indicated that channel estimation degrades the performance of the IS. An estimation-sensing-throughput tradeoff is established to examine the performance degradation due to the channel estimation.
+On the similar basis, chapter \ref{chap:US} showed that the power control mechanism requires the knowledge of the involved channels (namely, interference -- primary and secondary -- channel and access channel) at the ST. An estimation-throughput tradeoff presents a significant approach of analyzing the performance degradation. Following the main analysis, it is indicated that the performance degradation of the US can be effectively controlled only if the estimation time is selected appropriately.   
 
-On similar basis, chapter \ref{chap:US} augmented that the power control mechanism requires the knowledge of the involved channels (namely, interference -- primary and secondary -- and access channel) at the ST. An estimation-throughput tradeoff presents a significant approach of analyzing the performance degradation. Following the main analysis, it is indicated that the performance degradation of the US can be effectively controlled only if the estimation time is selected appropriately.   
+The notion of the channel estimation presented in the previous two chapters is extended to the hybrid scenario in chapter \ref{chap:HS}, whereby the spectrum sensing and the power control mechanisms are simultaneity enabled at the ST. Through numerical analysis, a significant performance gain is achievable by combing the IS and the US is observed. Similar to chapter \ref{chap:IS}, an estimation-sensing-throughput tradeoff is formulated that allowed us to investigate the variation of the achievable throughput along the estimation and the sensing time. 
 
-The concept of the channel estimation presented in the previous two chapters is extended to the hybrid scenario in chapter \ref{chap:Hs}, whereby the spectrum sensing and the power control mechanisms are enabled at the ST. Through numerical analysis, a significant performance gain is achievable by combing the IS and the US is observed. Similar to chapter \ref{chap:IS}, an estimation-sensing-throughput tradeoff is formulated that allows us to investigate the variation of the achievable throughput along the estimation and the sensing time. 
-
-While the previous three chapters focussed on the theoretical analysis, chapter \ref{chap:HVD} justified the hardware feasibility of the proposed analysis. In this regard, a software defined radio platform following the guideline of an US is considered for the deployment. 
+While the previous three chapters focused on the theoretical analysis, the hardware feasibility in terms of the validation and the demonstration of the proposed analysis is discussed in chapter \ref{chap:HVD}. In this regard, a software defined radio platform following the guidelines of an US is considered for the deployment. 
 
 
 \section{Outlook}
-
+\todo{Lets talk about the major drawbacks of the thesis and futuristic research works.} 
+This thesis focused mainly on a half duplex CR communication, i.e., the CR techniques (for instance spectrum sensing and power control) are time interlaced with the data transmission. Recently, there has been significant advancement in the feasibility of in-band full duplex communication, for a detailed overview, consider \cite{Liao15, Kim15} and the references therein. In this context, the CR communication can be transformed into the full duplex in-band, whereby the CR techniques and the data transmission occurs simultaneously.  
+\begin{itemize}
+\item Multiple antenna
+\item Synchronous transmission \cite{Jiang13_, Jiang15} 
+\item Multi-user (Network aspect)
+\item How this work can facilitate the deployment
+\item Cognitive radio is a viable option that can compete/complement the mm-Wave technology fulfilling the ever increasing demands of the future wireless standards.  
+\end{itemize}
 
 
 
