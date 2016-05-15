@@ -679,7 +679,7 @@ Herein, based on the estimation model, a fundamental relation between estimation
 
 \begin{coro} \label{cor:cor1}
 \normalfont
-\tc{Theorems \ref{th:th1} and \ref{th:th2} consider the optimization of the average throughput to incorporate the effect of variations due to channel estimation, and subsequently determine the suitable sensing and the suitable estimation time. Here, an alternative approach to the optimization problem described in (\ref{eq:thr_id}) is investigated to capture these variations, whereby for a certain estimation time $\test$, the suitable sensing time subject to the average constraint is determined as} 
+\tc{Theorems \ref{th:th1} and \ref{th:th2} consider the optimization of the average throughput to incorporate the effect of variations due to the channel estimation, and subsequently determine the suitable sensing and the suitable estimation time. Here, an alternative approach to the optimization problem described in (\ref{eq:thr_id}) is investigated to capture these variations, whereby for a certain estimation time $\test$, the suitable sensing time subject to the average constraint is determined as} 
 \tc{
 \begin{align}
 \ttsen &= \argmaxi_{\tsen} \rs(\test, \tsen), \label{eq:C_sen_AC} \\ 
@@ -751,7 +751,7 @@ where $\cz$ and $\co$ correspond to the data rate at the SR with and without int
 Since the detection probability and the secondary throughput are related through the sensing time, this relationship is exploited to determine a sensing-throughput tradeoff for the case with the perfect channel estimation.
 \begin{theorem} \label{th:th3}
 \normalfont
-Subject to an outage constraint on $\pd$ at the PR, the sensing-throughput tradeoff for the IS that considers perfect channel estimation and random behaviour of the interacting channels, is given by
+Subject to an outage constraint on $\pd$ at the PR, the sensing-throughput tradeoff for the IS that considers the perfect channel estimation and the random behaviour of the interacting channels, is given by
 \begin{align}
 \trsoc(\ttest, \ttsenoc) &= \maxi_{\tc{\test}, \tsen} \e{\pd, \phs, \phpt}{\rs(\tsen)}, \label{eq:STT_i} \\
 \text{s.t.} & \text{ }  (\ref{eq:OC_i}) \nonumber \\ 
@@ -769,7 +769,7 @@ Now, the estimation of the interacting channels in context to the channel fading
 %Now, to facilitate the hardware complexity and the versatility to unknown PU signals (as proposed by the energy detector) requirements at the secondary system, we propose to employ received power-based estimation $(\eprcvd, \eprcvdsr)$ for the sensing and the interference channel at the ST and the SR and the pilot-based estimation $\ephs$ for the access channel. 
 The characterization of the estimated parameters $\eprcvd$ and $\eprcvdsr$ for the sensing and the interference channel, and $\ephs$ for the access channel in terms of their cdfs, for the deterministic case, has been determined in Section \ref{ssec:det_th}. In addition, the estimated parameters are used to estimate the performance parameters $\epd$, $\ecz$ and $\eco$, their cdfs $\fpd$, $\fcz$ and $\fco$ are characterized in Lemma 1, Lemma 2 and Lemma 3 of Section \ref{ssec:det_th}.
 
-The outage constraint that jointly captures the variations due to channel estimation and channel fading, which may result in harmful interference at the PR, is defined as 
+The outage constraint that jointly captures the variations due to channel estimation and channel fading, which result in uncertain interference at the PR, is defined as 
 %In order to protect the PR against harmful interference that arieses due to variations in context to channel estimation and channel fading, an outage constraint that jointly captures these variations is defined as
 \begin{align}
 \smash[b]{\underbrace{\mathbb{E}_{\phpo}{\smash[b]{\overbrace{[\p( \pd \le \pdd)]}^{\text{Channel Estimation}}}}}_{\text{Channel fading}}} &\le \mpd, \label{eq:OC_p} \\[-0.1em] \nonumber 
@@ -792,7 +792,7 @@ where $\e{\pd,\ecz,\eco,\phpo, \phs, \phpt}{\cdot}$ corresponds to an expectatio
 
 \begin{theorem} \label{th:th4}
 \normalfont
-Subject to an outage constraint on $\pd$ at the PR, the sensing-throughput tradeoff for the IS that considers imperfect channel estimation and random behaviour of the interacting channels, is given by
+Subject to an outage constraint on $\pd$ at the PR, the sensing-throughput tradeoff for the IS that considers the imperfect channel estimation and the random behaviour of the interacting channels, is given by
 \begin{align}
 \trsoc(\ttest, \ttsen) &= \maxi_{\tc{\test}, \tsen} \e{\epd, \ecz, \eco, \phpo, \phs, \phpt}{\rs(\test, \tsen)}, \nonumber \\ 
 \text{s.t.} & \text{ }  (\ref{eq:OC_p}),  \\
@@ -804,7 +804,7 @@ Subject to an outage constraint on $\pd$ at the PR, the sensing-throughput trade
 %\subsubsection*{Methodology of analysis}
 
 \begin{IEEEproof}
-In order to solve the constrained optimization problem, the following approach is considered. First the underlying constraint (\ref{eq:OC_p}) is exploited to determine the decision threshold $\mu$. Since it is complicated to obtain a closed form expression of $\mu$, in this regard, its value numerically is obtained.
+In order to solve the constrained optimization problem, the following approach is considered. First the underlying constraint (\ref{eq:OC_p}) is exploited to determine the decision threshold $\mu$. Since it is complicated to obtain a closed form expression of $\mu$, in this regard, its value is obtained numerically.
 
 Using $\mu$ to determine $\epd$ and $\pfa$ and evaluating an expectation over $\epd, \ecz, \eco$, $\phpo, \phs, \phpt$, the expected throughput as function of estimation and sensing time is determined. Finally, this function is used to determine the suitable estimation time ($\ttest$) and sensing time ($\ttsen$).
 \end{IEEEproof}
@@ -900,7 +900,7 @@ At first, the performance of the IS in terms of sensing-throughput tradeoff corr
 \vspace{-0.7cm}
 \end{figure}
 
-Hereafter, the theoretical expressions are considered for the analysis, in addition, the suitable sensing time is chosen to be as operation point. Next, the variation in the achievable throughput $\rs(\test, \ttsen)$ against the received signal to noise ratio $\snrrcvd$ at the ST with $\test = \SI{5}{ms}$, \tc{refer to} \figurename~\ref{fig:optT_snr}. For $\snrrcvd < -\SI{10}{dB}$, the estimation model incurs a significant performance loss. This clearly reveals that the ideal model overestimates the performance of IS. \tc{From the previous discussion, it is concluded that the inclusion of the average and the outage constraints (depicted by the proposed framework) preclude the excessive interference at the PR arising due to channel estimation without considerably degrading the performance of the IS.} 
+Hereafter, the theoretical expressions are considered for the analysis, in addition, the suitable sensing time is chosen to be as an operation point. Next, the variation in the achievable throughput $\rs(\test, \ttsen)$ against the received signal to noise ratio $\snrrcvd$ at the ST with $\test = \SI{5}{ms}$ is considered, \tc{refer to} \figurename~\ref{fig:optT_snr}. For $\snrrcvd < -\SI{10}{dB}$, the estimation model incurs a significant performance loss. This clearly reveals that the ideal model overestimates the performance of the ISs. \tc{From the previous discussion, it is concluded that the inclusion of the average and the outage constraints (depicted by the proposed framework) precisely tackles the uncertainty in the interference at the PR arising due to channel estimation without considerably degrading the performance of the IS.} 
 
 
 \begin{figure}[!ht]
@@ -983,7 +983,7 @@ Upon maximizing the secondary throughput, it is interesting to analyze the varia
 %\vspace{-0.7cm}
 \end{figure}
 
-Besides that, the variation in the achievable throughput for different values of the outage constraint is illustrated, refer to \figurename~\ref{fig:optT_test}. It is observed that for the selected choice of $\mpd$, the outage constraint is severe as compared to the average constraint, hence, results in a lower throughput or achieves greater performance degradation. Thus, depending on the nature of policy (aggressive or conservative) followed by the regulatory bodies towards the interference at the primary system, it is possible to define $\mpd$ accordingly during the system design. \tc{Moreover, it is observed that the alternative approach proposed in Corollary \ref{cor:cor1} does not present any noticeable performance difference depicted in terms of the achievable throughput corresponding to the one characterized in Theorems \ref{th:th1} and \ref{th:th2}. 
+Besides that, the variation in the achievable throughput for different values of the outage constraint is illustrated, refer to \figurename~\ref{fig:optT_test}. It is observed that for the selected choice of $\mpd$, the outage constraint is severe as compared to the average constraint, hence, results in a lower throughput or achieves greater performance degradation. Thus, depending on the nature of the policy (aggressive or conservative) followed by the regulatory bodies towards the interference at the primary system, it is possible to define $\mpd$ accordingly during the system design. \tc{Moreover, it is observed that the alternative approach proposed in Corollary \ref{cor:cor1} does not present any noticeable performance difference depicted in terms of the achievable throughput corresponding to the one characterized in Theorems \ref{th:th1} and \ref{th:th2}. 
 }
 
 \begin{figure}[!ht]
@@ -1041,7 +1041,7 @@ To procure further insights, the variations of expected $\pd$ and $\pfa$ with th
 \tc{According to \figurename~\ref{fig:pf_tsen}, the system notices a considerable improvement in $\pfa$ at small values of $\test$, which saturates for a certain period and falls drastically beyond a certain value. To understand this, it is important to study the dynamics between the estimation and the sensing time. Low $\test$ increases the variations in the detection probability, these variations are compensated by an increase in the suitable sensing time, and vice versa. The performance improves until a maximum ($\ttest$, $\ttsen$) is reached, beyond this, the time resources (allocated in terms of the sensing and the estimation time) contribute more in improving the detector's performance (in terms of $\pfa$ as $\pd$ is already constrained) and less in reducing the variations due to the channel estimation.}%further justification to the variation of $\trs(\test,\ttsen)$ against $\test$ characterized as estimation-sensing-throughput tradeoff depicted in \figurename~\ref{fig:optT_test}.  
 
 \subsection{Random Channel} %\label{ssec:ran_na}
-In contrast to the deterministic scenario, the choice of the system parameters is slightly modified, $\snrrcvd = \SI{0}{dB}$, $\snrpt = \SI{0}{dB}$, $\snrso = \SI{10}{dB}$, $\spo = \ptranpt = \SI{0}{dBm}$, $\ptranst = -\SI{10}{dBm}$, $\pho = 1 - \phz = 0.2$, $\test = \SI{1}{ms}$ and $\Ks =  \test$. This is done to illustrate the effectiveness of the proposed approach. In addition, the performance of the IS under the following fading scenarios is evaluated: (i) severe fading $m = 1$ (Rayleigh fading), and (ii) mild fading $m = 1.5$. 
+In contrast to the deterministic scenario, the choice of the system parameters is slightly modified, $\snrrcvd = \SI{0}{dB}$, $\snrpt = \SI{0}{dB}$, $\snrso = \SI{10}{dB}$, $\spo = \ptranpt = \SI{0}{dBm}$, $\ptranst = -\SI{10}{dBm}$, $\pho = 1 - \phz = 0.2$, $\test = \SI{1}{ms}$ and $\Ks =  \test$. This is done to illustrate the effectiveness of the proposed approach for the random channel. In addition, the performance of the IS under the following fading scenarios is evaluated: (i) severe fading $m = 1$ (Rayleigh fading), and (ii) mild fading $m = 1.5$. 
 
 \begin{figure}[!ht]
 \centering
@@ -1303,7 +1303,7 @@ After maximizing the secondary throughput for a certain estimation time, the var
 %\vspace{-0.7cm}
 \end{figure}
 
-Next, the variation of $\rs(\test, \ttsen)$ along the estimation time is depicted, refer to \figurename~\ref{fig:optT_test_fad}. It is noticed that $\trs(\test, \ttsen)$ increases for low values of $\test$ and then decreases beyond $\ttest$. This can explained as follows, low $\test$ increases the variations in $\epd$, shifting the threshold to lower values, which subsequently increases $\pfa$, hence, degrading the achievable secondary throughput. Beyond $\ttest$, the variations are largely dominated by the channel fading, therefore, the IS observes no improvement by increasing $\test$. From the analysis, it is again depicted that the mild fading scenarios are more sensitive to the performance degradation in terms of the achievable secondary throughput. \figurename~\ref{fig:Pd_test_fad} presents the variation of expected detection probability against $\test$. It is indicated that the EM compensates for the variations due to the channel estimation and the channel fading to satisfy the outage constraint. Subsequently, \figurename~\ref{fig:Pd_test_fad} illustrates the performance in terms of the false alarm probability. The random channel case encounters a similar behaviour as depicted by the deterministic channel, where $\pfa$ severely reduces beyond a certain $\test$. Since $1 - \pfa \approx 1$ beyond the aforementioned $\test$, this reduction in $\pfa$ does not influence the performance of the IS in terms of secondary throughput.  
+Next, the variation of $\rs(\test, \ttsen)$ along the estimation time is examined, refer to \figurename~\ref{fig:optT_test_fad}. It is noticed that $\trs(\test, \ttsen)$ increases for low values of $\test$ and then decreases beyond $\ttest$. This can be explained as follows, low $\test$ increases the variations in $\epd$, shifting the threshold to lower values, which subsequently increases $\pfa$, hence, degrading the achievable secondary throughput. Beyond $\ttest$, the variations are largely dominated by the channel fading, therefore, the IS observes no improvement by increasing $\test$. From the analysis, it is again depicted that the mild fading scenarios are more sensitive to the performance degradation in terms of the achievable secondary throughput. \figurename~\ref{fig:Pd_test_fad} presents the variation of expected detection probability against $\test$. It is indicated that the EM compensates for the variations due to the channel estimation and the channel fading to satisfy the outage constraint. Subsequently, \figurename~\ref{fig:Pd_test_fad} illustrates the performance in terms of the false alarm probability. The random channel case encounters a similar behaviour as depicted by the deterministic channel, where $\pfa$ severely reduces beyond a certain $\test$. Since $1 - \pfa \approx 1$ beyond the aforementioned $\test$, this reduction in $\pfa$ does not influence the performance of the IS in terms of secondary throughput.  
 
 Lastly, the performance degradation in terms of achievable secondary throughput $\rs(\ttest, \tsen)$ versus the Nakagami-$m$ parameter (that accounts for severity in the fading) is investigated, refer to \figurename~\ref{fig:optT_m}. For both scenarios, i.e., perfect (IM) and imperfect channel estimation (EM), the performance decreases with the severity in fading. In addition, by comparing the IM and the EM, it can be concluded that, for situations where the variations in the system are largely dominated by the channel estimation, the EM notices a greater performance degradation.
 
@@ -1311,9 +1311,9 @@ Lastly, the performance degradation in terms of achievable secondary throughput 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Summary} \label{sec:conc}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-In this chapter, the performance of cognitive radio as an interweave system from a deployment perspective is investigated. It has been argued that the knowledge of the interacting channels is a key aspect that enables the performance characterization of the interweave system in terms of the sensing-throughput tradeoff. In this regard, a novel framework that facilitates channel estimation and captures the effect of channel estimation in the system model has been proposed. As a major outcome of the analysis, it has been justified that the existing model, illustrating an ideal scenario, overestimates the performance of the interweave system, hence, less suitable for deployment. Moreover, it has been clearly stated that the variations induced in the system, specially in the detection probability may severely degrade the performance of the primary system. To overcome this situation, average and outage constraints as primary user constraints have been employed. As a consequence, for the proposed estimation model, novel expressions for the sensing-throughput tradeoff based on the mentioned constraints have been established. More importantly, by analyzing the estimation-sensing-throughput tradeoff, the suitable estimation time and the suitable sensing time that maximize the secondary throughput have been determined. %In our future work, we plan to extend the proposed analysis for the hybrid cognitive radio system that combines the advantages of interweave and underlay techniques.  
+In this chapter, the performance of cognitive radio as an interweave system from a deployment perspective is investigated. It has been argued that the knowledge of the interacting channels is a key aspect that enables the performance characterization of the interweave system in terms of the sensing-throughput tradeoff. In this regard, a novel framework that facilitates channel estimation and captures the effect of channel estimation in the system model has been proposed. As a major outcome of the analysis, it has been justified that the existing model, illustrating an ideal scenario, overestimates the performance of the interweave system, hence, less suitable for deployment. Moreover, it has been clearly stated that the variations induced in the system, specially in the detection probability cause uncertain interference. Unless controlled, this uncertain interference may severely degrade the performance of the primary system. To overcome this situation, average and outage constraints as primary user constraints have been employed. As a consequence, for the proposed estimation model, novel expressions for the sensing-throughput tradeoff based on the mentioned constraints have been established. More importantly, by analyzing the estimation-sensing-throughput tradeoff, the suitable estimation time and the suitable sensing time that maximize the secondary throughput have been determined. %In our future work, we plan to extend the proposed analysis for the hybrid cognitive radio system that combines the advantages of interweave and underlay techniques.  
 
-In addition to this, the performance of the interweave systems that incorporate imperfect knowledge of the involved channels, where these channels are subject to Nakagam-$m$ fading is characterized. In addition, an outage constraint that jointly captures the variations in the IS due to channel estimation and channel fading has been employed. Subject to this constraint, a sensing-throughput tradeoff that incorporates channel estimation and channel fading has been characterized that yields a maximum secondary throughput at a suitable estimation and a sensing time. Finally, it has been concluded that the suitable choice of the estimation time is essential for controlling the performance degradation in terms of the achievable secondary throughput, particularly for scenarios that encounter less severe (mild) fading.
+In addition to this, the performance of the interweave systems that incorporate imperfect knowledge of the involved channels, where these channels are subject to Nakagam-$m$ fading is characterized. In this context, an outage constraint that jointly captures the variations in the IS due to channel estimation and channel fading has been employed. Subject to this constraint, a sensing-throughput tradeoff that incorporates channel estimation and channel fading that yields a maximum secondary throughput at a suitable estimation and a sensing time has been characterized. Finally through numerical analysis, it has been concluded that the suitable choice of the estimation time is essential for controlling the performance degradation in terms of the achievable secondary throughput, particularly for scenarios that encounter less severe (mild) fading.
 
  
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1376,7 +1376,7 @@ where the parameters $\as$ and $\bs$ in (\ref{eq:dsnrs}) are determined by compa
 
 \subsection{Proof of Lemma \ref{lm:lem3}} \label{ssec:lem3} 
 \begin{IEEEproof}
-For simplification, we break down the expression $\left( \frac{|\ehs|^2 \ptranst}{\eprcvdsr} \right)$ in (\ref{eq:Cap1}), as $E_1 = \left( \frac{|\ehs|^2 \ptranst}{\npo} \right)$ and $E_2 = \left(\frac{\eprcvdsr}{\npo} \right)$, where $\co = \log_2 \left(1 + \frac{E_1}{E_2} \right)$. The pdf of the expression $E_1$ is determined in (\ref{eq:dsnrs}).
+For simplification, the expression $\left( \frac{|\ehs|^2 \ptranst}{\eprcvdsr} \right)$ in (\ref{eq:Cap1}) is decomposed as $E_1 = \left( \frac{|\ehs|^2 \ptranst}{\npo} \right)$ and $E_2 = \left(\frac{\eprcvdsr}{\npo} \right)$, where $\co = \log_2 \left(1 + \frac{E_1}{E_2} \right)$. The pdf of the expression $E_1$ is determined in (\ref{eq:dsnrs}).
 
 Following the characterization $\eprcvdsr$ in (\ref{eq:ehp2}), the pdf of $E_2$ is determined as 
 \begin{align}
@@ -1386,7 +1386,7 @@ Following the characterization $\eprcvdsr$ in (\ref{eq:ehp2}), the pdf of $E_2$ 
 %\intertext{Following the approach similar to Lemma \ref{lm:lem2}, we approximate the $\ncchi2(\cdot,\cdot)$ with Gamma distribution $\Gamma (\ap, \bp)$ gives}
 %\dsnrp & \approx \frac{1}{\Gamma(\ap)} \frac{x^{\ap - 1}}{\bp^{\ap}} \exp\left(-\frac{x}{\bp}\right). \label{eq:dsnrp} 
 %\intertext{Analogous to Lemma \ref{lm:lem2}, the parameters $\ap, \bp$ are determined by comparing the first two central moments.}
-Using the characterizations of pdfs $\dsnrs$ and $\dsnrp$, we apply Mellin transform \cite{NIST} to determine the pdf of $\frac{E_1}{E_2}$ as
+Using the characterizations of pdfs $\dsnrs$ and $\dsnrp$, Mellin transform \cite{NIST} is applied to determine the pdf of $\frac{E_1}{E_2}$ as
 \begin{align}
 \dsnrsp(x) &= \frac{x^{\as - 1} \Gamma(\as + \ap)}{\Gamma(\as) \Gamma(\ap) \bs^{\as} \bp^{\ap}} \left(\frac{1}{\bp} + \frac{x}{\bs}\right)^{(\as + \ap)}. \label{eq:dsnrsp} 
 \end{align} 
@@ -1397,13 +1397,13 @@ Finally, substituting the expression $\frac{E_1}{E_2}$ in $\co$ yields (\ref{eq:
 
 \subsection{Proof of Theorems \ref{th:th1} and \ref{th:th2}} \label{ssec:th1} 
 \begin{IEEEproof} 
-In order to solve the constrained optimization problems illustrated in Theorem \ref{th:th1} and Theorem \ref{th:th2}, the following approach is considered. As a first step, an underlying constraint is employed to determine $\mu$ as a function of the $\tsen$ and $\test$. %Its value is substituted in (\ref{eq:pd}) and (\ref{eq:pfa}) to determine $\pfa$ and $\pd$. Finally, replacing $\pd$ and $\pfa$ in (\ref{eq:thr_AC}) and (\ref{eq:thr_OC}), we obtain an expression of the throughput in terms of $\tsen$, $\test$ and the system parameters. As the final step, the distribution functions characterized in Lemma \ref{lm:lem1}, Lemma \ref{lm:lem2} and Lemma \ref{lm:lem3} are utilized to determine an expression of expected throughput in terms of $\test$ and $\tsen$. %Consequently, we evaluate the performance at the ST by characterizing the expected throughput in terms of $\test$ and $\tsen$.  
+In order to solve the constrained optimization problems illustrated in Theorem \ref{th:th1} and Theorem \ref{th:th2}, the following approach is considered. As a first step, the underlying constraint is employed to determine $\mu$ as a function of the $\tsen$ and $\test$. %Its value is substituted in (\ref{eq:pd}) and (\ref{eq:pfa}) to determine $\pfa$ and $\pd$. Finally, replacing $\pd$ and $\pfa$ in (\ref{eq:thr_AC}) and (\ref{eq:thr_OC}), we obtain an expression of the throughput in terms of $\tsen$, $\test$ and the system parameters. As the final step, the distribution functions characterized in Lemma \ref{lm:lem1}, Lemma \ref{lm:lem2} and Lemma \ref{lm:lem3} are utilized to determine an expression of expected throughput in terms of $\test$ and $\tsen$. %Consequently, we evaluate the performance at the ST by characterizing the expected throughput in terms of $\test$ and $\tsen$.  
 
-For the average constraint, the expression $\e{\pd}{\pd}$ in (\ref{eq:AC}) did not lead to a closed form expression, consequently, no analytical expression of $\thrac$ is obtained. In this context, we procure $\thrac$ for the average constraint numerically from (\ref{eq:AC}). 
+For the average constraint, the expression $\e{\pd}{\pd}$ in (\ref{eq:AC}) did not lead to a closed form expression, consequently, no analytical expression of $\thrac$ is obtained. In this context, $\thrac$ for the average constraint is procured numerically from (\ref{eq:AC}). 
 %\end{coro}
 %\begin{coro} \label{coro:coro2}
 
-Next, we determine $\throc$ based on the outage constraint. This is accomplished by combining the expression of $\fpd$ in (\ref{eq:fpd}) with the outage constraint (\ref{eq:OC}) 
+Next, $\throc$ based on the outage constraint is determined. This is accomplished by combining the expression of $\fpd$ in (\ref{eq:fpd}) with the outage constraint (\ref{eq:OC}) 
 \begin{align}
 P(\pd \le \pdd) = \fpd(\pdd) \le \mpd. 
 \label{eq:int1}
@@ -1415,9 +1415,9 @@ Rearranging (\ref{eq:int1}) gives
 \label{eq:throc}
 \end{align}
 %\end{coro}
-\tc{Clearly, the random variables $\pd(\eprcvd)$, and $\cz(|\ehs|^2)$ and $\co(|\ehs|^2$, $\eprcvdsr)$ are functions of the independent random variables $\eprcvd$, and $|\ehs|^2$ and $\eprcvdsr$, respectively. In this context, we apply the independence property on $\pd$, $\cz$ and $\co$ to obtain 
+\tc{Clearly, the random variables $\pd(\eprcvd)$, and $\cz(|\ehs|^2)$ and $\co(|\ehs|^2$, $\eprcvdsr)$ are functions of the independent random variables $\eprcvd$, and $|\ehs|^2$ and $\eprcvdsr$, respectively. In this context, the independence property on $\pd$, $\cz$ and $\co$ is applied to obtain 
 \begin{align*}
 \e{\pd, \cz, \co}{\cz (1- \pfa) + \co (1 - \pd)} &= \e{\cz}{\cz} (1 - \pfa) + \\ \quad & \e{\co}{\co} \e{\pd}{(1 - \pd)}\end{align*}
-in (\ref{eq:thr_AC}) and (\ref{eq:thr_OC}).} Upon replacing the respective thresholds in $\pd$ and $\pfa$ and evaluating the expectation over $\pd$, $\cz$ and $\co$ using the distribution functions characterized in Lemma \ref{lm:lem1}, Lemma \ref{lm:lem2} and Lemma \ref{lm:lem3}, we determine the expected throughput as a function of sensing and estimation time. 
+in (\ref{eq:thr_AC}) and (\ref{eq:thr_OC}).} Upon replacing the respective thresholds in $\pd$ and $\pfa$ and evaluating the expectation over $\pd$, $\cz$ and $\co$ using the cdfs characterized in Lemma \ref{lm:lem1}, Lemma \ref{lm:lem2} and Lemma \ref{lm:lem3}, the expected throughput as a function of sensing and estimation time is determined. 
 \end{IEEEproof}
 }
