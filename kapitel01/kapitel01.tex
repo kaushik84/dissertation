@@ -4,13 +4,21 @@
 Since the invention of smart devices, the mobile traffic has been increasing tremendously over the last decade. According to the recent surveys on mobile traffic by prominent market leaders (Cisco \cite{CISCO14} and Ericsson\cite{Eric15}), the existing mobile traffic is expected to increase $11 \times$ by 2021. The wireless community including the standardization bodies (3GPP \cite{3GPP}) believe that the state-of-the-art standards (fourth-Generation (4G) -- LTE, WiMAX) are not capable of sustaining these ever-increasing demands in the upcoming decade. With this situation in hand, the standardization bodies are currently in the phase of conceptualizing the requirements of the fifth-generation (5G) of mobile wireless systems.
 Some of these major requirements are: (i) areal capacity in $\SI{}{bits/sec/m^2}$ must increase by a factor of $1000$ compared to 4G, (ii) low latency of approximately \SI{1}{ms}, and, (iii) energy- and cost-efficient deployment \cite{Qual13, Andrews14}.
  %One of the major goals is to improve the areal capacity ($\SI{}{bits/s/m^2}$) by a factor of 1000 \cite{Qual13, Andrews14}. \tc{To this end, an extension to the already allocated spectrum is of paramount importance.} 
-The feasibility of these requirements can be ensured by applying promising approaches such as small cell deployment and extension to the already allocated spectrum. Before moving any further, let us first capitalize on the underlying facts that make these approaches or their combination suitable candidates for the 5G networks. 
+The feasibility of these requirements can be ensured by applying promising approaches such as maximization of spatial degrees of freedom using Massive MIMO \cite{Lar14} and 3D-beamforming \cite{Hal13}, In-band full-duplex communications \cite{Sab14}, small cell densification \cite{Andrews12, Gel13}, and alternatives to the already allocated spectrum using millimeter-Wave technology (mmW) \cite{Rapp13}, visible light communications \cite{Wu14}, and dynamic spectrum access to the licensed spectrum, a Cognitive Radio (CR). In this thesis, a deployment scenario that involves the densification (small cells) and the implementation of cognitive radio techniques is proposed. Before moving any further, let us elaborate on the underlying facts that make these approaches or their combination suitable candidates for the 5G networks. 
 
-\subsubsection*{Small Cell}
+\begin{figure}[h]
+\centering
+\includegraphics[width = 0.95 \columnwidth]{figures/5G}
+\caption{An illustration of the possible candidates/techniques considered under the 5G framework.}
+\label{fig:archi}
+\end{figure}
+
+
+\subsubsection*{Small Cell densification}
 
 In the recent past, Small Cells (SCs) have emerged as a potential solution for coverage and capacity enhancements inside a wireless network. A SC represents a low power station that ranges from $\SI{10}{m}$ to $\SI{100}{m}$, comparable to the size of a femtocell. The reduced transmit distance accomplished with the deployment of SCs enhances the link quality and aids spatial reuse \cite{Chander08}.
 %SC is particularly deployed in a indoor or outdoor environments, these include enterprise, shopping complex or residential \cite{SSF14}. 
-As a result, ultra-densification by deploying SCs can leverage the areal capacity of a 5G network \cite{Andrews14}. The capacity, however, increases linearly with the number of SCs, hence, it is infeasible to procure the factor of $1000$ in the areal capacity with ultra-densification alone. Not only this, the operation and the integration of these substantial number of SCs to the backhaul network are cost- and energy-intensive for the mobile operator, which somehow limits the degree to which the densification can be achieved by a wireless network.
+As a result, small cell densification can leverage the areal capacity of a 5G network \cite{Andrews14}. The capacity, however, increases linearly with the number of SCs, hence, it is infeasible to procure the factor of $1000$ in the areal capacity with densification alone. Not only this, the operation and the integration of these substantial number of SCs to the backhaul network are cost- and energy-intensive for the mobile operator, which somehow limits the degree to which the densification can be achieved by a wireless network.
 
 
 
@@ -88,7 +96,7 @@ In the proposed network architecture, the access to the spectrum is realized ove
 \begin{enumerate}
 \item A wireless backhaul is a
 %quasi-line of sight\footnote{It allows limited number of objects between the direct link.} 
-point-to-point wireless link between the CSC-BS and the MC-BS that relays the traffic generated from the CSC to the core network. Accounting the feasibility of ultra-dense CSC, the wireless backhaul link, in contrast to the optical fiber link, presents a cost-effective and energy-efficient alternative to the mobile operator.
+point-to-point wireless link between the CSC-BS and the MC-BS that relays the traffic generated from the CSC to the core network. Accounting the desification of the CSC in 5G network, the wireless backhaul link, in contrast to the optical fiber link, presents a cost-effective and energy-efficient alternative to the mobile operator.
 With the limited infrastructure required for deployment, it accelerates the installation process and promotes scalability of the network.
 For the wireless backhaul link, an exclusive spectrum for a longer duration is desired. Hence, it is sensible to nominate a mmW band; alternatively, an exclusive band below \SI{6}{GHz} can be acquired using the principles of Licensed Shared Access \cite{ETSI13}.
 %These WB links encourage ultra-densification as they brings down the capital expenditure and offer scalability to the vendor. 
