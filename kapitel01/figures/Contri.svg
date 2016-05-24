@@ -177,9 +177,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="2.8284271"
-     inkscape:cx="464.20938"
-     inkscape:cy="-18.696388"
+     inkscape:zoom="3.40662"
+     inkscape:cx="607.98486"
+     inkscape:cy="395.42456"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="true"
@@ -295,20 +295,20 @@
     <text
        sodipodi:linespacing="125%"
        id="text3050"
-       y="752.88391"
-       x="131.771"
+       y="753.82977"
+       x="133.03226"
        style="font-size:20px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
        xml:space="preserve"><tspan
          style="font-size:20px;text-align:center;text-anchor:middle;font-family:Times;-inkscape-font-specification:Times"
-         y="752.88391"
-         x="134.271"
+         y="753.82977"
+         x="135.53226"
          sodipodi:role="line"
-         id="tspan3058">Effect of Imperfect </tspan><tspan
+         id="tspan3058">Impact of Incorporating </tspan><tspan
          style="font-size:20px;text-align:center;text-anchor:middle;font-family:Times;-inkscape-font-specification:Times"
-         y="777.88391"
-         x="131.771"
+         y="778.82977"
+         x="133.03226"
          sodipodi:role="line"
-         id="tspan3062">Channel Knowledge</tspan></text>
+         id="tspan3062">Channel Estimation</tspan></text>
     <rect
        style="fill:none;stroke:#000000;stroke-width:2;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
        id="rect3064"
@@ -365,7 +365,7 @@
          y="766.65033"
          x="494.742"
          sodipodi:role="line"
-         id="tspan3110">Emperical Validation</tspan></text>
+         id="tspan3110">Empirical Validation</tspan></text>
     <rect
        y="722.68018"
        x="635.02606"
@@ -433,16 +433,16 @@
        x="2.6847711"
        style="font-size:20px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
        xml:space="preserve"><tspan
-         id="tspan3183"
          style="font-size:20px;text-align:center;text-anchor:middle;font-family:Times;-inkscape-font-specification:Times"
          y="886.87238"
          x="2.6847711"
-         sodipodi:role="line">Estimation Error</tspan><tspan
+         sodipodi:role="line"
+         id="tspan3189">Uncertain Interference</tspan><tspan
          style="font-size:20px;text-align:center;text-anchor:middle;font-family:Times;-inkscape-font-specification:Times"
          y="911.87238"
          x="2.6847711"
          sodipodi:role="line"
-         id="tspan3189">Uncertain Interference</tspan></text>
+         id="tspan3194">(Estimation Error)</tspan></text>
     <flowRoot
        xml:space="preserve"
        id="flowRoot3215"
@@ -463,20 +463,20 @@
     <text
        xml:space="preserve"
        style="font-size:20px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
-       x="-236.19199"
+       x="-237.27557"
        y="886.54633"
        id="text4027"
        sodipodi:linespacing="125%"><tspan
          id="tspan4031"
          sodipodi:role="line"
-         x="-236.19199"
+         x="-237.27557"
          y="886.54633"
-         style="font-size:20px;text-align:center;text-anchor:middle;font-family:Times;-inkscape-font-specification:Times">Primary User</tspan><tspan
+         style="font-size:20px;text-align:center;text-anchor:middle;font-family:Times;-inkscape-font-specification:Times">Regulatory or Primary</tspan><tspan
          sodipodi:role="line"
-         x="-236.19199"
+         x="-237.27557"
          y="911.54633"
          style="font-size:20px;text-align:center;text-anchor:middle;font-family:Times;-inkscape-font-specification:Times"
-         id="tspan4035">Constraints</tspan></text>
+         id="tspan4035">User Constraints</tspan></text>
     <rect
        style="fill:none;stroke:#000000;stroke-width:2;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
        id="rect4059"
@@ -516,15 +516,25 @@
     <text
        sodipodi:linespacing="125%"
        id="text4061-2"
-       y="1025.8315"
-       x="-115.33482"
+       y="1002.3622"
+       x="-117.5"
        style="font-size:20px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
        xml:space="preserve"><tspan
          style="font-size:20px;text-align:center;text-anchor:middle;font-family:Times;-inkscape-font-specification:Times"
-         y="1025.8315"
-         x="-115.33482"
+         y="1002.3622"
+         x="-115"
          sodipodi:role="line"
-         id="tspan4071-4">Ideal Model</tspan></text>
+         id="tspan3114">Models with Perfect </tspan><tspan
+         style="font-size:20px;text-align:center;text-anchor:middle;font-family:Times;-inkscape-font-specification:Times"
+         y="1027.3622"
+         x="-117.5"
+         sodipodi:role="line"
+         id="tspan3184">Channel knowledge</tspan><tspan
+         style="font-size:20px;text-align:center;text-anchor:middle;font-family:Times;-inkscape-font-specification:Times"
+         y="1052.3622"
+         x="-117.5"
+         sodipodi:role="line"
+         id="tspan3188">(Ideal Model)</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:20px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
@@ -564,15 +574,20 @@
     <text
        xml:space="preserve"
        style="font-size:20px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
-       x="241.17218"
-       y="896.83148"
+       x="242.79756"
+       y="884.45691"
        id="text4175"
        sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
-         x="241.17218"
-         y="896.83148"
+         x="242.79756"
+         y="884.45691"
          style="font-size:20px;text-align:center;text-anchor:middle;font-family:Times;-inkscape-font-specification:Times"
-         id="tspan4177">Time Allocation</tspan></text>
+         id="tspan4177">Time Allocation</tspan><tspan
+         sodipodi:role="line"
+         x="242.79756"
+         y="909.45691"
+         style="font-size:20px;text-align:center;text-anchor:middle;font-family:Times;-inkscape-font-specification:Times"
+         id="tspan3198">(Medium access)</tspan></text>
     <path
        style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
        d="m 132.58929,567.3773 c 413.14068,-0.94392 480.20175,0 480.20175,0 l 0,0"

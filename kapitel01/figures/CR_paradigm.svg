@@ -179,8 +179,8 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1.1721297"
-     inkscape:cx="193.91063"
+     inkscape:zoom="4.3268069"
+     inkscape:cx="513.50914"
      inkscape:cy="559.01679"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
@@ -300,7 +300,7 @@
          x="385.81641"
          y="428.36218"
          id="tspan3759-3"
-         style="font-size:24px;text-align:center;text-anchor:middle;font-family:Times;-inkscape-font-specification:Times">Cognitive Radio Paradigms </tspan></text>
+         style="font-size:24px;text-align:center;text-anchor:middle;font-family:Times;-inkscape-font-specification:Times">Cognitive Radio Systems </tspan></text>
     <rect
        style="fill:none;stroke:#000000;stroke-width:2;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0;filter:url(#filter4059)"
        id="rect2985-2"
@@ -414,14 +414,19 @@
        xml:space="preserve"
        style="font-size:20px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
        x="584.50848"
-       y="479.75537"
+       y="469.52426"
        id="text5206"
        sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
          x="584.50848"
-         y="479.75537"
+         y="469.52426"
          style="font-size:20px;text-align:center;text-anchor:middle;font-family:Times;-inkscape-font-specification:Times"
-         id="tspan5208">Network Layer</tspan></text>
+         id="tspan5208">Higher Layer</tspan><tspan
+         sodipodi:role="line"
+         x="584.50848"
+         y="494.52426"
+         style="font-size:20px;text-align:center;text-anchor:middle;font-family:Times;-inkscape-font-specification:Times"
+         id="tspan3050">Protocols</tspan></text>
     <path
        style="fill:none;stroke:#000000;stroke-width:1.0208106;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-end:url(#Arrow1Lend)"
        d="m 590.58733,545.10022 0,-39.33131"
