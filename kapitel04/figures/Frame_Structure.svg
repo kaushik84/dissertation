@@ -15,7 +15,7 @@
    height="525.67706"
    id="svg2"
    version="1.1"
-   inkscape:version="0.48.3.1 r9886"
+   inkscape:version="0.48.4 r9939"
    sodipodi:docname="Frame_Structure.ps">
   <defs
      id="defs4">
@@ -377,16 +377,16 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1.8305398"
-     inkscape:cx="260.41864"
-     inkscape:cy="288.78652"
+     inkscape:zoom="2.3890543"
+     inkscape:cx="262.61472"
+     inkscape:cy="276.81861"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="true"
-     inkscape:window-width="1920"
-     inkscape:window-height="1151"
-     inkscape:window-x="0"
-     inkscape:window-y="25"
+     inkscape:window-width="1855"
+     inkscape:window-height="1056"
+     inkscape:window-x="65"
+     inkscape:window-y="24"
      inkscape:window-maximized="1"
      fit-margin-top="0"
      fit-margin-left="0"
@@ -637,7 +637,9 @@
          id="tspan3078"
          x="231.80182"
          y="343.13205"
-         style="font-size:31.12478447px;font-family:Times New Roman;-inkscape-font-specification:Times New Roman">τ</tspan></text>
+         style="font-size:31.12478447px;font-family:Times New Roman;-inkscape-font-specification:Times New Roman">τ<tspan
+   style="font-size:65.0000003%;baseline-shift:sub"
+   id="tspan3234">est</tspan></tspan></text>
     <path
        style="fill:none;stroke:#000000;stroke-width:1.96884191;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-mid:none"
        d="m 594.14889,252.86215 c -0.0437,83.57782 -0.0437,83.57782 -0.0437,83.57782"
@@ -662,7 +664,9 @@
          y="342.77307"
          style="font-size:31.12478447px"><tspan
    style="font-size:31.12478447px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:Times New Roman;-inkscape-font-specification:'Times New Roman, Italic'"
-   id="tspan4163">T</tspan> - τ</tspan></text>
+   id="tspan4163">T</tspan> - τ<tspan
+   style="font-size:65.0000003%;baseline-shift:sub"
+   id="tspan3236">est</tspan></tspan></text>
     <path
        style="fill:#010000;fill-opacity:0.05887451;stroke:#000000;stroke-width:1.81561232;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:5.44683703, 5.44683703;stroke-dashoffset:0"
        d="M 593.86633,223.41352 C 594.209,251.8846 594.209,251.8846 594.209,251.8846"
@@ -760,7 +764,9 @@
          id="tspan3078-00"
          x="-173.437"
          y="343.00806"
-         style="font-size:31.12478447px;font-family:Times New Roman;-inkscape-font-specification:Times New Roman">τ</tspan></text>
+         style="font-size:31.12478447px;font-family:Times New Roman;-inkscape-font-specification:Times New Roman">τ<tspan
+   style="font-size:65.0000003%;baseline-shift:sub"
+   id="tspan3224">est</tspan></tspan></text>
     <path
        style="fill:none;stroke:#000000;stroke-width:1.76577234;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-start:url(#Arrow1Mstart);marker-mid:none;marker-end:url(#Arrow1Mend)"
        d="m -114.1363,318.15542 c 303.13105,0.31708 303.13105,0.31708 303.13105,0.31708 l 0,0 0,0"
@@ -780,7 +786,9 @@
          y="342.64908"
          style="font-size:31.12478447px"><tspan
    style="font-size:31.12478447px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:Times New Roman;-inkscape-font-specification:'Times New Roman, Italic'"
-   id="tspan4163-1">T</tspan> - τ</tspan></text>
+   id="tspan4163-1">T</tspan> - τ<tspan
+   style="font-size:65.0000003%;baseline-shift:sub"
+   id="tspan3226">est</tspan></tspan></text>
     <path
        style="fill:#010000;fill-opacity:0.05887451;stroke:#000000;stroke-width:1.81561232;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:5.44683703, 5.44683703;stroke-dashoffset:0"
        d="m -209.15056,225.00047 c 0.34267,28.47108 0.34267,28.47108 0.34267,28.47108"
@@ -865,7 +873,7 @@
    style="font-size:15px"
    id="tspan5521"
    dy="3.0902658"
-   dx="-0.38628322">p,1</tspan></tspan></text>
+   dx="-0.38628322">p,3</tspan></tspan></text>
     <text
        xml:space="preserve"
        style="font-size:28.13015366px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
@@ -1097,7 +1105,9 @@
          id="tspan3078-7"
          x="231.57001"
          y="509.44073"
-         style="font-size:31.12478447px;font-family:Times New Roman;-inkscape-font-specification:Times New Roman">τ</tspan></text>
+         style="font-size:31.12478447px;font-family:Times New Roman;-inkscape-font-specification:Times New Roman">τ<tspan
+   style="font-size:65.0000003%;baseline-shift:sub"
+   id="tspan3232">est</tspan></tspan></text>
     <path
        style="fill:none;stroke:#000000;stroke-width:1.76577234;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-start:url(#Arrow1Mstart);marker-mid:none;marker-end:url(#Arrow1Mend)"
        d="m 286.9565,486.21234 c 303.13105,0.31708 303.13105,0.31708 303.13105,0.31708 l 0,0 0,0"
@@ -1117,7 +1127,9 @@
          y="509.08179"
          style="font-size:31.12478447px"><tspan
    style="font-size:31.12478447px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:Times New Roman;-inkscape-font-specification:'Times New Roman, Italic'"
-   id="tspan4163-8">T</tspan> - τ</tspan></text>
+   id="tspan4163-8">T</tspan> - τ<tspan
+   style="font-size:65.0000003%;baseline-shift:sub"
+   id="tspan3238">est</tspan></tspan></text>
     <rect
        style="fill:none;stroke:#ffffff;stroke-opacity:1"
        id="rect2985-3-4-5"
@@ -1192,7 +1204,9 @@
          id="tspan3078-00-9"
          x="-173.66876"
          y="509.31677"
-         style="font-size:31.12478447px;font-family:Times New Roman;-inkscape-font-specification:Times New Roman">τ</tspan></text>
+         style="font-size:31.12478447px;font-family:Times New Roman;-inkscape-font-specification:Times New Roman">τ<tspan
+   style="font-size:65.0000003%;baseline-shift:sub"
+   id="tspan3228">est</tspan></tspan></text>
     <path
        style="fill:none;stroke:#000000;stroke-width:1.76577234;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-start:url(#Arrow1Mstart);marker-mid:none;marker-end:url(#Arrow1Mend)"
        d="m -114.36573,486.08667 c 303.13105,0.31708 303.13105,0.31708 303.13105,0.31708 l 0,0 0,0"
@@ -1212,7 +1226,9 @@
          y="508.95782"
          style="font-size:31.12478447px"><tspan
    style="font-size:31.12478447px;font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:Times New Roman;-inkscape-font-specification:'Times New Roman, Italic'"
-   id="tspan4163-1-0">T</tspan> - τ</tspan></text>
+   id="tspan4163-1-0">T</tspan> - τ<tspan
+   style="font-size:65.0000003%;baseline-shift:sub"
+   id="tspan3230">est</tspan></tspan></text>
     <flowRoot
        transform="translate(-0.22944084,391.93125)"
        xml:space="preserve"
@@ -1338,7 +1354,7 @@
          sodipodi:role="line"
          id="tspan4805"
          x="-1151.2992"
-         y="-215.4182"></tspan><tspan
+         y="-215.4182" /><tspan
          sodipodi:role="line"
          id="tspan4807"
          x="-1151.2992"
@@ -1389,5 +1405,31 @@
          x="326.2608"
          y="594.93884"
          style="font-size:31.12478447px;font-family:Times New Roman;-inkscape-font-specification:Times New Roman">Downlink</tspan></text>
+    <text
+       transform="scale(0.99033472,1.0097596)"
+       sodipodi:linespacing="125%"
+       id="text3563"
+       y="447.76749"
+       x="-184.92126"
+       style="font-size:28.13015366px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       xml:space="preserve"><tspan
+         style="font-size:25px;font-family:Times New Roman;-inkscape-font-specification:Times New Roman"
+         y="447.76749"
+         x="-184.92126"
+         id="tspan3565"
+         sodipodi:role="line">Idle</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:28.13015366px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       x="220.83296"
+       y="281.12643"
+       id="text3567"
+       sodipodi:linespacing="125%"
+       transform="scale(0.99033472,1.0097596)"><tspan
+         sodipodi:role="line"
+         id="tspan3569"
+         x="220.83296"
+         y="281.12643"
+         style="font-size:25px;font-family:Times New Roman;-inkscape-font-specification:Times New Roman">Idle</tspan></text>
   </g>
 </svg>

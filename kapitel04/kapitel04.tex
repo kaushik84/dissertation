@@ -24,14 +24,14 @@ Besides this, a transmit power constraint is employed at the ST to classify the 
 %Cognitive Radio (CR) communications is considered as one of the viable solutions that addresses the problem of spectrum scarcity of future wireless networks. Secondary access to the licensed spectrum can be broadly categorized into different CR paradigms, namely, interweave, underlay and overlay systems \cite{Goldsmith09}. Among these, underlay and interweave systems are largely associated with the techniques applicable at the physical layer and therefore can be considered feasible for hardware deployment. %Due to its ease of deployment, IS is mostly preferred not only for performing theoretical analysis but for practical implementation as well. 
 From the previous chapter, it is understood that the interweave systems employ spectrum sensing to detect the presence of PU signals while avoiding harmful interference at the primary system. In contrast to this, an US exploits the interference tolerance capability of the primary systems that allows the SUs to transmit even in the presence of the PUs. To accomplish this, the USs employ techniques such as power control to maintain the interference (power) received at the PR below a specified level defined as Interference Threshold (IT) \cite{Xing07}. In this regard, this chapter focuses on performance characterization of the US that employs power control at the ST.  
 
-\subsection{Related Work}
+\section{Related Work}
 \tc{In order to enable shared access to the licensed spectrum, it is essential to characterize the performance of a CR system jointly in terms of the primary and the secondary systems. With regard to the primary system, the performance of a US is characterized in terms of interference (power) received at the PR, which arises due to concurrent data transmission over the same channel by the secondary system.} Recently, power control at the ST has emerged as an effective way of regulating of the interference induced by the ST. However, the power control primarily requires the knowledge of the \textit{primary interference} channel between the ST and the PR at the ST. The preliminary investigations \cite{Xing07, Ghasemi07, Sura08, Musa09_, Kang09}, considered for the performance evaluation, assume this knowledge to be perfectly known at the ST. Such situations rarely exist in practical implementations. In order to address this, the performance analysis based on imperfect channel knowledge has been dealt extensively in \cite{Musa09, Suraweera10, Kim12, Alou12, Stat12, Alou13, Zhang13, Smith13, Li13, Kerr14, Sharma15}.
 
 \tc{It is worth noticing that the majority of these works \cite{Musa09, Alou12, Kim12} in reference to imperfect channel knowledge consider that the channel's knowledge at the ST is obtained from a band manager\footnote{An entity that mediates between the primary and the secondary systems.}, an approach proposed in \cite{Peha05}. Whereas \cite{Alou13, Suraweera10} rely on the presence of a feedback link from the PR to the ST \cite{Zhang08}. The fact is, the feasibility of the band manager or the feedback link across two completely different systems is unrealistic from a practical standpoint. In addition, due to latency, the channel knowledge obtained while implementing these approaches may be outdated, as considered in \cite{Suraweera10, Kim12, Alou12, Alou13}. Besides, even if the existence of the feedback link is assumed, the demodulation of the secondary user signals at the PR and a resource (time) allocation explicitly for communicating the channel state impose an additional overhead for the primary system. With these issues in hand, the hardware implementation of the US in reference to the aforementioned approaches becomes challenging. In contrast to these approaches, a novel strategy is proposed according to which the channel estimation is employed directly at the secondary system. Thus, by avoiding the realization of the band manager or feedback link and the issues related to it, in this chapter, the key aspects that facilitate the hardware deployment of the US are focused.}
 
 \tc{Along with the performance of the primary system, the achievable data rate at the SR for the link between the ST and the SR also contributes significantly to the overall performance of the USs \cite{Musa09, Kang09, Suraweera10, Smith13, Zhang13, Alou12, Alou13}. As a matter of fact, the knowledge of the data rate at the ST can be utilized for guaranteeing a certain quality of service, thereby determining potential applications or prominent use cases for the CR system. For instance, using this knowledge, the CR system is allowed to execute a band allocation policy, based on which, the ST can relinquish those channels that are largely responsible for causing interference at the PR.} In order to characterize the data rate, the ST (along with the primary interference channel, which is associated with power control mechanism) requires the knowledge of \textit{access} channel between the ST and the SR, and \textit{secondary interference} channel between the Primary Transmitter (PT) and the SR. \tc{Despite these facts, the performance characterization of the US's data rate in reference to the estimation of the access and the secondary interference channels has not been considered in \cite{Musa09, Suraweera10, Kim12, Alou12, Alou13, Zhang13} or only marginally in \cite{Stat12, Smith13, Li13}.}
 
-\tc{From a deployment perspective, it is worthy to understand that the interference channels are representative of the channels that exist between different (primary and secondary) systems. This signifies that in order to carry channel estimation based on the conventional techniques such as pilot-based channel estimation, which is mainly employed in the previous works, a preliminary processing to synchronize and demodulate primary user signal is necessary. In this regard, it is necessary to select the estimation techniques such that complexity and versatility (to the unknown primary user signals) requirements are satisfied. In this chapter, similar to chapter \ref{chap:IS}, this critical problem by employing a received power-based estimation at the ST and the SR for the interference channels is addressed. In contrast to the interweave scenario considered in the previous chapter, here, an underlay scenario is investigated. The employment of received power-based channel estimation allows us to examine the performance of the USs under conditions that are closer to the real environment. To support the previous statement, a successful deployment of the received power-based channel estimation at the ST (however, limited to only primary interference channel) in context to the USs has been recently studied in chapter \ref{chap:HVD}.}
+\tc{From a deployment perspective, it is worthy to understand that the interference channels are representative of the channels that exist between different (primary and secondary) systems. This signifies that in order to carry channel estimation based on the conventional techniques such as pilot-based channel estimation, which is mainly employed in the previous works, a preliminary processing to synchronize and demodulate primary user signal is necessary. In this regard, it is necessary to select the estimation techniques such that complexity and versatility (to the unknown primary user signals) requirements are satisfied. In this chapter, similar to Chapter \ref{chap:IS}, this critical problem by employing a received power-based estimation at the ST and the SR for the interference channels is addressed. In contrast to the interweave scenario considered in the previous chapter, here, an underlay scenario is investigated. The employment of received power-based channel estimation allows us to examine the performance of the USs under conditions that are closer to the real environment. To support the previous statement, a successful deployment of the received power-based channel estimation at the ST (however, limited to only primary interference channel) in context to the USs has been recently studied in Chapter \ref{chap:HVD}.}
 
 \tc{From the discussion above, it is clear that the performance of the USs can be depicted in terms of the achievable secondary throughput for a certain interference threshold (IT). However, a certain time needs to be allocated by the secondary user for channel estimation. It is worthy to note that \cite{Musa09, Suraweera10, Kim12, Alou12, Stat12, Alou13, Zhang13, Smith13, Li13, Kerr14} consider that the PR employs pilot-based channel estimation for the channel PR-ST, which is possible only if the PR is willing: (i) to allocate resources, (ii) to assign a dedicated circuitry for demodulating the secondary user signals and (iii) to establish a feedback link to the ST. In this context, the hardware implementation of the USs becomes challenging.}
 Since the aspect concerning the time allocation for the channel estimation has not been taken into account in any of the previous investigations related to the cognitive USs \cite{Musa09, Suraweera10, Kim12, Alou12, Stat12, Alou13, Zhang13, Smith13, Li13, Kerr14}, the performance of the USs in terms of the secondary throughput is overestimated. Moreover, the power control depends on the knowledge of the primary interference channel. Its imperfect knowledge (or the induced variations) leads to uncertainty in the interference, which in certain cases may exceed the IT. Under such conditions, the conventional constraint imposed in \cite{Xing07, Ghasemi07, Kang09, Musa09_} is strictly violated. As a result, this uncertain interference originated from imperfect channel knowledge (of the primary interference channel) may seriously degrade the performance of the primary systems. \tc{In order to tackle this issue, an outage constraint (also referred as interference constraint) that regulates the uncertain interference caused at the PR is proposed.}
@@ -41,22 +41,22 @@ Since the aspect concerning the time allocation for the channel estimation has n
  
 
 
-\subsection{Contributions}
+\section{Contributions}
 The main contributions of this chapter are summarized as follows: 
 %\begin{enumerate}
 %\item 
-\subsubsection{Analytical Framework}
+\subsection{Analytical Framework}
 The main contribution of this chapter is to derive an analytical framework for underlay CR systems that employ a power control mechanism and incorporate the estimation of the following interacting channels: (i) primary interference channel between the ST and the PR, (ii) secondary interference channel between the PT and the SR, and (iii) access channel between the ST and the SR. In contrast to existing works that demand the presence of a band manager or a feedback link in order to retrieve channel estimates, channel estimation at the secondary system is employed. In order to facilitate the deployment of the USs, a received power-based channel estimation is proposed, specially for the interference channels so that low complexity and versatility requirements to estimate primary user signals is accomplished. Clearly, the channel estimation is detrimental (in terms of the time allocation and the uncertain interference) to the performance of the US, leading to performance degradation. By comparing its performance with the ideal scenario (which corresponds to the systems with perfect channel knowledge), the performance degradation caused due to imperfect channel knowledge is studied. 
 
 Besides, these variations due to imperfect channel knowledge in the performance parameters, which include interference at the PR and secondary throughput at the SR, are characterized in terms of their cumulative distribution functions pertaining to the deterministic \tc{(not random)} and the random behavior (channel fading) of the interacting channels. Particularly, these variations lead to uncertainty in the interference that may seriously disrupt the operation of the primary system. To regulate this uncertain interference below a tolerable limit, an outage constraint is employed over the uncertain interference. In addition to this, the variations in the secondary throughput are captured in terms of its expected value.
 
-\subsubsection{Interference-limited and Power-limited Regimes}
-The power control at the ST depends on the received signal to noise power ratio of the link between the PR and the ST, which characterizes the quality of the primary interference channel. In this chapter, the controlled power is characterized in terms of the estimation time and the signal to noise ratio such that the outage constraint is satisfied. In practice, the controlled power is limited by the maximum transmit power. Due to this limitation, good channel conditions (i.e., low signal to noise power for the link PR-ST) do not translate into performance gains for the USs. This behavior of the USs is analyzed in terms of the performance bound which is illustrated as a relation between the received signal to noise ratio and the estimation time. As depicted later in \figurename~\ref{fig:or}, based on this performance bound, the operation of the US is classified as the interference-limited and the power-limited regimes.
+\subsection{Interference-limited and Power-limited Regimes}
+The power control at the ST depends on the received signal to noise power ratio of the link between the PR and the ST, which characterizes the quality of the primary interference channel. In this chapter, the controlled power is characterized in terms of the estimation time and the signal to noise ratio such that the outage constraint is satisfied. In practice, the controlled power is limited by the maximum transmit power. Due to this limitation, good channel conditions (i.e., low signal to noise power for the link PR-ST) do not translate into performance gains for the USs. This behavior of the USs is analyzed in terms of the performance bound which is illustrated as a relation between the received signal to noise ratio and the estimation time. As depicted later in \figurename~\ref{fig_US:or}, based on this performance bound, the operation of the US is classified as the interference-limited and the power-limited regimes.
 
-\subsubsection{Estimation-throughput Tradeoff}
+\subsection{Estimation-throughput Tradeoff}
 Besides, a successful incorporation of the time allocated for the channel estimation in the secondary system's frame structure is proposed. The time resources dedicated to channel estimation cause a linear decrease in the secondary throughput. Therefore, a low estimation time increases the secondary throughput, since less time is allocated for channel estimation. On the other side, its low value increases the uncertain interference, thus, requires a severe power control that ultimately reduces the secondary throughput. The association of the estimation time in reference to the time allocation and the power control is studied to derive a fundamental tradeoff between the estimation time and the secondary throughput such that the uncertain interference is kept below a desired level. The theoretical as-well-as numerical analysis of this tradeoff in realistic underlay scenarios that takes imperfect channel estimation into account is a significant aspect investigated in this chapter. Finally, this tradeoff is employed to derive a suitable estimation time that achieves a maximum secondary throughput for the USs. In other words, the considered tradeoff signifies the fact that the performance degradation in terms of secondary throughput can be effectively controlled only if the estimation time is selected appropriately.
 
-\subsubsection{Estimation-dominant and Channel-dominant Regimes}
+\subsection{Estimation-dominant and Channel-dominant Regimes}
 For the random channel, the variations in the interference arising due to channel estimation and channel fading are classified as an estimation-dominant regime and a channel-dominant regime, respectively. Based on this analysis, it is revealed that a suitable selection of estimation time can achieve a performance gain (in terms of the secondary throughput) closer to the one predicted by the existing models that consider perfect channel knowledge of the interacting channels.
 
 
@@ -69,72 +69,72 @@ For the random channel, the variations in the interference arising due to channe
 \includegraphics[width = \figscalet]{figures/CR_Scenario_Underlay}
 %\vspace{-6mm}
 \caption{A cognitive small cell scenario demonstrating: (i) the underlay paradigm, (ii) the associated network elements, which constitute Cognitive Small Cell-Base Station/Secondary Transmitter (CSC-BS/ST), Mobile Station/Secondary Receiver (MS/SR), Macro Cell-Base Station (MC-BS) and Primary Transmitter (PT), (iii) the interacting channels: primary interference channel, secondary interference channel and access channel.}
-\label{fig:scenario}
+\label{fig_US:scenario}
 %\vspace{-4mm}
 \end{figure}
 %\subsubsection{Medium access}
 
 \subsection{Underlay Scenario and Medium Access}
 
-%The Cognitive Small Cell (CSC), a CR application, characterizes a small cell deployment that fulfills the spectral requirements of the Mobile Stations (MSs) operating indoor, refer to \figurename~\ref{fig:scenario}.
+%The Cognitive Small Cell (CSC), a CR application, characterizes a small cell deployment that fulfills the spectral requirements of the Mobile Stations (MSs) operating indoor, refer to \figurename~\ref{fig_US:scenario}.
 %For the disposition of the CSC in the network, the following key elements are essential: a CSC-Base Station (CSC-BS), a Macro Cell-Base Station (MC-BS) and an MS. 
-Considering the fact that the power control is employed at the CSC-BS, the CSC-BS and the MS represent ST and SR, respectively. In order to acquire channel knowledge concerning the primary interference channel, the ST listens to the transmissions from the PR, refer to \figurename~\ref{fig:scenario}. In this chapter, those primary systems where the PR\footnote{Clearly, it is ambiguous to consider transmissions from a PR, different terms such as primary radio or simply primary user can be used instead. Since the main focus is to characterize the interference at PR, it is sensible to use the nomenclature PR.} performs transmissions interchangeably over time (time division duplexing TDD and half-duplex frequency division duplexing FDD) or frequency (full-duplex FDD) with the PT are considered. These transmissions can occur over the same band (TDD) or over separate bands (half-duplex and full-duplex FDD). 
+Considering the fact that the power control is employed at the CSC-BS, the CSC-BS and the MS represent ST and SR, respectively. In order to acquire channel knowledge concerning the primary interference channel, the ST listens to the transmissions from the PR, refer to \figurename~\ref{fig_US:scenario}. In this chapter, those primary systems where the PR\footnote{Clearly, it is ambiguous to consider transmissions from a PR, different terms such as primary radio or simply primary user can be used instead. Since the main focus is to characterize the interference at PR, it is sensible to use the nomenclature PR.} performs transmissions interchangeably over time (time division duplexing TDD and half-duplex frequency division duplexing FDD) or frequency (full-duplex FDD) with the PT are considered. These transmissions can occur over the same band (TDD) or over separate bands (half-duplex and full-duplex FDD). 
 %The ST follows these duplexing modes to transmit signals with controlled power over the access channel. 
 In cellular networks, these duplexing modes are effectively deployed in the Long Term Evolution (LTE) standard \cite{LTE09}. The ST follows these duplexing modes to exploit channel reciprocity principle and determine the primary interference (power) received at the PR, thus, controls its power for transmitting signals over the access channel such that it satisfies the interference constraint by operating at the IT. Particularly for half-duplex and full duplex FDD, it is assumed that the coherence bandwidth is large as compared to frequency separation between the estimation channel and the band of interest. 
 %In addition, considering the deployment scenario, due to the outside walls, the SR encounters a loss of $\SI{20}{dB}$ in the received power, 
-%Cognitive Relay (CR) \cite{Kaushik14} characterizes a small cell deployment that fulfills the spectral requirements for Indoor Devices (IDs). \figurename~\ref{fig:scenario} illustrates a snapshot of a CR scenario to depict the interaction between the CR with PR and ID, where CR and ID represents the ST and SR respectively. In \cite{Kaushik14}, the challenges involved while deploying the CR as US were presented. However for simplification, a constant transmit power was considered at the CR. Now, we extend the analysis to employ power control at the ST. 
+%Cognitive Relay (CR) \cite{Kaushik14} characterizes a small cell deployment that fulfills the spectral requirements for Indoor Devices (IDs). \figurename~\ref{fig_US:scenario} illustrates a snapshot of a CR scenario to depict the interaction between the CR with PR and ID, where CR and ID represents the ST and SR respectively. In \cite{Kaushik14}, the challenges involved while deploying the CR as US were presented. However for simplification, a constant transmit power was considered at the CR. Now, we extend the analysis to employ power control at the ST. 
 %\begin{figure}[!ht]
 %\centering
 %\includegraphics[width = \figscalet]{figures/Frame_Structure_ink}
 %\vspace{-6mm}
 %\caption{The proposed frame structure of underlay system channel estimation for the interference channel.}
-%\label{fig:fs}
+%\label{fig_US:fs}
 %\vspace{-11mm}
 %\end{figure}
 \begin{figure}[!ht]
 \centering
 \includegraphics[width = \columnwidth]{figures/Frame_Structure}
 \caption{Frame structure of the USs illustrating the time allocation for channel estimation and data transmission from the perspective of a ST and a SR. Corresponding to the uplink and the downlink, the primary interference and secondary interference channel estimation occur at the ST and the SR, respectively. PR (Tx)/PR (Rx) presents the transmission/reception of the primary signal from the PR/PT to the PT/PR.} 
-\label{fig:fs}
+\label{fig_US:fs}
 %\vspace{-7mm}
 \end{figure}
 
 
 
-A slotted medium access for the US is considered, where the time axis is segmented into frames. As depicted in \figurename~\ref{fig:fs}, the frame duration $T$ is chosen in such a way that the frames are aligned to the PUs' transmissions. In order to incorporate channel estimation, a periodic channel estimation\footnote{This frame structure is similar to the periodic sensing followed by the interweave systems \cite{Liang08}.} is proposed, according to which, the US uses a time interval $\tau (< T)$ to perform channel estimation followed by data transmission $T- \tau$, see \figurename~\ref{fig:fs}. Besides, to consider variations due to channel fading, it is assumed that the interacting channels remain constant over at least two frame durations ($2T$). Based on this assumption, every alternating transmission frame observes a different received power, consider \figurename~\ref{fig:fs}. Since the channel knowledge is essential to employ power control such that the PRs are sufficiently protected from the uncertain interference induced due to imperfect channel knowledge, it is reasonable to carry out estimation for $\tau$ time interval followed by data transmission with power control in the remaining time $T - \tau$ for each frame. %At the end, the remaining time $T - \tau$ is utilized for data transmission with controlled power. 
+A slotted medium access for the US is considered, where the time axis is segmented into frames. As depicted in \figurename~\ref{fig_US:fs}, the frame duration $T$ is chosen in such a way that the frames are aligned to the PUs' transmissions. In order to incorporate channel estimation, a periodic channel estimation\footnote{This frame structure is similar to the periodic sensing followed by the interweave systems \cite{Liang08}.} is proposed, according to which, the US uses a time interval $\test (< T)$ to perform channel estimation followed by data transmission $T- \test$, see \figurename~\ref{fig_US:fs}. Besides, to consider variations due to channel fading, it is assumed that the interacting channels remain constant over at least two frame durations ($2T$). Based on this assumption, every alternating transmission frame observes a different received power, consider \figurename~\ref{fig_US:fs}. Since the channel knowledge is essential to employ power control such that the PRs are sufficiently protected from the uncertain interference induced due to imperfect channel knowledge, it is reasonable to carry out estimation for $\test$ time interval followed by data transmission with power control in the remaining time $T - \test$ for each frame. %At the end, the remaining time $T - \test$ is utilized for data transmission with controlled power. 
 
-In accordance with the half duplexing modes, the ST and the SR perform received power-based estimation to acquire the knowledge of the primary and the secondary interference channel over consecutive frames, as illustrated in \figurename~\ref{fig:fs}. For primary systems and secondary systems that implement full-duplex FDD, the proposed frame structure can be adapted such that the estimation of the primary and the secondary interference channels occurs in a single frame. Besides this, the access channel estimation is performed by listening to the pilot symbols from the SR depicted as a pilot-based estimation. Considering the fact that the number of pilot symbols is relatively small in comparison to the samples used for performing received power-based channel estimation, the time allocation of the pilot symbols does not affect the overall performance of the USs. Hence, no time resources are allocated for access channel estimation in the frame structure.
+In accordance with the half duplexing modes, the ST and the SR perform received power-based estimation to acquire the knowledge of the primary and the secondary interference channel over consecutive frames, as illustrated in \figurename~\ref{fig_US:fs}. For primary systems and secondary systems that implement full-duplex FDD, the proposed frame structure can be adapted such that the estimation of the primary and the secondary interference channels occurs in a single frame. Besides this, the access channel estimation is performed by listening to the pilot symbols from the SR depicted as a pilot-based estimation. Considering the fact that the number of pilot symbols is relatively small in comparison to the samples used for performing received power-based channel estimation, the time allocation of the pilot symbols does not affect the overall performance of the USs. Hence, no time resources are allocated for access channel estimation in the frame structure.
 At first, the proposed frame structure in to context to the deterministic behavior of the interacting channels (deterministic channel) is considered, i.e., the performance is analyzed for a certain channel gain (path-loss channel), without taking into account the effect of channel fading. Next, the performance analysis of the proposed framework is carried out by taking channel fading into account (random channel). %In accordance with the nature of regulatory policies, the aforementioned analyses can be considered for deploying the underlay CR systems. 
 
 
 
-%To simplify the analysis, we assume that during data transmission at the ST, the interference at the SR, from the PT, to be below the noise level. However, by replacing the noise power with interference plus noise power in the throughput expressions, derived later in Section \ref{sec:et_ana}, the performance of the US under the interference limited regime can be depicted. %In this view, the interaction with the PT is excluded in the considered scenario, cf. \figurename~\ref{fig:scenario}. 
+%To simplify the analysis, we assume that during data transmission at the ST, the interference at the SR, from the PT, to be below the noise level. However, by replacing the noise power with interference plus noise power in the throughput expressions, derived later in Section \ref{sec:et_ana}, the performance of the US under the interference limited regime can be depicted. %In this view, the interaction with the PT is excluded in the considered scenario, cf. \figurename~\ref{fig_US:scenario}. 
 
 \subsection{Signal Model}
 In the uplink, during the estimation phase, the discrete and complex signal received from the PR at the ST is given by
 \begin{equation}
 \yrcvd[n] = \hpth \cdot \xtran[n] + \nas[n],
-\label{eq:sys_mod_st}
+\label{eq_US:sys_mod_st}
 \end{equation}
-where $\xtran[n]$ corresponds to a discrete and complex sample transmitted by the PR with transmit power $\ptran$ known at the ST, $\phpth$ represents the power gain for the interference channel and $\nas[n]$ is circularly symmetric complex Additive White Gaussian Noise (AWGN) at the ST with %The transmitted power at PR is $\ptran$, considering that $\tau \fsam$ $(= N)$ is the number of samples used for estimation. 
+where $\xtran[n]$ corresponds to a discrete and complex sample transmitted by the PR with transmit power $\ptran$ known at the ST, $\phpth$ represents the power gain for the interference channel and $\nas[n]$ is circularly symmetric complex Additive White Gaussian Noise (AWGN) at the ST with %The transmitted power at PR is $\ptran$, considering that $\test \fsam$ $(= N)$ is the number of samples used for estimation. 
 $\mathcal{CN}(0, \nps)$. %The power received at the ST is given as 
 %\begin{align}
-%\prcvd = \s{\tau \fsam}{ |\sqrt{\gp \ap} \xtran[n] + \nas[n]|^2}.
-%\label{eq:prcvd} 
+%\prcvd = \s{\test \fsam}{ |\sqrt{\gp \ap} \xtran[n] + \nas[n]|^2}.
+%\label{eq_US:prcvd} 
 %\end{align}
 
 In the downlink, during data transmission phase, the signal received at the PR is given by
 \begin{equation}
 \yp[n] = \hpth  \cdot \xreg[n] + \nap[n],
-\label{eq:sys_mod_pr}
+\label{eq_US:sys_mod_pr}
 \end{equation}
 and on the other side, the received signal at the SR follows 
 \begin{equation}
 \ys[n] = \gs \cdot \xreg[n] + \gpt \cdot \xp[n] + \nas'[n],
-\label{eq:sys_mod_sr}
+\label{eq_US:sys_mod_sr}
 \end{equation}
 where $\xreg[n]$ corresponds to a discrete and complex sample transmitted by the ST with controlled power $\preg$, and $\xp[n]$ is the transmit signal from the PT with transmit power $\ptran$\footnote{In reference to the proposed framework, the knowledge of the transmit power at the PT is not necessary at the secondary system. Hence, its ignorance at the SR doesn't affect the analysis concerning the secondary interference. For clarity of the exposition, $\ptran$ is chosen to denote the transmit power for the PT and for the PR. With no loss of generality, for the analysis, the PT and the PR are alloted same transmit power.}. Further, $\pgs$ and $\pgpt$ represent the power gain for the access channel and the secondary interference channel, respectively. $\nap[n]$ and $\nas'[n]$ are AWGN at the PR and at the SR, respectively, with $\mathcal{CN}(0, \nps)$\footnote{In practice, the noise power at the ST, the SR and the PR have different values. The fact is, only the signal to noise ratio received at the ST, and SR and the PR, respectively, are affected due to these noise powers. Since these signal to noise ratios are already included in the performance analysis, the assignment of different notations to these noise powers are excluded in the expressions.} 
-%Considering (\ref{eq:sys_mod_pr}), the powers received at the PR and SR are evaluated as $\pp = \s{(T - \tau) \fsam}{|\yp[n]^2|}$ and $\ps = \s{(T - \tau) \fsam}{|\yp[n]^2|}$. Likewise (\ref{eq:sys_mod_st}), $\nap[n]$ and $\nas[n]$ represents circularly symmetric AWGN at PR and ST with zero mean and variance $\e{}{|\nap[n]|^2} = \npp$ and $\e{}{|\nas[n]|^2} = \nps$ correspondingly. Consider that $\ptran$, $\preg$ and $\pp$ correspond to power for a given frame. 
+%Considering (\ref{eq_US:sys_mod_pr}), the powers received at the PR and SR are evaluated as $\pp = \s{(T - \test) \fsam}{|\yp[n]^2|}$ and $\ps = \s{(T - \test) \fsam}{|\yp[n]^2|}$. Likewise (\ref{eq_US:sys_mod_st}), $\nap[n]$ and $\nas[n]$ represents circularly symmetric AWGN at PR and ST with zero mean and variance $\e{}{|\nap[n]|^2} = \npp$ and $\e{}{|\nas[n]|^2} = \nps$ correspondingly. Consider that $\ptran$, $\preg$ and $\pp$ correspond to power for a given frame. 
 %\subsubsection{Channel}
 
 %We consider that all transmitted signals are subjected to distance dependent path loss. The small scale fading gains $\gp, \gs$ are modelled as frequency-flat fading. Hence, the $\gp, \gs$ follow an exponential distribution \cite{Tse05} where $\e{}{\gp}$ and $\e{}{\gs}$ represent their path loss.
@@ -143,23 +143,23 @@ where $\xreg[n]$ corresponds to a discrete and complex sample transmitted by the
 According to the existing investigations (also referred as ideal model), an ST of an US is required to control its transmit power in such a way that the interference received $\prcvdpr$ at the PR is below IT $\ite$ \cite{Xing07}
 \begin{equation}
 \prcvdpr = \phpth \preg \le \ite.
-\label{eq:IT_id}
+\label{eq_US:IT_id}
 \end{equation}
 %where $\alpha$ denotes the distance dependent path loss. $g\sub{p}$ represents the small-scale channel fading. 
 
-With the controlled power at the ST determined using (\ref{eq:IT_id}), the data rate at the SR is defined as
+With the controlled power at the ST determined using (\ref{eq_US:IT_id}), the data rate at the SR is defined as
 \begin{equation}
 \ca = \log_2 \left(1 + \frac{\pgs \preg}{ \pgpt \ptran + \nps} \right). 
-\label{eq:Thr_id}
+\label{eq_US:Thr_id}
 \end{equation}
 where $\ca$ represents the data rate over the access channel. %\footnote{From a communication theoretic point of view.}.
 %where $\e{\gs, \gp}{\cdot}$ represents the expectation over $\gs, \gp$.
-From the deployment perspective, the ideal model depicted in (\ref{eq:IT_id}) and (\ref{eq:Thr_id}) has following issues:
+From the deployment perspective, the ideal model depicted in (\ref{eq_US:IT_id}) and (\ref{eq_US:Thr_id}) has following issues:
 \begin{itemize}
-\item Without the knowledge of the primary interference channel $\hpth$, it is impossible to employ the power control based on (\ref{eq:IT_id}). 
-\item Furthermore, along with $\preg$, the knowledge of the access channel $\gs$ and the secondary interference channel $\gpt$ is required to determine $\ca$ according to (\ref{eq:Thr_id}).
+\item Without the knowledge of the primary interference channel $\hpth$, it is impossible to employ the power control based on (\ref{eq_US:IT_id}). 
+\item Furthermore, along with $\preg$, the knowledge of the access channel $\gs$ and the secondary interference channel $\gpt$ is required to determine $\ca$ according to (\ref{eq_US:Thr_id}).
 \end{itemize}
-The ideal model considers the perfect knowledge of the aforementioned channels at the ST, which is not available in practice. In this regard, it is necessary to incorporate channel estimation in the system model. The imperfect channel knowledge, however, translates to the variations in the performance parameters, $\prcvdpr$ and $\ca$. Particularly, a variation in $\prcvdpr$ that exceeds $\ite$ causes uncertain interference at the PR, thereby violating the interference constraint illustrated in (\ref{eq:IT_id}). Unless captured, this uncertain interference may seriously degrade the performance of the US. Since the ideal model assumes the perfect knowledge of the involved channels, it fails to depict the degradation in the performance due to the time resources allocated for the channel estimation. %In this view, we characterize the variations in $\pp$ and $\trs$ by characterizing the distribution functions of the estimated channels.
+The ideal model considers the perfect knowledge of the aforementioned channels at the ST, which is not available in practice. In this regard, it is necessary to incorporate channel estimation in the system model. The imperfect channel knowledge, however, translates to the variations in the performance parameters, $\prcvdpr$ and $\ca$. Particularly, a variation in $\prcvdpr$ that exceeds $\ite$ causes uncertain interference at the PR, thereby violating the interference constraint illustrated in (\ref{eq_US:IT_id}). Unless captured, this uncertain interference may seriously degrade the performance of the US. Since the ideal model assumes the perfect knowledge of the involved channels, it fails to depict the degradation in the performance due to the time resources allocated for the channel estimation. %In this view, we characterize the variations in $\pp$ and $\trs$ by characterizing the distribution functions of the estimated channels.
 
 \subsection{Proposed Approach} 
 In order to facilitate channel estimation for the USs, it is essential to take the aforementioned issues into account. To accomplish this, the following strategy is proposed in this chapter.
@@ -169,71 +169,71 @@ In order to facilitate channel estimation for the USs, it is essential to take t
 \item Further, the aforementioned variations are translated to the performance parameters, such as interference and secondary throughput in terms of their cumulative distribution functions. More specifically, using the characterization of the uncertain interference, a novel power control mechanism that regulates the uncertain interference at the PR is proposed.  
 \item Finally, using the derived expressions, a relationship between the estimation time and the expected secondary throughput for the USs is analyzed. The proposed framework (also referred as estimation model) is further extended to analyze the impact of channel fading on the performance of the system. 
 \end{itemize}
-Since the channel estimation in the context of CR systems involves two different (primary and secondary) systems, suitable channel estimation techniques should be selected such that the following requirements: (i) low complexity and (ii) versatility towards unknown PU signals, essential from the deployment perspective, are respected. Similar problem for the interweave CR systems has been deeply investigated in chapter \ref{chap:IS}, where it proposes to employ a received power-based estimation for the channels between the primary and secondary users and a pilot-based estimation for the access channel. In contrast to this, in this chapter, the received power-based and the pilot-based estimation techniques are applied in the underlay CR systems. It is also worth stating that, since the signal model in chapter \ref{chap:IS} (orthogonal frequency division multiplexing transmission) differs from the one (constant power transmission) studied in this chapter, new mathematical expressions for the performance parameters are derived. 
+Since the channel estimation in the context of CR systems involves two different (primary and secondary) systems, suitable channel estimation techniques should be selected such that the following requirements: (i) low complexity and (ii) versatility towards unknown PU signals, essential from the deployment perspective, are respected. Similar problem for the interweave CR systems has been deeply investigated in Chapter \ref{chap:IS}, where it proposes to employ a received power-based estimation for the channels between the primary and secondary users and a pilot-based estimation for the access channel. In contrast to this, in this chapter, the received power-based and the pilot-based estimation techniques are applied in the underlay CR systems. It is also worth stating that, since the signal model in Chapter \ref{chap:IS} (orthogonal frequency division multiplexing transmission) differs from the one (constant power transmission) studied in this chapter, new mathematical expressions for the performance parameters are derived. 
 In the following paragraphs, the estimation of the power gains of the primary interference channel $\ephpth$, the access channel $\epgs$ and the secondary interference channel $\epgpt$ is considered. 
 \subsubsection{Estimation of primary interference channel}
 Considering
 \begin{equation}
-\prcvd = \pgpth \ptran + \nps \label{eq:prcvd}, 
+\prcvd = \pgpth \ptran + \nps \label{eq_US:prcvd}, 
 \end{equation}
-and the knowledge of PR's transmit power $\ptran$, the ST employs received power-based estimation to obtain the knowledge of $\pgpth$. To accomplish this, in reference to (\ref{eq:sys_mod_st}), the ST listens to the transmissions from the PR and acquires the knowledge of $\epgpth$ indirectly by estimating the power received in the uplink as $\eprcvd = \s{\tau \fsam}{|\yrcvd[n]|^2}$, where $\fsam$ being the sampling frequency and $\tau$ represents the estimation time interval. $\fsam$ and $\tau$ are such that the number of samples $\tau \fsam$ is an integer. The estimated received power $\eprcvd$ is utilized to determine the control power $\preg$ at which the data transmission over the downlink is carried out, \figurename~\ref{fig:fs}. In accordance to the received power-based estimation for the channel $\pgpth$, it is noticed that the knowledge of $\ptran$ at the ST is essential for the characterization of the power control mechanism (considered later in Lemma \ref{lm:lm4}). However, this knowledge can be retrieved by considering the specifications of different wireless standards such GSM, EDGE and LTE, etc. \cite{Sharma14}. It is well-known that certain standards (considered as primary systems) follow adaptive modulation and coding, which can consequently change $\ptran$. Under these situations, the ST can employ more complex techniques such as pilot assisted techniques in order to determine $\ptran$ for the given frame.
+and the knowledge of PR's transmit power $\ptran$, the ST employs received power-based estimation to obtain the knowledge of $\pgpth$. To accomplish this, in reference to (\ref{eq_US:sys_mod_st}), the ST listens to the transmissions from the PR and acquires the knowledge of $\epgpth$ indirectly by estimating the power received in the uplink as $\eprcvd = \s{\test \fsam}{|\yrcvd[n]|^2}$, where $\fsam$ being the sampling frequency and $\test$ represents the estimation time interval. $\fsam$ and $\test$ are such that the number of samples $\test \fsam$ is an integer. The estimated received power $\eprcvd$ is utilized to determine the control power $\preg$ at which the data transmission over the downlink is carried out, \figurename~\ref{fig_US:fs}. In accordance to the received power-based estimation for the channel $\pgpth$, it is noticed that the knowledge of $\ptran$ at the ST is essential for the characterization of the power control mechanism (considered later in Lemma \ref{lm_US:lm4}). However, this knowledge can be retrieved by considering the specifications of different wireless standards such GSM, EDGE and LTE, etc. \cite{Sharma14}. It is well-known that certain standards (considered as primary systems) follow adaptive modulation and coding, which can consequently change $\ptran$. Under these situations, the ST can employ more complex techniques such as pilot assisted techniques in order to determine $\ptran$ for the given frame.
 
-For a certain value of $\pgpth$, the received power at the ST estimated using $\tau \fsam$ samples, refer to (\ref{eq:prcvd}), follows a non-central chi-squared distribution $\fprcvd \sim \ncchi2(\lpth, \tau \fsam)$ with non-centrality parameter $\lpth = \tau \fsam \phpth \ptran /\nps = \tau \fsam \snrrcvdu$ \cite{Kay}, where $\snrrcvdu$ is defined as the ratio of the received power (from the PR) to noise at the ST and $\tau \fsam$ corresponds to the degrees of freedom. In order to sustain analytical tractability in the analysis, the following approximation is considered. 
-\begin{approxi} \label{ap:ap1}
-\normalfont
-For all degrees of freedom, the $\ncchi2$ distribution can be approximated by a Gamma distribution \cite{abramo}. The parameters of the Gamma distribution are obtained by matching the first two central moments to those of $\ncchi2$.
-\end{approxi}
-\begin{lemma} \label{lm:lm1}
+For a certain value of $\pgpth$, the received power at the ST estimated using $\test \fsam$ samples, refer to (\ref{eq_US:prcvd}), follows a non-central chi-squared distribution $\fprcvd \sim \ncchi2(\lpth, \test \fsam)$ with non-centrality parameter $\lpth = \test \fsam \phpth \ptran /\nps = \test \fsam \snrrcvdu$ \cite{Kay}, where $\snrrcvdu$ is defined as the ratio of the received power (from the PR) to noise at the ST and $\test \fsam$ corresponds to the degrees of freedom. In order to sustain analytical tractability in the analysis, the Approximation \ref{ap:ap1} presented in Chapter \ref{chap:IS} is considered. 
+%\begin{approxi} \label{ap:ap1}
+%\normalfont
+%For all degrees of freedom, the $\ncchi2$ distribution can be approximated by a Gamma distribution \cite{abramo}. The parameters of the Gamma distribution are obtained by matching the first two central moments to those of $\ncchi2$.
+%\end{approxi}
+\begin{lemma} \label{lm_US:lm1}
 \normalfont
 The cumulative distribution function of $\eprcvd$ is characterized as 
 \begin{align}
-\fprcvd(x) \approx 1 - \Gamma&\left(\apo, \frac{x}{\bpo}\right) \label{eq:fprcvd}, \\ 
-\text{where  } \apo = \frac{\tau \fsam (1 + \snrrcvdu)^2}{2 + 4 \snrrcvdu} &\text{ and } \bpo = \frac{\nps (2 + 4 \snrrcvdu)}{\tau \fsam (1 + \snrrcvdu)},  \label{eq:para_po} 
+\fprcvd(x) \approx 1 - \Gamma&\left(\apo, \frac{x}{\bpo}\right) \label{eq_US:fprcvd}, \\ 
+\text{where  } \apo = \frac{\test \fsam (1 + \snrrcvdu)^2}{2 + 4 \snrrcvdu} &\text{ and } \bpo = \frac{\nps (2 + 4 \snrrcvdu)}{\test \fsam (1 + \snrrcvdu)},  \label{eq_US:para_po} 
 \end{align} 
 and $\Gamma(\cdot, \cdot)$ represents the regularized upper-incomplete Gamma function \cite{abramo}. 
 \end{lemma}
 \begin{IEEEproof}
-Applying Approximation \ref{ap:ap1} to $\ncchi2(\lpth, \tau \fsam)$ yields (\ref{eq:fprcvd}). 
+Applying Approximation \ref{ap:ap1} from Chapter \ref{chap:IS} to $\ncchi2(\lpth, \test \fsam)$ yields (\ref{eq_US:fprcvd}). 
 \end{IEEEproof}
 
 \subsubsection{Estimation of access channel}
 In the uplink, the pilot signal transmitted by the SR undergoes matched filtering and demodulation at the ST, hence, a pilot-based estimation is employed at the ST to acquire the knowledge of the access channel. According to \cite{Gifford08}, the maximum-likelihood estimate with $\Ks$ pilot symbols is given by 
 \begin{align}
 \gs = \egs + \frac{\sum^{\Ks}_{n} p[n]}{2 \Ks},
-\label{eq:pilot_MLE}
+\label{eq_US:pilot_MLE}
 \end{align}
 where $p[n]$ denotes the discrete pilot symbol and $\frac{\sum^{\Ks}_{n} p[n]}{2 \Ks}$ represents the estimation error. With no loss of generality, the pilot symbols are considered to be $+1$.
-%(\ref{eq:pilot_MLE}) illustrates a correlation between the $\hs$ and $\ehs$. 
+%(\ref{eq_US:pilot_MLE}) illustrates a correlation between the $\hs$ and $\ehs$. 
 As a result, the estimate $\egs$ is unbiased, efficient, i.e., achieves the Cram\'er-Rao bound with equality, with asymptotic variance $\e{}{|\gs -\egs|^2} = \frac{\nps}{2 \Ks}$ \cite{Gifford08}. Hence, $\egs$ conditioned on $\gs$ follows a Gaussian distribution
 \begin{align}
 \egs|\gs \sim \mathcal{N}\left( \gs,\frac{\nps}{2 \Ks} \right).
-\label{eq:ehs} 
+\label{eq_US:ehs} 
 \end{align}
 Consequently, for a certain value $\phs$ the estimated power gain $|\egs|^2$ follows a non-central chi-squared $\ncchi2(\ls, 1)$ distribution with 1 degree of freedom and non-centrality parameter $\ls = \frac{2 \Ks |\gs|^2}{\nps}$. 
-\begin{lemma} \label{lm:lm2}
+\begin{lemma} \label{lm_US:lm2}
 \normalfont
 The cumulative distribution function of $\epgs$ is characterized as 
 \begin{align}
-\fgs(x) \approx 1 - \Gamma&\left(\as, \frac{x}{\bs}\right) \label{eq:fehs},\\ 
-\text{where  } \as = \frac{(1 + \ls)^2}{2 + 4 \ls} &\text{ and } \bs = \frac{\nps (2 + 4 \ls)}{(1 + \ls)}. \label{eq:para_s} 
+\fgs(x) \approx 1 - \Gamma&\left(\as, \frac{x}{\bs}\right) \label{eq_US:fehs},\\ 
+\text{where  } \as = \frac{(1 + \ls)^2}{2 + 4 \ls} &\text{ and } \bs = \frac{\nps (2 + 4 \ls)}{(1 + \ls)}. \label{eq_US:para_s} 
 \end{align} 
 \end{lemma}
 \begin{IEEEproof}
-Applying Approximation \ref{ap:ap1} to $\ncchi2(\ls,1 )$ yields (\ref{eq:fehs}). 
+Applying Approximation \ref{ap:ap1} from Chapter \ref{chap:IS} to $\ncchi2(\ls,1 )$ yields (\ref{eq_US:fehs}). 
 \end{IEEEproof}
 
 \subsubsection{Estimation of secondary interference channel}
-In the downlink, the SR cancels the ST the data signal over the access channel in order to estimate the secondary interference (power) received from the PT, refer to (\ref{eq:sys_mod_sr}). In order to establish a preliminary analysis, it is assumed that signal to noise ratio for the access link is suitable enough to allow perfect cancellation of the data signal. For extreme situations, a probabilistic approach can be applied to deal with the imperfect signal cancellation for the proposed channel estimation. However, under such situations, it is possible that due to bad quality of the access channel, the ST may not consider such a channel for data transmission. The power estimated over the signal $\hpth \xtran[n] + \nas[n]$ corresponds to the interference plus noise power ($\prcvdsr = \pgpt \ptran + \nps$, where $\prcvdsr$ represents the true value, consider (\ref{eq:Thr_id})). The estimated received power at the SR is determined as $\eprcvdsr = \s{\tau \fsam}{|\gpth \cdot \xtran[n] + \nas'[n]|^2}$. To characterize the secondary throughput, $\eprcvdsr$ is made available to the ST over a low rate feedback channel. Similar to $\eprcvd$, for a certain value of $\phpt$, $\eprcvdsr$ follows a non-central chi-squared distribution $\ncchi2(\ls, \tau \fsam)$, with non-centrality parameter $\lpt = \tau \fsam \pgpt \ptran / \nps$.
-\begin{lemma} \label{lm:lm3}
+In the downlink, the SR cancels the ST the data signal over the access channel in order to estimate the secondary interference (power) received from the PT, refer to (\ref{eq_US:sys_mod_sr}). In order to establish a preliminary analysis, it is assumed that signal to noise ratio for the access link is suitable enough to allow perfect cancellation of the data signal. For extreme situations, a probabilistic approach can be applied to deal with the imperfect signal cancellation for the proposed channel estimation. However, under such situations, it is possible that due to bad quality of the access channel, the ST may not consider such a channel for data transmission. The power estimated over the signal $\hpth \xtran[n] + \nas[n]$ corresponds to the interference plus noise power ($\prcvdsr = \pgpt \ptran + \nps$, where $\prcvdsr$ represents the true value, consider (\ref{eq_US:Thr_id})). The estimated received power at the SR is determined as $\eprcvdsr = \s{\test \fsam}{|\gpth \cdot \xtran[n] + \nas'[n]|^2}$. To characterize the secondary throughput, $\eprcvdsr$ is made available to the ST over a low rate feedback channel. Similar to $\eprcvd$, for a certain value of $\phpt$, $\eprcvdsr$ follows a non-central chi-squared distribution $\ncchi2(\ls, \test \fsam)$, with non-centrality parameter $\lpt = \test \fsam \pgpt \ptran / \nps$.
+\begin{lemma} \label{lm_US:lm3}
 \normalfont
 The cumulative distribution function of $\eprcvd$ is characterized as 
 \begin{align}
-\fprcvdsr(x) \approx 1 - \Gamma&\left(\apt, \frac{x}{\bpt}\right) \label{eq:fprcvdsr}, \\ 
-\text{where  } \apt = \frac{(\tau \fsam + \lpt)^2}{2 \tau \fsam + 4 \lpt} &\text{ and } \bpt = \frac{\nps (2 \tau \fsam + 4 \lpt)}{(\tau \fsam + \lpt)}.  \label{eq:para_pt} 
+\fprcvdsr(x) \approx 1 - \Gamma&\left(\apt, \frac{x}{\bpt}\right) \label{eq_US:fprcvdsr}, \\ 
+\text{where  } \apt = \frac{(\test \fsam + \lpt)^2}{2 \test \fsam + 4 \lpt} &\text{ and } \bpt = \frac{\nps (2 \test \fsam + 4 \lpt)}{(\test \fsam + \lpt)}.  \label{eq_US:para_pt} 
 \end{align} 
 \end{lemma}
 \begin{IEEEproof}
-Applying Approximation \ref{ap:ap1} to $\ncchi2(\lpt, \tau \fsam)$ yields (\ref{eq:fprcvdsr}). 
+Applying Approximation \ref{ap:ap1} from Chapter \ref{chap:IS} to $\ncchi2(\lpt, \test \fsam)$ yields (\ref{eq_US:fprcvdsr}). 
 \end{IEEEproof}
 \begin{remark}
 \normalfont
@@ -252,22 +252,22 @@ It is important to note that, the scenario described in this chapter considers a
 %  desired by the regulatory bodies, we capture this variation by means of an outage probability constraint $\p(\pp \ge \ite) \le \opc$.  %, it is impthrtant for the system to restrain $\op$ above a certain desired level $\opc$. %As a result, the outage probability constraint is defined as
 %\begin{align}
 %\p(\pp = \gp \preg \ge \ite) \le \opd. 
-%\label{eq:opc} 
+%\label{eq_US:opc} 
 %\end{align} 
 %\begin{lemma}
 %The controlled power that satisfies 
 %\end{lemma}
 %\subsubsection{Power control}
-%Given $\tau$ is utilized for $\prcvd$ estimation, the throughput at the SR is given by  
+%Given $\test$ is utilized for $\prcvd$ estimation, the throughput at the SR is given by  
 %\begin{equation}
-%\rs(\tau) = \frac{T - \tau}{T} \log_2 \left(1 + \frac{\gs \preg(\tau) }{\nps} \right). 
-%\label{eq:Thr_pm}
+%\rs(\test) = \frac{T - \test}{T} \log_2 \left(1 + \frac{\gs \preg(\test) }{\nps} \right). 
+%\label{eq_US:Thr_pm}
 %\end{equation}
-%It will be clear later in this section that small $\tau$ results in large variations for the $\prcvd$ and vice versa. According to (\ref{eq:preg}), this induces variations in $\preg$. These variations causes $\pp$ to deviate from $\ite$. If not considered in the model, these variations may affect the performance of the system. 
-%Based on (\ref{eq:opc}), the controlled power at the PR is determined as 
+%It will be clear later in this section that small $\test$ results in large variations for the $\prcvd$ and vice versa. According to (\ref{eq_US:preg}), this induces variations in $\preg$. These variations causes $\pp$ to deviate from $\ite$. If not considered in the model, these variations may affect the performance of the system. 
+%Based on (\ref{eq_US:opc}), the controlled power at the PR is determined as 
 %\begin{align}
-%\preg(\tau) = \ite \cdot F_{\frac{1}{\gp}}^{-1}(\opd, \tau), 
-%\label{eq:preg}
+%\preg(\test) = \ite \cdot F_{\frac{1}{\gp}}^{-1}(\opd, \test), 
+%\label{eq_US:preg}
 %\end{align}
 %where $\mathcal{F}_{\frac{1}{\gp}}^{-1}$ represents the inverse-distribution function of $1/{\gp}$.
 %Clearly, there exits a tradeoff that involves maximizing the expected throughput at the SR subject to a outage probability constraint is given by 
@@ -275,15 +275,15 @@ In this section, the performance of the USs is investigated on a single-frame ba
 At first, an outage probability constraint\footnote{The outage constraint is commonly used parameter for designing communication system that ensures the outage occurs no more than a certain percentage of time.} $\opc$ on the primary interference is employed to capture the variations in the $\prcvdpr$ incurred due to channel estimation, defined as 
 \begin{align}
 \p\left( \prcvdpr = \ephpth \preg \ge \ite \right) \le \opc, 
-\intertext{Substituting $\ephpth$ from (\ref{eq:prcvd}) yields}
-\p\left( \left( \frac{\eprcvd - \nps}{\ptran}\right) \preg \ge \ite \right) \le \opc. \label{eq:opc} \\[-1em] \nonumber 
+\intertext{Substituting $\ephpth$ from (\ref{eq_US:prcvd}) yields}
+\p\left( \left( \frac{\eprcvd - \nps}{\ptran}\right) \preg \ge \ite \right) \le \opc. \label{eq_US:opc} \\[-1em] \nonumber 
 \end{align}
 Besides the outage constraint, $\preg$ is limited by a predefined transmit power $\pc$. To capture this aspect, the transmit power constraint at the ST is defined as
 \begin{align}
-\preg \le \pc. \label{eq:pc} 
+\preg \le \pc. \label{eq_US:pc} 
 \end{align} 
-It is considered that the same power is allocated to all the symbols transmitted within a frame by the ST. In this regard, the transmit power constraint on symbol basis and frame basis is equivalent. As a consequence, the constraint depicted in (\ref{eq:pc}) is applicable the both the aforementioned scenarios. Based on the constraints in (\ref{eq:opc}) and (\ref{eq:pc}), an expression of the controlled power for the proposed framework is determined.
-\begin{lemma} \label{lm:lm4}
+It is considered that the same power is allocated to all the symbols transmitted within a frame by the ST. In this regard, the transmit power constraint on symbol basis and frame basis is equivalent. As a consequence, the constraint depicted in (\ref{eq_US:pc}) is applicable the both the aforementioned scenarios. Based on the constraints in (\ref{eq_US:opc}) and (\ref{eq_US:pc}), an expression of the controlled power for the proposed framework is determined.
+\begin{lemma} \label{lm_US:lm4}
 \normalfont 
 Subject to the outage constraint on the primary interference and the transmit power constraint at the ST, the controlled power at the ST is given by
 \begin{align}
@@ -292,34 +292,34 @@ Subject to the outage constraint on the primary interference and the transmit po
 \frac{\ite \ptran}{ \left(\bpo \Gamma^{-1}(\opc, \apo) - \nps  \right)} & \mbox{if } \preg < \pc \\
 \pc & \mbox{if } \preg \ge \pc
 \end{cases},
-\label{eq:preg} 
+\label{eq_US:preg} 
 \end{align}
-where $\apo$ and $\bpo$ are defined in (\ref{eq:para_po}) and $\Gamma^{-1}(\cdot, \cdot)$ is the inverse function of regularized upper-incomplete Gamma function \cite{abramo}.
+where $\apo$ and $\bpo$ are defined in (\ref{eq_US:para_po}) and $\Gamma^{-1}(\cdot, \cdot)$ is the inverse function of regularized upper-incomplete Gamma function \cite{abramo}.
 \end{lemma} 
 \begin{IEEEproof}
-Substituting the distribution function for $\eprcvd$, defined in (\ref{eq:fprcvd}), in (\ref{eq:opc}) and combining with (\ref{eq:pc}) yields (\ref{eq:preg}).
+Substituting the distribution function for $\eprcvd$, defined in (\ref{eq_US:fprcvd}), in (\ref{eq_US:opc}) and combining with (\ref{eq_US:pc}) yields (\ref{eq_US:preg}).
 \end{IEEEproof}
 Clearly, the performance of the US improves over the access channel (in terms of the secondary throughput) with $\preg$, but $\preg$ increases for the values of $\phpth$, which correspond to the lower values of $\snrrcvdu$.
 The real world wireless systems are limited by the transmit power $\pc$, which bounds the performance of the USs. In order to understand the effect of the power limitation on the USs, a performance bound is characterized in terms of the estimation time and the signal to ratio at the ST\footnote{\tc{Signal to noise ratio is mostly used as a design parameter for characterizing the performance of a wireless system.}}.  
  
 \begin{coro} \label{cor:cor1}
 \normalfont
-Subject to the outage constraint on the primary interference and the transmit power constraint at the ST, the performance bound ($\snrrcvdu^*$) of the USs that employ power control at the secondary is defined as %\footnote{Please note that $\tau \fsam$ and $\snrrcvd$ are included in the parameters $\apo$ and $\bpo$, refer to (\ref{eq:para_po}).} 
+Subject to the outage constraint on the primary interference and the transmit power constraint at the ST, the performance bound ($\snrrcvdu^*$) of the USs that employ power control at the secondary is defined as %\footnote{Please note that $\test \fsam$ and $\snrrcvd$ are included in the parameters $\apo$ and $\bpo$, refer to (\ref{eq_US:para_po}).} 
 \begin{align}
-\Gamma\left(\frac{\tau \fsam (1 + \snrrcvdu^*)^2}{2 + 4 \snrrcvdu^*}, \frac{\tau \fsam (1  + \snrrcvdu^*)}{\nps (2 + 4 \snrrcvdu^*)} \left( \frac{\ite \ptran}{\pc} + \nps  \right)  \right) = \opc. \label{eq:opreg}  
+\Gamma\left(\frac{\test \fsam (1 + \snrrcvdu^*)^2}{2 + 4 \snrrcvdu^*}, \frac{\test \fsam (1  + \snrrcvdu^*)}{\nps (2 + 4 \snrrcvdu^*)} \left( \frac{\ite \ptran}{\pc} + \nps  \right)  \right) = \opc. \label{eq_US:opreg}  
 \end{align}
 \end{coro}
 \begin{IEEEproof}
-Substituting $\preg$ with $\pc$ in (\ref{eq:opc}) and reformulating gives 
+Substituting $\preg$ with $\pc$ in (\ref{eq_US:opc}) and reformulating gives 
 \begin{align}
 %\p\left( \left( \frac{\eprcvd - \nps}{\ptran}\right) \pc \ge \ite \right) \le \opc 
-\p\left( \eprcvd \ge \frac{\ite \ptran}{\pc} + \nps \right) &\le \opc. \label{eq:opreg_a} 
+\p\left( \eprcvd \ge \frac{\ite \ptran}{\pc} + \nps \right) &\le \opc. \label{eq_US:opreg_a} 
 \end{align}
-Using (\ref{eq:fprcvd}) in Lemma \ref{lm:lm1} gives
+Using (\ref{eq_US:fprcvd}) in Lemma \ref{lm_US:lm1} gives
 \begin{align}
-\Gamma\left(\frac{\tau \fsam (1 + \snrrcvdu)^2}{2 + 4 \snrrcvdu}, \frac{\tau \fsam (1  + \snrrcvdu)}{\nps (2 + 4 \snrrcvdu)} \left( \frac{\ite \ptran}{\pc} + \nps  \right)  \right) &\le \opc. \label{eq:opreg_b} 
+\Gamma\left(\frac{\test \fsam (1 + \snrrcvdu)^2}{2 + 4 \snrrcvdu}, \frac{\test \fsam (1  + \snrrcvdu)}{\nps (2 + 4 \snrrcvdu)} \left( \frac{\ite \ptran}{\pc} + \nps  \right)  \right) &\le \opc. \label{eq_US:opreg_b} 
 \end{align}
-Substituting $\snrrcvdu$ with $\snrrcvdu^*$ and replacing the expression in (\ref{eq:opreg_b}) with equality yields (\ref{eq:opreg}). 
+Substituting $\snrrcvdu$ with $\snrrcvdu^*$ and replacing the expression in (\ref{eq_US:opreg_b}) with equality yields (\ref{eq_US:opreg}). 
 \end{IEEEproof}
 \begin{figure}[!ht]
 %\vspace{-5mm}
@@ -353,34 +353,34 @@ Substituting $\snrrcvdu$ with $\snrrcvdu^*$ and replacing the expression in (\re
 \end{tikzpicture}
 
 %\vspace{-4mm}
-\caption{An illustration of the interference-limited and the power-limited regimes ($\snrrcvdu^*$) for the US depicted in terms of estimation time ($\tau$) and the ratio of the received power (from the PR) to noise ($\snrrcvdu$) at the ST.}
-\label{fig:or}
+\caption{An illustration of the interference-limited and the power-limited regimes ($\snrrcvdu^*$) for the US depicted in terms of estimation time ($\test$) and the ratio of the received power (from the PR) to noise ($\snrrcvdu$) at the ST.}
+\label{fig_US:or}
 %\vspace{-10mm}
 \end{figure}
 \begin{remark} \label{rm:rm1}
 \normalfont
-\figurename~\ref{fig:or} analyzes the variations of $\snrrcvdu^*$ with $\tau$. Using the expression $\snrrcvdu^*$ obtained in Corollary \ref{cor:cor1}, we classify the operation of the USs into the following regimes: (i) interference-limited regime and (ii) power-limited regime. \tc{Inside the interference-limited regime $\snrrcvdu > \snrrcvdu^*$, due to good quality of the channel ST-PR (unfavorable to the USs), the system is limited due to the exceeding level of the uncertain interference, which can be regulated effectively by employing power control at the US to satisfy the given outage constraint. At $\snrrcvdu = \snrrcvdu^*$, the ST operates at the maximum control power $\preg = \pc$ while respecting the tolerance limits defined for the uncertain interference. From a different perspective, the situation $\snrrcvdu = \snrrcvdu^*$ also represents those USs that are unable to carry out power control. With regard to the outage constraint and the lack of the power control, for a given choice of $\snrrcvdu^*$, such systems can operate only at a specific value of $\tau$.
-%At $\snrrcvdu = \snrrcvdu^*$, the system operates at the maximum transmit power $\pc$, i.e., without power control. It is worth noticing that the situation $\snrrcvdu = \snrrcvdu^*$ is a representative of those underlay systems that are unable to carry out power control. With regard to desired outage constraint on the uncertain interference, such systems can operate for a given choice of $\snrrcvdu^*$ only at a certain value of $\tau$. From a different perspective, at $\snrrcvdu = \snrrcvdu^*$, the USs are allowed to operate with maximum transmit power $\pc$ without exceeding the tolerance limits defined for the interference. 
+\figurename~\ref{fig_US:or} analyzes the variations of $\snrrcvdu^*$ with $\test$. Using the expression $\snrrcvdu^*$ obtained in Corollary \ref{cor:cor1}, we classify the operation of the USs into the following regimes: (i) interference-limited regime and (ii) power-limited regime. \tc{Inside the interference-limited regime $\snrrcvdu > \snrrcvdu^*$, due to good quality of the channel ST-PR (unfavorable to the USs), the system is limited due to the exceeding level of the uncertain interference, which can be regulated effectively by employing power control at the US to satisfy the given outage constraint. At $\snrrcvdu = \snrrcvdu^*$, the ST operates at the maximum control power $\preg = \pc$ while respecting the tolerance limits defined for the uncertain interference. From a different perspective, the situation $\snrrcvdu = \snrrcvdu^*$ also represents those USs that are unable to carry out power control. With regard to the outage constraint and the lack of the power control, for a given choice of $\snrrcvdu^*$, such systems can operate only at a specific value of $\test$.
+%At $\snrrcvdu = \snrrcvdu^*$, the system operates at the maximum transmit power $\pc$, i.e., without power control. It is worth noticing that the situation $\snrrcvdu = \snrrcvdu^*$ is a representative of those underlay systems that are unable to carry out power control. With regard to desired outage constraint on the uncertain interference, such systems can operate for a given choice of $\snrrcvdu^*$ only at a certain value of $\test$. From a different perspective, at $\snrrcvdu = \snrrcvdu^*$, the USs are allowed to operate with maximum transmit power $\pc$ without exceeding the tolerance limits defined for the interference. 
 }
 
 \tc{
-On the other side, the region $\snrrcvdu \le \snrrcvdu^*$, which depicts a weak link quality between the ST and the PR, hence, is beneficial to the secondary user. However, due to the transmit power constraint, the USs are confined to operate at $\pc$. As a result, these favorable conditions do not translate to any performance gain.} Therefore, this regime is characterized as a power-limited regime. \tc{Besides, it is interesting to observe that for low values of the estimation time, $\snrrcvdu^* \rightarrow -\infty$, which signifies that low $\tau$ increases the uncertainty in the interference. In order to regulate the level of this uncertainty, US has to be proactive in terms of power control mechanism to be able to satisfy the interference constraint. It is also observed that as $\tau \rightarrow \infty$, $\snrrcvdu^*$ converges asymptotically to a certain value. This signifies the fact that additional time resources allocated for the channel estimation, after a certain value, does not account to any significant improvement in the terms of the uncertain interference, or indirectly power control. As a result, the performance of the US in the form of power control gets saturated.}  %As a result, by replacing $\snrrcvdu^*$ in the following expression of secondary throughput, we determine the performance limits of operation for the US. 
+On the other side, the region $\snrrcvdu \le \snrrcvdu^*$, which depicts a weak link quality between the ST and the PR, hence, is beneficial to the secondary user. However, due to the transmit power constraint, the USs are confined to operate at $\pc$. As a result, these favorable conditions do not translate to any performance gain.} Therefore, this regime is characterized as a power-limited regime. \tc{Besides, it is interesting to observe that for low values of the estimation time, $\snrrcvdu^* \rightarrow -\infty$, which signifies that low $\test$ increases the uncertainty in the interference. In order to regulate the level of this uncertainty, US has to be proactive in terms of power control mechanism to be able to satisfy the interference constraint. It is also observed that as $\test \rightarrow \infty$, $\snrrcvdu^*$ converges asymptotically to a certain value. This signifies the fact that additional time resources allocated for the channel estimation, after a certain value, does not account to any significant improvement in the terms of the uncertain interference, or indirectly power control. As a result, the performance of the US in the form of power control gets saturated.}  %As a result, by replacing $\snrrcvdu^*$ in the following expression of secondary throughput, we determine the performance limits of operation for the US. 
 \end{remark}
 %Based on the operation regime, we determine best performance, in terms of the lowest operational SNR, achieved by the US. 
 Next, the variations in the secondary throughput are captured in terms of its expected value. To accomplish this, the cumulative distribution function (cdf) of the data rate\footnote{\tc{Please note, we have introduced the following terms the data rate $\ca$ and the throughput $\rs$ to make a clear distinction between the instantaneous data rate and its average value over the frame duration.}}
 \begin{align}
-\eca  = \log_2 \left(1 + \frac{\epgs \preg}{\eprcvdsr} \right) \label{eq:eca}
+\eca  = \log_2 \left(1 + \frac{\epgs \preg}{\eprcvdsr} \right) \label{eq_US:eca}
 \end{align}
-over the access channel evaluated at the ST. It is worth noticing the fact that unlike $\ca$ defined in (\ref{eq:Thr_id}), $\eca$ entails the random behavior due to the estimation of $\epgs$ and $\eprcvdsr$.
-\begin{lemma} \label{lm:lm5}
+over the access channel evaluated at the ST. It is worth noticing the fact that unlike $\ca$ defined in (\ref{eq_US:Thr_id}), $\eca$ entails the random behavior due to the estimation of $\epgs$ and $\eprcvdsr$.
+\begin{lemma} \label{lm_US:lm5}
 \normalfont 
 The cdf of data rate $\eca$ is given by
 \begin{align}
-\fc(x) &= \int\limits_{0}^{x} \dc(t) dt, \label{eq:dis_C} 
+\fc(x) &= \int\limits_{0}^{x} \dc(t) dt, \label{eq_US:dis_C} 
 \end{align}
 where the $\dc(x)$ probability density function (pdf) is given by 
 \begin{align}
-\dc(x) &= 2^x \ln 2 \frac{(2^x - 1)^{\as - 1} \Gamma(\as + \apt)}{\Gamma(\as) \Gamma(\apt) (\bs \ptran) ^{\as} \bpt^{\apt}} \left(\frac{1}{\bpt} + \frac{2^x - 1}{\bs \ptran}\right). \label{eq:den_C}
+\dc(x) &= 2^x \ln 2 \frac{(2^x - 1)^{\as - 1} \Gamma(\as + \apt)}{\Gamma(\as) \Gamma(\apt) (\bs \ptran) ^{\as} \bpt^{\apt}} \left(\frac{1}{\bpt} + \frac{2^x - 1}{\bs \ptran}\right). \label{eq_US:den_C}
 \end{align}
 \end{lemma}
 \begin{IEEEproof}
@@ -417,7 +417,7 @@ See Appendix \ref{ap:one}.
 \end{scope}
 \end{tikzpicture}
 
-\label{fig:CDF_C1_s}}
+\label{fig_US:CDF_C1_s}}
 \hfil
 \subfloat[]{
 \input{figures/fig_CDF_Cs_diff_Np2_AWGN.tex} 
@@ -429,97 +429,97 @@ See Appendix \ref{ap:one}.
 \begin{scope}[x={(image.south east)},y={(image.north west)}]
 
 \draw[black,->] (0.28,0.25) -- (0.48,0.15);
-\node[draw=none, font=\scriptsize] at (0.25,0.3) {$\tau \in \{0.1,1,10\} \SI{}{ms}$};
+\node[draw=none, font=\scriptsize] at (0.25,0.3) {$\test \in \{0.1,1,10\} \SI{}{ms}$};
 
 %\draw[help lines,xstep=.1,ystep=.1] (0,0) grid (1,1);
 %\foreach \x in {0,1,...,9} { \node [anchor=north] at (\x/10,0) {0.\x}; }
 %\foreach \y in {0,1,...,9} { \node [anchor=east] at (0,\y/10) {0.\y}; }
 \end{scope}
 \end{tikzpicture}
-\label{fig:CDF_C1_p2}}
+\label{fig_US:CDF_C1_p2}}
 \vspace{0.3cm}
-\caption{CDF of $\eca$ for different $\pgpt \ptran/\nps$ and $\tau$. (a) $\pgpt \ptran/\nps \in \{-10, 0, 10\} \SI{}{dB}$ and $\tau = \SI{1}{ms}$, (b) $\tau = \{0.1, 1, 10\} \SI{}{ms}$ and $\pgpt \ptran/\nps = \SI{0}{dB}$.}%, for the following values of system parameters, $\snrrcvdu = \SI{10}{dB}$, $\preg = \SI{0}{dBm}$.}
-\label{fig:CDF_eca}
+\caption{CDF of $\eca$ for different $\pgpt \ptran/\nps$ and $\test$. (a) $\pgpt \ptran/\nps \in \{-10, 0, 10\} \SI{}{dB}$ and $\test = \SI{1}{ms}$, (b) $\test = \{0.1, 1, 10\} \SI{}{ms}$ and $\pgpt \ptran/\nps = \SI{0}{dB}$.}%, for the following values of system parameters, $\snrrcvdu = \SI{10}{dB}$, $\preg = \SI{0}{dBm}$.}
+\label{fig_US:CDF_eca}
 \vspace{-0.5cm}
 \end{figure}
-In consideration to the Approximation \ref{ap:ap1}, which is applied to obtain the cdfs' of $\eprcvd$, $\epgs$ and $\eprcvdsr$ in Lemma \ref{lm:lm5}, the theoretical expression of the cdf depicted in (\ref{eq:dis_C}) is validated by means of simulations in \figurename~\ref{fig:CDF_eca} with different choices of system parameters, which include $\snrrcvdu = \SI{10}{dB}$, $\preg = \SI{0}{dBm}$, $\frac{\pgpt \ptran}{\nps} \in \{-10, 0, 10\} \SI{}{dB}$ and $\tau = \{0.1, 1, 10\} \SI{}{ms}$.
+In consideration to the Approximation \ref{ap:ap1}, which is applied to obtain the cdfs' of $\eprcvd$, $\epgs$ and $\eprcvdsr$ in Lemma \ref{lm_US:lm5}, the theoretical expression of the cdf depicted in (\ref{eq_US:dis_C}) is validated by means of simulations in \figurename~\ref{fig_US:CDF_eca} with different choices of system parameters, which include $\snrrcvdu = \SI{10}{dB}$, $\preg = \SI{0}{dBm}$, $\frac{\pgpt \ptran}{\nps} \in \{-10, 0, 10\} \SI{}{dB}$ and $\test = \{0.1, 1, 10\} \SI{}{ms}$.
 
 Besides the outage constraint on the primary interference, the expected secondary throughput over the access channel at the SR is defined as
 \begin{align}
-\rs(\tau) %&= \e{\epgs, \eprcvdsr} {\frac{T - \tau}{T} \log_2 \left(1 + \frac{\epgs \preg }{\eprcvdsr} \right)}, \label{eq:rs}
-          &= \frac{T - \tau}{T} \e{\eca} {\eca}, \label{eq:rs}
+\rs(\test) %&= \e{\epgs, \eprcvdsr} {\frac{T - \test}{T} \log_2 \left(1 + \frac{\epgs \preg }{\eprcvdsr} \right)}, \label{eq_US:rs}
+          &= \frac{T - \test}{T} \e{\eca} {\eca}, \label{eq_US:rs}
 \end{align} 
-where $\e{\eca}{\cdot}$ corresponds to an expectation over $\eca$, whose pdf is characterized in Lemma \ref{lm:lm5}. 
+where $\e{\eca}{\cdot}$ corresponds to an expectation over $\eca$, whose pdf is characterized in Lemma \ref{lm_US:lm5}. 
 
 \begin{remark} \label{rm:rm3}
 \normalfont
-\tc{At this point, it is well-known that the performance degradation due to channel estimation in the form of the secondary throughput is inherent to the USs. Specifically, the time allocation and the uncertain interference are responsible of this degradation. The power control, determined in Lemma \ref{lm:lm4}, represented as a function of estimation time is able to regulate the uncertain interference. As discussed previously in Remark \ref{rm:rm1}, the low estimation time enables a severe control in power, thereby reducing the secondary throughput. On the other hand, the time resources allocated for the channel estimation also decrease the throughput. This phenomenon can be captured by observing the variation of the secondary throughput along the estimation time such that the constraints depicted in (\ref{eq:opc}) and (\ref{eq:pc}) are fulfilled. Below, Problem \ref{th:th1} captures this relationship between the estimation time and the secondary throughput defined as estimation-throughput tradeoff. More importantly, this tradeoff is utilized to determine a suitable estimation time at which maximum throughput at the SR is achieved.}
+\tc{At this point, it is well-known that the performance degradation due to channel estimation in the form of the secondary throughput is inherent to the USs. Specifically, the time allocation and the uncertain interference are responsible of this degradation. The power control, determined in Lemma \ref{lm_US:lm4}, represented as a function of estimation time is able to regulate the uncertain interference. As discussed previously in Remark \ref{rm:rm1}, the low estimation time enables a severe control in power, thereby reducing the secondary throughput. On the other hand, the time resources allocated for the channel estimation also decrease the throughput. This phenomenon can be captured by observing the variation of the secondary throughput along the estimation time such that the constraints depicted in (\ref{eq_US:opc}) and (\ref{eq_US:pc}) are fulfilled. Below, Problem \ref{th_US:th1} captures this relationship between the estimation time and the secondary throughput defined as estimation-throughput tradeoff. More importantly, this tradeoff is utilized to determine a suitable estimation time at which maximum throughput at the SR is achieved.}
 \end{remark}
-\begin{theorem} \label{th:th1}
+\begin{theorem} \label{th_US:th1}
 \normalfont
 The expected achievable secondary throughput subject to the outage constraint on the primary interference and the transmit power constraint at the ST is defined as
 \begin{align}
-\trs(\ttau) = \maxi_{\tau}  & \text{      } {\rs(\tau)}, 
- \label{eq:sys} \\
-\text{s.t.} & \text{ } (\ref{eq:opc}), \text{  } (\ref{eq:pc}), \nonumber 
+\trs(\ttest) = \maxi_{\test}  & \text{      } {\rs(\test)}, 
+ \label{eq_US:sys} \\
+\text{s.t.} & \text{ } (\ref{eq_US:opc}), \text{  } (\ref{eq_US:pc}), \nonumber 
 %\text{s.t.} & \text{ } \p\left( \left( \frac{\eprcvd - \nps}{\ptran} \right) \preg \ge \ite \right) \le \opc, \nonumber \\ 
 %\text{s.t.} & \text{ }  \preg \le \pc, \nonumber   
  \end{align}
-where $\trs(\ttau)$ corresponds to optimum throughput at $\ttau$.  
+where $\trs(\ttest)$ corresponds to optimum throughput at $\ttest$.  
 \end{theorem}
 \begin{IEEEproof}
-The constrained optimization problem is solved by substituting $\preg$ from Lemma \ref{lm:lm3}, determined by applying the outage and the transmit power constraints defined in (\ref{eq:opc}) and (\ref{eq:pc}), in (\ref{eq:rs}). 
-The pdf of $\eca$, determined in (\ref{eq:den_C}), is used to evaluate the expectation on the secondary throughput. Following this, an expression of the expected secondary throughput as a function of $\tau$\footnote{Please note that $\apt$ and $\bpt$ are also functions of $\tau$, see (\ref{eq:para_pt}).} is determined as
+The constrained optimization problem is solved by substituting $\preg$ from Lemma \ref{lm_US:lm3}, determined by applying the outage and the transmit power constraints defined in (\ref{eq_US:opc}) and (\ref{eq_US:pc}), in (\ref{eq_US:rs}). 
+The pdf of $\eca$, determined in (\ref{eq_US:den_C}), is used to evaluate the expectation on the secondary throughput. Following this, an expression of the expected secondary throughput as a function of $\test$\footnote{Please note that $\apt$ and $\bpt$ are also functions of $\test$, see (\ref{eq_US:para_pt}).} is determined as
 \begin{equation}
-\rs(\tau) = \frac{T - \tau}{T} \int\limits_{0}^{\infty} x \dc(x) dx. \label{eq:intrs}
+\rs(\test) = \frac{T - \test}{T} \int\limits_{0}^{\infty} x \dc(x) dx. \label{eq_US:intrs}
 \end{equation}
-Solving numerically the expression in (\ref{eq:intrs}) yields $\ttau$ and $\trs(\ttau)$. 
+Solving numerically the expression in (\ref{eq_US:intrs}) yields $\ttest$ and $\trs(\ttest)$. 
 \end{IEEEproof}
 \begin{coro} \label{cor:cor2}
 \normalfont
-Problem \ref{th:th1} considers the optimization of the expected secondary throughput for the proposed framework that employ power control and considers the effect of the imperfect channel knowledge. \tc{In accordance to Corollary \ref{cor:cor1}, these USs correspond to the USs that operate in the interference-limited regime $\snrrcvdu^* \ge \snrrcvdu $.} Besides, it is interesting to compare its performance with those CR systems that employ channel estimation (as proposed in the paper) and satisfy the outage constraint on the primary interference, however, employ no power control, i.e., operate at $\pc$. \tc{With regard to Corollary \ref{cor:cor1}, these systems correspond to the ones operating on the curve $\snrrcvdu^*  = \snrrcvdu$. For the latter approach, the secondary throughput is obtained by substituting $\preg$ with $\pc$ in (\ref{eq:rs}), where $\tau$ in (\ref{eq:rs}) is determined using Corollary \ref{cor:cor1}. Such a comparison allows us to quantify the performance gain procured by the USs through the employment of power control.}
+Problem \ref{th_US:th1} considers the optimization of the expected secondary throughput for the proposed framework that employ power control and considers the effect of the imperfect channel knowledge. \tc{In accordance to Corollary \ref{cor:cor1}, these USs correspond to the USs that operate in the interference-limited regime $\snrrcvdu^* \ge \snrrcvdu $.} Besides, it is interesting to compare its performance with those CR systems that employ channel estimation (as proposed in the paper) and satisfy the outage constraint on the primary interference, however, employ no power control, i.e., operate at $\pc$. \tc{With regard to Corollary \ref{cor:cor1}, these systems correspond to the ones operating on the curve $\snrrcvdu^*  = \snrrcvdu$. For the latter approach, the secondary throughput is obtained by substituting $\preg$ with $\pc$ in (\ref{eq_US:rs}), where $\test$ in (\ref{eq_US:rs}) is determined using Corollary \ref{cor:cor1}. Such a comparison allows us to quantify the performance gain procured by the USs through the employment of power control.}
 \end{coro}
 
-%Problem \ref{th:th1} depicts an optimum estimation time $\ttau$ that achieves an optimum secondary throughput $\trs(\ttau)$.
-%The throughput depicted from (\ref{eq:Thr_id}) for the ideal model overestimates the throughput of the US. %This overestimation in the throughput is evaluated as $\beta$ that depicts the difference between the $\ers$ obtained from the models. 
-%It is evident that for analyzing the tradeoff depicted in (\ref{eq:sys}), first it is impthrtant to characterize the $\preg$ and density function $\drs$. 
+%Problem \ref{th_US:th1} depicts an optimum estimation time $\ttest$ that achieves an optimum secondary throughput $\trs(\ttest)$.
+%The throughput depicted from (\ref{eq_US:Thr_id}) for the ideal model overestimates the throughput of the US. %This overestimation in the throughput is evaluated as $\beta$ that depicts the difference between the $\ers$ obtained from the models. 
+%It is evident that for analyzing the tradeoff depicted in (\ref{eq_US:sys}), first it is impthrtant to characterize the $\preg$ and density function $\drs$. 
 
 %\subsection{Short term analysis}
 %To simplify the analysis, we consider a case where the transmitted signals are subject to path loss only, that is, the small scale channel gains correspond to $\gs = \gp = 1$. In this way, we first consider the variations in $\pp$ due to the presence of noise in the system. 
 
 %\subsubsection{Characterization of performance parameters}
-%Considering (\ref{eq:prcvd}), $\prcvd$ follows a non-central chi-squared distributed $\mathcal{X'}^2(N \snrrcvdu, N)$, where $\snrrcvd = \ptran/\nps$ denotes the received SNR \cite{Urkowitz}. 
-%According to (\ref{eq:preg}), $\preg$ for the short term case is given by 
+%Considering (\ref{eq_US:prcvd}), $\prcvd$ follows a non-central chi-squared distributed $\mathcal{X'}^2(N \snrrcvdu, N)$, where $\snrrcvd = \ptran/\nps$ denotes the received SNR \cite{Urkowitz}. 
+%According to (\ref{eq_US:preg}), $\preg$ for the short term case is given by 
 
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Random Channel}\label{ssec:ltpa}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-Here, the objective is to investigate the performance of the proposed approach, where the interacting channels encounter quasi-static block fading. Following the frame structure in \figurename~\ref{fig:fs}, the alternating transmissions observe a different channel. In this regard, the channel gains $\hpth$, $\gpt$ and $\gs$ are characterized according to Nakagami-$m$ fading model. As a consequence, the power gains $\phpth$, $\pgpt$ and $\pgs$ follow a Gamma distribution \cite{Goldsmith05}, whose corresponding cumulative distribution functions are defined as  
+Here, the objective is to investigate the performance of the proposed approach, where the interacting channels encounter quasi-static block fading. Following the frame structure in \figurename~\ref{fig_US:fs}, the alternating transmissions observe a different channel. In this regard, the channel gains $\hpth$, $\gpt$ and $\gs$ are characterized according to Nakagami-$m$ fading model. Analog to the previous chapter, the power gains $\phpth$, $\pgpt$ and $\pgs$ follow a Gamma distribution \cite{Goldsmith05}, whose corresponding cumulative distribution functions are defined as  
 \begin{align}
-\fpgpo(x) = 1 - \Gamma\left(\mpo, \frac{\mpo x}{\bpgpth}\right), \label{eq:dis_pgpth}\\
-\fpgpt(x) = 1 - \Gamma\left(\mpt, \frac{\mpt x}{\bpgpt}\right), \label{eq:dis_pgpt}\\  
-\fpgs(x) = 1 - \Gamma\left(\ms , \frac{\ms x}{\bpgs}\right), \label{eq:dis_pgs}
+\fpgpo(x) = 1 - \Gamma\left(\mpo, \frac{\mpo x}{\bpgpth}\right), \label{eq_US:dis_pgpth}\\
+\fpgpt(x) = 1 - \Gamma\left(\mpt, \frac{\mpt x}{\bpgpt}\right), \label{eq_US:dis_pgpt}\\  
+\fpgs(x) = 1 - \Gamma\left(\ms , \frac{\ms x}{\bpgs}\right), \label{eq_US:dis_pgs}
 \end{align}
 where $\mpth$, $\mpt$ and $\ms$ represent the $m$ parameter, whereas $\bpgpth$, $\bpgpt$ and $\bpgs$ are the expected values for channels $\pgpth$, $\pgpt$ and $\pgs$, respectively. $\Gamma(\cdot, \cdot)$ is a regularized upper-incomplete Gamma function \cite{abramo}.
 The performance analysis subject to channel fading has been considered by Ghasemi \textit{et al.} \cite{Ghasemi06, Ghasemi07}. However, the authors in \cite{Ghasemi06, Ghasemi07} evaluated average data rate under an average interference constraint. The influence of the channel fading (however, without channel estimation) has been quantified in terms of the outage constraint on the primary interference, is given by %. In order to make a fair comparison (benchmark) of our proposed approach, the ideal model the existing investigations in context to channel fading are quantified based on an outage constraint on the primary interference, given by
 \begin{align}
-	\max_{\preg} & \e{\pgpt, \pgs }{ \frac{\pgs \preg}{\pgpt \ptran + \nps}} \label{eq:sys_id_fad}, \\
-	\text{s.t.} & \text{ } \p(\prcvdpr= \phpth \preg \ge \ite) \le \opc, \label{eq:opc_id_fad} 
+	\max_{\preg} & \e{\pgpt, \pgs }{ \frac{\pgs \preg}{\pgpt \ptran + \nps}} \label{eq_US:sys_id_fad}, \\
+	\text{s.t.} & \text{ } \p(\prcvdpr= \phpth \preg \ge \ite) \le \opc, \label{eq_US:opc_id_fad} 
 \end{align}
 where $\e{\pgpt, \pgs} {\cdot}$ corresponds to expectation with respect to $\pgpt$, $\pgs$.
-Despite the knowledge of the fading model, similar to the ideal model depicted for the deterministic channel (refer to Section \ref{ssec:pd}), the characterization in (\ref{eq:sys_id_fad}) and (\ref{eq:opc_id_fad}) assumes the perfect knowledge\footnote{For the channel fading case, this knowledge signifies the expected values.} of the power gains $(\bphpth, \bpgpt, \bpgs)$ of the corresponding channels. In view of this, proposed framework is further extended to investigate the effect of the random channel (channel fading) on the performance of the USs that incorporates estimation of the involved channels.
+Despite the knowledge of the fading model, similar to the ideal model depicted for the deterministic channel (refer to Section \ref{ssec:pd}), the characterization in (\ref{eq_US:sys_id_fad}) and (\ref{eq_US:opc_id_fad}) assumes the perfect knowledge\footnote{For the channel fading case, this knowledge signifies the expected values.} of the power gains $(\bphpth, \bpgpt, \bpgs)$ of the corresponding channels. In view of this, proposed framework is further extended to investigate the effect of the random channel (channel fading) on the performance of the USs that incorporates estimation of the involved channels.
 
 To begin the analysis, the expression of the outage constraint on the primary interference is determined as 
 \begin{align}
-\smash[b]{\overbrace{\e{\phpth}{\smash[b]{\underbrace{\p\left( \left( \frac{\eprcvd - \nps}{\ptran}\right) \preg \ge \ite \right)}_{\text{Channel Estimation}}}}}^{\text{Channel Fading}}} \le \opc, \label{eq:opc_fad} \\[0.5em] \nonumber 
+\smash[b]{\overbrace{\e{\phpth}{\smash[b]{\underbrace{\p\left( \left( \frac{\eprcvd - \nps}{\ptran}\right) \preg \ge \ite \right)}_{\text{Channel Estimation}}}}}^{\text{Channel Fading}}} \le \opc, \label{eq_US:opc_fad} \\[0.5em] \nonumber 
 \end{align}
-where $\eprcvd$ depends on the underlying value of $\phpth$. In contrast to the constraint in (\ref{eq:opc_id_fad}), (\ref{eq:opc_fad}) captures the variations due to the channel estimation $(\p(\cdot)$ determined in terms of $\eprcvd$) and the channel fading ($\e{\phpth}{\cdot}$). Based on (\ref{eq:opc_fad}) and transmit power constraint defined in (\ref{eq:pc}), it is essential to derive the expression of the controlled power $(\preg)$ for the case with random channel.
+where $\eprcvd$ depends on the underlying value of $\phpth$. In contrast to the constraint in (\ref{eq_US:opc_id_fad}), (\ref{eq_US:opc_fad}) captures the variations due to the channel estimation $(\p(\cdot)$ determined in terms of $\eprcvd$) and the channel fading ($\e{\phpth}{\cdot}$). Based on (\ref{eq_US:opc_fad}) and transmit power constraint defined in (\ref{eq_US:pc}), it is essential to derive the expression of the controlled power $(\preg)$ for the case with random channel.
 
-\begin{lemma} \label{lm:lm6}
+\begin{lemma} \label{lm_US:lm6}
 \normalfont
-Subject to the outage constraint on the primary interference and the transmit power constraint at the ST, the controlled power at the ST under Nakagami-$m$ fading is given by %(see top of next page (\ref{eq:preg_fad}))
+Subject to the outage constraint on the primary interference and the transmit power constraint at the ST, the controlled power at the ST under Nakagami-$m$ fading is given by %(see top of next page (\ref{eq_US:preg_fad}))
 %\begin{figure*}[!ht]
 
 %\begin{sideways}
@@ -528,35 +528,35 @@ Subject to the outage constraint on the primary interference and the transmit po
 \begin{align}
 &\preg = \nonumber \\ 
 & \begin{cases} 
-\text{Solving for $\preg$, } \\ \int\limits_{0}^{\infty} \Gamma\bigg(\frac{\tau \fsam (1 + x \ptran/\nps)^2}{2 + 4 x \ptran/\nps}, \frac{\tau \fsam (1 + x \ptran/\nps)}{\nps (2 + 4 x \ptran/\nps)} \\ \bigg(\frac{\ite\ptran}{\preg}  +  \nps \bigg)\bigg) d \fphpth(x) = \opc & \mbox{if } \preg < \pc \\
+\text{Solving for $\preg$, } \\ \int\limits_{0}^{\infty} \Gamma\bigg(\frac{\test \fsam (1 + x \ptran/\nps)^2}{2 + 4 x \ptran/\nps}, \frac{\test \fsam (1 + x \ptran/\nps)}{\nps (2 + 4 x \ptran/\nps)} \\ \bigg(\frac{\ite\ptran}{\preg}  +  \nps \bigg)\bigg) d \fphpth(x) = \opc & \mbox{if } \preg < \pc \\
 \pc & \mbox{if } \preg \ge \pc
 \end{cases}
-\label{eq:preg_fad} 
+\label{eq_US:preg_fad} 
 \end{align}
 %\end{center}
 %\end{minipage}
 %\end{sideways}
 %\hrulefill
 %\end{figure*}
-, where %$\apo$ and $\bpo$ are defined in (\ref{eq:para_po}) and 
-$\fphpth(\cdot)$ is defined in (\ref{eq:dis_pgpth}). 
+, where %$\apo$ and $\bpo$ are defined in (\ref{eq_US:para_po}) and 
+$\fphpth(\cdot)$ is defined in (\ref{eq_US:dis_pgpth}). 
 \end{lemma} 
 \begin{IEEEproof}
-Since it is complicated to obtain a closed form expression of the integral in (\ref{eq:preg_fad}), therefore, the controlled power is evaluated numerically.  
+Since it is complicated to obtain a closed form expression of the integral in (\ref{eq_US:preg_fad}), therefore, the controlled power is evaluated numerically.  
 \end{IEEEproof}
 Similar to deterministic channel (in Corollary \ref{cor:cor1}), below, the performance bound $(\snrrcvdu^*)$ in terms of $\snrrcvdu$ and a certain value of estimation time for the random channel is determined.
- $\snrrcvdu^*$ is determined by substituting $\preg$ with $\pc$ in the expression (\ref{eq:preg_fad}) 
+ $\snrrcvdu^*$ is determined by substituting $\preg$ with $\pc$ in the expression (\ref{eq_US:preg_fad}) 
 \begin{align}
 %\hspace{-4mm}
-&\int\limits_{0}^{\infty} \Gamma\left( \frac{\tau \fsam (1 + x \ptran/\nps)^2}{2 + 4 x \ptran/\nps}, \frac{\tau \fsam (1 + x \ptran/\nps)}{\nps (2 + 4 x \ptran/\nps)}  \left(\frac{\ite\ptran}{\pc} + \nps \right)\right) \nonumber \\ & d \fphpth(x) \le \opc, \label{eq:or_fad}
+&\int\limits_{0}^{\infty} \Gamma\left( \frac{\test \fsam (1 + x \ptran/\nps)^2}{2 + 4 x \ptran/\nps}, \frac{\test \fsam (1 + x \ptran/\nps)}{\nps (2 + 4 x \ptran/\nps)}  \left(\frac{\ite\ptran}{\pc} + \nps \right)\right) \nonumber \\ & d \fphpth(x) \le \opc, \label{eq_US:or_fad}
 \end{align}
-{In order to obtain $\snrrcvdu^*$, the integral on the left side is evaluated to obtain function of $\phpth$ and $\tau$. Since no closed form expression of this function is obtained, it is represented as}
+{In order to obtain $\snrrcvdu^*$, the integral on the left side is evaluated to obtain function of $\phpth$ and $\test$. Since no closed form expression of this function is obtained, it is represented as}
 \begin{align*}
-g(\phpth, \tau \fsam) \le \opc. \nonumber   
+g(\phpth, \test \fsam) \le \opc. \nonumber   
 \end{align*}
 {Substituting $\phpth = \frac{\snrrcvdu^* \nps}{\ptran}$ and replacing with equality, $\snrrcvdu^*$ for the random channel is determined as} 
 \begin{align*}
-g\left(\frac{\snrrcvdu^* \nps}{\ptran}, \tau \fsam\right) &= \opc. \nonumber  
+g\left(\frac{\snrrcvdu^* \nps}{\ptran}, \test \fsam\right) &= \opc. \nonumber  
 \end{align*}
 \begin{figure}[!ht]
 
@@ -580,36 +580,36 @@ g\left(\frac{\snrrcvdu^* \nps}{\ptran}, \tau \fsam\right) &= \opc. \nonumber
 %\foreach \y in {0,1,...,9} { \node [anchor=east] at (0,\y/10) {0.\y}; }
 \end{scope}
 \end{tikzpicture}
-\caption{An extension of the interference-limited and the power-limited regimes for the US to the random channels, where the channels are subject to Nakagami-$m$ fading. The performance bound ($\snrrcvdu^*$) is depicted in terms of estimation time ($\tau$). The different curves demonstrates the severity $(m \in \{0,5,1,2,5, \infty \})$ in fading observed by the channels.}
-\label{fig:or_fad}
+\caption{An extension of the interference-limited and the power-limited regimes for the US to the random channels, where the channels are subject to Nakagami-$m$ fading. The performance bound ($\snrrcvdu^*$) is depicted in terms of estimation time ($\test$). The different curves demonstrates the severity $(m \in \{0,5,1,2,5, \infty \})$ in fading observed by the channels.}
+\label{fig_US:or_fad}
 %\vspace{-5mm}
 \end{figure}
 \begin{remark} \label{rm:rm2}
 \normalfont
-\figurename~\ref{fig:or_fad} analyzes the variation of $\snrrcvdu^*$ with $\tau$ for different $m \in \{0.5, 1, 2, 5, \infty\}$, where $m = \infty$ represents a deterministic channel. It is observed that $\snrrcvdu^*$ attains a lower value as fading becomes more severe, hence enables the USs to operate at low $\snrrcvdu$ by extending the interference-limited regime. Following the analysis from Remark \ref{rm:rm1}, this also reflects that the power control becomes more proactive as the severity in fading increases. In addition, it is noticed that the path-loss channel is more sensitive to the estimation time as compared to the random channels.  
+\figurename~\ref{fig_US:or_fad} analyzes the variation of $\snrrcvdu^*$ with $\test$ for different $m \in \{0.5, 1, 2, 5, \infty\}$, where $m = \infty$ represents a deterministic channel. It is observed that $\snrrcvdu^*$ attains a lower value as fading becomes more severe, hence enables the USs to operate at low $\snrrcvdu$ by extending the interference-limited regime. Following the analysis from Remark \ref{rm:rm1}, this also reflects that the power control becomes more proactive as the severity in fading increases. In addition, it is noticed that the path-loss channel is more sensitive to the estimation time as compared to the random channels.  
 \end{remark}
-After determining the controlled power in Lemma \ref{lm:lm6} that regulates the uncertain interference, it is essential to determine the expression of the secondary throughput.
+After determining the controlled power in Lemma \ref{lm_US:lm6} that regulates the uncertain interference, it is essential to determine the expression of the secondary throughput.
 \begin{align}
-\rs(\tau) &= \e{\eca, \pgpt, \pgs} {\frac{T - \tau}{T} \eca }, \label{eq:rs_fad} 
+\rs(\test) &= \e{\eca, \pgpt, \pgs} {\frac{T - \test}{T} \eca }, \label{eq_US:rs_fad} 
 \end{align} 
-where $\e{\eca, \pgpt, \pgs}{\cdot}$ corresponds to an expectation over $\eca$, $\pgpt$ and $\pgs$, whose cdfs are characterized in Lemma \ref{lm:lm5}, (\ref{eq:dis_pgpt}) and (\ref{eq:dis_pgs}), respectively. It is worth noticing that $\eca$ captures the variations due to channel estimation $\epgs$ and $\eprcvd$, refer to (\ref{eq:eca}), however due to channel fading, the underlying values of the channels $\pgpt$ and $\pgs$ are random. In this context, an expectation with respect to $\pgpt$ and $\pgs$ as depicted in (\ref{eq:rs_fad}) is performed.
+where $\e{\eca, \pgpt, \pgs}{\cdot}$ corresponds to an expectation over $\eca$, $\pgpt$ and $\pgs$, whose cdfs are characterized in Lemma \ref{lm_US:lm5}, (\ref{eq_US:dis_pgpt}) and (\ref{eq_US:dis_pgs}), respectively. It is worth noticing that $\eca$ captures the variations due to channel estimation $\epgs$ and $\eprcvd$, refer to (\ref{eq_US:eca}), however due to channel fading, the underlying values of the channels $\pgpt$ and $\pgs$ are random. In this context, an expectation with respect to $\pgpt$ and $\pgs$ as depicted in (\ref{eq_US:rs_fad}) is performed.
 Similar to the deterministic channel, the estimation-throughput tradeoff for the random channel is characterized. 
-\begin{theorem} \label{th:th2}
+\begin{theorem} \label{th_US:th2}
 \normalfont
 The expected achievable secondary throughput subject to the outage constraint on the primary interference and the transmit power constraint at the ST under Nakagami-$m$ fading is defined as
 \begin{align}
-\trs(\ttau) = \maxi_{\tau}  & \text{      } {\rs(\tau)}, 
- \label{eq:sys_fad} \\
-\text{s.t.} & \text{ } (\ref{eq:opc_fad}), \text{  } (\ref{eq:pc}), \nonumber 
+\trs(\ttest) = \maxi_{\test}  & \text{      } {\rs(\test)}, 
+ \label{eq_US:sys_fad} \\
+\text{s.t.} & \text{ } (\ref{eq_US:opc_fad}), \text{  } (\ref{eq_US:pc}), \nonumber 
 %\text{s.t.} & \text{ } \p\left( \left( \frac{\eprcvd - \nps}{\ptran} \right) \preg \ge \ite \right) \le \opc, \nonumber \\ 
 %\text{s.t.} & \text{ }  \preg \le \pc, \nonumber   
  \end{align}
-where $\trs(\ttau)$ corresponds to optimum throughput at $\ttau$.  
+where $\trs(\ttest)$ corresponds to optimum throughput at $\ttest$.  
 \end{theorem}
 
 \begin{coro} \label{cor:cor3}
 \normalfont
-Here, the approach depicted Corollary \ref{cor:cor2} is extended to compare the performance with those CR systems that employ channel estimation, operate at constant power, satisfy the outage constraint and are subjected to Nakagami-$m$ fading. The expected secondary throughput for this particular approach is obtained by replacing $\preg$ in the expression in (\ref{eq:rs_fad}) with $\pc$, where $\tau$ is determined using (\ref{eq:or_fad}). 
+Here, the approach depicted Corollary \ref{cor:cor2} is extended to compare the performance with those CR systems that employ channel estimation, operate at constant power, satisfy the outage constraint and are subjected to Nakagami-$m$ fading. The expected secondary throughput for this particular approach is obtained by replacing $\preg$ in the expression in (\ref{eq_US:rs_fad}) with $\pc$, where $\test$ is determined using (\ref{eq_US:or_fad}). 
 
 \end{coro}
  
@@ -680,7 +680,7 @@ $m$ & \{1,5\} \\ \hline
 \end{scope}
 \end{tikzpicture}
 \caption{Control power versus estimation time with $\snrrcvdu = \SI{0}{dB}$, $\opc \in \{0.01, 0.1\}$ and $\pc = \SI{0}{dBm}$.}
-\label{fig:Cont_snr}
+\label{fig_US:Cont_snr}
 \end{figure}
 
 
@@ -709,12 +709,12 @@ $m$ & \{1,5\} \\ \hline
 \end{scope}
 \end{tikzpicture}
 \caption{Estimation-throughput tradeoff with $\snrrcvdu = \SI{0}{dB}$, $\opc \in \{0.01, 0.1\}$ and $\pc = \SI{0}{dBm}$.}
-\label{fig:ETT}
+\label{fig_US:ETT}
 %\vspace{-10mm}
 \end{figure}
-First, the performance of the proposed framework in context to the deterministic channel is evaluated. \figurename~\ref{fig:Cont_snr} considers the variation of $\preg$ (defined in Corollary \ref{cor:cor1}) versus $\tau$ corresponding to the Ideal Model (IM) and the proposed Estimation Model (EM). It is noticed that the ST controls its transmit power ($\preg$) more severely for low values, consequently affecting the link budget for the access channel. %This concludes that an increase is estimation time compensates for the variations in the system, thereby allowing margin to increase the control power. Furthermore, it is depicted that for $\tau \le \SI{0.1}{ms}$, the ST has to control its transmit power ($\preg$), which consequently degrades the link budget for the access channel. 
-\figurename~\ref{fig:ETT} analyzes the performance of the US in terms of the estimation-throughput tradeoff, refer to Problem \ref{th:th1}. %Clearly, by relaxing the $\opc$, an improvement in performance it terms of $\trs$ is observed. 
-It can be depicted that the estimation-throughput tradeoff yields a suitable estimation time $\ttau$ that results in an optimum throughput $\trs(\ttau)$. Hereafter, theoretical expressions are considered for the performance analysis with respect to the deterministic channel. In addition, the US operates at the suitable estimation time. 
+First, the performance of the proposed framework in context to the deterministic channel is evaluated. \figurename~\ref{fig_US:Cont_snr} considers the variation of $\preg$ (defined in Corollary \ref{cor:cor1}) versus $\test$ corresponding to the Ideal Model (IM) and the proposed Estimation Model (EM). It is noticed that the ST controls its transmit power ($\preg$) more severely for low values, consequently affecting the link budget for the access channel. %This concludes that an increase is estimation time compensates for the variations in the system, thereby allowing margin to increase the control power. Furthermore, it is depicted that for $\test \le \SI{0.1}{ms}$, the ST has to control its transmit power ($\preg$), which consequently degrades the link budget for the access channel. 
+\figurename~\ref{fig_US:ETT} analyzes the performance of the US in terms of the estimation-throughput tradeoff, refer to Problem \ref{th_US:th1}. %Clearly, by relaxing the $\opc$, an improvement in performance it terms of $\trs$ is observed. 
+It can be depicted that the estimation-throughput tradeoff yields a suitable estimation time $\ttest$ that results in an optimum throughput $\trs(\ttest)$. Hereafter, theoretical expressions are considered for the performance analysis with respect to the deterministic channel. In addition, the US operates at the suitable estimation time. 
 
 \captionsetup[subfigure]{position=top}
 \begin{figure}[!ht]
@@ -755,7 +755,7 @@ It can be depicted that the estimation-throughput tradeoff yields a suitable est
 %\foreach \y in {0,1,...,9} { \node [anchor=east] at (0,\y/10) {0.\y}; }
 \end{scope}
 \end{tikzpicture}
-\label{fig:optT_snr_a}
+\label{fig_US:optT_snr_a}
 }
 \hfil
 \subfloat[]{
@@ -782,14 +782,14 @@ It can be depicted that the estimation-throughput tradeoff yields a suitable est
 %\foreach \y in {0,1,...,9} { \node [anchor=east] at (0,\y/10) {0.\y}; }
 \end{scope}
 \end{tikzpicture}
-\label{fig:optT_snr_b}
+\label{fig_US:optT_snr_b}
 }
 %\vspace{4mm}
-\caption{$\rs(\ttau)$ versus $\snrrcvdu$ with $\opc = 0.1$ and $\pc \in \{-10, 0\} \SI{}{dBm}$ for (a) $\pgpt = \SI{-100}{dBm}$ and (b) $\pgpt = \SI{-90}{dBm}$, which translate to an interference power (from the PT) to noise ratio of (a) $\SI{0}{dB}$ and (b) $\SI{10}{dB}$, respectively, at the SR.}
-\label{fig:optT_snr}
+\caption{$\rs(\ttest)$ versus $\snrrcvdu$ with $\opc = 0.1$ and $\pc \in \{-10, 0\} \SI{}{dBm}$ for (a) $\pgpt = \SI{-100}{dBm}$ and (b) $\pgpt = \SI{-90}{dBm}$, which translate to an interference power (from the PT) to noise ratio of (a) $\SI{0}{dB}$ and (b) $\SI{10}{dB}$, respectively, at the SR.}
+\label{fig_US:optT_snr}
 %\vspace{-10mm}
 \end{figure}
-To procure further insights, it is necessary to consider the variation of $\trs(\ttau)$ with $\snrrcvdu$ for different choices of the secondary interference at the SR (regulated using $\pgpt \in \{-90, -100\} \SI{}{dBm}$), as depicted in \figurename~\ref{fig:optT_snr}. Here, the power-limited and the interference-limited regimes classified in Corollary \ref{cor:cor2} are mapped onto the achievable secondary throughput, refer to \figurename~\ref{fig:optT_snr_a}. It is observed that due to the employed transmit power constraint, $\trs(\ttau)$ gets saturated below a certain $\snrrcvdu$, thereby limiting the performance of the US. It is worthy to note that this saturation is due to the operation of the US inside the power-limited regime. Upon increasing $\pc$ from $\SI{-10}{dB}$ to $\SI{0}{dB}$, the point where saturation is achieved shifts to a lower $\snrrcvdu$. This is due to the fact that higher $\pc$ extends the interference-limited regime to a lower $\snrrcvdu$. In other words, this reveals the fact that the higher controlled power allows the secondary system to operated at lower values of $\snrrcvdu$, hence, beneficial in terms of achievable throughput. Particularly for $\pc = \SI{-10}{dBm}$, a severe performance loss indicated by the margin between the IM and the EM is witnessed by the US for $\snrrcvdu \le \SI{-2}{dB}$. This signifies that the consideration of the maximum transmit power of the ST is essential while designing the system. Besides this, \figurename~\ref{fig:optT_snr} depicts the performance of the USs with no power control, proposed in Corollary \ref{cor:cor2}. As indicated in \figurename~\ref{fig:or}, beyond a certain $\snrrcvdu = \snrrcvdu^*$, the USs with no power control delivers no throughput. In order to avoid such situations, the US can exercise power control in order to deliver non-zero throughput. 
+To procure further insights, it is necessary to consider the variation of $\trs(\ttest)$ with $\snrrcvdu$ for different choices of the secondary interference at the SR (regulated using $\pgpt \in \{-90, -100\} \SI{}{dBm}$), as depicted in \figurename~\ref{fig_US:optT_snr}. Here, the power-limited and the interference-limited regimes classified in Corollary \ref{cor:cor2} are mapped onto the achievable secondary throughput, refer to \figurename~\ref{fig_US:optT_snr_a}. It is observed that due to the employed transmit power constraint, $\trs(\ttest)$ gets saturated below a certain $\snrrcvdu$, thereby limiting the performance of the US. It is worthy to note that this saturation is due to the operation of the US inside the power-limited regime. Upon increasing $\pc$ from $\SI{-10}{dB}$ to $\SI{0}{dB}$, the point where saturation is achieved shifts to a lower $\snrrcvdu$. This is due to the fact that higher $\pc$ extends the interference-limited regime to a lower $\snrrcvdu$. In other words, this reveals the fact that the higher controlled power allows the secondary system to operated at lower values of $\snrrcvdu$, hence, beneficial in terms of achievable throughput. Particularly for $\pc = \SI{-10}{dBm}$, a severe performance loss indicated by the margin between the IM and the EM is witnessed by the US for $\snrrcvdu \le \SI{-2}{dB}$. This signifies that the consideration of the maximum transmit power of the ST is essential while designing the system. Besides this, \figurename~\ref{fig_US:optT_snr} depicts the performance of the USs with no power control, proposed in Corollary \ref{cor:cor2}. As indicated in \figurename~\ref{fig_US:or}, beyond a certain $\snrrcvdu = \snrrcvdu^*$, the USs with no power control delivers no throughput. In order to avoid such situations, the US can exercise power control in order to deliver non-zero throughput. 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Random Channel} 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -825,7 +825,7 @@ To procure further insights, it is necessary to consider the variation of $\trs(
 \end{tikzpicture}
 \vspace{-2mm}
 \caption{Control power versus estimation time with $\snrrcvdu = \SI{0}{dB}$, $\opc = 0.1$ and $\pc = \SI{0}{dBm}$ with Nakagami-$m$ fading.}
-\label{fig:Cont_snr_fad}
+\label{fig_US:Cont_snr_fad}
 \end{figure}
 
 \begin{figure}[!ht]
@@ -859,12 +859,12 @@ To procure further insights, it is necessary to consider the variation of $\trs(
 \end{tikzpicture}
 \vspace{-2mm}
 \caption{Estimation-throughput tradeoff with $\snrrcvdu = \SI{0}{dB}$, $\opc = 0.1$ and $\pc = \SI{0}{dBm}$ with Nakagami-$m$ fading. The plot classifies the estimation time into the estimation-dominant and the channel-dominant regime}
-\label{fig:ETT_fad}
+\label{fig_US:ETT_fad}
 \end{figure}
 
-Here, the performance of the proposed framework is further evaluated for those scenarios where the interacting channels are under the influence of Nakagami-$m$ fading. For simplification of the analysis, it is assumed that $m$ parameter to be the same for all the involved channels. In addition, the performance is investigated under following fading scenarios: (i) severe fading $m=1$, which corresponds to Rayleigh fading\footnote{\tc{Please note that our objective here is to consider the impact of severity in fading on the performance of the US with regard to the channel estimation. The value $m = 1$, which corresponds to a Rayleigh fading, is an obvious representative of a severe fading scenario.}}, and (ii) mild fading $m = 5$. First, the variation of $\preg$ along the estimation time is analyzed. It is observed that the mild fading scenario ($m = 5$) is more sensitive to the estimation time, see \figurename~\ref{fig:Cont_snr_fad}. Furthermore, comparing analysis for the deterministic channel in \figurename~\ref{fig:Cont_snr}, the power control according to the EM saturates with IM at a smaller $\tau$. This is due to the fact that power control is applied to regulate the variations due channel estimation and channel fading, however, beyond a certain estimation time, these variations are largely dominated by the channel fading, which are invariant to the increase in the estimation time. 
+Here, the performance of the proposed framework is further evaluated for those scenarios where the interacting channels are under the influence of Nakagami-$m$ fading. For simplification of the analysis, it is assumed that $m$ parameter to be the same for all the involved channels. In addition, the performance is investigated under following fading scenarios: (i) severe fading $m=1$, which corresponds to Rayleigh fading\footnote{\tc{Please note that our objective here is to consider the impact of severity in fading on the performance of the US with regard to the channel estimation. The value $m = 1$, which corresponds to a Rayleigh fading, is an obvious representative of a severe fading scenario.}}, and (ii) mild fading $m = 5$. First, the variation of $\preg$ along the estimation time is analyzed. It is observed that the mild fading scenario ($m = 5$) is more sensitive to the estimation time, see \figurename~\ref{fig_US:Cont_snr_fad}. Furthermore, comparing analysis for the deterministic channel in \figurename~\ref{fig_US:Cont_snr}, the power control according to the EM saturates with IM at a smaller $\test$. This is due to the fact that power control is applied to regulate the variations due channel estimation and channel fading, however, beyond a certain estimation time, these variations are largely dominated by the channel fading, which are invariant to the increase in the estimation time. 
 
-Besides, the influence of the random channels on the performance in terms of the estimation-throughput is captured, consider Problem \ref{th:th2}. In this regard, the estimation-throughput tradeoff for corresponding to the fading scenarios is illustrated in \figurename~\ref{fig:ETT_fad}. Similar to the case with the deterministic channel, it is depicted that for a suitable choice of the estimation time, the performance of the proposed framework that captures the imperfect channel knowledge is comparable to the ideal conditions in terms of the achievable secondary throughput. Since the USs are subjected to the variations from the channel estimation and the channel fading, the estimation time is classified into an estimation-dominant regime and a channel-dominant regime. These regimes signify that the estimation time can only reduce the imperfections (incurred in the USs) due to the channel estimation, however, beyond a certain estimation time ($\ttau$), the time resources allocated for channel estimation slightly contributes to the performance improvement (in terms of the power control, which finally affect the secondary throughput) and largely to the performance degradation (due to the factor $\frac{T - \tau}{T}$ in (\ref{eq:rs_fad})) in the secondary throughput. 
+Besides, the influence of the random channels on the performance in terms of the estimation-throughput is captured, consider Problem \ref{th_US:th2}. In this regard, the estimation-throughput tradeoff for corresponding to the fading scenarios is illustrated in \figurename~\ref{fig_US:ETT_fad}. Similar to the case with the deterministic channel, it is depicted that for a suitable choice of the estimation time, the performance of the proposed framework that captures the imperfect channel knowledge is comparable to the ideal conditions in terms of the achievable secondary throughput. Since the USs are subjected to the variations from the channel estimation and the channel fading, the estimation time is classified into an estimation-dominant regime and a channel-dominant regime. These regimes signify that the estimation time can only reduce the imperfections (incurred in the USs) due to the channel estimation, however, beyond a certain estimation time ($\ttest$), the time resources allocated for channel estimation slightly contributes to the performance improvement (in terms of the power control, which finally affect the secondary throughput) and largely to the performance degradation (due to the factor $\frac{T - \test}{T}$ in (\ref{eq_US:rs_fad})) in the secondary throughput. 
 
 \captionsetup[subfigure]{position=top}
 \begin{figure}[!ht]
@@ -912,7 +912,7 @@ Besides, the influence of the random channels on the performance in terms of the
 %\foreach \y in {0,1,...,9} { \node [anchor=east] at (0,\y/10) {0.\y}; }
 \end{scope}
 \end{tikzpicture}
-\label{fig:optT_snr_fad_a}
+\label{fig_US:optT_snr_fad_a}
 }
 \hfil
 \subfloat[]{
@@ -947,15 +947,15 @@ Besides, the influence of the random channels on the performance in terms of the
 %\foreach \y in {0,1,...,9} { \node [anchor=east] at (0,\y/10) {0.\y}; }
 \end{scope}
 \end{tikzpicture}
-\label{fig:optT_snr_fad_b}
+\label{fig_US:optT_snr_fad_b}
 }
 \vspace{-2mm}
-\caption{$\rs(\ttau)$ versus $\snrrcvdu$ for Nakagmi-$m$ fading with $\opc = 0.1$ and $\pc = 0$ \SI{}{dBm} for $\pgpt =$ (a)$\SI{-100}{dBm}$ and (b) $ \SI{-90}{dBm}$, which correspond to an interference power (from the PT) to noise ratio of (a) $\SI{0}{dB}$ and (b) $\SI{10}{dB}$ at the SR.}
-\label{fig:optT_snr_fad}
+\caption{$\rs(\ttest)$ versus $\snrrcvdu$ for Nakagmi-$m$ fading with $\opc = 0.1$ and $\pc = 0$ \SI{}{dBm} for $\pgpt =$ (a)$\SI{-100}{dBm}$ and (b) $ \SI{-90}{dBm}$, which correspond to an interference power (from the PT) to noise ratio of (a) $\SI{0}{dB}$ and (b) $\SI{10}{dB}$ at the SR.}
+\label{fig_US:optT_snr_fad}
 %\vspace{-10mm}
 \end{figure}
 
-Upon determining the optimum secondary throughput $(\rs(\ttau))$ using the estimation-throughput tradeoff, it is worthy to consider the variation of the $\rs(\ttau)$ along the received signal to noise ratio for different choices of the secondary interference in \figurename~\ref{fig:optT_snr_fad}. It is observed that for a large range ($\snrrcvdu \ge \SI{-10}{dB}$), the optimum secondary throughput determined by the EM closely follows the throughput depicted by the IM. From this observation, it is concluded that the optimum performance for the random channel, close to the one depicted by the IM can be reached if the system chooses to operate at a suitable estimation time. In addition, \figurename~\ref{fig:optT_snr_fad} considers the performance of the USs with no power control, refer to Corollary \ref{cor:cor3}. Following the discussion in Remark \ref{rm:rm2}, it was indicated the performance bound ($\snrrcvdu^*$) shifts to a lower $\snrrcvdu$ or becomes proactive in terms of power control when fading becomes severe, refer to \figurename~\ref{fig:or_fad}. This effect is finally translated to the secondary throughput, where $m = 1$ approaches the region with no throughput at a lower $\snrrcvdu$ as compared to $m = 5$, consider \figurename~\ref{fig:optT_snr_fad_a}. 
+Upon determining the optimum secondary throughput $(\rs(\ttest))$ using the estimation-throughput tradeoff, it is worthy to consider the variation of the $\rs(\ttest)$ along the received signal to noise ratio for different choices of the secondary interference in \figurename~\ref{fig_US:optT_snr_fad}. It is observed that for a large range ($\snrrcvdu \ge \SI{-10}{dB}$), the optimum secondary throughput determined by the EM closely follows the throughput depicted by the IM. From this observation, it is concluded that the optimum performance for the random channel, close to the one depicted by the IM can be reached if the system chooses to operate at a suitable estimation time. In addition, \figurename~\ref{fig_US:optT_snr_fad} considers the performance of the USs with no power control, refer to Corollary \ref{cor:cor3}. Following the discussion in Remark \ref{rm:rm2}, it was indicated the performance bound ($\snrrcvdu^*$) shifts to a lower $\snrrcvdu$ or becomes proactive in terms of power control when fading becomes severe, refer to \figurename~\ref{fig_US:or_fad}. This effect is finally translated to the secondary throughput, where $m = 1$ approaches the region with no throughput at a lower $\snrrcvdu$ as compared to $m = 5$, consider \figurename~\ref{fig_US:optT_snr_fad_a}. 
 \section{Summary} \label{sec:conc}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 In this chapter, the performance of USs has been studied from a deployment perspective by putting emphasis on the fact that the knowledge of the interacting channels is pivotal to the USs. In this view, a novel approach that incorporates estimation of the involved channels at the secondary system has been proposed. Considering the time resources utilized for the channel estimation and the uncertainty due its imperfect knowledge, it has been shown that the channel estimation has a detrimental effect on the performance, leading to its degradation. To tackle the uncertain interference, an outage constraint that precisely regulates the uncertain interference at the PR has been employed. Besides, it has been observed that the operation of power control at the ST is limited by the maximum transmit power. This limitation, complementing with the channel estimation has been studied in terms of the interference-limited and the power-limited regimes to determine the performance bounds of the USs. As a result, a power control mechanism subject to the outage and the transmit power constraints has been proposed. Finally, from the perspective of a system designer, an estimation-throughput tradeoff has been established that allows us to determine the achievable secondary throughput for the US. In consideration to the channel fading, it has been observed that the performance degradation is highly prone to the scenarios that are subject to mild fading. 
@@ -963,24 +963,24 @@ In this chapter, the performance of USs has been studied from a deployment persp
 
 \section{Proofs}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Proof of Lemma \ref{lm:lm5}} \label{ap:one}
+\subsection{Proof of Lemma \ref{lm_US:lm5}} \label{ap:one}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{IEEEproof}
 For simplification, it is essential to deal $\frac{\epgs \ptran}{\eprcvdsr}$ as individual terms $\epgs \ptran$ and $\eprcvdsr$ and determine the pdfs for $f_{\epgs \ptran}$ and $f_{\eprcvd}$ separately.
-Using (\ref{eq:fehs}) in Lemma \ref{lm:lm2}, the pdf of $f_{\epgs \ptran}$ is determined as
+Using (\ref{eq_US:fehs}) in Lemma \ref{lm_US:lm2}, the pdf of $f_{\epgs \ptran}$ is determined as
 \begin{align}
-f_{\epgs \ptran}(x) = \frac{1}{\Gamma(\as) (\bs \ptran)^{\as}} x^{\as - 1} \exp\left( - \frac{x}{ \bs \ptran} \right), \label{eq:step1} 
+f_{\epgs \ptran}(x) = \frac{1}{\Gamma(\as) (\bs \ptran)^{\as}} x^{\as - 1} \exp\left( - \frac{x}{ \bs \ptran} \right), \label{eq_US:step1} 
 \end{align}
-where $\as$ and $\bs$ are defined in (\ref{eq:para_s}).
-Similarly, using Lemma \ref{lm:lm3}, the pdf of $f_{\eprcvdsr}$ is characterized as
+where $\as$ and $\bs$ are defined in (\ref{eq_US:para_s}).
+Similarly, using Lemma \ref{lm_US:lm3}, the pdf of $f_{\eprcvdsr}$ is characterized as
 \begin{align}
-f_{\eprcvd}(x) = \frac{1}{\Gamma(\apt) (\bpt)^{\apt}} x^{\apt - 1} \exp\left( - \frac{x}{ \bpt} \right), \label{eq:step2} 
+f_{\eprcvd}(x) = \frac{1}{\Gamma(\apt) (\bpt)^{\apt}} x^{\apt - 1} \exp\left( - \frac{x}{ \bpt} \right), \label{eq_US:step2} 
 \end{align}
-where $\apt$ and $\bpt$ are defined in (\ref{eq:para_pt}).
+where $\apt$ and $\bpt$ are defined in (\ref{eq_US:para_pt}).
 
-Using (\ref{eq:step1}) and (\ref{eq:step2}), Mellin transform \cite{NIST} is applied to determine the pdf of $\frac{\epgs \ptran}{\eprcvdsr}$ as
+Using (\ref{eq_US:step1}) and (\ref{eq_US:step2}), Mellin transform \cite{NIST} is applied to determine the pdf of $\frac{\epgs \ptran}{\eprcvdsr}$ as
 \begin{align}
 f_{\frac{\epgs \ptran}{\eprcvdsr}}(x) = \frac{(x)^{\as - 1} \Gamma(\as + \apt)}{\Gamma(\as) \Gamma(\apt) (\bs \ptran) ^{\as} \bpt^{\apt}} \left(\frac{1}{\bpt} + \frac{x - 1}{\bs \ptran}\right).
 \end{align}
-Finally, substituting the expression $\frac{\epgs \ptran}{\eprcvdsr}$ in $\ca$ yields (\ref{eq:den_C}).
+Finally, substituting the expression $\frac{\epgs \ptran}{\eprcvdsr}$ in $\ca$ yields (\ref{eq_US:den_C}).
 \end{IEEEproof}

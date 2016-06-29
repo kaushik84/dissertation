@@ -14,7 +14,7 @@
    id="svg2"
    version="1.1"
    inkscape:version="0.48.4 r9939"
-   sodipodi:docname="Contri.ps">
+   sodipodi:docname="Contri.svg">
   <defs
      id="defs4">
     <marker
@@ -177,9 +177,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="3.40662"
-     inkscape:cx="607.98486"
-     inkscape:cy="395.42456"
+     inkscape:zoom="3.1438046"
+     inkscape:cx="638.48926"
+     inkscape:cy="428.68559"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="true"
@@ -213,7 +213,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -278,20 +278,15 @@
     <text
        sodipodi:linespacing="125%"
        id="text3038"
-       y="626.60443"
-       x="374.56046"
+       y="636.78412"
+       x="372.33386"
        style="font-size:20px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
        xml:space="preserve"><tspan
          style="font-size:20px;text-align:center;text-anchor:middle;font-family:Times;-inkscape-font-specification:Times"
-         y="626.60443"
-         x="374.56046"
+         y="636.78412"
+         x="372.33386"
          sodipodi:role="line"
-         id="tspan3042">Performance Analysis</tspan><tspan
-         style="font-size:20px;text-align:center;text-anchor:middle;font-family:Times;-inkscape-font-specification:Times"
-         y="651.60443"
-         x="374.56046"
-         sodipodi:role="line"
-         id="tspan3046">(Tradeoffs)</tspan></text>
+         id="tspan3046">Performance Tradeoffs</tspan></text>
     <text
        sodipodi:linespacing="125%"
        id="text3050"
