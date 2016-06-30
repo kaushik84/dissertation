@@ -49,6 +49,7 @@
 \newcommand{\xs}{x\sub{ST}}
 \newcommand{\wst}{w\sub{ST}}
 \newcommand{\wsr}{w\sub{SR}}
+\newcommand{\wpr}{w\sub{PR}}
 
 
 
@@ -141,7 +142,7 @@
 \newcommand{\ectw}{\hat{\text{C}}\sub{2}}
 \newcommand{\ecth}{\hat{\text{C}}\sub{3}}
 \newcommand{\epd}{\hat{\text{P}}\sub{d}}
-\newcommand{\eca}{\hat{\text{{C}}}\sub{s}}
+\newcommand{\eca}{\hat{\text{{C}}}\sub{3}}
 \newcommand{\ers}{\hat{\text{{R}}}\sub{s}}
 \newcommand{\ephpth}{|\hat{h}\sub{p,3}|^2}
 
@@ -190,7 +191,7 @@
 \newcommand{\trs}{R\sub{s}}
 %\newcommand{\ers}{\e{}{\rs}}
 
-\newcommand{\ca}{\text{C}\sub{s}}
+\newcommand{\ca}{\text{C}\sub{3}}
 \newcommand{\ttau}{\tilde{\tau}}
 
 \newcommand{\test}{\tau\sub{est}}
@@ -226,6 +227,7 @@
 % Distribution functions
 \newcommand{\feprcvdstpt}{F_{\eprcvdstpt}}			% Estimated received power for the link ST - PT
 \newcommand{\feprcvdstpr}{F_{\eprcvdstpr}}                      % Estimated received power for the link ST - PR 
+\newcommand{\fprcvdstpr}{F_{\eprcvdstpr}}                      % Estimated received power for the link ST - PR 
 \newcommand{\feprcvdsr}{F_{\eprcvdsr}}                          % Estimated received power for the link PT - SR 
 \newcommand{\fprcvdpr}{F_{\eprcvdpr}}
 \newcommand{\fephs}{F_{\ephs}}                                  % Estimated received power for the link ST - SR 
@@ -237,7 +239,7 @@
 \newcommand{\fprcvd}{F_{\eprcvd}}
 \newcommand{\fgs}{F_{\epgs}}
 \newcommand{\fgp}{F_{\epgpo}}
-\newcommand{\fc}{F_{\ca}}
+\newcommand{\fc}{F_{\eca}}
 \newcommand{\fprcvdsr}{F_{\eprcvdsr}}
 \newcommand{\fpreg}{F_{\epreg}}
 \newcommand{\fpgpo}{F_{\pgpo}}
@@ -250,7 +252,8 @@
 \newcommand{\fphs}{F_{\phs}}
 
 % Density functions
-\newcommand{\dprcvdstpt}{f_{\prcvdstpt}}
+\newcommand{\dprcvdstpt}{f_{\eprcvdstpt}}
+\newcommand{\dprcvdstpr}{f_{\eprcvdstpr}}
 \newcommand{\dpreg}{f_{\epreg}}
 \newcommand{\dhs}{f_{\hs}}
 \newcommand{\drs}{f_{\ers}}
@@ -259,7 +262,7 @@
 \newcommand{\dctw}{f_{\ectw}}
 \newcommand{\dcth}{f_{\ecth}}
 \newcommand{\dpd}{f_{\epd}}
-\newcommand{\dc}{f_{\ca}}
+\newcommand{\dc}{f_{\eca}}
 \newcommand{\dsnrs}{f_{\frac{ |\ehs|^2 \ptranst}{\npo}}}
 \newcommand{\dsnrp}{f_{\frac{\eprcvdsr}{\npo}}}
 \newcommand{\dsnrsp}{f_{\frac{|\ehs|^2 \ptranst}{\npo}\Big /\frac{\eprcvdsr}{\npo}}}

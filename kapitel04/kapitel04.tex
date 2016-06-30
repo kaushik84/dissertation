@@ -113,7 +113,7 @@ At first, the proposed frame structure in to context to the deterministic behavi
 \subsection{Signal Model}
 In the uplink, during the estimation phase, the discrete and complex signal received from the PR at the ST is given by
 \begin{equation}
-\yrcvd[n] = \hpth \cdot \xtran[n] + \nas[n],
+\yrcvd[n] = \hpth \cdot \xtran[n] + \wsr[n],
 \label{eq_US:sys_mod_st}
 \end{equation}
 where $\xtran[n]$ corresponds to a discrete and complex sample transmitted by the PR with transmit power $\ptran$ known at the ST, $\phpth$ represents the power gain for the interference channel and $\nas[n]$ is circularly symmetric complex Additive White Gaussian Noise (AWGN) at the ST with %The transmitted power at PR is $\ptran$, considering that $\test \fsam$ $(= N)$ is the number of samples used for estimation. 
@@ -125,15 +125,15 @@ $\mathcal{CN}(0, \nps)$. %The power received at the ST is given as
 
 In the downlink, during data transmission phase, the signal received at the PR is given by
 \begin{equation}
-\yp[n] = \hpth  \cdot \xreg[n] + \nap[n],
+\yp[n] = \hpth  \cdot \xreg[n] + \wpr[n],
 \label{eq_US:sys_mod_pr}
 \end{equation}
 and on the other side, the received signal at the SR follows 
 \begin{equation}
-\ys[n] = \gs \cdot \xreg[n] + \gpt \cdot \xp[n] + \nas'[n],
+\ys[n] = \gs \cdot \xreg[n] + \gpt \cdot \xp[n] + \wsr[n],
 \label{eq_US:sys_mod_sr}
 \end{equation}
-where $\xreg[n]$ corresponds to a discrete and complex sample transmitted by the ST with controlled power $\preg$, and $\xp[n]$ is the transmit signal from the PT with transmit power $\ptran$\footnote{In reference to the proposed framework, the knowledge of the transmit power at the PT is not necessary at the secondary system. Hence, its ignorance at the SR doesn't affect the analysis concerning the secondary interference. For clarity of the exposition, $\ptran$ is chosen to denote the transmit power for the PT and for the PR. With no loss of generality, for the analysis, the PT and the PR are alloted same transmit power.}. Further, $\pgs$ and $\pgpt$ represent the power gain for the access channel and the secondary interference channel, respectively. $\nap[n]$ and $\nas'[n]$ are AWGN at the PR and at the SR, respectively, with $\mathcal{CN}(0, \nps)$\footnote{In practice, the noise power at the ST, the SR and the PR have different values. The fact is, only the signal to noise ratio received at the ST, and SR and the PR, respectively, are affected due to these noise powers. Since these signal to noise ratios are already included in the performance analysis, the assignment of different notations to these noise powers are excluded in the expressions.} 
+where $\xreg[n]$ corresponds to a discrete and complex sample transmitted by the ST with controlled power $\preg$, and $\xp[n]$ is the transmit signal from the PT with transmit power $\ptranpt$. In reference to the proposed framework, the knowledge of the transmit power at the PT is not necessary at the secondary system. Hence, its ignorance at the SR doesn't affect the analysis concerning the secondary interference. Further, $\pgs$ and $\pgpt$ represent the power gain for the access channel and the secondary interference channel, respectively. $\wpr[n]$ and $\wsr[n]$ are AWGN at the PR and at the SR, respectively, with $\mathcal{CN}(0, \nps)$\footnote{In practice, the noise power at the ST, the SR and the PR have different values. The fact is, only the signal to noise ratio received at the ST, and SR and the PR, respectively, are affected due to these noise powers. Since these signal to noise ratios are already included in the performance analysis, the assignment of different notations to these noise powers are excluded in the expressions.} 
 %Considering (\ref{eq_US:sys_mod_pr}), the powers received at the PR and SR are evaluated as $\pp = \s{(T - \test) \fsam}{|\yp[n]^2|}$ and $\ps = \s{(T - \test) \fsam}{|\yp[n]^2|}$. Likewise (\ref{eq_US:sys_mod_st}), $\nap[n]$ and $\nas[n]$ represents circularly symmetric AWGN at PR and ST with zero mean and variance $\e{}{|\nap[n]|^2} = \npp$ and $\e{}{|\nas[n]|^2} = \nps$ correspondingly. Consider that $\ptran$, $\preg$ and $\pp$ correspond to power for a given frame. 
 %\subsubsection{Channel}
 
@@ -149,7 +149,7 @@ According to the existing investigations (also referred as ideal model), an ST o
 
 With the controlled power at the ST determined using (\ref{eq_US:IT_id}), the data rate at the SR is defined as
 \begin{equation}
-\ca = \log_2 \left(1 + \frac{\pgs \preg}{ \pgpt \ptran + \nps} \right). 
+\ca = \log_2 \left(1 + \frac{\pgs \preg}{ \pgpt \ptranpt + \nps} \right). 
 \label{eq_US:Thr_id}
 \end{equation}
 where $\ca$ represents the data rate over the access channel. %\footnote{From a communication theoretic point of view.}.
@@ -174,20 +174,20 @@ In the following paragraphs, the estimation of the power gains of the primary in
 \subsubsection{Estimation of primary interference channel}
 Considering
 \begin{equation}
-\prcvd = \pgpth \ptran + \nps \label{eq_US:prcvd}, 
+\prcvdstpr = \pgpth \ptran + \nps \label{eq_US:prcvd}, 
 \end{equation}
-and the knowledge of PR's transmit power $\ptran$, the ST employs received power-based estimation to obtain the knowledge of $\pgpth$. To accomplish this, in reference to (\ref{eq_US:sys_mod_st}), the ST listens to the transmissions from the PR and acquires the knowledge of $\epgpth$ indirectly by estimating the power received in the uplink as $\eprcvd = \s{\test \fsam}{|\yrcvd[n]|^2}$, where $\fsam$ being the sampling frequency and $\test$ represents the estimation time interval. $\fsam$ and $\test$ are such that the number of samples $\test \fsam$ is an integer. The estimated received power $\eprcvd$ is utilized to determine the control power $\preg$ at which the data transmission over the downlink is carried out, \figurename~\ref{fig_US:fs}. In accordance to the received power-based estimation for the channel $\pgpth$, it is noticed that the knowledge of $\ptran$ at the ST is essential for the characterization of the power control mechanism (considered later in Lemma \ref{lm_US:lm4}). However, this knowledge can be retrieved by considering the specifications of different wireless standards such GSM, EDGE and LTE, etc. \cite{Sharma14}. It is well-known that certain standards (considered as primary systems) follow adaptive modulation and coding, which can consequently change $\ptran$. Under these situations, the ST can employ more complex techniques such as pilot assisted techniques in order to determine $\ptran$ for the given frame.
+and the knowledge of PR's transmit power $\ptran$, the ST employs received power-based estimation to obtain the knowledge of $\pgpth$. To accomplish this, in reference to (\ref{eq_US:sys_mod_st}), the ST listens to the transmissions from the PR and acquires the knowledge of $\epgpth$ indirectly by estimating the power received in the uplink as $\eprcvdstpr = \s{\test \fsam}{|\yrcvd[n]|^2}$, where $\fsam$ being the sampling frequency and $\test$ represents the estimation time interval. $\fsam$ and $\test$ are such that the number of samples $\test \fsam$ is an integer. The estimated received power $\eprcvdstpr$ is utilized to determine the control power $\preg$ at which the data transmission over the downlink is carried out, \figurename~\ref{fig_US:fs}. In accordance to the received power-based estimation for the channel $\pgpth$, it is noticed that the knowledge of $\ptran$ at the ST is essential for the characterization of the power control mechanism (considered later in Lemma \ref{lm_US:lm4}). However, this knowledge can be retrieved by considering the specifications of different wireless standards such GSM, EDGE and LTE, etc. \cite{Sharma14}. It is well-known that certain standards (considered as primary systems) follow adaptive modulation and coding, which can consequently change $\ptran$. Under these situations, the ST can employ more complex techniques such as pilot assisted techniques in order to determine $\ptran$ for the given frame.
 
-For a certain value of $\pgpth$, the received power at the ST estimated using $\test \fsam$ samples, refer to (\ref{eq_US:prcvd}), follows a non-central chi-squared distribution $\fprcvd \sim \ncchi2(\lpth, \test \fsam)$ with non-centrality parameter $\lpth = \test \fsam \phpth \ptran /\nps = \test \fsam \snrrcvdu$ \cite{Kay}, where $\snrrcvdu$ is defined as the ratio of the received power (from the PR) to noise at the ST and $\test \fsam$ corresponds to the degrees of freedom. In order to sustain analytical tractability in the analysis, the Approximation \ref{ap:ap1} presented in Chapter \ref{chap:IS} is considered. 
+For a certain value of $\pgpth$, the received power at the ST estimated using $\test \fsam$ samples, refer to (\ref{eq_US:prcvd}), follows a non-central chi-squared distribution $\fprcvdstpr \sim \ncchi2(\lpth, \test \fsam)$ with non-centrality parameter $\lpth = \test \fsam \phpth \ptran /\nps = \test \fsam \snrrcvdu$ \cite{Kay}, where $\snrrcvdu$ is defined as the ratio of the received power (from the PR) to noise at the ST and $\test \fsam$ corresponds to the degrees of freedom. In order to sustain analytical tractability in the analysis, the Approximation \ref{ap:ap1} presented in Chapter \ref{chap:IS} is considered. 
 %\begin{approxi} \label{ap:ap1}
 %\normalfont
 %For all degrees of freedom, the $\ncchi2$ distribution can be approximated by a Gamma distribution \cite{abramo}. The parameters of the Gamma distribution are obtained by matching the first two central moments to those of $\ncchi2$.
 %\end{approxi}
 \begin{lemma} \label{lm_US:lm1}
 \normalfont
-The cumulative distribution function of $\eprcvd$ is characterized as 
+The cumulative distribution function of $\eprcvdstpr$ is characterized as 
 \begin{align}
-\fprcvd(x) \approx 1 - \Gamma&\left(\apo, \frac{x}{\bpo}\right) \label{eq_US:fprcvd}, \\ 
+\fprcvdstpr(x) \approx 1 - \Gamma&\left(\apo, \frac{x}{\bpo}\right) \label{eq_US:fprcvd}, \\ 
 \text{where  } \apo = \frac{\test \fsam (1 + \snrrcvdu)^2}{2 + 4 \snrrcvdu} &\text{ and } \bpo = \frac{\nps (2 + 4 \snrrcvdu)}{\test \fsam (1 + \snrrcvdu)},  \label{eq_US:para_po} 
 \end{align} 
 and $\Gamma(\cdot, \cdot)$ represents the regularized upper-incomplete Gamma function \cite{abramo}. 
@@ -223,10 +223,10 @@ Applying Approximation \ref{ap:ap1} from Chapter \ref{chap:IS} to $\ncchi2(\ls,1
 \end{IEEEproof}
 
 \subsubsection{Estimation of secondary interference channel}
-In the downlink, the SR cancels the ST the data signal over the access channel in order to estimate the secondary interference (power) received from the PT, refer to (\ref{eq_US:sys_mod_sr}). In order to establish a preliminary analysis, it is assumed that signal to noise ratio for the access link is suitable enough to allow perfect cancellation of the data signal. For extreme situations, a probabilistic approach can be applied to deal with the imperfect signal cancellation for the proposed channel estimation. However, under such situations, it is possible that due to bad quality of the access channel, the ST may not consider such a channel for data transmission. The power estimated over the signal $\hpth \xtran[n] + \nas[n]$ corresponds to the interference plus noise power ($\prcvdsr = \pgpt \ptran + \nps$, where $\prcvdsr$ represents the true value, consider (\ref{eq_US:Thr_id})). The estimated received power at the SR is determined as $\eprcvdsr = \s{\test \fsam}{|\gpth \cdot \xtran[n] + \nas'[n]|^2}$. To characterize the secondary throughput, $\eprcvdsr$ is made available to the ST over a low rate feedback channel. Similar to $\eprcvd$, for a certain value of $\phpt$, $\eprcvdsr$ follows a non-central chi-squared distribution $\ncchi2(\ls, \test \fsam)$, with non-centrality parameter $\lpt = \test \fsam \pgpt \ptran / \nps$.
+In the downlink, the SR cancels the ST the data signal over the access channel in order to estimate the secondary interference (power) received from the PT, refer to (\ref{eq_US:sys_mod_sr}). In order to establish a preliminary analysis, it is assumed that signal to noise ratio for the access link is suitable enough to allow perfect cancellation of the data signal. For extreme situations, a probabilistic approach can be applied to deal with the imperfect signal cancellation for the proposed channel estimation. However, under such situations, it is possible that due to bad quality of the access channel, the ST may not consider such a channel for data transmission. The power estimated over the signal $\hpth \xtran[n] + \nas[n]$ corresponds to the interference plus noise power ($\prcvdsr = \pgpt \ptranpt + \nps$, where $\prcvdsr$ represents the true value, consider (\ref{eq_US:Thr_id})). The estimated received power at the SR is determined as $\eprcvdsr = \s{\test \fsam}{|\gpth \cdot \xtran[n] + \nas'[n]|^2}$. To characterize the secondary throughput, $\eprcvdsr$ is made available to the ST over a low rate feedback channel. Similar to $\eprcvdstpr$, for a certain value of $\phpt$, $\eprcvdsr$ follows a non-central chi-squared distribution $\ncchi2(\lpt, \test \fsam)$, with non-centrality parameter $\lpt = \test \fsam \pgpt \ptranpt / \nps$.
 \begin{lemma} \label{lm_US:lm3}
 \normalfont
-The cumulative distribution function of $\eprcvd$ is characterized as 
+The cumulative distribution function of $\eprcvdstpr$ is characterized as 
 \begin{align}
 \fprcvdsr(x) \approx 1 - \Gamma&\left(\apt, \frac{x}{\bpt}\right) \label{eq_US:fprcvdsr}, \\ 
 \text{where  } \apt = \frac{(\test \fsam + \lpt)^2}{2 \test \fsam + 4 \lpt} &\text{ and } \bpt = \frac{\nps (2 \test \fsam + 4 \lpt)}{(\test \fsam + \lpt)}.  \label{eq_US:para_pt} 
@@ -237,7 +237,7 @@ Applying Approximation \ref{ap:ap1} from Chapter \ref{chap:IS} to $\ncchi2(\lpt,
 \end{IEEEproof}
 \begin{remark}
 \normalfont
-It is important to note that, the scenario described in this chapter considers a single PT and a single PR. However, in practice, it is possible that the ST and the SR accumulate significant interference (defined as aggregate interference) from other PRs and PTs (co-channel interference due to frequency reuse) in the network\cite{Elsawy13_cmag,Kaushik14_P} over the primary interference and the secondary interference channel, respectively. For the secondary interference channel, the only difference is that the SR now estimates the aggregate interference. Due to this, the expression of $\eprcvdsr$ in the throughput remains unchanged. On the other side, by estimating the aggregate interference on the primary interference channel, the ST overestimates $\eprcvd$ and exercises a greater power control. Even for such a case, the outage constraint on the primary interference channel to the desired PR is satisfied, which consequently reduces the secondary throughput.  
+It is important to note that, the scenario described in this chapter considers a single PT and a single PR. However, in practice, it is possible that the ST and the SR accumulate significant interference (defined as aggregate interference) from other PRs and PTs (co-channel interference due to frequency reuse) in the network\cite{Elsawy13_cmag,Kaushik14_P} over the primary interference and the secondary interference channel, respectively. For the secondary interference channel, the only difference is that the SR now estimates the aggregate interference. Due to this, the expression of $\eprcvdsr$ in the throughput remains unchanged. On the other side, by estimating the aggregate interference on the primary interference channel, the ST overestimates $\eprcvdstpr$ and exercises a greater power control. Even for such a case, the outage constraint on the primary interference channel to the desired PR is satisfied, which consequently reduces the secondary throughput.  
 \end{remark}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Theoretical Analysis} \label{sec:th_ana}
@@ -276,7 +276,7 @@ At first, an outage probability constraint\footnote{The outage constraint is com
 \begin{align}
 \p\left( \prcvdpr = \ephpth \preg \ge \ite \right) \le \opc, 
 \intertext{Substituting $\ephpth$ from (\ref{eq_US:prcvd}) yields}
-\p\left( \left( \frac{\eprcvd - \nps}{\ptran}\right) \preg \ge \ite \right) \le \opc. \label{eq_US:opc} \\[-1em] \nonumber 
+\p\left( \left( \frac{\eprcvdstpr - \nps}{\ptran}\right) \preg \ge \ite \right) \le \opc. \label{eq_US:opc} \\[-1em] \nonumber 
 \end{align}
 Besides the outage constraint, $\preg$ is limited by a predefined transmit power $\pc$. To capture this aspect, the transmit power constraint at the ST is defined as
 \begin{align}
@@ -297,7 +297,7 @@ Subject to the outage constraint on the primary interference and the transmit po
 where $\apo$ and $\bpo$ are defined in (\ref{eq_US:para_po}) and $\Gamma^{-1}(\cdot, \cdot)$ is the inverse function of regularized upper-incomplete Gamma function \cite{abramo}.
 \end{lemma} 
 \begin{IEEEproof}
-Substituting the distribution function for $\eprcvd$, defined in (\ref{eq_US:fprcvd}), in (\ref{eq_US:opc}) and combining with (\ref{eq_US:pc}) yields (\ref{eq_US:preg}).
+Substituting the distribution function for $\eprcvdstpr$, defined in (\ref{eq_US:fprcvd}), in (\ref{eq_US:opc}) and combining with (\ref{eq_US:pc}) yields (\ref{eq_US:preg}).
 \end{IEEEproof}
 Clearly, the performance of the US improves over the access channel (in terms of the secondary throughput) with $\preg$, but $\preg$ increases for the values of $\phpth$, which correspond to the lower values of $\snrrcvdu$.
 The real world wireless systems are limited by the transmit power $\pc$, which bounds the performance of the USs. In order to understand the effect of the power limitation on the USs, a performance bound is characterized in terms of the estimation time and the signal to ratio at the ST\footnote{\tc{Signal to noise ratio is mostly used as a design parameter for characterizing the performance of a wireless system.}}.  
@@ -313,7 +313,7 @@ Subject to the outage constraint on the primary interference and the transmit po
 Substituting $\preg$ with $\pc$ in (\ref{eq_US:opc}) and reformulating gives 
 \begin{align}
 %\p\left( \left( \frac{\eprcvd - \nps}{\ptran}\right) \pc \ge \ite \right) \le \opc 
-\p\left( \eprcvd \ge \frac{\ite \ptran}{\pc} + \nps \right) &\le \opc. \label{eq_US:opreg_a} 
+\p\left( \eprcvdstpr \ge \frac{\ite \ptran}{\pc} + \nps \right) &\le \opc. \label{eq_US:opreg_a} 
 \end{align}
 Using (\ref{eq_US:fprcvd}) in Lemma \ref{lm_US:lm1} gives
 \begin{align}
@@ -367,7 +367,7 @@ Substituting $\snrrcvdu$ with $\snrrcvdu^*$ and replacing the expression in (\re
 On the other side, the region $\snrrcvdu \le \snrrcvdu^*$, which depicts a weak link quality between the ST and the PR, hence, is beneficial to the secondary user. However, due to the transmit power constraint, the USs are confined to operate at $\pc$. As a result, these favorable conditions do not translate to any performance gain.} Therefore, this regime is characterized as a power-limited regime. \tc{Besides, it is interesting to observe that for low values of the estimation time, $\snrrcvdu^* \rightarrow -\infty$, which signifies that low $\test$ increases the uncertainty in the interference. In order to regulate the level of this uncertainty, US has to be proactive in terms of power control mechanism to be able to satisfy the interference constraint. It is also observed that as $\test \rightarrow \infty$, $\snrrcvdu^*$ converges asymptotically to a certain value. This signifies the fact that additional time resources allocated for the channel estimation, after a certain value, does not account to any significant improvement in the terms of the uncertain interference, or indirectly power control. As a result, the performance of the US in the form of power control gets saturated.}  %As a result, by replacing $\snrrcvdu^*$ in the following expression of secondary throughput, we determine the performance limits of operation for the US. 
 \end{remark}
 %Based on the operation regime, we determine best performance, in terms of the lowest operational SNR, achieved by the US. 
-Next, the variations in the secondary throughput are captured in terms of its expected value. To accomplish this, the cumulative distribution function (cdf) of the data rate\footnote{\tc{Please note, we have introduced the following terms the data rate $\ca$ and the throughput $\rs$ to make a clear distinction between the instantaneous data rate and its average value over the frame duration.}}
+Next, the variations in the secondary throughput are captured in terms of its expected value. To accomplish this, the cumulative distribution function (cdf) of the data rate\footnote{\tc{Please note, the following terms the data rate $\ca$ and the throughput $\rs$ have been introduced to make a clear distinction between the instantaneous data rate and its average value over the frame duration.}}
 \begin{align}
 \eca  = \log_2 \left(1 + \frac{\epgs \preg}{\eprcvdsr} \right) \label{eq_US:eca}
 \end{align}
@@ -442,7 +442,7 @@ See Appendix \ref{ap:one}.
 \label{fig_US:CDF_eca}
 \vspace{-0.5cm}
 \end{figure}
-In consideration to the Approximation \ref{ap:ap1}, which is applied to obtain the cdfs' of $\eprcvd$, $\epgs$ and $\eprcvdsr$ in Lemma \ref{lm_US:lm5}, the theoretical expression of the cdf depicted in (\ref{eq_US:dis_C}) is validated by means of simulations in \figurename~\ref{fig_US:CDF_eca} with different choices of system parameters, which include $\snrrcvdu = \SI{10}{dB}$, $\preg = \SI{0}{dBm}$, $\frac{\pgpt \ptran}{\nps} \in \{-10, 0, 10\} \SI{}{dB}$ and $\test = \{0.1, 1, 10\} \SI{}{ms}$.
+In consideration to the Approximation \ref{ap:ap1}, which is applied to obtain the cdfs' of $\eprcvdstpr$, $\epgs$ and $\eprcvdsr$ in Lemma \ref{lm_US:lm5}, the theoretical expression of the cdf depicted in (\ref{eq_US:dis_C}) is validated by means of simulations in \figurename~\ref{fig_US:CDF_eca} with different choices of system parameters, which include $\snrrcvdu = \SI{10}{dB}$, $\preg = \SI{0}{dBm}$, $\frac{\pgpt \ptran}{\nps} \in \{-10, 0, 10\} \SI{}{dB}$ and $\test = \{0.1, 1, 10\} \SI{}{ms}$.
 
 Besides the outage constraint on the primary interference, the expected secondary throughput over the access channel at the SR is defined as
 \begin{align}
@@ -459,7 +459,7 @@ where $\e{\eca}{\cdot}$ corresponds to an expectation over $\eca$, whose pdf is 
 \normalfont
 The expected achievable secondary throughput subject to the outage constraint on the primary interference and the transmit power constraint at the ST is defined as
 \begin{align}
-\trs(\ttest) = \maxi_{\test}  & \text{      } {\rs(\test)}, 
+\trs(\ttest)  = \maxi_{\test}  & \text{      } {\rs(\test)}, 
  \label{eq_US:sys} \\
 \text{s.t.} & \text{ } (\ref{eq_US:opc}), \text{  } (\ref{eq_US:pc}), \nonumber 
 %\text{s.t.} & \text{ } \p\left( \left( \frac{\eprcvd - \nps}{\ptran} \right) \preg \ge \ite \right) \le \opc, \nonumber \\ 
@@ -505,7 +505,7 @@ Here, the objective is to investigate the performance of the proposed approach, 
 where $\mpth$, $\mpt$ and $\ms$ represent the $m$ parameter, whereas $\bpgpth$, $\bpgpt$ and $\bpgs$ are the expected values for channels $\pgpth$, $\pgpt$ and $\pgs$, respectively. $\Gamma(\cdot, \cdot)$ is a regularized upper-incomplete Gamma function \cite{abramo}.
 The performance analysis subject to channel fading has been considered by Ghasemi \textit{et al.} \cite{Ghasemi06, Ghasemi07}. However, the authors in \cite{Ghasemi06, Ghasemi07} evaluated average data rate under an average interference constraint. The influence of the channel fading (however, without channel estimation) has been quantified in terms of the outage constraint on the primary interference, is given by %. In order to make a fair comparison (benchmark) of our proposed approach, the ideal model the existing investigations in context to channel fading are quantified based on an outage constraint on the primary interference, given by
 \begin{align}
-	\max_{\preg} & \e{\pgpt, \pgs }{ \frac{\pgs \preg}{\pgpt \ptran + \nps}} \label{eq_US:sys_id_fad}, \\
+	\max_{\preg} & \e{\pgpt, \pgs }{ \frac{\pgs \preg}{\pgpt \ptranpt + \nps}} \label{eq_US:sys_id_fad}, \\
 	\text{s.t.} & \text{ } \p(\prcvdpr= \phpth \preg \ge \ite) \le \opc, \label{eq_US:opc_id_fad} 
 \end{align}
 where $\e{\pgpt, \pgs} {\cdot}$ corresponds to expectation with respect to $\pgpt$, $\pgs$.
@@ -513,9 +513,9 @@ Despite the knowledge of the fading model, similar to the ideal model depicted f
 
 To begin the analysis, the expression of the outage constraint on the primary interference is determined as 
 \begin{align}
-\smash[b]{\overbrace{\e{\phpth}{\smash[b]{\underbrace{\p\left( \left( \frac{\eprcvd - \nps}{\ptran}\right) \preg \ge \ite \right)}_{\text{Channel Estimation}}}}}^{\text{Channel Fading}}} \le \opc, \label{eq_US:opc_fad} \\[0.5em] \nonumber 
+\smash[b]{\overbrace{\e{\phpth}{\smash[b]{\underbrace{\p\left( \left( \frac{\eprcvdstpr- \nps}{\ptran}\right) \preg \ge \ite \right)}_{\text{Channel Estimation}}}}}^{\text{Channel Fading}}} \le \opc, \label{eq_US:opc_fad} \\[0.5em] \nonumber 
 \end{align}
-where $\eprcvd$ depends on the underlying value of $\phpth$. In contrast to the constraint in (\ref{eq_US:opc_id_fad}), (\ref{eq_US:opc_fad}) captures the variations due to the channel estimation $(\p(\cdot)$ determined in terms of $\eprcvd$) and the channel fading ($\e{\phpth}{\cdot}$). Based on (\ref{eq_US:opc_fad}) and transmit power constraint defined in (\ref{eq_US:pc}), it is essential to derive the expression of the controlled power $(\preg)$ for the case with random channel.
+where $\eprcvdstpr$ depends on the underlying value of $\phpth$. In contrast to the constraint in (\ref{eq_US:opc_id_fad}), (\ref{eq_US:opc_fad}) captures the variations due to the channel estimation $(\p(\cdot)$ determined in terms of $\eprcvdstpr$) and the channel fading ($\e{\phpth}{\cdot}$). Based on (\ref{eq_US:opc_fad}) and transmit power constraint defined in (\ref{eq_US:pc}), it is essential to derive the expression of the controlled power $(\preg)$ for the case with random channel.
 
 \begin{lemma} \label{lm_US:lm6}
 \normalfont
@@ -592,7 +592,7 @@ After determining the controlled power in Lemma \ref{lm_US:lm6} that regulates t
 \begin{align}
 \rs(\test) &= \e{\eca, \pgpt, \pgs} {\frac{T - \test}{T} \eca }, \label{eq_US:rs_fad} 
 \end{align} 
-where $\e{\eca, \pgpt, \pgs}{\cdot}$ corresponds to an expectation over $\eca$, $\pgpt$ and $\pgs$, whose cdfs are characterized in Lemma \ref{lm_US:lm5}, (\ref{eq_US:dis_pgpt}) and (\ref{eq_US:dis_pgs}), respectively. It is worth noticing that $\eca$ captures the variations due to channel estimation $\epgs$ and $\eprcvd$, refer to (\ref{eq_US:eca}), however due to channel fading, the underlying values of the channels $\pgpt$ and $\pgs$ are random. In this context, an expectation with respect to $\pgpt$ and $\pgs$ as depicted in (\ref{eq_US:rs_fad}) is performed.
+where $\e{\eca, \pgpt, \pgs}{\cdot}$ corresponds to an expectation over $\eca$, $\pgpt$ and $\pgs$, whose cdfs are characterized in Lemma \ref{lm_US:lm5}, (\ref{eq_US:dis_pgpt}) and (\ref{eq_US:dis_pgs}), respectively. It is worth noticing that $\eca$ captures the variations due to channel estimation $\epgs$ and $\eprcvdstpr$, refer to (\ref{eq_US:eca}), however due to channel fading, the underlying values of the channels $\pgpt$ and $\pgs$ are random. In this context, an expectation with respect to $\pgpt$ and $\pgs$ as depicted in (\ref{eq_US:rs_fad}) is performed.
 Similar to the deterministic channel, the estimation-throughput tradeoff for the random channel is characterized. 
 \begin{theorem} \label{th_US:th2}
 \normalfont
@@ -646,6 +646,7 @@ $\pc$ & 0 \SI{}{dBm} \\
 $\nps$ & $\SI{-100}{dBm}$ \\ 
 $\snrrcvdu$ & $\SI{0}{dB}$ \\ 
 $\ptran$ & $\SI{0}{dBm}$ \\ 
+$\ptranpt$ & $\SI{0}{dBm}$ \\ 
 $\Ks$ & 10 \\ 
 $m$ & \{1,5\} \\ \hline
 \end{tabular}%}
@@ -966,7 +967,7 @@ In this chapter, the performance of USs has been studied from a deployment persp
 \subsection{Proof of Lemma \ref{lm_US:lm5}} \label{ap:one}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{IEEEproof}
-For simplification, it is essential to deal $\frac{\epgs \ptran}{\eprcvdsr}$ as individual terms $\epgs \ptran$ and $\eprcvdsr$ and determine the pdfs for $f_{\epgs \ptran}$ and $f_{\eprcvd}$ separately.
+For simplification, it is essential to deal $\frac{\epgs \ptran}{\eprcvdsr}$ as individual terms $\epgs \ptran$ and $\eprcvdsr$ and determine the pdfs for $f_{\epgs \ptran}$ and $f_{\eprcvdstpr}$ separately.
 Using (\ref{eq_US:fehs}) in Lemma \ref{lm_US:lm2}, the pdf of $f_{\epgs \ptran}$ is determined as
 \begin{align}
 f_{\epgs \ptran}(x) = \frac{1}{\Gamma(\as) (\bs \ptran)^{\as}} x^{\as - 1} \exp\left( - \frac{x}{ \bs \ptran} \right), \label{eq_US:step1} 
@@ -974,7 +975,7 @@ f_{\epgs \ptran}(x) = \frac{1}{\Gamma(\as) (\bs \ptran)^{\as}} x^{\as - 1} \exp\
 where $\as$ and $\bs$ are defined in (\ref{eq_US:para_s}).
 Similarly, using Lemma \ref{lm_US:lm3}, the pdf of $f_{\eprcvdsr}$ is characterized as
 \begin{align}
-f_{\eprcvd}(x) = \frac{1}{\Gamma(\apt) (\bpt)^{\apt}} x^{\apt - 1} \exp\left( - \frac{x}{ \bpt} \right), \label{eq_US:step2} 
+f_{\eprcvdstpr}(x) = \frac{1}{\Gamma(\apt) (\bpt)^{\apt}} x^{\apt - 1} \exp\left( - \frac{x}{ \bpt} \right), \label{eq_US:step2} 
 \end{align}
 where $\apt$ and $\bpt$ are defined in (\ref{eq_US:para_pt}).
 

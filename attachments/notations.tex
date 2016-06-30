@@ -1,10 +1,10 @@
 
 \chapter{Notations and Symbols}
 
-Please note, there exists certain notations that are specific or follow a slightly different definition corresponding to the underlying cognitive radio system (interweave system (IS), underlay system (US) and hybrid system (HS)). Here, these notations have been signified by their underlying systems.  
+%Please note, there exists certain notations that are specific or follow a slightly different definition corresponding to the underlying cognitive radio system (interweave system (IS), underlay system (US) and hybrid system (HS)). Here, these notations have been signified by their underlying systems.  
 
 \renewcommand{\arraystretch}{1.4}
-\begin{longtable}{p{0.15\columnwidth}p{0.10\columnwidth}p{0.75\columnwidth}}
+\begin{longtable}{p{0.15\columnwidth}p{0.02\columnwidth}p{0.83\columnwidth}}
 
 %% System parameters
        $T$                     & &             Frame duration \\
@@ -12,16 +12,16 @@ Please note, there exists certain notations that are specific or follow a slight
        $\flo$                  & & 	       Local oscillator offset frequency \\
        $\tsen$                 & &             Sensing time interval \\
        $\test$                 & &             Estimation time interval \\      
-       $\testpt$                 & HS &             Estimation time interval allocated for $\hpo$ \\      
-       $\testptsr$                 & HS &             Estimation time interval allocated for $\hptw$ \\      
-       $\testpr$                 & HS &             Estimation time interval allocated for $\hpth$ \\      
+%       $\testpt$                 & HS &             Estimation time interval allocated for $\hpo$ \\      
+ %      $\testptsr$                 & HS &             Estimation time interval allocated for $\hptw$ \\      
+%       $\testpr$                 & HS &             Estimation time interval allocated for $\hpth$ \\      
        $\ttesto$               & &             Estimation time interval for the demonstrator \\      
        $\rs$                   & &             Throughput at SR (secondary throughput) \\
-       $\cz$                   & IS, HS &      Date rate at SR without interference from PT, where no power control is employed at ST  \\
-       $\co$                   & IS, HS &      Date rate at SR without interference from PT, where no power control is employed at ST \\ 
-       $\ca$                   & US &          Date rate at SR, where power control is employed at ST \\
-       $\ctw$                   & HS &      Date rate at SR without interference from PT, where power control is employed at ST  \\
-       $\cth$                   & HS &      Date rate at SR with interference from PT, where power control is employed at ST  \\ 
+       $\cz$                   &  &      Date rate at SR without interference from PT, where no power control is employed at ST  \\
+       $\co$                   & &      Date rate at SR without interference from PT, where no power control is employed at ST \\ 
+%       $\ca$                   & US &          Date rate at SR, where power control is employed at ST \\
+       $\ctw$                   & &      Date rate at SR without interference from PT, where power control is employed at ST  \\
+       $\cth$                   & &      Date rate at SR with interference from PT, where power control is employed at ST  \\ 
 
 %% Channel parameters 
        $\hpo$                  & &             Channel coefficient for the link PR-ST \\
@@ -55,12 +55,15 @@ Please note, there exists certain notations that are specific or follow a slight
 	%$\nap[\cdot]$       & &             Discrete and complex noise signal at PR \\	
 
 	$\yp[\cdot]$       & &             Discrete and complex signal received at PR \\	
+	$\wpr[\cdot]$       & &             Circularly symmetric additive while Gaussian noise at PR \\	
+	$\wst[\cdot]$       & &             Circularly symmetric additive while Gaussian noise at ST \\	
+	$\wsr[\cdot]$       & &             Circularly symmetric additive while Gaussian noise at SR \\	
 %% Powers
-	$\prcvd$  		& IS &		Power received at ST over the PT-ST \\ 
-	$\prcvd$  		& US &		Power received at ST over the PR-ST \\ 
-	$\prcvdstpt$  		& HS &		Power received at ST over the PT-ST over $\hpo$ \\ 
-	$\prcvdstpr$  		& HS &		Power received at ST over the PR-ST over $\hpth$ \\ 
-	$\prcvdpr$  		& US, HS &		Interference power received at PR over the ST-PR link \\
+	%$\prcvd$  		& IS &		Power received at ST over the PT-ST \\ 
+	%$\prcvd$  		& US &		Power received at ST over the PR-ST \\ 
+	$\prcvdstpt$  		& &		Power received at ST over the PT-ST over $\hpo$ \\ 
+	$\prcvdstpr$  		& &		Power received at ST over the PR-ST over $\hpth$ \\ 
+	$\prcvdpr$  		& &		Interference power received at PR over the ST-PR link \\
 	$\prcvdsr$  		& &		Interference power received at SR over the PT-SR link\\ 
 
 	$\preg$	  		& &  	Transmit power at ST with power control \\

@@ -16,7 +16,7 @@
    id="svg2"
    version="1.1"
    inkscape:version="0.48.4 r9939"
-   sodipodi:docname="Frame_Structure.svg">
+   sodipodi:docname="Frame_Structure.ps">
   <defs
      id="defs4">
     <pattern
@@ -603,9 +603,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1.4142136"
-     inkscape:cx="486.45544"
-     inkscape:cy="265.96987"
+     inkscape:zoom="1.8457032"
+     inkscape:cx="229.60566"
+     inkscape:cy="258.52277"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="true"
@@ -628,7 +628,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -1192,18 +1192,18 @@
     <text
        xml:space="preserve"
        style="font-size:28.13015366px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Times New Roman;-inkscape-font-specification:'Times New Roman,'"
-       x="-173.66876"
-       y="546.9494"
+       x="-181.74683"
+       y="543.73004"
        id="text3076-8-7"
        sodipodi:linespacing="125%"
        transform="scale(0.99033472,1.0097596)"><tspan
          sodipodi:role="line"
          id="tspan3078-00-9"
-         x="-173.66876"
-         y="546.9494"
+         x="-181.74683"
+         y="543.73004"
          style="font-size:31.12478447px;font-family:Times New Roman;-inkscape-font-specification:Times New Roman">τ<tspan
    style="font-size:20.23139572px;baseline-shift:sub"
-   id="tspan3395">est</tspan></tspan></text>
+   id="tspan3395">est </tspan></tspan></text>
     <path
        style="fill:none;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-start:url(#Arrow1Mstart);marker-mid:none;marker-end:url(#Arrow1Mend)"
        d="m -23.346262,524.08015 c 212.635832,0.32968 212.635832,0.32968 212.635832,0.32968 l 0,0 0,0"
@@ -1372,22 +1372,6 @@
        x="-209.47806"
        y="457.78281"
        id="rect5476-9" />
-    <text
-       xml:space="preserve"
-       style="font-size:20px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
-       x="-201.06433"
-       y="449.1897"
-       id="text3290-9"
-       sodipodi:linespacing="125%"><tspan
-         sodipodi:role="line"
-         id="tspan3292-2"
-         x="-201.06433"
-         y="449.1897"
-         style="font-size:25px;font-family:'Times ';-inkscape-font-specification:'Times '">Est. <tspan
-   style="font-size:25px;font-style:italic;font-family:'Times ';-inkscape-font-specification:'Times '"
-   id="tspan3300-3">h</tspan><tspan
-   style="font-size:20px;baseline-shift:sub;font-family:'Times ';-inkscape-font-specification:'Times '"
-   id="tspan3302-44">p,2</tspan></tspan></text>
     <rect
        style="fill:url(#pattern3529);fill-opacity:1;stroke:none"
        width="91.162842"
@@ -1409,14 +1393,14 @@
        xml:space="preserve"
        style="font-size:28.13015366px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Times New Roman;-inkscape-font-specification:'Times New Roman,'"
        x="-136.95665"
-       y="601.60089"
+       y="591.69763"
        id="text3076-8-7-0"
        sodipodi:linespacing="125%"
        transform="scale(0.99033472,1.0097596)"><tspan
          sodipodi:role="line"
          id="tspan3078-00-9-4"
          x="-136.95665"
-         y="601.60089"
+         y="591.69763"
          style="font-size:31.12478447px;font-family:Times New Roman;-inkscape-font-specification:Times New Roman">τ<tspan
    style="font-size:15px;baseline-shift:sub"
    id="tspan3708">sen</tspan></tspan></text>
@@ -1431,7 +1415,7 @@
            height="66.46804"
            x="70.710678"
            y="200.40794" /></flowRegion><flowPara
-         id="flowPara4604"></flowPara></flowRoot>    <path
+         id="flowPara4604" /></flowRoot>    <path
        style="fill:none;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-mid:none"
        d="m -209.09943,300.36952 c -0.0206,81.36114 -0.0206,81.36114 -0.0206,81.36114"
        id="path3875-4-8-8"
@@ -1441,21 +1425,6 @@
        d="m -206.27186,316.56412 c 84.12071,0.31707 84.12071,0.31707 84.12071,0.31707 l 0,0 0,0"
        id="path4197-5-7-6"
        inkscape:connector-curvature="0" />
-    <text
-       xml:space="preserve"
-       style="font-size:28.13015366px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Times New Roman;-inkscape-font-specification:'Times New Roman,'"
-       x="-174.17381"
-       y="341.87149"
-       id="text3076-8-7-1"
-       sodipodi:linespacing="125%"
-       transform="scale(0.99033472,1.0097596)"><tspan
-         sodipodi:role="line"
-         id="tspan3078-00-9-0"
-         x="-174.17381"
-         y="341.87149"
-         style="font-size:31.12478447px;font-family:Times New Roman;-inkscape-font-specification:Times New Roman">τ<tspan
-   style="font-size:20.23139572px;baseline-shift:sub"
-   id="tspan3395-5">est</tspan></tspan></text>
     <path
        style="fill:none;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-start:url(#Arrow1Mstart);marker-mid:none;marker-end:url(#Arrow1Mend)"
        d="m -23.846577,317.00124 c 212.635827,0.32968 212.635827,0.32968 212.635827,0.32968 l 0,0 0,0"
@@ -1487,14 +1456,14 @@
        xml:space="preserve"
        style="font-size:28.13015366px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Times New Roman;-inkscape-font-specification:'Times New Roman,'"
        x="-137.46173"
-       y="388.60043"
+       y="386.61975"
        id="text3076-8-7-0-1"
        sodipodi:linespacing="125%"
        transform="scale(0.99033472,1.0097596)"><tspan
          sodipodi:role="line"
          id="tspan3078-00-9-4-3"
          x="-137.46173"
-         y="388.60043"
+         y="386.61975"
          style="font-size:31.12478447px;font-family:Times New Roman;-inkscape-font-specification:Times New Roman">τ<tspan
    style="font-size:15px;baseline-shift:sub"
    id="tspan3708-1">sen</tspan></tspan></text>
@@ -1584,21 +1553,6 @@
        id="path5596"
        d="m 195.28911,523.64303 c 84.12071,0.31707 84.12071,0.31707 84.12071,0.31707 l 0,0 0,0"
        style="fill:none;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-start:url(#Arrow1Mstart);marker-mid:none;marker-end:url(#Arrow1Mend)" />
-    <text
-       transform="scale(0.99033472,1.0097596)"
-       sodipodi:linespacing="125%"
-       id="text5598"
-       y="546.9494"
-       x="231.30588"
-       style="font-size:28.13015366px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Times New Roman;-inkscape-font-specification:'Times New Roman,'"
-       xml:space="preserve"><tspan
-         style="font-size:31.12478447px;font-family:Times New Roman;-inkscape-font-specification:Times New Roman"
-         y="546.9494"
-         x="231.30588"
-         id="tspan5600"
-         sodipodi:role="line">τ<tspan
-   id="tspan5602"
-   style="font-size:20.23139572px;baseline-shift:sub">est</tspan></tspan></text>
     <path
        inkscape:connector-curvature="0"
        id="path5604"
@@ -1667,12 +1621,12 @@
        transform="scale(0.99033472,1.0097596)"
        sodipodi:linespacing="125%"
        id="text5638"
-       y="601.60089"
+       y="591.69763"
        x="268.01797"
        style="font-size:28.13015366px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Times New Roman;-inkscape-font-specification:'Times New Roman,'"
        xml:space="preserve"><tspan
          style="font-size:31.12478447px;font-family:Times New Roman;-inkscape-font-specification:Times New Roman"
-         y="601.60089"
+         y="591.69763"
          x="268.01797"
          id="tspan5640"
          sodipodi:role="line">τ<tspan
@@ -1688,21 +1642,6 @@
        id="path5646"
        d="m 194.78879,316.56412 c 84.12071,0.31707 84.12071,0.31707 84.12071,0.31707 l 0,0 0,0"
        style="fill:none;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-start:url(#Arrow1Mstart);marker-mid:none;marker-end:url(#Arrow1Mend)" />
-    <text
-       transform="scale(0.99033472,1.0097596)"
-       sodipodi:linespacing="125%"
-       id="text5648"
-       y="341.87149"
-       x="230.80081"
-       style="font-size:28.13015366px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Times New Roman;-inkscape-font-specification:'Times New Roman,'"
-       xml:space="preserve"><tspan
-         style="font-size:31.12478447px;font-family:Times New Roman;-inkscape-font-specification:Times New Roman"
-         y="341.87149"
-         x="230.80081"
-         id="tspan5650"
-         sodipodi:role="line">τ<tspan
-   id="tspan5652"
-   style="font-size:20.23139572px;baseline-shift:sub">est</tspan></tspan></text>
     <path
        inkscape:connector-curvature="0"
        id="path5654"
@@ -1734,12 +1673,12 @@
        transform="scale(0.99033472,1.0097596)"
        sodipodi:linespacing="125%"
        id="text5666"
-       y="388.60043"
+       y="386.61975"
        x="267.51291"
        style="font-size:28.13015366px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Times New Roman;-inkscape-font-specification:'Times New Roman,'"
        xml:space="preserve"><tspan
          style="font-size:31.12478447px;font-family:Times New Roman;-inkscape-font-specification:Times New Roman"
-         y="388.60043"
+         y="386.61975"
          x="267.51291"
          id="tspan5668"
          sodipodi:role="line">τ<tspan
@@ -1846,5 +1785,79 @@
          x="-95.104919"
          y="283.05569"
          style="font-size:25px;font-family:'Times ';-inkscape-font-specification:'Times '">Idle</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:20px;font-style:italic;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans;-inkscape-font-specification:Sans Italic"
+       x="241.51073"
+       y="317.38794"
+       id="text3352"
+       sodipodi:linespacing="125%"
+       transform="translate(-315.68831,116.65418)"><tspan
+         sodipodi:role="line"
+         id="tspan3354"
+         x="241.51073"
+         y="317.38794"
+         style="font-family:Times New Roman;-inkscape-font-specification:Times New Roman" /></text>
+    <text
+       transform="scale(0.99033472,1.0097596)"
+       sodipodi:linespacing="125%"
+       id="text3390"
+       y="338.60727"
+       x="-181.74683"
+       style="font-size:28.13015366px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Times New Roman;-inkscape-font-specification:'Times New Roman,'"
+       xml:space="preserve"><tspan
+         style="font-size:31.12478447px;font-family:Times New Roman;-inkscape-font-specification:Times New Roman"
+         y="338.60727"
+         x="-181.74683"
+         id="tspan3392"
+         sodipodi:role="line">τ<tspan
+   id="tspan3394"
+   style="font-size:20.23139572px;baseline-shift:sub">est </tspan></tspan></text>
+    <text
+       transform="scale(0.99033472,1.0097596)"
+       sodipodi:linespacing="125%"
+       id="text3406"
+       y="543.73004"
+       x="224.17613"
+       style="font-size:28.13015366px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Times New Roman;-inkscape-font-specification:'Times New Roman,'"
+       xml:space="preserve"><tspan
+         style="font-size:31.12478447px;font-family:Times New Roman;-inkscape-font-specification:Times New Roman"
+         y="543.73004"
+         x="224.17613"
+         id="tspan3408"
+         sodipodi:role="line">τ<tspan
+   id="tspan3410"
+   style="font-size:20.23139572px;baseline-shift:sub">est </tspan></tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:28.13015366px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Times New Roman;-inkscape-font-specification:'Times New Roman,'"
+       x="224.17613"
+       y="338.60727"
+       id="text3420"
+       sodipodi:linespacing="125%"
+       transform="scale(0.99033472,1.0097596)"><tspan
+         sodipodi:role="line"
+         id="tspan3422"
+         x="224.17613"
+         y="338.60727"
+         style="font-size:31.12478447px;font-family:Times New Roman;-inkscape-font-specification:Times New Roman">τ<tspan
+   style="font-size:20.23139572px;baseline-shift:sub"
+   id="tspan3424">est </tspan></tspan></text>
+    <text
+       sodipodi:linespacing="125%"
+       id="text5680-9"
+       y="448.56998"
+       x="-204.17474"
+       style="font-size:20px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       xml:space="preserve"><tspan
+         style="font-size:25px;font-family:'Times ';-inkscape-font-specification:'Times '"
+         y="448.56998"
+         x="-204.17474"
+         id="tspan5682-7"
+         sodipodi:role="line">Est. <tspan
+   id="tspan5684-4"
+   style="font-size:25px;font-style:italic;font-family:'Times ';-inkscape-font-specification:'Times '">h</tspan><tspan
+   id="tspan5686-4"
+   style="font-size:20px;baseline-shift:sub;font-family:'Times ';-inkscape-font-specification:'Times '">p,2</tspan></tspan></text>
   </g>
 </svg>

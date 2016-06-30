@@ -69,13 +69,13 @@ Subject to the underlying hypothesis, illustrating the presence $\mathcal H_1$ a
 \begin{equation}
 \yrcvd[n] = 
 \begin{cases}
-\hpo \cdot \xp[n] + w[n] & : \mathcal{H}_1 \\
-w[n] & :\mathcal{H}_0
+\hpo \cdot \xp[n] + \wst[n] & : \mathcal{H}_1 \\
+\wst[n] & :\mathcal{H}_0
 \end{cases},
 \label{eq_HS:sig_mod_st}
 \end{equation}
-where $\xp[n]$ corresponds to a discrete and complex sample transmitted by the PT, $|\hpo|^2$ represents the power gain of the sensing channel for a given frame and $w[n]$ is circularly symmetric additive white Gaussian noise at the ST. 
-The mean and variance for the signal and the noise are determined as: $\e{}{\xp[n]} = 0$, $\e{}{w[n]} = 0$, $\e{}{|\xp[n]|^2} = \prcvdstpt = \spo$ and $\e{}{|w[n]|^2} = \npo$. 
+where $\xp[n]$ corresponds to a discrete and complex sample transmitted by the PT, $|\hpo|^2$ represents the power gain of the sensing channel for a given frame and $\wst[n]$ is circularly symmetric additive white Gaussian noise at the ST. 
+The mean and variance for the signal and the noise are determined as: $\e{}{\xp[n]} = 0$, $\e{}{\wst[n]} = 0$, $\e{}{|\xp[n]|^2} = \prcvdstpt = \spo$ and $\e{}{|\wst[n]|^2} = \npo$. 
 The channel $\hpo$ is considered to be independent of $\xp[n]$ and $w[n]$, thus, $\yrcvd[n]$ is also an independent and identically distributed (i.i.d.) random process.
 
 Following the conventional frame structure, ST performs periodic sensing for a duration of $\tsen$. The test statistics $\ts$ at the ST is evaluated as $\ts = \s{\tsen \fsam}{ |\yrcvd[n]|^2} \mathop{\gtrless}_{\mathcal{H}_0}^{\mathcal{H}_1} \mu$, where $\mu$ is the decision threshold and $\textbf{y}$ is a vector with $\tsen \fsam$ samples. $\ts$ represents a random variable, whereby the characterization of the cdf depends on the underlying hypothesis. With regard to the OFDM signal transmissions that correspond to a Gaussian signal model, $\ts$ follows a central chi-squared ($\cchi2$) distribution for both hypotheses $\mathcal H_0$ and $\mathcal H_1$ \cite{Kay}.
@@ -93,25 +93,26 @@ Similar to (\ref{eq_HS:sig_mod_st}), the discrete and complex received signal at
 \hspace{-2.3mm}
 \ys[n] = 
 \begin{cases}
-\hs \cdot \xsfull[n] + \hptw \cdot \xp[n] + w[n] &: 1 - \pd \\
-\hs \cdot \xsfull[n] + w[n] &: 1 - \pfa \\
-\hs \cdot \xscont[n] + \hptw \cdot \xp[n] + w[n] &: \pd \\
-\hs \cdot \xscont[n] + w[n] &: \pfa 
+\hs \cdot \xsfull[n] + \hptw \cdot \xp[n] + \wsr[n] &: 1 - \pd \\
+\hs \cdot \xsfull[n] + \wsr[n] &: 1 - \pfa \\
+\hs \cdot \xscont[n] + \hptw \cdot \xp[n] + \wsr[n] &: \pd \\
+\hs \cdot \xscont[n] + \wsr[n] &: \pfa 
 \end{cases},
 \label{eq_HS:sig_mod_sr}
 \end{equation}
-where $\xsfull[n]$ and $\xscont[n]$ present the discrete and complex samples with full transmit power $\pfull$ and controlled transmit power $\preg$, respectively. Additionally, $|\hs|^2$ and $|\hptw|^2$ represent the power gains for the access and the interference channels, cf. \figurename~\ref{fig_HS:scenario}. 
+where $\xsfull[n]$ and $\xscont[n]$ present the discrete and complex samples with full transmit power $\pfull$ and controlled transmit power $\preg$, respectively. $\wsr[n]$ is circularly symmetric additive white Gaussian noise at the SR, with variance $\e{}{|\wsr[n]|^2} = \npo$. Additionally, $|\hs|^2$ and $|\hptw|^2$ represent the power gains for the access and the interference channels, cf. \figurename~\ref{fig_HS:scenario}. 
 
 
 Besides that, an interference signal from the ST is encountered at the PR across the channel $\hpth$ only for the cases where the PT is transmitting, i.e., $(1 - \pd, \pd)$, cf. (\ref{eq_HS:sig_mod_sr}). In this regard, the received signal at the PR is given by
 \begin{equation}
 \yp[n] = 
 \begin{cases}
-\hpth \cdot \xscont[n] + w[n] & : \pd \\
-\hpth \cdot \xsfull[n] + w[n] & : 1- \pd 
-\end{cases}.
+\hpth \cdot \xscont[n] + \wpr[n] & : \pd \\
+\hpth \cdot \xsfull[n] + \wpr[n] & : 1- \pd 
+\end{cases},
 \label{eq_HS:sig_mod_pr}
 \end{equation}
+where $\wsr[n]$ is circularly symmetric additive white Gaussian noise at the SR, with variance $\e{}{|\wsr[n]|^2} = \npo$.
 
 \subsection{Problem Description}
 To employ a power control mechanism, the ST is required to control its transmit power in such a way that the interference power received at the PR is below a certain interference threshold ($\ite$). In reference to the HS, constraints on interference power received at the PR are defined as

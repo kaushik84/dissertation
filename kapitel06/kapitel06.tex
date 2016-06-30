@@ -79,23 +79,23 @@ In order to incorporate channel estimation in context to the power control mecha
 The discrete and complex signal received at the ST is given by
 %ived signal at the ST, transmitted by the PR cf. \figurename~\ref{fig_HVD:scenario}, is sampled with a sampling frequency of $\fsam$ and is given by
 \begin{equation}
-\yrcvd[n] = \hpth \cdot \xtranpr[n] + \nas[n],
+\yrcvd[n] = \hpth \cdot \xtranpr[n] + \wst[n],
 \label{eq_HVD:sys_mod_st}
 \end{equation}
-where $\xtranpr[n]$ corresponds to a discrete constant power signal transmitted by the PR, $\phpth$ represents the power gain for the channel PR-ST and $\nas[n]$ is circularly symmetric Additive White Gaussian Noise (AWGN) at the ST.
- $\ptranpr$  corresponds to the transmit power at the PR and $\nas[n]$ is an independent identically distributed (i.i.d.) Gaussian random process with mean $\e{}{\nas[n]} = 0$ and variance $\e{}{|\nas[n]|^2} = \nps$. By the listening to the transitions from the PR, the estimated received power at the ST, computed using $\test \fsam$ samples, is given as
+where $\xtranpr[n]$ corresponds to a discrete constant power signal transmitted by the PR, $\phpth$ represents the power gain for the channel PR-ST and $\wst[n]$ is circularly symmetric Additive White Gaussian Noise (AWGN) at the ST.
+ $\ptranpr$  corresponds to the transmit power at the PR and $\wst[n]$ is an independent identically distributed (i.i.d.) Gaussian random process with mean $\e{}{\wst[n]} = 0$ and variance $\e{}{|\wst[n]|^2} = \nps$. By the listening to the transitions from the PR, the estimated received power at the ST, computed using $\test \fsam$ samples, is given as
 \begin{align}
-\eprcvd = \s{\test \fsam}{ |\hpth \xtranpr[n] + \nas|^2},
+\eprcvdstpr = \s{\test \fsam}{ |\hpth \xtranpr[n] + \wst[n]|^2},
 \label{eq_HVD:prcvd} 
 \end{align}
 where $\fsam$ denotes the sampling frequency. After implementing the power control $(\preg)$ at the ST, the received signal at the PR, during the data transmission, is given by
 \begin{equation}
-\yp[n] = \hpth \cdot \xscont[n] + \nap[n],
+\yp[n] = \hpth \cdot \xscont[n] + \wpr[n],
 \label{eq_HVD:sys_mod_pr}
 \end{equation}
 and on the other side, the received signal at the SR follows
 \begin{equation}
-\ys[n] = \gs \cdot \xscont[n] + \nas[n],
+\ys[n] = \gs \cdot \xscont[n] + \wsr[n],
 \label{eq_HVD:sys_mod_sr}
 \end{equation}
 where $\xscont[n]$ is an i.i.d. random process. The controlled power at the ST is determined as 
@@ -107,7 +107,7 @@ Further, $\phpth$ and $\pgs$ represent the power gains for the channels ST-PR an
 \begin{align}
 \eprcvdpr = \s{(T - \test) \fsam}{|\yp[n]^2|}  \intertext{ and} \prcvdsr\footnote{In the simplication, it is assumed that the access channel is perfectly known.} = \s{(T - \test) \fsam}{|\ys[n]^2|}, 
 \end{align}
-respectively. Likewise (\ref{eq_HVD:sys_mod_st}), $\nap[n]$ represents circularly symmetric AWGN at the PR and the ST with zero mean and variance $\e{}{|\nap[n]|^2} = \npp$ and $\e{}{|\nas[n]|^2} = \nps$, correspondingly. %Consider that $\ptran$, $\preg$ and $\pp$ correspond to power for a given frame. 
+respectively. Likewise (\ref{eq_HVD:sys_mod_st}), $\wpr[n]$ and $\wsr[n]$ represent circularly symmetric AWGN at the PR and the ST with zero mean and variance $\e{}{|\wpr[n]|^2} = \e{}{|\wsr[n]|^2} = \npp$, correspondingly. %Consider that $\ptran$, $\preg$ and $\pp$ correspond to power for a given frame. 
 %For (\ref{eq_HVD:sys_mod_sr}), we assume that the interference at SR from the PR via beacon or pilot channel is $< \nps$, which is a valid assumption considering the indoor scenario depicted in \figurename~\ref{fig_HVD:scenario}. 
 %For (\ref{eq_HVD:sys_mod_sr}), we consider a perfect allignment of the ST to the beacon or pilot channe
 %\subsubsection{Channel}
@@ -128,36 +128,36 @@ In order establish a close relationship between the analytical framework and the
 
 \begin{enumerate}
 	%\item The PR sends a pilot signal with power $\ptranpr$ to the ST.
-	\item The ST estimates the power received $\eprcvd$ (receiver power-based estimation) by listening to the pilot signal received from the PR over the interference channel. In the context of the hardware implementation, an unmodulated sinusoidal signal is sent as a pilot or beacon signal\footnote{The sinusoidal signal is mathematically equivalent to the constant power signal sent by the PR, which resembles a constant phase modulated signal or a perfectly downsampled (by choosing the sampling point appropriately, thereby satisfying the Niquist criterion) PSK signal \citeK{Kaushik16_VTC2}.}.
-	\item With the knowledge of the $\ptranpr$ and the estimate $\eprcvd$, the ST indirectly acquires the knowledge of $\ephpth$. 
-	Upon acquiring this knowledge, a power control is employed at the ST. Using $\eprcvd$, $\epreg$ is determined as 
+	\item The ST estimates the power received $\eprcvdstpr$ (receiver power-based estimation) by listening to the pilot signal received from the PR over the interference channel. In the context of the hardware implementation, an unmodulated sinusoidal signal is sent as a pilot or beacon signal\footnote{The sinusoidal signal is mathematically equivalent to the constant power signal sent by the PR, which resembles a constant phase modulated signal or a perfectly downsampled (by choosing the sampling point appropriately, thereby satisfying the Niquist criterion) PSK signal \citeK{Kaushik16_VTC2}.}.
+	\item With the knowledge of the $\ptranpr$ and the estimate $\eprcvdstpr$, the ST indirectly acquires the knowledge of $\ephpth$. 
+	Upon acquiring this knowledge, a power control is employed at the ST. Using $\eprcvdstpr$, $\epreg$ is determined as 
 \begin{align}
-\epreg = \frac{\ite K}{\eprcvd}, \label{eq_HVD:preg} 
+\epreg = \frac{\ite K}{\eprcvdstpr}, \label{eq_HVD:preg} 
 \end{align}
 where $K$ represents a scaling factor. The scaling factor is required at the ST to hold $\e{}{\eprcvdpr}$ at $\ite$. It is defined as
 \begin{align}
-K = \frac{1}{ \e{\eprcvd}{\frac{\hpth}{\eprcvd}}}, \label{eq_HVD:sca} 
+K = \frac{1}{ \e{\eprcvdstpr}{\frac{\hpth}{\eprcvdstpr}}}, \label{eq_HVD:sca} 
 \end{align}
-where, $\e{\eprcvd}{\cdot}$ represents the expectation over $\eprcvd$.
+where, $\e{\eprcvdstpr}{\cdot}$ represents the expectation over $\eprcvdstpr$.
 	%It is scaled such that, in case of perfect channel reciprocity and the absence of noise on the primary link, the interference power arriving at the PR ($\prcvdpr$) has the value of the interference temperature ($\ite$). %In control theory terms, $\ite$ is the setpoint for $\prcvdpr$.
 	\item The ST transmits data to the SR with $\epreg$. 
 	%\item The SR receives the data signal with power $\preg$ It provides this value back over a feedback channel to the ST, where it is used to estimate the expected secondary throughput $\e{\rs}{\rs}$ over the access channel.
-	The estimated power ($\eprcvd$) over the interference channel induces variations in controlled power defined as $\epreg$. Following the relation between the controlled power at the ST and the received power at the PR 
+	The estimated power ($\eprcvdstpr$) over the interference channel induces variations in controlled power defined as $\epreg$. Following the relation between the controlled power at the ST and the received power at the PR 
 \begin{align}
 \eprcvdpr  = \phpth \epreg,
 \label{eq_HVD:eprcvdpr}
 \end{align}
-the variations in $\epreg$ translate to the variations in $\prcvdpr$ (defined as $\eprcvdpr$) around $\ite$, which result in uncertain interference at the PR. Unless captured, these variations may severely degrade the performance of the US. Besides this, due to the relationship between between the controlled power and the secondary throughput defined in (\ref{eq_HVD:sthr}), a certain amount of the variations are further translated to the secondary throughput. These variations in the system parameters ($\eprcvd$, $\epreg$, $\eprcvdpr$ and $\ers$) are characterized in terms of their probability density functions (pdfs).  
+the variations in $\epreg$ translate to the variations in $\prcvdpr$ (defined as $\eprcvdpr$) around $\ite$, which result in uncertain interference at the PR. Unless captured, these variations may severely degrade the performance of the US. Besides this, due to the relationship between between the controlled power and the secondary throughput defined in (\ref{eq_HVD:sthr}), a certain amount of the variations are further translated to the secondary throughput. These variations in the system parameters ($\eprcvdstpr$, $\epreg$, $\eprcvdpr$ and $\ers$) are characterized in terms of their probability density functions (pdfs).  
 	\item In particular, the pdf of $\eprcvdpr$ is utilized to employ an interference constraint (also referred as confidence probability constraint) in terms of confidence probability $\pco$ at the ST such that the uncertain interference at the PR can be effectively regulated. In addition, by utilizing the pdf of $\ers$, the performance of the access channel is determined in terms of the expected secondary throughput. Finally, subject to the interference constraint on the confidence probability the performance of the US is jointly characterized in terms of a tradeoff between the estimation time and the secondary throughput tradeoff. 
 \end{enumerate}
 
 \subsection{Characterization of the System Parameters}
-In order to capture the variations induced due to channel estimation, the pdfs of the aforementioned system parameters ($\eprcvd$, $\epreg$, $\eprcvdpr$, $\ers$) are characterized, subsequently. 
+In order to capture the variations induced due to channel estimation, the pdfs of the aforementioned system parameters ($\eprcvdstpr$, $\epreg$, $\eprcvdpr$, $\ers$) are characterized, subsequently. 
 
-In accordance to the employed signal model, $\prcvd$ is modeled as a non-central chi-squared distribution $\ncchi2$, whose pdf is characterized as \cite{Char99}
+In accordance to the employed signal model, $\prcvdstpr$ is modeled as a non-central chi-squared distribution $\ncchi2$, whose pdf is characterized as \cite{Char99}
 \begin{align}
 	\label{nxc2equ}
-	\dprcvd (x) &= 
+	\dprcvdstpr (x) &= 
 	\frac{\test \fsam}{2\sigma_\textrm{p}^2} \left(\frac{\test \fsam x}{\lambda}\right)^\frac{\test \fsam-2}{4} \exp\left(-\frac{\test \fsam x+\lambda}{2\sigma_\textrm{p}^2}\right)  \times \\ 
 	\quad & I_{ \frac{\test \fsam}{2}-1 }\left(\frac{\sqrt{\test \fsam x \lambda}}{\sigma_\textrm{p}^2}\right) \nonumber  ,
 \end{align}
@@ -364,7 +364,7 @@ Finally, to complement the validation process, the measurement data is analyzed 
 
 \subsection{Validation of System Parameters}
 \label{ssec:val_sys}
-Since the stochastic model is the basis of the performance analysis of the proposed framework. It is reasonable to first validate the pdfs of the system variables $\eprcvd$, $\epreg$, $\eprcvdpr$, and $\ers$ derived in Section \ref{model}. To this end, measurements with the setup illustrated in \figurename~\ref{messaufbau} is performed. The measurement data is plotted in terms of histograms and scaled such that it represents the relative frequency ($f_\textrm{hist}(x)$, a discrete function), which are evaluated over a certain set of bins $x \in \mathcal X_\text{bins}$. \figurename~\ref{hrel_pdf} compares the histograms from the measurements and the pdfs determined using the analytical expressions for a certain set of system parameters depicted in Table \ref{param}. The plots show that the theoretical expressions are valid and can be employed for capturing the performance of the CR systems over the hardware. 
+Since the stochastic model is the basis of the performance analysis of the proposed framework. It is reasonable to first validate the pdfs of the system variables $\eprcvdstpr$, $\epreg$, $\eprcvdpr$, and $\ers$ derived in Section \ref{model}. To this end, measurements with the setup illustrated in \figurename~\ref{messaufbau} is performed. The measurement data is plotted in terms of histograms and scaled such that it represents the relative frequency ($f_\textrm{hist}(x)$, a discrete function), which are evaluated over a certain set of bins $x \in \mathcal X_\text{bins}$. \figurename~\ref{hrel_pdf} compares the histograms from the measurements and the pdfs determined using the analytical expressions for a certain set of system parameters depicted in Table \ref{param}. The plots show that the theoretical expressions are valid and can be employed for capturing the performance of the CR systems over the hardware. 
 
 
 \begin{table}
@@ -482,7 +482,7 @@ Since the stochastic model is the basis of the performance analysis of the propo
 The experiments were repeated for different values of $\snrrcvdu$. It was observed that for a considerable range of $\snrrcvdu \in (4,30)\SI{}{dB}$, the theoretical expressions depicted a significant accuracy to the experimental data, refer to Table \ref{nichtzentral}. The accuracy was quantified in terms of a relative error ($\epsilon$) defined as
 \begin{equation}
 \label{fr}
-\epsilon = \frac{1}{|\mathcal X\sub{bins}|} \times \sum_{x \in \mathcal X\sub{bins}} \frac{\dprcvd(x) - f\sub{hist}(x)}{f\sub{hist}(x)} \;  , 
+\epsilon = \frac{1}{|\mathcal X\sub{bins}|} \times \sum_{x \in \mathcal X\sub{bins}} \frac{\dprcvdstpr(x) - f\sub{hist}(x)}{f\sub{hist}(x)} \;  , 
 \end{equation}
 $|\mathcal X\sub{bins}|$ represents the cardinality of $\mathcal X\sub{bins}$, which excludes the bins with $f\sub{hist}(x)\neq 0$. Different values of $\snrrcvdu$ corresponds to the different channel conditions, hence, this observation further concludes that the proposed framework is robust to the fluctuations in the channel gain. 
 
@@ -568,15 +568,15 @@ In order to successfully deploy the demonstrator, in addition to the simplificat
 
 \begin{enumerate}
 	%\item The hardware implementation of the SR is not considered, that is, it is regarded virtual in the system (refer to Fig. \ref{demo_blockA}).
-	\item The controlled power, according to the proposed framework, can be evaluated using (\ref{eq_HVD:preg}). However, this requires knowledge of the scaling parameter $K$. According the (\ref{eq_HVD:sca}), $K$ can be computed by averaging the received power $\eprcvd$, which corresponds to the expected received power $\e{\eprcvd}{\eprcvd}$). As the antennas are mount at the ST and the PR, the channel gain can over several measurements. These changes makes it difficult to carry out such a computation while the system is operating. To resolve this issue, the control power is computed based on a single realization of the $\eprcvd$ for the demonstrator. Such a simplification, however, increases the variation in the system. As a result, a certain deviation in the performance depicted by the demonstrator (in terms of the confidence probability and expected secondary throughput) from the one computed using the theoretical expression is expected. 
-In this regard, the estimated channel gain, evaluated from $\eprcvd$, is determined as 
+	\item The controlled power, according to the proposed framework, can be evaluated using (\ref{eq_HVD:preg}). However, this requires knowledge of the scaling parameter $K$. According the (\ref{eq_HVD:sca}), $K$ can be computed by averaging the received power $\eprcvdstpr$, which corresponds to the expected received power $\e{\eprcvdstpr}{\eprcvdstpr}$). As the antennas are mount at the ST and the PR, the channel gain can over several measurements. These changes makes it difficult to carry out such a computation while the system is operating. To resolve this issue, the control power is computed based on a single realization of the $\eprcvdstpr$ for the demonstrator. Such a simplification, however, increases the variation in the system. As a result, a certain deviation in the performance depicted by the demonstrator (in terms of the confidence probability and expected secondary throughput) from the one computed using the theoretical expression is expected. 
+In this regard, the estimated channel gain, evaluated from $\eprcvdstpr$, is determined as 
 	\begin{equation}
-		\ephpth = \frac{\e{\eprcvd}{\eprcvd}-\npp}{\ptran} \approx \frac{\eprcvd-\npp}{\ptran}. 
+		\ephpth = \frac{\e{\eprcvdstpr}{\eprcvdstpr}-\npp}{\ptran} \approx \frac{\eprcvdstpr-\npp}{\ptran}. 
 		\label{eq_HVD:approx1}
 	\end{equation}	
-As $\npp$ is negligible compared to $\eprcvd$, (\ref{eq_HVD:approx1}) can be further simplified as 
+As $\npp$ is negligible compared to $\eprcvdstpr$, (\ref{eq_HVD:approx1}) can be further simplified as 
 	\begin{equation}
-		\ephpth = \frac{\eprcvd-\npp}{\ptran} \approx \frac{\eprcvd}{\ptran}.
+		\ephpth = \frac{\eprcvdstpr-\npp}{\ptran} \approx \frac{\eprcvdstpr}{\ptran}.
 		\label{eq_HVD:approx2}
 	\end{equation}	
 	\item Furthermore, in order to exercise channel reciprocity, the analytical framework employs a TDD across the primary and secondary system. Hence, a perfect frame synchronization between the PR and the ST is needed. Since, the synchronization between two different systems is challenging\footnote{For the preliminary analysis, it is cumbersome to deploy two different system and realize TDD.}. To simplify this matter, Frequency Division Duplexing between the PR and the ST is proposed. This simplification is described as follows: The signals are transmitted and received using two different frequencies (\SI{2.422}{GHz} and \SI{2.423}{GHz}) over two separate antennas, as illustrated in \figurename~\ref{fig_HVD:BD}. With this technique, the channel reciprocity may be compromised.	
@@ -631,7 +631,7 @@ In order to realize these simplifications, it is utmost necessary to observe the
                 
 		% ST Interface
 		\node[draw=none, font=\scriptsize, rotate = \anglee, align = center] at (0.8234,0.616) {Eliminate \\ DC offset, \\ flicker Noise};
-		\node[draw=none, font=\scriptsize, rotate = \anglee, align = center] at (0.695,0.616) {$\sum |\cdot|^2$ \\ $(= \eprcvd)$};
+		\node[draw=none, font=\scriptsize, rotate = \anglee, align = center] at (0.695,0.616) {$\sum |\cdot|^2$ \\ $(= \eprcvdstpr)$};
                 \node[draw=none, font=\scriptsize, rotate = \anglee, align = center] at (0.567,0.616) {Compute \\ $\epreg$ \\ based on $\ite, \pcod$};
                 \node[draw=none, font=\scriptsize, rotate = \anglee, align = center] at (0.567,0.40) {Compute  $\ers$  \\ based on \\ $\ttesto, \epreg$};
                 \node[draw=none, font=\scriptsize, rotate = \anglee, align = center] at (0.8234,0.40) {Data Signal \\ $\epreg$};
@@ -654,9 +654,9 @@ In this regard, the principle operation of the underlay paradigm described in Se
 
 \subsection{User Interaction and Observations}
 
-\figurename~\ref{interface} presents the graphical user interfaces of the demonstrator that provides insights to the parameters evaluated at the PR (which include, $\prcvdpr$ and $\pco$) and the ST (which include, $\eprcvd$, $\epreg$, and $\ers$). A hardware calibration of the demonstrator is performed to provide physical significance to the digital values obtained from the USRPs. Because the SR has not been implemented over the hardware, a slider to modify the gain for the access channel ($\gs$) has been employed to demonstrate the effect of variations in the $\gs$ on the performance of the system. %$R_\textrm{s}$ is affected by changing the value of $\alpha_\textrm{s}$ or $T$. 
+\figurename~\ref{interface} presents the graphical user interfaces of the demonstrator that provides insights to the parameters evaluated at the PR (which include, $\prcvdpr$ and $\pco$) and the ST (which include, $\eprcvdstpr$, $\epreg$, and $\ers$). A hardware calibration of the demonstrator is performed to provide physical significance to the digital values obtained from the USRPs. Because the SR has not been implemented over the hardware, a slider to modify the gain for the access channel ($\gs$) has been employed to demonstrate the effect of variations in the $\gs$ on the performance of the system. %$R_\textrm{s}$ is affected by changing the value of $\alpha_\textrm{s}$ or $T$. 
 
-As expected, upon changing the value of $\ite$ at the ST causes the variations (in the measurements of $\eprcvdpr$ at the PR) to shift approximately to the same value. This indicates the expected receiver power $\e{\prcvdpr}{\prcvdpr}$ is fixed to the interference temperature, as proposed in the analytical framework. A snapshot of this phenomenon is presented in \figurename~\ref{interface}. In addition, due to the modification of the interference constraint\footnote{Changing the interference temperature changes the confidence interval.}, the ST adapts its $\preg$ according to the new parameters that define the interference constraint. A change in the $\preg$ further changes the expected secondary throughput $\e{\ers}{\ers}$. These observations demonstrate that the received power-based estimation (which enables the ST to procure the channel knowledge) implemented at the ST by listening to the pilot signal transmitted by the PR to perform the power control mechanism is operating in accordance to the underlay principle. Finally, the response of the demonstrator to the dynamic conditions can be analyzed by varying the distance, which consequently varies the channel gain for the link between the PR and the ST. The effect can be captured by observing the changes in $\eprcvd$ and other corresponding parameters that depend on $\hpth$. As the distance is increased beyond a certain value, the ST operates at its maximum transmit power. Such events during which the ST operates at the maximum transmit power are interesting to understand the behaviour of the demonstrator, hence, included in the graphical the user interface of the ST.
+As expected, upon changing the value of $\ite$ at the ST causes the variations (in the measurements of $\eprcvdpr$ at the PR) to shift approximately to the same value. This indicates the expected receiver power $\e{\prcvdpr}{\prcvdpr}$ is fixed to the interference temperature, as proposed in the analytical framework. A snapshot of this phenomenon is presented in \figurename~\ref{interface}. In addition, due to the modification of the interference constraint\footnote{Changing the interference temperature changes the confidence interval.}, the ST adapts its $\preg$ according to the new parameters that define the interference constraint. A change in the $\preg$ further changes the expected secondary throughput $\e{\ers}{\ers}$. These observations demonstrate that the received power-based estimation (which enables the ST to procure the channel knowledge) implemented at the ST by listening to the pilot signal transmitted by the PR to perform the power control mechanism is operating in accordance to the underlay principle. Finally, the response of the demonstrator to the dynamic conditions can be analyzed by varying the distance, which consequently varies the channel gain for the link between the PR and the ST. The effect can be captured by observing the changes in $\eprcvdstpr$ and other corresponding parameters that depend on $\hpth$. As the distance is increased beyond a certain value, the ST operates at its maximum transmit power. Such events during which the ST operates at the maximum transmit power are interesting to understand the behaviour of the demonstrator, hence, included in the graphical the user interface of the ST.
 
 \begin{figure}
 	\vspace{-15 pt}
@@ -671,7 +671,7 @@ As expected, upon changing the value of $\ite$ at the ST causes the variations (
 
                 \begin{scope}[x={(image.south east)},y={(image.north west)}]
                 \node[draw=none, fill=gray!10,font=\scriptsize] at (0.49,0.977) {Secondary Transmitter (CSC-BS)};
-                \node[draw=none, fill=gray!10,font=\scriptsize, text width = 102pt, align = center] at (0.349,0.93) {Received Power at the ST, $\eprcvd$};
+                \node[draw=none, fill=gray!10,font=\scriptsize, text width = 110pt, align = center] at (0.375,0.93) {Received power at the ST, $\eprcvdstpr$};
                 \node[draw=none, fill=gray!10,font=\scriptsize, text width = 41pt, align = center] at (0.154,0.745) {Noise Floor};
                 \node[draw=none, fill=gray!10,font=\scriptsize, text width = 102pt, align = center] at (0.349,0.69) {Control power at the ST, $\epreg$};
                 \node[draw=none, fill=gray!10,font=\scriptsize, text width = 103pt, align =  center] at (0.352,0.50) {Secondary throughput at the SR, $\ers$};
