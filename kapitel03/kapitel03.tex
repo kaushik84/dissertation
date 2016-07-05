@@ -293,7 +293,10 @@ However, with the inclusion of this channel estimation, the system anticipates: 
 In order to include channel estimation, a frame structure that constitutes estimation $\test$, sensing $\tsen$ and data transmission $T - \tsen$ is proposed, where $\test$ and $\tsen$ correspond to time intervals and \tc{$0 < \test \le \tsen < T$, refer to} \figurename~{\ref{fig_IS:fs}}. Since the estimated values of the interacting channels are required for determining the suitable sensing time (the duration of the sensing phase), the sequence depicted in \figurename~{\ref{fig_IS:fs}}, whereby estimation followed by sensing is reasonable for the hardware deployment. 
 \tc{Particularly for the sensing channel, it is worthy to note that the samples used for estimation can be combined with the samples acquired for sensing\footnote{\tc{Therefore, the sensing phase incorporates the estimation phase, see \figurename~\ref{fig_IS:fs}}.} such that the time resources within the frame duration can be utilized efficiently, as shown in the frame structure in \figurename~\ref{fig_IS:fs}.} 
 To acquire the estimates for the interference and the access channels at the ST, a low-rate feedback channel from the SR to the ST is required for the proposed approach. 
-In the following paragraphs, the estimation of the involved channels is considered. %As $\tsen^{*}$ is dependent on $\prcvd$ or the state of $\hpo$ in particular, under this situation, $\tsen^{*}$ is lower bounded by $\test$, consequently translating $\fpd$ from a continuous function to a piecewise continuous function, thereby complicating the analytical tractability of $\fpd$. Hence, to simplify the analysis, in this work, we consider estimation and sensing as disjoint events in time. In this regard, the derived expressions based on our proposed model represents a lower performance bound. Next, in the following subsections, we present the estimation of the interacting channels. 
+Considering the fact that the number of pilot symbols is relatively small in comparison to the samples used for performing received power-based channel estimation, the time allocation of the pilot symbols does not affect the overall performance of the ISs. Hence, no time resources are allocated for access channel estimation in the frame structure\footnote{Please note that, this argument is also applicable to the frame structures concerning the US and the HS, which will appear in following two chapters.}. In the following paragraphs, the estimation of the involved channels is considered. 
+
+
+%As $\tsen^{*}$ is dependent on $\prcvd$ or the state of $\hpo$ in particular, under this situation, $\tsen^{*}$ is lower bounded by $\test$, consequently translating $\fpd$ from a continuous function to a piecewise continuous function, thereby complicating the analytical tractability of $\fpd$. Hence, to simplify the analysis, in this work, we consider estimation and sensing as disjoint events in time. In this regard, the derived expressions based on our proposed model represents a lower performance bound. Next, in the following subsections, we present the estimation of the interacting channels. 
 \subsubsection{Estimation of sensing channel ($\hpo$)}
 %To incorporate the effect of fading in the model, we assume that the channel remains constant for $T$. 
 Following the previous discussions, the ST acquires the knowledge of $\hpo$ by estimating its received power. The estimated received power is required for the characterization of $\pd$, thereby evaluating the detector performance. %, an vital performance parameter for the cognitive radio system. %Implicit to estimation, the variation in the received power are translated to the $\pd$. Hence, the characterization of the $\pd$ in terms of distribution function is essential. 
@@ -688,7 +691,7 @@ See Section \ref{ssec:th1}
 Herein, based on the estimation model, a fundamental relation between estimation time (regulates the variation in the detection probability according to the PU constraint), sensing time (represents the detector performance) and achievable throughput is established, this relationship is characterized as \textit{estimation-sensing-throughput tradeoff}. Based on this tradeoff, a suitable estimation $\test = \ttest$ and a suitable sensing time $\tsen = \ttsen$ that attains a maximum achievable throughput $\trs(\ttest,\ttsen)$ for the IS is determined.  
 \end{remark}
 
-\begin{coro} \label{cor:cor1}
+\begin{coro} \label{cor_IS:cor1}
 \normalfont
 \tc{Problems \ref{th_IS:th1} and \ref{th_IS:th2} consider the optimization of the average throughput to incorporate the effect of variations due to the channel estimation, and subsequently determine the suitable sensing and the suitable estimation time. Here, an alternative approach to the optimization problem described in (\ref{eq_IS:thr_id}) is investigated to capture these variations, whereby for a certain estimation time $\test$, the suitable sensing time subject to the average constraint is determined as} 
 \tc{
@@ -771,7 +774,12 @@ Subject to an outage constraint on $\pd$ at the PR, the sensing-throughput trade
 \end{theorem}
 \begin{remark} \label{rem:rem1}
 \normalfont
-It is worth noticing the fact the authors in \cite{Juarez11} applied channel fading only to the sensing channel, however, according to Problem \ref{th_IS:th3}, here, a more practical approach is considered, whereby, the channel fading in the access and the interference channels is also employed. Since the perfect channel knowledge scenario is employed to benchmark the performance of those ISs that employ channel estimation (discussed later in Section \ref{ssec:ice}), the parameters such as threshold (which is used for evaluating $\pd$ and $\pfa$) and the expected throughput are evaluated numerically.%\footnote{In our future work, we plan to obtain analytical expressions of the aforementioned parameters.}.
+
+It is worth noticing the fact the authors in \cite{Juarez11} applied channel fading only to the sensing channel, however, according to Problem \ref{th_IS:th3}, here, a more practical approach is considered, whereby, the channel fading in the access and the interference channels is also employed. Since the perfect channel knowledge scenario is employed to benchmark the performance of those ISs that employ channel estimation (discussed later in Section \ref{ssec:ice}), the parameters such as threshold (which is used for evaluating $\pd$ and $\pfa$) and the expected throughput are evaluated numerically.
+%\footnote{In our future work, we plan to obtain analytical expressions of the aforementioned parameters.}.
+Despite the knowledge of the fading model, similar to the ideal model depicted for the deterministic channel, the characterization in (\ref{eq_IS:STT_i}) and (\ref{eq_IS:OC_i}) assumes the perfect knowledge\footnote{For the channel fading case, this knowledge signifies the expected values.} of the power gains $(\bphpth, \bpgpt, \bpgs)$ of the corresponding channels. In view of this, proposed framework is further extended to investigate the effect of the random channel (channel fading) on the performance of the ISs that incorporates estimation of the involved channels.
+
+
 \end{remark}
 
 \subsubsection{Imperfect Channel Knowledge} \label{ssec:ice}
@@ -908,7 +916,7 @@ At first, the performance of the IS in terms of sensing-throughput tradeoff corr
 \includegraphics[width= \figscale]{figures/fig_opt_thr_vs_SNR_AWGN}
 \caption{\tc{Achievable secondary throughput versus $\snrrcvd$ with $\tau\sub{est} = \SI{5}{ms}$ for the deterministic channel.}}
 \label{fig_IS:optT_snr}
-\vspace{-0.7cm}
+%\vspace{-0.7cm}
 \end{figure}
 
 Hereafter, the theoretical expressions are considered for the analysis, in addition, the suitable sensing time is chosen to be as an operating point. Next, the variation in the achievable throughput $\rs(\test, \ttsen)$ against the received signal to noise ratio $\snrrcvd$ at the ST with $\test = \SI{5}{ms}$ is considered, \tc{refer to} \figurename~\ref{fig_IS:optT_snr}. For $\snrrcvd < -\SI{10}{dB}$, the estimation model incurs a significant performance loss. This clearly reveals that the ideal model overestimates the performance of the ISs. \tc{From the previous discussion, it is concluded that the inclusion of the average and the outage constraints (depicted by the proposed framework) precisely tackles the uncertainty in the interference at the PR arising due to channel estimation without considerably degrading the performance of the IS.} 
@@ -994,7 +1002,7 @@ Upon maximizing the secondary throughput, it is interesting to analyze the varia
 %\vspace{-0.7cm}
 \end{figure}
 
-Besides that, the variation in the achievable throughput for different values of the outage constraint is illustrated, refer to \figurename~\ref{fig_IS:optT_test}. It is observed that for the selected choice of $\mpd$, the outage constraint is severe as compared to the average constraint, hence, results in a lower throughput or achieves greater performance degradation. Thus, depending on the nature of the policy (aggressive or conservative) followed by the regulatory bodies towards the interference at the primary system, it is possible to define $\mpd$ accordingly during the system design. \tc{Moreover, it is observed that the alternative approach proposed in Corollary \ref{cor:cor1} does not present any noticeable performance difference depicted in terms of the achievable throughput corresponding to the one characterized in Problems \ref{th_IS:th1} and \ref{th_IS:th2}. 
+Besides that, the variation in the achievable throughput for different values of the outage constraint is illustrated, refer to \figurename~\ref{fig_IS:optT_test}. It is observed that for the selected choice of $\mpd$, the outage constraint is severe as compared to the average constraint, hence, results in a lower throughput or achieves greater performance degradation. Thus, depending on the nature of the policy (aggressive or conservative) followed by the regulatory bodies towards the interference at the primary system, it is possible to define $\mpd$ accordingly during the system design. \tc{Moreover, it is observed that the alternative approach proposed in Corollary \ref{cor_IS:cor1} does not present any noticeable performance difference depicted in terms of the achievable throughput corresponding to the one characterized in Problems \ref{th_IS:th1} and \ref{th_IS:th2}. 
 }
 
 \begin{figure}[!ht]
