@@ -685,7 +685,7 @@ See Section \ref{ssec:th1}
 \tc{In contrast to the ideal model, the sensing-throughput tradeoff investigated by the estimation model (refer to Problems \ref{th_IS:th1} and \ref{th_IS:th2}) incorporates the imperfect channel knowledge, in this context, the performance characterization considered by the proposed framework is closer to the realistic situations.} 
 
 
-\begin{remark} \label{rem:rem1}
+\begin{remark} \label{rem_IS:rem1}
 \normalfont
 %Subsequently, following the variation of optimum expected throughput $\trs(\test,\ttsen)$ (optimized over the sensing time) against the estimation time, 
 Herein, based on the estimation model, a fundamental relation between estimation time (regulates the variation in the detection probability according to the PU constraint), sensing time (represents the detector performance) and achievable throughput is established, this relationship is characterized as \textit{estimation-sensing-throughput tradeoff}. Based on this tradeoff, a suitable estimation $\test = \ttest$ and a suitable sensing time $\tsen = \ttsen$ that attains a maximum achievable throughput $\trs(\ttest,\ttsen)$ for the IS is determined.  
@@ -717,7 +717,7 @@ In contrast to (\ref{eq_IS:thr_AC}) and (\ref{eq_IS:thr_OC}), the suitable sensi
 \e{\epd, \ecz, \eco, \ttsen}{\rs(\test, \ttsen)} \label{eq_IS:C_thr},
 \end{align}
 where $\e{\epd, \ecz, \eco, \ttsen}{\cdot}$ corresponds to an expectation over $\epd, \ecz, \eco, \ttsen$.
-Following Remark \ref{rem:rem1}, the average secondary throughput, defined in (\ref{eq_IS:C_thr}), are further optimized over the estimation time 
+Following Remark \ref{rem_IS:rem1}, the average secondary throughput, defined in (\ref{eq_IS:C_thr}), are further optimized over the estimation time 
 \begin{align}
 \trs(\ttest, \ttsenac) &= \maxi_{\test} \e{\epd, \ecz, \eco, \ttsen}{\rs(\test, \ttsen)} \label{eq_IS:C_thr_AC}. 
 \end{align}
@@ -772,7 +772,7 @@ Subject to an outage constraint on $\pd$ at the PR, the sensing-throughput trade
 \text{s.t.} & \text{ }  0 < \tsen \le T. \nonumber
 \end{align}
 \end{theorem}
-\begin{remark} \label{rem:rem1}
+\begin{remark} \label{rem_IS:rem1}
 \normalfont
 
 It is worth noticing the fact the authors in \cite{Juarez11} applied channel fading only to the sensing channel, however, according to Problem \ref{th_IS:th3}, here, a more practical approach is considered, whereby, the channel fading in the access and the interference channels is also employed. Since the perfect channel knowledge scenario is employed to benchmark the performance of those ISs that employ channel estimation (discussed later in Section \ref{ssec:ice}), the parameters such as threshold (which is used for evaluating $\pd$ and $\pfa$) and the expected throughput are evaluated numerically.
@@ -830,7 +830,7 @@ Using $\mu$ to determine $\epd$ and $\pfa$ and evaluating an expectation over $\
 \tc{In contrast to the ideal model (refer to Problem \ref{th_IS:th3}), the sensing-throughput tradeoff investigated by the proposed approach (refer to Problem \ref{th_IS:th4}) incorporates the imperfect channel knowledge, in this context, the performance characterization considered by the proposed framework are closer to the realistic situations.}
 
 
-\begin{remark} \label{rem:rem2}
+\begin{remark} \label{rem_IS:rem2}
 %Subsequently, following the variation of optimum expected throughput $\trs(\test,\ttsen)$ (optimized over the sensing time) against the estimation time, 
 \normalfont
 Similar to the deterministic channel, the expression $\rs(\test, \tsen)$ derived by the estimation model (referred as the proposed approach) establishes a fundamental relation between estimation time, sensing time and achievable throughput  characterized as estimation-sensing-throughput tradeoff for the random channel that incorporates channel estimation. Based on this tradeoff, a suitable estimation $\test = \ttest$ and a sensing time $\tsen = \ttsen$ that attains a maximum achievable throughput $\trs(\ttest,\ttsen)$ for the IS is determined.
@@ -973,7 +973,7 @@ Hereafter, the theoretical expressions are considered for the analysis, in addit
 \end{figure}
 
 
-Upon maximizing the secondary throughput, it is interesting to analyze the variation of the achievable throughput with the estimation time. Corresponding to the estimation model, \figurename~\ref{fig_IS:EST} illustrates a tradeoff among the estimation time, the sensing time and the secondary throughput, \tc{refer to} Remark \ref{rem:rem1}. \tc{From \figurename~\ref{fig_IS:EST}, it can be noticed that the function $\rs(\test, \tsen)$ is well-behaved in the region $0 < \test \le \tsen \le T$ and consists of a global maximum. This tradeoff depicted by the proposed framework, further presented in \figurename~\ref{fig_IS:optT_test}, can be explained from the fact that low values of the estimation time result in large variations in $\epd$.} To counteract and satisfy the average and the outage constraints, the corresponding thresholds shift to a lower value. This causes an increase in $\pfa$, thereby increasing the sensing-throughput curvature. As a result, the suitable sensing time is obtained at a higher value. However, beyond a certain value ($\ttest$), a further increase in the estimation time slightly contributes to the performance improvement and largely consumes the time resources. As a consequence to the estimation-sensing-throughput tradeoff, the suitable estimation time that yields an achievable throughput $\trs(\ttest,\ttsen)$ is determined. 
+Upon maximizing the secondary throughput, it is interesting to analyze the variation of the achievable throughput with the estimation time. Corresponding to the estimation model, \figurename~\ref{fig_IS:EST} illustrates a tradeoff among the estimation time, the sensing time and the secondary throughput, \tc{refer to} Remark \ref{rem_IS:rem1}. \tc{From \figurename~\ref{fig_IS:EST}, it can be noticed that the function $\rs(\test, \tsen)$ is well-behaved in the region $0 < \test \le \tsen \le T$ and consists of a global maximum. This tradeoff depicted by the proposed framework, further presented in \figurename~\ref{fig_IS:optT_test}, can be explained from the fact that low values of the estimation time result in large variations in $\epd$.} To counteract and satisfy the average and the outage constraints, the corresponding thresholds shift to a lower value. This causes an increase in $\pfa$, thereby increasing the sensing-throughput curvature. As a result, the suitable sensing time is obtained at a higher value. However, beyond a certain value ($\ttest$), a further increase in the estimation time slightly contributes to the performance improvement and largely consumes the time resources. As a consequence to the estimation-sensing-throughput tradeoff, the suitable estimation time that yields an achievable throughput $\trs(\ttest,\ttsen)$ is determined. 
 
 \begin{figure}[!ht]
 
