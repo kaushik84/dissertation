@@ -377,9 +377,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="2.3890543"
-     inkscape:cx="262.61472"
-     inkscape:cy="276.81861"
+     inkscape:zoom="1.5589884"
+     inkscape:cx="501.66695"
+     inkscape:cy="287.06492"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="true"
@@ -1345,24 +1345,24 @@
          style="font-size:54.86071777px">⇒</tspan></text>
     <text
        xml:space="preserve"
-       style="font-size:223.0866394px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Times New Roman;-inkscape-font-specification:'Times New Roman,'"
-       x="-1151.2992"
-       y="-215.4182"
+       style="font-size:234.93180847px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Times New Roman;-inkscape-font-specification:'Times New Roman,'"
+       x="-1212.5011"
+       y="-215.84837"
        id="text4803"
        sodipodi:linespacing="125%"
-       transform="matrix(0.02604825,-0.50856658,1.9664804,-0.00330922,0,0)"><tspan
+       transform="matrix(0.02743133,-0.48292485,2.0708941,-0.00314237,0,0)"><tspan
          sodipodi:role="line"
          id="tspan4805"
-         x="-1151.2992"
-         y="-215.4182" /><tspan
+         x="-1212.5011"
+         y="-215.84837" /><tspan
          sodipodi:role="line"
          id="tspan4807"
-         x="-1151.2992"
-         y="63.440102">{</tspan></text>
+         x="-1212.5011"
+         y="77.816399">{</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:28.13015366px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
-       x="-52.810059"
+       x="-48.771019"
        y="595.45789"
        id="text3821-1-4-2-8"
        sodipodi:linespacing="125%"
@@ -1371,29 +1371,29 @@
        inkscape:transform-center-y="52.9208"><tspan
          sodipodi:role="line"
          id="tspan3823-1-3-7-0"
-         x="-52.810059"
+         x="-48.771019"
          y="595.45789"
          style="font-size:31.12478447px;font-family:Times New Roman;-inkscape-font-specification:Times New Roman">Uplink</tspan></text>
     <text
        xml:space="preserve"
-       style="font-size:223.0866394px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Times New Roman;-inkscape-font-specification:'Times New Roman,'"
-       x="-1151.5763"
-       y="-14.341475"
+       style="font-size:236.2318573px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Times New Roman;-inkscape-font-specification:'Times New Roman,'"
+       x="-1219.3556"
+       y="-26.966349"
        id="text4803-2"
        sodipodi:linespacing="125%"
-       transform="matrix(0.02604825,-0.50856658,1.9664804,-0.00330922,0,0)"><tspan
+       transform="matrix(0.02758312,-0.48026719,2.0823538,-0.00312508,0,0)"><tspan
          sodipodi:role="line"
          id="tspan4805-0"
-         x="-1151.5763"
-         y="-14.341475" /><tspan
+         x="-1219.3556"
+         y="-26.966349" /><tspan
          sodipodi:role="line"
          id="tspan4807-9"
-         x="-1151.5763"
-         y="264.51682">{</tspan></text>
+         x="-1219.3556"
+         y="268.32346">{</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:28.13015366px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
-       x="326.2608"
+       x="330.29987"
        y="594.93884"
        id="text3821-1-4-2-8-6"
        sodipodi:linespacing="125%"
@@ -1402,7 +1402,7 @@
        inkscape:transform-center-y="52.9208"><tspan
          sodipodi:role="line"
          id="tspan3823-1-3-7-0-1"
-         x="326.2608"
+         x="330.29987"
          y="594.93884"
          style="font-size:31.12478447px;font-family:Times New Roman;-inkscape-font-specification:Times New Roman">Downlink</tspan></text>
     <text
