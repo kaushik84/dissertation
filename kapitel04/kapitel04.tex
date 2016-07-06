@@ -310,7 +310,7 @@ where $\apo$ and $\bpo$ are defined in (\ref{eq_US:para_po}) and $\Gamma^{-1}(\c
 Substituting the distribution function for $\eprcvdstpr$, defined in (\ref{eq_US:fprcvd}), in (\ref{eq_US:opc}) and combining with (\ref{eq_US:pc}) yields (\ref{eq_US:preg}).
 \end{IEEEproof}
 Clearly, the performance of the US improves over the access channel (in terms of the secondary throughput) with $\preg$, but $\preg$ increases for the values of $\phpth$, which correspond to the lower values of $\snrrcvdu$.
-The real world wireless systems are limited by the transmit power $\pc$, which bounds the performance of the USs. In order to understand the effect of the power limitation on the USs, a performance bound is characterized in terms of the estimation time and the signal to ratio at the ST\footnote{\tc{Signal to noise ratio is mostly used as a design parameter for characterizing the performance of a wireless system.}}.  
+The real world wireless systems are limited by the transmit power $\pc$, which bounds the performance of the USs. In order to understand the effect of the power limitation on the USs, a performance bound is characterized in terms of the estimation time and the signal to noise ratio received (from the PR) at the ST\footnote{\tc{Signal to noise ratio is mostly used as a design parameter for characterizing the performance of a wireless system.}}.  
  
 \begin{coro} \label{cor_US:cor1}
 \normalfont
@@ -487,7 +487,7 @@ Solving numerically the expression in (\ref{eq_US:intrs}) yields $\ttest$ and $\
 \end{IEEEproof}
 \begin{coro} \label{cor_US:cor2}
 \normalfont
-Problem \ref{th_US:th1} considers the optimization of the expected secondary throughput for the proposed framework that employ power control and considers the effect of the imperfect channel knowledge. \tc{In accordance to Corollary \ref{cor_US:cor1}, these USs correspond to the USs that operate in the interference-limited regime $\snrrcvdu^* \ge \snrrcvdu $.} Besides, it is interesting to compare its performance with those CR systems that employ channel estimation (as proposed in the paper) and satisfy the outage constraint on the primary interference, however, employ no power control, i.e., operate at $\pc$. \tc{With regard to Corollary \ref{cor_US:cor1}, these systems correspond to the ones operating on the curve $\snrrcvdu^*  = \snrrcvdu$. For the latter approach, the secondary throughput is obtained by substituting $\preg$ with $\pc$ in (\ref{eq_US:rs}), where $\test$ in (\ref{eq_US:rs}) is determined using Corollary \ref{cor_US:cor1}. Such a comparison allows us to quantify the performance gain procured by the USs through the employment of power control.}
+Problem \ref{th_US:th1} considers the optimization of the expected secondary throughput for the proposed framework that employ power control and considers the effect of the imperfect channel knowledge. \tc{In accordance to Corollary \ref{cor_US:cor1}, these USs correspond to the USs that operate in the interference-limited regime $\snrrcvdu^* \ge \snrrcvdu $.} Besides, it is interesting to compare its performance with those CR systems that employ channel estimation and satisfy the outage constraint on the primary interference, however, employ no power control, i.e., operate at $\pc$. \tc{With regard to Corollary \ref{cor_US:cor1}, these systems correspond to the ones operating on the curve $\snrrcvdu^*  = \snrrcvdu$. For the latter approach, the secondary throughput is obtained by substituting $\preg$ with $\pc$ in (\ref{eq_US:rs}), where $\test$ in (\ref{eq_US:rs}) is determined using Corollary \ref{cor_US:cor1}. Such a comparison allows us to quantify the performance gain procured by the USs through the employment of power control.}
 \end{coro}
 
 %Problem \ref{th_US:th1} depicts an optimum estimation time $\ttest$ that achieves an optimum secondary throughput $\trs(\ttest)$.
@@ -619,7 +619,7 @@ where $\trs(\ttest)$ corresponds to optimum throughput at $\ttest$.
 
 \begin{coro} \label{cor_US:cor3}
 \normalfont
-Here, the approach depicted Corollary \ref{cor_US:cor2} is extended to compare the performance with those CR systems that employ channel estimation, operate at constant power, satisfy the outage constraint and are subjected to Nakagami-$m$ fading. The expected secondary throughput for this particular approach is obtained by replacing $\preg$ in the expression in (\ref{eq_US:rs_fad}) with $\pc$, where $\test$ is determined using (\ref{eq_US:or_fad}). 
+Here, the approach depicted Corollary \ref{cor_US:cor2} is extended to compare the performance with those CR systems that employ channel estimation, operate with no power control, satisfy the outage constraint and are subjected to Nakagami-$m$ fading. The expected secondary throughput for this particular approach is obtained by replacing $\preg$ in the expression in (\ref{eq_US:rs_fad}) with $\pc$, where $\test$ is determined using (\ref{eq_US:or_fad}). 
 
 \end{coro}
  
