@@ -364,7 +364,7 @@ follows a $\cchi2$ distribution, where $\Kp$ corresponds to the number of sample
 It is now clear that the estimates $\eprcvdstpt$, $|\ehs|^2$ and $\eprcvdsr$ exhibit the knowledge corresponding to the involved channels, however, it is essential to validate them, mainly $\eprcvdstpt$ and $\eprcvdsr$. In this context, it is necessary to ensure the presence of the PU signal ($\mathcal H_1$) for that particular frame. In this direction, Chavali \textit{et al.} \cite{Chav11} recently proposed a detection followed by the estimation of the signal to noise ratio, while \cite{Cao14} implemented a blind technique for estimating the signal power of non-coherent PU signals. In this thesis, a different methodology is proposed, according to which, a coarse detection\footnote{\tc{For the coarse detection, an energy detection is employed whose threshold can be determined by means of a constant false alarm rate.}} on the estimates $\eprcvdstpt$, $\eprcvdsr$ at the end of the estimation phase $\test$ is applied. Through an appropriate selection of the time interval $\test$ (for instance, $\test \in [1, 10]\SI{}{ms}$) during the system design, the reliability of the coarse detection can be ensured. With the existence of a separate control channel such as cognitive pilot channel, the reliability of the coarse detection can be further enhanced by exchanging the detection results between the ST and the SR.} 
 
 \tc{
-Since the estimation and the coarse detection processes in the proposed method are equivalent in terms of their mathematical operations (which include magnitude squared and summation), the validity of the channel estimates with certain reliability and without comprising the complexity of the estimators employed by the secondary system is considered. Moreover, by performing a joint estimation and (coarse) detection, an efficient way of utilizing the time resources within the frame duration is proposed. The ST considers these estimates to determine a suitable sensing time based on the sensing-throughput tradeoff such that the desired detector's performance is ensured. At the end of the detection phase, a fine detection\footnote{\tc{In accordance with the proposed frame structure in Fig. 2, fine detection represents the main detection which also includes the samples acquired during the estimation phase.}} of the PU signals is carried out, thereby improving the performance of the detector.} 
+Since the estimation and the coarse detection processes in the proposed method are equivalent in terms of their mathematical operations (which include magnitude squared and summation), the validity of the channel estimates with certain reliability and without comprising the complexity of the estimators employed by the secondary system is considered. Moreover, by performing a joint estimation and (coarse) detection, an efficient way of utilizing the time resources within the frame duration is proposed. The ST considers these estimates to determine a suitable sensing time based on the sensing-throughput tradeoff such that the desired detector's performance is ensured. At the end of the detection phase, a fine detection\footnote{\tc{In accordance with the proposed frame structure in \figurename~\ref{fig_IS:fs}, fine detection represents the main detection which also includes the samples acquired during the estimation phase.}} of the PU signals is carried out, thereby improving the performance of the detector.} 
   
 \subsection{Assumptions}
 %We consider the estimation of $\bprcvd$ at the ST. To simplify the analysis for the proposed model, it is assumed that the ST acquires the perfect knowledge about $\snrp$ and $ \snrs$ from the SR over a feedback channel. 
@@ -1418,13 +1418,13 @@ Finally, substituting the expression $\frac{E_1}{E_2}$ in $\co$ yields (\ref{eq_
 \begin{IEEEproof} 
 In order to solve the constrained optimization problems illustrated in Problem \ref{th_IS:th1} and Problem \ref{th_IS:th2}, the following approach is considered. As a first step, the underlying constraint is employed to determine $\mu$ as a function of the $\tsen$ and $\test$. %Its value is substituted in (\ref{eq_IS:pd}) and (\ref{eq_IS:pfa}) to determine $\pfa$ and $\pd$. Finally, replacing $\pd$ and $\pfa$ in (\ref{eq_IS:thr_AC}) and (\ref{eq_IS:thr_OC}), we obtain an expression of the throughput in terms of $\tsen$, $\test$ and the system parameters. As the final step, the distribution functions characterized in Lemma \ref{lm_IS:lem1}, Lemma \ref{lm_IS:lem2} and Lemma \ref{lm_IS:lem3} are utilized to determine an expression of expected throughput in terms of $\test$ and $\tsen$. %Consequently, we evaluate the performance at the ST by characterizing the expected throughput in terms of $\test$ and $\tsen$.  
 
-For the average constraint, the expression $\e{\pd}{\pd}$ in (\ref{eq_IS:AC}) did not lead to a closed form expression, consequently, no analytical expression of $\thrac$ is obtained. In this context, $\thrac$ for the average constraint is procured numerically from (\ref{eq_IS:AC}). 
+For the average constraint, the expression $\e{\epd}{\epd}$ in (\ref{eq_IS:AC}) did not lead to a closed form expression, consequently, no analytical expression of $\thrac$ is obtained. In this context, $\thrac$ for the average constraint is procured numerically from (\ref{eq_IS:AC}). 
 %\end{coro}
 %\begin{coro} \label{coro:coro2}
 
 Next, $\throc$ based on the outage constraint is determined. This is accomplished by combining the expression of $\fpd$ in (\ref{eq_IS:fpd}) with the outage constraint (\ref{eq_IS:OC}) 
 \begin{align}
-P(\pd \le \pdd) = \fpd(\pdd) \le \mpd. 
+P(\epd \le \pdd) = \fpd(\pdd) \le \mpd. 
 \label{eq_IS:int1}
 \end{align}
 Rearranging (\ref{eq_IS:int1}) gives
@@ -1434,9 +1434,9 @@ Rearranging (\ref{eq_IS:int1}) gives
 \label{eq_IS:throc}
 \end{align}
 %\end{coro}
-\tc{Clearly, the random variables $\pd(\eprcvdstpt)$, and $\cz(|\ehs|^2)$ and $\co(|\ehs|^2$, $\eprcvdsr)$ are functions of the independent random variables $\eprcvdstpt$, and $|\ehs|^2$ and $\eprcvdsr$, respectively. In this context, the independence property on $\pd$, $\cz$ and $\co$ is applied to obtain 
+\tc{Clearly, the random variables $\epd$, and $\ecz$ and $\eco$ are functions of the independent random variables $\eprcvdstpt$, and $|\ehs|^2$ and $\eprcvdsr$, respectively. In this context, the independence property on $\epd$, $\ecz$ and $\eco$ is applied to obtain 
 \begin{align*}
-\e{\pd, \cz, \co}{\cz (1- \pfa) + \co (1 - \pd)} &= \e{\cz}{\cz} (1 - \pfa) + \\ \quad & \e{\co}{\co} \e{\pd}{(1 - \pd)}\end{align*}
-in (\ref{eq_IS:thr_AC}) and (\ref{eq_IS:thr_OC}).} Upon replacing the respective thresholds in $\pd$ and $\pfa$ and evaluating the expectation over $\pd$, $\cz$ and $\co$ using the cdfs characterized in Lemma \ref{lm_IS:lem1}, Lemma \ref{lm_IS:lem2} and Lemma \ref{lm_IS:lem3}, the expected throughput as a function of sensing and estimation time is determined. 
+\e{\epd, \ecz, \eco}{\ecz (1- \pfa) + \eco (1 - \epd)} &= \e{\ecz}{\ecz} (1 - \pfa) + \\ \quad & \e{\eco}{\eco} \e{\epd}{(1 - \epd)}\end{align*}
+in (\ref{eq_IS:thr_AC}) and (\ref{eq_IS:thr_OC}).} Upon replacing the respective thresholds in $\epd$ and $\pfa$ and evaluating the expectation over $\epd$, $\ecz$ and $\eco$ using the cdfs characterized in Lemma \ref{lm_IS:lem1}, Lemma \ref{lm_IS:lem2} and Lemma \ref{lm_IS:lem3}, the expected throughput as a function of estimation time and sensing time is determined. 
 \end{IEEEproof}
 }
