@@ -40,9 +40,9 @@ The performance of the proposed framework that incorporates channel estimation i
 %\subsection{Organization}
 %\imp{Can be done at the end.}
 
-%The subsequent sections of the paper are organized as follows: Section \ref{sec:sys_mod} describes the system model that includes the deployment scenario, the signal model and the performance analysis based on the ideal model. Section \ref{sec:pm} presents the proposed model that incorporates channel estimation, characterization of the involved parameters and subsequently performance analysis in terms of sensing-throughput tradeoff. Section \ref{sec:num_ana} analyzes the numerical results based on the expressions obtained expressions. Finally, Section \ref{sec:conc} concludes the paper. 
+%The subsequent sections of the paper are organized as follows: Section \ref{sec_HS:sys_mod} describes the system model that includes the deployment scenario, the signal model and the performance analysis based on the ideal model. Section \ref{sec_HS:pm} presents the proposed model that incorporates channel estimation, characterization of the involved parameters and subsequently performance analysis in terms of sensing-throughput tradeoff. Section \ref{sec_HS:num_ana} analyzes the numerical results based on the expressions obtained expressions. Finally, Section \ref{sec_HS:conc} concludes the paper. 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{System Model} \label{sec:sys_mod}
+\section{System Model} \label{sec_HS:sys_mod}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Hybrid Scenario and Medium Access}
 %Cognitive Small Cell (CSC), a CR application, characterizes a small cell deployment that fulfills the spectral requirements for Mobile Stations (MSs) operating indoor, cf. \figurename~\ref{fig_HS:scenario}.
@@ -151,7 +151,7 @@ However, the system model depicted above has the following fundamental issues:
 \end{itemize} 
 With these issues, it is not reasonable to consider the performance analysis depicted by the ideal model (described as the baseline model) for hardware implementation. In order to address these issues, an analytical framework that includes the estimation of these channels and characterizes the performance of the HS in terms of the sensing-throughput tradeoff is proposed in this chapter. 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Proposed Approach} \label{sec:pm}
+\section{Proposed Approach} \label{sec_HS:pm}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Frame Structure}
 \begin{figure}[!t]
@@ -365,7 +365,7 @@ Solving numerically (\ref{eq_HS:preg}) yields $\preg$ for the HS.
 Finally, by substituting $\mu$ and $\preg$ computed in (\ref{eq_HS:preg}) and (\ref{eq_HS:thr}), and using the pdfs of $\epd$, $\ecz, \eco, \ectw$ and $\ecth$ determined in Lemma \ref{lm_HS:lem1}, Lemma \ref{lm_HS:lem3}, Lemma \ref{lm_HS:lem4}, Lemma \ref{lm_HS:lem5} and Lemma \ref{lm_HS:lem6} yield an expression of $\e{\Omega}{\rs}$ as a function of $\testpt$, $\testptsr$, $\testpr$ and $\tsen$, cf. (\ref{eq_HS:exp_thr}). Solving numerically $\e{\Omega}\rs$ delivers $\ttestpt$, $\ttestptsr$, $\ttestpr$ and $\ttsen$ that achieves the maximum expected secondary throughput.  
 \end{IEEEproof}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Numerical Analysis} \label{sec:num_ana}
+\section{Numerical Analysis} \label{sec_HS:num_ana}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{table}
@@ -566,7 +566,7 @@ To procure further insights, the variation of the detector's performance with th
 Finally, the variation of $\pfa$ along the estimation time is illustrated in \figurename~\ref{fig_HS:P_f_est_time}. From the HS's perspective, it is worthy to note that low $\pfa$ is beneficial only if the HS procures its large contribution of the performance when operating in interweave mode, refer to (\ref{eq_HS:exp_thr}). From \figurename~\ref{fig_HS:P_f_est_time}, it is noticed that the $\pfa$ improves with estimation time, particularly $\testpt$. It is important to note the detector's performance is similar to one depicted by the ISs in Chapter \ref{chap:IS}, according to which, the estimation time and the sensing time jointly controls the variations due to the channel estimation and the performance of the detector. Beyond $\ttestpt, \ttsen$, the time resources contribute only to improve the detector's performance, therefore lead to the performance degradation in terms of the secondary throughput. Since $\epd$ is constrained, the improvement in the detector's performance is noticed in terms of $\pfa$, cf. \figurename~\ref{fig_HS:P_f_est_time} 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Summary} \label{sec:conc}
+\section{Summary} \label{sec_HS:conc}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 In this chapter, the performance of cognitive radio as a hybrid system that exploits the benefits of both underlay and interweave paradigms from a deployment perspective is investigated. It has been argued that the lack of knowledge of the involved channels renders the existing models unsuitable for the performance characterization. In this view, an analytical framework that incorporates channel estimation, and subsequently quantifies the performance of HSs in relation to imperfect channel knowledge has been established. More importantly, a fundamental tradeoff among the estimation time, sensing time and the secondary throughput is proposed that captures the effect of the channel estimation in terms of the time resources allocated for the channel estimation and the uncertain interference due to the imperfect knowledge of the involved channels and jointly characterizes the performance of the primary and the secondary systems. Based on this tradeoff, the proposed analytical framework, a suitable estimation time and a suitable sensing time that yields the achievable secondary throughput is determined. %In our future work, we plan to extend the proposed analysis to include the effect of channel fading in order to characterize the long-term performance of the hybrid system. 
 
