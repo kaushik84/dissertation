@@ -29,11 +29,11 @@ More specifically, this chapter provides the following contributions:
 %\begin{itemize}
 %\item 
 
-\subsection{Analytical framework}
+\subsection{Analytical Framework}
 A novel analytical framework for the HS that constitutes the estimation of interacting channels, namely: (i) sensing channel, (ii) interference channels and (iii) access channel is established. Clearly, due to incorporation of channel estimation, the variations induced in the performance parameters (which include the interference received at the PR and the throughput at the SR) can lead to violation of the existing constraints. As a result, with the inclusion of channel estimation, the primary system observes an uncertainty in the interference. 
 %This excessive interference is investigated as a part of the proposed framework. 
 In order to combat this uncertain interference, outage constraints on the detection probability at the ST and on the interference power received at the PR are employed. Consequently, the performance of the HS in terms of the achievable secondary throughput is analyzed.
-\subsection{Estimation-sensing-throughput tradeoff}
+\subsection{Estimation-Sensing-Throughput Tradeoff}
 The performance of the proposed framework that incorporates channel estimation is analyzed by considering a fundamental tradeoff between estimation time, sensing time and achievable throughput. This tradeoff is exploited to determine suitable estimation and sensing durations that achieve a maximum performance for the HS in terms of the secondary throughput. From a system design perspective, this tradeoff provides the necessary tools for evaluating the performance degradation encountered by the HSs due to inappropriate selection of the estimation time. This degradation (depicted in terms of secondary throughput) is determined by comparing the proposed framework to those scenarios that consider perfect channel knowledge (Ideal Model).  
 %Finally, the performance of the HS is characterized based on analytical expressions.
 %\end{itemize}
@@ -220,7 +220,7 @@ Lastly, the estimation of the interference channel between the ST and the PR is 
 \feprcvdstpr(x) = 1 - \Gamma \left( \frac{\testpr \fsam}{2}, \frac{\testpr \fsam x}{2 \prcvdstpr} \right) \label{eq_HS:fprcvdstpr}.
 \end{align}
 
-\subsection{Characterization of performance parameters}
+\subsection{Characterization of Performance Parameters}
 It is clear that the estimation of the involved channels translates to the variations in the performance parameters, which include detection probability $\epd$ at the ST, power received $\eprcvdpr$ at the PR (which includes the interference and noise power) and secondary throughput $\ers$ at the SR. In particular, the variations in $\epd$ and $\eprcvdpr$ lead to the uncertain interference at the primary system, if not captured, it can seriously degrade the performance of CR systems. Such as aspect concerning the uncertain interference has been left aside in the outage constraints (please consider, (\ref{eq_HS:IT_ida}) and (\ref{eq_HS:IT_idb}) determined by the ideal model. This renders the existing constraints defined by the ideal model inaccurate. 
 Motivated by this fact, the uncertain interference is captured by proposing new outage constraints $\opdc$ and $\opc$ on the $\epd$ and $\eprcvdpr$, respectively, as PU constraints for the HS. These constraints are defined as  
 \begin{align}
