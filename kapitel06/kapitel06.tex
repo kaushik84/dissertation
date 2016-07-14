@@ -43,7 +43,7 @@ In contrast to the framework presented in Chapter \ref{chap:US}, the following s
 \begin{itemize}
 \item The channel estimation (received power-based) is only deployed for the link between the PR and the ST, which is associated with the interference (power) received at the PR. In order to simplify the deployment, the interference from the PTs at the SR is neglected\footnote{Although the interference from the PTs plays an significant role in characterizing the throughput at the SR, the interference at the PR is more critical for the PU or the regulatory bodies.}. In addition, perfect knowledge of the access channel between the ST and the SR that employs the pilot-based channel estimation is considered\footnote{Since the effect due to the pilot-based channel estimation in terms of time allocated within the frame structure and the amount of variations induced has negligible effect on the performance degradation of the CR system, perfect channel estimation for access channel presents a reasonble assumption.}.  
 \item The measurements taken to perform the validation and the demonstration for the proposed deployment scenario consider the deterministic behaviour of the interference channel.  
-\item As an alternative to the outage constraint proposed in Chapter \ref{chap:US}, a confidence probability constraint is employed for capturing the variations due to channel estimation around the interference temperature. %Moreover, previous analysis considers the realization of the power control over multiple frame. Here, the power control subject  
+\item As an alternative to the outage constraint proposed in Chapter \ref{chap:US} for regulating the uncertain interference at the PR, a confidence probability constraint is employed for capturing the variations due to channel estimation around the interference temperature. %Moreover, previous analysis considers the realization of the power control over multiple frame. Here, the power control subject  
 \item Lastly, in contrast to the OFDM signal considered in Chapter \ref{chap:US}, in this chapter all transmit signals (which include pilot and data signals) at the primary and the secondary systems are modeled as a constant power signal. 
 \end{itemize}
 
@@ -73,7 +73,7 @@ In accordance to these simplifications and the modifications, the system model f
 
 
 A slotted medium access is implemented at the ST with a frame duration of $T$. The knowledge of the interference channel is acquired by employing channel reciprocity over the link PR-ST. Besides, $T$ is selected such that the channel can be assumed to remain constant for the frame duration. %Based on this premise, $g_\textrm{p}$ and $g_\textrm{s}$ are constant within one frame and included in $\alpha_\textrm{p}$ and $\alpha_\textrm{s}$ for further analysis.
-In order to incorporate channel estimation in context to the power control mechanism, the frame interval is divided in two phases, namely estimation and data transmission, refer to \figurename~\ref{fig_HVD:scenario}. During the estimation phase $\test$ (also referred as estimation time), the ST measures the received power of the signal\footnote{This signal can be a data or a pilot signal with known transmit power} transmitted by the PR. Based on this received power, the ST estimates $\phpth$ and control its transmit power for the secondary link in order to satisfy a certain constraint on the interference power (interference) received by the PR. During the data transmission phase $T-\test$, the ST transmits data with the controlled power to the SR.
+In order to incorporate channel estimation in context to the power control mechanism, the frame interval is divided in two phases, namely estimation and data transmission, refer to \figurename~\ref{fig_HVD:scenario}. During the estimation phase $\test$ (also referred as estimation time), the ST measures the received power of the signal\footnote{This signal can be a data or a pilot signal with known transmit power.} transmitted by the PR. Based on this received power, the ST estimates $\phpth$ and control its transmit power for the secondary link in order to satisfy a certain constraint on the interference power (interference) received by the PR. During the data transmission phase $T-\test$, the ST transmits data with the controlled power to the SR.
 
 \subsection{Signal Model}
 The discrete and complex signal received at the ST is given by
@@ -82,7 +82,7 @@ The discrete and complex signal received at the ST is given by
 \yrcvd[n] = \hpth \cdot \xtranpr[n] + \wst[n],
 \label{eq_HVD:sys_mod_st}
 \end{equation}
-where $\xtranpr[n]$ corresponds to a discrete constant power signal transmitted by the PR, $\phpth$ represents the power gain for the channel PR-ST and $\wst[n]$ is circularly symmetric AWGN at the ST.
+where $\xtranpr[n]$ corresponds to a discrete and complex constant power signal transmitted by the PR, $\phpth$ represents the power gain for the channel PR-ST and $\wst[n]$ is circularly symmetric AWGN at the ST.
  $\ptranpr$  corresponds to the transmit power at the PR and $\wst[n]$ is an i.i.d. Gaussian random process with mean $\e{}{\wst[n]} = 0$ and variance $\e{}{|\wst[n]|^2} = \nps$. By the listening to the transitions from the PR, the estimated received power at the ST, computed using $\test \fsam$ samples, is given as
 \begin{align}
 \eprcvdstpr = \s{\test \fsam}{ |\hpth \xtranpr[n] + \wst[n]|^2},
@@ -121,7 +121,7 @@ After utilizing $\test$ for channel estimation, the throughput at the SR (second
 \end{equation}
 
 
-All transmitted signals are subjected to distance dependent path loss and small scale fading gains depicted as $\hpth, \gs$. In the analysis, the coherence time of the channels $\approx T$ is considered. But, there will be scenarios where the coherence time exceeds $T$, in such cases the expressions derived in this chapter depicts a lower performance bound.
+%All transmitted signals are subjected to distance dependent path loss and small scale fading gains depicted as $\hpth, \gs$. In the analysis, the coherence time of the channels $\approx T$ is considered. But, there will be scenarios where the coherence time exceeds $T$, in such cases the expressions derived in this chapter depicts a lower performance bound.
 
 
 \section{Theoretical Analysis}
@@ -144,12 +144,12 @@ where, $\e{\eprcvdstpr}{\cdot}$ represents the expectation over $\eprcvdstpr$.
 	%It is scaled such that, in case of perfect channel reciprocity and the absence of noise on the primary link, the interference power arriving at the PR ($\prcvdpr$) has the value of the interference temperature ($\ite$). %In control theory terms, $\ite$ is the setpoint for $\prcvdpr$.
 	\item The ST transmits data to the SR with $\epreg$. 
 	%\item The SR receives the data signal with power $\preg$ It provides this value back over a feedback channel to the ST, where it is used to estimate the expected secondary throughput $\e{\rs}{\rs}$ over the access channel.
-	The estimated power ($\eprcvdstpr$) over the interference channel induces variations in controlled power defined as $\epreg$. Following the relation between the controlled power at the ST and the received power at the PR 
+	The estimated power ($\eprcvdstpr$) over the interference channel induces variations in the controlled power defined as $\epreg$. Following the relation between the controlled power at the ST and the received power at the PR 
 \begin{align}
 \eprcvdpr  = \phpth \epreg,
 \label{eq_HVD:eprcvdpr}
 \end{align}
-the variations in $\epreg$ translate to the variations in $\prcvdpr$ (defined as $\eprcvdpr$) around $\ite$, which result in uncertain interference at the PR. Unless captured, these variations may severely degrade the performance of the US. Besides this, due to the relationship between the controlled power and the secondary throughput defined in (\ref{eq_HVD:sthr}), a certain amount of the variations are further translated to the secondary throughput. These variations in the system parameters ($\eprcvdstpr$, $\epreg$, $\eprcvdpr$ and $\ers$) are characterized in terms of their probability density functions (pdfs).  
+the variations in $\epreg$ translate to the variations in $\prcvdpr$ (defined as $\eprcvdpr$) around $\ite$, which result in uncertain interference at the PR. Unless captured, these variations may severely degrade the performance of the US. Besides this, due to the relationship between the controlled power and the secondary throughput defined in (\ref{eq_HVD:sthr}), a certain amount of the variations are further translated to the secondary throughput. These variations in the system parameters ($\eprcvdstpr$, $\epreg$, $\eprcvdpr$ and $\ers$) are characterized in terms of their pdfs.  
 	\item In particular, the pdf of $\eprcvdpr$ is utilized to employ an interference constraint (also referred as confidence probability constraint) in terms of confidence probability $\pco$ at the ST such that the uncertain interference at the PR can be effectively regulated. In addition, by utilizing the pdf of $\ers$, the performance of the access channel is determined in terms of the expected secondary throughput. Finally, subject to the interference constraint on the confidence probability the performance of the US is jointly characterized in terms of a tradeoff between the estimation time and the secondary throughput tradeoff. 
 \end{enumerate}
 
@@ -166,14 +166,14 @@ In accordance to the employed signal model, $\prcvdstpr$ is modeled as a non-cen
 where $\test \fsam$ is the degree of freedom and also the number of samples used for the estimation, $\npp$ is the noise variance of the in-phase or quadrature-phase component of the received pilot signal ($\yrcvd[n]$, refer to \ref{eq_HVD:sys_mod_st}), and $I_{\frac{\test \fsam}{2}-1}(\cdot)$ is the modified Bessel function of the first kind of order $\frac{\test \fsam}{2}-1$ \cite{Jef00}. Furthermore, the non-centrality parameter is defined as
 \begin{equation}
 	\label{lambda}
-	\lambda = \sum_{n=1}^{\test \fsam} \mathbb{E}[|\yrcvd[n]|^2] = \test \fsam \times A^2
+	\lambda = \sum_{n=1}^{\test \fsam} \mathbb{E}[|\yrcvd[n]|^2] = \test \fsam \times A^2.
 \end{equation}
 The relation in (\ref{lambda}) is explained as follows: a sinusoidal signal that represents a pilot signal consists of a constant amplitude, which is down-converted by an I/Q demodulator at the ST. In this regard, the complex samples $\yrcvd[n]$ have a constant envelope of value $A$. 
 
 Corresponding to (\ref{eq_HVD:preg}), $\epreg$ follows an inverse non-central chi-squared distribution. The pdf for $\epreg$  is given by
 \begin{align}
-\dpreg(x) =& \frac{\test \fsam K \ite}{2\npp x^2} e^{- \frac{\tau \fsam}{2 \npp}\left( \frac{K  \ite}{x} + \hpth \ptran \right)} \left( \frac{K \ite}{x \hpth \ptran}   \right)^{\frac{\test \fsam}{4} - \frac{1}{2}} \label{eq_HVD:dpreg_pl} \times \\
-\quad & I_{\frac{\test \fsam}{2}  - 1}\left( \frac{\test \fsam}{\npp} \sqrt{\frac{ K \ite \hpth \ptran}{x}}  \right). \nonumber
+\dpreg(x) =& \frac{\test \fsam K \ite}{2\npp x^2} e^{- \frac{\tau \fsam}{2 \npp}\left( \frac{K  \ite}{x} + \phpth \ptran \right)} \left( \frac{K \ite}{x \phpth \ptran}   \right)^{\frac{\test \fsam}{4} - \frac{1}{2}} \label{eq_HVD:dpreg_pl} \times \\
+\quad & I_{\frac{\test \fsam}{2}  - 1}\left( \frac{\test \fsam}{\npp} \sqrt{\frac{ K \ite \phpth \ptran}{x}}  \right). \nonumber
 %\fpreg(x) = \q{\frac{N}{2} - 1}{\sqrt{\frac{N \ptran \ap}{\npp}},\sqrt{\frac{N \cdot x}{\npp}} }, 
 \end{align}
 %where $\q{\frac{N}{2} - 1}{\cdot, \cdot}$ is the Marcum-Q function \cite{grad}.
@@ -181,40 +181,40 @@ Corresponding to (\ref{eq_HVD:preg}), $\epreg$ follows an inverse non-central ch
 
 Following the relation in (\ref{eq_HVD:eprcvdpr}) and substituting $\dpreg(x)$ defined in (\ref{eq_HVD:dpreg_pl}), the pdf of $\eprcvdpr$ is determined as 
 \begin{align}
-\dprcvdpr(x) =& \frac{\hpth \test \fsam K \ite}{2\npp x^2} e^{- \frac{\test \fsam \hpth}{2 \npp}\left( \frac{K  \ite}{x} + \ptran \right)} \left( \frac{K \ite}{x \ptran}   \right)^{\frac{\test \fsam}{4} - \frac{1}{2}} \times \label{eq_HVD:dpp_pl} \\
-\quad & I_{\frac{\test \fsam}{2}  - 1}\left( \frac{\test \fsam \hpth}{\npp} \sqrt{\frac{ K \ite \ptran}{x}}  \right). \nonumber
+\dprcvdpr(x) =& \frac{\phpth \test \fsam K \ite}{2\npp x^2} e^{- \frac{\test \fsam \phpth}{2 \npp}\left( \frac{K  \ite}{x} + \ptran \right)} \left( \frac{K \ite}{x \ptran}   \right)^{\frac{\test \fsam}{4} - \frac{1}{2}} \times \label{eq_HVD:dpp_pl} \\
+\quad & I_{\frac{\test \fsam}{2}  - 1}\left( \frac{\test \fsam \phpth}{\npp} \sqrt{\frac{ K \ite \ptran}{x}}  \right). \nonumber
 \end{align}
 
 %The definition of $P_\textrm{c}$ can be retrieved from \cite{Kaushik15}. 
 Consequently, the cdf of $\eprcvdpr$ is given by %\footnote{In \cite{Kaushik15}, we discovered a small typing error in the cdf of $P_\textrm{p}$, in this paper, we present the exact version of it.}
 \begin{equation}
 	\label{eq_HVD:cdf}
-	\fprcvdpr(x) = Q_{\frac{\test \fsam}{2}}\left(\sqrt{\frac{\test \fsam \ptran \hpth}{\npp}},\sqrt{\frac{\test \fsam \hpth \ite K}{\npp x}}\right) \;  ,
+	\fprcvdpr(x) = Q_{\frac{\test \fsam}{2}}\left(\sqrt{\frac{\test \fsam \ptran \phpth}{\npp}},\sqrt{\frac{\test \fsam \phpth \ite K}{\npp x}}\right) \;  ,
 \end{equation}
 where $Q_{\frac{\test \fsam}{2}}(\cdot)$ is the Marcum Q-function \cite{Jef00}.
 
 %The system variables $P_\textrm{cont}$, $P_\textrm{p}$, and $R_\textrm{s}$ are derived from $P_\textrm{rcvd}$ in \cite{Kaushik15}, where the respective pdfs $f_{P_\textrm{cont}}(\cdot)$ and $f_{P_\textrm{p}}(\cdot)$ are also provided. In \cite{Kaushik15}, $f_{R_\textrm{s}}(\cdot)$ represented a pdf of the capacity. Here, we modify this expression to determine the pdf of the secondary throughput
-Next, the pdf of the secondary throughput $\rs$ is determined as
+Next, the pdf of the secondary throughput $\ers$ is determined as
 \begin{equation}
 	\label{Rspdf}
 	\drs \left(x\right) =
-	\frac{T}{T-\test}\frac{\test \fsam K \ite \hs \ln{2}}{2 \npss} 
+	\frac{T}{T-\test}\frac{\test \fsam K \ite \phs \ln{2}}{2 \npss} 
 	\left(\frac{p\left(x\right)+1}{\left[p\left(x\right)\right]^2} \right)
-	e^{-\frac{\test \fsam}{2 \npp} \left(\frac{K \theta_\textrm{I} \alpha_\textrm{s}}{p\left(x\right)\nps} + \hpth \ptran \right)}
+	e^{-\frac{\test \fsam}{2 \npp} \left(\frac{K \theta_\textrm{I} \alpha_\textrm{s}}{p\left(x\right)\nps} + \phpth \ptran \right)}
 \end{equation}
 \begin{equation*}
-	\times \left(\frac{K \ite \hs}{p\left(x\right) \hpth} \ptran \nps\right)^{\frac{\test \fsam}{4}-\frac{1}{2}}
-	I_{\frac{\test \fsam}{2}-1}\left(\frac{\test \fsam}{\sigma_\textrm{p}^2}\sqrt{\frac{K \ite \hpth \ptran \hs}{p\left(x\right) \nps}}\right) \;  ,
+	\times \left(\frac{K \ite \phs}{p\left(x\right) \phpth} \ptran \nps\right)^{\frac{\test \fsam}{4}-\frac{1}{2}}
+	I_{\frac{\test \fsam}{2}-1}\left(\frac{\test \fsam}{\sigma_\textrm{p}^2}\sqrt{\frac{K \ite \phpth \ptran \phs}{p\left(x\right) \nps}}\right) \;  ,
 \end{equation*}
 \begin{equation*}
-\text{where} p\left(x\right) = 2^\frac{Tx}{T-\test}-1 \;  .
+\text{where } p\left(x\right) = 2^\frac{Tx}{T-\test}-1 \;  .
 \end{equation*} 
 
 
 
 
 \subsection{Estimation-Throughput Tradeoff}
-Following the estimation theory, it is clear that small $\test$ results in large variations for the $\eprcvdpr$, and subsequently results in the deviation of $\eprcvdpr$ from $\ite$. If not considered, these variations may affect the performance of the US. To capture these variations, an interference constraint defined in terms of a confidence probability $\pco$ and an accuracy $\acc$\footnote{In order to scale the confidence interval relative to $\ite$.} is proposed. In order to restrict the uncertain interference due to channel estimation, it is important to restrain $\pco$ above a certain desired level $\pcod$ for a fixed value of $\acc$. In this regard, the interference constraint is defined as
+Following the estimation theory, it is clear that small $\test$ results in large variations for the $\eprcvdpr$, and subsequently results in the deviation of $\eprcvdpr$ from $\ite$. If not considered, these variations lead to uncertain interference, which may affect the performance of the US. To capture these variations, an interference constraint defined in terms of a confidence probability $\pco$ and a certain accuracy $\acc$\footnote{In order to scale the confidence interval relative to $\ite$.} is proposed. In order to restrict the uncertain interference due to channel estimation, it is important to restrain $\pco$ above a certain desired level $\pcod$ for a fixed value of $\acc$. In this regard, the interference constraint is defined as
 \begin{align}
 \pco = \fprcvdpr \left( {(1 + \acc) \ite}\right)  - \fprcvdpr \left({(1 - \acc) \ite} \right) \ge \pcod, \label{eq_HVD:pc} 
 \end{align}
@@ -223,17 +223,22 @@ where $\left( {(1 + \acc) \ite}\right)$ and $\left({(1 - \acc) \ite} \right)$ re
 
 %Clearly, there exits a tradeoff that involves maximizing the expected throughput at the SR subject to a probability of confidence constraint given by
 \begin{align}
-\e{\ers}{\ers(\ttest)} = \maxi_{\test}  & \text{      } \e{\ers}{\ers(\test)} 
+\rs(\ttest) = \maxi_{\test}  & \text{      } \e{\ers}{\ers(\test)} 
  \label{eq_HVD:sys} \\
 \text{s.t.} & (\ref{eq_HVD:pc}). \nonumber  
 \end{align}
-According to this tradeoff, there exists a suitable estimation time $\ttest$ that satisfies the interference constraint and maximizes the expected secondary throughput. 
+According to this tradeoff, there exists a suitable estimation time $\ttest$ that satisfies the interference constraint and yields the achievable secondary throughput. 
 
 \section{Validation}
 \label{sec:val}
 This section illustrates the validation of the theoretical expression derived in the previous section. The measurements necessary for the validation is carried out by means of a SDR platform. The experimental setup for acquiring the measurements is presented, subsequently. 
  
 \subsection{Experimental Setup}
+
+\figurename~\ref{messaufbau} depicts the experimental setup deployed for performing the validation of the theoretical analysis carried out in Section \ref{model}. It has been previously claimed that the experimental validation considers the deterministic behaviour of the channel. With the employment of the transmit and the receive antennas the interference signal received\footnote{The experiments were performed over the ISM bands with center frequency fixed at \SI{2.45}{GHz}, an interference signal from the operational wireless LAN was observed within the band of interest (in-band) or as an out-of-band emissions from the neighbouring channels.} at the ST can influence the measurements, thereby resulting in the deviation of the empirical results from their analytical counterpart. To avoid this issue, the interference channel is implemented by means of a coaxial cable. In addition, attenuators are used to realize different values of $\snrrcvdu$. The use of the coaxial cable is limited to the validation process. For the deployment of the demonstrator later in Section \ref{sec:demo}, the coaxial cable is replaced with antennas. %By doing so, we were able to acquire a large number of system variable realizations measured under similar conditions, which we needed for validating the stochastic model. 
+
+The CSC-BS or the ST is emulated using a Universal Software Radio Peripheral (USRP) B210, a SDR platform from Ettus Research \cite{Ettus} and a host computer, which is connected to the USRP by means of a USB cable, refer to \figurename~\ref{messaufbau}. The host computer performs the following tasks: (i) it enables the access to the USRP by controlling certain RF parameters such as, center frequency and sampling frequency, (ii) it allows the baseband processing over the complex samples. %Since the characterization of the system parameters, which is associated with the power control is implemented at the ST, therefore it is reasonable to deploy only ST for the validation process. 
+The PR, which transmits the pilot signal, is realized using a Rhode $\&$ Schwarz 200A vector signal generator (again, for the implementation of the demonstrator later in Section \ref{sec:demo}, the signal generator emulating the PR is replaced with an USRP and a host computer, like the ST). The signal generator is used instead of a USRP for excluding any kind of discrepancy in the transmit signal that may degrade the validation process. 
 
 \begin{figure}
 	%\vspace{-10 pt}
@@ -318,11 +323,6 @@ This section illustrates the validation of the theoretical expression derived in
         \label{fig_HVD:SP}
 \end{figure}
 
-
-\figurename~\ref{messaufbau} depicts the experimental setup deployed for performing the validation. It has been previously claimed that the experimental validation considers the deterministic behaviour of the channel. With the employment of the transmit and the receive antennas the interference signal received\footnote{The experiments were performed over the ISM bands with center frequency fixed at \SI{2.45}{GHz}, an interference signal from the operational wireless LAN was observed within the band of interest (in-band) or as an out-of-band emissions from the neighbouring channels.} at the ST can influence the measurements, thereby resulting in the deviation of the empirical results from their analytical counterpart. To avoid this issue, the interference channel is implemented by means of a coaxial cable. In addition, attenuators are used to realize different values of $\snrrcvdu$. The use of the coaxial cable is limited to the validation process. For the deployment of the demonstrator later in Section \ref{sec:demo}, the coaxial cable is replaced with antennas. %By doing so, we were able to acquire a large number of system variable realizations measured under similar conditions, which we needed for validating the stochastic model. 
-
-The CSC-BS or the ST is emulated using a Universal Software Radio Peripheral (USRP) B210, a SDR platform from Ettus Research \cite{Ettus} and a host computer, which is connected to the USRP by means of a USB cable, refer to \figurename~\ref{messaufbau}. The host computer performs the following tasks: (i) it enables the access to the USRP by controlling certain RF parameters such as, center frequency and sampling frequency, (ii) it allows the baseband processing over the complex samples. %Since the characterization of the system parameters, which is associated with the power control is implemented at the ST, therefore it is reasonable to deploy only ST for the validation process. 
-The PR, which transmits the pilot signal, is realized using a Rhode $\&$ Schwarz 200A vector signal generator (again, for the implementation of the demonstrator later in Section \ref{sec:demo}, the signal generator emulating the PR is replaced with an USRP and a host computer, like the ST). The signal generator is used instead of a USRP for excluding any kind of discrepancy in the transmit signal that may degrade the validation process. 
 
 Since the USRP employs a homodyne receiver\footnote{A homodyne receiver implements a direct down conversion of the bandpass to the baseband signal.}, spurious effects such as DC offset, flicker noise $(1/f)$ and I/Q imbalance arising from the analog front-end can affect the accuracy of the analytical expressions, thereby influencing the validation process. These spurious effects, particularly, the DC offset and the flicker noise become significant at low signal to noise ratio. In order to retrieve the complex samples close to the one obtained while characterizing the system model (which does not take such spurious effects into account), following signal processing (referred as pre-processing) is proposed at the host computer, please consider \figurename~\ref{fig_HVD:SP}:
 \begin{itemize}
