@@ -222,8 +222,8 @@ Lastly, the estimation of the interference channel between the ST and the PR is 
 \end{align}
 
 \subsection{Characterization of Performance Parameters}
-It is clear that the estimation of the involved channels translates to the variations in the performance parameters, which include detection probability $\epd$ at the ST, power received $\eprcvdpr$ at the PR (which includes the interference and noise power) and secondary throughput $\ers$ at the SR. In particular, the variations in $\epd$ and $\eprcvdpr$ lead to the uncertain interference at the primary system, if not captured, it can seriously degrade the performance of CR systems. Such as aspect concerning the uncertain interference has been left aside in the outage constraints (please consider, (\ref{eq_HS:IT_ida}) and (\ref{eq_HS:IT_idb}) determined by the ideal model. This renders the existing constraints defined by the ideal model inaccurate. 
-Motivated by this fact, the uncertain interference is captured by proposing new outage constraints $\opdc$ and $\opc$ on the $\epd$ and $\eprcvdpr$, respectively, as PU constraints for the HS. These constraints are defined as  
+It is clear that the estimation of the involved channels translates to the variations in the performance parameters, which include detection probability $\epd$ at the ST, power received $\eprcvdpr$ at the PR (which includes the interference and noise power) and secondary throughput $\ers$ at the SR. In particular, the variations in $\epd$ and $\eprcvdpr$ lead to the uncertain interference at the primary system, if not captured, it can seriously degrade the performance of CR systems. Such as aspect concerning the uncertain interference has been left aside in the outage constraints (please consider, (\ref{eq_HS:IT_ida}) and (\ref{eq_HS:IT_idb})) determined by the ideal model. This renders the existing constraints defined by the ideal model inaccurate. 
+Motivated by this fact, the uncertain interference is captured by proposing new outage constraints $\opdc$ and $\opc$ on estimated detection probability $\epd$ and estimated power received at PR $\eprcvdpr$, respectively, as PU constraints for the HS. These constraints are defined as  
 \begin{align}
 \p(\epd \le \pdd) &\le \opdc \label{eq_HS:oc_pd}, \\
 \p(\eprcvdpr \ge \ite) &\le \opc \label{eq_HS:oc_it}.
@@ -272,7 +272,7 @@ The cdf of $\eprcvdpr$ is characterized as
 Besides that, since the variations in $\epd, \eprcvdstpt, \ephs$ and $\eprcvdstpr$ translate to the variations in $\ers$, these variations are captured in terms of the expected secondary throughput. More specifically, the variations in $\eprcvdstpt, \ephs$ and $\eprcvdstpr$ result in variations in capacities $\ecz, \eco, \ectw$ and $\ecth$, cf. (\ref{eq_HS:Cap0}), (\ref{eq_HS:Cap1}), (\ref{eq_HS:Cap2}) and (\ref{eq_HS:Cap3}). In this view, the pdfs for $\ecz, \eco, \ectw$ and $\ecth$ are characterized in the following Lemmas.
 \begin{lemma} \label{lm_HS:lem3}
 \normalfont
-The pdf of $\ecz$ is defined as (refer to Chapter \ref{chap:IS}) 
+The pdf of $\ecz$ is defined as (refer to Chapter \ref{chap:IS}, (\ref{eq_IS:den_C0})) 
 \begin{align}
 \dcz(x) &= 2^x \ln 2 \frac{(2^x - 1)^{a_1 - 1}}{\Gamma(a_1) b^{a_1}} \exp\left(-\frac{2^x - 1}{b_1}\right),  \label{eq_HS:den_C0}
 \end{align}
@@ -285,7 +285,7 @@ where $a$ and $b$ are defined in (\ref{eq_HS:para_hs}).
 
 \begin{lemma} \label{lm_HS:lem4} 
 \normalfont
-The pdf of $\eco$ is defined as (refer to Chapter \ref{chap:IS})  
+The pdf of $\eco$ is defined as (refer to Chapter \ref{chap:IS}, \ref{eq_IS:den_C1})  
 \begin{align}
 %\hspace{-2mm}
 \dco(x) &= 2^x \ln 2 \frac{(2^x - 1)^{a_0 - 1} \Gamma(a_0 + a_1)}{\Gamma(a_0) \Gamma(a_1) b_0^{a_0} b_1^{a_1}} \left(\frac{1}{b_1} + \frac{2^x - 1}{b_0}\right), \label{eq_HS:den_C1}
@@ -296,7 +296,7 @@ The pdf of $\eco$ is defined as (refer to Chapter \ref{chap:IS})
 \end{align}
 and $a_0$, $b_0$ are defined in (\ref{eq_HS:den_C0_para}).
 \end{lemma}
-Following the characterization of the pdfs for $\cz$ and $\co$, the pdfs for $\ctw$ and $\cth$ can be obtained by substituting $\preg$ for $\pfull$ in (\ref{eq_HS:den_C0}) and (\ref{eq_HS:den_C1}).
+Following the characterization of the pdfs for $\ecz$ and $\eco$, the pdfs for $\ectw$ and $\ecth$ can be obtained by substituting the controlled transmit power $\preg$ for full transmit power $\pfull$ in (\ref{eq_HS:den_C0}) and (\ref{eq_HS:den_C1}).
 \begin{lemma} \label{lm_HS:lem5}
 \normalfont
 The pdf of $\ectw$ is defined as
@@ -340,7 +340,7 @@ where $\e{\Omega}{\cdot}$ denotes the expectation over $\Omega$, where $\Omega \
 %Here, a sensing-throughput tradeoff for the proposed approach that incorporates variations in the performance parameters is established. 
 %\begin{remark} \label{co:coro1} 
 %\normalfont
-Herein, using the estimation model, a fundamental relation between estimation time (regulates the variations in the detection probability and interference power received at the PR according to the PU constraint), sensing time (represents the detector's performance) and secondary throughput is established, this relationship is characterized as an estimation-sensing-throughput tradeoff. Based on this tradeoff, suitable estimation and suitable sensing time intervals are determined that yields an optimum performance for the HS in terms of achievable secondary throughput. 
+Herein, with regard to the proposed framework (estimation model) for the HS, a fundamental relation between estimation time (regulates the variations in the detection probability and interference power received at the PR according to the PU constraint), sensing time (represents the detector's performance) and secondary throughput is established, this relationship is characterized as an estimation-sensing-throughput tradeoff. Based on this tradeoff, suitable estimation and suitable sensing time intervals are determined that yields an optimum performance for the HS in terms of achievable secondary throughput. 
 %\end{remark} 
 \begin{theorem} \label{th_HS:th1}
 \normalfont
@@ -403,7 +403,7 @@ $\Ks$ & 10 \\ \hline
 %\vspace{-2mm}
 \end{table}
 
-In this section, the performance of the proposed approach is evaluated. In this view, simulations are performed: (i) to validate the expressions obtained in the previous section, (ii) to analyze the performance loss incurred due to channel estimation. In order to illustrate the performance degradation, the ideal model is considered to benchmark the performance of the proposed approach. Unless stated explicitly, the choice of parameters given in Table \ref{tb_HS:tb2} is considered for analysis. First the performance of the HS is analyzed in terms of a sensing-throughput tradeoff, cf. Problem \ref{th_HS:th1}, corresponding to the Ideal Model (IM) and Estimation Model (EM) by fixing $\testpt = \testptsr =  \testpr = \SI{1}{ms}$, cf. \figurename~\ref{fig_HS:STT}. With the inclusion of channel estimation in the frame structure, the ST procures no throughput at the SR for the interval $\testpt$. As indicated by the margin between the IM and the EM, a certain performance degradation is witnessed by the EM due to the incorporation of channel estimation. Moreover, the sensing-throughput tradeoff yields a suitable sensing time $\ttsen$ that achieves the maximum performance in terms of secondary throughput $\rs(\ttsen)$. Hereafter, the theoretical expressions are considered for the analysis. In addition, the proposed EM operates at the suitable sensing time. 
+In this section, the performance of the proposed approach is evaluated. In this view, simulations are performed: (i) to validate the expressions obtained in the previous section, (ii) to analyze the performance loss incurred due to channel estimation caused due to the time allocation for the estimation and the imperfect channnel knowledge. In order to illustrate the performance degradation, the ideal model is considered to benchmark the performance of the proposed approach. Unless stated explicitly, the choice of parameters given in Table \ref{tb_HS:tb2} is considered for analysis. First the performance of the HS is analyzed in terms of a sensing-throughput tradeoff, cf. Problem \ref{th_HS:th1}, corresponding to the Ideal Model (IM) and Estimation Model (EM) by fixing $\testpt = \testptsr =  \testpr = \SI{1}{ms}$, cf. \figurename~\ref{fig_HS:STT}. With the inclusion of channel estimation in the frame structure, the ST procures no throughput at the SR for the interval $\testpt$. As indicated by the margin between the IM and the EM, a certain performance degradation is witnessed by the EM due to the incorporation of channel estimation. Moreover, the sensing-throughput tradeoff yields a suitable sensing time $\ttsen$ that achieves the maximum performance in terms of secondary throughput $\rs(\ttsen)$. Hereafter, the theoretical expressions are considered for the analysis. In addition, the proposed EM operates at the suitable sensing time. 
 
 
 \begin{figure}[!t]
@@ -456,7 +456,7 @@ In this section, the performance of the proposed approach is evaluated. In this 
 \end{scope}
 \end{tikzpicture}
 \vspace{-0.2cm}
-\caption{Achievable secondary throughput versus path loss $\phpth$ where the system is operating at $\ttsen$ and the estimation time is fixed to $\testpt = \testptsr = \testpr = \SI{1}{ms}$.}
+\caption{Achievable secondary throughput versus interference channel gain $\phpth$ where the system is operating at $\ttsen$ and the estimation time is fixed to $\testpt = \testptsr = \testpr = \SI{1}{ms}$.}
 \label{fig_HS:optT_SNR}
 %\vspace{-0.8cm}
 \end{figure}
