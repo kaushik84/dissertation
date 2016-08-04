@@ -123,14 +123,14 @@ In the uplink, during the estimation phase, the discrete and complex signal rece
 \yrcvd[n] = \hpth \cdot \xtran[n] + \wsr[n],
 \label{eq_US:sys_mod_st}
 \end{equation}
-where $\xtran[n]$ corresponds to a discrete and complex sample transmitted by the PR with transmit power $\ptran$ known at the ST, $\phpth$ represents the power gain for the interference channel and $\wsr[n]$ is circularly symmetric AWGN at the ST with %The transmitted power at PR is $\ptran$, considering that $\test \fsam$ $(= N)$ is the number of samples used for estimation. 
+where $\xtran[n]$ corresponds to a discrete and complex sample transmitted by the PR with transmit power $\ptran$ known at the ST, $\phpth$ represents the power gain for the primary interference channel and $\wsr[n]$ is circularly symmetric AWGN at the ST with %The transmitted power at PR is $\ptran$, considering that $\test \fsam$ $(= N)$ is the number of samples used for estimation. 
 $\mathcal{CN}(0, \nps)$. %The power received at the ST is given as 
 %\begin{align}
 %\prcvd = \s{\test \fsam}{ |\sqrt{\gp \ap} \xtran[n] + \nas[n]|^2}.
 %\label{eq_US:prcvd} 
 %\end{align}
 
-In the downlink, during data transmission phase, the signal received at the PR is given by
+In the downlink, during data transmission phase, the interference signal received (from the ST) plus noise signal at the PR is given by
 \begin{equation}
 \yp[n] = \hpth  \cdot \xreg[n] + \wpr[n],
 \label{eq_US:sys_mod_pr}
@@ -154,30 +154,29 @@ According to the existing investigations (also referred as ideal model), an ST o
 \end{equation}
 %where $\alpha$ denotes the distance dependent path loss. $g\sub{p}$ represents the small-scale channel fading. 
 
-After determining the controlled power at the ST using (\ref{eq_US:IT_id}), the data rate at the SR is defined as
+After determining the controlled power at the ST using (\ref{eq_US:IT_id}), the data rate at the SR over the access channel is defined as
 \begin{equation}
 \ca = \log_2 \left(1 + \frac{\pgs \preg}{ \pgpt \ptranpt + \nps} \right). 
 \label{eq_US:Thr_id}
 \end{equation}
-where $\ca$ represents the data rate over the access channel. %\footnote{From a communication theoretic point of view.}.
+%where $\ca$ represents the data rate over the access channel. %\footnote{From a communication theoretic point of view.}.
 %where $\e{\gs, \gp}{\cdot}$ represents the expectation over $\gs, \gp$.
 From the deployment perspective, the ideal model depicted in (\ref{eq_US:IT_id}) and (\ref{eq_US:Thr_id}) has following issues:
 \begin{itemize}
-\item Without the knowledge of the primary interference channel $\hpth$, it is impossible to employ the power control based on (\ref{eq_US:IT_id}). 
-\item Furthermore, along with $\preg$, the knowledge of the access channel $\gs$ and the secondary interference channel $\gpt$ is required to determine $\ca$ according to (\ref{eq_US:Thr_id}).
+\item Without the knowledge of the primary interference channel $\hpth$, it is impossible to employ the power control, based on (\ref{eq_US:IT_id}). 
+\item Furthermore, along with $\preg$, the knowledge of the access channel $\gs$ and the secondary interference channel $\gpt$ is required to determine $\ca$, according to (\ref{eq_US:Thr_id}).
 \end{itemize}
-The ideal model considers the perfect knowledge of the aforementioned channels at the ST, which is not available in practice. In this regard, it is necessary to incorporate channel estimation in the system model. The imperfect channel knowledge, however, translates to the variations in the performance parameters, $\prcvdpr$ and $\ca$. Particularly, the variations in $\prcvdpr$ that exceed $\ite$ cause uncertain interference at the PR, thereby violating the interference constraint illustrated in (\ref{eq_US:IT_id}). Unless captured, this uncertain interference may seriously degrade the performance of the US. In addition, since the ideal model assumes the perfect knowledge of the involved channels, it fails to depict the degradation in the performance due to the time resources allocated for the channel estimation. %In this view, we characterize the variations in $\pp$ and $\trs$ by characterizing the distribution functions of the estimated channels.
+The ideal model considers the perfect knowledge of the aforementioned channels at the ST, which is not available in practice. In this regard, it is necessary to incorporate channel estimation in the system model. The imperfect channel knowledge, however, translates to the variations in the performance parameters, $\prcvdpr$ and $\ca$. Particularly, a variation in $\prcvdpr$ that exceeds $\ite$ causes the violation of the interference constraint illustrated in (\ref{eq_US:IT_id}). Unless captured, this uncertain interference may seriously degrade the performance of the US. In addition, since the ideal model assumes the perfect knowledge of the involved channels, it is incapable of depicting the degradation in the performance due to the time resources allocated for the channel estimation. %In this view, we characterize the variations in $\pp$ and $\trs$ by characterizing the distribution functions of the estimated channels.
 
 \subsection{Proposed Approach} 
-In order to facilitate channel estimation for the USs, it is essential to take the aforementioned issues into account. To accomplish this, the following strategy is proposed in this chapter.
+In order to facilitate channel estimation for the US, it is essential to take the aforementioned issues into account. To accomplish this, the following strategy is proposed in this chapter.
 \begin{itemize}
 \item At first, the estimation of involved channels is considered. In this regard, a received power-based estimation for the interference channels and a pilot-based estimation for the access channel is employed. 
-\item To capture the effect of the imperfect channel knowledge, the variations in the estimated parameters (namely, received power for the interference channels and power gain for the access channels) are characterized in terms of their cumulative distribution functions.
-\item Further, the aforementioned variations are translated to the performance parameters, such as the interference at the PR and the secondary throughput in terms of their cumulative distribution functions. More specifically, using the characterization of the uncertain interference, a novel power control mechanism based on an outage control is proposed that regulates the uncertain interference at the PR.  
+\item To capture the effect of the imperfect channel knowledge, the variations in the estimated parameters (namely, received power for the interference channels and power gain for the access channels) are characterized in terms of their cdfs.
+\item The aforementioned variations are translated to the performance parameters, such as the interference at the PR and the secondary throughput. These variations in the performance parameters are further characterized in terms of their cdfs. More specifically, using the characterization of the uncertain interference, a novel power control mechanism based on an outage control is proposed that regulates the uncertain interference at the PR.  
 \item Finally, using the derived expressions, a relationship between the estimation time and the expected secondary throughput for the USs is analyzed. The proposed framework (also referred as estimation model) is further extended to analyze the impact of channel fading on the performance of the system. 
 \end{itemize}
-Since the channel estimation in the context of CR systems involves two different (primary and secondary) systems, suitable channel estimation techniques should be selected such that the following requirements: (i) low complexity and (ii) versatility towards unknown PU signals, essential from the deployment perspective, are respected. Similar problem for the interweave CR systems has been deeply investigated in Chapter \ref{chap:IS}, where it proposes to employ a received power-based estimation for the channels between the primary and the secondary users and a pilot-based estimation for the access channel. In contrast to this, in this chapter, the received power-based and the pilot-based estimation techniques are applied in the underlay CR systems. It is also worth stating that, since the signal model in Chapter \ref{chap:IS} (OFDM transmission) differs from the one (constant power transmission) studied in this chapter, new mathematical expressions for the performance parameters are derived. 
-In the following paragraphs, the estimation of the power gains of the primary interference channel $\ephpth$, the access channel $\epgs$ and the secondary interference channel $\epgpt$ is considered. 
+Since the channel estimation in the context of CR systems involves two different (primary and secondary) systems, suitable channel estimation techniques should be selected such that the following requirements: (i) low complexity and (ii) versatility towards unknown PU signals, essential from the deployment perspective, are respected. Similar problem for the interweave CR systems has been deeply investigated in Chapter \ref{chap:IS}, where it proposes to employ a received power-based estimation for the channels between the primary and the secondary systems and a pilot-based estimation for the access channel. Following a similar strategy, in this chapter, the received power-based and the pilot-based estimation techniques are applied in the underlay CR systems. It is also worth stating that, since the signal model in Chapter \ref{chap:IS} (OFDM transmission) differs from the one (constant power transmission) studied in this chapter, new mathematical expressions for the performance parameters are derived. In the following paragraphs, the estimation of the power gains of the primary interference channel $\ephpth$, the access channel $\epgs$ and the secondary interference channel $\epgpt$ is considered. 
 \subsubsection{Estimation of primary interference channel}
 Considering
 \begin{equation}
@@ -185,7 +184,7 @@ Considering
 \end{equation}
 and the knowledge of PR's transmit power $\ptran$, the ST employs received power-based estimation to obtain the knowledge of $\pgpth$. To accomplish this, in reference to (\ref{eq_US:sys_mod_st}), the ST listens to the transmissions from the PR and acquires the knowledge of $\epgpth$ indirectly by estimating the power received in the uplink as $\eprcvdstpr = \s{\test \fsam}{|\yrcvd[n]|^2}$, where $\fsam$ being the sampling frequency and $\test$ represents the estimation time interval. 
 %$\fsam$ and $\test$ are such that the number of samples $\test \fsam$ is an integer. 
-The estimated received power $\eprcvdstpr$ is utilized to determine the control power $\preg$ at which the data transmission over the downlink is carried out, \figurename~\ref{fig_US:fs}. In accordance to the received power-based estimation for the channel $\pgpth$, it is noticed that the knowledge of $\ptran$ at the ST is essential for the characterization of the controlled power (considered later in Lemma \ref{lm_US:lm4}). However, this knowledge can be retrieved by considering the specifications of different wireless standards such GSM, EDGE and LTE, etc. \cite{Sharma14}. It is well-known that certain standards (considered as primary systems) follow adaptive modulation and coding, which can consequently change $\ptran$. Under this situation, the ST can employ more complex techniques such as pilot assisted techniques in order to determine $\ptran$ for the given frame.
+The estimated received power $\eprcvdstpr$ is utilized to determine the controlled power $\preg$ at which the data transmission over the downlink is carried out, \figurename~\ref{fig_US:fs}. In accordance to the received power-based estimation for the channel $\pgpth$ in (\ref{eq_US:prcvd}), it is noticed that the knowledge of $\ptran$ at the ST is essential for the characterization of the controlled power (considered later in Lemma \ref{lm_US:lm4}). However, this knowledge can be retrieved by considering the specifications of different wireless standards such GSM, EDGE and LTE, etc. \cite{Sharma14}. It is well-known that certain standards (considered as primary systems) follow adaptive modulation and coding, which can consequently change $\ptran$. Under this situation, the ST can employ more complex techniques such as pilot assisted techniques in order to determine $\ptran$ for the given frame.
 
 For a certain value of $\pgpth$, the received power at the ST estimated using $\test \fsam$ samples, refer to (\ref{eq_US:prcvd}), follows a non-central chi-squared distribution $\fprcvdstpr \sim \ncchi2(\lpth, \test \fsam)$ with non-centrality parameter $\lpth = \test \fsam \phpth \times$ $\ptran /\nps = \test \fsam \snrrcvdu$ \cite{Kay}, where $\snrrcvdu$ is defined as the ratio of the received power (from the PR) to noise at the ST and $\test \fsam$ corresponds to the degrees of freedom. In order to sustain analytical tractability in the analysis, the Approximation \ref{ap:ap1} presented in Chapter \ref{chap:IS} is considered. 
 %\begin{approxi} \label{ap:ap1}
@@ -194,7 +193,7 @@ For a certain value of $\pgpth$, the received power at the ST estimated using $\
 %\end{approxi}
 \begin{lemma} \label{lm_US:lm1}
 \normalfont
-The cumulative distribution function of $\eprcvdstpr$ is characterized as 
+The cdf of $\eprcvdstpr$ is characterized as 
 \begin{align}
 \fprcvdstpr(x) \approx 1 - \Gamma&\left(\apo, \frac{x}{\bpo}\right) \label{eq_US:fprcvd}, \\ 
 \text{where  } \apo = \frac{\test \fsam (1 + \snrrcvdu)^2}{2 + 4 \snrrcvdu} &\text{ and } \bpo = \frac{\nps (2 + 4 \snrrcvdu)}{\test \fsam (1 + \snrrcvdu)},  \label{eq_US:para_po} 
@@ -206,7 +205,7 @@ Applying Approximation \ref{ap:ap1} from Chapter \ref{chap:IS} to $\ncchi2(\lpth
 \end{IEEEproof}
 
 \subsubsection{Estimation of access channel}
-Analog to Chapter \ref{chap:US} In the uplink, the pilot signal transmitted by the SR undergoes matched filtering and demodulation at the ST, hence, a pilot-based estimation is employed at the ST to acquire the knowledge of the access channel. %According to \cite{Gifford08}, the maximum-likelihood estimate with $\Ks$ pilot symbols is given by 
+Analog to Chapter \ref{chap:US}, in the uplink, the pilot signal transmitted by the SR undergoes matched filtering and demodulation at the ST, hence, a pilot-based estimation is employed at the ST to acquire the knowledge of the access channel. %According to \cite{Gifford08}, the maximum-likelihood estimate with $\Ks$ pilot symbols is given by 
 %\begin{align}
 %\gs = \egs + \frac{\sum^{\Ks}_{n} p[n]}{2 \Ks},
 %\label{eq_US:pilot_MLE}
@@ -214,7 +213,7 @@ Analog to Chapter \ref{chap:US} In the uplink, the pilot signal transmitted by t
 %where $p[n]$ denotes the discrete pilot symbol and $\frac{\sum^{\Ks}_{n} p[n]}{2 \Ks}$ represents the estimation error. With no loss of generality, the pilot symbols are considered to be $+1$.
 %(\ref{eq_US:pilot_MLE}) illustrates a correlation between the $\hs$ and $\ehs$. 
 %As a result, the estimate $\egs$ is unbiased, efficient, i.e., achieves the Cram\'er-Rao bound with equality, with asymptotic variance $\e{}{|\gs -\egs|^2} = \frac{\nps}{2 \Ks}$ \cite{Gifford08}. 
-Hence, $\egs$ conditioned on $\gs$ follows a Gaussian distribution
+In this regard, $\egs$ conditioned on $\gs$ follows a Gaussian distribution
 \begin{align}
 \egs|\gs \sim \mathcal{N}\left( \gs,\frac{\nps}{2 \Ks} \right).
 \label{eq_US:ehs} 
@@ -234,7 +233,7 @@ Applying Approximation \ref{ap:ap1} from Chapter \ref{chap:IS} to $\ncchi2(\ls,1
 
 \subsubsection{Estimation of secondary interference channel}
 %In the downlink, the SR cancels the ST the data signal over the access channel in order to estimate the secondary interference (power) received from the PT, refer to (\ref{eq_US:sys_mod_sr}). In order to establish a preliminary analysis, it is assumed that signal to noise ratio for the access link is suitable enough to allow perfect cancellation of the data signal. For extreme situations, a probabilistic approach can be applied to deal with the imperfect signal cancellation for the proposed channel estimation. However, under such situations, it is possible that due to bad quality of the access channel, the ST may not consider such a channel for data transmission. 
-The power estimated over the signal $\hpth \xp[n] + \wsr[n]$ corresponds to the interference plus noise power ($\prcvdsr = \pgpt \ptranpt + \nps$, where $\prcvdsr$ represents the true value, consider (\ref{eq_US:Thr_id})). The estimated received power at the SR is determined as $\eprcvdsr = \s{\test \fsam}{|\gpth \cdot \xtranpr[n] + \wsr[n]|^2}$. To characterize the secondary throughput, $\eprcvdsr$ is made available to the ST over a low rate feedback channel. Similar to $\eprcvdstpr$, for a certain value of $\phpt$, $\eprcvdsr$ follows a non-central chi-squared distribution $\ncchi2(\lpt, \test \fsam)$, with non-centrality parameter $\lpt = \test \fsam \pgpt \ptranpt / \nps$.
+In the downlink, the SR estimates the interference power received from the PT. The power estimated over the signal $\hpt \xp[n] + \wsr[n]$ corresponds to the interference plus noise power ($\prcvdsr = \pgpt \ptranpt + \nps$, where $\prcvdsr$ represents the true value, consider (\ref{eq_US:Thr_id})). The estimated received power at the SR is determined as $\eprcvdsr = \s{\test \fsam}{|\gpt \cdot \xtranpr[n] + \wsr[n]|^2}$. To characterize the secondary throughput, $\eprcvdsr$ is made available to the ST over a low rate feedback channel. Similar to $\eprcvdstpr$, for a certain value of $\phpt$, $\eprcvdsr$ follows a non-central chi-squared distribution $\ncchi2(\lpt, \test \fsam)$, with non-centrality parameter $\lpt = \test \fsam \pgpt \ptranpt / \nps$.
 \begin{lemma} \label{lm_US:lm3}
 \normalfont
 The cumulative distribution function of $\eprcvdstpr$ is characterized as 
@@ -246,10 +245,10 @@ The cumulative distribution function of $\eprcvdstpr$ is characterized as
 \begin{IEEEproof}
 Applying Approximation \ref{ap:ap1} from Chapter \ref{chap:IS} to $\ncchi2(\lpt, \test \fsam)$ yields (\ref{eq_US:fprcvdsr}). 
 \end{IEEEproof}
-\begin{remark}
-\normalfont
-It is important to note that, the scenario described in this chapter considers a single PT and a single PR. However, in practice, it is possible that the ST and the SR accumulate significant interference (defined as aggregate interference) from other PRs and PTs (co-channel interference due to frequency reuse) in the network\cite{Elsawy13_cmag,Kaushik14_P} over the primary interference channel and the secondary interference channel, respectively. For the secondary interference channel, the only difference is that the SR now estimates the aggregate interference. Due to this, the expression of $\eprcvdsr$ in the throughput remains unchanged. On the other side, by estimating the aggregate interference on the primary interference channel, the ST overestimates $\eprcvdstpr$ and exercises a greater power control. Even for such a case, the outage constraint on the primary interference channel to the desired PR is satisfied, which consequently reduces the secondary throughput.  
-\end{remark}
+%\begin{remark}
+%\normalfont
+It is important to note that, the scenario described in this chapter considers a single PT and a single PR. However, in practice, it is possible that the ST and the SR accumulate significant interference (defined as aggregate interference) from other PRs and PTs (co-channel interference due to frequency reuse) in the network \cite{Elsawy13_cmag}, \citeK{Kaushik14_P} over the primary interference channel and the secondary interference channel, respectively. For the secondary interference channel, the only difference is that the SR now estimates the aggregate interference. Due to this, the expression of $\eprcvdsr$ in the throughput remains unchanged. On the other side, by estimating the aggregate interference on the primary interference channel, the ST overestimates $\eprcvdstpr$ and exercises a greater power control. Even for such a case, the outage constraint on the primary interference channel to the desired PR is satisfied, which consequently reduces the secondary throughput.  
+%\end{remark}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Theoretical Analysis} \label{sec_US:th_ana}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -282,8 +281,8 @@ It is important to note that, the scenario described in this chapter considers a
 %\end{align}
 %where $\mathcal{F}_{\frac{1}{\gp}}^{-1}$ represents the inverse-distribution function of $1/{\gp}$.
 %Clearly, there exits a tradeoff that involves maximizing the expected throughput at the SR subject to a outage probability constraint is given by 
-Here, the performance of the USs is investigated on a single-frame basis. In this sense, the involved channels $\hpth$, $\gpt$ and $\gs$ are considered to be deterministic.   
-At first, an outage probability constraint
+In this section, the performance of the US is investigated for a specific frame. In this sense, the involved channels $\hpth$, $\gpt$ and $\gs$ are considered to be deterministic (not random).   
+First, an outage probability constraint
 %\footnote{The outage constraint is commonly used parameter for designing communication system that ensures the outage occurs no more than a certain percentage of time.} 
 $\opc$ on the uncertain interference is employed to capture the variations in the $\prcvdpr$ incurred due to channel estimation, defined as 
 \begin{align}
@@ -295,10 +294,10 @@ Besides the outage constraint, $\preg$ is limited by a predefined transmit power
 \begin{align}
 \preg \le \pc. \label{eq_US:pc} 
 \end{align} 
-It is considered that the same power is allocated to all the symbols transmitted within a frame by the ST. In this regard, the transmit power constraint on symbol basis and frame basis is equivalent. As a consequence, the constraint depicted in (\ref{eq_US:pc}) is applicable to both the scenarios. Based on the constraints in (\ref{eq_US:opc}) and (\ref{eq_US:pc}), an expression of the controlled power for the proposed framework is determined.
+It is considered that the same power is allocated to all the symbols transmitted within a frame by the ST. In this regard, the transmit power constraint on symbol basis and frame basis is equivalent. As a consequence, the constraint depicted in (\ref{eq_US:pc}) is applicable to both the scenarios. Based on the constraints in (\ref{eq_US:opc}) and (\ref{eq_US:pc}), an expression of the controlled power for the proposed framework is determined, subsequently.
 \begin{lemma} \label{lm_US:lm4}
 \normalfont 
-Subject to the outage constraint on the uncertain interference and the transmit power constraint at the ST, the controlled power at the ST is given by
+Subject to the outage constraint on the uncertain interference and the transmit power constraint at the ST, the controlled power at the ST, the controlled power at the ST is given by
 \begin{align}
 \preg &= 
 \begin{cases} 
@@ -312,12 +311,12 @@ where $\apo$ and $\bpo$ are defined in (\ref{eq_US:para_po}).
 \begin{IEEEproof}
 Substituting the cdf for $\eprcvdstpr$, defined in (\ref{eq_US:fprcvd}), in (\ref{eq_US:opc}) and combining with (\ref{eq_US:pc}) yields (\ref{eq_US:preg}).
 \end{IEEEproof}
-Clearly, the performance of the US improves over the access channel (in terms of the secondary throughput) with $\preg$, but $\preg$ increases for the values of $\phpth$, which correspond to the lower values of $\snrrcvdu$.
-The real world wireless systems are limited by the transmit power $\pc$, which bounds the performance of the USs. In order to understand the effect of the power limitation on the USs, a performance bound is characterized in terms of the estimation time and the signal to noise ratio received (from the PR) at the ST\footnote{\tc{Signal to noise ratio is mostly used as a design parameter for characterizing the performance of a wireless system.}}.  
+Clearly, the performance of the US improves over the access channel (in terms of the secondary throughput) with $\preg$, but $\preg$ increases for the values of $\phpth$, which correspond to the lower values of $\snrrcvdu$\footnote{\tc{Signal to noise ratio is mostly used as a design parameter for characterizing the performance of a wireless system.}}.
+However, in practice, the wireless systems are limited by the transmit power $\pc$, which bounds the performance of the US. In order to understand the effect of the power limitation on the US, a performance bound is characterized in terms of the estimation time.
  
 \begin{coro} \label{cor_US:cor1}
 \normalfont
-Subject to the outage constraint on the uncertain interference and the transmit power constraint at the ST, the performance bound ($\snrrcvdu^*$) of the USs is defined as %\footnote{Please note that $\test \fsam$ and $\snrrcvd$ are included in the parameters $\apo$ and $\bpo$, refer to (\ref{eq_US:para_po}).} 
+Subject to the outage constraint on the uncertain interference and the transmit power constraint at the ST, the performance bound ($\snrrcvdu^*$) of the US is defined as %\footnote{Please note that $\test \fsam$ and $\snrrcvd$ are included in the parameters $\apo$ and $\bpo$, refer to (\ref{eq_US:para_po}).} 
 \begin{align}
 \Gamma\left(\frac{\test \fsam (1 + \snrrcvdu^*)^2}{2 + 4 \snrrcvdu^*}, \frac{\test \fsam (1  + \snrrcvdu^*)}{\nps (2 + 4 \snrrcvdu^*)} \left( \frac{\ite \ptran}{\pc} + \nps  \right)  \right) = \opc. \label{eq_US:opreg}  
 \end{align}
@@ -367,21 +366,21 @@ Substituting $\snrrcvdu$ with $\snrrcvdu^*$ and replacing the expression in (\re
 
 %\vspace{-4mm}
 \caption{
-An illustration of the performance bound ($\snrrcvdu^*$) for the US depicted in terms of estimation time ($\test$) and the ratio of the received power (from the PR) to noise ($\snrrcvdu$) at the ST. It further classifies the operation of the USs as the interference-limited and the power-limited regimes.}
+An illustration of the performance bound ($\snrrcvdu^*$) for the US depicted in terms of estimation time ($\test$) and the ratio of the received power (from the PR) to noise ($\snrrcvdu$) at the ST. It further classifies the operation of the US as the interference-limited and the power-limited regimes.}
 \label{fig_US:or}
 %\vspace{-10mm}
 \end{figure}
 \begin{remark} \label{rm_US:rm1}
 \normalfont
-\figurename~\ref{fig_US:or} analyzes the variations of $\snrrcvdu^*$ with $\test$. Using the expression $\snrrcvdu^*$ obtained in Corollary \ref{cor_US:cor1}, the operation of the USs into the following regimes is classified: (i) interference-limited regime and (ii) power-limited regime. \tc{Inside the interference-limited regime $\snrrcvdu > \snrrcvdu^*$, due to good quality of the channel ST-PR (unfavorable to the USs), the system is limited due to the exceeding level of the uncertain interference, which can be regulated effectively by employing power control at the US to satisfy the given outage constraint. At $\snrrcvdu = \snrrcvdu^*$, the ST operates at the maximum allowable power $\preg = \pc$ while respecting the tolerance limits defined for the uncertain interference. From a different perspective, the situation $\snrrcvdu = \snrrcvdu^*$ also represents those USs that are unable to carry out power control. With regard to the outage constraint and the lack of the power control, for a given choice of $\snrrcvdu^*$, such systems can operate only at a specific value of $\test$.
+\figurename~\ref{fig_US:or} analyzes the variations of $\snrrcvdu^*$ with $\test$. Using the expression $\snrrcvdu^*$ obtained in Corollary \ref{cor_US:cor1}, the operation of the US into the following regimes is classified: (i) interference-limited regime and (ii) power-limited regime. \tc{Inside the interference-limited regime $\snrrcvdu > \snrrcvdu^*$, due to good quality of the channel ST-PR (unfavorable to the US), the system is limited due to the exceeding level of the uncertain interference, which can be regulated effectively by employing power control at the US to satisfy the given outage constraint ($\opc$). At $\snrrcvdu = \snrrcvdu^*$, the ST operates at the maximum allowable power $\preg = \pc$ while respecting the tolerance limits defined for the uncertain interference. From a different perspective, the situation $\snrrcvdu = \snrrcvdu^*$ also represents those USs that are unable to carry out power control. With regard to the outage constraint and the lack of the power control, for a given choice of $\snrrcvdu^*$, such systems can operate only at a specific value of $\test$.
 %At $\snrrcvdu = \snrrcvdu^*$, the system operates at the maximum transmit power $\pc$, i.e., without power control. It is worth noticing that the situation $\snrrcvdu = \snrrcvdu^*$ is a representative of those underlay systems that are unable to carry out power control. With regard to desired outage constraint on the uncertain interference, such systems can operate for a given choice of $\snrrcvdu^*$ only at a certain value of $\test$. From a different perspective, at $\snrrcvdu = \snrrcvdu^*$, the USs are allowed to operate with maximum transmit power $\pc$ without exceeding the tolerance limits defined for the interference. 
 }
 
 \tc{
-On the other side, the region $\snrrcvdu \le \snrrcvdu^*$, which depicts a weak link quality between the ST and the PR, hence, is beneficial to the secondary user. However, due to the transmit power constraint, the USs are confined to operate at $\pc$. As a result, these favorable conditions do not translate to any performance gain.} Therefore, this regime is characterized as a power-limited regime. \tc{Besides, it is interesting to observe that for low values of the estimation time, $\snrrcvdu^* \rightarrow -\infty$, which signifies that low $\test$ increases the uncertainty in the interference. In order to regulate the level of this uncertainty, US has to be proactive in terms of power control mechanism to be able to satisfy the interference constraint. It is also observed that as $\test \rightarrow \infty$, $\snrrcvdu^*$ converges asymptotically to a certain value. This signifies the fact that additional time resources allocated for the channel estimation, after a certain value, does not account to any significant improvement in the terms of the uncertain interference, or indirectly power control. As a result, the performance of the US in the form of power control gets saturated.}  %As a result, by replacing $\snrrcvdu^*$ in the following expression of secondary throughput, we determine the performance limits of operation for the US. 
+On the other side, the region $\snrrcvdu \le \snrrcvdu^*$, which depicts a weak link quality between the ST and the PR, is beneficial to the secondary user. However, due to the transmit power constraint, the USs can operate at or below $\pc$. As a result, these favorable conditions do not translate to any performance gain.} Therefore, this regime is characterized as a power-limited regime. \tc{Besides, it is interesting to observe that for low values of the estimation time, $\snrrcvdu^* \rightarrow -\infty$, which signifies that low $\test$ increases the uncertainty in the interference. In order to regulate the level of this uncertainty, US has to be proactive in terms of power control to be able to satisfy the interference constraint. It is also observed that as $\test \rightarrow \infty$, $\snrrcvdu^*$ converges asymptotically to a certain value. This signifies the fact that, beyond a certain value, the time resources allocated for the channel estimation does not account to any significant improvement in the terms of the uncertain interference or indirectly in terms of the power control. As a result, the performance of the US in the form of power control gets saturated, thus, limiting the performance of the US in terms of the secondary throughput.}  %As a result, by replacing $\snrrcvdu^*$ in the following expression of secondary throughput, we determine the performance limits of operation for the US. 
 \end{remark}
 %Based on the operation regime, we determine best performance, in terms of the lowest operational SNR, achieved by the US. 
-Next, the variations in the secondary throughput are captured in terms of its expected value. To accomplish this, the cdf of the data rate%\footnote{\tc{Please note, the following terms the data rate $\ca$ and the throughput $\rs$ have been introduced to make a clear distinction between the instantaneous data rate and its average value over the frame duration.}}
+Next, the variations in the secondary throughput are captured in terms of its expected value. To accomplish this, the cdf of the estimated data rate, given by%\footnote{\tc{Please note, the following terms the data rate $\ca$ and the throughput $\rs$ have been introduced to make a clear distinction between the instantaneous data rate and its average value over the frame duration.}}
 \begin{align}
 \eca  = \log_2 \left(1 + \frac{\epgs \preg}{\eprcvdsr} \right) \label{eq_US:eca}
 \end{align}
