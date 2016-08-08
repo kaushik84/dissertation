@@ -296,7 +296,7 @@ Besides the outage constraint, $\preg$ is limited by a predefined transmit power
 It is considered that the same power is allocated to all the symbols transmitted within a frame by the ST. In this regard, the transmit power constraint on symbol basis and frame basis is equivalent. As a consequence, the constraint depicted in (\ref{eq_US:pc}) is applicable to both the scenarios. Based on the constraints in (\ref{eq_US:opc}) and (\ref{eq_US:pc}), an expression of the controlled power for the proposed framework is determined, subsequently.
 \begin{lemma} \label{lm_US:lm4}
 \normalfont 
-Subject to the outage constraint on the uncertain interference and the transmit power constraint at the ST, the controlled power at the ST, the controlled power at the ST is given by
+Subject to the outage constraint on the uncertain interference and the transmit power constraint at the ST, the controlled power at the ST is given by
 \begin{align}
 \preg &= 
 \begin{cases} 
@@ -308,7 +308,7 @@ Subject to the outage constraint on the uncertain interference and the transmit 
 where $\apo$ and $\bpo$ are defined in (\ref{eq_US:para_po}).
 \end{lemma} 
 \begin{IEEEproof}
-Substituting the cdf for $\eprcvdstpr$, defined in (\ref{eq_US:fprcvd}), in (\ref{eq_US:opc}) and combining with (\ref{eq_US:pc}) yields (\ref{eq_US:preg}).
+Substituting the cdf $\fprcvdstpr(x)$, defined in (\ref{eq_US:fprcvd}), in (\ref{eq_US:opc}) and combining with (\ref{eq_US:pc}) yields (\ref{eq_US:preg}).
 \end{IEEEproof}
 Clearly, the performance of the US improves over the access channel (in terms of the secondary throughput) with $\preg$, but $\preg$ increases for the values of $\phpth$, which correspond to the lower values of $\snrrcvdu$\footnote{\tc{Signal to noise ratio is mostly used as a design parameter for characterizing the performance of a wireless system.}}.
 However, in practice, the wireless systems are limited by the transmit power $\pc$, which bounds the performance of the US. In order to understand the effect of the power limitation on the US, a performance bound is characterized in terms of the estimation time.
@@ -354,8 +354,8 @@ Substituting $\snrrcvdu$ with $\snrrcvdu^*$ and replacing the expression in (\re
 \draw (0.62,0.75) arc(-250:70:0.03 and 0.015);
 \node[draw,fill=gray!0,font=\scriptsize] (text1) at (0.56,0.735) {$\snrrcvdu^*$}; 
 %\draw[black, <-] (text1.east) -- (0.46,0.7);
-\node[draw,fill=gray!0,font=\scriptsize] at (0.8,0.53) {Interference-limited};
-\node[draw,fill=gray!0,font=\scriptsize] at (0.35,0.53) {Power-limited};
+\node[draw,fill=gray!0,font=\scriptsize, text width = 68, align = center] at (0.8,0.53) {Interference-limited (operational)};
+\node[draw,fill=gray!0,font=\scriptsize, text width = 58, align = center] at (0.35,0.53) {Power-limited (non-operational)};
 
 %\draw[help lines,xstep=.1,ystep=.1] (0,0) grid (1,1);
 %\foreach \x in {0,1,...,9} { \node [anchor=north] at (\x/10,0) {0.\x}; }
@@ -365,7 +365,7 @@ Substituting $\snrrcvdu$ with $\snrrcvdu^*$ and replacing the expression in (\re
 
 %\vspace{-4mm}
 \caption{
-An illustration of the performance bound ($\snrrcvdu^*$) for the US depicted in terms of estimation time ($\test$) and the ratio of the received power (from the PR) to noise ($\snrrcvdu$) at the ST. It further classifies the operation of the US as the interference-limited and the power-limited regimes.}
+An illustration of the performance bound ($\snrrcvdu^*$) for the US depicted in terms of estimation time ($\test$), where $\snrrcvdu$ represents the ratio of the received power (from the PR) to noise at the ST. It further classifies the operation of the US as the interference-limited and the power-limited regimes.}
 \label{fig_US:or}
 %\vspace{-10mm}
 \end{figure}
@@ -376,7 +376,7 @@ An illustration of the performance bound ($\snrrcvdu^*$) for the US depicted in 
 }
 
 \tc{
-On the other side, the region $\snrrcvdu \le \snrrcvdu^*$, which depicts a weak link quality between the ST and the PR, is beneficial to the secondary user. However, due to the transmit power constraint, the USs can operate at or below $\pc$. As a result, these favorable conditions do not translate to any performance gain.} Therefore, this regime is characterized as a power-limited regime. \tc{Besides, it is interesting to observe that for low values of the estimation time, $\snrrcvdu^* \rightarrow -\infty$, which signifies that low $\test$ increases the uncertainty in the interference. In order to regulate the level of this uncertainty, US has to be proactive in terms of power control to be able to satisfy the interference constraint. It is also observed that as $\test \rightarrow \infty$, $\snrrcvdu^*$ converges asymptotically to a certain value. This signifies the fact that, beyond a certain value, the time resources allocated for the channel estimation does not account to any significant improvement in the terms of the uncertain interference or indirectly in terms of the power control. As a result, the performance of the US in the form of power control gets saturated, thus, limiting the performance of the US in terms of the secondary throughput.}  %As a result, by replacing $\snrrcvdu^*$ in the following expression of secondary throughput, we determine the performance limits of operation for the US. 
+	On the other side, the region $\snrrcvdu \le \snrrcvdu^*$, which depicts a weak link quality between the ST and the PR, is beneficial to the secondary user. However, due to the transmit power constraint, the USs can operate at or below $\pc$. As a result, these favorable conditions do not translate to any performance gain.} Therefore, this regime is characterized as a power-limited regime. \tc{Besides, it is interesting to observe that for low values of the estimation time, $\snrrcvdu^* \rightarrow -\infty$, which signifies that low $\test$ increases the uncertainty in the interference. In order to regulate the level of this uncertainty, US has to be proactive in terms of power control to be able to satisfy the interference constraint. It is also observed that as $\test \rightarrow \infty$, $\snrrcvdu^*$ converges asymptotically to a certain value. This signifies the fact that, beyond a certain value, the time resources allocated for the channel estimation do not account to any significant improvement in the terms of the uncertain interference or indirectly in terms of the controlled power. As a result, the performance of the US in the form of controlled power gets saturated, thus, limiting the performance of the US in terms of the secondary throughput.}  %As a result, by replacing $\snrrcvdu^*$ in the following expression of secondary throughput, we determine the performance limits of operation for the US. 
 \end{remark}
 %Based on the operation regime, we determine best performance, in terms of the lowest operational SNR, achieved by the US. 
 Next, the variations in the secondary throughput are captured in terms of its expected value. To accomplish this, the cdf of the estimated data rate, given by%\footnote{\tc{Please note, the following terms the data rate $\ca$ and the throughput $\rs$ have been introduced to make a clear distinction between the instantaneous data rate and its average value over the frame duration.}}
@@ -390,7 +390,7 @@ The cdf of data rate $\eca$ is given by
 \begin{align}
 \fc(x) &= \int\limits_{0}^{x} \dc(t) dt, \label{eq_US:dis_C} 
 \end{align}
-where the $\dc(x)$ probability density function (pdf) is given by 
+where the $\dc(x)$ pdf is given by 
 \begin{align}
 \dc(x) &= 2^x \ln 2 \frac{(2^x - 1)^{\as - 1} \Gamma(\as + \apt)}{\Gamma(\as) \Gamma(\apt) (\bs \ptran) ^{\as} \bpt^{\apt}} \left(\frac{1}{\bpt} + \frac{2^x - 1}{\bs \ptran}\right). \label{eq_US:den_C}
 \end{align}
@@ -465,11 +465,11 @@ where $\e{\eca}{\cdot}$ corresponds to an expectation over $\eca$, whose pdf is 
 
 \begin{remark} \label{rm_US:rm3}
 \normalfont
-\tc{At this point, it is well-known that the performance degradation due to channel estimation in the form of the secondary throughput is inherent to the USs. Specifically, the time allocation and the uncertain interference are responsible of this degradation. The power control, determined in Lemma \ref{lm_US:lm4}, represented as a function of estimation time is able to regulate the uncertain interference. As discussed previously in Remark \ref{rm_US:rm1}, the low estimation time enables a severe control in power, thereby reducing the secondary throughput. On the other hand, the time resources allocated for the channel estimation also decrease the throughput. This phenomenon can be captured by observing the variation of the secondary throughput along the estimation time such that the constraints depicted in (\ref{eq_US:opc}) and (\ref{eq_US:pc}) are fulfilled. Below, Problem \ref{th_US:th1} captures this relationship between the estimation time and the secondary throughput defined as estimation-throughput tradeoff. More importantly, this tradeoff is utilized to determine a suitable estimation time at which maximum throughput at the SR is achieved.}
+\tc{At this point, it is well-known that the performance degradation due to channel estimation in the form of the secondary throughput is inherent to the US. Specifically, the time allocation and the uncertain interference are responsible of this degradation. The controlled power, determined in Lemma \ref{lm_US:lm4}, characterized as a function of estimation time allow us to regulate the uncertain interference. As discussed previously in Remark \ref{rm_US:rm1}, the low estimation time enables a severe control in power, thereby decreasing the secondary throughput. On the other hand, less time allocated for channel estimation increases the secondary throughput. This phenomenon can be captured by observing the variation of the secondary throughput along the estimation time such that the constraints depicted in (\ref{eq_US:opc}) and (\ref{eq_US:pc}) are fulfilled. Below, Problem \ref{th_US:th1} captures this relationship between the estimation time and the secondary throughput defined as an estimation-throughput tradeoff. More importantly, this tradeoff is utilized to determine a suitable estimation time at which maximum throughput at the SR is achieved.}
 \end{remark}
 \begin{theorem} \label{th_US:th1}
 \normalfont
-The expected achievable secondary throughput subject to the outage constraint on the uncertain interference and the transmit power constraint at the ST is defined as
+The achievable expected secondary throughput subject to the outage constraint on the uncertain interference and the transmit power constraint at the ST is defined as
 \begin{align}
 \trs(\ttest)  = \maxi_{\test}  & \text{      } {\rs(\test)}, 
  \label{eq_US:sys} \\
@@ -489,7 +489,7 @@ Solving numerically the expression in (\ref{eq_US:intrs}) yields $\ttest$ and $\
 \end{IEEEproof}
 \begin{coro} \label{cor_US:cor2}
 \normalfont
-Problem \ref{th_US:th1} considers the optimization of the expected secondary throughput for the proposed framework that employ power control and considers the effect of the imperfect channel knowledge. \tc{In accordance to Corollary \ref{cor_US:cor1}, these USs correspond to the ones that operate in the interference-limited regime $\snrrcvdu^* \ge \snrrcvdu $.} Besides, it is interesting to compare its performance with those USs that employ channel estimation and satisfy the outage constraint on the uncertain interference, however, employ no power control, i.e., operate at $\pc$. \tc{With regard to Corollary \ref{cor_US:cor1}, these systems correspond to the ones operating on the curve $\snrrcvdu^*  = \snrrcvdu$. For the latter approach, the secondary throughput is obtained by substituting $\preg$ with $\pc$ in (\ref{eq_US:rs}), where $\test$ in (\ref{eq_US:rs}) is determined using Corollary \ref{cor_US:cor1}. Such a comparison allows us to quantify the performance gain procured by the USs through the employment of power control.}
+Problem \ref{th_US:th1} considers the optimization of the expected secondary throughput for the proposed framework that employ power control and considers the effect of the imperfect channel knowledge. \tc{In accordance to Corollary \ref{cor_US:cor1}, these USs correspond to the those USs that operate in the interference-limited regime $\snrrcvdu^* \ge \snrrcvdu $.} Besides, it is interesting to compare its performance with those USs that employ channel estimation and satisfy the outage constraint on the uncertain interference, however, employ no power control, i.e., operate at $\pc$. \tc{With regard to Corollary \ref{cor_US:cor1}, these systems correspond to the ones operating on the curve $\snrrcvdu^*  = \snrrcvdu$. For the latter approach, the secondary throughput is obtained by substituting $\preg$ with $\pc$ in (\ref{eq_US:rs}), where $\test$ in (\ref{eq_US:rs}) is determined using Corollary \ref{cor_US:cor1}. Such a comparison allows us to quantify the performance gain procured by the USs when power control is employed at the ST.}
 \end{coro}
 
 %Problem \ref{th_US:th1} depicts an optimum estimation time $\ttest$ that achieves an optimum secondary throughput $\trs(\ttest)$.
@@ -508,26 +508,26 @@ Problem \ref{th_US:th1} considers the optimization of the expected secondary thr
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Random Channel}\label{ssec_US:ltpa}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-Here, the objective is to investigate the performance of the proposed approach, where the interacting channels encounter quasi-static block fading. Following the frame structure in \figurename~\ref{fig_US:fs}, the alternating transmissions observe a different channel. In this regard, the channel gains $\hpth$, $\gpt$ and $\gs$ are characterized according to Nakagami-$m$ fading model. Analog to the previous chapter, the power gains $\phpth$, $\pgpt$ and $\pgs$ follow a Gamma distribution \cite{Goldsmith05}, whose corresponding cumulative distribution functions are defined as  
+Here, the objective is to investigate the performance of the proposed approach, where the interacting channels encounter quasi-static block fading. Specifically, the performance of the USs is analyzer over multiple frames, where every alternating transmission according to the frame structure presented in \figurename~\ref{fig_US:fs} observes a different channel. In this regard, the channel gains $\hpth$, $\gpt$ and $\gs$ are characterized according to Nakagami-$m$ fading model. Analog to the previous chapter, the power gains $\phpth$, $\pgpt$ and $\pgs$ follow a Gamma distribution \cite{Goldsmith05}, whose corresponding cdfs are defined as  
 \begin{align}
 \fpgpth(x) = 1 - \Gamma\left(\mpth, \frac{\mpth x}{\bpgpth}\right), \label{eq_US:dis_pgpth}\\
 \fpgpt(x) = 1 - \Gamma\left(\mpt, \frac{\mpt x}{\bpgpt}\right), \label{eq_US:dis_pgpt}\\  
 \fpgs(x) = 1 - \Gamma\left(\ms , \frac{\ms x}{\bpgs}\right), \label{eq_US:dis_pgs}
 \end{align}
 where $\mpth$, $\mpt$ and $\ms$ represent the $m$ parameter, whereas $\bpgpth$, $\bpgpt$ and $\bpgs$ are the expected values for channels $\pgpth$, $\pgpt$ and $\pgs$, respectively. %$\Gamma(\cdot, \cdot)$ is a regularized upper-incomplete Gamma function \cite{abramo}.
-The performance analysis subject to channel fading has been considered by Ghasemi \textit{et al.} \cite{Ghasemi06, Ghasemi07}. However, the authors in \cite{Ghasemi06, Ghasemi07} evaluated average data rate under an average interference constraint. The influence of the channel fading (however, without channel estimation) has been quantified in terms of the outage constraint on the uncertain interference\footnote{The uncertainty is interference power received at the PR is due to channel fading.}, is given by %. In order to make a fair comparison (benchmark) of our proposed approach, the ideal model the existing investigations in context to channel fading are quantified based on an outage constraint on the primary interference, given by
+The performance analysis subject to channel fading has been considered by Ghasemi \textit{et al.} \cite{Ghasemi06, Ghasemi07}, where the authors in \cite{Ghasemi06, Ghasemi07} evaluated the expected data rate while constraining the interference at the PR. The influence of the channel fading (however, without channel estimation) has been quantified in terms of the outage constraint on the uncertain interference\footnote{The uncertainty is interference power received at the PR is due to channel fading.}, is given by %. In order to make a fair comparison (benchmark) of our proposed approach, the ideal model the existing investigations in context to channel fading are quantified based on an outage constraint on the primary interference, given by
 \begin{align}
 	\max_{\preg} & \e{\pgpt, \pgs }{ \frac{\pgs \preg}{\pgpt \ptranpt + \nps}} \label{eq_US:sys_id_fad}, \\
 	\text{s.t.} & \text{ } \p(\prcvdpr= \phpth \preg \ge \ite) \le \opc, \label{eq_US:opc_id_fad} 
 \end{align}
-where $\e{\pgpt, \pgs} {\cdot}$ corresponds to expectation with respect to $\pgpt$, $\pgs$.
-Despite the knowledge of the fading model, similar to the ideal model depicted for the deterministic channel (refer to Section \ref{ssec_US:pd}), the characterization in (\ref{eq_US:sys_id_fad}) and (\ref{eq_US:opc_id_fad}) assumes the perfect knowledge of the different realizations of the power gains $(\phpth, \pgpt, \pgs)$ of the corresponding channels. In view of this, subsequently, the proposed framework is further extended to investigate the effect of the random channel (channel fading) on the performance of the USs that incorporates estimation of the involved channels.
+where $\e{\pgpt, \pgs} {\cdot}$ corresponds to an expectation with respect to $\pgpt$, $\pgs$.
+Despite the knowledge of the fading model, similar to the ideal model depicted for the deterministic channel (refer to Section \ref{ssec_US:pd}), the characterization in (\ref{eq_US:sys_id_fad}) and (\ref{eq_US:opc_id_fad}) assumes the perfect knowledge of the realizations of the power gains $(\phpth, \pgpt, \pgs)$ for the corresponding channels. In view of this, subsequently, the proposed framework is further extended to investigate the effect of the random channel (channel fading) on the performance of the US.
 
-Firstly, the expression of the outage constraint on the uncertain interference is determined as 
+First, the expression of the outage constraint on the uncertain interference is determined as 
 \begin{align}
 \smash[b]{\overbrace{\e{\phpth}{\smash[b]{\underbrace{\p\left( \left( \frac{\eprcvdstpr- \nps}{\ptran}\right) \preg \ge \ite \right)}_{\text{Channel Estimation}}}}}^{\text{Channel Fading}}} \le \opc, \label{eq_US:opc_fad} \\[0.5em] \nonumber 
 \end{align}
-where $\eprcvdstpr$ depends on the underlying value of $\phpth$. In contrast to the constraint in (\ref{eq_US:opc_id_fad}) defined for the models considering perfect channel knowledge, (\ref{eq_US:opc_fad}) captures the variations due to the channel estimation $(\p(\cdot)$ determined in terms of $\eprcvdstpr$) and the channel fading ($\e{\phpth}{\cdot}$). Based on (\ref{eq_US:opc_fad}) and transmit power constraint defined in (\ref{eq_US:pc}), it is essential to derive the expression of the controlled power $(\preg)$ for the case with random channel.
+where $\eprcvdstpr$ depends on the underlying value of $\phpth$, which is a random variable. In contrast to the constraint in (\ref{eq_US:opc_id_fad}), (\ref{eq_US:opc_fad}) captures the variations due to the channel estimation $(\p(\cdot)$ determined in terms of $\eprcvdstpr$) and the channel fading ($\e{\phpth}{\cdot}$). Based on (\ref{eq_US:opc_fad}) and transmit power constraint defined in (\ref{eq_US:pc}), the expression of the controlled power $(\preg)$ for the case with the random channel is derived, subsequently.
 
 \begin{lemma} \label{lm_US:lm6}
 \normalfont
@@ -556,8 +556,7 @@ $\fphpth(\cdot)$ is defined in (\ref{eq_US:dis_pgpth}).
 \begin{IEEEproof}
 Since it is complicated to obtain a closed form expression of the integral in (\ref{eq_US:preg_fad}), therefore, the controlled power is evaluated numerically.  
 \end{IEEEproof}
-Similar to deterministic channel (in Corollary \ref{cor_US:cor1}), below, the performance bound $(\snrrcvdu^*)$ in terms of $\snrrcvdu$ and $\test$ for the random channel is determined.
- $\snrrcvdu^*$ is determined by substituting $\preg$ with $\pc$ in the expression (\ref{eq_US:preg_fad}) 
+Similar to the analysis performed in Corollary \ref{cor_US:cor1} for the deterministic channel, the performance bound $(\snrrcvdu^*)$ in terms of $\snrrcvdu$ and $\test$ for the random channel is evaluated. To this end, $\snrrcvdu^*$ is determined by substituting $\preg$ with $\pc$ in the expression (\ref{eq_US:preg_fad}) 
 \begin{align}
 %\hspace{-4mm}
 &\int\limits_{0}^{\infty} \Gamma\left( \frac{\test \fsam (1 + x \ptran/\nps)^2}{2 + 4 x \ptran/\nps}, \frac{\test \fsam (1 + x \ptran/\nps)}{\nps (2 + 4 x \ptran/\nps)}  \left(\frac{\ite\ptran}{\pc} + \nps \right)\right) \nonumber \\ & d \fphpth(x) \le \opc. \label{eq_US:or_fad}
@@ -592,23 +591,23 @@ g\left(\frac{\snrrcvdu^* \nps}{\ptran}, \test \fsam\right) &= \opc. \nonumber
 %\foreach \y in {0,1,...,9} { \node [anchor=east] at (0,\y/10) {0.\y}; }
 \end{scope}
 \end{tikzpicture}
-\caption{An extension of the interference-limited and the power-limited regimes for the US to the random channels, where the channels are subject to Nakagami-$m$ fading. The performance bound ($\snrrcvdu^*$) is depicted in terms of estimation time ($\test$). The different curves demonstrates the severity $(m \in \{0,5,1,2,5, \infty \})$ in fading observed by the primary interference channel.}
+\caption{An extension of the interference-limited and the power-limited regimes for the US to the random channels, where the channels are subject to Nakagami-$m$ fading. The performance bound ($\snrrcvdu^*$) is depicted in terms of estimation time ($\test$). The different curves demonstrates the severity $(m \in \{0,5,1,2,5, \infty \})$ in fading observed by the interacting channels.}
 \label{fig_US:or_fad}
 %\vspace{-5mm}
 \end{figure}
 \begin{remark} \label{rm_US:rm2}
 \normalfont
-\figurename~\ref{fig_US:or_fad} analyzes the variation of $\snrrcvdu^*$ with $\test$ for different $m \in \{0.5, 1, 2, 5, \infty\}$, where $m = \infty$ represents a deterministic channel. It is observed that $\snrrcvdu^*$ attains a lower value as fading becomes more severe, hence enables the USs to operate at low $\snrrcvdu$ by extending the interference-limited regime. Following the analysis from Remark \ref{rm_US:rm1}, this also reflects that the power control becomes more proactive as the severity in fading increases. This signifies that power control meant to regulate the uncertainty interference is mainly dominated by variations due to the channel fading for the severely fading channels, in contrast to variations due to channel estimation. In addition, it is noticed that the path-loss channel is more sensitive to the estimation time as compared to the random channels.  
+\figurename~\ref{fig_US:or_fad} analyzes the variation of $\snrrcvdu^*$ with $\test$ for different $m \in \{0.5, 1, 2, 5, \infty\}$, where $m = \infty$ represents a deterministic channel. It is observed that $\snrrcvdu^*$ attains a lower value as the channel fading becomes severe, thereby enabling the US to operate at low $\snrrcvdu$ by extending the interference-limited regime. Following the analysis from Remark \ref{rm_US:rm1}, this also reflects that the power control becomes proactive as the severity in the fading increases. This signifies that controlled power employed for regulating the uncertainty interference is mainly dominated by the variations due to the channel fading, specially for the scenarios that observe severe fading. In addition, it is noticed that the deterministic channel is more sensitive to the estimation time as compared to the random channels.  
 \end{remark}
-After determining the controlled power in Lemma \ref{lm_US:lm6} that regulates the uncertain interference, it is essential to determine the expression of the secondary throughput.
+After determining the controlled power in Lemma \ref{lm_US:lm6} that regulates the uncertain interference, the expression of the secondary throughput is determined.
 \begin{align}
 \rs(\test) &= \e{\eca, \pgpt, \pgs} {\frac{T - \test}{T} \eca }, \label{eq_US:rs_fad} 
 \end{align} 
-where $\e{\eca, \pgpt, \pgs}{\cdot}$ corresponds to an expectation over $\eca$, $\pgpt$ and $\pgs$, whose cdfs are characterized in Lemma \ref{lm_US:lm5}, (\ref{eq_US:dis_pgpt}) and (\ref{eq_US:dis_pgs}), respectively. It is worth noticing that $\eca$ captures the variations due to channel estimation $\epgs$ and $\eprcvdstpr$, refer to (\ref{eq_US:eca}), however due to channel fading, the underlying values of the channels $\pgpt$ and $\pgs$ are random. In this context, an expectation with respect to $\pgpt$ and $\pgs$ as depicted in (\ref{eq_US:rs_fad}) is performed.
+where $\e{\eca, \pgpt, \pgs}{\cdot}$ corresponds to an expectation over $\eca$, $\pgpt$ and $\pgs$, whose cdfs are characterized in Lemma \ref{lm_US:lm5}, (\ref{eq_US:dis_pgpt}) and (\ref{eq_US:dis_pgs}), respectively. It is worth noticing that $\eca$ captures the variations due to channel estimation $\epgs$ and $\eprcvdstpr$, refer to (\ref{eq_US:eca}), however, due to channel fading, the underlying values of the channels $\pgpt$ and $\pgs$ are random. In this context, an expectation with respect to $\pgpt$ and $\pgs$, as depicted in (\ref{eq_US:rs_fad}), is performed.
 Similar to the deterministic channel, the estimation-throughput tradeoff corresponding to the random behaviour of the channels is characterized. 
 \begin{theorem} \label{th_US:th2}
 \normalfont
-The expected achievable secondary throughput subject to the outage constraint on the uncertain interference and the transmit power constraint at the ST under Nakagami-$m$ fading is defined as
+The achievable expected secondary throughput subject to the outage constraint on the uncertain interference and the transmit power constraint at the ST under Nakagami-$m$ fading is defined as
 \begin{align}
 \trs(\ttest) = \maxi_{\test}  & \text{      } {\rs(\test)}, 
  \label{eq_US:sys_fad} \\
@@ -621,14 +620,14 @@ where $\trs(\ttest)$ corresponds to optimum secondary throughput at $\ttest$.
 
 \begin{coro} \label{cor_US:cor3}
 \normalfont
-Here, the approach depicted Corollary \ref{cor_US:cor2} is extended to compare the performance with those CR systems that employ channel estimation, operate with no power control, satisfy the outage constraint and are subjected to Nakagami-$m$ fading. The expected secondary throughput for this particular approach is obtained by replacing $\preg$ in the expression in (\ref{eq_US:rs_fad}) with $\pc$, where $\test$ is determined using (\ref{eq_US:or_fad}). 
+Here, the approach depicted in Corollary \ref{cor_US:cor2} is extended to study the performance with those USs that employ channel estimation, operate with no power control, satisfy the outage constraint and are subjected to Nakagami-$m$ fading. The expected secondary throughput for this particular approach is obtained by replacing $\preg$ in the expression in (\ref{eq_US:rs_fad}) with $\pc$, where $\test$ is determined using (\ref{eq_US:or_fad}). 
 
 \end{coro}
  
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Numerical Analysis} \label{sec_US:num_ana}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-In this section, the performance of the US based on the proposed estimation model is evaluated. To accomplish this: (i) simulations are performed to validate the expressions obtained, (ii) the performance loss incurred due to the estimation is analyzed. In addition, the ideal model is considered to benchmark and evaluate the performance loss. % (iii) we establish mathematical justification to the considered approximations.
+In this section, the performance of the US based on the proposed estimation model is evaluated. To accomplish this: (i) simulations are performed to validate the expressions obtained, (ii) the performance loss incurred due to the channel estimation is analyzed. In addition, the ideal model is considered to benchmark and evaluate the performance loss. % (iii) we establish mathematical justification to the considered approximations.
 % Unless stated explicitly, the following choice of the parameters is considered for the analysis, cf. Table \ref{tb_US:tb2}.
 Unless stated explicitly, the parameters given in Table \ref{tb_US:tb2} are considered for the analysis.%, $\fsam = \SI{1}{MHz}$, $\gp = \SI{-100}{dB}$, $\gs = \SI{-80}{dB}$, $\ite = \SI{-110}{dBm}$, $T = \SI{100}{ms}$, $\opc \in \{0.01, 0.10\}$, $\pc \in \{-10, 0\} \SI{}{dBm}$, $\nps = \SI{-100}{dBm}$, $\snrrcvdu = \SI{0}{dB}$, $\ptran = \SI{0}{dBm}$, $\Ks = 10$.
 
