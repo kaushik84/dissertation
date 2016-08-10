@@ -76,7 +76,17 @@ version=last
 \usepackage{scrhack} %removes warning by redefinition of macros float@addtolist etc
 \usepackage{todonotes}
 
-
+\usepackage[framemethod=TikZ]{mdframed} %% For inserting the individual contributions in box
+\mdfdefinestyle{MyFrame}{%
+    linecolor=blue,
+    outerlinewidth=0.8pt,
+    roundcorner=8pt,
+    %innertopmargin=\baselineskip,
+    %innerbottommargin=\baselineskip,
+    %innerrightmargin=20pt,
+    %innerleftmargin=20pt,
+%    backgroundcolor=gray!50!white
+}
 
 \hypersetup{ % properties of pdf
   pdftitle={Performance Analysis of Cognitive Radio Systems with Imperfect Channel Knowledge},
@@ -223,21 +233,27 @@ version=last
 
 \import{../kapitel01/}{kapitel01}
 %\import{../kapitel01/}{d_kapitel01}
+\cleardoublepage
 
-%\import{../kapitel03/}{kapitel03}
-\import{../kapitel03/}{d_kapitel03}
+\import{../kapitel03/}{kapitel03}
+%\import{../kapitel03/}{d_kapitel03}
+\cleardoublepage
 
 \import{../kapitel04/}{kapitel04}
 %\import{../kapitel04/}{d_kapitel04}
+\cleardoublepage
 
-%\import{../kapitel05/}{kapitel05}
-\import{../kapitel05/}{d_kapitel05}
+\import{../kapitel05/}{kapitel05}
+%\import{../kapitel05/}{d_kapitel05}
+\cleardoublepage
 
 %\import{../kapitel06/}{kapitel06}
 \import{../kapitel06/}{d_kapitel06}
+\cleardoublepage
 
 \import{../kapitel07/}{kapitel07}
 %\import{../kapitel07/}{d_kapitel07}
+\cleardoublepage
 
 %\begin{appendix}
 %\input{../anhang/appendix.tex}

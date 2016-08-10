@@ -392,7 +392,7 @@ The cdf of data rate $\eca$ is given by
 \end{align}
 where the $\dc(x)$ pdf is given by 
 \begin{align}
-\dc(x) &= 2^x \ln 2 \frac{(2^x - 1)^{\as - 1} \Gamma(\as + \apt)}{\Gamma(\as) \Gamma(\apt) (\bs \ptran) ^{\as} \bpt^{\apt}} \left(\frac{1}{\bpt} + \frac{2^x - 1}{\bs \ptran}\right). \label{eq_US:den_C}
+\dc(x) &= 2^x \ln 2 \frac{(2^x - 1)^{\as - 1} \Gamma(\as + \apt)}{\Gamma(\as) \Gamma(\apt) (\bs \preg) ^{\as} \bpt^{\apt}} \left(\frac{1}{\bpt} + \frac{2^x - 1}{\bs \preg}\right). \label{eq_US:den_C}
 \end{align}
 \end{lemma}
 \begin{IEEEproof}
@@ -984,21 +984,21 @@ Finally, from the perspective of a system designer, an estimation-throughput tra
 \subsection{Proof of Lemma \ref{lm_US:lm5}} \label{ap:one}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{IEEEproof}
-For simplification, it is essential to deal $\frac{\epgs \ptran}{\eprcvdsr}$ as individual terms $\epgs \ptran$ and $\eprcvdsr$ and determine the pdfs for $f_{\epgs \ptran}$ and $f_{\eprcvdsr}$ separately.
-Using (\ref{eq_US:fehs}) in Lemma \ref{lm_US:lm2}, the pdf of $f_{\epgs \ptran}$ is determined as
+For simplification, it is essential to deal $\frac{\epgs \preg}{\eprcvdsr}$ as individual terms $\epgs \preg$ and $\eprcvdsr$ and determine the pdfs $f_{\epgs \preg}(\cdot)$ and $f_{\eprcvdsr}(\cdot)$ separately.
+Using (\ref{eq_US:fehs}) in Lemma \ref{lm_US:lm2}, the pdf of $\epgs \preg$ is determined as
 \begin{align}
-f_{\epgs \ptran}(x) = \frac{1}{\Gamma(\as) (\bs \ptran)^{\as}} x^{\as - 1} \exp\left( - \frac{x}{ \bs \ptran} \right), \label{eq_US:step1} 
+f_{\epgs \preg}(x) = \frac{1}{\Gamma(\as) (\bs \preg)^{\as}} x^{\as - 1} \exp\left( - \frac{x}{ \bs \preg} \right), \label{eq_US:step1} 
 \end{align}
 where $\as$ and $\bs$ are defined in (\ref{eq_US:para_s}).
-Similarly, using Lemma \ref{lm_US:lm3}, the pdf of $f_{\eprcvdsr}$ is characterized as
+Similarly, using Lemma \ref{lm_US:lm3}, the pdf of $\eprcvdsr$ is characterized as
 \begin{align}
 f_{\eprcvdsr}(x) = \frac{1}{\Gamma(\apt) (\bpt)^{\apt}} x^{\apt - 1} \exp\left( - \frac{x}{ \bpt} \right), \label{eq_US:step2} 
 \end{align}
 where $\apt$ and $\bpt$ are defined in (\ref{eq_US:para_pt}).
 
-Using (\ref{eq_US:step1}) and (\ref{eq_US:step2}), Mellin transform \cite{NIST} is applied to determine the pdf of $\frac{\epgs \ptran}{\eprcvdsr}$ as
+Using (\ref{eq_US:step1}) and (\ref{eq_US:step2}), Mellin transform \cite{NIST} is applied to determine the pdf of $\frac{\epgs \preg}{\eprcvdsr}$ as
 \begin{align}
-f_{\frac{\epgs \ptran}{\eprcvdsr}}(x) = \frac{(x)^{\as - 1} \Gamma(\as + \apt)}{\Gamma(\as) \Gamma(\apt) (\bs \ptran) ^{\as} \bpt^{\apt}} \left(\frac{1}{\bpt} + \frac{x - 1}{\bs \ptran}\right).
+f_{\frac{\epgs \preg}{\eprcvdsr}}(x) = \frac{(x)^{\as - 1} \Gamma(\as + \apt)}{\Gamma(\as) \Gamma(\apt) (\bs \preg) ^{\as} \bpt^{\apt}} \left(\frac{1}{\bpt} + \frac{x - 1}{\bs \preg}\right).
 \end{align}
-Finally, substituting the expression $\frac{\epgs \ptran}{\eprcvdsr}$ in $\ca$ yields (\ref{eq_US:den_C}).
+Finally, substituting the expression $\frac{\epgs \preg}{\eprcvdsr}$ in $\eca$ yields (\ref{eq_US:den_C}).
 \end{IEEEproof}

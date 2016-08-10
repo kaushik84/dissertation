@@ -21,6 +21,36 @@
      id="defs4">
     <pattern
        inkscape:collect="always"
+       xlink:href="#pattern3370"
+       id="pattern3410"
+       patternTransform="matrix(10,0,0,10,91.311621,92.244049)" />
+    <pattern
+       inkscape:collect="always"
+       xlink:href="#pattern3368"
+       id="pattern3408"
+       patternTransform="matrix(10,0,0,10,-0.76302859,91.775169)" />
+    <pattern
+       inkscape:collect="always"
+       xlink:href="#pattern5704"
+       id="pattern3406"
+       patternTransform="matrix(10,0,0,10,91.397391,-113.00471)" />
+    <pattern
+       inkscape:collect="always"
+       xlink:href="#pattern5702"
+       id="pattern3404"
+       patternTransform="matrix(10,0,0,10,-0.67725859,-114.37326)" />
+    <pattern
+       inkscape:collect="always"
+       xlink:href="#pattern3529"
+       id="pattern3370"
+       patternTransform="matrix(10,0,0,10,492.86178,92.244049)" />
+    <pattern
+       inkscape:collect="always"
+       xlink:href="#pattern3489"
+       id="pattern3368"
+       patternTransform="matrix(10,0,0,10,400.78713,91.775169)" />
+    <pattern
+       inkscape:collect="always"
        xlink:href="#pattern3529-6"
        id="pattern5704"
        patternTransform="matrix(10,0,0,10,492.94755,-113.00471)" />
@@ -28,7 +58,7 @@
        inkscape:collect="always"
        xlink:href="#pattern3489-1"
        id="pattern5702"
-       patternTransform="matrix(10,0,0,10,400.8729,-114.59818)" />
+       patternTransform="matrix(10,0,0,10,400.8729,-114.37326)" />
     <pattern
        inkscape:collect="always"
        xlink:href="#pattern5469"
@@ -370,7 +400,7 @@
          style="fill:black;stroke:none" />
     </pattern>
     <pattern
-       patternTransform="matrix(10,0,0,10,-0.11255444,91.79945)"
+       patternTransform="matrix(10,0,0,10,-0.11255444,-113.77499)"
        id="pattern3489"
        xlink:href="#pattern6834-3"
        inkscape:collect="always" />
@@ -396,7 +426,7 @@
          style="fill:black;stroke:none" />
     </pattern>
     <pattern
-       patternTransform="matrix(10,0,0,10,91.962095,93.39293)"
+       patternTransform="matrix(10,0,0,10,91.962095,-113.30611)"
        id="pattern3529"
        xlink:href="#pattern3489-5"
        inkscape:collect="always" />
@@ -603,9 +633,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="2.4088442"
-     inkscape:cx="359.37424"
-     inkscape:cy="218.44788"
+     inkscape:zoom="1.1115028"
+     inkscape:cx="240.53427"
+     inkscape:cy="305.27934"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="true"
@@ -1365,20 +1395,6 @@
          x="57.808098"
          y="107.20814"
          style="font-size:25px;font-family:Times New Roman;-inkscape-font-specification:Times New Roman" /></text>
-    <rect
-       style="fill:url(#pattern3489);fill-opacity:1;stroke:none"
-       width="91.162842"
-       height="47.899128"
-       x="-209.47806"
-       y="457.78281"
-       id="rect5476-9" />
-    <rect
-       style="fill:url(#pattern3529);fill-opacity:1;stroke:none"
-       width="91.162842"
-       height="47.899128"
-       x="-117.40341"
-       y="459.37628"
-       id="rect5476-9-5" />
     <path
        style="fill:none;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-mid:none"
        d="m -27.096707,458.91163 c -0.02903,128.48326 -0.02903,128.48326 -0.02903,128.48326"
@@ -1477,15 +1493,15 @@
     <text
        xml:space="preserve"
        style="font-size:28.13015366px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
-       x="3.573422"
-       y="242.66972"
+       x="5.5929384"
+       y="239.79807"
        id="text3821-0-6-7-4-3"
        sodipodi:linespacing="125%"
        transform="scale(0.99033472,1.0097596)"><tspan
          sodipodi:role="line"
          id="tspan3823-14-0-5-7-9"
-         x="3.573422"
-         y="242.66972"
+         x="5.5929384"
+         y="239.79807"
          style="font-size:25px;font-family:Times New Roman;-inkscape-font-specification:Times New Roman">Data Reception</tspan></text>
     <path
        style="fill:none;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-mid:none"
@@ -1595,18 +1611,6 @@
          x="394.48724"
          id="tspan5618"
          sodipodi:role="line">Data Transmission</tspan></text>
-    <text
-       sodipodi:linespacing="125%"
-       id="text5624"
-       y="491.1897"
-       x="217.99631"
-       style="font-size:20px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
-       xml:space="preserve"><tspan
-         style="font-size:25px;font-family:'Times ';-inkscape-font-specification:'Times '"
-         y="491.1897"
-         x="217.99631"
-         id="tspan5626"
-         sodipodi:role="line">Idle</tspan></text>
     <path
        inkscape:connector-curvature="0"
        id="path5634"
@@ -1706,7 +1710,7 @@
          sodipodi:role="line">Data Reception</tspan></text>
     <rect
        id="rect5678"
-       y="251.38516"
+       y="251.61008"
        x="191.5074"
        height="47.899128"
        width="91.162842"
@@ -1714,12 +1718,12 @@
     <text
        sodipodi:linespacing="125%"
        id="text5680"
-       y="242.79205"
+       y="242.11731"
        x="199.92113"
        style="font-size:20px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
        xml:space="preserve"><tspan
          style="font-size:25px;font-family:'Times ';-inkscape-font-specification:'Times '"
-         y="242.79205"
+         y="242.11731"
          x="199.92113"
          id="tspan5682"
          sodipodi:role="line">Est. <tspan
@@ -1749,42 +1753,6 @@
        d="m 593.57765,505.44843 c -0.0206,81.36114 -0.0206,81.36114 -0.0206,81.36114"
        id="path5706"
        inkscape:connector-curvature="0" />
-    <text
-       sodipodi:linespacing="125%"
-       id="text5624-7"
-       y="491.05569"
-       x="306.89508"
-       style="font-size:20px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
-       xml:space="preserve"><tspan
-         style="font-size:25px;font-family:'Times ';-inkscape-font-specification:'Times '"
-         y="491.05569"
-         x="306.89508"
-         id="tspan5626-9"
-         sodipodi:role="line">Idle</tspan></text>
-    <text
-       xml:space="preserve"
-       style="font-size:20px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
-       x="-184.00369"
-       y="283.1897"
-       id="text5756"
-       sodipodi:linespacing="125%"><tspan
-         sodipodi:role="line"
-         id="tspan5758"
-         x="-184.00369"
-         y="283.1897"
-         style="font-size:25px;font-family:'Times ';-inkscape-font-specification:'Times '">Idle</tspan></text>
-    <text
-       xml:space="preserve"
-       style="font-size:20px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
-       x="-95.104919"
-       y="283.05569"
-       id="text5760"
-       sodipodi:linespacing="125%"><tspan
-         sodipodi:role="line"
-         id="tspan5762"
-         x="-95.104919"
-         y="283.05569"
-         style="font-size:25px;font-family:'Times ';-inkscape-font-specification:'Times '">Idle</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:20px;font-style:italic;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans;-inkscape-font-specification:Sans Italic"
@@ -1843,21 +1811,95 @@
          style="font-size:31.12478447px;font-family:Times New Roman;-inkscape-font-specification:Times New Roman">τ<tspan
    style="font-size:20.23139572px;baseline-shift:sub"
    id="tspan3424">est </tspan></tspan></text>
+    <rect
+       id="rect3356"
+       y="457.75858"
+       x="191.42163"
+       height="47.899128"
+       width="91.162842"
+       style="fill:url(#pattern3368);fill-opacity:1;stroke:none" />
+    <rect
+       id="rect3358"
+       y="458.22748"
+       x="283.49625"
+       height="47.899128"
+       width="91.162842"
+       style="fill:url(#pattern3370);fill-opacity:1;stroke:none" />
+    <text
+       xml:space="preserve"
+       style="font-size:20px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       x="196.72495"
+       y="447.64609"
+       id="text3360"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan3362"
+         x="196.72495"
+         y="447.64609"
+         style="font-size:25px;font-family:'Times ';-inkscape-font-specification:'Times '">Est. <tspan
+   style="font-size:25px;font-style:italic;font-family:'Times ';-inkscape-font-specification:'Times '"
+   id="tspan3364">h</tspan><tspan
+   style="font-size:20px;baseline-shift:sub;font-family:'Times ';-inkscape-font-specification:'Times '"
+   id="tspan3366">p,2</tspan></tspan></text>
+    <rect
+       style="fill:url(#pattern3404);fill-opacity:1;stroke:none"
+       width="91.162842"
+       height="47.899128"
+       x="-210.04276"
+       y="251.61008"
+       id="rect3380" />
+    <text
+       xml:space="preserve"
+       style="font-size:20px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+       x="-201.62903"
+       y="242.11731"
+       id="text3382"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan3384"
+         x="-201.62903"
+         y="242.11731"
+         style="font-size:25px;font-family:'Times ';-inkscape-font-specification:'Times '">Est. <tspan
+   style="font-size:25px;font-style:italic;font-family:'Times ';-inkscape-font-specification:'Times '"
+   id="tspan3386">h</tspan><tspan
+   style="font-size:20px;baseline-shift:sub;font-family:'Times ';-inkscape-font-specification:'Times '"
+   id="tspan3388">p,1</tspan></tspan></text>
+    <rect
+       style="fill:url(#pattern3406);fill-opacity:1;stroke:none"
+       width="91.162842"
+       height="47.899128"
+       x="-117.96809"
+       y="252.97864"
+       id="rect3390" />
+    <rect
+       style="fill:url(#pattern3408);fill-opacity:1;stroke:none"
+       width="91.162842"
+       height="47.899128"
+       x="-210.12852"
+       y="457.75858"
+       id="rect3392" />
+    <rect
+       style="fill:url(#pattern3410);fill-opacity:1;stroke:none"
+       width="91.162842"
+       height="47.899128"
+       x="-118.05391"
+       y="458.22748"
+       id="rect3394" />
     <text
        sodipodi:linespacing="125%"
-       id="text5680-9"
-       y="448.56998"
-       x="-204.17474"
+       id="text3396"
+       y="447.64609"
+       x="-204.82521"
        style="font-size:20px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
        xml:space="preserve"><tspan
          style="font-size:25px;font-family:'Times ';-inkscape-font-specification:'Times '"
-         y="448.56998"
-         x="-204.17474"
-         id="tspan5682-7"
+         y="447.64609"
+         x="-204.82521"
+         id="tspan3398"
          sodipodi:role="line">Est. <tspan
-   id="tspan5684-4"
+   id="tspan3400"
    style="font-size:25px;font-style:italic;font-family:'Times ';-inkscape-font-specification:'Times '">h</tspan><tspan
-   id="tspan5686-4"
+   id="tspan3402"
    style="font-size:20px;baseline-shift:sub;font-family:'Times ';-inkscape-font-specification:'Times '">p,2</tspan></tspan></text>
   </g>
 </svg>
