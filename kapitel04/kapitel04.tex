@@ -199,7 +199,7 @@ The cdf of $\eprcvdstpr$ is characterized as
 \end{align} 
 and $\Gamma(\cdot, \cdot)$ represents the regularized upper-incomplete Gamma function \cite{abramo}. 
 \end{lemma}
-\begin{IEEEproof}
+\begin{IEEEproof}[Solution]
 Applying Approximation \ref{ap:ap1} from Chapter \ref{chap:IS} to $\ncchi2(\lpth, \test \fsam)$ yields (\ref{eq_US:fprcvd}). 
 \end{IEEEproof}
 
@@ -226,7 +226,7 @@ The cdf of $\epgs$ is characterized as
 \text{where  } \as = \frac{(2 + \ls)^2}{4 + 4 \ls} &\text{ and } \bs = \frac{\nps (4 + 4 \ls)}{(2 + \ls)}. \label{eq_US:para_s} 
 \end{align} 
 \end{lemma}
-\begin{IEEEproof}
+\begin{IEEEproof}[Solution]
 Applying Approximation \ref{ap:ap1} from Chapter \ref{chap:IS} to $\ncchi2(\ls, 2)$ yields (\ref{eq_US:fehs}). 
 \end{IEEEproof}
 
@@ -241,7 +241,7 @@ The cdf of $\eprcvdstpr$ is characterized as
 \text{where  } \apt = \frac{(\test \fsam + \lpt)^2}{2 \test \fsam + 4 \lpt} &\text{ and } \bpt = \frac{\nps (2 \test \fsam + 4 \lpt)}{(\test \fsam + \lpt)}.  \label{eq_US:para_pt} 
 \end{align} 
 \end{lemma}
-\begin{IEEEproof}
+\begin{IEEEproof}[Solution]
 Applying Approximation \ref{ap:ap1} from Chapter \ref{chap:IS} to $\ncchi2(\lpt, \test \fsam)$ yields (\ref{eq_US:fprcvdsr}). 
 \end{IEEEproof}
 %\begin{remark}
@@ -307,7 +307,7 @@ Subject to the outage constraint on the uncertain interference and the transmit 
 \end{align}
 where $\apo$ and $\bpo$ are defined in (\ref{eq_US:para_po}).
 \end{lemma} 
-\begin{IEEEproof}
+\begin{IEEEproof}[Solution]
 Substituting the cdf $\fprcvdstpr(x)$, defined in (\ref{eq_US:fprcvd}), in (\ref{eq_US:opc}) and combining with (\ref{eq_US:pc}) yields (\ref{eq_US:preg}).
 \end{IEEEproof}
 Clearly, the performance of the US improves over the access channel (in terms of the secondary throughput) with $\preg$, but $\preg$ increases for the values of $\phpth$, which correspond to the lower values of $\snrrcvdu$\footnote{\tc{Signal to noise ratio is mostly used as a design parameter for characterizing the performance of a wireless system.}}.
@@ -320,7 +320,7 @@ Subject to the outage constraint on the uncertain interference and the transmit 
 \Gamma\left(\frac{\test \fsam (1 + \snrrcvdu^*)^2}{2 + 4 \snrrcvdu^*}, \frac{\test \fsam (1  + \snrrcvdu^*)}{\nps (2 + 4 \snrrcvdu^*)} \left( \frac{\ite \ptran}{\pc} + \nps  \right)  \right) = \opc. \label{eq_US:opreg}  
 \end{align}
 \end{coro}
-\begin{IEEEproof}
+\begin{IEEEproof}[Solution]
 Substituting $\preg$ with $\pc$ in (\ref{eq_US:opc}) and reformulating gives 
 \begin{align}
 %\p\left( \left( \frac{\eprcvd - \nps}{\ptran}\right) \pc \ge \ite \right) \le \opc 
@@ -395,7 +395,7 @@ where the $\dc(x)$ pdf is given by
 \dc(x) &= 2^x \ln 2 \frac{(2^x - 1)^{\as - 1} \Gamma(\as + \apt)}{\Gamma(\as) \Gamma(\apt) (\bs \preg) ^{\as} \bpt^{\apt}} \left(\frac{1}{\bpt} + \frac{2^x - 1}{\bs \preg}\right). \label{eq_US:den_C}
 \end{align}
 \end{lemma}
-\begin{IEEEproof}
+\begin{IEEEproof}[Solution]
 See Appendix \ref{ap:one}.
 \end{IEEEproof}
 
@@ -479,7 +479,7 @@ The achievable expected secondary throughput subject to the outage constraint on
  \end{align}
 where $\trs(\ttest)$ corresponds to optimum throughput at $\ttest$.  
 \end{theorem}
-\begin{IEEEproof}
+\begin{IEEEproof} [Solution]
 The constrained optimization problem is solved by substituting $\preg$ from Lemma \ref{lm_US:lm3}, determined by applying the outage and the transmit power constraints defined in (\ref{eq_US:opc}) and (\ref{eq_US:pc}), in (\ref{eq_US:rs}). 
 The pdf of $\eca$, determined in (\ref{eq_US:den_C}), is used to evaluate the expectation on the secondary throughput. Following this, an expression of the expected secondary throughput as a function of $\test$\footnote{Please note that the model parameters $\apt$ and $\bpt$, defined in (\ref{eq_US:para_pt}), used for characterizing pdf of $\eca$ in (\ref{eq_US:den_C}) are functions of $\test$.} is determined as
 \begin{equation}
@@ -553,7 +553,7 @@ Subject to the outage constraint on the uncertain interference and the transmit 
 , where %$\apo$ and $\bpo$ are defined in (\ref{eq_US:para_po}) and 
 $\fphpth(\cdot)$ is defined in (\ref{eq_US:dis_pgpth}). 
 \end{lemma} 
-\begin{IEEEproof}
+\begin{IEEEproof}[Solution]
 Since it is complicated to obtain a closed form expression of the integral in (\ref{eq_US:preg_fad}), therefore, the controlled power is evaluated numerically.  
 \end{IEEEproof}
 Similar to the analysis performed in Corollary \ref{cor_US:cor1} for the deterministic channel, the performance bound $(\snrrcvdu^*)$ in terms of $\snrrcvdu$ and $\test$ for the random channel is evaluated. To this end, $\snrrcvdu^*$ is determined by substituting $\preg$ with $\pc$ in the expression (\ref{eq_US:preg_fad}) 
@@ -979,11 +979,11 @@ In this chapter, the performance of US has been studied from a deployment perspe
 Finally, from the perspective of a system designer, an estimation-throughput tradeoff has been established that allows us to determine the achievable secondary throughput for the US. In consideration to the channel fading, it has been observed that the performance degradation is highly prone to the scenarios that are subject to mild channel fading. 
 %In our future work, we plan to extend the proposed analysis to capture the influence of multiple primary and secondary users present in the network on the performance of the underlay systems. 
 
-\section{Proofs}
+\section{Solutions}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Proof of Lemma \ref{lm_US:lm5}} \label{ap:one}
+\subsection{Solution to Lemma \ref{lm_US:lm5}} \label{ap:one}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{IEEEproof}
+\begin{IEEEproof}[Solution]
 For simplification, it is essential to deal $\frac{\epgs \preg}{\eprcvdsr}$ as individual terms $\epgs \preg$ and $\eprcvdsr$ and determine the pdfs $f_{\epgs \preg}(\cdot)$ and $f_{\eprcvdsr}(\cdot)$ separately.
 Using (\ref{eq_US:fehs}) in Lemma \ref{lm_US:lm2}, the pdf of $\epgs \preg$ is determined as
 \begin{align}

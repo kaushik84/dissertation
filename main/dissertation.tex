@@ -76,6 +76,7 @@ version=last
 \usepackage{scrhack} %removes warning by redefinition of macros float@addtolist etc
 \usepackage{todonotes}
 
+
 \usepackage[framemethod=TikZ]{mdframed} %% For inserting the individual contributions in box
 \mdfdefinestyle{MyFrame}{%
     linecolor=blue,
@@ -104,6 +105,8 @@ version=last
 \usepackage{tikz}   % Drawing tool that overlaps on the plotted figures
 \usepackage{siunitx} %SI notations looks nice
 \usepackage[retainorgcmds]{IEEEtrantools}
+%\renewcommand{\IEEEProof}[Solution]
+\renewcommand{\IEEEQED}{}
 
 %\usepackage[numbers]{natbib}
 \usepackage[resetlabels, labeled]{multibib}	%% Generate document with multiple bibliography
@@ -111,7 +114,7 @@ version=last
 \usepackage{cite} % Combining multiple citations
 %\include{cite}
 
-\hyphenation{centra-lity know-ledge throu-ghput}
+\hyphenation{centra-lity knowl-edge throu-ghput fra-mework}
 
 %\usepackage{rotating} % Rotate the text sideways
 %\usepackage{adjustbox}% Rotate the text sideways
@@ -276,11 +279,11 @@ version=last
 
 \begingroup
 \sloppy
-\bibliographystyle{ieeetr}
+\bibliographystyle{myIEEEtran}
 \bibliography{../literatur/bibliography}
 \endgroup
 
-\bibliographystyleK{ieeetr}
+\bibliographystyleK{myIEEEtran}
 \bibliographyK{../literatur/mypaper}
 %\bibNoteK{This thesis contains material from the following publications. Reprinted with permission.}
 %\input{../anhang/students.tex}

@@ -425,7 +425,7 @@ The cdf of $\epd$ is characterized as
 \end{align}
 where $\Gamma^{-1}(\cdot, \cdot)$ is inverse function of regularized upper-incomplete Gamma function \cite{grad}.  
 \end{lemma} 
-\begin{IEEEproof}
+\begin{IEEEproof}[Solution]
 The cdf of $\epd$ is defined as 
 \begin{align}
 \fpd(x) = \p(\epd \le x).
@@ -511,7 +511,7 @@ and, $\as$ and $\bs$ are defined in (\ref{eq_IS:dphs_para}).
 %\quad & \as = \frac{\left(2 \lambdas + |\hs|^2  \right)^2 }{ \lambdas \left(2 \lambdas + 4 |\hs|^2  \right)}   \text{  and  } \nonumber \\ \quad & \bs = \frac{\lambdas \left(2 \lambdas + 4  |\hs|^2 \right)}{\left( \lambdas + |\hs|^2  \right) } \label{eq_IS:para_s}. 
 %\end{align}
 \end{lemma} 
-\begin{IEEEproof}
+\begin{IEEEproof}[Solution]
 \tc{See Section \ref{ssec_IS:lem2}}
 \end{IEEEproof}
 
@@ -566,7 +566,7 @@ and
 \end{align}
 where $\as$ and $\bs$ are defined in (\ref{eq_IS:dphs_para}). 
 \end{lemma} 
-\begin{IEEEproof}
+\begin{IEEEproof}[Solution]
 See Section \ref{ssec_IS:lem3}
 \end{IEEEproof}
 
@@ -668,7 +668,7 @@ The expected achievable secondary throughput subject to an average constraint on
 %In this regard, we analyze the performance of IS based on this constraint.
 where $\e{\epd}{\cdot}$ represents the expectation with respect to $\epd$, $\e{\epd, \ecz, \eco}{\cdot}$ denotes the expectation with respect to $\epd$, $\ecz$ and $\eco$. Unlike (\ref{eq_IS:thr_id_con}), $\pdd$ in (\ref{eq_IS:thr_AC}) represents the constraint on expected detection probability.
 
-\begin{IEEEproof} 
+\begin{IEEEproof}[Solution]
 \tc{See Section \ref{ssec_IS:th1} 
 For simplification, the proof of Problem \ref{th_IS:th1} is included in the proof of Problem \ref{th_IS:th2}.} 
 \end{IEEEproof}
@@ -693,7 +693,7 @@ The expected achievable secondary throughput subject to an outage constraint on 
 where $\mpd$ represents the outage constraint. 
 %\subsubsection*{Methodology of analysis}
 
-\begin{IEEEproof} 
+\begin{IEEEproof}[Solution] 
 See Section \ref{ssec_IS:th1}
 \end{IEEEproof} 
 \tc{In contrast to the ideal model, the sensing-throughput tradeoff investigated by the estimation model (refer to Problems \ref{th_IS:th1} and \ref{th_IS:th2}) incorporates the imperfect channel knowledge, in this context, the performance characterization considered by the proposed framework is closer to the realistic situations.} 
@@ -834,7 +834,7 @@ The expected achievable secondary throughput subject to an outage constraint on 
 %where $\mpd$ represents the outage constraint.  
 %\subsubsection*{Methodology of analysis}
 
-\begin{IEEEproof}
+\begin{IEEEproof}[Solution]
 In order to solve the constrained optimization problem, the following approach is considered. First the underlying constraint (\ref{eq_IS:OC_p}) is exploited to determine the decision threshold $\mu$. Since it is complicated to obtain a closed form expression of $\mu$, in this regard, its value is obtained numerically.
 
 Using $\mu$ to determine $\epd$ and $\pfa$ and evaluating an expectation over $\epd, \ecz, \eco$, $\phpo, \phs, \phpt$, the expected throughput as function of estimation and sensing time is determined. Finally, this function is used to determine the suitable estimation time ($\ttest$) and suitable sensing time ($\ttsen$).
@@ -1389,11 +1389,11 @@ In addition to this, the performance of the interweave systems that incorporate 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Appendix
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{\tc{Proofs}}
+\section{\tc{Solutions}}
 
 
-\subsection{Proof of Lemma \ref{lm_IS:lem2}} \label{ssec_IS:lem2} 
-\begin{IEEEproof}
+\subsection{Solution to Lemma \ref{lm_IS:lem2}} \label{ssec_IS:lem2} 
+\begin{IEEEproof}[Solution]
 Following the probability density function (pdf) of $\ehs$ in (\ref{eq_IS:ehs}), the pdf of $|\ehs|^2$ is given by $\ncchi2(\ls,2)$, where 2 represents the degrees of freedom and $\ls = \frac{\Ks \phs}{\npo}$ is the non-centrality parameter.
 %\begin{align}
 %\dhs(x) &= \frac{1}{2} \exp\left[-\frac{1}{2} \left( x + \ls \right)\right] \times \nonumber \\ \quad  & \left( \frac{x}{\ls} \right)^{\frac{2}{4} - \frac{1}{2}} I_{\frac{2}{2}  - 1}  \left( \sqrt{\ls x \lambdas }  \right), \nonumber 
@@ -1421,8 +1421,8 @@ Following (\ref{eq_IS:dphs}), the pdf of $\frac{\ephs\ptranst}{\nps}$ is given b
 Finally, using (\ref{eq_IS:dsnrs}) and substituting $\frac{\ephs\ptranst}{\nps}$ in the expression of $\ecz$, defined in (\ref{eq_IS:ecz}), yields (\ref{eq_IS:den_C0}). 
 \end{IEEEproof}
 
-\subsection{Proof of Lemma \ref{lm_IS:lem3}} \label{ssec_IS:lem3} 
-\begin{IEEEproof}
+\subsection{Solution to Lemma \ref{lm_IS:lem3}} \label{ssec_IS:lem3} 
+\begin{IEEEproof}[Solution]
 For simplification, $\left( \frac{|\ehs|^2 \ptranst}{\eprcvdsr} \right)$ in (\ref{eq_IS:Cap1}) is dealt as individual terms $E_1 = \left( \frac{|\ehs|^2 \ptranst}{\npo} \right)$ and $E_2 = \left(\frac{\eprcvdsr}{\npo} \right)$, where $\eco = \log_2 \left(1 + \frac{E_1}{E_2} \right)$, refer to (\ref{eq_IS:eco}). The pdf of the expression $E_1$ is determined in (\ref{eq_IS:dsnrs}).
 
 Following the characterization $\eprcvdsr$ in (\ref{eq_IS:ehp2}), the pdf of $E_2$ is determined as 
@@ -1442,8 +1442,8 @@ Finally, substituting the expression $\frac{E_1}{E_2}$ in $\eco$ yields (\ref{eq
 
 
 
-\subsection{Proof of Problems \ref{th_IS:th1} and \ref{th_IS:th2}} \label{ssec_IS:th1} 
-\begin{IEEEproof} 
+\subsection{Solution to Problems \ref{th_IS:th1} and \ref{th_IS:th2}} \label{ssec_IS:th1} 
+\begin{IEEEproof}[Solution] 
 In order to solve the constrained optimization problems illustrated in Problem \ref{th_IS:th1} and Problem \ref{th_IS:th2}, the following approach is considered. As a first step, the underlying constraint is employed to determine $\mu$ as a function of the $\tsen$ and $\test$. %Its value is substituted in (\ref{eq_IS:pd}) and (\ref{eq_IS:pfa}) to determine $\pfa$ and $\pd$. Finally, replacing $\pd$ and $\pfa$ in (\ref{eq_IS:thr_AC}) and (\ref{eq_IS:thr_OC}), we obtain an expression of the throughput in terms of $\tsen$, $\test$ and the system parameters. As the final step, the distribution functions characterized in Lemma \ref{lm_IS:lem1}, Lemma \ref{lm_IS:lem2} and Lemma \ref{lm_IS:lem3} are utilized to determine an expression of expected throughput in terms of $\test$ and $\tsen$. %Consequently, we evaluate the performance at the ST by characterizing the expected throughput in terms of $\test$ and $\tsen$.  
 
 For the average constraint, the expression $\e{\epd}{\epd}$ in (\ref{eq_IS:AC}) did not lead to a closed form expression, consequently, no analytical expression of $\thrac$ is obtained. In this context, $\thrac$ for the average constraint is procured numerically from (\ref{eq_IS:AC}). 
