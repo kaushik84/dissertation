@@ -177,9 +177,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="3.1438046"
-     inkscape:cx="638.48926"
-     inkscape:cy="428.68559"
+     inkscape:zoom="2.0515041"
+     inkscape:cx="550.78671"
+     inkscape:cy="278.06764"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="true"
@@ -413,7 +413,7 @@
          y="661.97473"
          x="-107.42914"
          sodipodi:role="line"
-         id="tspan3247">Estimation Techniques</tspan></text>
+         id="tspan3247">Estimation Technique</tspan></text>
     <rect
        style="fill:none;stroke:#000000;stroke-width:2.11701059;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
        id="rect3177"
@@ -432,12 +432,17 @@
          y="886.87238"
          x="2.6847711"
          sodipodi:role="line"
-         id="tspan3189">Uncertain Interference</tspan><tspan
+         id="tspan3189">Imperfect Channel</tspan><tspan
          style="font-size:20px;text-align:center;text-anchor:middle;font-family:Times;-inkscape-font-specification:Times"
          y="911.87238"
          x="2.6847711"
          sodipodi:role="line"
-         id="tspan3194">(Estimation Error)</tspan></text>
+         id="tspan3118">Knowledge</tspan><tspan
+         style="font-size:20px;text-align:center;text-anchor:middle;font-family:Times;-inkscape-font-specification:Times"
+         y="936.87238"
+         x="2.6847711"
+         sodipodi:role="line"
+         id="tspan3194" /></text>
     <flowRoot
        xml:space="preserve"
        id="flowRoot3215"
@@ -570,19 +575,19 @@
        xml:space="preserve"
        style="font-size:20px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
        x="242.79756"
-       y="884.45691"
+       y="899.18805"
        id="text4175"
        sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
          x="242.79756"
-         y="884.45691"
+         y="899.18805"
          style="font-size:20px;text-align:center;text-anchor:middle;font-family:Times;-inkscape-font-specification:Times"
          id="tspan4177">Time Allocation</tspan><tspan
          sodipodi:role="line"
          x="242.79756"
-         y="909.45691"
+         y="924.18805"
          style="font-size:20px;text-align:center;text-anchor:middle;font-family:Times;-inkscape-font-specification:Times"
-         id="tspan3198">(Medium access)</tspan></text>
+         id="tspan3198" /></text>
     <path
        style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
        d="m 132.58929,567.3773 c 413.14068,-0.94392 480.20175,0 480.20175,0 l 0,0"
@@ -790,14 +795,19 @@
     <text
        xml:space="preserve"
        style="font-size:20px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#0a0a0a;fill-opacity:1;stroke:none;font-family:Sans"
-       x="-117"
-       y="950.86218"
+       x="-235"
+       y="948.86218"
        id="text8612"
        sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
-         x="-117"
-         y="950.86218"
+         x="-235"
+         y="948.86218"
          style="font-size:18px;text-align:center;text-anchor:middle;fill:#0a0a0a;fill-opacity:1;font-family:Times;-inkscape-font-specification:Times"
-         id="tspan8614">regulates</tspan></text>
+         id="tspan8614">regulates uncertain</tspan><tspan
+         sodipodi:role="line"
+         x="-235"
+         y="971.36218"
+         style="font-size:18px;text-align:center;text-anchor:middle;fill:#0a0a0a;fill-opacity:1;font-family:Times;-inkscape-font-specification:Times"
+         id="tspan3116">interference</tspan></text>
   </g>
 </svg>
