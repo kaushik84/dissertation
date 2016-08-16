@@ -3,7 +3,7 @@
 
 %Please note, there exists certain notations that are specific or follow a slightly different definition corresponding to the underlying cognitive radio system (interweave system (IS), underlay system (US) and hybrid system (HS)). Here, these notations have been signified by their underlying systems.  
 
-\renewcommand{\arraystretch}{1.4}
+\renewcommand{\arraystretch}{1.0}
 \begin{longtable}{p{0.15\columnwidth}p{0.02\columnwidth}p{0.83\columnwidth}}
 
 %% System parameters
@@ -47,17 +47,18 @@
 	$\xp[\cdot]$       & &             Discrete and complex signal transmitted by PT \\	
 	$\xtranpr[\cdot]$       & &             Discrete and complex signal transmitted by PR \\	
 	$\xscont[\cdot]$       & &             Discrete and complex signal transmitted by ST with controlled power \\	
-	$\xs[\cdot]$       & &             Discrete and complex signal transmitted by ST with no power control\\	
+	$\xs[\cdot]$       & &             Discrete and complex signal transmitted by ST with no power control (maximum transmit power) \\	
 
 	$\yrcvd[\cdot]$       & &             Discrete and complex signal received at ST \\	
+	$\ys[\cdot]$          & &             Discrete and complex signal received at SR \\	
 	
 	%$\nas[\cdot]$       & &             Discrete and complex noise signal \\	
 	%$\nap[\cdot]$       & &             Discrete and complex noise signal at PR \\	
 
 	$\yp[\cdot]$       & &             Discrete and complex signal received at PR \\	
-	$\wpr[\cdot]$       & &             Circularly symmetric additive while Gaussian noise at PR \\	
-	$\wst[\cdot]$       & &             Circularly symmetric additive while Gaussian noise at ST \\	
-	$\wsr[\cdot]$       & &             Circularly symmetric additive while Gaussian noise at SR \\	
+	$\wpr[\cdot]$       & &             Circularly symmetric additive white Gaussian noise at PR \\	
+	$\wst[\cdot]$       & &             Circularly symmetric additive white Gaussian noise at ST \\	
+	$\wsr[\cdot]$       & &             Circularly symmetric additive white Gaussian noise at SR \\	
 %% Powers
 	%$\prcvd$  		& IS &		Power received at ST over the PT-ST \\ 
 	%$\prcvd$  		& US &		Power received at ST over the PR-ST \\ 
@@ -71,20 +72,21 @@
 	$\ptranpr$  		& &		Transmit power at PR \\
 
 	$\npo$	 		& & 	Noise power \\
-	$\spo$	 		& &  Transmit power at ST and SR, when transmit signal is modeled as OFDM  \\
+	$\spo$	 		& &  Transmit power at PT, when transmit signal is modeled as OFDM  \\
 
 %% Signal to noise ratio
 	$\snrrcvd$  		& &		Signal to noise power received at ST over PT-ST link \\ 
         $\snrpt$                & &             Interference (from PT) to noise ratio for PT-SR link \\
 	$\snrrcvdu$  		& &		Signal to noise power received at ST over PR-ST link \\ 
+	$\snrso$  		& &		Signal to noise power received at SR over ST-SR link \\ 
 %% Notations 
        $F_{(\cdot)}$            & &          Cumulative distribution function of random variable $(\cdot)$ \\
        $f_{(\cdot)}$            & &          Probability density function of random variable $(\cdot)$ \\
        $\mathbb E_{(\cdot)}$    & &		Expectation with respect to ($\cdot$) \\
        $\p$                     & &     	Probability measure \\
        T$(\cdot)$  	        & &          Test statistics \\
-       $\tilde{(\cdot)}$        & &		Suitable value of the parameter ($\cdot$) that achieves maximum performance \\
-       $\tilde{(\cdot)}$        & &		Suitable value of the parameter ($\cdot$) that achieves maximum performance \\
+       $\tilde{(\cdot)}$        & &		Suitable value of parameter ($\cdot$) that achieves maximum performance \\
+       $\hat{(\cdot)}$        & &		Estimate value of parameter ($\cdot$) \\
        $K$                      & &      Scaling factor that holds the expected power received at the PR at interference temperature  \\
        $\Ks$                    & &      Number of pilot symbols used for pilot based estimation at the SR \\
        %$\Kp$                    & &      Number of samples used for received power based estimation at the SR \\
