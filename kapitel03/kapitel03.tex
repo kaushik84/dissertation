@@ -299,7 +299,7 @@ However, with the inclusion of this channel estimation, the system anticipates a
 %\vspace{-0.5cm}
 \end{figure}
 %The inclusion of estimation of the interacting channels causes variations in the parameters $\pd$, $\cz$ and $\co$. Unless characterized, these variations may seriously degrade the performance of the hardware deployed. In this view, we include the estimation of the interacting channels in the system model, thereby characterizing the variations in $\pd$, $\cz$ and $\co$ by means of their their distribution functions $\fpd$, $\fcz$ and $\fco$. By utilizing these expressions, we finally obtain a characterization of sensing-throughput tradeoff. %that depicts an deployment scenario. 
-In order to include channel estimation, a frame structure that constitutes estimation $\test$, sensing $\tsen$ and data transmission $T - \tsen$ is proposed, where $\test$ and $\tsen$ correspond to time intervals and \tc{$0 < \test \le \tsen < T$, refer to} \figurename~{\ref{fig_IS:fs}}. Since the estimated values of the interacting channels are required for determining the suitable sensing time (the duration of the sensing phase), the sequence depicted in \figurename~{\ref{fig_IS:fs}}, whereby estimation followed by sensing is reasonable for the hardware deployment. 
+In order to include channel estimation, a frame structure that constitutes estimation $\test$, sensing $\tsen$ and data transmission $T - \tsen$ is proposed, where $\test$ and $\tsen$ correspond to time intervals and \tc{$0 < \test \le \tsen < T$, refer to} \figurename~{\ref{fig_IS:fs}}. Since the estimated values of the interacting channels are required for determining the suitable sensing time (the duration of the sensing phase), the sequence depicted in \figurename~{\ref{fig_IS:fs}} is reasonable for the hardware deployment, whereby estimation followed by sensing. 
 \tc{Particularly for the sensing channel, it is worthy to note that the samples used for estimation can be combined with the samples acquired for sensing\footnote{\tc{Therefore, the sensing phase incorporates the estimation phase, see \figurename~\ref{fig_IS:fs}}.} such that the time resources within the frame duration can be utilized efficiently, as shown in the frame structure in \figurename~\ref{fig_IS:fs}.} 
 %To acquire the estimates for the interference and the access channels at the ST, a low-rate feedback channel from the SR to the ST is required for the proposed approach. 
 Considering the fact that the number of pilot symbols is relatively small in comparison to the samples used for performing received power-based channel estimation, the time allocation of the pilot symbols does not affect the overall performance of the ISs. Hence, no time resources are allocated for the estimation of the access channel in the frame structure\footnote{Please note that this argument is also applicable to the frame structures concerning the US and the HS, which will appear in the following two chapters.}. In the following paragraphs, the estimation of the involved channels is considered. 
@@ -308,7 +308,7 @@ Considering the fact that the number of pilot symbols is relatively small in com
 %As $\tsen^{*}$ is dependent on $\prcvd$ or the state of $\hpo$ in particular, under this situation, $\tsen^{*}$ is lower bounded by $\test$, consequently translating $\fpd$ from a continuous function to a piecewise continuous function, thereby complicating the analytical tractability of $\fpd$. Hence, to simplify the analysis, in this work, we consider estimation and sensing as disjoint events in time. In this regard, the derived expressions based on our proposed model represents a lower performance bound. Next, in the following subsections, we present the estimation of the interacting channels. 
 \subsubsection{Estimation of sensing channel ($\hpo$)}
 %To incorporate the effect of fading in the model, we assume that the channel remains constant for $T$. 
-Following the previous discussions, the ST acquires the knowledge of $\phpo$ by estimating its received power. The estimated received power is required for the characterization of $\pd$, thereby evaluating the detector performance. %, an vital performance parameter for the cognitive radio system. %Implicit to estimation, the variation in the received power are translated to the $\pd$. Hence, the characterization of the $\pd$ in terms of distribution function is essential. 
+Following the previous discussions, the ST acquires the knowledge of $\phpo$ (included in $\prcvdstpt$, cf. (\ref{eq_IS:pd})) to characterize $\pd$, thus evaluating the detector's performance. This knowledge is acquired by estimating the power received at the ST over the sensing channel. %by estimating its received power. The estimated received power is required for the characterization of $\pd$, thereby evaluating the detector performance. %, an vital performance parameter for the cognitive radio system. %Implicit to estimation, the variation in the received power are translated to the $\pd$. Hence, the characterization of the $\pd$ in terms of distribution function is essential. 
 %Characterized by the fading process, each frame witnesses a different received power. In order to sustain a desired detection probability, it is important to acquire the knowledge of $\prcvd$. As a result, received power estimation $\test$ precedes sensing $\tsen$ for each frame. The remaining time $T - (\test + \tsen)$ is utilized for data transmission. 
 
 Under $\mathcal H_1$, the received power-based estimated during the estimation phase at the ST is given as \cite{Urkowitz} 
@@ -316,7 +316,7 @@ Under $\mathcal H_1$, the received power-based estimated during the estimation p
 \eprcvdstpt = \s{\test \fsam}{ |\yrcvd[n]|^2}.
 \label{eq_IS:eprcvd} 
 \end{align}
-$\eprcvdstpt$ determined in (\ref{eq_IS:eprcvd}) using $\test \fsam$ samples follows a central chi-squared distribution $\cchi2$ \cite{Kay}. $\fsam$ and $\test$ are such that the number of samples $\test \fsam$ is an integer. Please note that this assumption is considered throughout the thesis. 
+$\eprcvdstpt$ determined in (\ref{eq_IS:eprcvd}) using $\test \fsam$ samples follows a central chi-squared distribution $\cchi2$ \cite{Kay}. $\fsam$ and $\test$ are such that the number of samples $\test \fsam$ is an integer (Please note that this assumption is considered throughout the thesis.). 
  %Applying the central limit theorem, this distribution can be approximated as the Gaussian distribution 
 The cdf of $\eprcvdstpt$ is given by  
 \begin{align}
@@ -333,7 +333,9 @@ The cdf of $\eprcvdstpt$ is given by
 %However, this information is not directly available at the SR.
 %To accomplish this, we employ a pilot based estimation for $\hs$ and received power based estimation $\hpt$. 
 %Channel estimation is a fundamental aspect to most wireless communication systems. 
-The signal received from the SR undergoes matched filtering and demodulation at the SR, hence, it is reasonable to employ pilot-based estimation for $\hs$. Unlike received power-based estimation, pilot-based estimation renders a direct estimation of the channel. Now, to accomplish pilot-based estimation, the ST aligns itself to pilot symbols transmitted by the SR. Under $\mathcal H_0$, the discrete and complex pilot symbols at the output of the demodulator is given by \cite{Gifford08} 
+The signal received from the SR undergoes matched filtering and demodulation at the ST, hence, it is reasonable to employ pilot-based estimation for $\hs$. Unlike received power-based estimation, pilot-based estimation renders a direct estimation of the channel. Now, to accomplish pilot-based estimation, the ST aligns itself to pilot symbols transmitted by the SR. 
+
+Under $\mathcal H_0$, the discrete and complex pilot symbols at the output of the demodulator is given by \cite{Gifford08} 
 \begin{align}
 p[n] = \sqrt{E\sub{s}} \hs + \wst[n], 
 \label{eq_IS:pilot_sig}
@@ -355,13 +357,15 @@ As a result, the power gain $|\ehs|^2$ follows a non-central chi-squared ($\ncch
 \subsubsection{Estimation of interference channel ($\hpt$)}
 
 
-Analog to the sensing channel, the SR performs received power-based estimation by listening to the transmission from the PT. The knowledge of $\hpt$ is required to characterize the interference from the PT. Under $\mathcal H_1$, the discrete signal model at the SR is given as 
+Analog to the sensing channel, the SR performs received power-based estimation by listening to the transmission from the PT. The knowledge of $\phpt$ is required to characterize the interference from the PT. 
+
+Under $\mathcal H_1$, in the estimation phase, the discrete and complex signal received at the SR is given as 
 \begin{align}
 \ys[n] = \hpt \cdot \xp[n] + \wsr[n].
 \label{eq_IS:sys_mod_p2s}
 \end{align}
 %Under $\mathcal H_1$, the SR cancels the ST the data signal over the access channel in order to estimate the secondary interference (power) received from the PT, refer to (\ref{eq_US:sys_mod_sr}). In order to establish a preliminary analysis, it is assumed that signal to noise ratio for the access link is suitable enough to allow perfect cancellation of the data signal. For extreme situations, a probabilistic approach can be applied to deal with the imperfect signal cancellation for the proposed channel estimation. However, under such situations, it is possible that due to bad quality of the access channel, the ST may not consider such a channel for data transmission. In both situations, the received power at the SR from the PT given by  
-The received power at the SR from the PT given by  
+As a result. the estimated power at the SR from the PT given by  
 \begin{align} 
 \eprcvdsr &= \frac{1}{\Kp} \sum\limits_{n = 1}^{\Kp} |\ys[n]|^2,
 \label{eq_IS:ehp2}
@@ -370,14 +374,14 @@ follows a $\cchi2$ distribution, where $\Kp$ corresponds to the number of sample
 
 \subsection{\tc{Validation}}
 \tc{
-It is now clear that the estimates $\eprcvdstpt$, $|\ehs|^2$ and $\eprcvdsr$ exhibit the knowledge corresponding to the involved channels, however, it is essential to validate them, mainly $\eprcvdstpt$. In this context, it is necessary to ensure the presence of the PU signal ($\mathcal H_1$) for that particular frame. In this direction, Chavali \textit{et al.} \cite{Chav11} recently proposed a detection followed by the estimation of the signal to noise ratio, while \cite{Cao14} implemented a blind technique for estimating the signal power of non-coherent PU signals. In this thesis, a different methodology is proposed, according to which, a coarse detection\footnote{\tc{For the coarse detection, an energy detection is employed whose threshold can be determined by means of a constant false alarm rate.}} on the estimate $\eprcvdstpt$ at the end of the estimation phase $\test$ is applied. Through an appropriate selection of the time interval $\test$ (for instance, $\test \in [1, 10]\SI{}{ms}$) during the system design, the reliability of the coarse detection can be ensured. With the existence of a separate control channel such as cognitive pilot channel, the reliability of the coarse detection can be further enhanced by exchanging the detection results between the ST and the SR.} 
+At this stage, it is clear that the estimates $\eprcvdstpt$, $|\ehs|^2$ and $\eprcvdsr$ exhibit the knowledge corresponding to the involved channels, however, it is essential to validate them, mainly $\eprcvdstpt$ and $\eprcvdsr$. In this context, it is necessary to ensure the presence of the PU signal ($\mathcal H_1$) for that particular frame. In this direction, Chavali \textit{et al.} \cite{Chav11} recently proposed a detection followed by the estimation of the signal to noise ratio, while \cite{Cao14} implemented a blind technique for estimating the signal power of non-coherent PU signals. In this thesis, a different methodology is proposed, according to which a coarse detection\footnote{\tc{For the coarse detection, an energy detection is employed whose threshold can be determined by means of a constant false alarm rate.}} on the estimates ($\eprcvdstpt$, $\eprcvdsr$) at the end of the estimation phase $\test$ is applied. Through an appropriate selection of the time interval $\test$ (for instance, $\test \in [1, 10]\SI{}{ms}$) during the system design, the reliability of the coarse detection can be ensured. With the existence of a separate control channel such as cognitive pilot channel, the reliability of the coarse detection can be further enhanced by exchanging the detection results between the ST and the SR.} 
 
 \tc{
-Since the estimation and the coarse detection processes in the proposed method are equivalent in terms of their mathematical operations (which include magnitude squared and summation), the validity of the channel estimates with certain reliability and without comprising the complexity of the estimators employed by the secondary system is considered. Moreover, by performing a joint estimation and (coarse) detection, an efficient way of utilizing the time resources within the frame duration is proposed. The ST considers these estimates to determine a suitable sensing time based on the sensing-throughput tradeoff such that the desired detector's performance is ensured. At the end of the detection phase, a fine detection\footnote{\tc{In accordance with the proposed frame structure in \figurename~\ref{fig_IS:fs}, fine detection represents the main detection which also includes the samples acquired during the estimation phase.}} of the PU signals is carried out, thereby improving the performance of the detector.} 
+Since the estimation and the coarse detection processes in the proposed method are equivalent in terms of their mathematical operations (which include magnitude squared and summation), the validity of the channel estimates with certain reliability and without comprising the complexity of the estimators, employed by the secondary system, is considered. Moreover, by performing a joint estimation and (coarse) detection, an efficient way of utilizing the time resources within the frame duration is proposed. The ST considers these estimates to determine a suitable sensing time based on the sensing-throughput tradeoff such that the desired detector's performance is ensured. At the end of the detection phase, a fine detection\footnote{\tc{In accordance with the proposed frame structure in \figurename~\ref{fig_IS:fs}, fine detection represents the main detection which also includes the samples acquired during the estimation phase.}} of the PU signals is carried out, thereby improving the performance of the detector.} 
   
 \subsection{Assumptions}
 %We consider the estimation of $\bprcvd$ at the ST. To simplify the analysis for the proposed model, it is assumed that the ST acquires the perfect knowledge about $\snrp$ and $ \snrs$ from the SR over a feedback channel. 
-To simplify the analysis and sustain analytical tractability for the proposed approach, several assumptions considered in the chapter (also applicable to the following chapters) are summarized as follows:
+To simplify the analysis and sustain analytical tractability for the proposed approach, several assumptions, considered in the thesis, are summarized as follows:
 \begin{itemize}
 \item All transmitted signals are subjected to distance dependent path loss and small scale fading gain. %The small scale fading gains $\gpo, \gpt, \gs$ are modelled as frequency-flat fading. %Hence, the $\gpo, \gpt, \gs$ follow a unit-mean exponential distribution \cite{Tse05}.
 With no loss of generality, it is considered that the channel gains include distance dependent path loss and small scale gain. Moreover, the coherence time for the channel gain is considered to be greater than the frame duration\footnote{In the scenarios where the coherence time exceeds the frame duration, in such cases, the proposed characterization depicts a lower performance bound.}. 
@@ -447,7 +451,7 @@ Using (\ref{eq_IS:epd})
 %\quad &=  \p \left( \mathcal{Q} \left( \frac{\mu - \eprcvd}{\sqrt{\frac{2}{\tsen \fsam} }} \right) \le x \right) \\ 
 %\quad &=  1- \p \left( \eprcvd \le \frac{\mu}{\mathcal{Q}^{-1}(x) \sqrt{\frac{2}{\tsen \fsam}}} \right) 
 \end{align}
-Replacing the cdf of $\eprcvdstpt$ in (\ref{eq_IS:lem1}), an expression of $\fpd$ is obtained.
+Replacing the cdf of $\eprcvdstpt$ in (\ref{eq_IS:lem1}), an expression of $\fpd(\cdot)$ is obtained.
 \end{IEEEproof}
 %From (\ref{eq_IS:fpd}), it is clearly observed that $\fpd$ depends on $\prcvd$, $\tsen$ and $\test$. %This insight will be discussed in later analysis.
 %Now, ST precludes the primary system by sustaining the $\pd$ above a certain desired level $\pdd$
@@ -567,12 +571,12 @@ where
 \begin{align}
 \dco(x) &= 2^x \ln 2 \frac{(2^x - 1)^{\as - 1} \Gamma(\as + \ap)}{\Gamma(\as) \Gamma(\ap) \bs^{\as} \bp^{\ap}} \left(\frac{1}{\bp} + \frac{2^x - 1}{\bs}\right)^{(\as + \ap)}, \label{eq_IS:den_C1}
 \end{align}
-and 
-\begin{align}
+%and 
+%\begin{align}
 %\quad & \ap = \frac{N (1 + \snrp)^2}{(2 + 4 \snrp)} \text{  and  } \bp = \frac{\sigma^2 (2+ 4 \snrp)}{N (1 + \snrp)}, \label{eq_IS:para_p} 
-\quad & \ap = \frac{\Kp}{2}  \text{  and  } \bp = \frac{2 \prcvdsr}{\npo \Kp}, \label{eq_IS:para_p} 
-\end{align}
-where $\as$ and $\bs$ are defined in (\ref{eq_IS:dphs_para}). 
+%\quad & \ap = \frac{\Kp}{2}  \text{  and  } \bp = \frac{2 \prcvdsr}{\npo \Kp}, \label{eq_IS:para_p} 
+%\end{align}
+where $\as$ and $\bs$ are defined in (\ref{eq_IS:dphs_para}), whereas $\ap$ and $\bp$ are defined in (\ref{eq_IS:dsnrp_para}). 
 \end{lemma} 
 \begin{IEEEproof}[Solution]
 See Section \ref{ssec_IS:lem3}
@@ -639,7 +643,7 @@ See Section \ref{ssec_IS:lem3}
 \label{fig_IS:CDF_C1}
 %\vspace{-0.5cm}
 \end{figure}
-The theoretical expressions of the cdfs depicted in Lemma \ref{lm_IS:lem1}, Lemma \ref{lm_IS:lem2} and Lemma \ref{lm_IS:lem3} are validated by means of simulations in \figurename~\ref{fig_IS:CDF_pd}, \figurename~\ref{fig_IS:CDF_C0} and \figurename~\ref{fig_IS:CDF_C1}, respectively, with different choices of system parameters, including $\test \in \{1,5,10\} \SI{}{ms}$, $(\tsen - \test) = \{1,5,10\}$ $\SI{}{ms}$, $\snrso \in \{-10, 0, 10\} \SI{}{dB}$ and  $\snrpt \in \{-10, 0, 10\} \SI{}{dB}$. 
+In consideration to Approximation \ref{ap:ap1}, which is applied to approximate the cdf of $\ephs$ in (\ref{eq_IS:dphs}), the theoretical expressions -- of the cdfs' of $\epd$, $\ecz$ and $\eco$ depicted in Lemma \ref{lm_IS:lem1}, Lemma \ref{lm_IS:lem2} and Lemma \ref{lm_IS:lem3} -- are validated by means of simulations in \figurename~\ref{fig_IS:CDF_pd}, \figurename~\ref{fig_IS:CDF_C0} and \figurename~\ref{fig_IS:CDF_C1}, respectively, with different choices of system parameters, including $\test \in \{1,5,10\} \SI{}{ms}$, $(\tsen - \test) = \{1,5,10\}$ $\SI{}{ms}$, $\snrso \in \{-10, 0, 10\} \SI{}{dB}$ and  $\snrpt \in \{-10, 0, 10\} \SI{}{dB}$. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %\subsection{Sensing-throughput tradeoff} \label{sec_IS:st_ana}
@@ -660,7 +664,7 @@ Next, a sensing-throughput tradeoff for the estimation model is established that
 %\begin{figure*}
 \begin{theorem} \label{th_IS:th1}
 \normalfont
-The expected achievable secondary throughput subject to an average constraint on $\epd$ that employs channel estimation corresponding to the deterministic behavior of the interacting channels is given by  
+The achievable expected secondary throughput subject to an average constraint on $\epd$ that employs channel estimation corresponding to the deterministic behavior of the interacting channels is given by  
 \begin{align}
 \trsac(\ttest, \ttsenac) =& \maxi_{\tc{\test}, \tsen} \e{\epd, \ecz, \eco}{\rs(\test, \tsen)} \nonumber \\ 
 \quad =& \frac{T- \tsen}{T} \bigg[ \e{\ecz}{\ecz} (1 - \pfa) \phz + \nonumber \\ \quad & \e{\eco}{\eco} (1 - \e{\epd}{\epd}) \pho  \bigg], \label{eq_IS:thr_AC} \\
@@ -677,8 +681,7 @@ The expected achievable secondary throughput subject to an average constraint on
 where $\e{\epd}{\cdot}$ represents the expectation with respect to $\epd$, $\e{\epd, \ecz, \eco}{\cdot}$ denotes the expectation with respect to $\epd$, $\ecz$ and $\eco$. Unlike (\ref{eq_IS:thr_id_con}), $\pdd$ in (\ref{eq_IS:thr_AC}) represents the constraint on expected detection probability.
 
 \begin{IEEEproof}[Solution]
-\tc{See Section \ref{ssec_IS:th1} 
-For simplification, the proof of Problem \ref{th_IS:th1} is included in the proof of Problem \ref{th_IS:th2}.} 
+\tc{See Section \ref{ssec_IS:th1}. For simplification, the proof of Problem \ref{th_IS:th1} is included in the proof of Problem \ref{th_IS:th2}.} 
 \end{IEEEproof}
 %\subsection*{Outage Constraint}
 %Here, we consider the outage constraint on the detection probability is defined as 
@@ -689,7 +692,7 @@ For simplification, the proof of Problem \ref{th_IS:th1} is included in the proo
 
 \begin{theorem} \label{th_IS:th2}
 \normalfont
-The expected achievable secondary throughput subject to an outage constraint on $\epd$ that employs channel estimation corresponding to the deterministic behavior of the interacting channels is given by  
+The achievable expected secondary throughput subject to an outage constraint on $\epd$ that employs channel estimation corresponding to the deterministic behavior of the interacting channels is given by  
 \begin{align}
 \trsoc(\ttest, \ttsenoc) =& \maxi_{\tc{\test}, \tsen} \e{\epd, \ecz, \eco}{\rs(\test, \tsen)} \nonumber \\ 
 \quad =& \frac{T- \tsen}{T} \bigg[ \e{\ecz}{\ecz} (1 - \pfa) \phz + \nonumber \\ \quad & \e{\eco}{\eco} (1 - \e{\epd}{\epd}) \pho  \bigg], \label{eq_IS:thr_OC} \\
@@ -702,7 +705,7 @@ where $\mpd$ represents the outage constraint.
 %\subsubsection*{Methodology of analysis}
 
 \begin{IEEEproof}[Solution] 
-See Section \ref{ssec_IS:th1}
+See Section \ref{ssec_IS:th1}.
 \end{IEEEproof} 
 \tc{In contrast to the ideal model, the sensing-throughput tradeoff investigated by the estimation model (refer to Problems \ref{th_IS:th1} and \ref{th_IS:th2}) incorporates the imperfect channel knowledge, in this context, the performance characterization considered by the proposed framework is closer to the realistic situations.} 
 
@@ -710,12 +713,12 @@ See Section \ref{ssec_IS:th1}
 \begin{remark} \label{rem_IS:rem1}
 \normalfont
 %Subsequently, following the variation of optimum expected throughput $\trs(\test,\ttsen)$ (optimized over the sensing time) against the estimation time, 
-Herein, based on the estimation model, a fundamental relation between estimation time (regulates the variation in the detection probability according to the PU constraint), sensing time (represents the detector performance) and achievable throughput is established. This relationship is characterized as estimation-sensing-throughput tradeoff. Based on this tradeoff, a suitable estimation time $\test = \ttest$ and a suitable sensing time $\tsen = \ttsen$ that attains a maximum achievable throughput $\trs(\ttest,\ttsen)$ for the IS is determined.  
+Herein, based on the estimation model, a fundamental relation between estimation time (that regulates the variation in the detection probability according to the PU constraint), sensing time (that represents the detector performance) and achievable throughput is established. This relationship is characterized as estimation-sensing-throughput tradeoff. Based on this tradeoff, a suitable estimation time $\test = \ttest$ and a suitable sensing time $\tsen = \ttsen$ that attains a maximum achievable throughput $\trs(\ttest,\ttsen)$ for the IS is determined.  
 \end{remark}
 
 \begin{coro} \label{cor_IS:cor1}
 \normalfont
-\tc{Problems \ref{th_IS:th1} and \ref{th_IS:th2} consider the optimization of the average throughput to incorporate the effect of variations due to the channel estimation, and subsequently determine the suitable sensing and the suitable estimation time. Here, an alternative approach to the optimization problem described in (\ref{eq_IS:thr_id}) is investigated to capture these variations, whereby for a certain estimation time $\test$, the suitable sensing time subject to the average constraint is determined as} 
+\tc{Problems \ref{th_IS:th1} and \ref{th_IS:th2} consider the optimization of the expected secondary throughput to incorporate the effect of variations due to the channel estimation, and subsequently determine the suitable sensing and the suitable estimation time. Here, an alternative approach to the optimization problem, described in (\ref{eq_IS:thr_id}), is investigated to capture the effect of imperfect channel knowledge. According to which, the suitable sensing time, for a certain value of estimation time, subject to the average constraint is determined as} 
 \tc{
 \begin{align}
 \ttsen &= \argmaxi_{\tsen} \rs(\test, \tsen) \label{eq_IS:C_sen_AC} \\ 
@@ -739,7 +742,8 @@ In contrast to (\ref{eq_IS:thr_AC}) and (\ref{eq_IS:thr_OC}), the suitable sensi
 \e{\epd, \ecz, \eco, \ttsen}{\rs(\test, \ttsen)} \label{eq_IS:C_thr},
 \end{align}
 where $\e{\epd, \ecz, \eco, \ttsen}{\cdot}$ corresponds to an expectation over $\epd, \ecz, \eco, \ttsen$.
-In reference to Remark \ref{rem_IS:rem1}, the average secondary throughput, defined in (\ref{eq_IS:C_thr}), is further optimized over the estimation time 
+
+In reference to Remark \ref{rem_IS:rem1}, the expected secondary throughput, defined in (\ref{eq_IS:C_thr}), is further optimized over the estimation time 
 \begin{align}
 \trs(\ttest, \ttsenac) &= \maxi_{\test} \e{\epd, \ecz, \eco, \ttsen}{\rs(\test, \ttsen)} \label{eq_IS:C_thr_AC}. 
 \end{align}
@@ -766,10 +770,12 @@ In this section, the proposition is to extend the performance analysis of the pr
 \fphpt(x) = 1 - \Gamma\left(\mpt, \frac{\mpt x}{\bphpt}\right), \label{eq_IS:dis_pght}\\  
 \fphs(x) = 1 - \Gamma\left(\ms , \frac{\ms x}{\bphs}\right), \label{eq_IS:dis_phs}
 \end{align}
-where $\mpo$, $\mpt$ and $\ms$ represent the Nakagami-$m$ parameter, whereas $\bphpo$, $\bphpt$ and $\bphs$ are the expected values for the channels $\phpo$, $\phpt$ and $\phs$, respectively, and $\Gamma(\cdot, \cdot)$ is a regularized upper-incomplete Gamma function \cite{abramo}. Nakagami-$m$ fading model, considered as a generalized fading model, facilitates in understanding the performance behaviour of CR systems under fading conditions (severe and mild fading). 
+where $\mpo$, $\mpt$ and $\ms$ represent the Nakagami-$m$ parameter, whereas $\bphpo$, $\bphpt$ and $\bphs$ are the expected values for the channels $\phpo$, $\phpt$ and $\phs$, respectively. 
+
+Nakagami-$m$ fading model, considered as a generalized fading model, facilitates in understanding the performance behaviour of CR systems under fading conditions (severe and mild fading). 
 
 \subsubsection{Perfect Channel Knowledge}
-First a scenario (also represented as the ideal model for the random channels) that precludes channel estimation is considered, in other words, the ST assumes perfect knowledge of the interacting channels. In this context, the ST encounters variations caused due to the channel fading only. These variations translate to the variations in the detection probability, more specifically those variations that do not meet the desired detection probability $(\pdd)$ results in uncertain interference\footnote{Please note that, for the case with perfect channel knowledge, the uncertainty is due to the variations in the channel gain characterized as channel fading.} at the PR. To overcome this issue, \cite{Juarez11} proposed to employ an outage constraint over $\pd$, given as
+First a scenario (also represented as the ideal model for the random channels) that precludes channel estimation is considered, in other words, the ST assumes perfect knowledge of the interacting channels. In this context, the ST encounters variations caused due to the channel fading only. These variations translate to the variations in the detection probability, more specifically those variations that do not meet the desired detection probability $(\pdd)$ results in uncertain interference\footnote{Please note, in the context with perfect channel knowledge, the uncertainty is due to the variations in the channel gain characterized as channel fading.} at the PR. To deal with this issue, an outage constraint is employed over $\pd$ \cite{Juarez11}, given as
 \begin{align}
 \p( \pd \le \pdd) \le \mpd, \label{eq_IS:OC_i}
 \end{align}
@@ -787,7 +793,7 @@ Besides the interference at the PR, the throughput at the SR is given by %(refer
 Since the detection probability and the secondary throughput are related through the sensing time, this relationship is exploited to determine a sensing-throughput tradeoff for the case with the perfect channel estimation.
 \begin{theorem} \label{th_IS:th3}
 \normalfont
-The expected achievable secondary throughput subject to an outage constraint on $\pd$ at the PR that considers the perfect channel estimation and the random behaviour of the interacting channels is given by
+The achievable expected secondary throughput subject to an outage constraint on $\pd$ at the PR that considers the perfect channel estimation and the random behaviour of the interacting channels is given by
 \begin{align}
 \trsoc(\ttsenoc) &= \maxi_{\tsen} \e{\pd, \phs, \phpt}{\rs(\tsen)}, \label{eq_IS:STT_i} \\
 \text{s.t.} & \text{ }  (\ref{eq_IS:OC_i}) \nonumber \\ 
@@ -797,18 +803,19 @@ The expected achievable secondary throughput subject to an outage constraint on 
 \begin{remark} \label{rem_IS:rem3}
 \normalfont
 
-It is worth noticing the fact that the authors in \cite{Juarez11} applied channel fading only to the sensing channel, however, according to Problem \ref{th_IS:th3}, here, a more practical approach is considered, whereby the channel fading in the access and the interference channels is also employed. Since the perfect channel knowledge scenario is employed to benchmark the performance of those ISs that employ channel estimation (discussed later in Section \ref{ssec_IS:ice}), the parameters such as threshold (which is used for evaluating $\pd$ and $\pfa$) and the expected throughput are evaluated numerically.
+It is worth noticing the fact that the authors in \cite{Juarez11} applied channel fading only to the sensing channel, however, according to Problem \ref{th_IS:th3}, here, a more practical approach is considered, whereby the channel fading in the access and the interference channels is also employed. The perfect channel knowledge scenario is employed to benchmark the performance of those IS that employs channel estimation (discussed later in Section \ref{ssec_IS:ice}). In this view, the parameters such as threshold (which is used for evaluating $\pd$ and $\pfa$) and the expected secondary throughput are evaluated numerically.
 %\footnote{In our future work, we plan to obtain analytical expressions of the aforementioned parameters.}.
-Despite the knowledge of the fading model, similar to the ideal model depicted for the deterministic channel, the characterization in (\ref{eq_IS:STT_i}) and (\ref{eq_IS:OC_i}) assumes the perfect knowledge\footnote{For the channel fading case, this knowledge signifies perfect knowledge of the different realizations of the corresponding channel.} of the power gains of the corresponding channels. In view of this, the proposed framework is further extended to investigate the effect of the random channel (channel fading) on the performance of the ISs that incorporates estimation of the involved channels.
+Despite the knowledge of the fading model, similar to the ideal model depicted for the deterministic channel, the characterization in (\ref{eq_IS:STT_i}) and (\ref{eq_IS:OC_i}) assumes the perfect knowledge\footnote{For the channel fading case, this knowledge signifies the perfect knowledge of the different realizations of the corresponding channel.} of the power gains of the corresponding channels. In view of this, the proposed framework is further extended to investigate the effect of the random channel (channel fading) on the performance of the ISs that incorporates estimation of the involved channels.
 
 
 \end{remark}
 
 \subsubsection{Imperfect Channel Knowledge} \label{ssec_IS:ice}
 %At this stage, it is clear that channel fading causes harmful interference at PR. Next, the estimation of the involved channels performed by considering the random behaviour of the involved channels (or channel fading). 
-Now, the estimation of the interacting channels in context to the channel fading is considered. To incorporate channel estimation, the similar frame structure depicted in \figurename~\ref{fig_IS:fs} is employed. In contrast to the deterministic channel, here the IS incorporates variations in the performance parameters ($\pd$ and $\rs$) due to the channel estimation and the channel fading. 
+Here, the estimation of the interacting channels in context to the channel fading is considered. To incorporate channel estimation, the similar frame structure, depicted in \figurename~\ref{fig_IS:fs}, is employed. In contrast to the deterministic channel, here the IS incorporates variations in the performance parameters ($\pd$ and $\rs$) due to the channel estimation and the channel fading. 
 %Now, to facilitate the hardware complexity and the versatility to unknown PU signals (as proposed by the energy detector) requirements at the secondary system, we propose to employ received power-based estimation $(\eprcvd, \eprcvdsr)$ for the sensing and the interference channel at the ST and the SR and the pilot-based estimation $\ephs$ for the access channel. 
-The characterization of the estimated parameters $\eprcvdstpt$ and $\eprcvdsr$ for the sensing and the interference channel, and $\ephs$ for the access channel in terms of their cdfs, for the deterministic case, has been determined in Section \ref{ssec_IS:pa}. In addition, the estimated parameters are used to estimate the performance parameters $\epd$, $\ecz$ and $\eco$, their cdfs $\fpd$, $\fcz$ and $\fco$ are characterized in Lemma 1, Lemma 2 and Lemma 3 of Section \ref{ssec_IS:det_th}.
+
+It is worth mentioning that the characterization of the estimated parameters $\eprcvdstpt$ and $\eprcvdsr$ for the sensing and the interference channel, and $\ephs$ for the access channel in terms of their cdfs, for the deterministic case, has been determined in Section \ref{ssec_IS:pa}. In addition, the estimated parameters are used to estimate the performance parameters $\epd$, $\ecz$ and $\eco$, their cdfs $\fpd(\cdot)$, $\fcz(\cdot)$ and $\fco(\cdot)$ are characterized in Lemma 1, Lemma 2 and Lemma 3 of Section \ref{ssec_IS:det_th}.
 
 The outage constraint that jointly captures the variations due to channel estimation and channel fading, which result in uncertain interference at the PR, is defined as 
 %In order to protect the PR against harmful interference that arieses due to variations in context to channel estimation and channel fading, an outage constraint that jointly captures these variations is defined as
@@ -831,7 +838,7 @@ where $\e{\pd,\ecz,\eco,\phpo, \phs, \phpt}{\cdot}$ corresponds to an expectatio
 
 \begin{theorem} \label{th_IS:th4}
 \normalfont
-The expected achievable secondary throughput subject to an outage constraint on $\pd$ at the PR that considers the imperfect channel estimation and the random behaviour of the interacting channels is given by
+The achievable expected secondary throughput subject to an outage constraint on $\pd$ at the PR that considers the imperfect channel estimation and the random behaviour of the interacting channels is given by
 \begin{align}
 \trsoc(\ttest, \ttsen) &= \maxi_{\tc{\test}, \tsen} \e{\epd, \ecz, \eco, \phpo, \phs, \phpt}{\rs(\test, \tsen)}, \nonumber \\ 
 \text{s.t.} & \text{ }  (\ref{eq_IS:OC_p}),  \\
@@ -1433,15 +1440,17 @@ Finally, using (\ref{eq_IS:dsnrs}) and substituting $\frac{\ephs\ptranst}{\nps}$
 \begin{IEEEproof}[Solution]
 For simplification, $\left( \frac{|\ehs|^2 \ptranst}{\eprcvdsr} \right)$ in (\ref{eq_IS:Cap1}) is dealt as individual terms $E_1 = \left( \frac{|\ehs|^2 \ptranst}{\npo} \right)$ and $E_2 = \left(\frac{\eprcvdsr}{\npo} \right)$, where $\eco = \log_2 \left(1 + \frac{E_1}{E_2} \right)$, refer to (\ref{eq_IS:eco}). The pdf of the expression $E_1$ is determined in (\ref{eq_IS:dsnrs}).
 
-Following the characterization $\eprcvdsr$ in (\ref{eq_IS:ehp2}), the pdf of $E_2$ is determined as 
+Following the characterization $\eprcvdsr$ ($\cchi2$ distribution), the pdf of $E_2$ is determined as 
 \begin{align}
-\dsnrp &= \frac{\Kp \npo}{\prcvdsr} \frac{1}{ 2^{\frac{\Kp}{2}} \Gamma\left(\frac{\Kp}{2}\right)} \left(x \frac{\Kp \npo}{ \prcvdsr} \right)^{\frac{\Kp}{2} - 1} \times \nonumber  \\ \quad & \exp \left(- x \frac{\Kp \npo}{2 \prcvdsr}  \right) \label{eq_IS:dsnrp}. 
+%\dsnrp(x) &= \frac{\Kp \npo}{\prcvdsr} \frac{1}{ 2^{\frac{\Kp}{2}} \Gamma\left(\frac{\Kp}{2}\right)} \left(x \frac{\Kp \npo}{ \prcvdsr} \right)^{\frac{\Kp}{2} - 1} \exp \left(- x \frac{\Kp \npo}{2 \prcvdsr}  \right) \label{eq_IS:dsnrp}. 
+\dsnrp(x) &= \frac{1}{\Gamma(\ap)} \frac{x^{\ap-1}}{\bp^{\ap}} \exp{\left(- \frac{x}{\bs}\right)} \label{eq_IS:dsnrp}, \\   
+\text{ where } \ap &= \frac{\tsen \fsam}{2} \text{ and } \bp = \frac{2 \prcvdsr}{\npo \tsen\fsam}. \label{eq_IS:dsnrp_para}
 \end{align}
 %\dsnrp &= \frac{\Kp}{\sigma^2} \frac{1}{2} \exp\left[-\frac{1}{2} \left( \frac{x \Kp}{\sigma^2} + \lp \right)\right] \left( \frac{x \Kp}{\sigma^2 \ls} \right)^{\frac{\Ks}{4} - \frac{1}{2}} I_{\frac{\Kp}{2}  - 1}  \left( \sqrt{\frac{\lp x \sigma^2}{\Kp} }  \right) \nonumber
 %\intertext{Following the approach similar to Lemma \ref{lm_IS:lem2}, we approximate the $\ncchi2(\cdot,\cdot)$ with Gamma distribution $\Gamma (\ap, \bp)$ gives}
 %\dsnrp & \approx \frac{1}{\Gamma(\ap)} \frac{x^{\ap - 1}}{\bp^{\ap}} \exp\left(-\frac{x}{\bp}\right). \label{eq_IS:dsnrp} 
 %\intertext{Analogous to Lemma \ref{lm_IS:lem2}, the parameters $\ap, \bp$ are determined by comparing the first two central moments.}
-Using the characterizations of pdfs $\dsnrs$ and $\dsnrp$, Mellin transform \cite{NIST} is applied to determine the pdf of $\frac{E_1}{E_2}$ as
+Using the characterizations of pdfs $\dsnrs(\cdot)$ and $\dsnrp(\cdot)$, Mellin transform \cite{NIST} is applied to determine the pdf of $\frac{E_1}{E_2}$ as
 \begin{align}
 \dsnrsp(x) &= \frac{x^{\as - 1} \Gamma(\as + \ap)}{\Gamma(\as) \Gamma(\ap) \bs^{\as} \bp^{\ap}} \left(\frac{1}{\bp} + \frac{x}{\bs}\right)^{(\as + \ap)}. \label{eq_IS:dsnrsp} 
 \end{align} 
