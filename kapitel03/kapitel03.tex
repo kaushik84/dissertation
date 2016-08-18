@@ -357,9 +357,9 @@ As a result, the power gain $|\ehs|^2$ follows a non-central chi-squared ($\ncch
 \subsubsection{Estimation of interference channel ($\hpt$)}
 
 
-Analog to the sensing channel, the SR performs received power-based estimation by listening to the transmission from the PT. The knowledge of $\phpt$ is required to characterize the interference from the PT. 
+Analog to the sensing channel, the SR performs received power-based estimation by listening to the signal transmitted by the PT. The knowledge of $\phpt$ is required to characterize the interference from the PT. 
 
-Under $\mathcal H_1$, in the estimation phase, the discrete and complex signal received at the SR is given as 
+Under $\mathcal H_1$, in the estimation phase (which implies ST is not transmitting, please consider \figurename~\ref{fig_IS:fs}), the discrete and complex signal received at the SR is given as 
 \begin{align}
 \ys[n] = \hpt \cdot \xp[n] + \wsr[n].
 \label{eq_IS:sys_mod_p2s}
@@ -803,7 +803,7 @@ The achievable expected secondary throughput subject to an outage constraint on 
 \begin{remark} \label{rem_IS:rem3}
 \normalfont
 
-It is worth noticing the fact that the authors in \cite{Juarez11} applied channel fading only to the sensing channel, however, according to Problem \ref{th_IS:th3}, here, a more practical approach is considered, whereby the channel fading in the access and the interference channels is also employed. The perfect channel knowledge scenario is employed to benchmark the performance of those IS that employs channel estimation (discussed later in Section \ref{ssec_IS:ice}). In this view, the parameters such as threshold (which is used for evaluating $\pd$ and $\pfa$) and the expected secondary throughput are evaluated numerically.
+It is worth noticing the fact that the authors in \cite{Juarez11} applied channel fading only to the sensing channel, however, according to Problem \ref{th_IS:th3}, here, a more practical approach is considered, whereby the channel fading is also employed for the access and the interference channels. The perfect channel knowledge scenario is employed to benchmark the performance of those IS that employs channel estimation (discussed later in Section \ref{ssec_IS:ice}). In this view, the parameters such as threshold (which is used for evaluating $\pd$ and $\pfa$) and the expected secondary throughput are evaluated numerically.
 %\footnote{In our future work, we plan to obtain analytical expressions of the aforementioned parameters.}.
 Despite the knowledge of the fading model, similar to the ideal model depicted for the deterministic channel, the characterization in (\ref{eq_IS:STT_i}) and (\ref{eq_IS:OC_i}) assumes the perfect knowledge\footnote{For the channel fading case, this knowledge signifies the perfect knowledge of the different realizations of the corresponding channel.} of the power gains of the corresponding channels. In view of this, the proposed framework is further extended to investigate the effect of the random channel (channel fading) on the performance of the ISs that incorporates estimation of the involved channels.
 
