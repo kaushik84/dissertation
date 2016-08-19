@@ -159,7 +159,7 @@ In order to capture the variations induced due to channel estimation, the pdfs o
 
 In accordance to the employed signal model, $\prcvdstpr$ is modeled as a non-central chi-squared distribution $\ncchi2$, whose pdf is characterized as \cite{Char99}
 \begin{align}
-	\label{nxc2equ}
+	\label{eq_HVD:dprcvdstpr}
 	\dprcvdstpr (x) &= 
 	\frac{\test \fsam}{2\npp} \left(\frac{\test \fsam x}{\lambda}\right)^\frac{\test \fsam-2}{4} \exp\left(-\frac{\test \fsam x+\lambda}{2\npp}\right)  \times \\ 
 	\quad & I_{ \frac{\test \fsam}{2}-1 }\left(\frac{\sqrt{\test \fsam x \lambda}}{\npp}\right) \nonumber  ,
@@ -173,16 +173,16 @@ The relation in (\ref{lambda}) is explained as follows: a sinusoidal signal that
 
 Corresponding to (\ref{eq_HVD:preg}), $\epreg$ follows an inverse non-central chi-squared distribution. The pdf for $\epreg$  is given by
 \begin{align}
-\dpreg(x) =& \frac{\test \fsam K \ite}{2\npp x^2} e^{- \frac{\tau \fsam}{2 \npp}\left( \frac{K  \ite}{x} + \phpth \ptran \right)} \left( \frac{K \ite}{x \phpth \ptran}   \right)^{\frac{\test \fsam}{4} - \frac{1}{2}} \label{eq_HVD:dpreg_pl} \times \\
+\dpreg(x) =& \frac{\test \fsam K \ite}{2\npp x^2} e^{- \frac{\tau \fsam}{2 \npp}\left( \frac{K  \ite}{x} + \phpth \ptran \right)} \left( \frac{K \ite}{x \phpth \ptran}   \right)^{\frac{\test \fsam}{4} - \frac{1}{2}} \label{eq_HVD:dpreg} \times \\
 \quad & I_{\frac{\test \fsam}{2}  - 1}\left( \frac{\test \fsam}{\npp} \sqrt{\frac{ K \ite \phpth \ptran}{x}}  \right). \nonumber
 %\fpreg(x) = \q{\frac{N}{2} - 1}{\sqrt{\frac{N \ptran \ap}{\npp}},\sqrt{\frac{N \cdot x}{\npp}} }, 
 \end{align}
 %where $\q{\frac{N}{2} - 1}{\cdot, \cdot}$ is the Marcum-Q function \cite{grad}.
 %where $I_{\frac{N}{2}  - 1}(\cdot)$ represents the Bessel function of order $\frac{N}{2} - 1$ \cite{grad}.
 
-Following the relation in (\ref{eq_HVD:eprcvdpr}) and substituting $\dpreg(x)$ defined in (\ref{eq_HVD:dpreg_pl}), the pdf of $\eprcvdpr$ is determined as 
+Following the relation in (\ref{eq_HVD:eprcvdpr}) and substituting $\dpreg(x)$ defined in (\ref{eq_HVD:dpreg}), the pdf of $\eprcvdpr$ is determined as 
 \begin{align}
-\dprcvdpr(x) =& \frac{\phpth \test \fsam K \ite}{2\npp x^2} e^{- \frac{\test \fsam \phpth}{2 \npp}\left( \frac{K  \ite}{x} + \ptran \right)} \left( \frac{K \ite}{x \ptran}   \right)^{\frac{\test \fsam}{4} - \frac{1}{2}} \times \label{eq_HVD:dpp_pl} \\
+\dprcvdpr(x) =& \frac{\phpth \test \fsam K \ite}{2\npp x^2} e^{- \frac{\test \fsam \phpth}{2 \npp}\left( \frac{K  \ite}{x} + \ptran \right)} \left( \frac{K \ite}{x \ptran}   \right)^{\frac{\test \fsam}{4} - \frac{1}{2}} \times \label{eq_HVD:dpp} \\
 \quad & I_{\frac{\test \fsam}{2}  - 1}\left( \frac{\test \fsam \phpth}{\npp} \sqrt{\frac{ K \ite \ptran}{x}}  \right). \nonumber
 \end{align}
 
@@ -197,7 +197,7 @@ where $Q_{\frac{\test \fsam}{2}}(\cdot)$ is the Marcum Q-function \cite{Jef00}.
 %The system variables $P_\textrm{cont}$, $P_\textrm{p}$, and $R_\textrm{s}$ are derived from $P_\textrm{rcvd}$ in \cite{Kaushik15}, where the respective pdfs $f_{P_\textrm{cont}}(\cdot)$ and $f_{P_\textrm{p}}(\cdot)$ are also provided. In \cite{Kaushik15}, $f_{R_\textrm{s}}(\cdot)$ represented a pdf of the capacity. Here, we modify this expression to determine the pdf of the secondary throughput
 Next, the pdf of the secondary throughput $\ers$ is determined as
 \begin{equation}
-	\label{Rspdf}
+	\label{eq_HVD:drs}
 	\drs \left(x\right) =
 	\frac{T}{T-\test}\frac{\test \fsam K \ite \phs \ln{2}}{2 \npss} 
 	\left(\frac{p\left(x\right)+1}{\left[p\left(x\right)\right]^2} \right)
