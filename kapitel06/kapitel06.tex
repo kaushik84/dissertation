@@ -1,9 +1,10 @@
 \chapter{Hardware Validation and Demonstration}
 \label{chap:HVD}
 
-Previous chapters (Chapter \ref{chap:IS}, Chapter \ref{chap:US} and Chapter \ref{chap:HS}) focused on characterizing the performance of different CR systems jointly in terms of the interference power received by the PR and the throughput at the SR by taking the estimation of the involved channels into account. In addition, it has been motivated that the low complexity and the versatility towards unknown primary user signals requirements can be satisfied only if conventional channel estimation techniques such as pilot-based channel estimation are substituted with non-conventional channel estimation techniques such as received power-based estimation (proposed in the thesis) for acquiring the knowledge of the interacting channels, particularly for the channels between the primary and the secondary systems, which corresponds to different systems. However, the aforementioned analysis in the previous chapters has been limited to the theoretical expressions. With regard to the analytical expressions that are necessary for the performance analysis, it is essential as-well-as challenging to depict the hardware realizability of CR systems. 
+Previous chapters (Chapter \ref{chap:IS}, Chapter \ref{chap:US} and Chapter \ref{chap:HS}) focused on characterizing the performance of different CR systems jointly in terms of the interference power received by the PR and the throughput at the SR by taking the estimation of the involved channels into account. In addition, it has been motivated that the low complexity and the versatility towards unknown primary user signals requirements, facilitating hardware deployment, can be satisfied only if conventional channel estimation techniques (such as pilot-based channel estimation) are substituted with non-conventional channel estimation techniques (such as received power-based estimation, proposed in the thesis) for acquiring the channels' knowledge, particularly for the channels between the primary and the secondary systems, corresponding to different systems. However, the aforementioned analysis in the previous chapters has been limited to the theoretical expressions. 
 
-Motivated by this fact, this chapter, which is based on \citeK{Kaushik15_ICC, Kaushik16_CC}, reconciles the theory established in the previous chapters and the hardware feasibility of the CSC. As a result, it complements the performance analysis by deploying the CR techniques on a hardware. By doing this, the applicability of the assumptions considered while deriving the analytical expressions can be examined. Moreover, these investigations are essential to facilitate the evolution of the proposed analytical framework. Without any specific argumentation, an US is considered for the deployment.    
+
+With regard to the analytical expressions that are necessary for the performance analysis, it is essential as-well-as challenging to depict the hardware realizability of CR systems. Motivated by this fact, this chapter, which is based on \citeK{Kaushik15_ICC, Kaushik16_CC}, reconciles the theory established in the previous chapters and the hardware feasibility of the CSC. As a result, it complements the performance analysis by deploying the CR techniques on a hardware. By doing this, the applicability of the assumptions considered while deriving the analytical expressions can be examined. Moreover, these investigations are essential to facilitate the evolution of the proposed analytical framework. Without any specific argumentation, an US is considered for the deployment.    
 %%\begin{abstract}        % give a summary of your paper
 %Cognitive radio is one of the potential contenders that address the problem of spectrum scarcity by making efficient use of the currently allocated spectrum below \SI{6}{GHz}. A secondary access to the licensed spectrum is only possible, if the cognitive radio systems restrict the interference to the primary systems. However, the performance analysis of such a cognitive radio system is a challenging task. Currently, performance evaluation of underlay systems is limited to theoretical analysis. Most of the existing theoretical investigations make certain assumptions in order to sustain analytical tractability, which could be unrealistic from the deployment perspective. Motivated by this fact, in this work, we validate the performance of an underlay system by means of laboratory measurements, and consequently propose a hardware demonstrator of such a system. Moreover, we present a graphical user interface to provide insights to the working of the proposed demonstrator and highlight the main issues faced during this experimental study.
 %\blfootnote{This work was partially supported by the National Research Fund, Luxembourg under the CORE projects "SeMIGod" and "SATSENT".} 
@@ -27,8 +28,8 @@ Motivated by this fact, this chapter, which is based on \citeK{Kaushik15_ICC, Ka
 
 This chapter provides the following contributions:
 \begin{itemize}
-	\item Empirical validation: The performance of the USs in accordance to the received power-based estimation employed for the channel between the PR and the ST is validated by means of a hardware deployment. The variations (induced due to incorporation of channel estimation) in the system parameters are validated by comparing their probability density functions obtained from the measurements to those computed analytically. Moreover, the joint performance of the underlay system is validated in terms of an estimation-throughput tradeoff proposed in Chapter \ref{chap:US}. %A suitable hardware environment is establish to perform measurements and evaluate their results by comparing them with the theoretical expressions.
-	\item Demonstrator: Upon validating the theoretical expressions, a hardware demonstrator following the guidelines of an US is deployed. In this context, the applicability of the proposed framework in realistic scenarios is justified. Further, a graphical user interference is designed to procure insights while the demonstrator is operating.	
+	\item Empirical validation: The performance of the USs in accordance to the received power-based estimation employed for the channel between the PR and the ST is validated by means of a hardware deployment. The variations (induced due to incorporation of channel estimation) in the system parameters are validated by comparing their probability density functions obtained from the measurements to those computed analytically. Moreover, the joint performance of the underlay system is validated in terms of an estimation-throughput tradeoff, proposed in Chapter \ref{chap:US}. %A suitable hardware environment is establish to perform measurements and evaluate their results by comparing them with the theoretical expressions.
+	\item Demonstrator: Upon validating the theoretical expressions, a hardware demonstrator following the guidelines of an US is deployed. In this context, the applicability of the proposed framework in realistic scenarios is justified. Further, a graphical user interference is designed to procure insights on the operation of the demonstrator.	
 \end{itemize}
 
 %This paper is organized as follows: Section \ref{sysmod} introduces the system model. Section \ref{val} describes the experimental setup and the validation of the mathematical model. Section \ref{demo} portrays the implementation of the underlay system's hardware demonstrator. Finally, Section \ref{con} concludes the paper.
@@ -41,9 +42,9 @@ This chapter provides the following contributions:
 \label{ssec:simp1}
 In contrast to the framework presented in Chapter \ref{chap:US}, the following simplifications and modifications are considered for the hardware implementation.
 \begin{itemize}
-\item The channel estimation (received power-based) is only deployed for the link between the PR and the ST, which is associated with the interference (power) received at the PR. In order to simplify the deployment, the interference from the PTs at the SR is neglected. Although the interference from the PTs plays an significant role in characterizing the throughput at the SR and demonstrating the co-existence with the primary system, hence, the interference at the PR is more critical for the PU or the regulatory bodies. In addition, perfect knowledge of the access channel between the ST and the SR that employs the pilot-based channel estimation is considered\footnote{Since the effect due to the pilot-based channel estimation in terms of time allocated within the frame structure and the amount of variations induced has negligible effect on the performance degradation of the CR system, perfect channel estimation for access channel presents a reasonable assumption.}.  
+\item The channel estimation (received power-based) is only deployed for the link between the PR and the ST, which is associated with the interference (power) received at the PR. In order to simplify the deployment, the interference from the PTs at the SR is neglected. Although the knowledge of the interference from the PTs is essential for characterizing the secondary throughput, the knowledge of the interference at the PR is critical for the imposition of the PU constraints. In addition, perfect knowledge of the access channel between the ST and the SR that employs the pilot-based channel estimation is considered\footnote{In contrast to the received power-based estimation, the employment of pilot-based channel estimation has an negligible effect on the performance degradation in terms of the time allocated within the frame structure and the amount of variations induced. In this context, perfect channel estimation for access channel presents a reasonable assumption.}.  
 \item The measurements taken to perform the validation and the demonstration for the proposed deployment scenario consider the deterministic behaviour of the interference channel.  
-\item As an alternative to the outage constraint proposed in Chapter \ref{chap:US} for regulating the uncertain interference at the PR, a confidence probability constraint is employed for capturing the variations due to channel estimation around the interference temperature. %Moreover, previous analysis considers the realization of the power control over multiple frame. Here, the power control subject  
+\item As an alternative to the outage constraint, proposed in Chapter \ref{chap:US} for regulating the uncertain interference at the PR, a confidence probability constraint is employed for capturing the variations due to channel estimation around the interference temperature. %Moreover, previous analysis considers the realization of the power control over multiple frame. Here, the power control subject  
 \item Lastly, in contrast to the OFDM signal considered in Chapter \ref{chap:US}, in this chapter all transmit signals (which include pilot and data signals) at the primary and the secondary systems are modeled as a constant power signal. 
 \end{itemize}
 
@@ -62,18 +63,20 @@ In accordance to these simplifications and the modifications, the system model f
 	\subfloat[]{
 	\includegraphics[width=0.45\textwidth]{figures/Frame_Structure_grau_U}%
 	}
-	\caption{A simplified (with respect to Chapter \ref{chap:US}) illustration of (a) the CSC scenario demonstrating an underlay paradigm. (b) Frame structure from the perspective of the ST that presents a time duration ($\test$) allocated within the frame duration for the estimation of the interference channel.} 
+	\caption{ With regard to Chapter \ref{chap:US}, a simplified illustration of (a) the CSC scenario demonstrating an underlay paradigm. (b) Frame structure from the perspective of the ST that presents a time duration ($\test$) allocated for the estimation of the interference channel.} 
 	\label{fig_HVD:scenario}
 	%\vspace{-10 pt}
 \end{figure}
 
 
 
-\figurename~\ref{fig_HVD:scenario} depicts a CSC deployment consisting of a CSC-BS, a MS, a PR and a MC-BS. Analog to the previous scenarios, the CSC-BS and the MS represent a ST and a SR. The channels between the PR and the ST and between the ST and SR are designated as the interference and the access channels with channel gains $\hpth$ and $\gs$, respectively. A power control mechanism is employed at the ST to ensure that interference received at the PR is below a certain level. In order to exercise power control mechanism, it is necessary to acquire the knowledge of the channel between the ST and the PR. As proposed in Chapter \ref{chap:US}, the ST can retrieve this information by listening to a pilot or beacon signal transmitted by the PR. %For the received pilot signal ($y_\textrm{rcvd}$) and its power, we use the model and notations from \cite{Kaushik15}.
+%\figurename~\ref{fig_HVD:scenario} depicts a CSC deployment consisting of a CSC-BS, a MS, a PR and a MC-BS. Analog to the previous scenarios, the CSC-BS and the MS represent a ST and a SR. 
+
+In accordance with Chapter \ref{chap:US}, the channels between the PR and the ST and between the ST and SR are designated as the interference and the access channels with channel gains $\hpth$ and $\gs$, respectively. A power control mechanism is employed at the ST to ensure that interference received at the PR is below a certain level. In order to exercise power control mechanism, it is necessary to acquire the knowledge of the channel between the ST and the PR. As proposed in Chapter \ref{chap:US}, the ST can retrieve this information by listening to a pilot or beacon signal transmitted by the PR. %For the received pilot signal ($y_\textrm{rcvd}$) and its power, we use the model and notations from \cite{Kaushik15}.
 
 
-A slotted medium access is implemented at the ST with a frame duration of $T$. The knowledge of the interference channel is acquired by employing channel reciprocity over the link PR-ST. Besides, $T$ is selected such that the channel can be assumed to remain constant for the frame duration. %Based on this premise, $g_\textrm{p}$ and $g_\textrm{s}$ are constant within one frame and included in $\alpha_\textrm{p}$ and $\alpha_\textrm{s}$ for further analysis.
-In order to incorporate channel estimation in context to the power control mechanism, the frame interval is divided in two phases, namely estimation and data transmission, refer to \figurename~\ref{fig_HVD:scenario}. During the estimation phase $\test$ (also referred as estimation time), the ST measures the received power of the signal\footnote{This signal can be a data or a pilot signal with known transmit power.} transmitted by the PR. Based on this received power, the ST estimates $\phpth$ and control its transmit power for the secondary link in order to satisfy a certain constraint on the interference power (interference) received by the PR. During the data transmission phase $T-\test$, the ST transmits data with the controlled power to the SR.
+A slotted medium access is implemented at the ST with a frame duration of $T$. The knowledge of the interference channel is acquired by employing channel reciprocity over the link PR-ST. %Besides, $T$ is selected such that the channel can be assumed to remain constant for the frame duration. %Based on this premise, $g_\textrm{p}$ and $g_\textrm{s}$ are constant within one frame and included in $\alpha_\textrm{p}$ and $\alpha_\textrm{s}$ for further analysis.
+In order to incorporate channel estimation in context to the power control mechanism, the frame interval is divided in two phases, namely estimation and data transmission, refer to \figurename~\ref{fig_HVD:scenario}. During the estimation phase $\test$ (also referred as estimation time), the ST measures the received power of the signal (a pilot signal with known transmit power, refer to Section \ref{ssec_US:as} in Chapter \ref{chap:US} for a detailed discussion) transmitted by the PR. Based on this received power, the ST estimates $\phpth$ and control its transmit power for the secondary link in order to satisfy a certain constraint on the interference power (interference) received by the PR. During the data transmission phase $T-\test$, the ST transmits data with the controlled power to the SR.
 
 \subsection{Signal Model}
 The discrete and complex signal received at the ST is given by
@@ -83,22 +86,28 @@ The discrete and complex signal received at the ST is given by
 \label{eq_HVD:sys_mod_st}
 \end{equation}
 where $\xtranpr[n]$ corresponds to a discrete and complex constant power signal transmitted by the PR, $\phpth$ represents the power gain for the channel PR-ST and $\wst[n]$ is circularly symmetric AWGN at the ST.
- $\ptranpr$  corresponds to the transmit power at the PR and $\wst[n]$ is an i.i.d. Gaussian random process with mean $\e{}{\wst[n]} = 0$ and variance $\e{}{|\wst[n]|^2} = \nps$. By the listening to the transmissions from the PR, the estimated received power at the ST, computed using $\test \fsam$ samples, is given as
+ $\ptranpr$  corresponds to the transmit power at the PR and $\wst[n]$ is a Gaussian random variable with mean $\e{}{\wst[n]} = 0$ and variance $\e{}{|\wst[n]|^2} = \nps$. 
+
+By listening to the transmissions from the PR, the estimated received power at the ST, computed using $\test \fsam$ samples, is given as
 \begin{align}
-\eprcvdstpr = \s{\test \fsam}{ |\hpth \xtranpr[n] + \wst[n]|^2},
+\eprcvdstpr = \s{\test \fsam}{ |\hpth \cdot \xtranpr[n] + \wst[n]|^2},
 \label{eq_HVD:prcvd} 
 \end{align}
-where $\fsam$ denotes the sampling frequency. After implementing the power control $(\preg)$ at the ST, the received signal at the PR, during the data transmission, is given by
+where $\fsam$ denotes the sampling frequency. 
+
+After implementing the power control at the ST, during the data transmission, the received signal at the PR is given by
 \begin{equation}
 \yp[n] = \hpth \cdot \xscont[n] + \wpr[n],
 \label{eq_HVD:sys_mod_pr}
 \end{equation}
-and on the other side, the received signal at the SR follows
+and, on the other side, the received signal at the SR follows
 \begin{equation}
 \ys[n] = \gs \cdot \xscont[n] + \wsr[n],
 \label{eq_HVD:sys_mod_sr}
 \end{equation}
-where $\xscont[n]$ is an i.i.d. random process. During the data transmission phase, the controlled power at the ST is determined as 
+where $\xscont[n]$ presents the signal with controlled power ($\preg$) at the ST. 
+
+During the data transmission phase, the controlled power at the ST is determined as 
 \begin{align}
 \epreg = \s{(T - \test) \fsam}{|\xscont[n]|^2} 
 \label{eq_HVD:preg} 
@@ -110,12 +119,12 @@ During the data transmission phase, the received powers at the PR and the SR are
 \eprcvdpr = \s{(T - \test) \fsam}{|\yp[n]^2|}  \intertext{ and} \prcvdsr 
 = \s{(T - \test) \fsam}{|\ys[n]^2|}, 
 \end{align}
-respectively. Likewise (\ref{eq_HVD:sys_mod_st}), $\wpr[n]$ and $\wsr[n]$ represent circularly symmetric AWGN at the PR and the ST with zero mean and variance $\e{}{|\wpr[n]|^2} = \e{}{|\wsr[n]|^2} = \npp$, correspondingly. %Consider that $\ptran$, $\preg$ and $\pp$ correspond to power for a given frame. 
+respectively. Likewise (\ref{eq_HVD:sys_mod_st}), $\wpr[n]$ and $\wsr[n]$ represent circularly symmetric AWGN at the PR and the ST with zero mean and variance $\e{}{|\wpr[n]|^2} = \e{}{|\wsr[n]|^2} = \npp$, respectively. %Consider that $\ptran$, $\preg$ and $\pp$ correspond to power for a given frame. 
 %For (\ref{eq_HVD:sys_mod_sr}), we assume that the interference at SR from the PR via beacon or pilot channel is $< \nps$, which is a valid assumption considering the indoor scenario depicted in \figurename~\ref{fig_HVD:scenario}. 
 %For (\ref{eq_HVD:sys_mod_sr}), we consider a perfect allignment of the ST to the beacon or pilot channe
 %\subsubsection{Channel}
 
-After utilizing $\test$ for channel estimation, the throughput at the SR (secondary throughput) over the access channel\footnote{Please note, it is assumed that the access channel is perfectly known at the ST.} is given by
+After utilizing $\test$ for channel estimation, the throughput at the SR (secondary throughput) over the access channel\footnote{Please note, it is assumed that the access channel is perfectly known at the ST and SR procures no interference from the PT.} is given by
 \begin{equation}
 \ers = \frac{T - \test}{T} \log_2 \left(1 + \frac{\pgs \epreg }{\nps} \right). 
 \label{eq_HVD:sthr}
@@ -131,8 +140,10 @@ In order establish a close relationship between the analytical framework and the
 
 \begin{enumerate}
 	%\item The PR sends a pilot signal with power $\ptranpr$ to the ST.
-	\item The ST estimates the power received $\eprcvdstpr$ (receiver power-based estimation) by listening to the pilot signal transmitted by the PR over the interference channel. In the context of the hardware implementation, an unmodulated sinusoidal signal is sent as a pilot or beacon signal\footnote{The sinusoidal signal is mathematically equivalent to the constant power signal sent by the PR, which resembles a constant phase modulated signal or a perfectly downsampled (by choosing the sampling point appropriately, thereby satisfying the Nyquist criterion) Phase Shift Keying (PSK) signal \citeK{Kaushik16_VTC2}.}.
-	\item With the knowledge of the $\ptranpr$ and the estimate $\eprcvdstpr$, the ST indirectly acquires the knowledge of $\ephpth$. 
+	\item The ST estimates the power received $\eprcvdstpr$ (i.e., employs receiver power-based estimation) by listening to the pilot signal transmitted by the PR over the interference channel. In the context of the hardware implementation, an unmodulated sinusoidal signal is sent as a pilot or beacon signal. 
+
+Please note that a sinusoidal signal is mathematically equivalent to the constant power signal sent by the PR, resembling a continuous phase modulated signal (for instance, a minimum shift keying signal) or a discrete phase modulated signal (for instance, a phase shift keying signal), which represents a perfectly downsampled signal. In this context, the perfect implies an appropriate selection of the sampling point so that no inter symbol interference is procured by the system (in other words, Nyquist criterion is satisfied). In correspondence to the signal model that assumes i.i.d. samples, such a requirement is essential for the validation of the received power, necessary for the employment of energy detection or received power-based channel estimation, considered in the thesis.
+	\item With the knowledge of $\ptranpr$ and the estimate $\eprcvdstpr$, the ST indirectly acquires the knowledge of $\ephpth$. 
 	Upon acquiring this knowledge, a power control is employed at the ST. Using $\eprcvdstpr$, $\epreg$ is determined as 
 \begin{align}
 \epreg = \frac{\ite K}{\eprcvdstpr}, \label{eq_HVD:preg} 
@@ -141,17 +152,17 @@ where $K$ represents a scaling factor. The scaling factor is required at the ST 
 \begin{align}
 K = \frac{1}{ \e{\eprcvdstpr}{\frac{\phpth}{\eprcvdstpr}}}, \label{eq_HVD:sca} 
 \end{align}
-where, $\e{\eprcvdstpr}{\cdot}$ represents the expectation over $\eprcvdstpr$.
+where $\e{\eprcvdstpr}{\cdot}$ represents the expectation over $\eprcvdstpr$.
 	%It is scaled such that, in case of perfect channel reciprocity and the absence of noise on the primary link, the interference power arriving at the PR ($\prcvdpr$) has the value of the interference temperature ($\ite$). %In control theory terms, $\ite$ is the setpoint for $\prcvdpr$.
 	\item The ST transmits data to the SR with $\epreg$. 
 	%\item The SR receives the data signal with power $\preg$ It provides this value back over a feedback channel to the ST, where it is used to estimate the expected secondary throughput $\e{\rs}{\rs}$ over the access channel.
-	The estimated power ($\eprcvdstpr$) over the interference channel induces variations in the controlled power defined as $\epreg$. Following the relation between the controlled power at the ST and the received power at the PR 
+	The estimated power (represented as $\eprcvdstpr$) over the interference channel induces variations in the controlled power (represented as $\epreg$). With regard to the relation between the controlled power at the ST and the received power at the PR, represented as 
 \begin{align}
 \eprcvdpr  = \phpth \epreg,
 \label{eq_HVD:eprcvdpr}
 \end{align}
-the variations in $\epreg$ translate to the variations in $\prcvdpr$ (defined as $\eprcvdpr$) around $\ite$, which result in uncertain interference at the PR. Unless captured, these variations may severely degrade the performance of the US. Besides this, due to the relationship between the controlled power and the secondary throughput defined in (\ref{eq_HVD:sthr}), a certain amount of the variations are further translated to the secondary throughput. These variations in the system parameters ($\eprcvdstpr$, $\epreg$, $\eprcvdpr$ and $\ers$) are characterized in terms of their pdfs.  
-	\item In particular, the pdf of $\eprcvdpr$ is utilized to employ an interference constraint (also referred as confidence probability constraint) in terms of confidence probability $\pco$ at the ST such that the uncertain interference at the PR can be effectively regulated. In addition, by utilizing the pdf of $\ers$, the performance of the access channel is determined in terms of the expected secondary throughput. Finally, subject to the interference constraint on the confidence probability the performance of the US is jointly characterized in terms of a tradeoff between the estimation time and the secondary throughput tradeoff. 
+the variations in $\epreg$ translate to the variations in $\prcvdpr$ (represented as $\eprcvdpr$) around $\ite$, resulting in uncertain interference at the PR. Unless captured, these variations may severely degrade the performance of the US. Besides this, due to the relationship between the controlled power and the secondary throughput, defined in (\ref{eq_HVD:sthr}), the variations are further translated to the secondary throughput. 
+\item These variations in the system parameters ($\eprcvdstpr$, $\epreg$, $\eprcvdpr$ and $\ers$) are characterized in terms of their pdfs. In particular, the pdf of $\eprcvdpr$ is utilized to employ an interference constraint (also referred as confidence probability constraint) in terms of confidence probability $\pco$ at the ST such that the uncertain interference at the PR can be regulated. In addition, by utilizing the pdf of $\ers$, the performance of the access channel is determined in terms of the expected secondary throughput. \item Finally, subject to the interference constraint on the confidence probability, the performance of the US is jointly characterized in terms of a tradeoff between the estimation time and the secondary throughput tradeoff. 
 \end{enumerate}
 
 \subsection{Characterization of the System Parameters}
@@ -160,7 +171,7 @@ In order to capture the variations induced due to channel estimation, the pdfs o
 In accordance to the employed signal model, $\prcvdstpr$ is modeled as a non-central chi-squared distribution $\ncchi2$, whose pdf is characterized as \cite{Char99}
 \begin{align}
 	\label{eq_HVD:dprcvdstpr}
-	\dprcvdstpr (x) &= 
+	\dprcvdstpr (x) =& 
 	\frac{\test \fsam}{2\npp} \left(\frac{\test \fsam x}{\lambda}\right)^\frac{\test \fsam-2}{4} \exp\left(-\frac{\test \fsam x+\lambda}{2\npp}\right)  \times \\ 
 	\quad & I_{ \frac{\test \fsam}{2}-1 }\left(\frac{\sqrt{\test \fsam x \lambda}}{\npp}\right) \nonumber  ,
 \end{align}
@@ -180,7 +191,7 @@ Corresponding to (\ref{eq_HVD:preg}), $\epreg$ follows an inverse non-central ch
 %where $\q{\frac{N}{2} - 1}{\cdot, \cdot}$ is the Marcum-Q function \cite{grad}.
 %where $I_{\frac{N}{2}  - 1}(\cdot)$ represents the Bessel function of order $\frac{N}{2} - 1$ \cite{grad}.
 
-Following the relation in (\ref{eq_HVD:eprcvdpr}) and substituting $\dpreg(x)$ defined in (\ref{eq_HVD:dpreg}), the pdf of $\eprcvdpr$ is determined as 
+Following the relation in (\ref{eq_HVD:eprcvdpr}) and substituting $\dpreg(x)$, defined in (\ref{eq_HVD:dpreg}), the pdf of $\eprcvdpr$ is determined as 
 \begin{align}
 \dprcvdpr(x) =& \frac{\phpth \test \fsam K \ite}{2\npp x^2} e^{- \frac{\test \fsam \phpth}{2 \npp}\left( \frac{K  \ite}{x} + \ptran \right)} \left( \frac{K \ite}{x \ptran}   \right)^{\frac{\test \fsam}{4} - \frac{1}{2}} \times \label{eq_HVD:dpp} \\
 \quad & I_{\frac{\test \fsam}{2}  - 1}\left( \frac{\test \fsam \phpth}{\npp} \sqrt{\frac{ K \ite \ptran}{x}}  \right). \nonumber
@@ -196,21 +207,14 @@ where $Q_{\frac{\test \fsam}{2}}(\cdot)$ is the Marcum Q-function \cite{Jef00}.
 
 %The system variables $P_\textrm{cont}$, $P_\textrm{p}$, and $R_\textrm{s}$ are derived from $P_\textrm{rcvd}$ in \cite{Kaushik15}, where the respective pdfs $f_{P_\textrm{cont}}(\cdot)$ and $f_{P_\textrm{p}}(\cdot)$ are also provided. In \cite{Kaushik15}, $f_{R_\textrm{s}}(\cdot)$ represented a pdf of the capacity. Here, we modify this expression to determine the pdf of the secondary throughput
 Next, the pdf of the secondary throughput $\ers$ is determined as
-\begin{equation}
-	\label{eq_HVD:drs}
-	\drs \left(x\right) =
-	\frac{T}{T-\test}\frac{\test \fsam K \ite \phs \ln{2}}{2 \npss} 
-	\left(\frac{p\left(x\right)+1}{\left[p\left(x\right)\right]^2} \right)
-	e^{-\frac{\test \fsam}{2 \npp} \left(\frac{K \theta_\textrm{I} \alpha_\textrm{s}}{p\left(x\right)\nps} + \phpth \ptran \right)}
-\end{equation}
-\begin{equation*}
-	\times \left(\frac{K \ite \phs}{p\left(x\right) \phpth} \ptran \nps\right)^{\frac{\test \fsam}{4}-\frac{1}{2}}
-	I_{\frac{\test \fsam}{2}-1}\left(\frac{\test \fsam}{\sigma_\textrm{p}^2}\sqrt{\frac{K \ite \phpth \ptran \phs}{p\left(x\right) \nps}}\right) \;  ,
-\end{equation*}
-\begin{equation*}
-\text{where } p\left(x\right) = 2^\frac{Tx}{T-\test}-1 \;  .
-\end{equation*} 
-
+\begin{align}
+	\drs \left(x\right)  =&  \frac{T}{T-\test}\frac{\test \fsam K \ite \phs \ln{2}}{2 \npss} 
+	\left(\frac{p\left(x\right)+1}{\left[p\left(x\right)\right]^2} \right) \times \label{eq_HVD:drs} \\ 
+	& \exp \left(-\frac{\test \fsam}{2 \npp} \left(\frac{K \theta_\textrm{I} \alpha_\textrm{s}}{p\left(x\right)\nps} + \phpth \ptran \right) \right) \times \nonumber \\ 
+	& \left(\frac{K \ite \phs}{p\left(x\right) \phpth} \ptran \nps\right)^{\frac{\test \fsam}{4}-\frac{1}{2}} \times \nonumber \\
+	& I_{\frac{\test \fsam}{2}-1}\left(\frac{\test \fsam}{\sigma_\textrm{p}^2}\sqrt{\frac{K \ite \phpth \ptran \phs}{p\left(x\right) \nps}}\right), \nonumber \\
+\text{where } & p\left(x\right) = 2^\frac{Tx}{T-\test}-1 \nonumber.
+\end{align}
 
 
 
@@ -692,7 +696,7 @@ These observations demonstrate that the received power-based estimation (which e
                 \end{scope}
         \end{tikzpicture}
 	}	
-	\caption{A snapshot of the performance parameters at the ST displayed in the graphical user interface.}
+	\caption{A snapshot of the performance parameters at the ST displayed by means of the graphical user interface.}
 	\label{fig_HVD:interface_ST}
 	%\vspace{-10 pt}
 \end{figure}
@@ -719,7 +723,7 @@ These observations demonstrate that the received power-based estimation (which e
                 \end{scope}
         \end{tikzpicture}
 	}
-	\caption{A snapshot of the performance parameters at the PR displayed in the graphical user interface.}
+	\caption{A snapshot of the performance parameters at the PR displayed by means of the graphical user interface.}
 	\label{fig_HVD:interface_PR}
 	%\vspace{-10 pt}
 \end{figure}
@@ -797,7 +801,7 @@ In this chapter, the performance of an underlay system in consideration to a har
 %In this regard, the validation of a stochastic model that incorporates the pdfs of the system parameters has been considered. In addition, the performance analysis in terms of estimation-throughput tradeoff has been validated. 
 In reference to the deployment process, it has been concluded that the knowledge of the interacting channels plays a crucial role in the hardware realization of the CR systems, the main aspect outlined in the thesis. Following the validation process, it has been justified that the proposed analysis that incorporates the received power-based estimation for the links between the primary and the secondary systems, proposed in the thesis, facilitates the hardware feasibility of a CR system by supporting low complexity and the versatility towards unknown primary user signals. Based on the experimental validation, a hardware demonstrator that depicts the principle working of the underlay system has been examined. 
 
-More importantly, in this chapter, the major challenges such as \begin{itemize} \item a certain pre-processing to exclude spurious effects, affecting the hardware validation of the derived expressions, \item a careful selection of the estimation time for a given operation regime defined in terms of signal-to-noise ratio received at the SR, \item proper application of the power control and \item realization of Time Division Duplexing, \end{itemize} considered while deploying the demonstrator have been discussed adequately. Consequently, the corresponding solutions and simplifications to overcome these challenges have been proposed.  
+More importantly, in this chapter, the major challenges such as \begin{itemize} \item a certain pre-processing to exclude spurious effects, affecting the hardware validation of the derived expressions, \item a careful selection of the estimation time for a given operation regime defined in terms of signal to noise ratio received at the SR, \item proper application of the power control and \item realization of Time Division Duplexing, \end{itemize} considered while deploying the demonstrator have been discussed adequately. Consequently, the corresponding solutions and simplifications to overcome these challenges have been proposed.  
 
 
 %In the future, we intend to reconsider certain simplifications made while deploying the demonstrator, for instance, we propose to deploy a USRP for the SR and try to synchronize the frame structure at the ST and the PR in order to respect channel reciprocity.
