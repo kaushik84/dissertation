@@ -193,6 +193,7 @@ As a result, $\ehs$ conditioned on $\hs$ follows a circularly symmetric Gaussian
 $\ehs|\hs \sim \mathcal{CN}\left( \hs,\frac{\npo}{\Ks} \right)$.
 %\label{eq_HS:ehs} 
 %\end{align*}
+
 Consequently, the estimated power gain $|\ehs|^2$ follows a non-central chi-squared $\ncchi2(\ls, 2)$ distribution with 2 degrees of freedom and non-centrality parameter $\ls = \frac{\Ks \phs}{\npo}$. 
 %For analytical tractability, the following approximation is considered. 
 %\begin{approxi} \label{ap:ap1}
@@ -285,7 +286,7 @@ The pdf of $\ecz$ is defined as (refer to Chapter \ref{chap:IS}, (\ref{eq_IS:den
 \begin{align}
 \text{where  } \apz = \as &\text{ and } \bpz = \frac{\pfull}{\npo} \bs,  \label{eq_HS:den_C0_para} 
 \end{align}
-where $\as$ and $\bs$ are defined in (\ref{eq_HS:para_hs}).
+whereas $\as$ and $\bs$ are defined in (\ref{eq_HS:para_hs}).
 \end{lemma}
 
 \begin{lemma} \label{lm_HS:lem4} 
@@ -310,8 +311,9 @@ The pdf of $\ectw$ is defined as
 \end{align}
 %\vspace{-4mm}
 \begin{align}
-\text{where  } \apt = \frac{(1 + \ls)^2}{2 + 4 \ls} &\text{ and } \bpt = \frac{\preg}{\npo}\frac{\nps (2 + 4 \ls)}{(1 + \ls)}.  \label{eq_HS:den_C2_para} 
+\text{where  } \apt = \as &\text{ and } \bpt = \frac{\preg}{\npo} \bs,  \label{eq_HS:den_C2_para} 
 \end{align}
+whereas $\as$ and $\bs$ are defined in (\ref{eq_HS:para_hs}).
 \end{lemma}
 
 \begin{lemma} \label{lm_HS:lem6}
@@ -371,7 +373,7 @@ Next, using the constraint (\ref{eq_HS:oc_it_def}), the controlled transmit powe
 \label{eq_HS:preg}
 \end{align}
 Solving numerically (\ref{eq_HS:preg}) yields $\preg$ for the HS.
-Finally, by substituting $\mu$ and $\preg$ computed in (\ref{eq_HS:preg}) and (\ref{eq_HS:thr}), and using the pdfs of $\epd$, $\ecz, \eco, \ectw$ and $\ecth$ determined in Lemma \ref{lm_HS:lem1}, Lemma \ref{lm_HS:lem3}, Lemma \ref{lm_HS:lem4}, Lemma \ref{lm_HS:lem5} and Lemma \ref{lm_HS:lem6}, an expression of $\rs$ as a function of $\testpt$, $\testptsr$, $\testpr$ and $\tsen$ is determined, cf. (\ref{eq_HS:exp_thr}). Solving numerically $\rs$ delivers $\ttestpt$, $\ttestptsr$, $\ttestpr$ and $\ttsen$ that achieves the maximum expected secondary throughput.  
+Finally, by substituting $\mu$ and $\preg$ (computed in (\ref{eq_HS:preg}) and (\ref{eq_HS:thr})), and using the pdfs of $\epd$, $\ecz, \eco, \ectw$ and $\ecth$ (determined in Lemma \ref{lm_HS:lem1}, Lemma \ref{lm_HS:lem3}, Lemma \ref{lm_HS:lem4}, Lemma \ref{lm_HS:lem5} and Lemma \ref{lm_HS:lem6}), an expression of $\rs$ as a function of $\testpt$, $\testptsr$, $\testpr$ and $\tsen$ is determined, cf. (\ref{eq_HS:exp_thr}). Solving numerically $\rs$ delivers $\ttestpt$, $\ttestptsr$, $\ttestpr$ and $\ttsen$ that achieves the maximum expected secondary throughput.  
 \end{IEEEproof}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Numerical Analysis} \label{sec_HS:num_ana}
@@ -410,7 +412,7 @@ $\Ks$ & 10 \\ \hline
 %\vspace{-2mm}
 \end{table}
 
-In this section, the performance of the proposed approach is evaluated. In this view, simulations are performed: (i) to validate the expressions obtained in the previous section, (ii) to analyze the performance loss incurred due to channel estimation caused due to the time allocation for the estimation and the imperfect channnel knowledge. In order to illustrate the performance degradation, the ideal model is considered to benchmark the performance of the proposed approach. Unless stated explicitly, the choice of parameters given in Table \ref{tb_HS:tb2} is considered for analysis. 
+In this section, the performance of the proposed approach is evaluated. In this view, simulations are performed: (i) to validate the expressions obtained in the previous section, (ii) to analyze the performance loss incurred due to the time allocation for the estimation and the imperfect channnel knowledge. In order to illustrate the performance degradation, the ideal model is considered to benchmark the performance of the proposed approach. Unless stated explicitly, the choice of parameters given in Table \ref{tb_HS:tb2} is considered for analysis. 
 
 First the performance of the HS is analyzed in terms of a sensing-throughput tradeoff, cf. Problem \ref{th_HS:th1}, corresponding to the Ideal Model (IM) and Estimation Model (EM) by fixing $\testpt = \testptsr =  \testpr = \SI{1}{ms}$, cf. \figurename~\ref{fig_HS:STT}. With the inclusion of channel estimation in the frame structure, the ST procures no throughput at the SR for the interval $\testpt$. As indicated by the margin between the IM and the EM, a certain performance degradation is witnessed by the EM due to the incorporation of channel estimation. Moreover, the sensing-throughput tradeoff yields a suitable sensing time $\ttsen$ that achieves the maximum performance in terms of secondary throughput $\rs(\ttsen)$. Hereafter, the theoretical expressions are considered for the analysis. In addition, the proposed EM operates at the suitable sensing time. 
 
@@ -443,7 +445,7 @@ First the performance of the HS is analyzed in terms of a sensing-throughput tra
 
 
 \begin{figure}[!ht]
-\vspace{-0.5cm}
+%\vspace{-0.5cm}
 %% Add psfrag entries
 \input{figures/fig_opt_thr_vs_SNR_AWGN.tex}
 \centering
@@ -496,7 +498,11 @@ First the performance of the HS is analyzed in terms of a sensing-throughput tra
 %\vspace{-0.45cm}
 \end{figure}
 
-Following the previous discussions, it is well-known that the combination of interweave and underlay systems is intended to enhance the performance of the HS. Hence, it is worthy to acquire insights on the performance gain in terms of the achievable secondary throughput due to the association of the underlay and the interweave techniques in the HS. In this regard, it is essential to observe the variation of the achievable secondary throughput corresponding to the interference channel from the ST to the PR, cf. \figurename~\ref{fig_HS:scenario}. Before proceeding with the analysis, it is essential to understand that the performance of the underlay system decreases with the increase in the channel gain $\phpth$. To simplify the analysis, the channel gain $\phpth \in [-110, -90] \SI{}{dBm}$ is categorized in three different regimes: (i) Regime I, (ii) Regime II and (iii) Regime III, cf. \figurename~\ref{fig_HS:optT_SNR}. Under Regime I, large channel gain $\phpth > -\SI{93}{dB}$ results in a severe power control causing the controlled power to fall below a certain level $\preg \le \SI{-20}{dBm}$, cf. \figurename~\ref{fig_HS:optPcont_SNR}, for the considered value of the channel gain $\phs = \SI{-80}{dB}$ over the access channel, such a low power transmission do not translate to an effective performance gain to the HS. As a result, no benefits are attained from the underlay system while operating in this regime. Hence, the HS procures throughput mainly by finding spectrum holes in the PU traffic, thereby operating as an IS. In contrast to that, the Regime II ($-\SI{103}{dB} < \phpth < -\SI{93}{dB}$) witnesses a significant performance gain as HS procures benefits from the US and the IS. Moreover, it is observed that no performance gain is attained below a certain channel gain $\phpth < \SI{-103}{dB}$ (Regime III). This is due to the fact that the ST is limited by the maximum transmit power, i.e., beyond $\SI{-103}{dB}$, $\preg$ operates at $\pfull$, as illustrated in \figurename~\ref{fig_HS:optPcont_SNR}. From this discussion, it can be concluded that the interference tolerance capability of the US and the detection capability of the IS incorporated by the HS can be transformed into significant performance gain only in situations where the channel gain between the ST and the PR goes below a certain level, for instance $\phpth < -\SI{93}{dBm}$ for the considered case.
+Following the previous discussions, it is well-known that the combination of interweave and underlay systems is intended to enhance the performance of the HS. Hence, it is worthy to acquire insights on the performance gain in terms of the achievable secondary throughput due to the association of the underlay and the interweave techniques in the HS. In this regard, it is essential to observe the variation of the achievable secondary throughput corresponding to the interference channel from the ST to the PR, cf. \figurename~\ref{fig_HS:scenario}. Before proceeding with the analysis, it is essential to understand that the performance of the underlay system decreases with the increase in the channel gain $\phpth$. To simplify the analysis, the channel gain $\phpth \in [-110, -90]$ $\SI{}{dBm}$ is categorized in three different regimes: (i) Regime I, (ii) Regime II and (iii) Regime III, cf. \figurename~\ref{fig_HS:optT_SNR}. 
+
+Under Regime I, large channel gain $\phpth > -\SI{93}{dB}$ results in a severe power control causing the controlled power to fall below a certain level $\preg \le \SI{-20}{dBm}$, cf. \figurename~\ref{fig_HS:optPcont_SNR}, for the considered value of the channel gain $\phs = \SI{-80}{dB}$ over the access channel, such a low power transmission do not translate to an effective performance gain to the HS. As a result, no benefits are attained from the underlay system while operating in this regime. Hence, the HS procures throughput mainly by finding spectrum holes in the PU traffic, thereby operating as an IS. In contrast to that, the Regime II ($-\SI{103}{dB} < \phpth < -\SI{93}{dB}$) witnesses a significant performance gain as HS procures benefits from the US and the IS. 
+
+Moreover, it is observed that no performance gain is attained below a certain channel gain $\phpth < \SI{-103}{dB}$ (Regime III). This is due to the fact that the ST is limited by the maximum transmit power, i.e., beyond $\SI{-103}{dB}$, $\preg$ operates at $\pfull$, as illustrated in \figurename~\ref{fig_HS:optPcont_SNR}. From this discussion, it can be concluded that the interference tolerance capability of the US and the detection capability of the IS incorporated by the HS can be transformed into significant performance gain only in situations where the channel gain between the ST and the PR goes below a certain level, for instance $\phpth < -\SI{93}{dBm}$ for the considered case.
 
 
 
@@ -525,7 +531,9 @@ Following the previous discussions, it is well-known that the combination of int
 
 Besides maximizing the secondary throughput over the sensing time, it is interesting to observe the variation of the achievable throughput with the estimation time.
 %It is evident that $\testptsr$ contributes only to the variations in the capacities $\co, \cth$, since the system model considers their expected values, cf. (\ref{eq_HS:exp_thr}), these variations does not have a significant impact on the achievable throughput. In this regard, we consider the variations due to $\testpt$ and $\testpr$ only. 
-As proposed in Problem \ref{th_HS:th1}, $\testpt = \testptsr = \testpr$ is considered for the analysis. Corresponding to the estimation model, \figurename~\ref{fig_HS:optT_est_time} reveals the estimation-sensing-throughput tradeoff. This effect can be explained as follows, the variations due to the estimation of $\phpo$ and $\phpth$ causes variations in $\epd$ and $\eprcvdpr$, these variations are captured using the outage constraints. As a result, a small increase in $\testpt$ $(= \testptsr = \testpr)$ leads to a significant performance improvement in terms of the secondary throughput. However, by increasing the estimation time beyond $\ttestpt$ $(= \ttestptsr= \ttestpr)$ slightly contributes to the performance improvement and largely consumes the time resources, which leads to performance degradation. Moreover, it is noticed that performance degradation of the secondary system evaluated in terms of $\rs(\testpt$ $= \testptsr = \testpr, \ttsen)$ becomes more sensitive to the estimation time $\ttestpt$ $(= \ttestptsr= \ttestpr)$ as $\opdc$ decreases. From this analysis, it can be concluded that a suitable choice of estimation time becomes significant, specially for those HSs that are pertained to the aggressive policies provided by the primary systems or the regulatory bodies. 
+As proposed in Problem \ref{th_HS:th1}, $\testpt = \testptsr = \testpr$ is considered for the analysis. Corresponding to the estimation model, \figurename~\ref{fig_HS:optT_est_time} reveals the estimation-sensing-throughput tradeoff. Such a performance tradeoff in the system can be explained as follows, the variations due to the estimation of $\phpo$ and $\phpth$ causes variations in $\epd$ and $\eprcvdpr$, these variations are captured using the outage constraints. As a result, a small increase in $\testpt$ $(= \testptsr = \testpr)$ leads to a significant performance improvement in terms of the secondary throughput. However, by increasing the estimation time beyond $\ttestpt$ $(= \ttestptsr= \ttestpr)$ slightly contributes to the performance improvement and largely consumes the time resources, leading to the performance degradation. 
+
+Moreover, it is noticed that performance degradation of the secondary system evaluated in terms of $\rs(\testpt$ $= \testptsr = \testpr, \ttsen)$ becomes more sensitive to the estimation time $\ttestpt$ $(= \ttestptsr= \ttestpr)$ as $\opdc$ decreases. From this analysis, it can be concluded that a suitable choice of estimation time becomes significant, specially for those HSs that are subjected to the aggressive policies, desired by the primary systems or the regulatory bodies. 
 
 
 \begin{figure}[!t]
