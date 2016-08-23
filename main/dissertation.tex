@@ -119,7 +119,7 @@ version=last
 %\usepackage{rotating} % Rotate the text sideways
 %\usepackage{adjustbox}% Rotate the text sideways
 
-%\makeindex
+\makeindex
 
 %% Redefine Spacing for the table of contents 
 %\usepackage[subfigure]{tocloft}
@@ -283,12 +283,14 @@ version=last
 \bibliography{IEEEabrv,../literatur/bibliography}
 \endgroup
 
+
+\printindex % index
+
 \bibliographystyleK{myIEEEtran}
 \bibliographyK{IEEEabrv,../literatur/mypaper}
 %\bibNoteK{This thesis contains material from the following publications. Reprinted with permission.}
 %\input{../anhang/students.tex}
 
-\printindex % index
 
 %\input{../anhang/sponsorship.tex}
 %\input{../anhang/lebenslauf.tex}

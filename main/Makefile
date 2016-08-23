@@ -1,5 +1,6 @@
 all: dissertation.tex ../literatur/bibliography.bib
 	latex dissertation.tex
+	makeindex dissertation.idx
 	dvips dissertation.dvi -o dissertation.ps
 	ps2pdf dissertation.ps
 
