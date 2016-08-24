@@ -1,6 +1,6 @@
 all: dissertation.tex ../literatur/bibliography.bib
 	latex dissertation.tex
-	makeindex dissertation.idx
+	makeindex dissertation
 	dvips dissertation.dvi -o dissertation.ps
 	ps2pdf dissertation.ps
 
@@ -10,6 +10,7 @@ full: dissertation.tex ../literatur/bibliography.bib ../literatur/mypaper.bib
 	latex dissertation.tex
 	bibtex dissertation
 	bibtex K 
+	makeindex dissertation
 	latex dissertation.tex
 	latex dissertation.tex
 	dvips dissertation.dvi -o dissertation.ps
