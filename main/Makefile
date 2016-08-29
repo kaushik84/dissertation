@@ -9,7 +9,7 @@ all: dissertation.tex ../literatur/bibliography.bib
 full: dissertation.tex ../literatur/bibliography.bib ../literatur/mypaper.bib
 	latex dissertation.tex
 	bibtex dissertation
-	bibtex K 
+	#bibtex K 
 	makeindex dissertation
 	latex dissertation.tex
 	latex dissertation.tex
