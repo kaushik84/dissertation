@@ -181,6 +181,7 @@ In order to facilitate channel estimation for the US, it is essential to take th
 %Similar problem for the interweave CR systems has been deeply investigated in Chapter \ref{chap:IS}, where it proposes to employ a received power-based estimation for the channels between the primary and the secondary systems and a pilot-based estimation for the access channel. 
 %Following a similar strategy as followed in Chapter \ref{chap:IS}, the received power-based and the pilot-based estimation techniques are applied in the underlay CR systems. 
 It is also worth stating that, since the signal model in Chapter \ref{chap:IS} (OFDM transmission) differs from the one (constant power transmission) studied in this chapter, new mathematical expressions for the performance parameters are derived. In the following paragraphs, the estimation of the power gains of the primary interference channel $\ephpth$, the access channel $\epgs$ and the secondary interference channel $\epgpt$ is considered. 
+\index{Channel estimation|(}
 \subsubsection{Estimation of primary interference channel} 
 Considering
 \begin{equation}
@@ -262,7 +263,7 @@ Applying Approximation \ref{ap:ap1} from Chapter \ref{chap:IS} to $\ncchi2(\lpt,
 \end{IEEEproof}
 %\begin{remark}
 %\normalfont
-
+\index{Channel estimation|)}
 
 \subsection{Assumptions} \label{ssec_US:as}
 In accordance to the received power-based estimation for the channel $\pgpth$ in (\ref{eq_US:prcvd}), it is noticed that the knowledge of $\ptran$ at the ST is essential for the characterization of the controlled power (considered later in Lemma \ref{lm_US:lm4}). However, this knowledge can be retrieved by considering the specifications of different wireless standards such GSM, EDGE and LTE, etc. \cite{Sharma14}. It is well-known that certain standards (considered as primary systems) follow adaptive modulation and coding, which can consequently change $\ptran$. Under this situation, the ST can employ more complex techniques such as pilot assisted techniques in order to determine $\ptran$ for the given frame.
