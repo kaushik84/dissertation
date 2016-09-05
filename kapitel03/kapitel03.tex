@@ -1320,6 +1320,12 @@ Complementing the analysis for the deterministic channel depicted in \figurename
 \end{figure}
 
 
+
+Next, the variation of $\rs(\test, \ttsen)$ along the estimation time is examined, refer to \figurename~\ref{fig_IS:optT_test_fad}. It is noticed that $\trs(\test, \ttsen)$ increases for low values of $\test$ and then decreases beyond $\ttest$. This can be explained as follows, low $\test$ increases the variations in $\epd$, shifting the threshold to lower values, which subsequently increases $\pfa$, hence, degrading the achievable secondary throughput. Beyond $\ttest$, the variations are largely dominated by the channel fading, therefore, the IS observes no improvement in the performance through an increase in $\test$. It is again depicted that the mild fading scenarios are more sensitive to the performance degradation in terms of the achievable secondary throughput. 
+
+\figurename~\ref{fig_IS:Pd_test_fad} presents the variation of expected detection probability against $\test$. It is indicated that the EM compensates for the variations due to the channel estimation and the channel fading to satisfy the outage constraint. Subsequently, \figurename~\ref{fig_IS:Pf_test_fad} illustrates the performance in terms of the false alarm probability. The random channel case encounters a similar behaviour as depicted by the deterministic channel, where $\pfa$ severely reduces beyond a certain $\test$. Beyond this value of $\test$, since $1 - \pfa \approx 1$, the reduction in $\pfa$ does not influence the performance of the IS in terms of the secondary throughput.  
+
+
 \begin{figure}[!ht]
 %
 %%% Add psfrag entries
@@ -1376,10 +1382,6 @@ Complementing the analysis for the deterministic channel depicted in \figurename
 \label{fig_IS:optT_m}
 %\vspace{-0.7cm}
 \end{figure}
-
-Next, the variation of $\rs(\test, \ttsen)$ along the estimation time is examined, refer to \figurename~\ref{fig_IS:optT_test_fad}. It is noticed that $\trs(\test, \ttsen)$ increases for low values of $\test$ and then decreases beyond $\ttest$. This can be explained as follows, low $\test$ increases the variations in $\epd$, shifting the threshold to lower values, which subsequently increases $\pfa$, hence, degrading the achievable secondary throughput. Beyond $\ttest$, the variations are largely dominated by the channel fading, therefore, the IS observes no improvement by increasing $\test$. From the analysis, it is again depicted that the mild fading scenarios are more sensitive to the performance degradation in terms of the achievable secondary throughput. 
-
-\figurename~\ref{fig_IS:Pd_test_fad} presents the variation of expected detection probability against $\test$. It is indicated that the EM compensates for the variations due to the channel estimation and the channel fading to satisfy the outage constraint. Subsequently, \figurename~\ref{fig_IS:Pf_test_fad} illustrates the performance in terms of the false alarm probability. The random channel case encounters a similar behaviour as depicted by the deterministic channel, where $\pfa$ severely reduces beyond a certain $\test$. Beyond this value of $\test$, since $1 - \pfa \approx 1$, the reduction in $\pfa$ does not influence the performance of the IS in terms of the secondary throughput.  
 
 Lastly, the performance degradation in terms of the achievable secondary throughput $\rs(\ttest, \tsen)$ versus the Nakagami-$m$ parameter (that accounts for severity in the fading) is investigated, refer to \figurename~\ref{fig_IS:optT_m}. For both scenarios, i.e., perfect (IM) and imperfect channel estimation (EM), the performance decreases with the severity in fading. In addition, by comparing the IM and the EM, it can be concluded that, for situations where the variations in the system are largely dominated by the channel estimation (where the interacting channel observe mild fading), the EM notices a greater performance degradation.
 
