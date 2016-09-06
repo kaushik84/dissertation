@@ -37,7 +37,9 @@ A novel analytical framework for the HS that constitutes the estimation of inter
 %This excessive interference is investigated as a part of the proposed framework. 
 In order to combat this uncertain interference, outage constraints on the detection probability at the ST and on the interference power received at the PR are employed. Consequently, the performance of the HS in terms of the achievable secondary throughput is analyzed.
 \subsection{Estimation-Sensing-Throughput Tradeoff}
-The performance of the proposed framework that incorporates channel estimation is analyzed by considering a fundamental tradeoff between estimation time, sensing time and achievable throughput. This tradeoff is exploited to determine suitable estimation and sensing durations that achieve a maximum performance for the HS in terms of the secondary throughput. From a system design perspective, this tradeoff provides the necessary tools for evaluating the performance degradation encountered by the HSs due to inappropriate selection of the estimation time. This degradation (depicted in terms of the secondary throughput) is determined by comparing the proposed framework to those scenarios that consider perfect channel knowledge (Ideal Model).  
+\index{Tradeoffs!estimation-sensing-throughput tradeoff}
+The performance of the proposed framework that incorporates channel estimation is analyzed by considering a fundamental tradeoff between estimation time, sensing time and achievable throughput. This tradeoff is exploited to determine suitable estimation and sensing durations that achieve a maximum performance for the HS in terms of the secondary throughput. %From a system design perspective, this tradeoff provides the necessary tools for evaluating the performance degradation encountered by the HSs due to inappropriate selection of the estimation time. 
+Again, the performance degradation in the HS is determined by comparing the proposed framework to those scenarios that consider perfect channel knowledge.  
 %Finally, the performance of the HS is characterized based on analytical expressions.
 %\end{itemize}
 %\subsection{Organization}
@@ -50,7 +52,8 @@ The performance of the proposed framework that incorporates channel estimation i
 \subsection{Hybrid Scenario and Medium Access}
 %Cognitive Small Cell (CSC), a CR application, characterizes a small cell deployment that fulfills the spectral requirements for Mobile Stations (MSs) operating indoor, cf. \figurename~\ref{fig_HS:scenario}.
 %For the disposition of the CSC in the network, the following key elements are essential: a CSC-Base Station (CSC-BS), a Macro Cell-Base Station (MC-BS) and MS \cite{Kaushik16}.
-Considering that the spectrum sensing and the power control mechanisms are employed at the CSC-BS, the CSC deployment is transformed into a hybrid scenario, by which the CSC-BS and the MS represent the ST and the SR, respectively. As an extension to the existing models depicted in \cite{Kang09, Sharma14}, a slotted medium access for the HS, where the time axis is segmented into frames of length $T$ is considered, according to which the ST employs periodic sensing. In this view, each frame consists of a sensing time interval $\tsen$ followed by data transmission ($T - \tsen$). Depending on the outcome of the sensing, the data transmission takes place with or without power control. 
+\index{Hybrid system!involved channels}
+The CSC deployment is transformed into a hybrid scenario, by which the CSC-BS and the MS represent the ST and the SR, respectively. The spectrum sensing and the power control mechanisms are employed at the CSC-BS. As an extension to the existing models depicted in \cite{Kang09, Sharma14}, a slotted medium access for the HS, where the time axis is segmented into frames of length $T$ is considered. Following this frame structure, the ST employs periodic sensing, where each frame consists of a sensing time interval $\tsen$ followed by data transmission ($T - \tsen$). Depending on the outcome of the sensing, the data transmission takes place with or without power control. 
 \begin{figure}[!t]
 \centering
 \includegraphics[width = \figscalet]{figures/CR_Scenario_Hybrid}
@@ -66,7 +69,7 @@ Considering that the spectrum sensing and the power control mechanisms are emplo
 %For the mentioned techniques, we consider a proper alignment of the ST to the PR transmissions. Hence, during data transmission at the ST, the SR procures no interference from the PR, cf. \figurename~\ref{fig_HS:scenario}. 
 
 \subsection{Signal Model}
-As illustrated in Chapter \ref{chap:IS} the primary and the secondary systems employ OFDM to carry out their transmissions. As a result, OFDM signals transmitted by the primary system are modelled as zero mean Gaussian signals by the secondary system, and vice versa. 
+As illustrated in Chapter \ref{chap:IS} the primary and the secondary systems employ OFDM\index{OFDM} to carry out their transmissions. As a result, OFDM signals transmitted by the primary system are modelled as zero mean Gaussian signals by the secondary system. 
 
 Subject to the underlying hypothesis, illustrating the presence $\mathcal H_1$ and the absence $\mathcal H_0$ of the primary signal, the discrete and complex received signal is given by 
 \begin{equation}
@@ -119,7 +122,7 @@ Besides that, an interference signal from the ST is encountered at the PR across
 where $\wpr[n]$ is circularly symmetric AWGN at the PR, with $\mathcal{CN}(0,\nps)$.
 
 \subsection{Problem Description}
-To employ a power control mechanism, the ST is required to control its transmit power in such a way that the interference power received at the PR is below a certain interference threshold ($\ite$). In reference to the HS, constraints on interference power received (corresponding to $\pd$ and $1 - \pd$) at the PR are defined as
+To employ a power control mechanism, the ST is required to control its transmit power in such a way that the interference power received at the PR is below a certain interference threshold ($\ite$)\index{Interference threshold}. In reference to the HS, constraints on interference power received (corresponding to $\pd$ and $1 - \pd$) at the PR are defined as
 \begin{align}
 \pho \cdot \pd \cdot \phpth \preg \le \ite \label{eq_HS:IT_ida} \\
 \intertext{and   } 
@@ -128,7 +131,7 @@ To employ a power control mechanism, the ST is required to control its transmit 
 where $\pho$ $(= 1 - \phz)$ represents the occurrence probability of the hypothesis $\mathcal H_1$. 
 According to \cite{Sharma14}, (\ref{eq_HS:IT_idb}) is usually handled by the regulatory bodies. In this regard, using (\ref{eq_HS:IT_ida}) and the knowledge of $\ite$, the controlled power is computed as $\frac{\ite}{\pho \cdot \pd \cdot \phpth}$.
 
-Next, the throughput received at the SR, corresponding to the cases illustrated in (\ref{eq_HS:sig_mod_sr}), is characterized. Subject to the sensing outcome $1 - \pfa, 1 - \pd, \pfa, \pd$, the corresponding throughputs at the SR are defined as 
+Next, \index{Secondary throughput}the throughput received at the SR, corresponding to the cases illustrated in (\ref{eq_HS:sig_mod_sr}), is characterized. Subject to the sensing outcome $1 - \pfa, 1 - \pd, \pfa, \pd$, the corresponding throughputs at the SR are defined as 
 \begin{align}
 \rsz(\tsen) =& \frac{T- \tsen}{T} \cdot \smash[b]{\overbrace{\log_2 \left(1 + |\hs|^2 \frac{\pfull}{\npo}\right)}^{\cz}} \cdot (1 - \pfa ) \cdot \phz,  \label{eq_HS:Cap0} \\ 
 \rso(\tsen) =& \frac{T- \tsen}{T} \smash[b]{\overbrace{\log_2 \left(1 + \frac{|\hs|^2 \pfull }{|\hptw|^2 \ptranpt  + \npo} \right)}^{\co}} \cdot (1 - \pd) \cdot \pho,  \label{eq_HS:Cap1} \\ 
@@ -136,9 +139,9 @@ Next, the throughput received at the SR, corresponding to the cases illustrated 
 \rsth(\tsen) =& \frac{T- \tsen}{T} \cdot \smash[b]{\overbrace{\log_2 \left(1 + \frac{|\hs|^2 \preg }{|\hptw|^2 \ptranpt  + \npo} \right)}^{\cth}} \cdot \pd \cdot \pho,  \label{eq_HS:Cap3}  
 %\text{where  } & \preg = \frac{\ptranpr \cdot \ite}{|\hpth|^2}.
 \end{align}
-where $\cz, \co, \ctw$ and $\cth$ represent the data rates.
+where $\cz, \co, \ctw$ and $\cth$ represent the data rates\index{Data rate}.
 
-In order to highlight the dependency of the uncertain interference and the secondary throughput that characterizes the performance of the HS, Sharma \textit{et al.} \cite{Sharma14} established a tradeoff between the sensing time and the secondary throughput $(\rs)$ subject to a target detection probability $(\pdd)$ and the interference constraint, defined in (\ref{eq_HS:IT_ida}). This tradeoff is represented as
+In order to highlight the relationship between the detector's performance (sensing time) and the secondary throughput, which characterize the performance of the HS, Sharma \textit{et al.} \cite{Sharma14} established a sensing-throughput tradeoff\index{Tradeoffs!sensing-throughput tradeoff} subject to a target detection probability $(\pdd)$ and the interference constraint, defined in (\ref{eq_HS:IT_ida}). This tradeoff is represented as
 \begin{align}
 \rs(\ttsen) &= \maxi_{\tsen} \rs(\tsen) \label{eq_HS:opT_id}\\ 
 \quad &= \rsz(\tsen) + \rso(\tsen) + \rstw(\tsen) + \rsth(\tsen) \nonumber  \\
@@ -149,14 +152,15 @@ In order to highlight the dependency of the uncertain interference and the secon
 As a consequence, the tradeoff depicted in (\ref{eq_HS:opT_id}) determines a suitable sensing time $\ttsen$ that achieves the maximum secondary throughput.
 However, the system model depicted above has the following fundamental issues:
 \begin{itemize}
-\item Without the knowledge of the received power (sensing channel, $\hpo$), the characterization of $\pd$ is not possible, cf. (\ref{eq_IS:pd}). This leaves the constraint defined in (\ref{eq_HS:pdc_id}) inappropriate. 
+\item Without the knowledge of the received power (sensing channel, $\hpo$), the characterization of $\pd$ is not possible, consider Chapter \ref{chap:IS}, (\ref{eq_IS:pd}). This leaves the constraint defined in (\ref{eq_HS:pdc_id}) inappropriate. 
 \item Without the knowledge of the interference channel towards the PR ($\hpth$), the power control mechanism cannot be employed at the ST.
-\item Along with the above mentioned channels, the knowledge of the access ($\hs$) and interference channel ($\hptw$) to the SR, from the PT, is required at the ST for characterizing the secondary throughput. 
+\item Along with the above mentioned channels, the knowledge of the access ($\hs$) and interference channel ($\hptw$) is required at the ST for characterizing the throughput at the SR. 
 \end{itemize} 
-With these issues, it is not reasonable to consider the performance analysis depicted by the ideal model (described as the baseline model) for hardware implementation. In order to address these issues, an analytical framework that includes the estimation of these channels and characterizes the performance of the HS in terms of the sensing-throughput tradeoff is proposed in this chapter. 
+With these issues, it is not reasonable to consider the performance analysis depicted by the ideal model (described as the baseline model) for hardware implementation. In order to address these issues, an analytical framework that includes the estimation of these channels, and characterizes the performance of the HS, is proposed in this chapter. 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Proposed Approach} \label{sec_HS:pm}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\index{Hybrid system!frame structure}
 \subsection{Frame Structure}
 \begin{figure}[!t]
 \centering
@@ -172,22 +176,23 @@ With these issues, it is not reasonable to consider the performance analysis dep
 \end{figure}
 In order to incorporate the estimation of the involved channels, a novel frame structure is proposed in \figurename~\ref{fig_HS:fs}, according to which $\testpt$ and $\testptsr$ are utilized for estimating $\hpo$ and $\hptw$ by the ST and the SR\footnote{In order to accomplish this, it is assumed that both the ST and the SR align themselves to the control-based transmission from the PT.}, respectively. Besides that, $\testpr$ is used for estimating $\hpth$. Also, the ST considers the estimation based on the pilot symbols transmitted by the SR. %Considering the fact that the pilot-based estimation allocates a negligible amount of samples compared to the received power-based estimation. In this context, time resources are allocated for the estimation of $\hs$ are omitted in the frame structure. In simple words, time allocation for the pilot based-estimation have little impact on the secondary throughput. But, it causes variations in the performance, leading to uncertain interference. As a result, these variations are accounted in the analytical framework. 
 
-Apart from this, it is possible that the time interval between two control-based transmissions is large as compared to $T$. Under such conditions, the frame structure followed by the secondary system can be adapted from the one proposed in \figurename~\ref{fig_HS:fs} in such a way that channel estimation is restricted to particular frames and the remaining frames follow the conventional structure, i.e., sensing followed by data transmission. Hence, the proposed frame structure presents a general framework and is adaptable to different control-based configurations followed by various primary systems. For scenarios, where the PT and the PR represent a single entity, i.e., interchangeably act as transmitter and receiver, the first two slots $\testpt$ and $\testpr$ of the ST can be combined into one, cf. \figurename~\ref{fig_HS:fs}. 
+Apart from this, it is possible that the time interval between two control-based transmissions is large as compared to $T$. Under such conditions, the frame structure followed by the secondary system can be adapted from the one proposed in \figurename~\ref{fig_HS:fs} in such a way that channel estimation is restricted to particular frames and the remaining frames follow the conventional structure, i.e., sensing followed by data transmission. Hence, the proposed frame structure presents a general framework, and can be adapted to different control-based configurations followed by various primary systems. For scenarios, where the PT and the PR represent a single entity, i.e., interchangeably act as transmitter and receiver, the first two slots $\testpt$ and $\testpr$ of the ST can be combined into one, cf. \figurename~\ref{fig_HS:fs}. 
 
 
 \subsection{Channel Estimation}
+\index{Channel estimation|(}
 Here, the estimation of the interacting channels is revisited. In this chapter, a similar approach for the channel estimation to the one described in Chapter \ref{chap:IS} and Chapter \ref{chap:US}, according to which it is logical to employ a received power-based estimation for the sensing and the interference channels, and a pilot-based estimation for the access channel. In addition, with regard to the Gaussian signal model, the characterization of the channel estimation is in accordance to the one considered in Chapter \ref{chap:IS}. With the purpose of maintaining the continuity of the analysis, the channel estimation concerning the involved channel is briefly summarized below. 
-\subsubsection*{Sensing Channel ($\hpo$)}
-The ST estimates the sensing channel by estimating the received power from the PT during $\testpt$. With $\testpt \fsam$ samples used for estimation, the estimated received power $\eprcvdstpt = \sum_{n = 1}^{\testpt \fsam} |\hpo \cdot \xp[n] + \wst[n]|^2$ follows a $\cchi2$ distribution.
+\subsubsection*{Estimation of Sensing Channel ($\hpo$)}
+The ST estimates the sensing channel by estimating the power received from the PT during $\testpt$. With $\testpt \fsam$ samples used for estimation, the estimated received power \begin{equation}\eprcvdstpt = \sum_{n = 1}^{\testpt \fsam} |\hpo \cdot \xp[n] + \wst[n]|^2\end{equation} follows a $\cchi2$ distribution.
 %\begin{lemma} \label{lm_HS:lm1}
 The cdf of $\eprcvdstpt$ is characterized as
 \begin{align}
 \feprcvdstpt(x) = 1 - \Gamma \left( \frac{\testpt \fsam}{2}, \frac{\testpt \fsam x}{2 \prcvdstpt} \right) \label{eq_HS:fprcvdstpt}.
 \end{align}
 %\end{lemma}
-In order to improve the detector's performance, the samples $\fsam \testpt$ considered for the estimation can also be utilized for the sensing $\fsam \tsen$ as illustrated in \figurename~\ref{fig_HS:fs}. In this sense, hereafter, the characterization of the detector incurs the time interval $\testpt$. 
+In order to improve the detector's performance, the samples $\fsam \testpt$ considered for the estimation can also be utilized for the sensing $\fsam \tsen$ as illustrated in \figurename~\ref{fig_HS:fs}. In this sense, hereafter, the characterization of the detector incurs the estimation time interval $\testpt$. 
   
-\subsubsection*{Access Channel ($\hs$)}
+\subsubsection*{Estimation of Access Channel ($\hs$)}
 The pilot signal received from the SR undergoes matched filtering and demodulation at the ST, hence, a pilot-based estimation at the ST is employed to acquire the knowledge of the access channel. %The maximum-likelihood estimate of $\ehs$ presented by \cite{Gifford08} is unbiased, efficient, i.e., achieves a Cram\'er-Rao bound with equality and asymptotic variance $\e{}{|\hs -\ehs|^2} = \frac{\npo}{2 \Ks}$, where $\Ks$ denotes the number of pilot symbols. 
 As a result, $\ehs$ conditioned on $\hs$ follows a circularly symmetric Gaussian distribution
 %\begin{align*}
@@ -211,25 +216,26 @@ Following Approximation \ref{ap:ap1} from Chapter \ref{chap:IS}, the cdf of $\ep
 \end{align}
 %\end{lemma}
 
-\subsubsection*{Interference Channel ($\hptw$)}
+\subsubsection*{Estimation of Interference Channel ($\hptw$)}
 Besides the access channel, the knowledge of the interference channel to the SR from the PT is required for determining the secondary throughput. It is worthy to note that the expression $\phptw \ptranpt + \npo$ in $\rso$ and $\rsth$, cf. (\ref{eq_HS:Cap1}) and (\ref{eq_HS:Cap3}), which corresponds to the interference and the noise power, represents $\prcvdsr$. Hence, by estimating $\eprcvdsr$, it is possible to jointly characterize the interference and the noise power, and consequently characterize $\rso$ and $\rsth$.  
-In this view, the SR estimates received power by listening to the control-based transmissions from the PT, cf. \figurename~\ref{fig_HS:fs}. Similar to the sensing channel, the cdf of the estimated interference power $\eprcvdsr$ at the ST is characterized as
+In this view, the SR estimates the received power by listening to the control-based transmissions from the PT, cf. \figurename~\ref{fig_HS:fs}. Similar to the sensing channel, the cdf of the estimated interference power $\eprcvdsr$ at the ST is characterized as
 \begin{align}
 \feprcvdsr(x) = 1 - \Gamma \left( \frac{\testptsr \fsam}{2}, \frac{\testptsr \fsam x}{2 \prcvdsr} \right) \label{eq_HS:fprcvdsr}.
 \end{align}
 
   
 
-\subsubsection*{Interference Channel ($\hpth$)}
-Lastly, the estimation of the interference channel between the ST and the PR is essential for employing power control at the ST. Like the sensing channel, the ST estimates $\phpth$ by listening to the control-transmission from the PR. The received power estimated ($\eprcvdstpr$) from $\testpr \fsam$ samples follows $\cchi2$ distribution and its cdf is given by  
+\subsubsection*{Estimation of Interference Channel ($\hpth$)}
+Lastly, the estimation of the interference channel between the ST and the PR is essential for employing power control at the ST. Like the sensing channel, the ST estimates $\phpth$ by listening to the control-transmission from the PR. The cdf of the received power estimated from $\testpr \fsam$ samples is given by  
 \begin{align}
 \feprcvdstpr(x) = 1 - \Gamma \left( \frac{\testpr \fsam}{2}, \frac{\testpr \fsam x}{2 \prcvdstpr} \right) \label{eq_HS:fprcvdstpr}.
 \end{align}
+\index{Channel estimation|)}
 
 \subsection{Characterization of Performance Parameters}
 It is clear that the estimation of the involved channels translates to the variations in the performance parameters, which include detection probability $\epd$ at the ST, power received $\eprcvdpr$ at the PR and secondary throughput $\ers$ at the SR. In particular, the variation, due to the estimation of $\epd$ and $\eprcvdpr$, leads to the uncertain interference at the primary system, thus seriously degrading the performance of the HS. Such an aspect concerning the uncertain interference has been left aside in the outage constraints (please consider, (\ref{eq_HS:IT_ida}) and (\ref{eq_HS:IT_idb})), depicted by the ideal model. This renders the existing constraints defined by the ideal model inaccurate. 
 
-Motivated by this fact, the uncertain interference is captured by proposing new outage constraints $\opdc$ and $\opc$ on estimated detection probability ($\epd$) and estimated power received at PR ($\eprcvdpr$), respectively, as PU constraints for the HS. These constraints are defined as  
+Motivated by this fact, the uncertain interference is captured by proposing new outage constraints\index{Interference constraint!outage constraint} $\opdc$ and $\opc$ on estimated detection probability ($\epd$) and estimated power received at PR ($\eprcvdpr$), respectively, as PU constraints for the HS. These constraints are defined as  
 \begin{align}
 \p(\epd \le \pdd) &\le \opdc \label{eq_HS:oc_pd}, \\
 \p(\eprcvdpr \ge \ite) &\le \opc \label{eq_HS:oc_it}.
@@ -242,7 +248,7 @@ In contrast to the ideal model, which captures the interference received individ
 %\begin{align}
 %\e{\eprcvd}{\rs(\tsen)} = \e{}{\rsz(\tsen)} + \e{}{\rso(\tsen)} + \e{}{\rstw(\tsen)} + \e{}{\rsth(\tsen)}
 %\end{align}   
-where $\e{\epd}{\cdot}$ and $\p(\cdot)$ (that represents the cdf of $\eprcvdpr$) capture the variations due to $\epd$ and $\eprcvdpr$. 
+where $\e{\epd}{\cdot}$ and $\p(\cdot)$ (that represents the cdf of $\eprcvdpr$) capture the variations due to $\epd$ and $\eprcvdpr$, respectively. 
 
 To proceed further, the cdf of $\epd$, $\eprcvdpr$ and $\ers$ are characterized. This is done by transforming the cdfs of the estimated parameters, characterized previously in (\ref{eq_HS:fprcvdstpt}), (\ref{eq_HS:fephs}), (\ref{eq_HS:fprcvdsr}) and (\ref{eq_HS:fprcvdstpr}). To begin, the cdf of the $\epd$ is evaluated to characterize the constraint on the detection probability defined in (\ref{eq_HS:oc_pd}). 
 \begin{lemma} \label{lm_HS:lem1}
@@ -259,14 +265,14 @@ The cdf of $\pd$ is characterized as (refer to Section \ref{ssec_IS:th1} in Chap
 %\label{eq_HS:dpd}
 %\end{align}
 \end{lemma}
-Along with $\fpd(\cdot)$ defined in (\ref{eq_HS:fpd}), the cdf of the $\eprcvdpr$ is necessary to characterize the outage constraint defined in (\ref{eq_HS:oc_it}). 
+Along with $\fpd(\cdot)$, defined in (\ref{eq_HS:fpd}), the cdf of the $\eprcvdpr$ is necessary to characterize the outage constraint defined in (\ref{eq_HS:oc_it}). 
 \begin{lemma} \label{lm_HS:lem2}
 \normalfont
 The cdf of $\eprcvdpr$ is characterized as 
 %\begin{figure*}
 \begin{align}
-\fprcvdpr (x) =& \nonumber \\ 
-&\int\limits_0^1 \Gamma \Bigg(\frac{\testpr \fsam}{2} , \Bigg( \frac{x \spo}{\hpo \cdot ((1 - \pd) \pfull + \pd \preg)} + \npo  \Bigg) times \nonumber \\ 
+\fprcvdpr (x) =&  
+\int\limits_0^1 \Gamma \Bigg(\frac{\testpr \fsam}{2} , \Bigg( \frac{x \spo}{\hpo \cdot ((1 - \pd) \pfull + \pd \preg)} + \npo  \Bigg) \nonumber \\ 
 & \times  \frac{\testpr \fsam}{2 \prcvdstpr}  \Bigg) d\fpd. 
 \label{eq_HS:fprcvdpr}
 \end{align}
@@ -276,7 +282,7 @@ The cdf of $\eprcvdpr$ is characterized as
 %\end{figure*}
 \end{lemma}
 
-Besides that, since the variations in $\epd, \eprcvdstpt, \ephs$ and $\eprcvdstpr$ translate to the variations in $\ers$, these variations are captured in terms of the expected secondary throughput. More specifically, the variations in $\eprcvdstpt, \ephs$ and $\eprcvdstpr$ result in variations in capacities $\ecz, \eco, \ectw$ and $\ecth$, cf. (\ref{eq_HS:Cap0}), (\ref{eq_HS:Cap1}), (\ref{eq_HS:Cap2}) and (\ref{eq_HS:Cap3}). In this view, the pdfs for $\ecz, \eco, \ectw$ and $\ecth$ are characterized in the following Lemmas.
+Besides that, since the variations in $\epd, \eprcvdstpt, \ephs$ and $\eprcvdstpr$ translate to the variations in $\ers$, these variations are captured in terms of the expected secondary throughput. More specifically, the variations in $\eprcvdstpt, \ephs$ and $\eprcvdstpr$ result in variations in the data rates $\cz, \co, \ctw$ and $\cth$, characterized in (\ref{eq_HS:Cap0}), (\ref{eq_HS:Cap1}), (\ref{eq_HS:Cap2}) and (\ref{eq_HS:Cap3}), respectively. In this view, the pdfs for $\ecz, \eco, \ectw$ and $\ecth$ are characterized in the following Lemmas.
 \begin{lemma} \label{lm_HS:lem3}
 \normalfont
 The pdf of $\ecz$ is defined as (refer to (\ref{eq_IS:den_C0}) in Chapter \ref{chap:IS}) 
@@ -303,7 +309,7 @@ The pdf of $\eco$ is defined as (refer to \ref{eq_IS:den_C1} in Chapter \ref{cha
 \end{align}
 and $\apz$, $\bpz$ are defined in (\ref{eq_HS:den_C0_para}).
 \end{lemma}
-Following the characterization of the pdfs for $\ecz$ and $\eco$, the pdfs for $\ectw$ and $\ecth$ can be obtained by substituting the controlled transmit power $\preg$ for full transmit power $\pfull$ in (\ref{eq_HS:den_C0}) and (\ref{eq_HS:den_C1}).
+Following the characterization of the pdfs for $\ecz$ and $\eco$, the pdfs for $\ectw$ and $\ecth$ can be obtained by substituting the controlled transmit power ($\preg$) for full transmit power ($\pfull$) in (\ref{eq_HS:den_C0}) and (\ref{eq_HS:den_C1}).
 \begin{lemma} \label{lm_HS:lem5}
 \normalfont
 The pdf of $\ectw$ is defined as
@@ -327,7 +333,7 @@ The pdf of $\ecth$ is defined as
 where the parameters $\apo$, $\bpo$ and $\apt$, $\bpt$ are defined in (\ref{eq_HS:den_C1_para}) and (\ref{eq_HS:den_C2_para}), respectively.
 \end{lemma}
 %Subsequently, the variations arising due to $\epd$ are captured by considering $\fpd$ characterized in Lemma \ref{lm_HS:lem1}. 
-As a result, the expected secondary throughput is given by 
+As a result, the expected secondary throughput\index{Secondary throughput} is given by 
 %\begin{figure*}
 \begin{align}
 \e{\Omega}{\rs(\tsen)} =& \frac{T - \testpr - \tsen}{T}  
@@ -345,6 +351,7 @@ where $\e{\Omega}{\cdot}$ denotes the expectation over $\Omega$, where $\Omega \
 %\subsubsection*{Outage Constraint on Detection Probability}
 
 \subsection{Estimation-Sensing-Throughput Tradeoff}
+\index{Tradeoffs!estimation-sensing-throughput tradeoff}
 %Here, a sensing-throughput tradeoff for the proposed approach that incorporates variations in the performance parameters is established. 
 %\begin{remark} \label{co:coro1} 
 %\normalfont
@@ -352,7 +359,7 @@ Herein, with regard to the proposed framework (estimation model) for the HS, a f
 %\end{remark} 
 \begin{theorem} \label{th_HS:th1}
 \normalfont
-The achievable expected secondary throughput subject to an outage constraint on detection probability at the ST and an outage constraint on the interference power at the PR is given by
+The achievable expected secondary throughput subject to an outage constraint on detection probability at the ST and an outage constraint on the interference power at the PR, is given by
 \begin{align}
 \rs(\ttestpt, \ttestptsr, \ttestpr, \ttsen) &= \maxi_{\substack{\testpt, \testptsr, \testpr, \\ \tsen, \preg}} \e{\Omega}{\rs(\tsen)} \label{eq_HS:opT_em}\\
 \text{s.t.} & \text{ } (\ref{eq_HS:oc_pd}), (\ref{eq_HS:oc_it_def}). \nonumber 
@@ -374,7 +381,7 @@ Next, using the constraint (\ref{eq_HS:oc_it_def}), the controlled transmit powe
 \label{eq_HS:preg}
 \end{align}
 Solving numerically (\ref{eq_HS:preg}) yields $\preg$ for the HS.
-Finally, by substituting $\mu$ and $\preg$ (computed in (\ref{eq_HS:preg}) and (\ref{eq_HS:thr})), and using the pdfs of $\epd$, $\ecz, \eco, \ectw$ and $\ecth$ (determined in Lemma \ref{lm_HS:lem1}, Lemma \ref{lm_HS:lem3}, Lemma \ref{lm_HS:lem4}, Lemma \ref{lm_HS:lem5} and Lemma \ref{lm_HS:lem6}), an expression of $\rs$ as a function of $\testpt$, $\testptsr$, $\testpr$ and $\tsen$ is determined, cf. (\ref{eq_HS:exp_thr}). Solving numerically $\rs$ delivers $\ttestpt$, $\ttestptsr$, $\ttestpr$ and $\ttsen$ that achieves the maximum expected secondary throughput.  
+Finally, by substituting $\mu$ and $\preg$ (computed in (\ref{eq_HS:preg}) and (\ref{eq_HS:thr})), and using the pdfs of $\epd$, $\ecz, \eco, \ectw$ and $\ecth$ (determined in Lemma \ref{lm_HS:lem1}, Lemma \ref{lm_HS:lem3}, Lemma \ref{lm_HS:lem4}, Lemma \ref{lm_HS:lem5} and Lemma \ref{lm_HS:lem6}), an expression of $\rs$ as a function of $\testpt$, $\testptsr$, $\testpr$ and $\tsen$ is determined, cf. (\ref{eq_HS:exp_thr}). Solving numerically, $\rs$ delivers $\ttestpt$, $\ttestptsr$, $\ttestpr$ and $\ttsen$ that achieves the maximum expected secondary throughput.  
 \end{IEEEproof}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Numerical Analysis} \label{sec_HS:num_ana}
@@ -415,7 +422,7 @@ $\Ks$ & 10 \\ \hline
 
 In this section, the performance of the proposed approach is evaluated. In this view, simulations are performed: (i) to validate the expressions obtained in the previous section, (ii) to analyze the performance loss incurred due to the time allocation for the estimation and the imperfect channnel knowledge. In order to illustrate the performance degradation, the ideal model is considered to benchmark the performance of the proposed approach. Unless stated explicitly, the choice of parameters given in Table \ref{tb_HS:tb2} is considered for analysis. 
 
-First the performance of the HS is analyzed in terms of a sensing-throughput tradeoff, cf. Problem \ref{th_HS:th1}, corresponding to the Ideal Model (IM) and Estimation Model (EM) by fixing $\testpt = \testptsr =  \testpr = \SI{1}{ms}$, cf. \figurename~\ref{fig_HS:STT}. With the inclusion of channel estimation in the frame structure, the ST procures no throughput at the SR for the interval $\testpt$. As indicated by the margin between the IM and the EM, a certain performance degradation is witnessed by the EM due to the incorporation of channel estimation. Moreover, the sensing-throughput tradeoff yields a suitable sensing time $\ttsen$ that achieves the maximum performance in terms of the secondary throughput $\rs(\ttsen)$. Hereafter, the theoretical expressions are considered for the analysis. In addition, the proposed EM operates at the suitable sensing time. 
+First the performance of the HS is analyzed in terms of a sensing-throughput tradeoff corresponding to the Ideal Model (IM) and Estimation Model (EM) by fixing $\testpt = \testptsr =  \testpr = \SI{1}{ms}$, cf. \figurename~\ref{fig_HS:STT}. With the inclusion of channel estimation in the frame structure, the ST procures no throughput at the SR for the interval $\testpt$. As indicated by the margin between the IM and the EM, a certain performance degradation is witnessed by the EM due to the incorporation of channel estimation. Moreover, the sensing-throughput tradeoff yields a suitable sensing time $\ttsen$ that achieves the maximum performance in terms of the secondary throughput $\rs(\ttsen)$. Hereafter, the theoretical expressions are considered for the analysis. In addition, the proposed EM operates at the suitable sensing time. 
 
 
 \begin{figure}[!t]
@@ -501,9 +508,9 @@ First the performance of the HS is analyzed in terms of a sensing-throughput tra
 
 Following the previous discussions, it is well-known that the combination of interweave and underlay systems is intended to enhance the performance of the HS. Hence, it is worthy to acquire insights on the performance gain in terms of the achievable secondary throughput due to the association of the underlay and the interweave techniques in the HS. In this regard, it is essential to observe the variation of the achievable secondary throughput corresponding to the interference channel from the ST to the PR, cf. \figurename~\ref{fig_HS:scenario}. Before proceeding with the analysis, it is essential to understand that the performance of the underlay system decreases with the increase in the channel gain $\phpth$. To simplify the analysis, the channel gain $\phpth \in [-110, -90]$ $\SI{}{dBm}$ is categorized in three different regimes: (i) Regime I, (ii) Regime II and (iii) Regime III, cf. \figurename~\ref{fig_HS:optT_SNR}. 
 
-Under Regime I, large channel gain $\phpth > -\SI{93}{dB}$ results in a severe power control, causing the controlled power to fall below a certain level $\preg \le \SI{-20}{dBm}$, please consider \figurename~\ref{fig_HS:optPcont_SNR}. For the considered value of the channel gain $\phs = \SI{-80}{dB}$ over the access channel, such a low power transmission do not translate to an effective performance gain to the HS. As a result, no benefits are attained from the underlay system while operating in this regime. Conversely, the HS procures secondary throughput mainly by finding spectrum holes in the PU traffic, thereby operating as an IS. In contrast to that, the Regime II ($-\SI{103}{dB} < \phpth < -\SI{93}{dB}$) witnesses a significant performance gain as HS procures benefits from the US and the IS. 
+Under Regime I, large channel gain $\phpth > -\SI{93}{dB}$ results in a severe power control, causing the controlled power to fall below a certain level $\preg \le \SI{-20}{dBm}$, please consider \figurename~\ref{fig_HS:optPcont_SNR}. For the considered value of the channel gain $\phs = \SI{-80}{dB}$ over the access channel, such a low power transmission do not translate into an effective performance gain to the HS. As a result, no benefits are attained from the underlay system while operating in this regime. Conversely, the HS procures secondary throughput mainly by finding spectrum holes in the PU traffic, thereby operating as an IS. In contrast to that, the Regime II ($-\SI{103}{dB} < \phpth < -\SI{93}{dB}$) witnesses a significant performance gain as HS procures benefits from the US and the IS. 
 
-Moreover, below a certain channel gain $\phpth < \SI{-103}{dB}$ (Regime III), it is observed that no performance gain is attained. This is due to the fact that the ST is limited by the maximum transmit power, i.e., beyond $\SI{-103}{dB}$, $\preg$ operates at $\pfull$, as illustrated in \figurename~\ref{fig_HS:optPcont_SNR}. From this discussion, it can be concluded that the interference tolerance capability of the US and the detection capability of the IS incorporated by the HS can be transformed into significant performance gain only in situations where the channel gain between the ST and the PR falls within a certain range, for instance $\phpth \in [-103,-96]$ $\SI{}{dBm}$ for the considered case.
+Moreover, below a certain channel gain $\phpth < \SI{-103}{dB}$ (Regime III), it is observed that no performance gain is attained. This is due to the fact that the ST is limited by the maximum transmit power, i.e., beyond $\SI{-103}{dB}$, $\preg$ operates at $\pfull$, as illustrated in \figurename~\ref{fig_HS:optPcont_SNR}. From this discussion, it can be concluded that the interference tolerance capability of the US and the detection capability of the IS incorporated by the HS can be transformed into significant performance gain only in situations where the channel gain between the ST and the PR falls within a certain range, for instance $\phpth \in [-103,-93]$ $\SI{}{dBm}$ for the considered case.
 
 
 
@@ -532,7 +539,7 @@ Moreover, below a certain channel gain $\phpth < \SI{-103}{dB}$ (Regime III), it
 
 Besides maximizing the secondary throughput over the sensing time, it is interesting to observe the variation of the achievable throughput with the estimation time.
 %It is evident that $\testptsr$ contributes only to the variations in the capacities $\co, \cth$, since the system model considers their expected values, cf. (\ref{eq_HS:exp_thr}), these variations does not have a significant impact on the achievable throughput. In this regard, we consider the variations due to $\testpt$ and $\testpr$ only. 
-As proposed in Problem \ref{th_HS:th1}, $\testpt = \testptsr = \testpr$ is considered for the analysis. Corresponding to the estimation model, \figurename~\ref{fig_HS:optT_est_time} reveals the estimation-sensing-throughput tradeoff. The existence of such a performance tradeoff in the system can be explained as follows, the variations due to the estimation of $\phpo$ and $\phpth$ causes variations in $\epd$ and $\eprcvdpr$, captured using the outage constraints. As a result, a small increase in $\testpt$ $(= \testptsr = \testpr)$ reduces the uncertain interference, allowing an increase in the controlled power at the ST, thus, increasing the secondary throughput. However, by increasing the estimation time beyond $\ttestpt$ $(= \ttestptsr= \ttestpr)$ slightly contributes to the performance improvement and largely consumes the time resources, leading to the performance degradation. 
+As proposed in Problem \ref{th_HS:th1}, $\testpt = \testptsr = \testpr$ is considered for the analysis. Corresponding to the estimation model, \figurename~\ref{fig_HS:optT_est_time} reveals the estimation-sensing-throughput tradeoff. The existence of such a performance tradeoff in the system can be explained as follows, the variations due to the estimation of $\phpo$ and $\phpth$ causes variations in $\epd$ and $\eprcvdpr$, captured using the outage constraints. As a result, a small increase in $\testpt$ $(= \testptsr = \testpr)$ reduces the uncertain interference, allowing an increase in the controlled power at the ST, thus increasing the secondary throughput. However, upon increasing the estimation time beyond $\ttestpt$ $(= \ttestptsr= \ttestpr)$ slightly contributes to the performance improvement and largely consumes the time resources, leading to the performance degradation. 
 
 Moreover, it is noticed that performance degradation of the secondary system evaluated in terms of $\rs(\testpt$ $= \testptsr = \testpr, \ttsen)$ becomes more sensitive to the estimation time $\ttestpt$ $(= \ttestptsr= \ttestpr)$ as $\opdc$ decreases. From this analysis, it can be concluded that a suitable choice of estimation time becomes significant, specially for HSs, which are subjected to the aggressive policies imposed by the primary systems or the regulatory bodies. 
 
@@ -583,14 +590,14 @@ Moreover, it is noticed that performance degradation of the secondary system eva
 %\vspace{-0.4cm}
 \end{figure}
 
-To procure further insights, the variation of the detector's performance with the estimation time is analyzed. For the EM, it is observed that, for all values of the estimation time, expected detection probability $\e{\epd}{\epd}$ strictly stays above $\pdd$, cf. \figurename~\ref{fig_HS:P_d_est_time}. This indicates that the proposed approach yields a reasonable performance of the detector incorporated in the HS. It is further noticed that the expected detection probability slightly degrades for low values of the estimation time. This is due to the fact that low values of $\testpt$ shifts the probability mass of $\epd$ towards lower values, thus attaining a small value of $\e{\epd}{\epd}$. 
+To procure further insights, the variation of the detector's performance with the estimation time is analyzed. For the EM, it is observed that, for all values of the estimation time, expected detection probability stays strictly above $\pdd$, cf. \figurename~\ref{fig_HS:P_d_est_time}. This indicates that the proposed approach yields a reasonable performance of the detector incorporated in the HS. It is further noticed that the expected detection probability degrades slightly for low values of the estimation time. This is due to the fact that low values of $\testpt$ shifts the probability mass of $\epd$ towards lower values, thus attaining a small value of its expected value. 
 
-Finally, the variation of $\pfa$ along the estimation time is illustrated in \figurename~\ref{fig_HS:P_f_est_time}. From the HS's perspective, it is worthy to note that low $\pfa$ is beneficial only if the HS procures its large contribution of the performance when operating in interweave mode, refer to (\ref{eq_HS:exp_thr}). From \figurename~\ref{fig_HS:P_f_est_time}, it is noticed that the $\pfa$ improves with estimation time, particularly $\testpt$. It is important to note that the detector's performance is similar to one depicted by the ISs in Chapter \ref{chap:IS}, according to which the estimation time and the sensing time jointly control the variations due to the channel estimation and the performance of the detector. Beyond $\ttestpt, \ttsen$, the time resources contribute only to improve the detector's performance, therefore lead to the performance degradation in terms of the secondary throughput. Because of the presence of the outage constraint on $\epd$, an improvement in the detector's performance is observed by considering a reduction in $\pfa$, cf. \figurename~\ref{fig_HS:P_f_est_time} 
+Finally, the variation of $\pfa$ along the estimation time is illustrated in \figurename~\ref{fig_HS:P_f_est_time}. From the HS's perspective, it is worthy to note that low $\pfa$ is beneficial only if the HS procures its large contribution of the performance while operating in interweave mode, refer to (\ref{eq_HS:exp_thr}). From \figurename~\ref{fig_HS:P_f_est_time}, it is noticed that the $\pfa$ improves with estimation time, particularly $\testpt$. It is important to note that the detector's performance is similar to one depicted by the ISs in Chapter \ref{chap:IS}, according to which the estimation time and the sensing time jointly control the variations due to the channel estimation and the performance of the detector. Beyond $\ttestpt, \ttsen$, the time resources contribute only to improve the detector's performance, therefore lead to the performance degradation. Because of the presence of the outage constraint on $\epd$, an improvement in the detector's performance is observed by considering a reduction in $\pfa$, cf. \figurename~\ref{fig_HS:P_f_est_time} 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Summary} \label{sec_HS:conc}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-In this chapter, the performance of cognitive radio as a hybrid system that exploits the benefits of both underlay and interweave paradigms from a deployment perspective is investigated. It has been argued that the lack of channels' knowledge renders the existing models unsuitable for the performance characterization. In this view, an analytical framework that incorporates channel estimation, and subsequently quantifies the performance of HSs in relation to imperfect channel knowledge has been established. More importantly, a fundamental tradeoff among the estimation time, sensing time and the secondary throughput is proposed that captures the effect of the channel estimation in terms of the time resources allocated for the channel estimation and the uncertain interference due to the imperfect knowledge of the involved channels and jointly characterizes the performance of the primary and the secondary systems. %Based on this tradeoff, the proposed analytical framework, a suitable estimation time and a suitable sensing time that yields the achievable secondary throughput is determined. %In our future work, we plan to extend the proposed analysis to include the effect of channel fading in order to characterize the long-term performance of the hybrid system. 
+In this chapter, the performance of cognitive radio as a hybrid system that exploits the benefits of both underlay and interweave paradigms from a deployment perspective is investigated. It has been argued that the lack of channels' knowledge renders the existing models unsuitable for the performance characterization. In this view, an analytical framework that incorporates channel estimation, and subsequently quantifies the performance of HSs in relation to imperfect channel knowledge has been established. More importantly, a fundamental tradeoff among the estimation time, sensing time and the secondary throughput is proposed that captures the effect of the channel estimation in terms of the time resources allocated for the channel estimation and the uncertain interference due to the imperfect knowledge of the involved channels. In this context, this tradeoff jointly characterizes the performance of the primary and the secondary systems. %Based on this tradeoff, the proposed analytical framework, a suitable estimation time and a suitable sensing time that yields the achievable secondary throughput is determined. %In our future work, we plan to extend the proposed analysis to include the effect of channel fading in order to characterize the long-term performance of the hybrid system. 
 
 In addition, while comparing the ideal scenario (those models that constitute the perfect channel knowledge) and the proposed model that employs channel estimation, it is clearly illustrated that the performance degradation due to the incorporation of the channel estimation can be effectively controlled by choosing to operate at the suitable estimation time and the suitable sensing time. 
 In reference to the performed analysis, it is further depicted that the performance benefits procured by the HS, due to the association of the interweave and underlay systems, are largely influenced by the channel gain over the link ST-PR, which depicts the level of the interference received at the PR. 

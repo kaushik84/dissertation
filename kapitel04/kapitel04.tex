@@ -106,7 +106,8 @@ In cellular networks, these duplexing modes are effectively deployed in \index{L
 \begin{figure}[!t]
 \centering
 \includegraphics[width = \columnwidth]{figures/Frame_Structure}
-\caption{Frame structure of the USs illustrating the time allocation for channel estimation and data transmission from the perspective of a ST and a SR. Corresponding to the uplink and the downlink, the primary interference channel and secondary interference channel estimation occur at the ST and the SR, respectively. PR (Tx)/PR (Rx) presents the transmission/reception of the primary signal from the PR/PT to the PT/PR.} 
+\caption{Frame structure of the USs illustrating the time allocation for channel estimation and data transmission from the perspective of a ST and a SR. %Corresponding to the uplink and the downlink, the primary interference channel and secondary interference channel estimation occur at the ST and the SR, respectively. 
+PR (Tx)/PR (Rx) presents the transmission/reception of the primary signal from the PR/PT to the PT/PR.} 
 \label{fig_US:fs}
 %\vspace{-7mm}
 \end{figure}
@@ -499,7 +500,7 @@ where $\e{\eca}{\cdot}$ corresponds to an expectation over $\eca$, whose pdf is 
 
 \begin{remark} \label{rm_US:rm3}
 \normalfont
-\tc{At this point, it is well-known that the performance degradation due to channel estimation in the form of the secondary throughput is inherent to the US. Specifically, the time allocation and the uncertain interference are responsible of this degradation. The controlled power, determined in Lemma \ref{lm_US:lm4}, characterized as a function of estimation time allow us to regulate the uncertain interference. As discussed previously in Remark \ref{rm_US:rm1}, the low estimation time enables a severe control in power, thereby decreasing the secondary throughput. On the other hand, less time allocated for channel estimation increases the secondary throughput. This phenomenon can be captured by observing the variation of the secondary throughput along the estimation time such that the constraints depicted in (\ref{eq_US:opc}) and (\ref{eq_US:pc}) are fulfilled. Subsequently, Problem \ref{th_US:th1} captures this relationship between the estimation time and the secondary throughput, defined as an estimation-throughput tradeoffi\index{Tradeoffs!estimation throughput tradeoff}. More importantly, this tradeoff is utilized to determine a suitable estimation time at which maximum throughput at the SR is achieved.}
+\tc{At this point, it is well-known that the performance degradation due to channel estimation in the form of the secondary throughput is inherent to the US. Specifically, the time allocation and the uncertain interference are responsible of this degradation. The controlled power, determined in Lemma \ref{lm_US:lm4}, characterized as a function of estimation time allow us to regulate the uncertain interference. As discussed previously in Remark \ref{rm_US:rm1}, the low estimation time enables a severe control in power, thereby decreasing the secondary throughput. On the other hand, less time allocated for channel estimation increases the secondary throughput. This phenomenon can be captured by observing the variation of the secondary throughput along the estimation time such that the constraints depicted in (\ref{eq_US:opc}) and (\ref{eq_US:pc}) are fulfilled. Subsequently, Problem \ref{th_US:th1} captures this relationship between the estimation time and the secondary throughput, defined as an estimation-throughput tradeoffi\index{Tradeoffs!estimation-throughput tradeoff}. More importantly, this tradeoff is utilized to determine a suitable estimation time at which maximum throughput at the SR is achieved.}
 \end{remark}
 \begin{theorem} \label{th_US:th1}
 \normalfont
@@ -582,7 +583,7 @@ Subject to the outage constraint on the uncertain interference and the transmit 
 \begin{align}
 &\preg = \nonumber \\ 
 &\begin{cases} 
-\int\limits_{0}^{\infty} \Gamma\bigg(\frac{\test \fsam (1 + x \ptran/\nps)^2}{2 + 4 x \ptran/\nps}, \frac{\test \fsam (1 + x \ptran/\nps)}{\nps (2 + 4 x \ptran/\nps)} \\ \bigg(\frac{\ite\ptran}{\preg}  +  \nps \bigg)\bigg) d \fphpth(x) = \opc, & \mbox{for } \preg < \pc \\
+\int\limits_{0}^{\infty} \Gamma\bigg(\frac{\test \fsam (1 + x \ptran/\nps)^2}{2 + 4 x \ptran/\nps}, \frac{\test \fsam (1 + x \ptran/\nps)}{\nps (2 + 4 x \ptran/\nps)} \\ \bigg(\frac{\ite\ptran}{\preg}  +  \nps \bigg)\bigg) d \fphpth = \opc, & \mbox{for } \preg < \pc \\
 \pc, & \mbox{for } \preg \ge \pc
 \end{cases},
 \label{eq_US:preg_fad} 
@@ -601,7 +602,7 @@ Since it is complicated to obtain a closed form expression of the integral in (\
 Similar to the analysis performed in Corollary \ref{cor_US:cor1} for the deterministic channel, the performance bound $(\snrrcvdu^*)$ in terms of $\test$ for the random channel is evaluated. To this end, $\snrrcvdu^*$ is determined by substituting $\preg$ with $\pc$ in the expression (\ref{eq_US:preg_fad}) 
 \begin{align}
 %\hspace{-4mm}
-&\int\limits_{0}^{\infty} \Gamma\left( \frac{\test \fsam (1 + x \ptran/\nps)^2}{2 + 4 x \ptran/\nps}, \frac{\test \fsam (1 + x \ptran/\nps)}{\nps (2 + 4 x \ptran/\nps)}  \left(\frac{\ite\ptran}{\pc} + \nps \right)\right) \nonumber \\ & d \fphpth(x) \le \opc. \label{eq_US:or_fad}
+&\int\limits_{0}^{\infty} \Gamma\left( \frac{\test \fsam (1 + x \ptran/\nps)^2}{2 + 4 x \ptran/\nps}, \frac{\test \fsam (1 + x \ptran/\nps)}{\nps (2 + 4 x \ptran/\nps)}  \left(\frac{\ite\ptran}{\pc} + \nps \right)\right) \nonumber \\ & d \fphpth \le \opc. \label{eq_US:or_fad}
 \end{align}
 {In order to obtain $\snrrcvdu^*$, the integral on the left side in (\ref{eq_US:or_fad}) is represented as a function of $\phpth$ and $\test$. Since no closed form expression of this function is obtained, it is represented as}
 \begin{align*}
