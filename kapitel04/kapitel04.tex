@@ -846,9 +846,9 @@ It can be depicted that the estimation-throughput tradeoff yields a suitable est
 \label{fig_US:optT_snr}
 %\vspace{-10mm}
 \end{figure}
-To procure further insights, it is necessary to consider the variation of $\trs(\ttest)$ with $\snrrcvdu$ for different choices of the interference from the PT to noise ratio at the SR over the secondary interference channel (regulated using $\pgpt \in \{-90, -100\}$ $\SI{}{dBm}$), as depicted in \figurename~\ref{fig_US:optT_snr}. The power-limited and the interference-limited regimes, classified in Corollary \ref{cor_US:cor2}, are mapped onto the achievable secondary throughput, refer to \figurename~\ref{fig_US:optT_snr_a}. Do to the limited transmit power at the ST, $\trs(\ttest)$ gets saturated below a certain $\snrrcvdu$, thereby limiting the performance of the US. It is worthy to note that this saturation is due to the existence of the performance bound, which restricts the operation of the US inside the power-limited regime. 
+To procure further insights, it is necessary to consider the variation of $\trs(\ttest)$ with $\snrrcvdu$ for different choices of the interference from the PT to noise ratio at the SR over the secondary interference channel (regulated using $\pgpt \in \{-90, -100\}$ $\SI{}{dBm}$), as depicted in \figurename~\ref{fig_US:optT_snr}. The power-limited and the interference-limited regimes, classified in Corollary \ref{cor_US:cor2}, are mapped onto the achievable secondary throughput, refer to \figurename~\ref{fig_US:optT_snr_a}. Due to the limited transmit power at the ST, $\trs(\ttest)$ gets saturated below a certain $\snrrcvdu$, thereby limiting the performance of the US. It is worthy to note that this saturation is due to the existence of the performance bound, which restricts the operation of the US inside the power-limited regime. 
 
-Upon increasing $\pc$ from $\SI{-10}{dB}$ to $\SI{0}{dB}$, the point where saturation is achieved shifts to a lower $\snrrcvdu$. This is due to the fact that higher $\pc$ extends the interference-limited regime to a lower $\snrrcvdu$. In other words, it can be stated that, because of low $\snrrcvdu$, the secondary system exploits the benefit of operating at a higher controlled power. Particularly for $\pc = \SI{-10}{dBm}$, a severe performance loss indicated by the margin between the IM and the EM is witnessed by the US for $\snrrcvdu \le \SI{-2}{dB}$. This signifies that the consideration of the maximum transmit power of the ST is essential while designing the system. Besides this, \figurename~\ref{fig_US:optT_snr} depicts the performance of the USs with no power control, proposed in Corollary \ref{cor_US:cor2}. As indicated in \figurename~\ref{fig_US:or}, beyond a certain $\snrrcvdu = \snrrcvdu^*$, the US with no power control delivers no throughput. In order to avoid such situations, the US must employ power control so that non-zero throughput can be achieved.%, thereby signifing the operation of the US in the interference-limited regime. 
+Upon increasing $\pc$ from $\SI{-10}{dB}$ to $\SI{0}{dB}$, the point where saturation is achieved, shifts to a lower $\snrrcvdu$. This is due to the fact that higher $\pc$ extends the interference-limited regime to a lower $\snrrcvdu$. In other words, because of low $\snrrcvdu$, the secondary system exploits the benefit of operating at a higher controlled power. Particularly for $\pc = \SI{-10}{dBm}$, a severe performance loss indicated by the margin between the IM and the EM is witnessed by the US for $\snrrcvdu \le \SI{-2}{dB}$. This signifies that the consideration of the maximum transmit power of the ST is essential while designing the system. Besides this, \figurename~\ref{fig_US:optT_snr} depicts the performance of the USs with no power control, proposed in Corollary \ref{cor_US:cor2}. As indicated in \figurename~\ref{fig_US:or}, beyond a certain $\snrrcvdu = \snrrcvdu^*$, the US with no power control delivers zero secondary throughput. In order to avoid such situations, the US must employ power control in order to achieve non-zero secondary throughput.%, thereby signifing the operation of the US in the interference-limited regime. 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Random Channel} 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -925,7 +925,7 @@ Here, the performance of the proposed framework is further evaluated for those s
 %\footnote{\tc{Please note that the objective here is to consider the impact of severity in fading on the performance of the US with regard to the channel estimation. The value $m = 1$, which corresponds to a Rayleigh fading, is an obvious representative of a severe fading scenario.}}, 
 and (ii) mild fading $m = 5$. 
 
-First, the variation of $\preg$ along the estimation time is analyzed. It is observed that the mild fading scenario ($m = 5$) is more sensitive to the estimation time, see \figurename~\ref{fig_US:Cont_snr_fad}. In reference to the analysis for the deterministic channel considered in \figurename~\ref{fig_US:Cont_snr}, the controlled power, determined using the EM, converges to one depicted from the IM at a smaller $\test$. This is due to the fact that power control is applied to regulate the variations due channel estimation and channel fading. However, beyond a certain estimation time, these variations are largely dominated by the channel fading, which are invariant to the increase in the estimation time. Complementing the observations carried out in \figurename~\ref{fig_US:or_fad}, it is concluded that the severe fading scenarios are less sensitive to the estimation time and are subjected to a severe power control.
+First, the variation of $\preg$ along the estimation time is analyzed. It is observed that the mild fading scenario ($m = 5$) is more sensitive to the estimation time, see \figurename~\ref{fig_US:Cont_snr_fad}. In reference to the analysis for the deterministic channel considered in \figurename~\ref{fig_US:Cont_snr}, the controlled power, determined using the EM, converges to one depicted from the IM at a smaller $\test$. This is due to the fact that power control is applied to regulate the variations due to both channel estimation and channel fading. However, beyond a certain estimation time, these variations are largely dominated by the channel fading, which are invariant to the increase in the estimation time. Complementing the observations carried out in \figurename~\ref{fig_US:or_fad}, it is concluded that the severe fading scenarios are less sensitive to the estimation time and are subjected to a severe power control.
  
 
 Besides, the influence of the channel fading on the performance of the US in terms of the estimation-throughput is captured, as depicted in Problem \ref{th_US:th2}. In this regard, the estimation-throughput tradeoff corresponding to the fading scenarios is illustrated in \figurename~\ref{fig_US:ETT_fad}. It is depicted that for a suitable choice of the estimation time, the performance of the proposed framework -- that captures the imperfect channel knowledge -- is comparable to the ideal conditions in terms of the achievable secondary throughput. Since the US is subjected to the variations from the channel estimation and the channel fading, the estimation time is classified into an estimation-dominant regime and a channel-dominant regime. These regimes signify that the estimation time can only reduce the imperfections (incurred in the US) due to the channel estimation, however, beyond a certain estimation time ($\ttest$), the time resources allocated for channel estimation slightly contribute to the performance improvement (in terms of the controlled power, which finally affects the secondary throughput) and mainly result in the performance degradation (due to the factor $\frac{T - \test}{T}$ in (\ref{eq_US:rs_fad})) in the secondary throughput. 
@@ -933,7 +933,7 @@ Besides, the influence of the channel fading on the performance of the US in ter
 \captionsetup[subfigure]{position=top}
 \begin{figure}[!ht]
 %% Add psfrag entries
-\vspace{-4mm}
+%\vspace{-4mm}
 \centering
 \subfloat[]{
 \vspace{-2mm}
@@ -980,7 +980,7 @@ Besides, the influence of the channel fading on the performance of the US in ter
 }
 \hfil
 \subfloat[]{
-\vspace{-2mm}
+%\vspace{-2mm}
 \input{figures/fig_opt_thr_vs_SNR_SI_10_fading.tex}
 \centering
 \begin{tikzpicture}[scale=1]
@@ -1013,18 +1013,18 @@ Besides, the influence of the channel fading on the performance of the US in ter
 \end{tikzpicture}
 \label{fig_US:optT_snr_fad_b}
 }
-\vspace{-2mm}
+%\vspace{-2mm}
 \caption{$\rs(\ttest)$ versus $\snrrcvdu$ for Nakagmi-$m$ fading with $\opc = 0.1$ and $\pc = 0$ \SI{}{dBm} for $\pgpt =$ (a)$\SI{-100}{dBm}$ and (b) $ \SI{-90}{dBm}$, which correspond to an interference power (from the PT) to noise ratio of (a) $\SI{0}{dB}$ and (b) $\SI{10}{dB}$ at the SR.}
 \label{fig_US:optT_snr_fad}
 %\vspace{-10mm}
 \end{figure}
 
-Upon determining the achievable secondary throughput using the estimation-throughput tradeoff, it is worthy to consider the variation of the $\rs(\ttest)$ along the received signal to noise ratio for different choices of the power gain over the secondary interference channel at the ST. These power gains correspond to different values of the interference (from the PT) to noise ratio at the SR, depicted in \figurename~\ref{fig_US:optT_snr_fad}. It is observed that for a large range ($\snrrcvdu \ge \SI{-10}{dB}$), the achievable secondary throughput determined by the EM closely follows the secondary throughput depicted by the IM. This concludes that the optimum performance for the random channel -- depicted by the reduced margin between the IM and the EM -- can be reached if the US chooses to operate at a suitable estimation time. 
+Upon determining the achievable secondary throughput using the estimation-throughput tradeoff, it is worthy to consider the variation of $\rs(\ttest)$ along the received signal to noise ratio at the ST for different choices of the power gain over the secondary interference channel. These choices correspond to different values of the interference (from the PT) to noise ratio at the SR, depicted in \figurename~\ref{fig_US:optT_snr_fad}. It is observed that for a large range ($\snrrcvdu \ge \SI{-10}{dB}$), the achievable secondary throughput determined by the EM closely follows the secondary throughput depicted by the IM. This concludes that the optimum performance for the random channel -- depicted by the reduced margin between the IM and the EM -- can be reached only if the US chooses to operate at a suitable estimation time, depicted by the proposed framework. 
 
 In addition, \figurename~\ref{fig_US:optT_snr_fad} considers the performance of the US with no power control, refer to Corollary \ref{cor_US:cor3}. Following the discussion in Remark \ref{rm_US:rm2}, where it was noticed that the performance bound ($\snrrcvdu^*$) shifts to a lower $\snrrcvdu$, thus enabling the ST to carry out a rigorous power control. This reveals the fact that the power control becomes proactive when the US is subjected to severe fading conditions, refer to \figurename~\ref{fig_US:or_fad}. This effect is finally translated to the secondary throughput, where $m = 1$ approaches the region with no throughput at a lower $\snrrcvdu$ as compared to $m = 5$, consider \figurename~\ref{fig_US:optT_snr_fad_a}. 
 \section{Summary} \label{sec_US:conc}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-In this chapter, the performance of US has been studied from a deployment perspective by laying emphasis on the fact that the knowledge of the interacting channels is pivotal to the implementation of the underlay principle over the hardware. In this view, a novel approach that incorporates estimation of the involved channels at the secondary system has been proposed. Considering the time resources utilized for the channel estimation and the uncertainty due its imperfect knowledge, it has been shown that the channel estimation has a detrimental effect on the performance, leading to its degradation. To tackle the uncertain interference, an outage constraint that precisely regulates the uncertain interference at the PR has been employed. 
+In this chapter, the performance of US has been studied from a deployment perspective by laying emphasis on the fact that the knowledge of the interacting channels is pivotal for the implementation of the underlay principle over the hardware. In this view, a novel approach that incorporates estimation of the involved channels at the secondary system has been proposed. Considering the time resources utilized for the channel estimation and the uncertainty due its imperfect knowledge, it has been shown that the channel estimation has a detrimental effect on the performance, leading to its degradation. To tackle the uncertain interference, an outage constraint that precisely regulates the uncertain interference at the PR has been employed. 
 
 Besides, it has been observed that the operation of the power control at the ST is limited by the maximum transmit power. This limitation, complementing with the channel estimation has been studied in terms of the interference-limited and the power-limited regimes to determine the performance bounds of the US. %As a result, a power control mechanism subject to the outage and the transmit power constraints has been proposed. 
 Finally, from the perspective of a system designer, an estimation-throughput tradeoff has been established that allows us to determine the achievable secondary throughput for the US. In consideration to the channel fading, it has been observed that the performance degradation is highly prone to the scenarios that are subject to mild channel fading. 
@@ -1035,7 +1035,7 @@ Finally, from the perspective of a system designer, an estimation-throughput tra
 \subsection{Solution to Lemma \ref{lm_US:lm5}} \label{ap:one}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{IEEEproof}[Solution]
-For simplification, it is essential to deal $\frac{\epgs \preg}{\eprcvdsr}$ as individual terms $\epgs \preg$ and $\eprcvdsr$ and determine the pdfs $f_{\epgs \preg}(\cdot)$ and $f_{\eprcvdsr}(\cdot)$ separately.
+For simplification, it is essential to deal $\frac{\epgs \preg}{\eprcvdsr}$ as individual terms $\epgs \preg$ and $\eprcvdsr$, and determine the pdfs $f_{\epgs \preg}(\cdot)$ and $f_{\eprcvdsr}(\cdot)$ separately.
 
 Using (\ref{eq_US:fehs}) in Lemma \ref{lm_US:lm2}, the pdf of $\epgs \preg$ is determined as
 \begin{align}
@@ -1049,7 +1049,7 @@ f_{\eprcvdsr}(x) = \frac{1}{\Gamma(\apt) (\bpt)^{\apt}} x^{\apt - 1} \exp\left( 
 \end{align}
 where $\apt$ and $\bpt$ are defined in (\ref{eq_US:para_pt}).
 
-Using (\ref{eq_US:step1}) and (\ref{eq_US:step2}), Mellin transform \cite{NIST} is applied to determine the pdf of $\frac{\epgs \preg}{\eprcvdsr}$ as
+Using (\ref{eq_US:step1}) and (\ref{eq_US:step2}), \index{Mellin transform}Mellin transform \cite{NIST} is applied to determine the pdf of $\frac{\epgs \preg}{\eprcvdsr}$ as
 \begin{align}
 f_{\frac{\epgs \preg}{\eprcvdsr}}(x) = \frac{(x)^{\as - 1} \Gamma(\as + \apt)}{\Gamma(\as) \Gamma(\apt) (\bs \preg) ^{\as} \bpt^{\apt}} \left(\frac{1}{\bpt} + \frac{x - 1}{\bs \preg}\right).
 \end{align}
