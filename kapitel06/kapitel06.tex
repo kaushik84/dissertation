@@ -282,7 +282,7 @@ The PR, which transmits the pilot signal, is realized using a Rhode $\&$ Schwarz
 \begin{figure}
         %\vspace{-10 pt}
         \centering
-        \subfloat[Signal with oversampling, where the local oscillator is tunned at $\flo = \SI{50}{kHz}$]
+        \subfloat[Signal with oversampling, where the local oscillator is tuned at $\flo = \SI{50}{kHz}$]
 	{
 		\begin{tikzpicture}[scale=1]
 		\node[anchor=south west,inner sep=0] (image) at (0,0)
@@ -341,7 +341,7 @@ Since the USRP employs a \index{Homodyne receiver}homodyne receiver\footnote{A h
 \index{Pre-processing!LO-Offset}
 \item The received signal is oversampled with sampling frequency of $200$ $\SI{}{kHz}$. 
 %Now, for a bandpass filter with bandpass frequency of $\SI{50}{KHz}$ applied subsequently, this sampling corresponds to a oversampling factor = 4. 
-In order to filter out the spurious effects\index{Pre-processing}, the local oscillator is tunned at a certain offset frequency defined as $\flo = \SI{50}{kHz}$, refer to \figurename~\ref{fig_HVD:SP_os}. 
+In order to filter out the spurious effects\index{Pre-processing}, the local oscillator is tuned at a certain offset frequency defined as $\flo = \SI{50}{kHz}$, refer to \figurename~\ref{fig_HVD:SP_os}. 
 \index{Pre-processing!Bandpass filtering}
 \item Subsequently, a bandpass filter with bandwidth = $\SI{50}{kHz}$, corresponding to a oversampling factor = $4$, is employed to obtain the desired bandpass signal at the $\flo$. This filters out the DC offset and the flicker noise present at low frequencies, cf. \figurename~\ref{fig_HVD:SP_bp}. 
 \index{Pre-processing!digital downconversion}
@@ -378,7 +378,7 @@ In order to filter out the spurious effects\index{Pre-processing}, the local osc
 	%\vspace{-10 pt}
 \end{figure}
 
-Besides these spurious effects, it is challenging to accurately determine the noise power ($\npp$), which is important parameter for characterizing the pdfs. In this regard, $\npp$ is determined using the variance of the envelope of $\yrcvd[n]$ -- \textit{on the fly}. This is done because the value of the noise power evaluated during the calibration (that involves no signal transmission, refer to \figurename~\ref{fig_HVD:noise_cal}) differed from the one determined while performance the measurements for different values of signal to noise ratio ($\snrrcvdu$) received at the ST over the interference channel. It is noticed that the latter approach, presented later in Section \ref{ssec:val_sys}), provided a closer fit to the analytical expressions.
+Besides these spurious effects, it is challenging to accurately determine the noise power ($\npp$), which is an important parameter for characterizing the pdfs. In this regard, $\npp$ is determined using the variance of the envelope of $\yrcvd[n]$ -- \textit{on the fly}. This is done because the value of the noise power evaluated during the calibration (that involves no signal transmission, refer to \figurename~\ref{fig_HVD:noise_cal}) differed from the one determined while performing the measurements for different values of signal to noise ratio ($\snrrcvdu$) received at the ST over the interference channel. It is noticed that the latter approach, presented later in Section \ref{ssec:val_sys}), provided a closer fit to the analytical expressions.
 
 
 \subsection{Validation of System Parameters}
@@ -583,7 +583,7 @@ Thus, the maximum value of the suitable estimation time for a certain range of $
 \end{figure}
 
 Besides, from \figurename~\ref{fig_HVD:Tausnr}, it is further observed that $\ttest$ decreases monotonically with $\snrrcvdu$. According to \figurename~\ref{fig_HVD:Tausnr}, the descent is slow in beginning and then increases tremendously. %\footnote{For varying $\theta_\textrm{I}$, while the shape of the curves changed slightly, the upper limits for $\tau_\textrm{opt}$ remained constant.} 
-This behaviour can be explained as follows: For large values of $\snrrcvdu$, $\preg$ is low, this reduces the variations of $\eprcvdpr$ around $\ite$. As a result, a lower value of $\ttest$ is sufficient to maintain these variations within the confidence interval. On the other hand, the signal received with low $\snrrcvdu$, which correspond to a higher $\preg$. However, the limited number of samples available for the estimation and the sensitivity of the deployed hardware make it difficult to distinguish the received signal from the noise. Thus leading to a saturation of $\ttest$ below a certain $\snrrcvdu$. Upon increasing the number of samples for the channel estimation or selecting a hardware with higher sensitivity, the saturation region can be reduced to a lower $\snrrcvdu$. 
+This behaviour can be explained as follows: For large values of $\snrrcvdu$, $\preg$ is low, this reduces the variations of $\eprcvdpr$ around $\ite$. As a result, a lower value of $\ttest$ is sufficient to maintain these variations within the confidence interval. On the other hand, the signal received with low $\snrrcvdu$, which corresponds to a higher $\preg$. However, the limited number of samples available for the estimation and the sensitivity of the deployed hardware make it difficult to distinguish the received signal from the noise. Thus leading to a saturation of $\ttest$ below a certain $\snrrcvdu$. Upon increasing the number of samples for the channel estimation or selecting a hardware with higher sensitivity, the saturation region can be reduced to a lower $\snrrcvdu$. 
 
 Consequently, the analysis in \figurename~\ref{fig_HVD:Tausnr} is used for determining the estimation time $\ttesto$ for the demonstrator. For a certain value of the confidence probability constraint $\pcod = 0.95$, the estimation time allocated for the channel estimation is determined to be $\ttesto = \SI{24}{ms}$, cf. \figurename~\ref{fig_HVD:Tausnr}. With this, the confidence probability constraint is satisfied for all $\snrrcvdu \in (-10,20)$ $\SI{}{dB}$ at the cost of a decreased performance in expected secondary throughput. This happens due to the inefficient utilization of the time resources, particularly, for the situation with high $\snrrcvdu$, which results in a low value of the suitable estimation time.
 
@@ -802,13 +802,13 @@ These observations justify the feasibility of the received power-based estimatio
 %\end{figure}
 
 Despite these facts, it is observed that for the given accuracy $\acc = 0.05$, the demonstrator fails to achieve the target value of the confidence probability constraint $\pcod = 0.95$. Certainly, this violation is largely caused due to the simplifications undertaken in Section \ref{ssec:simp2}. 
-Also, in contrast to the hardware validation, for the demonstrator, the pilot signal is produced by a USRP, thus offering a poor signal quality than produced by the signal generator. 
+Also, in contrast to the hardware validation, for the demonstrator, the pilot signal is produced by a USRP, thus offering a poor signal quality than that produced by the signal generator. 
 %Another possible reason for this kind of behaviour can be speculated as follows: Since a pilot signal produced by a signal generator has been used for the hardware validation, which offers a higher signal quality than the one produced by a USRP in the demonstrator. 
 %Moreover, because of the separate links for sensing and transmission and the frequency separation of \SI{1}{MHz}, the channel reciprocity of the demonstrator may be compromised compared with the theoretical model. 
 In order to tackle this violation of the confidence probability constraint, the proposed confidence probability constraint is sustained by increasing the tolerance limit to $\acc = 0.20$. 
 As a result, the confidence probability reaches the target value $\pco = 0.95$, thereby satisfying the confidence probability constraint, refer to \figurename~\ref{fig_HVD:interface_PR}. 
 
-To demonstrate a preliminary working of a CR system, these simplifications are affordable at this stage, however, it is important to relax these simplifications in future. 
+To demonstrate a preliminary performance of a CR system, these simplifications are affordable at this stage, however, it is important to relax these simplifications in future. 
 Despite this deviation from the theoretical behaviour, it can be concluded that the USRPs, representing an SDR platform, is a viable choice for demonstrating the analysis proposed in the thesis. 
 In the end, to wrap up the discussions, the key observations while deploying the demonstrator for the US are summarized as follows: \begin{itemize} \item The deployed demonstrator reveals the necessity of the channel knowledge for the operation of a CR system in a practical situation. \item With the incorporation of channel estimation, the deployed hardware demonstrates the operation of an US that employs a power control mechanism at the ST, which is facilitated by performing received power-based channel estimation at the ST. \item Subsequently, the demonstrator clearly presents the effect of imperfect channel knowledge, in particular, the uncertain interference at the PR. In addition, it justifies the applicability of the confidence probability constraint at the ST, imposed for regulating the uncertain interference. 
 \item Finally, the demonstrator illustrates the capability of adapting to the changes in the environment, particularly, in terms of the channel between the ST and the PR.  \end{itemize}
