@@ -269,7 +269,7 @@ In other words, using (\ref{eq_IS:thr_id}), the ST determines a suitable sensing
 %\begin{align}
 %\mu(\pdd, \tsen, \bprcvd) = \left( \mathcal{Q}^{-1} (\pdd) \sqrt{\frac{2}{\tsen \fsam}} + 1 \right) \bprcvd. \label{eq_IS:lambda} 
 %\end{align}
-Taking these issues into account, it is not feasible to employ the performance analysis depicted by this model \tc{(referred as ideal model\index{Ideal model}, hereafter)} for hardware implementation. In the subsequent section, an analytical framework \tc{(also referred as estimation model)} that addresses the aforementioned issues -- including the estimation of the sensing and the access channels at the ST and the interference at the SR -- is proposed. Based on the proposed approach, the performance of the IS in terms of the sensing-throughput tradeoff is investigated. 
+Taking these issues into account, it is not feasible to employ the performance analysis depicted by this model \tc{(referred as ideal model, hereafter)} for hardware implementation. In the subsequent section, an analytical framework \tc{(also referred as estimation model)} that addresses the aforementioned issues -- including the estimation of the sensing and the access channels at the ST and the interference at the SR -- is proposed. Based on the proposed approach, the performance of the IS in terms of the sensing-throughput tradeoff is investigated. 
 
 \subsection{\tc{Proposed Approach}} \label{ssec_IS:pa}
 
@@ -358,7 +358,7 @@ Consequently, $\ehs$ conditioned on $\hs$ follows a circularly symmetric Gaussia
 \ehs|\hs \sim \mathcal{CN}\left( \hs,\evar \right).
 \label{eq_IS:ehs} 
 \end{align}
-As a result, the power gain $|\ehs|^2$ follows a non-central chi-squared ($\ncchi2$) distribution with 2 degrees of freedom and non-centrality parameter $\ls = \frac{\Ks |\hs|^2}{\npo}$.  
+As a result, the power gain $|\ehs|^2$ follows a non-central chi-squared ($\ncchi2$)\index{Distribution!non-central chi-squared} distribution with 2 degrees of freedom and non-centrality parameter $\ls = \frac{\Ks |\hs|^2}{\npo}$.  
 
 \subsubsection{Estimation of interference channel ($\hpt$)}
 \index{Channel estimation!received power-based} 

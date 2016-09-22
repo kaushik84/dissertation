@@ -141,7 +141,7 @@ In order establish a close relationship between the analytical framework and the
 
 \begin{enumerate}
 	%\item The PR sends a pilot signal with power $\ptranpr$ to the ST.
-	\item The ST estimates the power received $\eprcvdstpr$ (i.e., employs \index{Channel estimation!received power based}received power-based estimation) by listening to the pilot signal transmitted by the PR over the interference channel. In the context of the hardware implementation, an unmodulated sinusoidal signal is sent as a pilot or beacon signal. 
+	\item The ST estimates the power received $\eprcvdstpr$ (i.e., employs \index{Channel estimation!received power-based}received power-based estimation) by listening to the pilot signal transmitted by the PR over the interference channel. In the context of the hardware implementation, an unmodulated sinusoidal signal is sent as a pilot or beacon signal. 
 
 Please note that a sinusoidal signal is mathematically equivalent to the constant power signal sent by the PR, resembling a continuous phase modulated signal (for instance, a minimum shift keying signal) or a discrete phase modulated signal (for instance, a \index{Phase shift keying}phase shift keying signal), which represents a perfectly downsampled signal. For the latter case, perfect implies an appropriate selection of the sampling point so that no inter symbol interference is procured by the system (in other words, \index{Nyquist criterion}Nyquist criterion is satisfied). In correspondence to the signal model that assumes i.i.d. samples, such a requirement is essential for the evaluation of the received power (energy detection or received power-based estimation), which is necessary for validating the theoretical expressions, derived in the thesis.
 	\item With the knowledge of $\ptranpr$ and the estimate $\eprcvdstpr$, the ST indirectly acquires the knowledge of $\phpth$. 
@@ -721,7 +721,7 @@ These observations justify the feasibility of the received power-based estimatio
 
 \begin{figure}
 	\centering
-     	   \resizebox{0.5\textwidth}{!}{%
+     	   \resizebox{0.65\textwidth}{!}{%
 	   \begin{tikzpicture}[scale=1]
                 \node[anchor=south west,inner sep=0] (image) at (0,0)
                 {
