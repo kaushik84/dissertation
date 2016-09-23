@@ -219,7 +219,7 @@ where $p\left(x\right) = 2^\frac{Tx}{T-\test}-1$.
 
 
 \subsection{Estimation-Throughput Tradeoff}
-\index{Tradeoffs!estimation-throughput tradefoff}
+\index{Tradeoffs!estimation-throughput tradeoff}
 In accordance with estimation theory, it is clear that small $\test$ results in large variations for the $\eprcvdpr$, and subsequently results in the deviation of $\eprcvdpr$ from the interference threshold ($\ite$). If not considered, these variations lead to uncertain interference, which may affect the performance of the US. To capture these variations, an interference constraint defined in terms of a confidence probability $\pco$ and a certain accuracy\footnote{In order to scale the confidence interval relative to $\ite$.} $\acc$ is proposed. In order to restrict the uncertain interference due to channel estimation, it is important to restrain $\pco$ above a certain desired level $\pcod$ for a fixed value of $\acc$. 
 
 In this regard, the interference constraint on confidence probability (or confidence probability constraint) is defined as
@@ -607,7 +607,7 @@ As $\npp$ is negligible compared to $\eprcvdstpr$, (\ref{eq_HVD:approx1}) can be
 		\label{eq_HVD:approx2}
 	\end{equation}	
 The above simplification, however, increase the variation in the system. In this regard, a certain deviation in the performance, computed using the theoretical expression and the one depicted by the demonstrator, is expected. 
-	\item Furthermore, in order to exercise channel reciprocity, the analytical framework considers that TDD is employed at the primary and secondary systems. In order to realize TDD, a perfect frame synchronization between the PR and the ST is needed, which is difficult to achieve in practice\footnote{Even for preliminary analysis, it is cumbersome to deploy two different system and realize TDD.}. To simplify this matter, FDD between the PR and the ST is proposed. This simplification is described as follows: The signals are transmitted and received at different frequencies (\SI{2.422}{GHz} and \SI{2.423}{GHz}) over separate antennas, as illustrated in \figurename~\ref{fig_HVD:BD}. With this technique, the channel reciprocity may be compromised, and a futher deviation in the performance can be observed.	
+	\item Furthermore, in order to exercise channel reciprocity, the analytical framework considers that TDD is employed at the primary and secondary systems. In order to realize TDD, a perfect frame synchronization between the PR and the ST is needed, which is difficult to achieve in practice\footnote{Even for preliminary analysis, it is cumbersome to deploy two different system and realize TDD.}. To simplify this matter, FDD between the PR and the ST is proposed. This simplification is described as follows: The signals are transmitted and received at different frequencies (\SI{2.422}{GHz} and \SI{2.423}{GHz}) over separate antennas, as illustrated in \figurename~\ref{fig_HVD:BD}. With this technique, the channel reciprocity may be compromised, and a further deviation in the performance can be observed.	
 \end{enumerate}
 
 \ifdebug

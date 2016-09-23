@@ -338,7 +338,7 @@ As a result, the expected secondary throughput\index{Secondary throughput} is gi
 \e{\Omega}{\rs(\tsen)} =& \frac{T - \testpr - \tsen}{T}  
 \Bigg[ (1 - \pfa) \cdot \phz \cdot \e{\ecz}{\ecz} +  \nonumber \\ & (1 - \e{\epd}\epd) \cdot \pho \cdot \e{\eco}{\eco} +  \pfa \cdot \phz \cdot \e{\ectw}{\ectw} + \nonumber  \\ & \e{\epd}{\epd} \cdot \pho \cdot \e{\ecth}{\ecth} \Bigg], \label{eq_HS:exp_thr} 
 \end{align}
-where $\e{\Omega}{\cdot}$ denotes the expectation over $\Omega$, where $\Omega \in \{ \epd, \ecz, \eco, \ectw, \ecth \}$. The random variables $\epd$ and  $\eco, \ecth$ are functions of independent random variables $\eprcvd$ and, $\ephs$ and $\eprcvdsr$, respectively. In this context, the independence property is applied to carry out the expectation on $\epd$, $\eco$ and $\ecth$ in (\ref{eq_HS:exp_thr}), seperately.
+where $\e{\Omega}{\cdot}$ denotes the expectation over $\Omega$, where $\Omega \in \{ \epd, \ecz, \eco, \ectw, \ecth \}$. The random variables $\epd$ and  $\eco, \ecth$ are functions of independent random variables $\eprcvd$ and, $\ephs$ and $\eprcvdsr$, respectively. In this context, the independence property is applied to carry out the expectation on $\epd$, $\eco$ and $\ecth$ in (\ref{eq_HS:exp_thr}), separately.
 %\hrulefill
 % The spacer can be tweaked to stop underfull vboxes.
 %\vspace*{-4pt}
@@ -419,7 +419,7 @@ $\Ks$ & 10 \\ \hline
 %\vspace{-2mm}
 \end{table}
 
-In this section, the performance of the proposed approach is evaluated. In this view, simulations are performed: (i) to validate the expressions obtained in the previous section, (ii) to analyze the performance loss incurred due to the time allocation for the estimation and the imperfect channnel knowledge. In order to illustrate the performance degradation, the ideal model is considered to benchmark the performance of the proposed approach. Unless stated explicitly, the choice of parameters given in Table \ref{tb_HS:tb2} is considered for analysis. 
+In this section, the performance of the proposed approach is evaluated. In this view, simulations are performed: (i) to validate the expressions obtained in the previous section, (ii) to analyze the performance loss incurred due to the time allocation for the estimation and the imperfect channel knowledge. In order to illustrate the performance degradation, the ideal model is considered to benchmark the performance of the proposed approach. Unless stated explicitly, the choice of parameters given in Table \ref{tb_HS:tb2} is considered for analysis. 
 
 First the performance of the HS is analyzed in terms of a sensing-throughput tradeoff corresponding to the Ideal Model (IM) and Estimation Model (EM) by fixing $\testpt = \testptsr =  \testpr = \SI{1}{ms}$, cf. \figurename~\ref{fig_HS:STT}. With the inclusion of channel estimation in the frame structure, the ST procures no throughput at the SR for the interval $\testpt$. As indicated by the margin between the IM and the EM, a certain performance degradation is witnessed by the EM due to the incorporation of channel estimation. Moreover, the sensing-throughput tradeoff yields a suitable sensing time $\ttsen$ that achieves the maximum performance in terms of the secondary throughput $\rs(\ttsen)$. Hereafter, the theoretical expressions are considered for the analysis. In addition, the proposed EM operates at the suitable sensing time. 
 
