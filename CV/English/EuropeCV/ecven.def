@@ -4,13 +4,13 @@
 \ProvidesFile{ecven.def}[europecv English definitions]
 % Personal information
 \def\ecv@infosectionkey{\ecv@utf{Personal information}}
-\def\ecv@namekey{\ecv@utf{Surname(s) / First name(s)}}
-\def\ecv@addresskey{\ecv@utf{Address(es)}}
-\def\ecv@telkey{\ecv@utf{Telephone(s)}}
+\def\ecv@namekey{\ecv@utf{Surname / First name}}
+\def\ecv@addresskey{\ecv@utf{Address}}
+\def\ecv@telkey{\ecv@utf{Telephone}}
 \def\ecv@mobilekey{\ecv@utf{Mobile}}
 \def\ecv@faxkey{\ecv@utf{Fax(es)}}
-\def\ecv@emailkey{\ecv@utf{Email(s)}}
-\def\ecv@nationalitykey{\ecv@utf{Nationality(-ies)}}
+\def\ecv@emailkey{\ecv@utf{Email}}
+\def\ecv@nationalitykey{\ecv@utf{Nationality}}
 \def\ecv@birthkey{\ecv@utf{Date of birth}}
 \def\ecv@genderkey{\ecv@utf{Gender}}
 % Footer

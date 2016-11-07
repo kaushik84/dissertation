@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/Debian) (format=pdflatex 2013.11.20)  27 OCT 2016 15:10
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/Debian) (format=pdflatex 2013.11.20)  3 NOV 2016 17:31
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -961,18 +961,18 @@ Package rerunfilecheck Info: File `Kaushik_CL.out' has not changed.
 Here is how much of TeX's memory you used:
  14328 strings out of 495007
  225510 string characters out of 3179689
- 334074 words of memory out of 3000000
+ 333772 words of memory out of 3000000
  17316 multiletter control sequences out of 15000+200000
  24237 words of font info for 33 fonts, out of 3000000 for 9000
  14 hyphenation exceptions out of 8191
- 48i,12n,51p,776b,436s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 48i,12n,51p,888b,436s stack positions out of 5000i,500n,10000p,200000b,50000s
 {/usr/share/texmf/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/share/texmf/fonts/en
 c/dvips/lm/lm-ec.enc}</usr/share/texmf/fonts/type1/public/lm/lmss10.pfb></usr/s
 hare/texmf/fonts/type1/public/lm/lmssbo10.pfb></usr/share/texmf/fonts/type1/pub
 lic/lm/lmssbx10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsso10.pfb></usr/s
 hare/texmf/fonts/type1/public/lm/lmsy10.pfb></usr/share/texlive/texmf-dist/font
 s/type1/public/marvosym/marvosym.pfb>
-Output written on Kaushik_CL.pdf (1 page, 116843 bytes).
+Output written on Kaushik_CL.pdf (1 page, 115168 bytes).
 PDF statistics:
  42 PDF objects out of 1000 (max. 8388607)
  30 compressed objects within 1 object stream
