@@ -251,7 +251,7 @@
   \begin{minipage}{.5\textwidth}%
     \raggedleft%
     \addressfont\textcolor{color2}{%
-      {\bfseries\upshape\@firstname~\@lastname}\@firstdetailselementfalse%
+      %{\bfseries\upshape\@firstname~\@lastname}\@firstdetailselementfalse%
       \ifthenelse{\isundefined{\@addressstreet}}{}{\makenewline\addresssymbol\@addressstreet%
         \ifthenelse{\equal{\@addresscity}{}}{}{\makenewline\@addresscity}% if \addresstreet is defined, \addresscity and addresscountry will always be defined but could be empty
         \ifthenelse{\equal{\@addresscountry}{}}{}{\makenewline\@addresscountry}}%
@@ -274,14 +274,14 @@
   \@date\\[2em]% US informal style: "January 1, 1900"; UK formal style: "01/01/1900"
   % opening
   \raggedright%
-  \@opening\\[1.5em]%
+  \@opening\\[0.5em]%
   % ensure no extra spacing after \makelettertitle due to a possible blank line
 %  \ignorespacesafterend% not working
   \hspace{0pt}\par\vspace{-\baselineskip}\vspace{-\parskip}}
 
 \renewcommand*{\makeletterclosing}{
-  \@closing\\[3em]%
-  {\bfseries \@firstname~\@lastname}%
+  \@closing\\[0em]%
+  {\@firstname~\@lastname}%
   \ifthenelse{\isundefined{\@enclosure}}{}{%
     \\%
     \vfill%

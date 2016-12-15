@@ -70,7 +70,7 @@
   % recompute lengths (in case we are switching from letter to resume, or vice versa)
   \recomputecvlengths%
   % ensure footer with personal information
-  \makecvfooter%
+  %\makecvfooter%
   % optional picture
   \newbox{\makecvtitlepicturebox}%
   \savebox{\makecvtitlepicturebox}{%
@@ -96,25 +96,26 @@
     {{\null\hfill\begin{minipage}{\quotewidth}\centering\quotestyle{\@quote}\end{minipage}\hfill\null\\[2.5em]}}%
   \par}% to avoid weird spacing bug at the first section if no blank line is left after \maketitle
 
-\renewcommand*{\makecvfooter}{%
-  \setlength{\footerwidth}{0.8\textwidth}%
-  \fancypagestyle{plain}{%
-    \fancyfoot[c]{%
-      \parbox[b]{\footerwidth}{%
-        \centering%
-        \color{color2}\addressfont%
-        \ifthenelse{\isundefined{\@addressstreet}}{}{\addtofooter[]{\addresssymbol\@addressstreet}%
-          \ifthenelse{\equal{\@addresscity}{}}{}{\addtofooter[~--~]{\@addresscity}}% if \addresstreet is defined, \addresscity and \addresscountry will always be defined but could be empty
-          \ifthenelse{\equal{\@addresscountry}{}}{}{\addtofooter[~--~]{\@addresscountry}}%
-          \flushfooter\@firstfooterelementtrue\\}%
-        \collectionloop{phones}{% the key holds the phone type (=symbol command prefix), the item holds the number
-          \addtofooter{\csname\collectionloopkey phonesymbol\endcsname\collectionloopitem}}%
-        \ifthenelse{\isundefined{\@email}}{}{\addtofooter{\emailsymbol\emaillink{\@email}}}%
-        \ifthenelse{\isundefined{\@homepage}}{}{\addtofooter{\homepagesymbol\httplink{\@homepage}}}%
-        \ifthenelse{\isundefined{\@extrainfo}}{}{\addtofooter{\@extrainfo}}%
-        \ifthenelse{\lengthtest{\footerboxwidth=0pt}}{}{\flushfooter}% the lengthtest is required to avoid flushing an empty footer, which could cause a blank line due to the \\ after the address, if no other personal info is used
-        }}}%
-  \pagestyle{plain}}
+%\renewcommand*{\makecvfooter}{%
+%  \setlength{\footerwidth}{0.8\textwidth}%
+%  \fancypagestyle{plain}{%
+%    \fancyfoot[c]{%
+%      \parbox[b]{\footerwidth}{%
+%        \centering%
+%        \color{color2}\addressfont%
+%        \ifthenelse{\isundefined{\@addressstreet}}{}{\addtofooter[]{\addresssymbol\@addressstreet}%
+%          \ifthenelse{\equal{\@addresscity}{}}{}{\addtofooter[~--~]{\@addresscity}}% if \addresstreet is defined, \addresscity and \addresscountry will always be defined but could be empty
+%          \ifthenelse{\equal{\@addresscountry}{}}{}{\addtofooter[~--~]{\@addresscountry}}%
+%          \flushfooter\@firstfooterelementtrue\\}%
+%        \collectionloop{phones}{% the key holds the phone type (=symbol command prefix), the item holds the number
+%          \addtofooter{\csname\collectionloopkey phonesymbol\endcsname\collectionloopitem}}%
+%        \ifthenelse{\isundefined{\@email}}{}{\addtofooter{\emailsymbol\emaillink{\@email}}}%
+%        \ifthenelse{\isundefined{\@homepage}}{}{\addtofooter{\homepagesymbol\httplink{\@homepage}}}%
+%        \ifthenelse{\isundefined{\@extrainfo}}{}{\addtofooter{\@extrainfo}}%
+%        \ifthenelse{\lengthtest{\footerboxwidth=0pt}}{}{\flushfooter}% the lengthtest is required to avoid flushing an empty footer, which could cause a blank line due to the \\ after the address, if no other personal info is used
+%        }}}%
+%  \pagestyle{plain}
+%}
 
 
 %-------------------------------------------------------------------------------
@@ -168,7 +169,7 @@
   \pagestyle{plain}}
 
 \renewcommand*{\makeletterclosing}{
-  \@closing\\[3em]%
+  \@closing\\[0em]%
   {\bfseries\@firstname~\@lastname}%
   \ifthenelse{\isundefined{\@enclosure}}{}{%
     \\%
