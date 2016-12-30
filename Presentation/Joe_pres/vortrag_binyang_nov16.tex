@@ -1,0 +1,709 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% LaTeX-Beamer template for KIT design
+%% by Erik Burger, Christian Hammer
+%% title picture by Klaus Krogmann
+%%
+%% version 2.1
+%%
+%% mostly compatible to KIT corporate design v2.0
+%% http://intranet.kit.edu/gestaltungsrichtlinien.php
+%%
+%% Problems, bugs and comments to
+%% burger@kit.edu
+%%
+%%
+%% Modified: 30.1.2013, Schwall
+\PassOptionsToPackage{table}{xcolor}
+\documentclass[16pt]{beamer}
+
+%\setbeamertemplate{note page}[plain]
+%\setbeameroption{show only notes}
+%\usepackage{pgfpages}
+%\setbeameroption{show notes}
+%\setbeameroption{show notes on second screen=right}
+
+%% SLIDE FORMAT
+\usepackage{templates/beamerthemekit}
+%\usepackage{ngerman}
+\usepackage[ngerman]{babel}
+%\usepackage[T1]{fontenc}
+%\usepackage[utf8]{inputenc} % Für Linux
+
+%\usepackage{color}
+%\usepackage[table]{xcolor} 
+%\usepackage{multirow} 
+
+
+%% german time format (e.g 30.1.2013)
+\usepackage{datetime}
+\newdateformat{germandate}{\THEDAY.\THEMONTH.\THEYEAR}
+\newdateformat{americandate}{\THEMONTH/\THEDAY/\THEYEAR}
+
+% use these packages for PCM symbols and UML classes
+\usepackage{templates/tikzkit}
+\usepackage{templates/tikzuml}
+
+% My Packages:
+\usepackage{siunitx}
+\sisetup{locale = DE}%, 
+%		 range-phrase={bis},  % muss trotzdem nochmal definiert werden!!
+%		 range-units = single       % Einheiten bei Fehlern und Range nicht wiederholen}
+
+\usepackage{tikz}
+\usetikzlibrary{angles,quotes,babel,shapes,snakes,calendar,matrix,backgrounds,folding,arrows,decorations.pathmorphing,trees,arrows.meta,calc,intersections,positioning,decorations.markings}
+\tikzset{>=latex} % Latex style set
+\usepackage{makecell}
+%\usepackage{booktabs} % professionelle tabellen (\toprule, \midrule, ...)
+
+%% My own code: 
+%\input{\templates/makros_own.tex}
+\input{templates/packages.tex}
+
+\def\Natural{\mathrm{I\!N}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Code to spread out slides contents using \stretchy command:
+\let\svpar\par
+\let\svitemize\itemize
+\let\svenditemize\enditemize
+\let\svitem\item
+\def\newpar{\def\par{\svpar\vfill}}
+\def\newitem{\def\item{\vfill\svitem}}
+\let\svcenter\center
+\let\svendcenter\endcenter
+\let\svcolumn\column
+\let\svendcolumn\endcolumn
+\newlength\columnskip
+\columnskip 0pt
+\def\newcolumn{%
+	\renewenvironment{column}[2]%
+	{\svcolumn{##1}\setlength{\parskip}{\columnskip}##2}%
+	{\svendcolumn\vspace{\columnskip}}}
+
+\newcommand\stretchy{\only<1>{%
+		\newpar\def\item{\svitem\newitem}%
+		\renewenvironment{itemize}{\svitemize}{\svenditemize\newpar\par}%
+		\renewenvironment{center}{\svcenter\newpar}{\svendcenter\newpar}%
+		\newcolumn
+	}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Definition of new commands to avoid repetition of long code 
+% Define a new type for columns 
+\newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}} 
+\newcolumntype{M}[1]{>{\centering\arraybackslash}m{#1}} 
+	
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% the presentation starts here
+
+% english vs. ngerman
+\selectlanguage{ngerman}
+
+\title[Nahbereichs-Radartechnik f\"{u}r Automatisierung und Gestenerkennung]{Nahbereichs-Radartechnik \\ f\"{u}r Automatisierung und Gestenerkennung}
+\subtitle{Vorstellung der Forschungsarbeit}
+\author[J. Fink]{Johannes Fink}
+
+%% insert date in correct format
+\iflanguage{english}{
+	\date{\americandate\today}
+	}{
+	\date{\germandate\today}
+}
+
+\institute{Communications Engineering Lab}
+\date{9. November 2016}
+
+% Fußnote anpassen, so dass es nicht mit dem Footer überschneidet
+\addtobeamertemplate{footnote}{\vspace{-6pt}\advance\hsize-0.5cm}{\vspace{6pt}}
+\renewcommand*{\footnoterule}{\kern -3pt \hrule width 1in \kern 8.6pt}
+
+% Bibliography
+
+\usepackage[backend=biber,
+%backend=bibtex,
+%style=ieee,
+sorting=nyvt,
+autolang=hyphen,
+%style=alphabetic,
+citestyle=alphabetic,
+bibstyle=alphabetic,
+hyperref=true,
+%maxcitenames=1,
+maxnames=5,
+%giveninits=true,
+doi=false 
+]{biblatex}
+\addbibresource{../../../bibtex/library_manual.bib}
+%\bibhang1em
+
+\begin{document}
+
+
+
+%title page
+\begin{frame}
+\titlepage
+\end{frame}
+
+%\input{inhalt.tex}
+
+\section*{Gliederung}
+
+\begin{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\frametitle{Gliederung}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\tableofcontents
+\end{frame}
+
+
+
+\section{Motivation}
+\begin{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\frametitle{Weshalb Nahbereichs-Radartechnik?} 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\begin{block}{Moderne Radartechnologie ermöglicht neuartige Anwendungen}
+%	 Entwicklungen im Bereich der Halbleiterindustrie erlauben es, Radar- systeme mit sehr hohen Bandbreiten in Mikrowellenbändern im Miniatur- format bei sehr geringen Kosten zu realisieren. Die Radartechnologie ist dadurch für neue Anwendungen interessant, in denen bisher der Einsatz von Radar aus Kostengründen, aufgrund zu großer Abmessungen bzw. zu geringer Auflösung nicht in Erwägung gezogen wurde. 
+%\end{block}
+\begin{block}{Moderne Radartechnologie ermöglicht neuartige Anwendungen}
+	Entwicklungen in der Halbleiterindustrie: GaAs / SiGe-Technik erlauben:
+	\begin{itemize}
+		\item Radar im Miniaturformat: Radar-on-Chip / Radar-in-Package 
+		\item Bandbreiten im GHz-Bereich 
+		\item Frequenzen im Millimeterwellenbereich 
+		\item geringe Kosten
+	\end{itemize}
+\end{block}
+%\begin{block}{Charakterisierung neuartiger Anwendungsfelder}
+%	Hohe Bandbreiten in Mikrowellenbändern ermöglichen eine sehr hohe Orts- und Dopplerauflösung. Kommerzieller Einsatz der Technik unterliegt regulatorischen Randbedingungen, welche insbesondere die Sendeleistung und damit die Reichweite limitieren. Daher ist diese Technik prädestiniert für \emph{Nahbereichs-Sensorik-Anwendungen}. 
+%\end{block}
+\pause
+\begin{block}{Charakterisierung neuartiger Anwendungsfelder}
+	\begin{itemize}
+		\item Hohe Bandbreiten und Trägerfrequenzen $\Rightarrow$ sehr hohe Orts- und Dopplerauflösung trotz geringer Antennenabmessungen
+		\item Unlizenzierter Einsatz unterliegt regulatorischen Randbedingungen, insbesondere limitierter Sendeleistung $\Rightarrow$ geringe Reichweite 
+	\end{itemize}
+	$\Rightarrow$ \emph{Nahbereichs-Sensorik-Anwendungen} \hspace{0.3cm} ($R_{\mathrm{max}} < \SI{30}{\meter}$; $\Delta R < \SI{0{,}1}{\meter}$). 
+\end{block}
+\end{frame}
+
+\begin{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\frametitle{Regulatorische Rahmenbedingungen} 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{columns}
+	\begin{column}{4cm}
+		\begin{center} 
+			\textbf{UWB EU}
+			\includegraphics[width=4cm]{figures/resolution_UWBb} \\
+			$\lambda \approx \SI{42}{\milli\meter}$ \\
+			\SIrange[range-phrase = --,range-units = single]{6}{8,5}{\giga\hertz}
+		\end{center}
+	\end{column}
+	\begin{column}{4cm}
+		\begin{center} 
+			\textbf{ISM-24}
+			\includegraphics[width=4cm]{figures/resolution_ISM24b} \\
+			$\lambda \approx \SI{12,5}{\milli\meter}$ \\
+			\SIrange[range-phrase = --,range-units = single]{24}{24,25}{\giga\hertz}
+		\end{center}
+	\end{column}
+	\begin{column}{4cm}
+		\begin{center} 
+			\textbf{SRD-60}
+			\includegraphics[width=4cm]{figures/resolution_SSR60b} \\
+			$\lambda \approx \SI{5}{\milli\meter}$ \\
+			\SIrange[range-phrase = --,range-units = single]{57}{64}{\giga\hertz}
+		\end{center}
+	\end{column}	
+\end{columns}
+\vspace{1cm}
+\footnotesize \textbf{Annahme:} Antennenfläche: \SI{9}{\centi\meter\squared}
+\end{frame}
+
+\begin{frame}
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\frametitle{Neuartige Anwendungen} 
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\begin{block}{Radar in der Automatisierungstechnik}
+		\begin{itemize}
+			\item Berührungslose Detektion von Gütern
+			\item Estimation und Tracking der Objektparameter
+			\item Umgebung: Staub, extreme Temperatur, Erschütterungen, Dunkelheit 
+			\item Ausnutzung der besonderen Eigenschaften der Frequenzbänder in Transmission- und Reflexion (im Vergleich zu optischen Sensoren) 
+			\item Selbstkalibrierend und wartungsarm
+		\end{itemize} 
+	\end{block}
+	
+%	\pause
+	
+	\begin{block}{Radar zur Gestenklassifikation (Hand / Kopf / Körper)}
+ 		\begin{itemize}
+ 			\item Neuartiges berührungsloses Human-Machine-Interface
+ 			\item Privatsphäre wahrend (im Gegensatz zu Kameras)
+ 			\item Funktion unabhängig von Beleuchtung, durch Abdeckungen hindurch
+ 		\end{itemize} 
+	\end{block}
+\end{frame}
+
+
+
+%\section{Forschungsfragen}
+%\begin{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\frametitle{Forschungsfragen}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\begin{itemize}
+%	\item Welche neuartigen Anwendungen können mit der Nahbereichs-Radartechnik gelöst werden? 
+%	\item Wie ist 
+%\end{itemize}
+%	
+%\end{frame}
+
+\section{Forschungsziele}
+\begin{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\frametitle{Forschungsziele}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\stretchy
+\begin{enumerate}
+	\item Untersuchung und Bewertung von Einsatzmöglichkeiten und Randbedingungen der Nahbereichs-Radartechnologie 
+		\begin{itemize}
+			\item in Automatisierungstechnik 
+			\item zur Klassifikation menschlicher Gesten
+		\end{itemize} 
+	\item Identifikation vorteilhafter Auslegungen von Wellenform, Hard- und Software eines Nahbereichsradars
+	\item Entwicklung und Vergleich von Architekturen, Verfahren und Algorithmen zum Einsatz von Nahbereichsradar in Anwendungen der Automatisierungstechnik sowie zur Gestenklassifikation 
+	\item Demonstration der praktischen Funktionstüchtigkeit der Entwicklungen anhand von Demonstratoren
+\end{enumerate}
+\end{frame}
+
+
+%\section{Methodik}
+%\begin{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\frametitle{Methodik}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\todo{Folie überflüssig, da Inhalt klar ist. }
+%\begin{itemize}
+%	\item Erarbeitung eines theoretischen Fundaments ausgehend vom Stand der Wissenschaft und Technik
+%	\item Herleitung theoretischer Aussagen hinsichtlich der Leistungsfähigkeit eines Nahbereichs-Radars %\todo{Welcher? Konkret werden!} 
+%	\item Unterstützung und Erweiterung der theoretischen Aussagen durch Rechnersimulationen, insbesondere zu Bewertung und Vergleich von Algorithmen	
+%	\item Erarbeitung eines Leitfadens zur strukturierten Analyse potenzieller Nahbereichs-Radar-Anwendungen und zur Ableitung konkreter Anforderungen an die Leistungsfähigkeit und notwendigen Eigenschaften eines dort einzusetzenden Radarsensors
+%	\item Auswertungen durchgeführter Radarmessungen ergänzen diese Arbeit im Sinne eines \emph{proof of concept}. Dazu wurden im Rahmen der Arbeit mehrere Demonstratoren aufgebaut. 
+%\end{itemize}	
+%\end{frame} 
+
+\section{Nahbereichs-Radar für kommerzielle Sensorik-Anwendungen}
+
+\frame{\sectionpage}
+
+\subsection{Anforderungen}
+\begin{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\frametitle{Relevante Anforderungen}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\todo{KONZEPT!} 
+\stretchy
+\begin{itemize}
+	\item \textbf{Low-cost}
+		\begin{itemize}
+			\item Hardware tauglich für Massenproduktion 
+			\item Algorithmik mit möglichst geringer Rechenkomplexität 
+			\item möglichst geringe Abtastrate $f_{\mathrm{S}}$
+		\end{itemize}
+	\item{\makebox[3.5cm][l]{\textbf{Robustheit}} $\Leftrightarrow$ keine bewegten Teile}
+	\item{\makebox[3.5cm][l]{\textbf{Kompaktheit}} $\Leftrightarrow$ zur Integration in Anlagen und Produkten}
+	\item \textbf{Objektdetektion in dichtem Clutter} (charakteristisch für die Nahbereichs-Umgebung aufgrund kleiner geometrischer Abmessungen): 
+		\begin{itemize}
+			\item Mehrzielfähigkeit $\quad\Leftrightarrow$ Auflösung von Zielen in Range und Doppler
+			\item Hohe Entfernungsauflösung
+		\end{itemize} 
+		\note[item]{Zur Unterscheidung von Zielen und Clutter ist immer a priori Wissen über diese beiden Zielarten notwendig. Trennung kann erfolgen aufgrund von kinematischen Parametern, Position, Rückstreuverhalten}
+	\item{\makebox[3.5cm][l]{\textbf{Echtzeitfähigkeit}} $\Leftrightarrow$ Hohe Messrate}
+\end{itemize}
+\end{frame} 
+
+\subsection{Wellenform Auswahl}
+\begin{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\frametitle{Wellenform Auswahl}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%\todo{Konzept!}
+\small
+Auswirkungen auf Radarsystem:
+\begin{itemize}
+	\item Bestimmt Auflösungseigenschaften $\Delta R$, $\Delta v$ 
+	\item Bestimmt Hardwareaufwand via $f_{\mathrm{S}}$
+	\item Fordert spezifische Signalverarbeitung zur Detektion und Estimation
+	\item Beeinflusst dadurch Kosten des Gesamtsystems 
+\end{itemize} 
+\pause
+Umfangreicher Vergleich der Wellenformen
+\begin{itemize}
+	\item{\makebox[5cm][l]{Ultrabreitband-Impulsradar}} %\cite{fink2013ultrawideband}}
+	\item{\makebox[5cm][l]{Linear Chirp Sequence FMCW} \cite{fink2015shortpaper,fink2015ofdmcs}}
+	\item{\makebox[5cm][l]{OFDM} \cite{fink2015shortpaper,fink2015ofdmcs}}
+\end{itemize} 
+führt als Konsequenz der geforderten Performance zur Wahl von 
+\begin{exampleblock}{}
+	\emph{\textbf{L}inear \textbf{C}hirp-\textbf{S}equence \textbf{F}requency \textbf{M}odulated \textbf{C}ontinuous \textbf{W}ave} 
+\end{exampleblock}
+\pause
+\begin{itemize}
+	%	\item $B > \SI{1,5}{\giga\hertz}$ bei möglichst geringer Abtastrate $\Rightarrow$ LFMCW 
+	%	\item Gute Cluttertrennung: Auflösung mehrerer Ziele in Range und Doppler $\Rightarrow$ \emph{Chirp-Sequence LFMCW}
+	\item Vermeidung von Dopplermehrdeutigkeiten $\Rightarrow$ steile lineare Frequenz- rampen (mehrere \SI{}{\tera\hertz\per\second}) $\Rightarrow$ hohe Anforderungen an Frequenzerzeugung!
+	%	\item Linearität der Rampen ausschlaggebend für Qualität der Messung
+\end{itemize}
+
+%\pause
+%\begin{exampleblock}{}
+%	Steile lineare Frequenzrampen $\Rightarrow$ hohe Anforderungen an Frequenzerzeugung!
+%\end{exampleblock}
+
+%Zeigen: 
+%\todo{Aussagen: \newline
+%	- LFMCW Wellenformen vorteilhaft gegenüber Puls wegen geringer notwendiger Abtastrate bei Verwendung eines homodynen Empfängers. \newline
+%	- Wahl der Wellenform Applikationsabhängig, jedoch: \newline
+%	- Chirp-Sequenz geeignetste Wellenform f. anspruchsvolle Mehrziel SRR Anwendungen in dense clutter Umgebungen, da größte Möglichkeiten zur Clutter-Trennung \newline
+%	SICK Vortrag: Folien 24-28} 
+\end{frame}
+
+\begin{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\frametitle{Linear Chirp-Sequence FMCW}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\begin{itemize}
+		\item Sendesignal: $s_{\mathrm{T}}(t) = \cos(\phi_{\mathrm{T}}(t)) = \cos\left(2 \pi \int f_{\mathrm{T}}(t) dt\right)$ 
+		\vspace{0.3cm}
+		\item Komplexes Basisbandsignal (Stretch Processor): 
+		$$s_{B}(t) = I(t) + jQ(t) = \exp(j(\phi_{T}(t - \tau) - \phi_{T}(t) ))$$
+		\item Frequenzgang Up-Chirp Sequenz: 
+		$$f_{\mathrm{T}}(t) = f_{\mathrm{0}} + \frac{B_{\mathrm{sw}}}{T_{\mathrm{up}}} \sum_{l=0}^{L-1}(t-lT_{\mathrm{chirp}}) \mathrm{rect}_{T_{\mathrm{up}}}(t-lT_{\mathrm{chirp}})\quad $$
+	\end{itemize}
+	\vspace{-0.4cm}
+	\begin{columns}
+		\begin{column}{6.7cm}
+			\includegraphics[width=7.2cm]{figures/Chirpsequenz_f_vs_t.pdf}
+		\end{column}
+		\pause
+		\begin{column}{5.5cm}
+			\begin{footnotesize}
+				$s_{B}(k,l) = \exp(j2\pi[\color{blue}{f_{\mathrm{B}}} \color{black} \frac{k}{f_{\mathrm{s}}} + \color{magenta}{f_{\mathrm{D}}} \color{black} \cdot l \cdot T_{\mathrm{chirp}} + \phi_{0}])$
+				\begin{itemize}
+					\item $\color{blue}{f_{\mathrm{B}}}$: Beatfrequenz
+					\item $\color{magenta}{f_{\mathrm{D}}}$: Dopplerfrequenz
+				\end{itemize}
+			\end{footnotesize}
+		\end{column}
+	\end{columns}
+\end{frame} 
+
+\subsection{Entwurf Transceiver-Architektur}
+\begin{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\frametitle{\insertsubsection}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Anforderungen und Designentscheidungen:
+\vspace{0.2cm}
+\begin{itemize}
+	\item{\makebox[5cm][l]{Steile lineare Frequenzrampen} $\Leftrightarrow$ Integer-N-Synthesizer}
+	\item{\makebox[5cm][l]{Low-cost} $\Leftrightarrow$ Stretch Processor einkanalig}
+	\item{\makebox[5cm][l]{Hoher Dynamikbereich} $\Leftrightarrow$ Analoger Hochpass,} \\
+	\hspace{5.5cm} getrennte Tx- und Rx-Antennen
+\end{itemize} 
+\vspace{0.3cm}
+\begin{center}
+%	\todo{Hochpass mit Tiefpass tauschen! --> Frau Olbrich}
+		\includegraphics[width=9cm]{figures/Radar_System_Concept_C}
+\end{center}
+ \end{frame}
+
+\subsection{Auslegung digitale Radarsignalverarbeitung}
+\begin{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\frametitle{Auslegung digitale Radarsignalverarbeitung}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\vspace{-1cm}
+	\begin{center}
+		\include{figures/radar_dsp_block_diagram}
+	\end{center}
+	\vspace{-0.3cm}
+	Blöcke modular
+	\begin{itemize}
+		\item Verschiedene Algorithmen je Block
+		\item Auswahl und Parametrisierung je nach Anwendung
+	\end{itemize}
+\end{frame} 
+
+\begin{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\frametitle{Verarbeitung LCS-FMCW}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{center}
+	\includegraphics[width=11.7cm]{figures/FFT_Radargramm-cropped}
+\end{center}
+\end{frame}
+
+\section{Demonstrator}
+
+\frame{\sectionpage}
+
+\begin{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\frametitle{Hardware}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\todo{Check Spec!}
+\begin{center}
+	\includegraphics[width=7cm]{figures/omniradar_hw_foto}
+\end{center}
+\begin{itemize}
+	\item SiGe FMCW Radar-on-Chip \@ \SIrange[range-phrase = --,range-units = single]{57}{64}{\giga\hertz} mit 1 Tx, 2 Rx, VCO
+	\item Stabile Rampenerzeugung implementiert via Integer-N-Synthesizer 
+	\item Analoger Hochpass zur Verbesserung des Dynamikbereichs
+\end{itemize}
+\end{frame}
+\begin{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\frametitle{Entwickelte Toolbox zur Radar-Messdatenverarbeitung}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\todo{SICK entfernen, Ti Radar entfernen, Überschrift entfernen } \vspace{-0.7cm}
+	\begin{center}
+		\includegraphics[width=11.5cm]{figures/Architektur_Entwurf_Radardemonstrator_high_level-cropped}
+	\end{center}
+\end{frame}
+
+%\section{Leitfaden zur Applikationsanalyse}
+%\begin{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\frametitle{Leitfaden zur Applikationsanalyse}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\todo{Leider nicht in Abschlussvortrag / -Bericht SICK, daher viel Arbeit, evtl. weglassen}
+%\end{frame}
+
+
+\section{Anwendungsbeispiele}
+
+\frame{\sectionpage}
+
+%% Evtl. kurzen Verweis auf die 3 verschiedenen in Betrieb genommenen Demonstratoren (siehe SICK Abschlussbericht)
+
+\subsection{Gestenklassifikation}
+\begin{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\frametitle{Gestenklassifikation}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{block}{Aufgabe: }
+	Automatische Klassifikation menschlicher Hand- und Körpergesten anhand hochauflösender Radarmessungen. 
+\end{block} 
+\vspace{0.2cm}
+\begin{columns}
+	\begin{column}[t]{5.4cm}
+		Zu klassifizierende Gesten: \\
+		\vspace{0.2cm}
+%		\begin{center}
+			\begin{tabular}{|P{4.4cm}|P{0.8cm}|}
+				\hline
+				\rowcolor{kit-green30}
+				Geste & Index \\
+				\hline\hline
+				%			Komm her 				  & $1$ \\
+				%			\hline
+				Stuhlbewegung nach hinten & $1$ \\ % alt: 2
+				\hline
+				Stuhlbewegung nach vorne  & $2$ \\ % alt: 3
+				\hline
+				%			Kopfnicken				  & $4$ \\
+				%			\hline
+				Ziehen					  & $3$ \\ % alt: 5
+				\hline
+				Drücken					  & $4$ \\ % alt: 6
+				\hline
+				%			Wischen nach links		  & $7$ \\
+				%			\hline
+				%			Wischen nach rechts		  &	$8$ \\
+				%			\hline
+				Winken				  	  & $5$\\ % alt: 9
+				\hline
+			\end{tabular}
+%		\end{center}
+	\end{column}
+	\begin{column}[t]{4cm}
+%		\begin{center}
+			LCS-FMCW Wellenform: \\
+			\vspace{0.2cm}
+			\begin{tabular}{|P{1.6cm}|P{2cm}|}
+				\hline
+				\rowcolor{kit-green30}
+				Parameter & Wert \\
+				\hline\hline
+				\# Chirps & 64 \\
+				\hline
+				$T_{\mathrm{up}}$ & \SI{1}{\milli\second} \\
+				\hline
+				$B$ & \SI{7}{\giga\hertz} \\
+				\hline
+				$f_{0}$ & \SI{57}{\giga\hertz} \\
+				\hline
+				$\Delta R$ & \SI{2,14}{\centi\meter} \\
+				\hline
+				$\Delta v_{\mathrm{r}}$ & \SI{0,04}{\meter\per\second} \\
+				\hline
+				$v_{\mathrm{r,max. u.a.}}$ & $\pm\SI{1,21}{\meter\per\second}$ \\
+				\hline
+				$R_{\mathrm{max. u.a.}}$ & \SI{2,14}{\meter} \\
+				\hline
+			\end{tabular}			
+%		\end{center}
+	\end{column}
+\end{columns}
+%	\todo{- Gestenliste mit booktabs}
+\end{frame}
+
+\begin{frame}
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\frametitle{Messaufbau}
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%	\todo{KONZEPT!}
+	\begin{center}
+		\includegraphics[width=11.5cm]{figures/Messaufbau_Abbildung-cropped.pdf}
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\frametitle{DSV-Blockdiagramm und Merkmale}
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%	
+	\includegraphics[width=12cm]{figures/Gestenklass_Merkmale-cropped.pdf}
+	\begin{itemize}
+		\item{\makebox[2.7cm][l]{Vorverarbeitung:} MTI-Filter}
+		\item{\makebox[2.7cm][l]{Fenster:} Chebyshev ($\beta = \SI{100}{\decibel}$)}
+		\item{\makebox[2.7cm][l]{Detektor:} OSCA-CFAR, Peak-Det. \& binäre 2/2 Integration}
+		\item{\makebox[2.7cm][l]{Estimator:} Jacobsen et al. \cite{Jacobsen2007} auf Fenster angepasst}
+	\end{itemize}
+%	\todo{In Grafik: Zielliste ($I$ Ziele) vs. 1 Ziel nach Filterung}
+%	\todo{- Chebyshev-Fenster, OS-CFAR, Jacobsen, kein Zero-Padding \newline
+%		- Zielliste \newline
+%		- Extraktion des deterministischen Punkts \newline
+%		- Normierung, Längenanpassung \newline 
+%		- Und-Verknüpfung der beiden Rx-Antennen, nur Peaks}
+\end{frame} 
+
+\begin{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%	
+\frametitle{Ergebnisse: \\ 9-Nächster-Nachbar-Klassifikator}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%	
+\begin{itemize}
+	\item $28$ Merkmale iterativ via Battacharyya-Abstand ausgewählt gemäß \emph{des Merkmals, das relativ zu den schon vorhandenen am Besten ist}:
+	\begin{footnotesize}
+		$\boldsymbol{v}_{\mathrm{opt}} = [v_{12}, v_{14}, v_{17}, v_{19}, R_{1}, R_{2}, R_{4}, R_{6}, R_{7}, R_{19}, R_{21}, R_{23}, R_{25}, R_{28}, R_{29}, R_{30},$ \\ $R_{31}, R_{32}, R_{34}, R_{35}, R_{36}, R_{37}, I_{\mathrm{range}}, Q_{\mathrm{range}}, v_{\mathrm{min}}, v_{\mathrm{max}}, R_{\mathrm{min}}, R_{\mathrm{max}}]$ 
+	\end{footnotesize}
+	\item  Min. 7/9 N.N. selber Klasse gefordert; sonst Rückweisung
+	\item 40 Trainings- und 20 Testmessungen je Geste, 2 Personen:
+	\end{itemize}
+	\begin{center}
+		\begin{tabular}{>{\columncolor{kit-green30}}c||ccccc|c|c}
+			\hline
+			\rowcolor{kit-green30}
+			k & 1 & 2 & 3 & 4 & 5 & 0 (Reject) & \\
+			\hline\hline
+			1 & \textbf{100} & 0 & 0 & 0 & 0 & 0 & \% \\
+			2 & 0 & \textbf{100} & 0 & 0 & 0 & 0 & \% \\
+			3 & 0 & 0 & \textbf{86,67} & 0 & 13,33 & 0 & \% \\
+			4 & 0 & 0 & 0 & \textbf{93,33} & 0 & 6,67 & \% \\
+			5 & 0 & 0 & 0 & 0 & \textbf{100} & 0 & \% \\
+			\hline
+			0 & 0 & 6,25 & 18,75 & 0 & 0 & \color{red}{\textbf{75}} & \% \\
+			\hline
+		\end{tabular} \\ \vspace{0.3cm}
+		Mittlere gesamte Erfolgsquote: $\color{red}{\textbf{96 \%}}$
+	\end{center}
+\end{frame}
+
+\subsection{Automatisierungstechnik: Through-the-box detection}
+\begin{frame}
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\frametitle{Automatisierungstechnik: Through-the-box detection}
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\begin{center}
+		\includegraphics[width=7cm]{figures/thru_box_det_sketch}
+	\end{center}
+	\begin{itemize}
+		\item Detektion von Schokoriegeln in einem Karton
+		\item Grenzbereich der Auflösung des Radars ($\Delta R_{\mathrm{theo}} = \SI{2,14}{\centi\meter}$)
+	\end{itemize}
+	$\rightarrow$ Demo: aufgezeichnete Messung wird in RadarGUI abgespielt.
+\end{frame}
+
+\section{Zusammenfassung der Ergebnisse}
+\begin{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\frametitle{Zusammenfassung der Ergebnisse}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\todo{Check that here, you proove that you accomplished the goals of Slide 6!}
+\begin{itemize}
+	\item Entwurf zum Aufbau eines low-cost Nahbereichsradars für kommerzielle Einsatzzwecke erarbeitet: 
+		\begin{itemize}
+			\item Wellenform 
+			\item Transceiver-Architektur 
+			\item Signalverarbeitungskette
+		\end{itemize} 
+	\item Dem Entwurf folgend wurde ein Demonstrator aufgebaut 
+		\begin{itemize}
+			\item HF-Front-End, DDS, BB-Filterung mit COTS-Komponenten 
+			\item Toolbox zur Radarsignalverarbeitung in MATLAB implementiert
+			\item GUI zur Applikationsanalyse %(Aufzeichnen, Abspielen und Parametrisieren von Messungen sowie Parametrisierung der Signalverarbeitung und Simulationsmodus)
+		\end{itemize}
+	\item Mit dem Demonstrator wurde gezeigt, dass rein Radar-basierte Klassifikation menschlicher Hand- und Körpergesten mit hohen Klassifikationsraten möglich ist
+	\item Des weiteren wurde die Lösbarkeit von Anwendungen in der Automatisierungstechnik demonstriert
+\end{itemize}
+\end{frame}
+
+%\section{Schlussfolgerungen}
+%\begin{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\frametitle{Schlussfolgerungen}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%HERE: Show what has been learned with respect to the initial questions!
+%\end{frame} 
+
+
+% Local background must be enclosed by curly braces for grouping.
+%{
+%	\usebackgroundtemplate{\includegraphics[width=6cm]{figures/demo_omni}}%
+	\begin{frame}
+		\begin{center}
+			\LARGE Vielen Dank für Ihre Aufmerksamkeit! \\
+			\vspace{1cm}
+			\includegraphics[width=7cm]{figures/demo_omni}
+		\end{center}
+	\end{frame}
+%}
+
+\begin{frame}
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\frametitle{Literatur}
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\begingroup
+	\setlength\bibitemsep{1.1\baselineskip}
+	%\printbibliography[notkeyword=Quartalsbericht,notkeyword=BetreuteStudentischeArbeit,notkeyword=mypapers]
+	\printbibliography[title={Literaturverzeichnis}]
+	\endgroup
+\end{frame}
+
+%\appendix 
+%\section{Backup}
+%\begin{frame}[noframenumbering]
+%	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%	\frametitle{Chirp-Sequenz LFMCW}
+%	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Content here
+%\end{frame} 
+
+
+
+\end{document}	
