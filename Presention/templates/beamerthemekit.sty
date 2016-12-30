@@ -25,7 +25,7 @@
 	\pgfpathrectangle{\pgfpoint{0mm}{0mm}}{\pgfpoint{\paperwidth-2mm}{6mm}}
 	\pgfusepath{fill}
 	\pgftext[at=\pgfpoint{5mm}{4mm},left,center]{\textcolor{white}{\tiny\expandafter{\insertinstitute}}}
-	\pgftext[at=\pgfpoint{5mm}{2mm},left,center]{\textcolor{white}{\tiny\expandafter{Univ.-Prof. i.\,R. Dr.rer.nat. Friedrich K. Jondral}}}
+	\pgftext[at=\pgfpoint{5mm}{2mm},left,center]{\textcolor{white}{\tiny\expandafter{Prof. Dr.\,rer.\,nat. Friedrich K. Jondral}}}
 \end{pgfpicture}
 \end{textblock*}
 
@@ -54,12 +54,12 @@
 
 %subtitle
 \begin{textblock*}{120mm}(6mm,33mm)
-\scriptsize \insertsubtitle
+\scriptsize \insertsubtitle \hfill Prof. Dr.\,rer.\,nat. Friedrich K. Jondral (Main referent) \hspace{0.3mm}
 \end{textblock*}
 
 %author
 \begin{textblock*}{120mm}(6mm,37mm)
-\scriptsize\insertauthor~\textbar~\insertshortdate
+\scriptsize\insertauthor~\textbar~\insertshortdate \hfill Prof. Dr.\,-Ing. Anja Klein (Coreferent) \hspace{0.3mm}
 \end{textblock*}
 
 %legal KIT text
@@ -172,8 +172,8 @@ KIT -- University of the State of Baden-Wuerttemberg and\\National Laboratory of
 	% Date and frame number
 	\textbf{\insertframenumber{} / \inserttotalframenumber} \hspace{10pt} %\insertshortdate
 \end{beamercolorbox}%
-\vspace*{-5.5mm}\hspace*{0.10\textwidth}%
-\begin{beamercolorbox}[wd=0.41\textwidth,ht=2mm,dp=3.5mm,leftskip=1.3em,rightskip=.5em]{title in head/foot}%
+\vspace*{-5.5mm}\hspace*{0.07\textwidth}%
+\begin{beamercolorbox}[wd=0.35\textwidth,ht=2mm,dp=3.5mm,leftskip=1.3em,rightskip=.5em]{title in head/foot}%
 	\usebeamerfont{title in head/foot}%
 	% Title
 	%\insertshorttitle
@@ -183,13 +183,13 @@ KIT -- University of the State of Baden-Wuerttemberg and\\National Laboratory of
 	\end{tabular}
 \end{beamercolorbox}%
 %\vspace*{-7.2mm}
-\hspace*{0.13\textwidth}%
-\begin{beamercolorbox}[wd=0.3\textwidth,ht=2mm,dp=3.5mm,leftskip=1.3em,rightskip=.5em]{title in head/foot}%
+\hspace*{0.29\textwidth}%
+\begin{beamercolorbox}[wd=0.33\textwidth,ht=2mm,dp=2.5mm,leftskip=1.3em,rightskip=.5em]{title in head/foot}%
 	\usebeamerfont{title in head/foot}%
 	% Title
 	\begin{tabular}{r} 
 		Communications Engineering Lab \\
-		Univ.-Prof. i.\,R. Dr.rer.nat.  Friedrich K. Jondral
+		Prof. Dr.\,rer.\,nat.  Friedrich K. Jondral
 	\end{tabular}	
 \end{beamercolorbox}%
 %\begin{beamercolorbox}[wd=0\textwidth,ht=2mm,dp=1.5mm,leftskip=2.0em,rightskip=.5em]{title in head/foot}%
