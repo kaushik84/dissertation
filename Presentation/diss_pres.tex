@@ -300,8 +300,6 @@ single arrow head extend=.3cm,}}
 			\end{block}
 		}
 	\end{center}
-
-
 \end{frame}
 
 
@@ -404,24 +402,136 @@ single arrow head extend=.3cm,}}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}[t]{Performance Analysis}
+\begin{frame}[t]{Performance Analysis of CR System}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	% Performance analysis us determine the hardware feasibility of a wireless system. In context to CR system it is a critical.  
+	\vspace{-3mm}
 	\fs{7}{8}
-	\begin{block}{}%{\scriptsize Performance Analysis}
+	\begin{block}{\scriptsize Challenges}
 		\begin{itemize}
-			% Performance anlysis us determine the hardware feasibility of a wireless system 
-			\item CR system involves the coexistence of two different system: {\color{blue}{primary}} and {\color{red}{secondary}}  
-			\item Objective is ensure the interference at PR below a certain value 
+			% Complexity of the underlying scenario. Coexistence illustrates sharing a chunk of spectrum. Different with respect to the wireless technologies and in terms of privilege for the access 
+			\item Involves the coexistence of two different system: {\color{blue}{primary}} and {\color{red}{secondary}} 
+			% For system design one assume no knowledge about the primary user signal 
+			\item With no concrete guidelines available in the literature $\Leftrightarrow$ no knowledge about the primary user signal is a reasonable assumption
+			% With regard to the above issues 
+			\item Existing theoretical analysis rarely converges to an hardware implementation $\Leftrightarrow$ deployment perspective % in order words, rarely deal(tackle) the problem from a deployment perspective 
+		\end{itemize}
+	\end{block}
+	\vspace{-1mm}
+	\begin{columns}
+		\begin{column}{0.37\columnwidth}
+			\onslide<2->
+			{
+				\begin{block}{\scriptsize Performance characterization}
+					Upon applying CR techniques at ST, a CR system grantees\begin{itemize}
+						\item Protection to primary system $\Leftrightarrow$ interference power at PR 
+						\item QoE to secondary system $\Leftrightarrow$ at SR 
+					\end{itemize}
+				\end{block}
+			}
+			\vspace{-1mm}
+			\onslide<3->
+			{
+				\begin{block}{}%{\scriptsize Channel knowledge}
+					Knowledge of interacting channels is absolutely necessary at ST 
+				\end{block}
+			}
+			\onslide<4->
+	 		{
+				\centering
+				\tikzfancyarrow[0.85cm][kit-green70][top color=kit-green50, bottom color=kit-green50, shape border rotate=270]{\color{kit-green50}{10}}			\\[0.5em]	
+	               		\begin{tikzpicture}[scale=1]
+	               	 		\node[draw=none,fill=gray!30, minimum height = 0.5cm, align = center] at (0.0, 0.0) {Channel Estimation is proposed at ST/SR};
+				\end{tikzpicture}
+			}
+		\end{column}
+		\begin{column}{0.63\columnwidth}
+		\vspace{-1mm}
+		\fs{7}{8}
+		\begin{center}
+			% Interacting entities
+			{\color{blue}{PT, PR}}, \color{red}{ST($\Leftrightarrow$ CSC-BS) and SR($\Leftrightarrow$ MS)}\\\vspace{0.2cm} 
+        		\begin{tikzpicture}[scale=1]
+				\node[anchor=south west,inner sep=0] (image) at (0,0)
+				{
+					\includegraphics[width = 0.85\columnwidth]{../kapitel01/figures/CR_Scenario_Hybrid}	     
+				};
+				\only<1>
+				{
+					\fill[opacity = 0.2, fill = blue] (.32,1.16) rectangle (1.22,1.8);
+					\fill[opacity = 0.2, fill = blue] (.32,-0.06) rectangle (1.22,0.58);
+					\fill[opacity = 0.2, fill = red] (3.65,1.18) rectangle (4.65,1.6);
+					\fill[opacity = 0.2, fill = red] (2.42,2.3) rectangle (3.88,3.08);
+				}
+				\only<2>
+				{
+					\draw[blue, thick] (.32,1.16) rectangle (1.22,1.8); %PR
+					\draw[red, thick] (3.65,1.18) rectangle (4.65,1.6); %ST
+					\draw[red, thick] (2.42,2.3) rectangle (3.88,3.08); %SR
+					
+					%% Dummy figure added to avoid a shift between two slides
+					\fill[opacity = 0.0, fill = blue] (.32,-0.06) rectangle (1.22,0.58);
+				}
+				\only<3->
+				{
+					
+					\fill[opacity = 0.2, fill = gray!70] (1.28,.98) rectangle (1.68,1.34);
+					\fill[opacity = 0.2, fill = gray!70] (1.22,1.96) rectangle (1.62,2.32);
+					\fill[opacity = 0.2, fill = gray!70] (3.38,1.86) rectangle (3.78,2.22);
+					\fill[opacity = 0.2, fill = gray!70] (2.52,.68) rectangle (2.92,1.04);
+					
+					%% Dummy figure added to avoid a shift between two slides
+					\fill[opacity = 0.0, fill = blue] (.32,-0.06) rectangle (1.22,0.58);
+				}
+				\only<4->
+				{
+					\draw[red, thick] (3.65,1.18) rectangle (4.65,1.6); %ST
+					\draw[red, thick] (2.42,2.3) rectangle (3.88,3.08); %SR
+				}
+			\end{tikzpicture}	
+		\end{center}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[t]{Imperfect Channel Knowledge}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\vspace{-3mm}
+	\fs{7}{8}
+	\begin{block}{\scriptsize Challenges}
+		\begin{itemize}
+			% There exits a multitude of wireless standards that can act as primary system, it is difficult to included a dedicated circuitry for each primary user signal 
+			\item Involves the estimation of the channels between two different systems $\Rightarrow$ conventional techniques? 
+			\item  
 		\end{itemize}
 	\end{block}
 	\begin{columns}
 		\begin{column}{0.37\columnwidth}
-			\begin{block}{\scriptsize Performance characterization}
-				\begin{itemize}
-					\item Interference at PR 
-					\item Throughput at SR 
-				\end{itemize}
-			\end{block}
+			%\onslide<2->
+			{
+				\begin{block}{\scriptsize Impact on performance} %of incorporating channel estimation on the performance
+					\begin{itemize} 
+						\item Time allocation $\Rightarrow$ throughput at SR 
+						\item Variations $\Rightarrow$ uncertain interference at PR 
+					\end{itemize}
+				\end{block}
+			}
+			%\onslide<3->
+			{
+				\begin{block}{}%{\scriptsize Channel knowledge}
+					Knowledge of interacting channels is absolutely necessary at ST 
+				\end{block}
+			}
+			%\onslide<4->
+	 		{
+				\centering
+				\tikzfancyarrow[0.85cm][kit-green70][top color=kit-green50, bottom color=kit-green50, shape border rotate=270]{\color{kit-green50}{10}}			\\[0.5em]	
+	               		\begin{tikzpicture}[scale=1]
+	               	 		\node[draw=none,fill=gray!30, minimum height = 0.5cm, align = center] at (0.0, 0.0) {Channel Estimation is proposed at ST/SR};
+				\end{tikzpicture}
+			}
 		\end{column}
 		\begin{column}{0.63\columnwidth}
 		\fs{7}{8}
@@ -433,15 +543,33 @@ single arrow head extend=.3cm,}}
 				{
 					\includegraphics[width = 0.85\columnwidth]{../kapitel01/figures/CR_Scenario_Hybrid}	     
 				};
+				\only<1>
+				{
 					\fill[opacity = 0.2, fill = blue] (.32,1.16) rectangle (1.22,1.8);
 					\fill[opacity = 0.2, fill = blue] (.32,-0.06) rectangle (1.22,0.58);
+					\fill[opacity = 0.2, fill = red] (3.65,1.18) rectangle (4.65,1.6);
+					\fill[opacity = 0.2, fill = red] (2.42,2.3) rectangle (3.88,3.08);
+				}
 			\end{tikzpicture}	
 		\end{center}
 		\end{column}
 	\end{columns}
-
 \end{frame}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[c]{Contributions}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\vspace{-2mm}
+	%\hspace{-2mm}
+	\begin{center}
+	\begin{tikzpicture}[scale=1]
+                                \node[anchor=south west,inner sep=0] (image) at (0,0)
+                                {
+                                        \includegraphics[width = 1.0\columnwidth]{../kapitel01/figures/Contri.ps}
+                                };
+                        \end{tikzpicture}
+	\end{center}
+\end{frame}
 
 \section{Interweave System}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -489,10 +617,12 @@ single arrow head extend=.3cm,}}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}[c]{Conclusion}
+\begin{frame}[c]{}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{center}
 \fs{10}{15}
 Thank you for your Attention!
+\end{center}
 \end{frame}
 
 \end{document}	
