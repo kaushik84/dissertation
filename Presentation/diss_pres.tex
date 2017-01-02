@@ -51,6 +51,7 @@
 %		 range-units = single       % Einheiten bei Fehlern und Range nicht wiederholen}
 
 \usepackage{tikz}
+\usetikzlibrary{fadings,shapes,arrows,shadows,decorations.pathreplacing}
 %\usetikzlibrary{angles,quotes,babel,shapes,snakes,calendar,matrix,backgrounds,folding,arrows,decorations.pathmorphing,trees,arrows.meta,calc,intersections,positioning,decorations.markings}
 %\tikzset{>=latex} % Latex style set
 \usepackage{makecell}
@@ -113,7 +114,7 @@
 }
 
 \institute{Communications Engineering Lab}
-\date{31. Janauary 2017}
+\date{31 Janauary 2017}
 
 % Fußnote anpassen, so dass es nicht mit dem Footer überschneidet
 \addtobeamertemplate{footnote}{\vspace{-6pt}\advance\hsize-0.5cm}{\vspace{6pt}}
@@ -138,25 +139,345 @@
 %\addbibresource{../../../bibtex/library_manual.bib}
 %\bibhang1em
 
+
+\input{macro.tex}
+\newcommand{\fs}[2]{\fontsize{#1 pt}{#2}\selectfont}
+
+% Fancy Arrows
+% http://tex.stackexchange.com/questions/84143/fancy-arrows-with-tikz
+\tikzfading[name=arrowfading, top color=transparent!0, bottom color=transparent!95]
+\tikzset{arrowfill/.style={#1,general shadow={fill=black, shadow yshift=-0.8ex, path fading=arrowfading}}}
+\tikzset{arrowstyle/.style n args={3}{draw=#2,arrowfill={#3}, single arrow,minimum height=#1, single arrow,
+single arrow head extend=.3cm,}}
+
+\NewDocumentCommand{\tikzfancyarrow}{O{2cm} O{kit-green70} O{top color=kit-green30, bottom color=kit-green50} m}{
+\tikz[baseline=-0.5ex]\node [arrowstyle={#1}{#2}{#3}] {#4};
+}
+
+% Include Figures Path
+\graphicspath{~/dissertation/kapital01/figures/}
+
 \begin{document}
-
-
 
 %title page
 \begin{frame}
-\titlepage
+	\titlepage
 \end{frame}
+
+\section*{Contents}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[t]{Contents}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\fs{10}{15}
+	\tableofcontents
+        %\begin{itemize}
+        %        \item Motivation 
+        %        \item Interweave System
+        %        \item Underlay System 
+        %        \item Hybrid System 
+        %        \item Hardware Implementation 
+        %        \item Conclusion 
+        %\end{itemize}
+\end{frame}
+
 
 %\input{inhalt.tex}
 
-\section*{Gliederung}
-
-\begin{frame}
+\section{Motivation}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frametitle{Gliederung}
+\begin{frame}[c]{Mobile Traffic}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	\tableofcontents
+	\begin{columns}
+	\begin{column}{0.55\columnwidth}
+	\fs{7}{8}
+	%\resizebox{1.1\columnwidth}{!}{%
+	\begin{tikzpicture}
+		\begin{axis}
+			[
+			%smooth,
+			%xlabel = Year,
+			%ylabel = Data,
+			legend style={area legend, at={(0.5,1.15)}, anchor=north,legend columns=-1},
+			xtick={2015,2018,2021},
+			x tick label style={/pgf/number format/1000 sep={}},
+			stack plots=y,
+			area style,
+			enlarge x limits = false,
+			]
+			\addplot [draw = kit-green70, fill = kit-green30] 
+			coordinates
+			{(2015,5.5) (2016,8) (2017,12) (2018,18) (2019, 27) (2020,38) (2021, 52)}
+			\closedcycle;
+			\addlegendentry{Global mobile traffic (monthly ExaBytes)}
+		\end{axis}
+	
+	
+		\coordinate (O) at (0.5,0.48,0);
+  		\coordinate (A) at (0.5,5.23,0);
+		\draw[->, thick] (O) to node[right]{11$\times$} (A);
+		
+		\coordinate (O) at (0.0,0.48,0);
+  		\coordinate (A) at (1.5,0.48,0);
+		\draw[-, thick, dashed] (O) to (A);
+	
+		\coordinate (O) at (6.85,5.23,0);
+  		\coordinate (A) at (0.0,5.23,0.0);
+		\draw[-, thick, dashed] (O) to (A);
+		%\coordinate (O) at (0.5,1.1,0);
+  		%\coordinate (A) at (5.7,5,0);
+		%\draw[->, ultra thick] (O) to [bend right=15] (A);
+		%\node[draw=none] at (3.1,3.05) {$11\times$};
+	\end{tikzpicture}
+	%}
+	\end{column}
+	\begin{column}{0.17\columnwidth}
+	\fs{7}{8}
+	\centering
+	\tikzfancyarrow[1.0cm][kit-green70][top color=kit-green30, bottom color=kit-green50, shape border rotate=0]{5G Guidelines}
+	\end{column}
+	\begin{column}{0.27\columnwidth}
+	\fs{8}{8}
+	\begin{block}{} 
+	\begin{itemize}
+		\item Data rate (1000$\times)$
+		\item Latency $(< \SI{1}{ms})$  
+		\item Energy- and cost- efficiency 	
+	\end{itemize}	
+	\end{block}
+	\end{column}
+	\end{columns}
 \end{frame}
 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[t]{5G Technologies}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\vspace{-2mm}
+	\fs{7}{8}
+	\begin{overlayarea}{\textwidth}{6.25cm}
+	\begin{center}
+        	\begin{tikzpicture}[scale=1]
+		\node[anchor=south west,inner sep=0] (image) at (0,0)
+		{
+			\includegraphics[width = 0.75\columnwidth]{../kapitel01/figures/5G.ps}
+        	};	
+		%\node[draw = none,align=center] (A) at (0.23,0.53) {> \SI{6}{GHz}};
+		\only<1>
+		{
+		\draw[decorate, decoration={brace, amplitude=10pt}, xshift = -4pt, yshift=0pt] (0.0,-0.7) -- (2.8,-0.7) node[black,midway,yshift=+0.5cm] {< \SI{6}{GHz}};
+		\draw[decorate, decoration={brace, amplitude=10pt}, xshift = -4pt, yshift=0pt] (3.15,-0.7) -- (5.95,-0.7) node[black,midway,yshift=+0.5cm] {\SI{6}{GHz} -- \SI{300}{GHz}};
+		\draw[decorate, decoration={brace, amplitude=10pt}, xshift = -4pt, yshift=0pt] (6.3,-0.7) -- (9.1,-0.7) node[black,midway,yshift=+0.5cm] {\SI{430}{THz} -- \SI{770}{THz}};
+		%\draw[-latex] (B) edge (A);
+		}
+		\only<1-2>
+		{
+			\fill[opacity = 0.4, fill = kit-green30] (-0.1,-0.4) rectangle (8.9,2.2);
+		}
+		\only<3->
+		{
+			\draw[opacity = 0, decorate, decoration={brace, amplitude=10pt}, xshift = -4pt, yshift=0pt] (0.0,-0.7) -- (2.8,-0.7) node[black,midway,yshift=+0.5cm] {< \SI{6}{GHz}};
+			\draw[opacity = 0, decorate, decoration={brace, amplitude=10pt}, xshift = -4pt, yshift=0pt] (3.15,-0.7) -- (5.95,-0.7) node[black,midway,yshift=+0.5cm] {\SI{6}{GHz} -- \SI{300}{GHz}};
+			\draw[opacity = 0, decorate, decoration={brace, amplitude=10pt}, xshift = -4pt, yshift=0pt] (6.3,-0.7) -- (9.1,-0.7) node[black,midway,yshift=+0.5cm] {\SI{430}{THz} -- \SI{770}{THz}};
+			\fill[opacity = 0.4, fill = kit-green30] (-0.1,-0.4) rectangle (2.7,1.15);
+		}
+		\end{tikzpicture}
+	\end{center}
+	\end{overlayarea}
+	\begin{center}
+		\only<1>
+		{
+			\tikzfancyarrow[11.0cm][kit-green70][top color=kit-green30, bottom color=kit-green50, shape border rotate=0]{Electromagnetic Spectrum}
+		}
+		\only<2>
+		{
+			\tikzfancyarrow[11.0cm][kit-green70][top color=kit-green30, bottom color=kit-green50, shape border rotate=180]{Mobility}
+		}
+		\only<3>
+		{
+			\begin{block}{}
+			A Cognitive Radio (CR) is an agile system that allows efficient usage (secondary access) of the spectrum below $\SI{6}{Hz}$ 
+			\end{block}
+		}
+	\end{center}
+
+
+\end{frame}
+
+
+\subsection{Cognitive Small Cell}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[t]{Cognitive Small Cell}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+		\fs{7}{8}
+		\begin{block}{}%{\scriptsize Cognitive Small Cell?}
+		An Cognitive Small Cell (CSC) is a network entity that enable CR communications for the devices operating indoor 
+		\end{block}
+	\begin{columns}
+	\begin{column}{0.37\columnwidth}
+		\only<1,3->
+		{	
+			\begin{block}{\scriptsize Network Elements}
+				\begin{itemize}
+					\item Cognitive Small Cell-Base Station ($\color{blue}{\text{CSC-BS}}$)
+					\item Mobile Station ($\color{green}{\text{MS}}$) 
+					\item Macro Cell-Base Station ($\color{red}{\text{MC-BS}}$) 
+				\end{itemize}
+			\end{block}
+		}
+		\only<2>
+		{
+			\begin{block}{\scriptsize \textbf{Network Elements}}
+				\begin{itemize}
+					\item Cognitive Small Cell-Base Station ($\color{blue}{\text{CSC-BS}}$)
+					\item Mobile Station ($\color{green}{\text{MS}}$) 
+					\item Macro Cell-Base Station ($\color{red}{\text{MC-BS}}$) 
+				\end{itemize}
+			\end{block}
+		}
+		\only<1,2,4->
+		{
+			\begin{block}{\scriptsize Spectrum Access}
+				\begin{itemize}
+					\item Wirieless backhaul ($\color{blue}{\text{CSC-BS} \Leftrightarrow \text{MC-BS}}$)
+					\item Direct ($\color{green}{\text{MC-BS} \Leftrightarrow \text{MS}}$) 
+					\item Indirect ($\color{red}{\text{CSC-BS} \Leftrightarrow \text{MS}}$) 
+				\end{itemize}
+			\end{block}
+		}
+		\only<3>
+		{
+			\begin{block}{\scriptsize \textbf{Spectrum Access}}
+				\begin{itemize}
+					\item Wirieless backhaul ($\color{blue}{\text{CSC-BS} \Leftrightarrow \text{MC-BS}}$)
+					\item Direct ($\color{green}{\text{MC-BS} \Leftrightarrow \text{MS}}$) 
+					\item Indirect ($\color{red}{\text{CSC-BS} \Leftrightarrow \text{MS}}$) 
+				\end{itemize}
+			\end{block}
+		}
+		\only<1-3>
+		{
+			\begin{block}{\scriptsize Indoor?}
+				\begin{itemize}
+					\item 70\% traffic is originated indoor
+					\item Spatial separation 	
+				\end{itemize}
+			\end{block}
+		}
+		\only<4->
+		{
+			\begin{block}{\scriptsize \textbf{Indoor?}}
+				\begin{itemize}
+					\item 70\% traffic is originated indoor
+					\item Spatial separation 	
+				\end{itemize}
+			\end{block}
+		}
+	\end{column}
+	\begin{column}{0.63\columnwidth}
+		\fs{7}{8}
+		\begin{center}
+			CSC in a prelimanry 5G network \\\vspace{0.4cm} 
+        		\begin{tikzpicture}[scale=1]
+				\node[anchor=south west,inner sep=0] (image) at (0,0)
+				{
+					\includegraphics[width = \columnwidth]{../kapitel01/figures/Cellular_Scenario_CR6F}	     
+				};
+				\only<2>
+				{
+					\fill[opacity = 0.2, fill = blue] (0.65,1.47) rectangle (1.28,2.03);
+					\fill[opacity = 0.2, fill = green] (1.5,.33) rectangle (2.32,.81);
+					\fill[opacity = 0.2, fill = red] (2.8,2.2) rectangle (3.59,3.57);
+				}
+				\only<3>
+				{
+					\fill[opacity = 0.2, fill = blue] (1.37,2.78) rectangle (3.2,3.35);
+					\fill[opacity = 0.2, fill = green] (3.35,3.5) rectangle (3.6,4.3);
+					\fill[opacity = 0.2, fill = red] (1.08,0.89) rectangle (2.05,1.61);
+				}
+			\end{tikzpicture}	
+		\end{center}
+	\end{column}
+	\end{columns}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[t]{Imperfect Channel Knowledge}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\fs{7}{8}
+	\begin{block}{}%{\scriptsize Cognitive Small Cell?}
+		An Cognitive Small Cell (CSC) is a network entity that enable CR communications for the devices operating indoor 
+	\end{block}
+	\begin{columns}
+		\begin{column}{0.37\columnwidth}
+		\end{column}
+		\begin{column}{0.63\columnwidth}
+		\fs{7}{8}
+		\begin{center}
+			ST($\Leftrightarrow$ CSC-BS), SR($\Leftrightarrow$ MS), PT and PR\\\vspace{0.4cm} 
+        		\begin{tikzpicture}[scale=1]
+				\node[anchor=south west,inner sep=0] (image) at (0,0)
+				{
+					\includegraphics[width = \columnwidth]{../kapitel01/figures/CR_Scenario_Hybrid}	     
+				};
+			\end{tikzpicture}	
+		\end{center}
+		\end{column}
+	\end{columns}
+
+\end{frame}
+
+
+\section{Interweave System}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[t]{Interweave System}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{frame}
+
+
+\section{Underlay System}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[t]{Underlay System}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{frame}
+
+
+\section{Hybrid System}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[t]{Hybrid System}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{frame}
+
+
+\section{Hardware Implementation}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[t]{Hardware Implementation}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{frame}
+
+\subsection{Validation}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[t]{Validation}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{frame}
+
+\subsection{Demonstration}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[t]{Demonstration}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{frame}
+
+\section{Conclusion}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[t]{Conclusion}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[c]{Conclusion}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\fs{10}{15}
+Thank you for your Attention!
+\end{frame}
 
 \end{document}	
