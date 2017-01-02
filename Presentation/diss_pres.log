@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/Debian) (format=latex 2013.11.20)  2 JAN 2017 11:07
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/Debian) (format=latex 2013.11.20)  2 JAN 2017 13:13
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -2497,29 +2497,22 @@ Overfull \hbox (12.75371pt too wide) has occurred while \output is active
 \tf@snm=\write9
 \openout9 = `diss_pres.snm'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 483.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 483.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 498.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 498.
  (./diss_pres.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 483.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 483.
-
-
-Package rerunfilecheck Warning: File `diss_pres.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `diss_pres.out':
-(rerunfilecheck)             Before: D41D8CD98F00B204E9800998ECF8427E;0
-(rerunfilecheck)             After:  36CEC71CECF82826EB2E889925A87204;490.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 483.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 498.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 498.
+Package rerunfilecheck Info: File `diss_pres.out' has not changed.
+(rerunfilecheck)             Checksum: 36CEC71CECF82826EB2E889925A87204;490.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 498.
  ) 
 Here is how much of TeX's memory you used:
- 38487 strings out of 495008
- 860355 string characters out of 3179712
- 1115253 words of memory out of 3000000
- 40824 multiletter control sequences out of 15000+200000
+ 38596 strings out of 495008
+ 862433 string characters out of 3179712
+ 1118352 words of memory out of 3000000
+ 40933 multiletter control sequences out of 15000+200000
  42341 words of font info for 64 fonts, out of 3000000 for 9000
  14 hyphenation exceptions out of 8191
- 63i,22n,96p,1001b,2111s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 63i,22n,96p,1001b,2112s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on diss_pres.dvi (19 pages, 185332 bytes).
+Output written on diss_pres.dvi (19 pages, 203520 bytes).

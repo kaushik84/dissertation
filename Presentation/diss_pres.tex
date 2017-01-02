@@ -209,7 +209,7 @@ single arrow head extend=.3cm,}}
 			coordinates
 			{(2015,5.5) (2016,8) (2017,12) (2018,18) (2019, 27) (2020,38) (2021, 52)}
 			\closedcycle;
-			\addlegendentry{Global mobile traffic (monthly ExaBytes)}
+			\addlegendentry{Global mobile traffic (monthly ExaBytes $\approx 10^{18}$)}
 		\end{axis}
 	
 	
@@ -309,12 +309,14 @@ single arrow head extend=.3cm,}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}[t]{Cognitive Small Cell}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+		\vspace{-0.3cm}
 		\fs{7}{8}
 		\begin{block}{}%{\scriptsize Cognitive Small Cell?}
 		An Cognitive Small Cell (CSC) is a network entity that enable CR communications for the devices operating indoor 
 		\end{block}
 	\begin{columns}
 	\begin{column}{0.37\columnwidth}
+		\vspace{-0.1cm}
 		\only<1,3->
 		{	
 			\begin{block}{\scriptsize Network Elements}
@@ -339,9 +341,9 @@ single arrow head extend=.3cm,}}
 		{
 			\begin{block}{\scriptsize Spectrum Access}
 				\begin{itemize}
-					\item Wirieless backhaul ($\color{blue}{\text{CSC-BS} \Leftrightarrow \text{MC-BS}}$)
-					\item Direct ($\color{green}{\text{MC-BS} \Leftrightarrow \text{MS}}$) 
-					\item Indirect ($\color{red}{\text{CSC-BS} \Leftrightarrow \text{MS}}$) 
+					\item Wireless backhaul link ($\color{blue}{\text{CSC-BS} \Leftrightarrow \text{MC-BS}}$)
+					\item Direct link ($\color{green}{\text{MC-BS} \Leftrightarrow \text{MS}}$) 
+					\item Indirect link ($\color{red}{\text{CSC-BS} \Leftrightarrow \text{MS}}$) 
 				\end{itemize}
 			\end{block}
 		}
@@ -349,9 +351,9 @@ single arrow head extend=.3cm,}}
 		{
 			\begin{block}{\scriptsize \textbf{Spectrum Access}}
 				\begin{itemize}
-					\item Wirieless backhaul ($\color{blue}{\text{CSC-BS} \Leftrightarrow \text{MC-BS}}$)
-					\item Direct ($\color{green}{\text{MC-BS} \Leftrightarrow \text{MS}}$) 
-					\item Indirect ($\color{red}{\text{CSC-BS} \Leftrightarrow \text{MS}}$) 
+					\item Wireless backhaul link ($\color{blue}{\text{CSC-BS} \Leftrightarrow \text{MC-BS}}$)
+					\item Direct link ($\color{green}{\text{MC-BS} \Leftrightarrow \text{MS}}$) 
+					\item Indirect link ($\color{red}{\text{CSC-BS} \Leftrightarrow \text{MS}}$) 
 				\end{itemize}
 			\end{block}
 		}
@@ -359,8 +361,8 @@ single arrow head extend=.3cm,}}
 		{
 			\begin{block}{\scriptsize Indoor?}
 				\begin{itemize}
-					\item 70\% traffic is originated indoor
-					\item Spatial separation 	
+					\item 70\% traffic is originated indoor $\Leftrightarrow$ Traffic Management
+					\item Spatial separation $\Leftrightarrow$ Interference suppression	
 				\end{itemize}
 			\end{block}
 		}
@@ -368,8 +370,8 @@ single arrow head extend=.3cm,}}
 		{
 			\begin{block}{\scriptsize \textbf{Indoor?}}
 				\begin{itemize}
-					\item 70\% traffic is originated indoor
-					\item Spatial separation 	
+					\item 70\% traffic is originated indoor $\Leftrightarrow$ Traffic Management
+					\item Spatial separation $\Leftrightarrow$ Interference suppression	
 				\end{itemize}
 			\end{block}
 		}
@@ -377,7 +379,7 @@ single arrow head extend=.3cm,}}
 	\begin{column}{0.63\columnwidth}
 		\fs{7}{8}
 		\begin{center}
-			CSC in a prelimanry 5G network \\\vspace{0.4cm} 
+			CSC in a preliminary 5G network \\\vspace{0.4cm} 
         		\begin{tikzpicture}[scale=1]
 				\node[anchor=south west,inner sep=0] (image) at (0,0)
 				{
@@ -402,24 +404,37 @@ single arrow head extend=.3cm,}}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}[t]{Imperfect Channel Knowledge}
+\begin{frame}[t]{Performance Analysis}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	\fs{7}{8}
-	\begin{block}{}%{\scriptsize Cognitive Small Cell?}
-		An Cognitive Small Cell (CSC) is a network entity that enable CR communications for the devices operating indoor 
+	\begin{block}{}%{\scriptsize Performance Analysis}
+		\begin{itemize}
+			% Performance anlysis us determine the hardware feasibility of a wireless system 
+			\item CR system involves the coexistence of two different system: {\color{blue}{primary}} and {\color{red}{secondary}}  
+			\item Objective is ensure the interference at PR below a certain value 
+		\end{itemize}
 	\end{block}
 	\begin{columns}
 		\begin{column}{0.37\columnwidth}
+			\begin{block}{\scriptsize Performance characterization}
+				\begin{itemize}
+					\item Interference at PR 
+					\item Throughput at SR 
+				\end{itemize}
+			\end{block}
 		\end{column}
 		\begin{column}{0.63\columnwidth}
 		\fs{7}{8}
 		\begin{center}
-			ST($\Leftrightarrow$ CSC-BS), SR($\Leftrightarrow$ MS), PT and PR\\\vspace{0.4cm} 
+			% Interacting entities
+			{\color{blue}{PT, PR}}, \color{red}{ST($\Leftrightarrow$ CSC-BS) and SR($\Leftrightarrow$ MS)}\\\vspace{0.4cm} 
         		\begin{tikzpicture}[scale=1]
 				\node[anchor=south west,inner sep=0] (image) at (0,0)
 				{
-					\includegraphics[width = \columnwidth]{../kapitel01/figures/CR_Scenario_Hybrid}	     
+					\includegraphics[width = 0.85\columnwidth]{../kapitel01/figures/CR_Scenario_Hybrid}	     
 				};
+					\fill[opacity = 0.2, fill = blue] (.32,1.16) rectangle (1.22,1.8);
+					\fill[opacity = 0.2, fill = blue] (.32,-0.06) rectangle (1.22,0.58);
 			\end{tikzpicture}	
 		\end{center}
 		\end{column}
