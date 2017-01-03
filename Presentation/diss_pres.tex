@@ -17,6 +17,12 @@
 \PassOptionsToPackage{table}{xcolor}
 \documentclass[16pt]{beamer}
 
+% Fasten the compilation process 
+\newif\iffull
+%\fulltrue
+\fullfalse
+
+
 %\setbeamertemplate{note page}[plain]
 %\setbeameroption{show only notes}
 %\usepackage{pgfpages}
@@ -154,6 +160,12 @@ single arrow head extend=.3cm,}}
 \tikz[baseline=-0.5ex]\node [arrowstyle={#1}{#2}{#3}] {#4};
 }
 
+% tiksyle accustomed to build flowgraphs
+\tikzstyle{block} = [rectangle, draw, fill=kit-green50, 
+    text width=20em, text centered, rounded corners, minimum height=3.5em]
+\tikzstyle{line} = [draw, -latex']
+
+
 % Include Figures Path
 \graphicspath{~/dissertation/kapital01/figures/}
 
@@ -181,7 +193,7 @@ single arrow head extend=.3cm,}}
         %\end{itemize}
 \end{frame}
 
-
+\iffull
 %\input{inhalt.tex}
 
 \section{Motivation}
@@ -303,7 +315,6 @@ single arrow head extend=.3cm,}}
 \end{frame}
 
 
-\subsection{Cognitive Small Cell}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}[t]{Cognitive Small Cell}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -401,6 +412,7 @@ single arrow head extend=.3cm,}}
 	\end{columns}
 \end{frame}
 
+\subsection{Performance Analysis}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}[t]{Performance Analysis of CR System}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -498,10 +510,10 @@ single arrow head extend=.3cm,}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}[t]{Major Contributions}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	\vspace{-2.5mm}
+	\vspace{-1.5mm}
 	\begin{columns}
-		\begin{column}[t]{0.5\columnwidth}
-			\centering Challenges: \\
+		\begin{column}[t]{0.53\columnwidth}
+			\centering Challenges: \\[-0.2em]
 				\fs{7}{8}
 				% Choice of the estimation technique
 				\begin{block}{\scriptsize Estimation Technique?} %{\scriptsize Challenges}
@@ -509,71 +521,99 @@ single arrow head extend=.3cm,}}
 					\begin{itemize}
 					% There exits a multitude of wireless standards that can act as primary system, it is difficult to included a dedicated circuitry for each primary user signal 
 						\item Complexity and versatility towards unknown primary user signals
-						\item Conventional techniques fail 
+						\item Conventional techniques are not feasible  
 					\end{itemize}
 				\end{block}
 				\vspace{-1.1mm}
-				\begin{block}{\scriptsize Impact on performance} %of incorporating channel estimation on the performance
+				\onslide<2->
+				{
+				\begin{block}{\scriptsize System Design aspects?} %of incorporating channel estimation on the performance
 					\begin{itemize} 
+						\item How to tackle the variations induced? 
 						\item Time allocation for channel estimation 
-						\item Variations induced due to imperfect knowledge 
 						%\item Channel fading 
 					\end{itemize}
 				\end{block}
+				}
 				\vspace{-1.1mm}
-				\begin{block}{\scriptsize Performance degradation}%{\scriptsize Channel knowledge}
+				\onslide<3->
+				{
+				\begin{block}{\scriptsize Impact on performance?}%{\scriptsize Channel knowledge}
 					\begin{itemize}
-						\item Level degradation in the performance? 
-						\item Measures to reduce this degradation
+						\item Primary system's performance? $\Rightarrow$ interference 
+						\item Secondary system's performance? $\Rightarrow$ throughput 
 					\end{itemize} 
 				\end{block}
+				}	
 				\vspace{-1.1mm}
-				\begin{block}{\scriptsize Hardware Feasibility}%{\scriptsize Channel knowledge}
+				\onslide<4->
+				{
+				\begin{block}{\scriptsize Hardware Feasibility?}%{\scriptsize Channel knowledge}
 					\begin{itemize}
-					\item Validating the assumptions 
-					\item Justify the applicability of proposed framework in realistic scenarios 
+					\item Validity of the assumptions made? 
+					\item Applicability of the proposed framework under realistic scenarios? 
 					\end{itemize}	
 				\end{block}
+				}
 		\end{column}
 		
-		\begin{column}{0.1\columnwidth}
+		\begin{column}{0.03\columnwidth}
 		\end{column}
 		
-		\begin{column}[t]{0.4\columnwidth}
-			\centering Proposed Solutions: \\
+		\begin{column}[t]{0.44\columnwidth}
+			\centering Proposed Solutions: \\[-0.2em]
 				\fs{7}{8}
 			\fs{7}{8}
 			\begin{block}{}
 				\centering
-				Received power based channel estimation 
+				Received power based channel estimation
+				%\begin{itemize}
+					%\item 
+					Low-complexity and versatility requirements are satisfied  
+					%\item Incorporation of received power in performance characterization 
+				%\end{itemize}
 			\end{block}
-			\vspace{-0.7mm}
+			\vspace{-0.5mm}
+			\onslide<2->
+			{
 			\begin{block}{}
 				\centering
 			  	Stochastic modeling \\ To characterize the variations 	
 			\end{block}
-			\vspace{-0.7mm}
+			\vspace{-0.5mm}
 			\begin{block}{}
 				\centering
 			   	Time allocation for channel estimation in secondary user's frame structure
 			\end{block}
-			\vspace{-0.7mm}
+			}
+			\vspace{-0.5mm}
+			\onslide<3->
+			{
 			\begin{block}{}
 				\centering
 			  	Interference constraints  \\To protect PR from harmful interference 
 			\end{block}
-				\vspace{-0.7mm}
+			}	
+			\vspace{-0.5mm}
+			\onslide<3->
+			{
 			\begin{block}{}
 				\centering
-			 	Performance Tradeoffs \\ To determine suitable estimation time that determines the achievable throughput	
+			 	Performance tradeoffs \\ To determine suitable estimation time that determines the achievable throughput	
 			\end{block}
-				\vspace{-0.75mm}
-			\begin{block}{}%{\scriptsize Hardware Feasibility}%{\scriptsize Channel knowledge}
-				\begin{itemize}
-					\item Empirical validation of the derived expressions
-					\item Operation of a CR system over the hardware 
-					\end{itemize}	
-				\end{block}
+			}
+			\vspace{-0.4mm}
+			\onslide<4->
+			{
+			\begin{block}{}%{\scriptsize Hardware Feasibility}%{\scriptsize Channel knowledge}			
+				\centering
+				Empirical validation \\ Hardware demonstration
+				%\begin{itemize}
+					%\item Empirical validation %of the derived expressions
+					%\item Hardware demonstration %of a CR system
+				%\end{itemize}	
+			\end{block}
+			}
 		\end{column}
 	\end{columns}
 \end{frame}
@@ -593,12 +633,163 @@ single arrow head extend=.3cm,}}
 %	\end{center}
 %\end{frame}
 
+\fi
+
 \section{Interweave System}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[c]{}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{center}
+Interweave System
+\end{center}
+\end{frame}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}[t]{Interweave System}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\vspace{-2mm}
+	\fs{7}{8}
+	\begin{columns}
+		\begin{column}{0.44\columnwidth}
+				%\vspace{-1mm}
+			\begin{block}{\scriptsize Approach} %{\scriptsize Principle}
+				\begin{itemize}
+					\item Interweave system employs spectrum sensing at the ST 
+					\item Spectrum sensing is CR technique used for detecting the signals transmitted by PT
+					%\item Energy detector is employed 
+				\end{itemize}
+			\end{block}
+			\vspace{-1mm}
+			\onslide<2->
+			{
+				\begin{block}{\scriptsize Signal model} %{\scriptsize Signal model}
+				\begin{equation*}
+					\yrcvd[n] = 
+					\begin{cases}
+					\hpo \cdot \xp[n] + \wst[n] & : \mathcal{H}_1 \\
+					\wst[n] & :\mathcal{H}_0
+					\end{cases}
+					%\label{eq_IS:sys_mod_p1s}
+				\end{equation*}
+				\begin{equation*}
+					\ys[n] = 
+					\begin{cases}
+						\hs \cdot \xs[n] + \hpt \cdot \xp[n] +  \wsr[n] & \\%: 1 - \pd \\
+						\hs \cdot \xs[n] + \wsr[n] & %: 1 - \pfa
+					\end{cases}
+					\label{eq_IS:sys_mod_ss}
+				\end{equation*}
+				\end{block}
+				\vspace{-1mm}
+				\begin{block}{\scriptsize Energy detector's performance} %Detector performance Interference at PR is dependent on the detectors performance
+				\begin{equation*}
+						\pd = \Gamma\left( \frac{\tsen \fsam}{2}, \frac{\tsen \fsam \mu}{2 \color{red}{\prcvdstpt}} \right), %\\ 
+				\end{equation*}	
+				\begin{equation*}
+						\pfa = \Gamma\left( \frac{\tsen \fsam}{2}, \frac{\tsen \fsam \mu}{2 \npo} \right)%,  \label{eq_IS:pfa} 
+				\end{equation*}	
+				\end{block}	
+			}
+		\end{column}
+		\begin{column}{0.56\columnwidth}
+		\vspace{6mm}
+		\fs{7}{8}
+		\begin{center}
+			% Interacting entities
+			%Interweave Scenario \\\vspace{0.2cm} 
+        		\begin{tikzpicture}[scale=1]
+				\node[anchor=south west,inner sep=0] (image) at (0,0)
+				{
+					\includegraphics[width = 0.9\columnwidth]{../kapitel03/figures/CR_Scenario_Interweave}	     
+				};
+				\only<1>
+				{
+					%\fill[opacity = 0.2, fill = blue] (.32,1.16) rectangle (1.22,1.8);
+					%\fill[opacity = 0.2, fill = blue] (.32,-0.06) rectangle (1.22,0.58);
+					%\fill[opacity = 0.2, fill = red] (3.65,1.18) rectangle (4.65,1.6);
+					%\fill[opacity = 0.2, fill = red] (2.42,2.3) rectangle (3.88,3.08);
+				}
+			\end{tikzpicture}	
+		\end{center}
+		\begin{block}{\scriptsize Secondary throughput} %Secondary throughput
+                                \vspace{-2.6mm}
+				\begin{align*}
+                               		\rs(\tsen) =& \frac{T- \tsen}{T} \bigg[ \log_2 \left(1 + {\color{red}{|\hs|^2}} \frac{\ptranst}{\npo}\right) (1 - \pfa) \phz  \\ & + \log_2 \left(1 + \frac{{\color{red}{|\hs|^2}} \ptranst }{{\color{red}{|\hpt|^2}} \ptranpt  + \npo } \right)  (1 - \pd) \pho  \bigg] 
+				\end{align*} 
+                \end{block} 
+		\end{column}
+	\end{columns}
 \end{frame}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[t]{Interweave System}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\vspace{-2mm}
+	\fs{7}{8}
+	%\begin{block}{}
+	%\end{block}			
+	\begin{columns}
+		\begin{column}{0.44\columnwidth}
+			%\vspace{-1mm}
+			\begin{block}{\scriptsize Idealistic Approach}
+     			   	\vspace{-4mm}
+	    		        \begin{align*}
+				\trs(\ttsen) &= \maxi_{\tsen} \trs(\tsen)\\ 
+				\text{s.t.} & \text{ } \pd \ge \pdd	
+	        	\end{align*}
+			%Without the knowledge of channel gains $\phpo$, $\phpt$ and $\phs$, it is difficult to characterize the performance parameters $\pd$ and $\rs$  
+			\end{block}
+			\vspace{-1mm}
+			\begin{block}{\scriptsize Proposed Approach}
+			\begin{center}
+			\begin{tikzpicture}[node distance = 1.3cm, auto]
+                        	% draw nodes
+				\node [block] (frame) {Time Allocation in Frame Structure};
+  			        \node [block, below of=frame] (channelest) {Estimation of involved channels};
+  			        \node [block, below of=channelest] (cdf) {Variations in performance parameter is characterized in terms of their cdfs)};
+  			        \node [block, below of=cdf] (tradeoff) {Derived expressions are used to characterize the performance tradeoff};
+				% draw edges
+    				\path [line] (frame) -- (channelest);
+    				\path [line] (channelest) -- (cdf);
+    				\path [line] (cdf) -- (tradeoff);
+			\end{tikzpicture}
+			\end{center}
+			\end{block}
+
+		\end{column}
+		\begin{column}{0.56\columnwidth}
+		\fs{7}{8}
+		\begin{center}
+        		\begin{tikzpicture}[scale=1]
+				\node[anchor=south west,inner sep=0] (image) at (0,0)
+				{
+					\includegraphics[width = 1.1\columnwidth]{../kapitel03/figures/Frame_Structure.ps}     
+				};
+			\end{tikzpicture}	
+			\begin{block}{\scriptsize Secondary throughput} %Secondary throughput
+                                \vspace{-2.6mm}
+				\begin{align*}
+                               		\rs(\tsen) =& \frac{T- \tsen}{T} \bigg[ \log_2 \left(1 + {\color{red}{|\hs|^2}} \frac{\ptranst}{\npo}\right) (1 - \pfa) \phz  \\ & + \log_2 \left(1 + \frac{{\color{red}{|\hs|^2}} \ptranst }{{\color{red}{|\hpt|^2}} \ptranpt  + \npo } \right)  (1 - \pd) \pho  \bigg] 
+				\end{align*} 
+                \end{block} 
+		\end{center}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[t]{Interweave System}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\begin{center}
+        	\begin{tikzpicture}[scale=1]
+			\node[anchor=south west,inner sep=0] (image) at (0,0)
+			{
+				\includegraphics[width = 0.7\columnwidth]{../kapitel03/figures/Frame_Structure.ps}     
+			};
+		\end{tikzpicture}	
+	\end{center}
+\end{frame}
 
 \section{Underlay System}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -642,7 +833,6 @@ single arrow head extend=.3cm,}}
 \begin{frame}[c]{}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{center}
-\fs{10}{15}
 Thank you for your Attention!
 \end{center}
 \end{frame}
