@@ -162,7 +162,7 @@ single arrow head extend=.3cm,}}
 
 % tiksyle accustomed to build flowgraphs
 \tikzstyle{block} = [rectangle, draw, fill=kit-green50, 
-    text width=20em, text centered, rounded corners, minimum height=3.5em]
+    text width=18em, text centered, rounded corners, minimum height=3.2em]
 \tikzstyle{line} = [draw, -latex']
 
 
@@ -729,7 +729,7 @@ Interweave System
 	%\begin{block}{}
 	%\end{block}			
 	\begin{columns}
-		\begin{column}{0.44\columnwidth}
+		\begin{column}{0.4\columnwidth}
 			%\vspace{-1mm}
 			\begin{block}{\scriptsize Idealistic Approach}
      			   	\vspace{-4mm}
@@ -739,7 +739,7 @@ Interweave System
 	        	\end{align*}
 			%Without the knowledge of channel gains $\phpo$, $\phpt$ and $\phs$, it is difficult to characterize the performance parameters $\pd$ and $\rs$  
 			\end{block}
-			\vspace{-1mm}
+			\vspace{-0.5mm}
 			\begin{block}{\scriptsize Proposed Approach}
 			\begin{center}
 			\begin{tikzpicture}[node distance = 1.3cm, auto]
@@ -757,21 +757,43 @@ Interweave System
 			\end{block}
 
 		\end{column}
-		\begin{column}{0.56\columnwidth}
+		\begin{column}{0.6\columnwidth}
 		\fs{7}{8}
 		\begin{center}
-        		\begin{tikzpicture}[scale=1]
+        		Frame Structure \\\vspace{2mm}
+			\begin{overlayarea}{\textwidth}{4.1cm}
+			\begin{tikzpicture}[scale=1]
 				\node[anchor=south west,inner sep=0] (image) at (0,0)
 				{
-					\includegraphics[width = 1.1\columnwidth]{../kapitel03/figures/Frame_Structure.ps}     
+					\includegraphics[width = 1.15\columnwidth]{../kapitel03/figures/Frame_Structure.ps}     
 				};
 			\end{tikzpicture}	
-			\begin{block}{\scriptsize Secondary throughput} %Secondary throughput
-                                \vspace{-2.6mm}
-				\begin{align*}
-                               		\rs(\tsen) =& \frac{T- \tsen}{T} \bigg[ \log_2 \left(1 + {\color{red}{|\hs|^2}} \frac{\ptranst}{\npo}\right) (1 - \pfa) \phz  \\ & + \log_2 \left(1 + \frac{{\color{red}{|\hs|^2}} \ptranst }{{\color{red}{|\hpt|^2}} \ptranpt  + \npo } \right)  (1 - \pd) \pho  \bigg] 
-				\end{align*} 
-                \end{block} 
+                        \end{overlayarea}
+			\vspace{-1.1mm}
+			\begin{overlayarea}{\textwidth}{2.6cm}
+			\only<1>
+			{	
+				\begin{block}{\scriptsize Achievable secondary throughput -- Average Constraint (AC)} 
+                               	 \vspace{-3mm}
+					\begin{align*}
+					\trsac(\ttest, \ttsenac) =& \maxi_{\test, \tsen} \e{\epd, \ecz, \eco}{\rs(\test, \tsen)},	\\	
+					\text{s.t.} & \text{ }  \e{\epd}{\epd} \ge \pdd, \\ 
+\text{s.t.} & \text{ }  0 < \test \le \tsen \le T
+					\end{align*} 
+               		 	\end{block}
+			} 
+			\only<2->
+			{	
+				\begin{block}{\scriptsize Achievable secondary throughput -- Average Constraint (OC)} 
+                               	 \vspace{-3mm}
+					\begin{align*}
+					\trsac(\ttest, \ttsenac) =& \maxi_{\test, \tsen} \e{\epd, \ecz, \eco}{\rs(\test, \tsen)},	\\	
+					\text{s.t.} & \text{ }  \p(\epd \le \pdd) \le \mpd, \\
+\text{s.t.} & \text{ }  0 < \test \le \tsen \le T
+					\end{align*} 
+               		 	\end{block}
+			} 
+                        \end{overlayarea}
 		\end{center}
 		\end{column}
 	\end{columns}
@@ -781,6 +803,7 @@ Interweave System
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}[t]{Interweave System}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\vspace{-2mm}
 	\begin{center}
         	\begin{tikzpicture}[scale=1]
 			\node[anchor=south west,inner sep=0] (image) at (0,0)
