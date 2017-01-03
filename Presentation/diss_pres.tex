@@ -496,80 +496,102 @@ single arrow head extend=.3cm,}}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}[t]{Imperfect Channel Knowledge}
+\begin{frame}[t]{Major Contributions}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	\vspace{-3mm}
-	\fs{7}{8}
-	\begin{block}{\scriptsize Challenges}
-		\begin{itemize}
-			% There exits a multitude of wireless standards that can act as primary system, it is difficult to included a dedicated circuitry for each primary user signal 
-			\item Involves the estimation of the channels between two different systems $\Rightarrow$ conventional techniques? 
-			\item  
-		\end{itemize}
-	\end{block}
+	\vspace{-2.5mm}
 	\begin{columns}
-		\begin{column}{0.37\columnwidth}
-			%\onslide<2->
-			{
-				\begin{block}{\scriptsize Impact on performance} %of incorporating channel estimation on the performance
-					\begin{itemize} 
-						\item Time allocation $\Rightarrow$ throughput at SR 
-						\item Variations $\Rightarrow$ uncertain interference at PR 
+		\begin{column}[t]{0.5\columnwidth}
+			\centering Challenges: \\
+				\fs{7}{8}
+				% Choice of the estimation technique
+				\begin{block}{\scriptsize Estimation Technique?} %{\scriptsize Challenges}
+					Estimation of channels between two different systems %$\Rightarrow$ 
+					\begin{itemize}
+					% There exits a multitude of wireless standards that can act as primary system, it is difficult to included a dedicated circuitry for each primary user signal 
+						\item Complexity and versatility towards unknown primary user signals
+						\item Conventional techniques fail 
 					\end{itemize}
 				\end{block}
-			}
-			%\onslide<3->
-			{
-				\begin{block}{}%{\scriptsize Channel knowledge}
-					Knowledge of interacting channels is absolutely necessary at ST 
+				\vspace{-1.1mm}
+				\begin{block}{\scriptsize Impact on performance} %of incorporating channel estimation on the performance
+					\begin{itemize} 
+						\item Time allocation for channel estimation 
+						\item Variations induced due to imperfect knowledge 
+						%\item Channel fading 
+					\end{itemize}
 				\end{block}
-			}
-			%\onslide<4->
-	 		{
-				\centering
-				\tikzfancyarrow[0.85cm][kit-green70][top color=kit-green50, bottom color=kit-green50, shape border rotate=270]{\color{kit-green50}{10}}			\\[0.5em]	
-	               		\begin{tikzpicture}[scale=1]
-	               	 		\node[draw=none,fill=gray!30, minimum height = 0.5cm, align = center] at (0.0, 0.0) {Channel Estimation is proposed at ST/SR};
-				\end{tikzpicture}
-			}
+				\vspace{-1.1mm}
+				\begin{block}{\scriptsize Performance degradation}%{\scriptsize Channel knowledge}
+					\begin{itemize}
+						\item Level degradation in the performance? 
+						\item Measures to reduce this degradation
+					\end{itemize} 
+				\end{block}
+				\vspace{-1.1mm}
+				\begin{block}{\scriptsize Hardware Feasibility}%{\scriptsize Channel knowledge}
+					\begin{itemize}
+					\item Validating the assumptions 
+					\item Justify the applicability of proposed framework in realistic scenarios 
+					\end{itemize}	
+				\end{block}
 		\end{column}
-		\begin{column}{0.63\columnwidth}
-		\fs{7}{8}
-		\begin{center}
-			% Interacting entities
-			{\color{blue}{PT, PR}}, \color{red}{ST($\Leftrightarrow$ CSC-BS) and SR($\Leftrightarrow$ MS)}\\\vspace{0.4cm} 
-        		\begin{tikzpicture}[scale=1]
-				\node[anchor=south west,inner sep=0] (image) at (0,0)
-				{
-					\includegraphics[width = 0.85\columnwidth]{../kapitel01/figures/CR_Scenario_Hybrid}	     
-				};
-				\only<1>
-				{
-					\fill[opacity = 0.2, fill = blue] (.32,1.16) rectangle (1.22,1.8);
-					\fill[opacity = 0.2, fill = blue] (.32,-0.06) rectangle (1.22,0.58);
-					\fill[opacity = 0.2, fill = red] (3.65,1.18) rectangle (4.65,1.6);
-					\fill[opacity = 0.2, fill = red] (2.42,2.3) rectangle (3.88,3.08);
-				}
-			\end{tikzpicture}	
-		\end{center}
+		
+		\begin{column}{0.1\columnwidth}
+		\end{column}
+		
+		\begin{column}[t]{0.4\columnwidth}
+			\centering Proposed Solutions: \\
+				\fs{7}{8}
+			\fs{7}{8}
+			\begin{block}{}
+				\centering
+				Received power based channel estimation 
+			\end{block}
+			\vspace{-0.7mm}
+			\begin{block}{}
+				\centering
+			  	Stochastic modeling \\ To characterize the variations 	
+			\end{block}
+			\vspace{-0.7mm}
+			\begin{block}{}
+				\centering
+			   	Time allocation for channel estimation in secondary user's frame structure
+			\end{block}
+			\vspace{-0.7mm}
+			\begin{block}{}
+				\centering
+			  	Interference constraints  \\To protect PR from harmful interference 
+			\end{block}
+				\vspace{-0.7mm}
+			\begin{block}{}
+				\centering
+			 	Performance Tradeoffs \\ To determine suitable estimation time that determines the achievable throughput	
+			\end{block}
+				\vspace{-0.75mm}
+			\begin{block}{}%{\scriptsize Hardware Feasibility}%{\scriptsize Channel knowledge}
+				\begin{itemize}
+					\item Empirical validation of the derived expressions
+					\item Operation of a CR system over the hardware 
+					\end{itemize}	
+				\end{block}
 		\end{column}
 	\end{columns}
 \end{frame}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}[c]{Contributions}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	\vspace{-2mm}
-	%\hspace{-2mm}
-	\begin{center}
-	\begin{tikzpicture}[scale=1]
-                                \node[anchor=south west,inner sep=0] (image) at (0,0)
-                                {
-                                        \includegraphics[width = 1.0\columnwidth]{../kapitel01/figures/Contri.ps}
-                                };
-                        \end{tikzpicture}
-	\end{center}
-\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\begin{frame}[c]{Contributions}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%	\vspace{-2mm}
+%	%\hspace{-2mm}
+%	\begin{center}
+%	\begin{tikzpicture}[scale=1]
+%                                \node[anchor=south west,inner sep=0] (image) at (0,0)
+%                                {
+%                                        \includegraphics[width = 1.0\columnwidth]{../kapitel01/figures/Contri.ps}
+%                                };
+%                        \end{tikzpicture}
+%	\end{center}
+%\end{frame}
 
 \section{Interweave System}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
