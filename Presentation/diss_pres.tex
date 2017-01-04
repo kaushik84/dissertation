@@ -18,10 +18,13 @@
 \documentclass[16pt]{beamer}
 
 % Fasten the compilation process 
-\newif\iffull
-%\fulltrue
-\fullfalse
+\newif\ifmoti
+%\motitrue
+\motifalse
 
+\newif\ifinter
+%\intertrue
+\interfalse
 
 %\setbeamertemplate{note page}[plain]
 %\setbeameroption{show only notes}
@@ -125,6 +128,8 @@
 % Fußnote anpassen, so dass es nicht mit dem Footer überschneidet
 \addtobeamertemplate{footnote}{\vspace{-6pt}\advance\hsize-0.5cm}{\vspace{6pt}}
 \renewcommand*{\footnoterule}{\kern -3pt \hrule width 1in \kern 8.6pt}
+\setbeamerfont{footnote}{size=\tiny}
+
 
 % Bibliography
 
@@ -145,9 +150,11 @@
 %\addbibresource{../../../bibtex/library_manual.bib}
 %\bibhang1em
 
-
+% Input diss macros 
 \input{macro.tex}
+% Font size
 \newcommand{\fs}[2]{\fontsize{#1 pt}{#2}\selectfont}
+
 
 % Fancy Arrows
 % http://tex.stackexchange.com/questions/84143/fancy-arrows-with-tikz
@@ -193,7 +200,7 @@ single arrow head extend=.3cm,}}
         %\end{itemize}
 \end{frame}
 
-\iffull
+\ifmoti
 %\input{inhalt.tex}
 
 \section{Motivation}
@@ -217,6 +224,10 @@ single arrow head extend=.3cm,}}
 			area style,
 			enlarge x limits = false,
 			]
+			%\addplot [draw = kit-blue70, fill = kit-blue30] 
+			%coordinates
+			%{(2015,0.5) (2016,0.5) (2017,0.5) (2018,0.5) (2019, 0.5) (2020,0.5) (2021, 0.5)}
+			%\closedcycle;
 			\addplot [draw = kit-green70, fill = kit-green30] 
 			coordinates
 			{(2015,5.5) (2016,8) (2017,12) (2018,18) (2019, 27) (2020,38) (2021, 52)}
@@ -254,11 +265,12 @@ single arrow head extend=.3cm,}}
 	\begin{itemize}
 		\item Data rate (1000$\times)$
 		\item Latency $(< \SI{1}{ms})$  
-		\item Energy- and cost- efficiency 	
+		\item Energy- and cost- efficiency
 	\end{itemize}	
 	\end{block}
 	\end{column}
 	\end{columns}
+	\footnotetext{Ericsson, ``{Ericsson Mobility Report},'' Tech. Rep., Nov. 2015.} 	
 \end{frame}
 
 
@@ -272,7 +284,7 @@ single arrow head extend=.3cm,}}
         	\begin{tikzpicture}[scale=1]
 		\node[anchor=south west,inner sep=0] (image) at (0,0)
 		{
-			\includegraphics[width = 0.75\columnwidth]{../kapitel01/figures/5G.ps}
+			\includegraphics[width = 0.75\columnwidth]{figures/5G.ps}
         	};	
 		%\node[draw = none,align=center] (A) at (0.23,0.53) {> \SI{6}{GHz}};
 		\only<1>
@@ -635,6 +647,7 @@ single arrow head extend=.3cm,}}
 
 \fi
 
+\ifinter
 \section{Interweave System}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}[c]{}
@@ -731,23 +744,23 @@ Interweave System
 	\begin{columns}
 		\begin{column}{0.38\columnwidth}
 			%\vspace{-1mm}
-			\begin{block}{\scriptsize Idealistic Approach}
-     			   	\vspace{-4mm}
+			\begin{block}{\scriptsize Ideal Model (IM)}
+     			   	\vspace{-4.5mm}
 	    		        \begin{align*}
 				\trs(\ttsen) &= \maxi_{\tsen} \trs(\tsen)\\ 
 				\text{s.t.} & \text{ } \pd \ge \pdd	
 	        	\end{align*}
 			%Without the knowledge of channel gains $\phpo$, $\phpt$ and $\phs$, it is difficult to characterize the performance parameters $\pd$ and $\rs$  
 			\end{block}
-			\vspace{-0.5mm}
+			\vspace{-1.5mm}
 			\begin{block}{\scriptsize Proposed Approach}
 			\begin{center}
-			\begin{tikzpicture}[node distance = 1.3cm, auto]
+			\begin{tikzpicture}[node distance = 1.27cm, auto]
                         	% draw nodes
-				\node [block] (frame) {Time Allocation in Frame Structure};
-  			        \node [block, below of=frame] (channelest) {Estimation of involved channels};
-  			        \node [block, below of=channelest] (cdf) {Variations in performance parameter is characterized in terms of their cdfs)};
-  			        \node [block, below of=cdf] (tradeoff) {Derived expressions are used to characterize the performance tradeoff};
+				\node [block] (frame) {Incorporation of time resources for channel estimation and sensing in frame structure ($\test, \tsen$)};
+  			        \node [block, below of=frame] (channelest) {Variations ($\epgpo$, $\epgpt$, $\epgs$) due to channel estimation are characterized in terms of $\fpgpo, \fpgpt, \fpgs$};
+  			        \node [block, below of=channelest] (cdf) {Variations in performance parameters ($\epd$, $\ecz$, $\eco$) are characterized in terms of $\fpd, \fcz, \fco$};
+  			        \node [block, below of=cdf] (tradeoff) {The cdfs are used to determine the achievable secondary throughput subject to interference constraints};
 				% draw edges
     				\path [line] (frame) -- (channelest);
     				\path [line] (channelest) -- (cdf);
@@ -773,7 +786,7 @@ Interweave System
 			\begin{overlayarea}{\textwidth}{2.6cm}
 			\only<1>
 			{	
-				\begin{block}{\scriptsize Achievable secondary throughput -- Average Constraint (AC)} 
+				\begin{block}{\scriptsize Estimation Model (EM) -- Average Constraint (AC)} 
                                	 \vspace{-3.2mm}
 					\begin{align*}
 					\trsac(\ttest, \ttsenac) =& \maxi_{\test, \tsen} \e{\epd, \ecz, \eco}{\rs(\test, \tsen)},	\\	
@@ -784,7 +797,7 @@ Interweave System
 			} 
 			\only<2->
 			{	
-				\begin{block}{\scriptsize Achievable secondary throughput -- Outage Constraint (OC)} 
+				\begin{block}{\scriptsize Estimation Model (EM) -- Outage Constraint (OC)} 
                                	 \vspace{-3.2mm}
 					\begin{align*}
 					\trsac(\ttest, \ttsenac) =& \maxi_{\test, \tsen} \e{\epd, \ecz, \eco}{\rs(\test, \tsen)},	\\	
@@ -804,15 +817,75 @@ Interweave System
 \begin{frame}[t]{Interweave System}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	\vspace{-2mm}
+	\begin{columns}
+	\begin{column}{0.4\columnwidth}
+	\fs{7}{8}
+		\renewcommand{\arraystretch}{1.55}
+		\begin{tabular}{c||c}
+		%\hline
+		\rowcolor{kit-green30}
+		Parameter & Value \\
+		\hline\hline
+		$\fsam$ & $\SI{1}{MHz}$ \\ %\hline
+		$\phpo$ & $\SI{-100}{dB}$ \\ %\hline
+		$\phpt$ & $\SI{-100}{dB}$ \\ %\hline
+		$\phs$ & $\SI{-80}{dB}$ \\ %\hline 
+		$T$ & $\SI{100}{ms}$ \\ %\hline 
+		$\npo$ & $\SI{-100}{dBm}$ \\ %\hline
+		$\snrrcvd$ & $\SI{-10}{dB}$ \\ %\hline
+		$\snrpt$ & $\SI{-10}{dB}$ \\ %\hline
+		$\snrso$ & $\SI{10}{dB}$ \\ %\hline
+		%$\ptranpt$ & $-\SI{10}{dBm}$ \\ %\hline
+		%$\ptranst$ & $-\SI{10}{dBm}$ \\ %\hline
+		$\pho = 1 - \phz$ & 0.2 \\ %\hline
+		%$\test$ & $\SI{5}{ms}$ \\ %\hline
+		$\Ks$ & 10 \\ \hline
+		%$\Kp$ & $1000$ \\ \hline
+	\end{tabular}
+
+	\end{column}
+	\begin{column}{0.6\columnwidth}
 	\begin{center}
-        	\begin{tikzpicture}[scale=1]
+	\fs{7}{8}	
+		%% Add psfrag entries
+		\input{../kapitel03/figures/fig_opt_thr_vs_est_time_diff_mu_AWGN.tex}
+		\centering
+                \resizebox{.95 \columnwidth}{!}{%
+			\begin{tikzpicture}[scale=1]
 			\node[anchor=south west,inner sep=0] (image) at (0,0)
 			{
-				\includegraphics[width = 0.7\columnwidth]{../kapitel03/figures/Frame_Structure.ps}     
+				\includegraphics[width= 1.2\columnwidth]{../kapitel03/figures/fig_opt_thr_vs_est_time_diff_mu_AWGN}
 			};
-		\end{tikzpicture}	
+			\begin{scope}[x={(image.south east)},y={(image.north west)}]
+			\draw[black,->, thick] (0.25,0.64) -- (0.18,0.84);
+			\node[draw=none, font=\scriptsize] at (0.35, 0.58) {$\mpd \in \{0.05,0.10,0.15\}$};
+
+			\draw[black,<-, thick] (0.75,0.62) -- (0.75,0.915);
+			\node[draw=none, font=\scriptsize] at (0.75,0.58) {Performance degradation}; 
+			%\draw[black,->] (0.25,0.6) node[below =12.0,right=-20.0,  font=\scriptsize] {$\mpd \in \{0.05,0.10,0.15\}$} -- (0.18,0.8);
+
+			%\draw[help lines,xstep=.1,ystep=.1] (0,0) grid (1,1);
+			%\foreach \x in {0,1,...,9} { \node [anchor=north] at (\x/10,0) {0.\x}; }
+			%\foreach \y in {0,1,...,9} { \node [anchor=east] at (0,\y/10) {0.\y}; }
+	               	\node[draw=none,fill=kit-green30, minimum height = 0.6cm, align = center, font = \footnotesize] at (0.5, 1.05) {Secondary throughput versus estimation time};
+			\end{scope}
+			\end{tikzpicture}
+		}
 	\end{center}
+	\end{column}
+	\end{columns}
+	\begin{block}{}
+		\fs{7}{8}
+		\begin{itemize}
+			\item Ideal model is used as a benchmark $\Rightarrow$ evaluate degradation in performance due to inclusion of channel estimation
+			%\item Outage constraint is a severe interference constraint in comparison to average constraint 
+
+			\item Tradeoff between the estimation time and the secondary throughput 
+		\end{itemize}		
+	\end{block}	
 \end{frame}
+
+\fi
 
 \section{Underlay System}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -831,16 +904,17 @@ Underlay System
 	\begin{columns}
 		\begin{column}{0.44\columnwidth}
 				%\vspace{-1mm}
-			\begin{block}{\scriptsize Approach} %{\scriptsize Principle}
+			\begin{block}{\scriptsize Principle} %{\scriptsize Principle}
 				\begin{itemize}
 					%\item Underlay systems correspond to a interference tolerant systems
 					\item Power control mechanism is employed at ST 
+					\item ST listens to control signal transmitted by PR 
 					%\item Spectrum sensing is CR technique used for detecting the signals transmitted by PT
 					%\item Energy detector is employed 
 				\end{itemize}
 			\end{block}
-			\vspace{1mm}
-			\onslide<2->
+			\vspace{2mm}
+			\onslide<1->
 			{
 				\begin{block}{\scriptsize Signal model} %{\scriptsize Signal model}
 				\begin{equation*}
@@ -853,13 +927,13 @@ Underlay System
 					\ys[n] = \gs \cdot \xreg[n] + \gpt \cdot \xp[n] + \wsr[n]
 				\end{equation*}
 				\end{block}
-				\vspace{1mm}
-				\begin{block}{\scriptsize Idealistic Approach} 
-				Interference received at PR%\\[-.2em]	
+				\vspace{2mm}
+				\begin{block}{\scriptsize Ideal Model} 
+				%Interference received at PR\\[-.2em]	
 				\begin{equation*}
 					\prcvdpr = \phpth \preg \le \ite
 				\end{equation*}	
-				Data rate at SR%\\[-.2em]	
+				%Data rate at SR\\[-.2em]	
 				\begin{equation*}
 					\ca = \log_2 \left(1 + \frac{\pgs \preg}{ \pgpt \ptranpt + \nps} \right)	
 				\end{equation*}	
@@ -867,7 +941,7 @@ Underlay System
 			}
 		\end{column}
 		\begin{column}{0.56\columnwidth}
-		\vspace{-10mm}
+		\vspace{-6mm}
 		\fs{7}{8}
 		\begin{center}
 			% Interacting entities
@@ -895,6 +969,66 @@ Underlay System
 		\end{center}
 		\end{column}
 	\end{columns}
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[t]{Underlay System}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\fs{7}{8}
+	\begin{columns}
+		\begin{column}{0.4\columnwidth}
+			\begin{block}{\scriptsize Constraints} %{\scriptsize Principle}
+			Received interference at PR 
+			\begin{equation*}
+				\p\left( \prcvdpr = \ephpth \preg \ge \ite \right) \le \opc,  
+				%\p\left( \left( \frac{\eprcvdstpr - \nps}{\ptran}\right) \preg \ge \ite \right) \le \opc 
+			\end{equation*}
+			Constraint on transmit power at ST 
+			\begin{equation*}
+				\preg \le \pc. \label{eq_US:pc} 
+			\end{equation*}
+			\end{block}
+		\end{column}
+		\begin{column}{0.6\columnwidth}
+		\fs{7}{8}
+		\begin{center}
+			%% Add psfrag entries
+                	\input{../kapitel03/figures/fig_opt_thr_vs_est_time_diff_mu_AWGN.tex}
+                	\centering
+             	        \resizebox{.95 \columnwidth}{!}{%
+                        \begin{tikzpicture}[scale=1]
+                     		\node[anchor=south west,inner sep=0] (image) at (0,0)
+                       	 	{
+                       	        	 \includegraphics[width= 1.2\columnwidth]{../kapitel03/figures/fig_opt_thr_vs_est_time_diff_mu_AWGN}
+                      	 	};
+                        	\begin{scope}[x={(image.south east)},y={(image.north west)}]
+                    		\draw[black,->, thick] (0.25,0.64) -- (0.18,0.84);
+                      		\node[draw=none, font=\scriptsize] at (0.35, 0.58) {$\mpd \in \{0.05,0.10,0.15\}$};
+
+                     		\draw[black,<-, thick] (0.75,0.62) -- (0.75,0.915);
+                        	\node[draw=none, font=\scriptsize] at (0.75,0.58) {Performance degradation};
+                        	%\draw[black,->] (0.25,0.6) node[below =12.0,right=-20.0,  font=\scriptsize] {$\mpd \in \{0.05,0.10,0.15\}$} -- (0.18,0.8);
+
+                    		%\draw[help lines,xstep=.1,ystep=.1] (0,0) grid (1,1);
+                        %\foreach \x in {0,1,...,9} { \node [anchor=north] at (\x/10,0) {0.\x}; }
+                        %\foreach \y in {0,1,...,9} { \node [anchor=east] at (0,\y/10) {0.\y}; }
+                        \node[draw=none,fill=kit-green30, minimum height = 0.6cm, align = center, font = \footnotesize] at (0.5, 1.05) {Secondary throughput versus estimation time};
+                        \end{scope}
+                        \end{tikzpicture}
+                }
+		\end{center}
+		\end{column}
+	\end{columns}
+	\begin{block}{\scriptsize Controlled power} %{\scriptsize Principle}
+		\begin{align*}
+			\preg &= 
+			\begin{cases} 
+				\frac{\ite \ptran}{ \left(\bpo \Gamma^{-1}(\opc, \apo) - \nps  \right)}, & \mbox{for } \preg < \pc \\
+				\pc, & \mbox{for } \preg \ge \pc
+				\end{cases}
+			\end{align*}
+	\end{block}
 \end{frame}
 
 
