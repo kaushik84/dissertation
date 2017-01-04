@@ -652,7 +652,7 @@ Interweave System
 	\begin{columns}
 		\begin{column}{0.44\columnwidth}
 				%\vspace{-1mm}
-			\begin{block}{\scriptsize Approach} %{\scriptsize Principle}
+			\begin{block}{\scriptsize Principle} %{\scriptsize Principle}
 				\begin{itemize}
 					\item Interweave system employs spectrum sensing at the ST 
 					\item Spectrum sensing is CR technique used for detecting the signals transmitted by PT
@@ -760,16 +760,16 @@ Interweave System
 		\begin{column}{0.62\columnwidth}
 		\fs{7}{8}
 		\begin{center}
-        		Frame Structure \\\vspace{2mm}
+        		%Frame Structure \\\vspace{2mm}
 			\begin{overlayarea}{\textwidth}{4.1cm}
 			\begin{tikzpicture}[scale=1]
 				\node[anchor=south west,inner sep=0] (image) at (0,0)
 				{
-					\includegraphics[width = 1.15\columnwidth]{../kapitel03/figures/Frame_Structure.ps}     
+					\includegraphics[width = \columnwidth]{figures/Frame_Structure_IS.ps}     
 				};
 			\end{tikzpicture}	
                         \end{overlayarea}
-			\vspace{-0.5mm}
+			\vspace{3.5mm}
 			\begin{overlayarea}{\textwidth}{2.6cm}
 			\only<1>
 			{	
@@ -784,7 +784,7 @@ Interweave System
 			} 
 			\only<2->
 			{	
-				\begin{block}{\scriptsize Achievable secondary throughput -- Average Constraint (OC)} 
+				\begin{block}{\scriptsize Achievable secondary throughput -- Outage Constraint (OC)} 
                                	 \vspace{-3.2mm}
 					\begin{align*}
 					\trsac(\ttest, \ttsenac) =& \maxi_{\test, \tsen} \e{\epd, \ecz, \eco}{\rs(\test, \tsen)},	\\	
@@ -867,7 +867,7 @@ Underlay System
 			}
 		\end{column}
 		\begin{column}{0.56\columnwidth}
-		\vspace{-6mm}
+		\vspace{-10mm}
 		\fs{7}{8}
 		\begin{center}
 			% Interacting entities
@@ -875,7 +875,7 @@ Underlay System
         		\begin{tikzpicture}[scale=1]
 				\node[anchor=south west,inner sep=0] (image) at (0,0)
 				{
-					\includegraphics[width = .85 \columnwidth]{../kapitel04/figures/CR_Scenario_Underlay}	     
+					\includegraphics[width = .81 \columnwidth]{../kapitel04/figures/CR_Scenario_Underlay}	     
 				};
 				\only<1>
 				{
@@ -885,11 +885,11 @@ Underlay System
 					%\fill[opacity = 0.2, fill = red] (2.42,2.3) rectangle (3.88,3.08);
 				}
 			\end{tikzpicture}
-			\vspace{-6mm}	
+			\vspace{-10mm}	
 			\begin{tikzpicture}[scale=1]
 				\node[anchor=south west,inner sep=0] (image) at (0,0)
 				{
-					\includegraphics[width = 1.1 \columnwidth]{../kapitel04/figures/Frame_Structure.ps}     
+					\includegraphics[width = \columnwidth]{figures/Frame_Structure_US.ps}     
 				};
 			\end{tikzpicture}	
 		\end{center}
