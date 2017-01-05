@@ -979,7 +979,7 @@ Underlay System
 	\fs{7}{8}
 	\begin{columns}
 		\begin{column}{0.45\columnwidth}
-			\begin{block}{\scriptsize Constraints} %{\scriptsize Principle}
+			\begin{block}{\scriptsize Control Power} %{\scriptsize Principle}
 			Constraint on received interference at PR 
 			\begin{align*}
 				\p\left( \prcvdpr = \ephpth \preg \ge \ite \right) \le \opc, \\  
@@ -989,6 +989,78 @@ Underlay System
 			\begin{equation*}
 				\preg \le \pc. \label{eq_US:pc} 
 			\end{equation*}
+			\end{block} 
+			\vspace{-3mm}
+			\begin{center}	
+				\tikzfancyarrow[0.9cm][kit-green70][top color=kit-green50, bottom color=kit-green50, shape border rotate=270]{\color{kit-green50}{10}}		%	\\[0.5em]
+			\end{center}	
+		\end{column}
+		\begin{column}{0.55\columnwidth}
+		\fs{7}{8}
+		\begin{center}
+			%% Add psfrag entries
+                	\input{../kapitel04/figures/fig_Preg_est_time_AWGN.tex}
+			\centering
+             	        \resizebox{.95 \columnwidth}{!}{%
+                        \begin{tikzpicture}[scale=1]
+				\node[anchor=south west,inner sep=0] (image) at (0,0)
+				{
+					\includegraphics[width= 1.2\columnwidth]{../kapitel04/figures/fig_Preg_est_time_AWGN}
+				};
+				\begin{scope}[x={(image.south east)},y={(image.north west)}]
+
+				\draw (0.35,0.56) arc(-130:130:0.007 and 0.021);
+				\node[draw,fill=gray!10,font=\scriptsize] at (0.44,0.515) {$\opc = 0.01$};
+
+				\draw (0.35,0.68) arc(-130:130:0.007 and 0.021);
+				\node[draw,fill=gray!10,font=\scriptsize] at (0.275,0.758) {$\opc = 0.1$};
+
+	               		\node[draw=none,fill=kit-green30, minimum height = 0.6cm, align = center, font = \footnotesize] at (0.5, 1.05) {Controlled power versus estimation time};
+				%\draw[help lines,xstep=.1,ystep=.1] (0,0) grid (1,1);
+				%\foreach \x in {0,1,...,9} { \node [anchor=north] at (\x/10,0) {0.\x}; }
+				%\foreach \y in {0,1,...,9} { \node [anchor=east] at (0,\y/10) {0.\y}; }
+				\end{scope}
+			\end{tikzpicture}
+                }
+		\end{center}
+		\end{column}
+	\end{columns}
+	\begin{block}{}%{\scriptsize Power control} 
+		\vspace{-4mm}
+		\begin{align*}
+			\preg &= 
+			\begin{cases} 
+				\frac{\ite \ptran}{ \left(\bpo \Gamma^{-1}(\opc, \apo) - \nps  \right)}, & \mbox{for } \preg < \pc \\
+				\pc, & \mbox{for } \preg \ge \pc
+				\end{cases} \\
+				\text{where  } \apo &= \frac{\test \fsam (1 + \snrrcvdu)^2}{2 + 4 \snrrcvdu} \text{ and } \bpo = \frac{\nps (2 + 4 \snrrcvdu)}{\test \fsam (1 + \snrrcvdu)},
+			\end{align*}
+	\end{block}
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[t]{Underlay System}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\vspace{-4.5mm}
+	\fs{7}{8}
+	\begin{columns}
+		\begin{column}{0.45\columnwidth}
+			\begin{block}{\scriptsize Secondary throughput} %{\scriptsize Principle}
+			\vspace{-3mm}
+			\begin{align*}
+				\eca  &= \log_2 \left(1 + \frac{\epgs \preg}{\eprcvdsr} \right) \\
+				\rs(\test) &= \frac{T - \test}{T} \e{\eca} {\eca} 
+			\end{align*}
+			\end{block}
+
+			\begin{block}{\scriptsize Achievable secondary throughput} 
+			\vspace{-3mm}
+			\begin{align*}
+				\trs(\ttest)  = \maxi_{\test}  & \text{      } {\rs(\test)} \\
+				\text{s.t.} & \p\left( \ephpth \preg \ge \ite \right) \le \opc \\
+				\text{s.t.} & \preg \le \pc
+			\end{align*}
 			\end{block}
 		\end{column}
 		\begin{column}{0.55\columnwidth}
@@ -1011,7 +1083,7 @@ Underlay System
 				\draw (0.35,0.68) arc(-130:130:0.007 and 0.021);
 				\node[draw,fill=gray!10,font=\scriptsize] at (0.275,0.758) {$\opc = 0.1$};
 
-	
+	               		\node[draw=none,fill=kit-green30, minimum height = 0.6cm, align = center, font = \footnotesize] at (0.5, 1.05) {Control power versus estimation time};
 				%\draw[help lines,xstep=.1,ystep=.1] (0,0) grid (1,1);
 				%\foreach \x in {0,1,...,9} { \node [anchor=north] at (\x/10,0) {0.\x}; }
 				%\foreach \y in {0,1,...,9} { \node [anchor=east] at (0,\y/10) {0.\y}; }
@@ -1021,19 +1093,18 @@ Underlay System
 		\end{center}
 		\end{column}
 	\end{columns}
-	\begin{block}{\scriptsize Controlled power} 
-		\vspace{-3.5mm}
+	\begin{block}{}%{\scriptsize Power control} 
+		\vspace{-4mm}
 		\begin{align*}
 			\preg &= 
 			\begin{cases} 
 				\frac{\ite \ptran}{ \left(\bpo \Gamma^{-1}(\opc, \apo) - \nps  \right)}, & \mbox{for } \preg < \pc \\
 				\pc, & \mbox{for } \preg \ge \pc
 				\end{cases} \\
-				\text{where  } \apo = \frac{\test \fsam (1 + \snrrcvdu)^2}{2 + 4 \snrrcvdu} &\text{ and } \bpo = \frac{\nps (2 + 4 \snrrcvdu)}{\test \fsam (1 + \snrrcvdu)},
+				\text{where  } \apo &= \frac{\test \fsam (1 + \snrrcvdu)^2}{2 + 4 \snrrcvdu} \text{ and } \bpo = \frac{\nps (2 + 4 \snrrcvdu)}{\test \fsam (1 + \snrrcvdu)},
 			\end{align*}
 	\end{block}
 \end{frame}
-
 
 \section{Hybrid System}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
