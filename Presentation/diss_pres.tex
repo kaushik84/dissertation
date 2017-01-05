@@ -818,7 +818,7 @@ Interweave System
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	\vspace{-2mm}
 	\begin{columns}
-	\begin{column}{0.4\columnwidth}
+	\begin{column}{0.45\columnwidth}
 	\fs{7}{8}
 		\renewcommand{\arraystretch}{1.55}
 		\begin{tabular}{c||c}
@@ -844,7 +844,7 @@ Interweave System
 	\end{tabular}
 
 	\end{column}
-	\begin{column}{0.6\columnwidth}
+	\begin{column}{0.55\columnwidth}
 	\begin{center}
 	\fs{7}{8}	
 		%% Add psfrag entries
@@ -975,58 +975,61 @@ Underlay System
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}[t]{Underlay System}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\vspace{-4.5mm}
 	\fs{7}{8}
 	\begin{columns}
-		\begin{column}{0.4\columnwidth}
+		\begin{column}{0.45\columnwidth}
 			\begin{block}{\scriptsize Constraints} %{\scriptsize Principle}
-			Received interference at PR 
-			\begin{equation*}
-				\p\left( \prcvdpr = \ephpth \preg \ge \ite \right) \le \opc,  
-				%\p\left( \left( \frac{\eprcvdstpr - \nps}{\ptran}\right) \preg \ge \ite \right) \le \opc 
-			\end{equation*}
+			Constraint on received interference at PR 
+			\begin{align*}
+				\p\left( \prcvdpr = \ephpth \preg \ge \ite \right) \le \opc, \\  
+				\p\left( \left( \frac{\eprcvdstpr - \nps}{\ptran}\right) \preg \ge \ite \right) \le \opc 
+			\end{align*}
 			Constraint on transmit power at ST 
 			\begin{equation*}
 				\preg \le \pc. \label{eq_US:pc} 
 			\end{equation*}
 			\end{block}
 		\end{column}
-		\begin{column}{0.6\columnwidth}
+		\begin{column}{0.55\columnwidth}
 		\fs{7}{8}
 		\begin{center}
 			%% Add psfrag entries
-                	\input{../kapitel03/figures/fig_opt_thr_vs_est_time_diff_mu_AWGN.tex}
-                	\centering
+                	\input{../kapitel04/figures/fig_Preg_est_time_AWGN.tex}
+			\centering
              	        \resizebox{.95 \columnwidth}{!}{%
                         \begin{tikzpicture}[scale=1]
-                     		\node[anchor=south west,inner sep=0] (image) at (0,0)
-                       	 	{
-                       	        	 \includegraphics[width= 1.2\columnwidth]{../kapitel03/figures/fig_opt_thr_vs_est_time_diff_mu_AWGN}
-                      	 	};
-                        	\begin{scope}[x={(image.south east)},y={(image.north west)}]
-                    		\draw[black,->, thick] (0.25,0.64) -- (0.18,0.84);
-                      		\node[draw=none, font=\scriptsize] at (0.35, 0.58) {$\mpd \in \{0.05,0.10,0.15\}$};
+				\node[anchor=south west,inner sep=0] (image) at (0,0)
+				{
+					\includegraphics[width= 1.2\columnwidth]{../kapitel04/figures/fig_Preg_est_time_AWGN}
+				};
+				\begin{scope}[x={(image.south east)},y={(image.north west)}]
 
-                     		\draw[black,<-, thick] (0.75,0.62) -- (0.75,0.915);
-                        	\node[draw=none, font=\scriptsize] at (0.75,0.58) {Performance degradation};
-                        	%\draw[black,->] (0.25,0.6) node[below =12.0,right=-20.0,  font=\scriptsize] {$\mpd \in \{0.05,0.10,0.15\}$} -- (0.18,0.8);
+				\draw (0.35,0.56) arc(-130:130:0.007 and 0.021);
+				\node[draw,fill=gray!10,font=\scriptsize] at (0.44,0.515) {$\opc = 0.01$};
 
-                    		%\draw[help lines,xstep=.1,ystep=.1] (0,0) grid (1,1);
-                        %\foreach \x in {0,1,...,9} { \node [anchor=north] at (\x/10,0) {0.\x}; }
-                        %\foreach \y in {0,1,...,9} { \node [anchor=east] at (0,\y/10) {0.\y}; }
-                        \node[draw=none,fill=kit-green30, minimum height = 0.6cm, align = center, font = \footnotesize] at (0.5, 1.05) {Secondary throughput versus estimation time};
-                        \end{scope}
-                        \end{tikzpicture}
+				\draw (0.35,0.68) arc(-130:130:0.007 and 0.021);
+				\node[draw,fill=gray!10,font=\scriptsize] at (0.275,0.758) {$\opc = 0.1$};
+
+	
+				%\draw[help lines,xstep=.1,ystep=.1] (0,0) grid (1,1);
+				%\foreach \x in {0,1,...,9} { \node [anchor=north] at (\x/10,0) {0.\x}; }
+				%\foreach \y in {0,1,...,9} { \node [anchor=east] at (0,\y/10) {0.\y}; }
+				\end{scope}
+			\end{tikzpicture}
                 }
 		\end{center}
 		\end{column}
 	\end{columns}
-	\begin{block}{\scriptsize Controlled power} %{\scriptsize Principle}
+	\begin{block}{\scriptsize Controlled power} 
+		\vspace{-3.5mm}
 		\begin{align*}
 			\preg &= 
 			\begin{cases} 
 				\frac{\ite \ptran}{ \left(\bpo \Gamma^{-1}(\opc, \apo) - \nps  \right)}, & \mbox{for } \preg < \pc \\
 				\pc, & \mbox{for } \preg \ge \pc
-				\end{cases}
+				\end{cases} \\
+				\text{where  } \apo = \frac{\test \fsam (1 + \snrrcvdu)^2}{2 + 4 \snrrcvdu} &\text{ and } \bpo = \frac{\nps (2 + 4 \snrrcvdu)}{\test \fsam (1 + \snrrcvdu)},
 			\end{align*}
 	\end{block}
 \end{frame}
