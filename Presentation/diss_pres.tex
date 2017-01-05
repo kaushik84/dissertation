@@ -1049,8 +1049,8 @@ Underlay System
 			\begin{block}{\scriptsize Secondary throughput} %{\scriptsize Principle}
 			\vspace{-3mm}
 			\begin{align*}
-				\eca  &= \log_2 \left(1 + \frac{\epgs \preg}{\eprcvdsr} \right) \\
-				\rs(\test) &= \frac{T - \test}{T} \e{\eca} {\eca} 
+				\eca  = \log_2 \left(1 + \frac{\epgs \preg}{\eprcvdsr} \right) \\
+				\rs(\test) = \frac{T - \test}{T} \e{\eca} {\eca} 
 			\end{align*}
 			\end{block}
 
@@ -1058,8 +1058,8 @@ Underlay System
 			\vspace{-3mm}
 			\begin{align*}
 				\trs(\ttest)  = \maxi_{\test}  & \text{      } {\rs(\test)} \\
-				\text{s.t.} & \p\left( \ephpth \preg \ge \ite \right) \le \opc \\
-				\text{s.t.} & \preg \le \pc
+				\text{s.t.} & \;\p\left( \ephpth \preg \ge \ite \right) \le \opc \\
+				\text{s.t.} & \;\preg \le \pc
 			\end{align*}
 			\end{block}
 		\end{column}
@@ -1067,27 +1067,27 @@ Underlay System
 		\fs{7}{8}
 		\begin{center}
 			%% Add psfrag entries
-                	\input{../kapitel04/figures/fig_Preg_est_time_AWGN.tex}
+                	\input{../kapitel04/figures/fig_thr_est_time_tradeoff_AWGN.tex}
 			\centering
              	        \resizebox{.95 \columnwidth}{!}{%
                         \begin{tikzpicture}[scale=1]
 				\node[anchor=south west,inner sep=0] (image) at (0,0)
 				{
-					\includegraphics[width= 1.2\columnwidth]{../kapitel04/figures/fig_Preg_est_time_AWGN}
-				};
+				\includegraphics[width= 1.2 \columnwidth]{../kapitel04/figures/fig_thr_est_time_tradeoff_AWGN}
+};
 				\begin{scope}[x={(image.south east)},y={(image.north west)}]
 
-				\draw (0.35,0.56) arc(-130:130:0.007 and 0.021);
-				\node[draw,fill=gray!10,font=\scriptsize] at (0.44,0.515) {$\opc = 0.01$};
+				\draw (0.38,0.78) arc(-130:130:0.005 and 0.015);
+				\node[draw, fill=gray!10,font=\scriptsize] at (0.39,0.735) {$\opc = 0.01$};
 
-				\draw (0.35,0.68) arc(-130:130:0.007 and 0.021);
-				\node[draw,fill=gray!10,font=\scriptsize] at (0.275,0.758) {$\opc = 0.1$};
+				\draw (0.65,0.77) arc(-130:130:0.005 and 0.015);
+				\node[draw,fill=gray!10,font=\scriptsize] at (0.66,0.838) {$\opc = 0.1$};
+				\node[draw=none,fill=kit-green30, minimum height = 0.6cm, align = center, font = \footnotesize] at (0.5, 1.05) {Estimation-throughput tradeoff};
 
-	               		\node[draw=none,fill=kit-green30, minimum height = 0.6cm, align = center, font = \footnotesize] at (0.5, 1.05) {Control power versus estimation time};
 				%\draw[help lines,xstep=.1,ystep=.1] (0,0) grid (1,1);
 				%\foreach \x in {0,1,...,9} { \node [anchor=north] at (\x/10,0) {0.\x}; }
 				%\foreach \y in {0,1,...,9} { \node [anchor=east] at (0,\y/10) {0.\y}; }
-				\end{scope}
+			\end{scope}
 			\end{tikzpicture}
                 }
 		\end{center}
