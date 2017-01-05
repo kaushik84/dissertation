@@ -1250,14 +1250,14 @@ Hybrid System
 	\begin{columns}
 		\begin{column}{0.45\columnwidth}
 			\begin{block}{\scriptsize Secondary throughput}
-				\vspace{-3mm}
+				\vspace{-3.5mm}
 				\begin{align*}
-				\e{\Omega}{\rs(\tsen)} =  \frac{T - \testpr - \tsen}{T} \\ \Bigg[ (1 - \pfa) \cdot \phz \cdot \e{\ecz}{\ecz} +  \\ 
+				\e{\epd, \ecz, \eco, \ectw, \ecth}{\rs(\tsen)} =  \frac{T - \testpr - \tsen}{T} \\ \Bigg[ (1 - \pfa) \cdot \phz \cdot \e{\ecz}{\ecz} +  \\ 
 				(1 - \e{\epd}\epd) \cdot \pho \cdot \e{\eco}{\eco} +  \\ \pfa \cdot \phz \cdot \e{\ectw}{\ectw} + \nonumber  \\ 
 				\e{\epd}{\epd} \cdot \pho \cdot \e{\ecth}{\ecth} \Bigg] 
 				\end{align*}
 			\end{block}
-			\vspace{-2mm}
+			\vspace{-0.5mm}
 			\begin{block}{\scriptsize Interference Constraints} %{\scriptsize Principle}
 			Constraint on detection probability
 			\begin{align*}
@@ -1272,25 +1272,22 @@ Hybrid System
 		\begin{column}{0.55\columnwidth}
 		\fs{7}{8}
 		\begin{center}
-			\centering
              	        \resizebox{.95 \columnwidth}{!}{%
                         \only<1>
 			{
 				\begin{tikzpicture}[scale=1]
-					%% Add psfrag entries
-                			\input{../kapitel05/figures/fig_opt_thr_vs_SNR_AWGN.tex}
+				%	%% Add psfrag entries
+					\input{../kapitel05/figures/fig_opt_cont_power_vs_SNR_AWGN.tex}
 					\node[anchor=south west,inner sep=0] (image) at (0,0)
 					{
-						\includegraphics[width= 1.2\columnwidth]{../kapitel05/figures/fig_opt_thr_vs_SNR_AWGN}
+						\includegraphics[width= 1.2\columnwidth]{../kapitel05/figures/fig_opt_cont_power_vs_SNR_AWGN}
 					};
 					\begin{scope}[x={(image.south east)},y={(image.north west)}]
 					\draw[black,thick,<->] (0.82,0.18) --  node[below, font=\footnotesize] {Regime I} (0.955,0.18);
 					\draw[black,thick,<->] (0.39,0.18) --  node[below, font=\footnotesize] {Regime II} (0.815,0.18);
 					\draw[black,thick,<->] (0.11,0.18) --  node[below, font=\footnotesize] {Regime III} (0.385,0.18);
-					\draw[black,thick,<->] (0.28,0.235) --  node[above, rotate = 90, font=\footnotesize] {Performance Gain} (0.28,0.905);
-					\draw[black,thick,dashed,-] (0.27,0.232) -- (0.817,0.232);
-	
-		               		\node[draw=none,fill=kit-green30, minimum height = 0.6cm, align = center, font = \footnotesize] at (0.5, 1.05) {Achievable throughput versus channel gain $\phpth$};
+
+		               		\node[draw=none,fill=kit-green30, minimum height = 0.6cm, align = center, font = \footnotesize] at (0.5, 1.05) {Controlled power versus channel gain $\phpth$};
 					%\draw[help lines,xstep=.1,ystep=.1] (0,0) grid (1,1);
 					%\foreach \x in {0,1,...,9} { \node [anchor=north] at (\x/10,0) {0.\x}; }
 					%\foreach \y in {0,1,...,9} { \node [anchor=east] at (0,\y/10) {0.\y}; }
@@ -1322,6 +1319,14 @@ Hybrid System
 			}
                 }
 		\end{center}
+		\vspace{-1mm}
+		\begin{block}{}
+			\begin{itemize}
+				\item Regime I  $\Rightarrow$ severe power control
+				\item Regime II $\Rightarrow$ hybrid system procures significant performance gain while operating in underlay and interweave mode
+				\item Regime III $\Rightarrow$ maximum transmit power is attained 
+			\end{itemize}	
+		\end{block}
 		\end{column}
 	\end{columns}
 \end{frame}
