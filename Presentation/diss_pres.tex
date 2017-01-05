@@ -26,6 +26,11 @@
 %\intertrue
 \interfalse
 
+\newif\ifunder
+%\undertrue
+\underfalse
+
+
 %\setbeamertemplate{note page}[plain]
 %\setbeameroption{show only notes}
 %\usepackage{pgfpages}
@@ -887,6 +892,8 @@ Interweave System
 
 \fi
 
+\ifunder
+
 \section{Underlay System}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}[c]{}
@@ -1030,8 +1037,8 @@ Underlay System
 		\begin{align*}
 			\preg &= 
 			\begin{cases} 
-				\frac{\ite \ptran}{ \left(\bpo \Gamma^{-1}(\opc, \apo) - \nps  \right)}, & \mbox{for } \preg < \pc \\
-				\pc, & \mbox{for } \preg \ge \pc
+				\frac{\ite \ptran}{ \left(\bpo \Gamma^{-1}(\opc, \apo) - \nps  \right)}, & \mbox{for } \preg < \pc \Rightarrow \text{Interference-limited regime}\\
+				\pc, & \mbox{for } \preg \ge \pc \Rightarrow \text{Power-limited regime}
 				\end{cases} \\
 				\text{where  } \apo &= \frac{\test \fsam (1 + \snrrcvdu)^2}{2 + 4 \snrrcvdu} \text{ and } \bpo = \frac{\nps (2 + 4 \snrrcvdu)}{\test \fsam (1 + \snrrcvdu)},
 			\end{align*}
@@ -1042,7 +1049,7 @@ Underlay System
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}[t]{Underlay System}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	\vspace{-4.5mm}
+	%\vspace{-4.5mm}
 	\fs{7}{8}
 	\begin{columns}
 		\begin{column}{0.45\columnwidth}
@@ -1066,52 +1073,258 @@ Underlay System
 		\begin{column}{0.55\columnwidth}
 		\fs{7}{8}
 		\begin{center}
-			%% Add psfrag entries
-                	\input{../kapitel04/figures/fig_thr_est_time_tradeoff_AWGN.tex}
 			\centering
              	        \resizebox{.95 \columnwidth}{!}{%
-                        \begin{tikzpicture}[scale=1]
+                        \only<1>
+			{
+				%% Add psfrag entries
+              		  	\input{../kapitel04/figures/fig_thr_est_time_tradeoff_AWGN.tex}
+				\begin{tikzpicture}[scale=1]
+					\node[anchor=south west,inner sep=0] (image) at (0,0)
+					{
+					\includegraphics[width= 1.2 \columnwidth]{../kapitel04/figures/fig_thr_est_time_tradeoff_AWGN}
+};
+					\begin{scope}[x={(image.south east)},y={(image.north west)}]
+
+					\draw (0.38,0.78) arc(-130:130:0.005 and 0.015);
+					\node[draw, fill=gray!10,font=\scriptsize] at (0.39,0.735) {$\opc = 0.01$};
+
+					\draw (0.65,0.77) arc(-130:130:0.005 and 0.015);
+					\node[draw,fill=gray!10,font=\scriptsize] at (0.66,0.838) {$\opc = 0.1$};
+					\node[draw=none,fill=kit-green30, minimum height = 0.6cm, align = center, font = \footnotesize] at (0.5, 1.05) {Estimation-throughput tradeoff};
+
+					%\draw[help lines,xstep=.1,ystep=.1] (0,0) grid (1,1);
+					%\foreach \x in {0,1,...,9} { \node [anchor=north] at (\x/10,0) {0.\x}; }
+					%\foreach \y in {0,1,...,9} { \node [anchor=east] at (0,\y/10) {0.\y}; }
+				\end{scope}
+				\end{tikzpicture}
+			}
+                        \only<2>
+			{
+				\input{../kapitel04/figures/fig_opt_thr_vs_SNR_AWGN_SI_00.tex}
+				\begin{tikzpicture}[scale=1]
 				\node[anchor=south west,inner sep=0] (image) at (0,0)
 				{
-				\includegraphics[width= 1.2 \columnwidth]{../kapitel04/figures/fig_thr_est_time_tradeoff_AWGN}
-};
+     					\includegraphics[width= 1.2 \columnwidth]{../kapitel04/figures/fig_opt_thr_vs_SNR_AWGN_SI_00}
+				};
 				\begin{scope}[x={(image.south east)},y={(image.north west)}]
 
-				\draw (0.38,0.78) arc(-130:130:0.005 and 0.015);
-				\node[draw, fill=gray!10,font=\scriptsize] at (0.39,0.735) {$\opc = 0.01$};
+				\draw (0.225,0.615) arc(-160:160:0.01 and 0.03);
+				\node[draw, fill=gray!10, font=\scriptsize] (text1) at (0.7,0.725) {$\pc = \SI{00}{dBm}$};
+				\draw (0.275,0.33) arc(-160:160:0.01 and 0.03);
+				\node[draw, fill=gray!10, font=\scriptsize] (text2) at (0.75,0.44) {$\pc = \SI{-10}{dBm}$};
+				%\draw (0.63,0.66) arc(-150:150:0.016 and 0.048);
+				\draw[black, ->] (text1.west) -- (0.245,0.635);
+				%\draw (0.63,0.59) arc(-160:160:0.01 and 0.03);
+				\draw[black, ->] (text2.west) -- (0.295,0.35);
 
-				\draw (0.65,0.77) arc(-130:130:0.005 and 0.015);
-				\node[draw,fill=gray!10,font=\scriptsize] at (0.66,0.838) {$\opc = 0.1$};
-				\node[draw=none,fill=kit-green30, minimum height = 0.6cm, align = center, font = \footnotesize] at (0.5, 1.05) {Estimation-throughput tradeoff};
+
+				\draw (0.27,0.225) arc(-160:160:0.01 and 0.03);
+				\draw[black,thick,<->] (0.084,0.25) --  node[above, font=\scriptsize] {Power-limited} (0.367,0.25);
+				\draw[black,thick,<->] (0.084,0.22) --  (0.667,0.22);
+
+				\draw (0.7,0.105) arc(-160:160:0.01 and 0.03);
+				\draw[black,thick,<->] (0.37,0.13) --  node[above, font=\scriptsize] {Interference-limited} (0.965,0.13);
+				\draw[black,thick,<->] (0.67,0.10) --  (0.965,0.10);
+					
+				\node[draw=none,fill=kit-green30, minimum height = 0.6cm, align = center, font = \footnotesize] at (0.5, 1.05) {Achievable throughput versus SNR at ST over $\phpth$};
 
 				%\draw[help lines,xstep=.1,ystep=.1] (0,0) grid (1,1);
 				%\foreach \x in {0,1,...,9} { \node [anchor=north] at (\x/10,0) {0.\x}; }
 				%\foreach \y in {0,1,...,9} { \node [anchor=east] at (0,\y/10) {0.\y}; }
-			\end{scope}
-			\end{tikzpicture}
+				\end{scope}
+				\end{tikzpicture}	
+			}
                 }
 		\end{center}
 		\end{column}
 	\end{columns}
-	\begin{block}{}%{\scriptsize Power control} 
-		\vspace{-4mm}
-		\begin{align*}
-			\preg &= 
-			\begin{cases} 
-				\frac{\ite \ptran}{ \left(\bpo \Gamma^{-1}(\opc, \apo) - \nps  \right)}, & \mbox{for } \preg < \pc \\
-				\pc, & \mbox{for } \preg \ge \pc
-				\end{cases} \\
-				\text{where  } \apo &= \frac{\test \fsam (1 + \snrrcvdu)^2}{2 + 4 \snrrcvdu} \text{ and } \bpo = \frac{\nps (2 + 4 \snrrcvdu)}{\test \fsam (1 + \snrrcvdu)},
-			\end{align*}
-	\end{block}
+	\onslide<2->
+	{	
+		\begin{block}{}%{\scriptsize Power control} 
+		\begin{itemize}
+			\item Low $\snrrcvdu$ represents a weak link quality, is beneficial to secondary system 
+			% Due to tansmit power constraint the operation of the US is resctricted for low of SNR
+			
+			\item Operation of underlay system is classified is different regimes: (i) power-limited regime and (ii) interference-limited regime
+			\item The performance (operation range) of US is highly dependent on $\pfull$ 
+		\end{itemize}		
+		\end{block}
+	}
 \end{frame}
+\fi
+
 
 \section{Hybrid System}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}[t]{Hybrid System}
+\begin{frame}[c]{}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{center}
+Hybrid System
+\end{center}
 \end{frame}
 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[t]{Hybrid System}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\vspace{-4mm}
+	\fs{7}{8}
+	\begin{columns}
+		\begin{column}{0.45\columnwidth}
+				%\vspace{-1mm}
+			\begin{block}{\scriptsize Principle} 
+				\begin{itemize}
+					\item Hybrid system combines the benefits of interweave and underlay systems to enhance spectral efficiency of cognitive radio systems  
+					\item Spectrum sensing followed by power control is employed at ST 
+				\end{itemize}
+			\end{block}
+			\vspace{3mm}
+			\onslide<1->
+			{
+				%\vspace{-2mm}
+				\begin{block}{\scriptsize Signal model} %{\scriptsize Signal model}
+				\begin{equation*}
+					\yrcvd[n] = 
+					\begin{cases}
+						\hpo \cdot \xp[n] + \wst[n] & : \mathcal{H}_1 \\
+						\wst[n] & :\mathcal{H}_0
+					\end{cases}
+				\end{equation*}
+				\begin{equation*}
+					\ys[n] = 
+					\begin{cases}
+						\hs \cdot \xsfull[n] + \hptw \cdot \xp[n] + \wsr[n] \\%&: 1 - \pd \\
+						\hs \cdot \xsfull[n] + \wsr[n] \\%&: 1 - \pfa \\
+						\hs \cdot \xscont[n] + \hptw \cdot \xp[n] + \wsr[n] \\%&: \pd \\
+						\hs \cdot \xscont[n] + \wsr[n] %&: \pfa 
+					\end{cases}
+				\end{equation*}
+				\begin{equation*}
+					\yp[n] = 
+					\begin{cases}
+						\hpth \cdot \xscont[n] + \wpr[n] \\% : \pd \\
+						\hpth \cdot \xsfull[n] + \wpr[n] %& : 1- \pd 
+					\end{cases}
+				\end{equation*}
+				\end{block}
+			}
+		\end{column}
+		\begin{column}{0.55\columnwidth}
+		\vspace{-12mm}
+		\fs{7}{8}
+		\begin{center}
+			% Interacting entities
+			%Interweave Scenario \\\vspace{0.2cm} 
+        		\begin{tikzpicture}[scale=1]
+				\node[anchor=south west,inner sep=0] (image) at (0,0)
+				{
+					\includegraphics[width = .72 \columnwidth]{../kapitel05/figures/CR_Scenario_Hybrid}	     
+				};
+				\only<1>
+				{
+					%\fill[opacity = 0.2, fill = blue] (.32,1.16) rectangle (1.22,1.8);
+					%\fill[opacity = 0.2, fill = blue] (.32,-0.06) rectangle (1.22,0.58);
+					%\fill[opacity = 0.2, fill = red] (3.65,1.18) rectangle (4.65,1.6);
+					%\fill[opacity = 0.2, fill = red] (2.42,2.3) rectangle (3.88,3.08);
+				}
+			\end{tikzpicture}
+			\vspace{-16mm}	
+			\begin{tikzpicture}[scale=1]
+				\node[anchor=south west,inner sep=0] (image) at (0,0)
+				{
+					\includegraphics[width = 1.02\columnwidth]{figures/Frame_Structure_HS.ps}     
+				};
+			\end{tikzpicture}	
+		\end{center}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[t]{Hybrid System}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\vspace{-4.5mm}
+	\fs{7}{8}
+	\begin{columns}
+		\begin{column}{0.45\columnwidth}
+			\begin{block}{\scriptsize Secondary throughput}
+				\vspace{-3mm}
+				\begin{align*}
+				\e{\Omega}{\rs(\tsen)} =  \frac{T - \testpr - \tsen}{T} \\ \Bigg[ (1 - \pfa) \cdot \phz \cdot \e{\ecz}{\ecz} +  \\ 
+				(1 - \e{\epd}\epd) \cdot \pho \cdot \e{\eco}{\eco} +  \\ \pfa \cdot \phz \cdot \e{\ectw}{\ectw} + \nonumber  \\ 
+				\e{\epd}{\epd} \cdot \pho \cdot \e{\ecth}{\ecth} \Bigg] 
+				\end{align*}
+			\end{block}
+			\vspace{-2mm}
+			\begin{block}{\scriptsize Interference Constraints} %{\scriptsize Principle}
+			Constraint on detection probability
+			\begin{align*}
+				\p(\epd \le \pdd) \le \opdc 
+			\end{align*}
+			Constraint on received interference at PR 
+			\begin{equation*}
+				\p(\eprcvdpr \ge \ite) \le \opc 	
+			\end{equation*}
+			\end{block} 
+		\end{column}
+		\begin{column}{0.55\columnwidth}
+		\fs{7}{8}
+		\begin{center}
+			\centering
+             	        \resizebox{.95 \columnwidth}{!}{%
+                        \only<1>
+			{
+				\begin{tikzpicture}[scale=1]
+					%% Add psfrag entries
+                			\input{../kapitel05/figures/fig_opt_thr_vs_SNR_AWGN.tex}
+					\node[anchor=south west,inner sep=0] (image) at (0,0)
+					{
+						\includegraphics[width= 1.2\columnwidth]{../kapitel05/figures/fig_opt_thr_vs_SNR_AWGN}
+					};
+					\begin{scope}[x={(image.south east)},y={(image.north west)}]
+					\draw[black,thick,<->] (0.82,0.18) --  node[below, font=\footnotesize] {Regime I} (0.955,0.18);
+					\draw[black,thick,<->] (0.39,0.18) --  node[below, font=\footnotesize] {Regime II} (0.815,0.18);
+					\draw[black,thick,<->] (0.11,0.18) --  node[below, font=\footnotesize] {Regime III} (0.385,0.18);
+					\draw[black,thick,<->] (0.28,0.235) --  node[above, rotate = 90, font=\footnotesize] {Performance Gain} (0.28,0.905);
+					\draw[black,thick,dashed,-] (0.27,0.232) -- (0.817,0.232);
+	
+		               		\node[draw=none,fill=kit-green30, minimum height = 0.6cm, align = center, font = \footnotesize] at (0.5, 1.05) {Achievable throughput versus channel gain $\phpth$};
+					%\draw[help lines,xstep=.1,ystep=.1] (0,0) grid (1,1);
+					%\foreach \x in {0,1,...,9} { \node [anchor=north] at (\x/10,0) {0.\x}; }
+					%\foreach \y in {0,1,...,9} { \node [anchor=east] at (0,\y/10) {0.\y}; }
+					\end{scope}
+				\end{tikzpicture}
+			}
+                        \only<2->
+			{
+				\begin{tikzpicture}[scale=1]
+					%% Add psfrag entries
+                			\input{../kapitel05/figures/fig_opt_thr_vs_SNR_AWGN.tex}
+					\node[anchor=south west,inner sep=0] (image) at (0,0)
+					{
+						\includegraphics[width= 1.2\columnwidth]{../kapitel05/figures/fig_opt_thr_vs_SNR_AWGN}
+					};
+					\begin{scope}[x={(image.south east)},y={(image.north west)}]
+					\draw[black,thick,<->] (0.82,0.18) --  node[below, font=\footnotesize] {Regime I} (0.955,0.18);
+					\draw[black,thick,<->] (0.39,0.18) --  node[below, font=\footnotesize] {Regime II} (0.815,0.18);
+					\draw[black,thick,<->] (0.11,0.18) --  node[below, font=\footnotesize] {Regime III} (0.385,0.18);
+					\draw[black,thick,<->] (0.28,0.235) --  node[above, rotate = 90, font=\footnotesize] {Performance Gain} (0.28,0.905);
+					\draw[black,thick,dashed,-] (0.27,0.232) -- (0.817,0.232);
+	
+		               		\node[draw=none,fill=kit-green30, minimum height = 0.6cm, align = center, font = \footnotesize] at (0.5, 1.05) {Achievable throughput versus channel gain $\phpth$};
+					%\draw[help lines,xstep=.1,ystep=.1] (0,0) grid (1,1);
+					%\foreach \x in {0,1,...,9} { \node [anchor=north] at (\x/10,0) {0.\x}; }
+					%\foreach \y in {0,1,...,9} { \node [anchor=east] at (0,\y/10) {0.\y}; }
+					\end{scope}
+				\end{tikzpicture}
+			}
+                }
+		\end{center}
+		\end{column}
+	\end{columns}
+\end{frame}
 
 \section{Hardware Implementation}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
