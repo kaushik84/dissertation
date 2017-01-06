@@ -1250,7 +1250,7 @@ Hybrid System
 	\begin{columns}
 		\begin{column}{0.45\columnwidth}
 			\begin{block}{\scriptsize Secondary throughput}
-				\vspace{-3.5mm}
+				\vspace{-4.0mm}
 				\begin{align*}
 				\e{\epd, \ecz, \eco, \ectw, \ecth}{\rs(\tsen)} =  \frac{T - \testpr - \tsen}{T} \\ \Bigg[ (1 - \pfa) \cdot \phz \cdot \e{\ecz}{\ecz} +  \\ 
 				(1 - \e{\epd}\epd) \cdot \pho \cdot \e{\eco}{\eco} +  \\ \pfa \cdot \phz \cdot \e{\ectw}{\ectw} + \nonumber  \\ 
@@ -1331,11 +1331,104 @@ Hybrid System
 	\end{columns}
 \end{frame}
 
+
+
+
 \section{Hardware Implementation}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[c]{}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{center}
+Hardware Implementation
+\end{center}
+\end{frame}
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}[t]{Hardware Implementation}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\vspace{-3mm}
+	\fs{7}{8}
+	\begin{block}{\scriptsize Objective}
+		\begin{itemize}
+			% The aforementioned analysis has been limited to theoretical expressions, with regard to CR systems it is essential as-well-as challenging to depict their hardware realizations
+			\item Depict the feasibility of the proposed performance analysis by deploying CR technique on a hardware
+			\item Justify the necessity of channel knowledge for the deployment of CR systems 
+	
+		\end{itemize}
+	\end{block}
+	\begin{columns}
+		\begin{column}{0.45\columnwidth}
+			%\begin{overlayarea}{\textwidth}{2cm}
+			\only<1>{
+			\begin{block}{\scriptsize Simplifications/Modifications} 
+				\begin{itemize}
+					\item Channel estimation is restricted to channel $\phpth$ $\Rightarrow$ Interference constraint
+					\item Outage constraint is replaced with confidence probability constraint
+					\item Primary and secondary systems transmit OFDM modulated signal 
+
+				\end{itemize}				
+			\end{block}
+			%\end{overlayarea}
+			\vspace{3mm}
+			\begin{block}{\scriptsize Signal model}
+				\begin{equation*}
+					\yrcvd[n] = \hpth \cdot \xtranpr[n] + \wst[n]
+				\end{equation*}
+				\begin{equation*}
+					\yp[n] = \hpth \cdot \xscont[n] + \wpr[n],
+				\end{equation*}
+				\begin{equation*}
+					\ys[n] = \gs \cdot \xscont[n] + \wsr[n]
+				\end{equation*}
+			\end{block} 
+			}
+			\only<2>	
+			{
+			\vspace{-2mm}	
+			\begin{block}{\scriptsize Performance parameters}
+				Interference received at PR
+				\begin{equation*}
+					\eprcvdpr = \s{(T - \test) \fsam}{|\yp[n]^2|}		
+				\end{equation*}
+				Throughput at SR 
+				\begin{equation*}
+					\ers = \frac{T - \test}{T} \log_2 \left(1 + \frac{\pgs \epreg }{\nps} \right)
+				\end{equation*}
+			\end{block}
+			\vspace{-1mm}	
+			\begin{block}{\scriptsize Achievable throughput}
+				\vspace{-4mm}	
+				\begin{align*}
+					\rs(\ttest) = \maxi_{\test}  & \text{      } \e{\ers}{\ers(\test)}, \\
+					\text{s.t.} & \pco \ge \pcod 
+					%\intertext{where} \pco = \fprcvdpr \left( {(1 + \acc) \ite}\right)  - \fprcvdpr \left({(1 - \acc) \ite} \right)  
+				\end{align*}
+			\end{block}	 
+			}
+		\end{column}
+		\begin{column}{0.55\columnwidth}
+		\fs{7}{8}
+			\begin{overlayarea}{\textwidth}{3.8cm}
+			\centering
+			\begin{tikzpicture}[scale=1]
+				\node[anchor=south west,inner sep=0] (image) at (0,0)
+				{
+					\includegraphics[width = 0.85 \columnwidth]{../kapitel06/figures/CR_Scenario_Underlay_gruen} 
+				};
+			\end{tikzpicture}	
+			\end{overlayarea}
+			\centering
+			\begin{tikzpicture}[scale=1]
+				\node[anchor=south west,inner sep=0] (image) at (0,0)
+				{
+					\includegraphics[width = 0.85 \columnwidth]{../kapitel06/figures/Frame_Structure_grau_U} 
+				};
+			\end{tikzpicture}	
+		\end{column}
+	\end{columns}
 \end{frame}
+
 
 \subsection{Validation}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1348,6 +1441,7 @@ Hybrid System
 \begin{frame}[t]{Demonstration}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \end{frame}
+
 
 \section{Conclusion}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
