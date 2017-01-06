@@ -1404,7 +1404,7 @@ Hardware Implementation
 				\vspace{-4mm}	
 				\begin{align*}
 					\rs(\ttest) = \maxi_{\test}  & \text{      } \e{\ers}{\ers(\test)}, \\
-					\text{s.t.} & \pco \ge \pcod 
+					\text{s.t.} \;& \pco \ge \pcod 
 					%\intertext{where} \pco = \fprcvdpr \left( {(1 + \acc) \ite}\right)  - \fprcvdpr \left({(1 - \acc) \ite} \right)  
 				\end{align*}
 			\end{block}	 
@@ -1433,11 +1433,121 @@ Hardware Implementation
 \end{frame}
 
 
-\subsection{Validation}
+\subsection{Hardware Validation}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}[t]{Validation}
+\begin{frame}[c]{Hardware Validation}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\begin{columns}
+		\begin{column}{0.45\columnwidth}
+			\fs{7}{8}
+			\centering
+             	        \resizebox{.95 \columnwidth}{!}{%
+			\begin{tikzpicture}[scale=1]
+				\node[anchor=south west,inner sep=0] (image) at (0,0)
+            		    	{
+               		        	\includegraphics[width=1.2 \columnwidth]{../kapitel06/figures/ValidationSetUp.ps}
+                		};
+
+        	        \begin{scope}[x={(image.south east)},y={(image.north west)}]
+               	 	\node[draw, fill=gray!10,font=\scriptsize] at (0.49,0.765) {Signal Generator (PR)};
+               	 	\node[draw, fill=gray!10,font=\scriptsize] at (0.52,0.6) {Coaxial Cable $\phpth$};
+
+             	        \node[draw, fill=gray!10,font=\scriptsize] at (0.49,0.09) {Host Computer};
+               	        \node[draw, fill=gray!10,font=\scriptsize, text width = 1cm, align = center] at (0.13,0.11) {SDR platform (ST)};
+                	\node[draw, fill=gray!10,font=\scriptsize, text width = 1cm, align = center] at (0.87,0.24) {USB Interface};
+                	%\draw[help lines,xstep=.1,ystep=.1] (0,0) grid (1,1);
+                	%\foreach \x in {0,1,...,9} { \node [anchor=north] at (\x/10,0) {0.\x}; }
+                	%\foreach \y in {0,1,...,9} { \node [anchor=east] at (0,\y/10) {0.\y}; }
+                	\end{scope}
+			\end{tikzpicture}
+		}
+		\end{column}
+		%\begin{column}{0.5\columnwidth}
+		%\end{column}
+	\end{columns}
 \end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[c]{Hardware Validation}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\begin{columns}
+		\begin{column}{0.45\columnwidth}
+			\fs{7}{8}
+			\centering
+             	        \resizebox{.95 \columnwidth}{!}{%
+				\input{figures/P_PR_Rx}
+      		  		\begin{tikzpicture}[scale=1]
+                		\node[anchor=south west,inner sep=0] (image) at (0,0)
+          		        {
+                        		\includegraphics[width=1.2\columnwidth]{figures/P_PR_Rx}
+            		        };
+
+            		        \begin{scope}[x={(image.south east)},y={(image.north west)}]
+           		        \node[above, font=\footnotesize] at (0.16,0.93) {$ \times 10^{-11}$};
+
+            		        \draw[black,thick,<-] (0.577,0.57) --  node[above, font=\footnotesize] {$\ite (1 + \acc)$} (0.777,0.57);
+                		\draw[black,thick,<-] (0.379,0.57) --  node[above, font=\footnotesize] {$\ite (1 - \acc)$} (0.179,0.57);
+            		        %\draw[help lines,xstep=.1,ystep=.1] (0,0) grid (1,1);
+              		        %\foreach \x in {0,1,...,9} { \node [anchor=north] at (\x/10,0) {0.\x}; }
+                		%\foreach \y in {0,1,...,9} { \node [anchor=east] at (0,\y/10) {0.\y}; }
+                		\end{scope}
+      		  		\end{tikzpicture}
+			}
+			\vspace{2mm}	
+				
+             	        \resizebox{.95 \columnwidth}{!}{%
+				\input{figures/R_s}
+			        \includegraphics[width=1.2\columnwidth]{figures/R_s}%
+			}
+		\end{column}
+		\begin{column}{0.55\columnwidth}
+		\fs{7}{8}
+		\begin{overlayarea}{\textwidth}{3.1cm}
+			\vspace{2mm}	
+		\begin{center}
+		\centering
+		\begin{tabular}{c||c}
+                	\rowcolor{kit-green30}
+			Parameter & Value \\ \hline \hline
+                	$\snrrcvdu$ & \SI{22}{dB} \\
+                	$N$ & 100 \\
+                	$\test$ & \SI{2}{ms}\\
+                	$\ite$ & \SI{-110}{dBm}\\
+                	$T$ & \SI{100}{ms}\\
+               		$\pgs$ & 1 \\
+                	$\npp$ & $\SI{-96.74}{dBm}$\\ \hline
+        	\end{tabular}
+		\end{center}
+		\end{overlayarea}
+		\resizebox{.95 \columnwidth}{!}{%
+		\centering
+			\input{../kapitel06/figures/ETT.tex}
+		        \begin{tikzpicture}[scale=1]
+       				\node[anchor=south west,inner sep=0] (image) at (0,0)
+        			{
+                			\includegraphics[width=1.2 \columnwidth]{../kapitel06/figures/ETT}
+        			};
+        			\begin{scope}[x={(image.south east)},y={(image.north west)}]
+        			\node[draw, fill=gray!10,font=\scriptsize] (text1) at (0.98,0.872) {$\pcod$};
+        			\draw[black, ->] (text1.west) -- (0.913,0.872);
+
+       				\node[draw, fill=gray!10,font=\scriptsize] (text2) at (0.3275,0.01) {$\ttest$};
+        			\draw[black, ->] (text2.north) -- (0.3275,0.086);
+
+        			\node[draw, fill=gray!10,font=\scriptsize] (text3) at (-0.06,0.9) {$\maxi\e{\ers}{\ers}$};
+        			\draw[black, ->] (text3.south) -- (0.084,0.7);
+
+                		%\draw[help lines,xstep=.1,ystep=.1] (0,0) grid (1,1);
+                		%\foreach \x in {0,1,...,9} { \node [anchor=north] at (\x/10,0) {0.\x}; }
+                		%\foreach \y in {0,1,...,9} { \node [anchor=east] at (0,\y/10) {0.\y}; }
+                		\end{scope}
+        		\end{tikzpicture}
+			}
+		\end{column}
+	\end{columns}
+\end{frame}
+
 
 \subsection{Demonstration}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
