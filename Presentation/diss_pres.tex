@@ -1548,18 +1548,167 @@ Hardware Implementation
 	\end{columns}
 \end{frame}
 
-
+\newcommand{\anglee}{00}
 \subsection{Demonstration}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}[t]{Demonstration}
+\begin{frame}[c]{Demonstration}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+		\fs{7}{8}
+		\centering
+             	%\resizebox{1.\columnwidth}{!}{%
+
+		\begin{tikzpicture}[scale=1]
+                	\node[anchor=south west,inner sep=0] (image) at (0,0)
+                {
+                        \includegraphics[width=1.0 \columnwidth, angle = \anglee]{../kapitel06/figures/BlockDiagram_Demo.ps}
+                };
+
+                \begin{scope}[x={(image.south east)},y={(image.north west)}]
+
+                %\node[draw, fill=kit-green30, font=\tiny, rotate = \anglee, align = center] at (0.48,1.3) {Block Diagram of the Deployment Demonstrator};
+                
+		\node[draw, fill=kit-green30, font=\tiny, rotate = \anglee, align = center] at (0.48,1.08) {Air Interface};
+                \node[draw, fill=kit-green30, font=\tiny, rotate = \anglee, align = center] at (0.391,0.037) {Primary Receiver};
+                \node[draw, fill=kit-green30, font=\tiny, rotate = \anglee, align = center] at (0.5858,0.037) {Secondary Transmitter};
+                \node[draw, fill=kit-green30, font=\tiny, rotate = 90, align = center] at (0.986,0.97) {SDR Interface};
+                \node[draw, fill=kit-green30, font=\tiny, rotate = 90, align = center] at (0.986,0.592) {Host Interface};
+		
+			% Transmit and receive signals  
+                \node[draw=none, font=\tiny, rotate = \anglee, align = center] at (0.27,0.97) {Rx Signal};
+                \node[draw=none, font=\tiny, rotate = \anglee, align = center] at (0.27,0.879) {Tx Signal};
+                \node[draw=none, font=\tiny, rotate = \anglee, align = center] at (0.68,0.97) {Tx Signal};
+                \node[draw=none, font=\tiny, rotate = \anglee, align = center] at (0.68,0.879) {Rx Signal};
+                % Channels
+                \node[draw=none, font=\tiny, rotate = \anglee, align = center] at (0.48,1.00) {$\hpth$};
+                %\node[draw=none, font=\scriptsize, rotate = \anglee, align = center] at (0.48,0.889) {$\hpt$};
+                % Fill Empty Boxes
+                % PR Interface
+                \node[draw=none, font=\tiny, rotate = \anglee, align = center] at (0.136, 0.616) {Pilot Signal \\ $(\ptran)$};
+                \node[draw=none, font=\tiny, rotate = \anglee, align = center] at (0.136,0.40) {$\sum |\cdot|^2$ \\ $(= \prcvdpr)$};
+                \node[draw=none, font=\tiny, rotate = \anglee, align = center] at (0.264,0.40) {Compute $\pco$ \\ ($\acc, \ite$) };
+                \node[draw=none, font=\tiny, rotate = \anglee, align = center] at (0.394,0.40) {Validate\\ $\pco \ge \pcod$};
+
+                % ST Interface
+                \node[draw=none, font=\tiny, rotate = \anglee, align = center] at (0.8234,0.616) {Pre\\-processing};
+                \node[draw=none, font=\tiny, rotate = \anglee, align = center] at (0.695,0.616) {Compute \\ $\eprcvdpr$};
+                \node[draw=none, font=\tiny, rotate = \anglee, align = center] at (0.567,0.616) {Compute \\ $\epreg$};
+                \node[draw=none, font=\tiny, rotate = \anglee, align = center] at (0.567,0.40) {Compute  $\ers$  \\ ($\ttesto$)};
+                \node[draw=none, font=\tiny, rotate = \anglee, align = center] at (0.8234,0.40) {Data Signal \\ $\epreg$};
+                \node[draw=none, font=\tiny, rotate = \anglee, align = center] at (0.567,0.184) {Emulate \\ $(\hs)$ ST-SR};
+                %\node[draw, fill=gray!10, font=\tiny, rotate = \anglee, align = center] at (0.8234,0.73) {Pre-processing};
+                \node[draw, fill=kit-green30, font=\tiny, rotate = \anglee, align = center] at (0.695,0.44) {Power Control};
+                \node[draw, fill=kit-green30, font=\tiny, rotate = \anglee, align = center] at (0.695,0.73) {Channel Estimation};
+                \end{scope}
+        \end{tikzpicture}
+
+		%}
 \end{frame}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[c]{Demonstration}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\begin{columns}
+		\begin{column}{0.5\columnwidth}
+			\fs{7}{8}
+			\centering
+             	        \resizebox{.75 \columnwidth}{!}{%
+			\begin{tikzpicture}[scale=1]
+                \node[anchor=south west,inner sep=0] (image) at (0,0)
+                {
+                        \includegraphics[width=1.15 \columnwidth]{../kapitel06/figures/crinterface}
+                };
+
+                \begin{scope}[x={(image.south east)},y={(image.north west)}]
+                \node[draw=none, fill=gray!08,font=\footnotesize] at (0.49,0.983) {Secondary Transmitter (CSC-BS)};
+                \node[draw=none, fill=gray!08,font=\footnotesize, text width = 126.5, align = left] at (0.345,0.94) {Received power at ST, $\eprcvdstpr$};
+                \node[draw=none, fill=gray!08,font=\footnotesize, text width = 53.5, align = left] at (0.152,0.745) {Noise Floor};
+                \node[draw=none, fill=gray!08,font=\footnotesize, text width = 125.5, align = left] at (0.342,0.7) {Control power at ST, $\epreg$};
+                \node[draw=none, fill=gray!08,font=\footnotesize, text width = 125.5, align =  center] at (0.342,0.50) {Secondary throughput at SR, $\ers$};
+                \node[draw=none, fill=gray!08,font=\footnotesize, text width = 128, align = center] at (0.347,0.28) {Interference temperature = [dBm]};
+                \node[draw=none, fill=gray!08,font=\footnotesize, text width = 62.5, align = left] at (0.176,0.20) {$T$ = [ms]};
+                \node[draw=none, fill=gray!08,font=\footnotesize, text width = 70, align = left] at (0.196,0.125) {$\ttesto$ = [ms]};
+                \node[draw=none, fill=gray!08,font=\footnotesize, text width = 128, align = left] at (0.349,0.085) {Access channel gain = [mV]};
+
+		\only<1>
+		{	
+			\draw[blue, thick] (-0.02,.72) rectangle (.52,.77); % Noise Power
+			\draw[blue, thick] (-0.02,.055) rectangle (.82,.31); % Inter, Frame duration
+                }
+		\only<2>
+		{
+			\draw[blue, thick] (-0.02,.38) rectangle (.69,.73); % Inter, Frame duration
+		}
+		
+		%\draw[help lines,xstep=.1,ystep=.1] (0,0) grid (1,1);
+                %\foreach \x in {0,1,...,9} { \node [anchor=north] at (\x/10,0) {0.\x}; }
+                %\foreach \y in {0,1,...,9} { \node [anchor=east] at (0,\y/10) {0.\y}; }
+                \end{scope}
+        \end{tikzpicture}
+		
+			}
+		\end{column}
+		\begin{column}{0.5\columnwidth}
+		\fs{7}{8}
+		\resizebox{.75 \columnwidth}{!}{%
+		\centering
+			\begin{tikzpicture}[scale=1]
+                \node[anchor=south west,inner sep=0] (image) at (0,0)
+                {
+                        \includegraphics[width=1.15\columnwidth]{../kapitel06/figures/printerface}
+                };
+
+                \begin{scope}[x={(image.south east)},y={(image.north west)}]
+                \node[draw=none, fill=gray!35,font=\footnotesize] at (0.49,0.979) {Primary Receiver};
+                \node[draw=none, fill=gray!35,font=\footnotesize] at (0.332,0.93) {Interference Power at PR, $\eprcvdpr$};
+                \node[draw=none, fill=gray!35,font=\footnotesize] at (0.363,0.695) {Confidence probability constraint, $\pcod$};
+                \node[draw=none, fill=gray!35,font=\footnotesize] at (0.228,0.46) {$\p(\eprcvdpr \ge \ite (1 + \acc))$};
+                \node[draw=none, fill=gray!35,font=\footnotesize] at (0.228,0.22) {$\p(\eprcvdpr \le \ite (1 - \acc))$};
+		
+		\only<1>
+		{	
+			\draw[blue, thick] (-0.02,.6) rectangle (.72,.73); % Confidence probability constraint
+		}
+ 
+		\only<2>
+		{	
+			\draw[blue, thick] (-0.02,.83) rectangle (.72,.96); % Received interference power
+			\draw[blue, thick] (-0.02,.1) rectangle (.72,.5); % Confidence probability 
+		} 
+                
+		%\draw[help lines,xstep=.1,ystep=.1] (0,0) grid (1,1);
+                %\foreach \x in {0,1,...,9} { \node [anchor=north] at (\x/10,0) {0.\x}; }
+                %\foreach \y in {0,1,...,9} { \node [anchor=east] at (0,\y/10) {0.\y}; }
+                \end{scope}
+        \end{tikzpicture}
+		
+		}
+		\end{column}
+	\end{columns}
+\end{frame}
 
 \section{Conclusion}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}[t]{Conclusion}
+\begin{frame}[c]{Conclusion}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\begin{block}{}
+	\fs{7}{9}
+		\begin{itemize}	
+			%\item Lack of channel knowledge renders the performance analysis of CR system incomplete 
+			% Through adequate analysis and hardware deployment it is justified that 
+			\item Channel knowledge is extremely necessary for the realization of CR techniques over the hardware $\Rightarrow$ control interference to primary system
+			\item An analytical framework is proposed that characterizes the detrimental effects (time allocation and channel variations) due to channel estimation is proposed 
+			\item Finally, the performed analysis does not only provide answers to specific questions related to imperfect channel knowledge, including 
+				\begin{itemize} 
+				\fs{7}{9}
+\item How to counter the uncertain interference induced in different CR systems? \item How to evaluate the performance degradation? \item How to determine the suitable estimation time and suitable sensing time that yields the maximum throughput achieved? \end{itemize}
+but also promotes techniques such as 
+
+\begin{itemize} 
+\fs{7}{9}
+\item implementation of the channel estimation at the secondary system \item energy-based detection and \item received power-based channel estimation \end{itemize} that ultimately encourage hardware feasibility of CR systems
+ 
+		\end{itemize} 
+	\end{block}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
