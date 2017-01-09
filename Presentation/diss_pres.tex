@@ -19,17 +19,20 @@
 
 % Fasten the compilation process 
 \newif\ifmoti
-%\motitrue
-\motifalse
+\motitrue
+%\motifalse
 
 \newif\ifinter
-%\intertrue
-\interfalse
+\intertrue
+%\interfalse
 
 \newif\ifunder
-%\undertrue
-\underfalse
+\undertrue
+%\underfalse
 
+\newif\ifhard
+%\hardtrue
+\hardfalse
 
 %\setbeamertemplate{note page}[plain]
 %\setbeameroption{show only notes}
@@ -70,6 +73,8 @@
 %\tikzset{>=latex} % Latex style set
 \usepackage{makecell}
 %\usepackage{booktabs} % professionelle tabellen (\toprule, \midrule, ...)
+
+\usepackage{pdfpcnotes}
 
 %% My own code: 
 %\input{\templates/makros_own.tex}
@@ -216,6 +221,9 @@ single arrow head extend=.3cm,}}
 	\begin{column}{0.55\columnwidth}
 	\fs{7}{8}
 	%\resizebox{1.1\columnwidth}{!}{%
+	\pnote{According to recent survey, it is being progonosed that the mobile traffic will increase 11-fold by 2021.}
+	\pnote{With this sitation in hand, the standardization bodies are currently in the phase of concepualizing the requirements of fifth-generation of mobile systems.}
+	\pnote{Some of these major requirements are:}
 	\begin{tikzpicture}
 		\begin{axis}
 			[
@@ -446,7 +454,7 @@ single arrow head extend=.3cm,}}
 			% For system design one assume no knowledge about the primary user signal 
 			\item With no concrete guidelines available in the literature $\Leftrightarrow$ no knowledge about the primary user signal is a reasonable assumption
 			% With regard to the above issues 
-			\item Existing theoretical analysis rarely converges to an hardware implementation $\Leftrightarrow$ deployment perspective % in order words, rarely deal(tackle) the problem from a deployment perspective 
+			\item Existing theoretical analysis rarely converges to a hardware implementation $\Leftrightarrow$ deployment perspective % in order words, rarely deal(tackle) the problem from a deployment perspective 
 		\end{itemize}
 	\end{block}
 	\vspace{-1mm}
@@ -473,7 +481,7 @@ single arrow head extend=.3cm,}}
 				\centering
 				\tikzfancyarrow[0.85cm][kit-green70][top color=kit-green50, bottom color=kit-green50, shape border rotate=270]{\color{kit-green50}{10}}			\\[0.5em]	
 	               		\begin{tikzpicture}[scale=1]
-	               	 		\node[draw=none,fill=gray!30, minimum height = 0.5cm, align = center] at (0.0, 0.0) {Channel Estimation is proposed at ST/SR};
+	               	 		\node[draw=none,fill=kit-green15, minimum height = 0.5cm, text width = \columnwidth, align = center] at (0.0, 0.0) {Channel Estimation is proposed at ST/SR};
 				\end{tikzpicture}
 			}
 		\end{column}
@@ -507,10 +515,10 @@ single arrow head extend=.3cm,}}
 				\only<3->
 				{
 					
-					\fill[opacity = 0.2, fill = gray!70] (1.28,.98) rectangle (1.68,1.34);
-					\fill[opacity = 0.2, fill = gray!70] (1.22,1.96) rectangle (1.62,2.32);
-					\fill[opacity = 0.2, fill = gray!70] (3.38,1.86) rectangle (3.78,2.22);
-					\fill[opacity = 0.2, fill = gray!70] (2.52,.68) rectangle (2.92,1.04);
+					\fill[opacity = 0.2, fill = kit-green100] (1.28,.98) rectangle (1.68,1.34);
+					\fill[opacity = 0.2, fill = kit-green100] (1.22,1.96) rectangle (1.62,2.32);
+					\fill[opacity = 0.2, fill = kit-green100] (3.38,1.86) rectangle (3.78,2.22);
+					\fill[opacity = 0.2, fill = kit-green100] (2.52,.68) rectangle (2.92,1.04);
 					
 					%% Dummy figure added to avoid a shift between two slides
 					\fill[opacity = 0.0, fill = blue] (.32,-0.06) rectangle (1.22,0.58);
@@ -536,7 +544,7 @@ single arrow head extend=.3cm,}}
 			\centering Challenges: \\[-0.2em]
 				\fs{7}{8}
 				% Choice of the estimation technique
-				\begin{block}{\scriptsize Estimation Technique?} %{\scriptsize Challenges}
+				\begin{block}{\scriptsize Estimation technique?} %{\scriptsize Challenges}
 					Estimation of channels between two different systems %$\Rightarrow$ 
 					\begin{itemize}
 					% There exits a multitude of wireless standards that can act as primary system, it is difficult to included a dedicated circuitry for each primary user signal 
@@ -547,7 +555,7 @@ single arrow head extend=.3cm,}}
 				\vspace{-1.1mm}
 				\onslide<2->
 				{
-				\begin{block}{\scriptsize System Design aspects?} %of incorporating channel estimation on the performance
+				\begin{block}{\scriptsize System design aspects?} %of incorporating channel estimation on the performance
 					\begin{itemize} 
 						\item How to tackle the variations induced? 
 						\item Time allocation for channel estimation 
@@ -701,10 +709,14 @@ Interweave System
 					\label{eq_IS:sys_mod_ss}
 				\end{equation*}
 				\end{block}
+			}
+			\onslide<3->
+			{
+			
 				\vspace{-1mm}
 				\begin{block}{\scriptsize Energy detector's performance} %Detector performance Interference at PR is dependent on the detectors performance
 				\begin{equation*}
-						\pd = \Gamma\left( \frac{\tsen \fsam}{2}, \frac{\tsen \fsam \mu}{2 \color{red}{\prcvdstpt}} \right), %\\ 
+						\pd = \Gamma\left( \frac{\tsen \fsam}{2}, \frac{\tsen \fsam \mu}{2 \color{kit-green100}{\prcvdstpt}} \right), %\\ 
 				\end{equation*}	
 				\begin{equation*}
 						\pfa = \Gamma\left( \frac{\tsen \fsam}{2}, \frac{\tsen \fsam \mu}{2 \npo} \right)%,  \label{eq_IS:pfa} 
@@ -723,21 +735,22 @@ Interweave System
 				{
 					\includegraphics[width = 0.9\columnwidth]{../kapitel03/figures/CR_Scenario_Interweave}	     
 				};
-				\only<1>
+				\only<3>
 				{
-					%\fill[opacity = 0.2, fill = blue] (.32,1.16) rectangle (1.22,1.8);
-					%\fill[opacity = 0.2, fill = blue] (.32,-0.06) rectangle (1.22,0.58);
-					%\fill[opacity = 0.2, fill = red] (3.65,1.18) rectangle (4.65,1.6);
-					%\fill[opacity = 0.2, fill = red] (2.42,2.3) rectangle (3.88,3.08);
+					\fill[opacity = 0.2, fill = kit-green100] (1.03,1.41) rectangle (1.43,1.75);
+					\fill[opacity = 0.2, fill = kit-green100] (1.35,0.2) rectangle (1.75,.54);
+					\fill[opacity = 0.2, fill = kit-green100] (3.13,0.98) rectangle (3.53,1.34);
 				}
 			\end{tikzpicture}	
 		\end{center}
-		\begin{block}{\scriptsize Secondary throughput} %Secondary throughput
+		\onslide<3->	
+		{\begin{block}{\scriptsize Secondary throughput} %Secondary throughput
                                 \vspace{-2.6mm}
 				\begin{align*}
-                               		\rs(\tsen) =& \frac{T- \tsen}{T} \bigg[ \log_2 \left(1 + {\color{red}{|\hs|^2}} \frac{\ptranst}{\npo}\right) (1 - \pfa) \phz  \\ & + \log_2 \left(1 + \frac{{\color{red}{|\hs|^2}} \ptranst }{{\color{red}{|\hpt|^2}} \ptranpt  + \npo } \right)  (1 - \pd) \pho  \bigg] 
+                               		\rs(\tsen) =& \frac{T- \tsen}{T} \bigg[ \log_2 \left(1 + {\color{kit-green100}{|\hs|^2}} \frac{\ptranst}{\npo}\right) (1 - \pfa) \phz  \\ & + \log_2 \left(1 + \frac{{\color{kit-green100}{|\hs|^2}} \ptranst }{{\color{kit-green100}{|\hpt|^2}} \ptranpt  + \npo } \right)  (1 - \pd) \pho  \bigg] 
 				\end{align*} 
-                \end{block} 
+                \end{block} 	
+		}
 		\end{column}
 	\end{columns}
 \end{frame}
@@ -755,7 +768,7 @@ Interweave System
 			\begin{block}{\scriptsize Ideal Model (IM)}
      			   	\vspace{-4.5mm}
 	    		        \begin{align*}
-				\trs(\ttsen) &= \maxi_{\tsen} \trs(\tsen)\\ 
+				\trs(\ttsen) =& \maxi_{\tsen} \trs(\tsen)\\ 
 				\text{s.t.} & \text{ } \pd \ge \pdd	
 	        	\end{align*}
 			%Without the knowledge of channel gains $\phpo$, $\phpt$ and $\phs$, it is difficult to characterize the performance parameters $\pd$ and $\rs$  
@@ -862,14 +875,14 @@ Interweave System
 			\begin{tikzpicture}[scale=1]
 			\node[anchor=south west,inner sep=0] (image) at (0,0)
 			{
-				\includegraphics[width= 1.2\columnwidth]{../kapitel03/figures/fig_opt_thr_vs_est_time_diff_mu_AWGN}
+				\includegraphics[width= \figscale]{../kapitel03/figures/fig_opt_thr_vs_est_time_diff_mu_AWGN}
 			};
 			\begin{scope}[x={(image.south east)},y={(image.north west)}]
 			\draw[black,->, thick] (0.25,0.64) -- (0.18,0.84);
 			\node[draw=none, font=\scriptsize] at (0.35, 0.58) {$\mpd \in \{0.05,0.10,0.15\}$};
 
 			\draw[black,<-, thick] (0.75,0.62) -- (0.75,0.915);
-			\node[draw=none, font=\scriptsize] at (0.75,0.58) {Performance degradation}; 
+			\node[draw=none, font=\scriptsize] at (0.75,0.58) {Degradation}; 
 			%\draw[black,->] (0.25,0.6) node[below =12.0,right=-20.0,  font=\scriptsize] {$\mpd \in \{0.05,0.10,0.15\}$} -- (0.18,0.8);
 
 			%\draw[help lines,xstep=.1,ystep=.1] (0,0) grid (1,1);
@@ -941,11 +954,11 @@ Underlay System
 				\begin{block}{\scriptsize Ideal Model} 
 				%Interference received at PR\\[-.2em]	
 				\begin{equation*}
-					\prcvdpr = \phpth \preg \le \ite
+					\prcvdpr = {\color{kit-green100}{\phpth}} \preg \le \ite
 				\end{equation*}	
 				%Data rate at SR\\[-.2em]	
 				\begin{equation*}
-					\ca = \log_2 \left(1 + \frac{\pgs \preg}{ \pgpt \ptranpt + \nps} \right)	
+					\ca = \log_2 \left(1 + \frac{{\color{kit-green100}{\pgs}} \preg}{ {\color{kit-green100}{\pgpt}} \ptranpt + \nps} \right)	
 				\end{equation*}	
 				\end{block}	
 			}
@@ -993,7 +1006,7 @@ Underlay System
 			Constraint on received interference at PR 
 			\begin{align*}
 				\p\left( \prcvdpr = \ephpth \preg \ge \ite \right) \le \opc, \\  
-				\p\left( \left( \frac{\eprcvdstpr - \nps}{\ptran}\right) \preg \ge \ite \right) \le \opc 
+				\p\left( \left( \frac{{\color{kit-green100}{\eprcvdstpr}} - \nps}{\ptran}\right) \preg \ge \ite \right) \le \opc 
 			\end{align*}
 			Constraint on transmit power at ST 
 			\begin{equation*}
@@ -1015,7 +1028,7 @@ Underlay System
                         \begin{tikzpicture}[scale=1]
 				\node[anchor=south west,inner sep=0] (image) at (0,0)
 				{
-					\includegraphics[width= 1.2\columnwidth]{../kapitel04/figures/fig_Preg_est_time_AWGN}
+					\includegraphics[width= \figscale]{../kapitel04/figures/fig_Preg_est_time_AWGN}
 				};
 				\begin{scope}[x={(image.south east)},y={(image.north west)}]
 
@@ -1025,7 +1038,7 @@ Underlay System
 				\draw (0.35,0.68) arc(-130:130:0.007 and 0.021);
 				\node[draw,fill=gray!10,font=\scriptsize] at (0.275,0.758) {$\opc = 0.1$};
 
-	               		\node[draw=none,fill=kit-green30, minimum height = 0.6cm, align = center, font = \footnotesize] at (0.5, 1.05) {Controlled power versus estimation time};
+	               		\node[draw=none,fill=kit-green30, minimum height = 0.6cm, align = center, font = \footnotesize] at (0.5, 1.05) {Control power versus estimation time};
 				%\draw[help lines,xstep=.1,ystep=.1] (0,0) grid (1,1);
 				%\foreach \x in {0,1,...,9} { \node [anchor=north] at (\x/10,0) {0.\x}; }
 				%\foreach \y in {0,1,...,9} { \node [anchor=east] at (0,\y/10) {0.\y}; }
@@ -1043,7 +1056,7 @@ Underlay System
 				\frac{\ite \ptran}{ \left(\bpo \Gamma^{-1}(\opc, \apo) - \nps  \right)}, & \mbox{for } \preg < \pc \Rightarrow \text{Interference-limited regime}\\
 				\pc, & \mbox{for } \preg \ge \pc \Rightarrow \text{Power-limited regime}
 				\end{cases} \\
-				\text{where  } \apo &= \frac{\test \fsam (1 + \snrrcvdu)^2}{2 + 4 \snrrcvdu} \text{ and } \bpo = \frac{\nps (2 + 4 \snrrcvdu)}{\test \fsam (1 + \snrrcvdu)},
+				\text{where  } \apo &= \frac{{\color{kit-green100}{\test \fsam}} (1 + \snrrcvdu)^2}{2 + 4 \snrrcvdu} \text{ and } \bpo = \frac{\nps (2 + 4 \snrrcvdu)}{{\color{kit-green100}{\test \fsam}} (1 + \snrrcvdu)},
 			\end{align*}
 	\end{block}
 \end{frame}
@@ -1085,7 +1098,7 @@ Underlay System
 				\begin{tikzpicture}[scale=1]
 					\node[anchor=south west,inner sep=0] (image) at (0,0)
 					{
-					\includegraphics[width= 1.2 \columnwidth]{../kapitel04/figures/fig_thr_est_time_tradeoff_AWGN}
+					\includegraphics[width= \figscale]{../kapitel04/figures/fig_thr_est_time_tradeoff_AWGN}
 };
 					\begin{scope}[x={(image.south east)},y={(image.north west)}]
 
@@ -1108,7 +1121,7 @@ Underlay System
 				\begin{tikzpicture}[scale=1]
 				\node[anchor=south west,inner sep=0] (image) at (0,0)
 				{
-     					\includegraphics[width= 1.2 \columnwidth]{../kapitel04/figures/fig_opt_thr_vs_SNR_AWGN_SI_00}
+     					\includegraphics[width= \figscale]{../kapitel04/figures/fig_opt_thr_vs_SNR_AWGN_SI_00}
 				};
 				\begin{scope}[x={(image.south east)},y={(image.north west)}]
 
@@ -1157,7 +1170,7 @@ Underlay System
 \end{frame}
 \fi
 
-
+\ifhard
 \section{Hybrid System}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}[c]{}
@@ -1283,14 +1296,14 @@ Hybrid System
 					\input{../kapitel05/figures/fig_opt_cont_power_vs_SNR_AWGN.tex}
 					\node[anchor=south west,inner sep=0] (image) at (0,0)
 					{
-						\includegraphics[width= 1.2\columnwidth]{../kapitel05/figures/fig_opt_cont_power_vs_SNR_AWGN}
+						\includegraphics[width= \figscale]{../kapitel05/figures/fig_opt_cont_power_vs_SNR_AWGN}
 					};
 					\begin{scope}[x={(image.south east)},y={(image.north west)}]
 					\draw[black,thick,<->] (0.82,0.18) --  node[below, font=\footnotesize] {Regime I} (0.955,0.18);
 					\draw[black,thick,<->] (0.39,0.18) --  node[below, font=\footnotesize] {Regime II} (0.815,0.18);
 					\draw[black,thick,<->] (0.11,0.18) --  node[below, font=\footnotesize] {Regime III} (0.385,0.18);
 
-		               		\node[draw=none,fill=kit-green30, minimum height = 0.6cm, align = center, font = \footnotesize] at (0.5, 1.05) {Controlled power versus channel gain $\phpth$};
+		               		\node[draw=none,fill=kit-green30, minimum height = 0.6cm, align = center, font = \footnotesize] at (0.5, 1.05) {Control power versus channel gain $\phpth$};
 					%\draw[help lines,xstep=.1,ystep=.1] (0,0) grid (1,1);
 					%\foreach \x in {0,1,...,9} { \node [anchor=north] at (\x/10,0) {0.\x}; }
 					%\foreach \y in {0,1,...,9} { \node [anchor=east] at (0,\y/10) {0.\y}; }
@@ -1304,7 +1317,7 @@ Hybrid System
                 			\input{../kapitel05/figures/fig_opt_thr_vs_SNR_AWGN.tex}
 					\node[anchor=south west,inner sep=0] (image) at (0,0)
 					{
-						\includegraphics[width= 1.2\columnwidth]{../kapitel05/figures/fig_opt_thr_vs_SNR_AWGN}
+						\includegraphics[width= \figscale]{../kapitel05/figures/fig_opt_thr_vs_SNR_AWGN}
 					};
 					\begin{scope}[x={(image.south east)},y={(image.north west)}]
 					\draw[black,thick,<->] (0.82,0.18) --  node[below, font=\footnotesize] {Regime I} (0.955,0.18);
@@ -1433,9 +1446,9 @@ Hardware Implementation
 \end{frame}
 
 
-\subsection{Hardware Validation}
+\subsection{Validation}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}[c]{Hardware Validation}
+\begin{frame}[c]{Validation}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	\begin{columns}
 		\begin{column}{0.45\columnwidth}
@@ -1445,7 +1458,7 @@ Hardware Implementation
 			\begin{tikzpicture}[scale=1]
 				\node[anchor=south west,inner sep=0] (image) at (0,0)
             		    	{
-               		        	\includegraphics[width=1.2 \columnwidth]{../kapitel06/figures/ValidationSetUp.ps}
+               		        	\includegraphics[width=\figscale]{../kapitel06/figures/ValidationSetUp.ps}
                 		};
 
         	        \begin{scope}[x={(image.south east)},y={(image.north west)}]
@@ -1469,7 +1482,7 @@ Hardware Implementation
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}[c]{Hardware Validation}
+\begin{frame}[c]{Validation}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	\begin{columns}
 		\begin{column}{0.45\columnwidth}
@@ -1480,7 +1493,7 @@ Hardware Implementation
       		  		\begin{tikzpicture}[scale=1]
                 		\node[anchor=south west,inner sep=0] (image) at (0,0)
           		        {
-                        		\includegraphics[width=1.2\columnwidth]{figures/P_PR_Rx}
+                        		\includegraphics[width=\figscale]{figures/P_PR_Rx}
             		        };
 
             		        \begin{scope}[x={(image.south east)},y={(image.north west)}]
@@ -1498,7 +1511,7 @@ Hardware Implementation
 				
              	        \resizebox{.95 \columnwidth}{!}{%
 				\input{figures/R_s}
-			        \includegraphics[width=1.2\columnwidth]{figures/R_s}%
+			        \includegraphics[width=\figscale]{figures/R_s}%
 			}
 		\end{column}
 		\begin{column}{0.55\columnwidth}
@@ -1526,7 +1539,7 @@ Hardware Implementation
 		        \begin{tikzpicture}[scale=1]
        				\node[anchor=south west,inner sep=0] (image) at (0,0)
         			{
-                			\includegraphics[width=1.2 \columnwidth]{../kapitel06/figures/ETT}
+                			\includegraphics[width=\figscale]{../kapitel06/figures/ETT}
         			};
         			\begin{scope}[x={(image.south east)},y={(image.north west)}]
         			\node[draw, fill=gray!10,font=\scriptsize] (text1) at (0.98,0.872) {$\pcod$};
@@ -1685,6 +1698,8 @@ Hardware Implementation
 		\end{column}
 	\end{columns}
 \end{frame}
+
+\fi
 
 \section{Conclusion}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
