@@ -429,7 +429,7 @@ single arrow head extend=.3cm,}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}[t]{Performance Analysis of CR System}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\pnote{Performance analysis in context to wireless system has two main objectives, 1) it help us understand the feasibility of a wireless system in real or close to real conditions. Secondly, it allows us to determine the performance limits.} 
+\pnote{Performance analysis in context to wireless system has two main objectives: Firstly, It help us understand the feasibility of a wireless system in real or close to real conditions. Secondly, it allows us to determine the performance limits.} 
 \pnote{Coexistence of different wireless systems (refer to the figure and highlight the primary and secondary system) has always been a difficult task, the task becomes even more challenging if we take into account the fact that two different system (which may differ in their communication standards) coexists, i.e., share a band of spectrum, separated in time, space or polarization.}
 \pnote{From a physical layer perspective, with no concrete guidelines (although there exists certain use cases, but are applicable to specific specific scenarios) available on how to choose the primary user signal. As a result, only solutions will persist that consider no knowledge of primary user signals, for instance energy detection. In other words, versatile and applicable to large range of wireless system.}  
 \pnote{It is well-know fact that concept of CR has been under discussion over the last 18 years, during this time line several models have been established, characterizing the performance of CR systems. However, due to the complexity of the underlaying scenario, very few are models have been implemented over the hardware. Leaving their performance analysis questionable.}
@@ -527,28 +527,35 @@ single arrow head extend=.3cm,}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}[t]{Major Contributions}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\pnote{The major contributions are summarized as follows:}
+	\pnote{From a system design's perspective, it is important to accommodate the channel estimation into the system model. Hence, the system has cope up with the variations induced in the system due to imperfect channel knowledge, at the same time allocate resources for channel estimation}
+	\pnote{These variations are captured by means of a stochastic model. Furthermore, a certain amount of time resources are allocated for channel estimation in the secondary user frame structure.} 
+	\pnote{With regard to the psychology established in the previous slide, with no knowledge of the primary user signals, we are faced with the challenge of estimating the channels that exists between two different systems. With this situation in hand, conventional estimation techniques are not applicable. Besides, we have to look for techniques that offer versatility towards unknown primary user signals and low complexity.}
+	\pnote{ In this regard, a novel estimation technique termed as received-power based estimation is proposed that satisfies the low-complexity and versatility requirements.}
+	\pnote{It is an obvious fact that channel estimation will certainly has a detrimental effect on the performance, thereby degrading the performance of CR systems, in terms of uncertainty in the interference caused due to imperfect channel knowledge or variations induced in the system. Secondly, degradation in throughput caused due to the time allocation.} 
+	\pnote{In order to regulate uncertainty in interference, new interference constraints are proposed. Secondly, the interplay between the uncertain interference and the secondary throughput is analyzed in terms of performance tradeoffs. These tradeoffs allow us to determine the suitable estimation time that yields the maximum throughput achieved by the CR systems.}
+	\pnote{In order to verify the propositions made while establishing the system model, a hardware is deployed using a software-defined platform.}
+	\pnote{Finally, a applicability of the proposed framework in realistic conditions is justified by means of a hardware demonstrator}  
 	\vspace{-1.5mm}
 	\begin{columns}
 		\begin{column}[t]{0.53\columnwidth}
 			\centering Challenges: \\[-0.2em]
 				\fs{7}{8}
-				% Choice of the estimation technique
-				\begin{block}{\scriptsize Estimation technique?} %{\scriptsize Challenges}
-					Estimation of channels between two different systems %$\Rightarrow$ 
-					\begin{itemize}
-					% There exits a multitude of wireless standards that can act as primary system, it is difficult to included a dedicated circuitry for each primary user signal 
-						\item Complexity and versatility towards unknown primary user signals
-						\item Conventional techniques are not feasible  
-					\end{itemize}
-				\end{block}
-				\vspace{-1.1mm}
-				\onslide<2->
-				{
 				\begin{block}{\scriptsize System design aspects?} %of incorporating channel estimation on the performance
 					\begin{itemize} 
 						\item How to tackle the variations induced? 
 						\item Time allocation for channel estimation 
 						%\item Channel fading 
+					\end{itemize}
+				\end{block}
+				\vspace{-1.1mm}
+				\onslide<2->
+				{
+				\begin{block}{\scriptsize Estimation technique?} %{\scriptsize Challenges}
+					Estimation of channels between two different systems %$\Rightarrow$ 
+					\begin{itemize}
+						\item Conventional techniques are not feasible  
+						\item Complexity and versatility towards unknown primary user signals
 					\end{itemize}
 				\end{block}
 				}
@@ -557,8 +564,8 @@ single arrow head extend=.3cm,}}
 				{
 				\begin{block}{\scriptsize Impact on performance?}%{\scriptsize Channel knowledge}
 					\begin{itemize}
-						\item Primary system's performance? $\Rightarrow$ interference 
-						\item Secondary system's performance? $\Rightarrow$ throughput 
+						\item Primary system $\Rightarrow$ uncertain interference 
+						\item Secondary system $\Rightarrow$ degradation in throughput 
 					\end{itemize} 
 				\end{block}
 				}	
@@ -567,7 +574,7 @@ single arrow head extend=.3cm,}}
 				{
 				\begin{block}{\scriptsize Hardware Feasibility?}%{\scriptsize Channel knowledge}
 					\begin{itemize}
-					\item Validity of the assumptions made? 
+					\item Validity of the propositions made? 
 					\item Applicability of the proposed framework under realistic scenarios? 
 					\end{itemize}	
 				\end{block}
@@ -579,20 +586,7 @@ single arrow head extend=.3cm,}}
 		
 		\begin{column}[t]{0.44\columnwidth}
 			\centering Proposed Solutions: \\[-0.2em]
-				\fs{7}{8}
 			\fs{7}{8}
-			\begin{block}{}
-				\centering
-				Received power based channel estimation
-				%\begin{itemize}
-					%\item 
-					Low-complexity and versatility requirements are satisfied  
-					%\item Incorporation of received power in performance characterization 
-				%\end{itemize}
-			\end{block}
-			\vspace{-0.5mm}
-			\onslide<2->
-			{
 			\begin{block}{}
 				\centering
 			  	Stochastic modeling \\ To characterize the variations 	
@@ -601,6 +595,18 @@ single arrow head extend=.3cm,}}
 			\begin{block}{}
 				\centering
 			   	Time allocation for channel estimation in secondary user's frame structure
+			\end{block}
+			\vspace{-0.5mm}
+			\onslide<2->
+			{
+			\begin{block}{}
+				\centering
+				Received power based channel estimation
+				%\begin{itemize}
+					%\item 
+					Low-complexity and versatility requirements are satisfied  
+					%\item Incorporation of received power in performance characterization 
+				%\end{itemize}
 			\end{block}
 			}
 			\vspace{-0.5mm}
