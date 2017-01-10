@@ -535,7 +535,7 @@ single arrow head extend=.3cm,}}
 	\pnote{It is an obvious fact that channel estimation will certainly has a detrimental effect on the performance, thereby degrading the performance of CR systems, in terms of uncertainty in the interference caused due to imperfect channel knowledge or variations induced in the system. Secondly, degradation in throughput caused due to the time allocation.} 
 	\pnote{In order to regulate uncertainty in interference, new interference constraints are proposed. Secondly, the interplay between the uncertain interference and the secondary throughput is analyzed in terms of performance tradeoffs. These tradeoffs allow us to determine the suitable estimation time that yields the maximum throughput achieved by the CR systems.}
 	\pnote{In order to verify the propositions made while establishing the system model, a hardware is deployed using a software-defined platform.}
-	\pnote{Finally, a applicability of the proposed framework in realistic conditions is justified by means of a hardware demonstrator}  
+	\pnote{Finally, a applicability of the proposed framework in realistic conditions is presented by means of a hardware demonstrator}  
 	\vspace{-1.5mm}
 	\begin{columns}
 		\begin{column}[t]{0.53\columnwidth}
@@ -774,7 +774,7 @@ Interweave System
 			\begin{tikzpicture}[node distance = 1.27cm, auto]
                         	% draw nodes
 				\node [block] (frame) {Incorporation of time resources for channel estimation and sensing in frame structure ($\test, \tsen$)};
-  			        \node [block, below of=frame] (channelest) {Variations ($\epgpo$, $\epgpt$, $\epgs$) due to channel estimation are characterized in terms of $\fpgpo, \fpgpt, \fpgs$};
+  			        \node [block, below of=frame] (channelest) {Variations ($\epgpo$, $\epgpt$, $\epgs$) due to channel estimation are characterized in terms of $\fprcvd, \fpgpt, \fprcvdsr$};
   			        \node [block, below of=channelest] (cdf) {Variations in performance parameters ($\epd$, $\ecz$, $\eco$) are characterized in terms of $\fpd, \fcz, \fco$};
   			        \node [block, below of=cdf] (tradeoff) {The cdfs are used to determine the achievable secondary throughput subject to interference constraints};
 				% draw edges
@@ -806,7 +806,7 @@ Interweave System
                                	 \vspace{-3.2mm}
 					\begin{align*}
 					\trsac(\ttest, \ttsenac) =& \maxi_{\test, \tsen} \e{\epd, \ecz, \eco}{\rs(\test, \tsen)},	\\	
-					\text{s.t.} & \text{ }  \e{\epd}{\epd} \ge \pdd, \\ 
+					\text{s.t.} & \text{ }  \color{kit-green100}{\e{\epd}{\epd} \ge \pdd}, \\ 
 \text{s.t.} & \text{ }  0 < \test \le \tsen \le T
 					\end{align*} 
                		 	\end{block}
@@ -817,7 +817,7 @@ Interweave System
                                	 \vspace{-3.2mm}
 					\begin{align*}
 					\trsac(\ttest, \ttsenac) =& \maxi_{\test, \tsen} \e{\epd, \ecz, \eco}{\rs(\test, \tsen)},	\\	
-					\text{s.t.} & \text{ }  \p(\epd \le \pdd) \le \mpd, \\
+					\text{s.t.} & \text{ }  \color{kit-green100}{\p(\epd \le \pdd) \le \mpd}, \\
 \text{s.t.} & \text{ }  0 < \test \le \tsen \le T
 					\end{align*} 
                		 	\end{block}
