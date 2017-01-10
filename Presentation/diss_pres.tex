@@ -19,16 +19,20 @@
 
 % Fasten the compilation process 
 \newif\ifmoti
-\motitrue
-%\motifalse
+%\motitrue
+\motifalse
 
 \newif\ifinter
-\intertrue
-%\interfalse
+%\intertrue
+\interfalse
 
 \newif\ifunder
 \undertrue
 %\underfalse
+
+\newif\ifhybrid
+%\hybridtrue
+\hybridfalse
 
 \newif\ifhard
 %\hardtrue
@@ -198,6 +202,11 @@ single arrow head extend=.3cm,}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}[t]{Contents}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\pnote{This is the outline of my presentation, I will start with the motivation, where the deployment scenario (CSC) briefly illustrated.} 
+	\pnote{In addition, emphasize is laid on the fact that why performance analysis is critical to the CR systems, particularly what role does channel knowledge play in performance characterization fo a CR systems.}
+	\pnote{Next, the analysis with regard to different CR systems, namely, interweave system and  is carried out}
+	\pnote{The performed analysis is verified by means of a hardware validation and demonstration.}
+	\pnote{The presentation ends with a short conclusion} 
 	\fs{10}{15}
 	\tableofcontents
         %\begin{itemize}
@@ -221,8 +230,8 @@ single arrow head extend=.3cm,}}
 	\begin{column}{0.55\columnwidth}
 	\fs{7}{8}
 	%\resizebox{1.1\columnwidth}{!}{%
-	\pnote{According to recent survey, it is being progonosed that the mobile traffic will increase 11-fold by 2021.}
-	\pnote{With this sitation in hand, the standardization bodies are currently in the phase of concepualizing the requirements of fifth-generation of mobile systems.}
+	\pnote{According to recent survey, it is being prognoses that the mobile traffic will increase 11-fold over the next few years.}
+	\pnote{With this situation in hand, the standardization bodies are currently in the phase of situation the requirements of fifth-generation of mobile systems.}
 	\pnote{Some of these major requirements are:}
 	\begin{tikzpicture}
 		\begin{axis}
@@ -291,10 +300,12 @@ single arrow head extend=.3cm,}}
 \begin{frame}[t]{5G Technologies}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	\pnote{The feasibility of these requirements can be envisaged through the application of some of the promising approaches such as maximizing the spatial degree of freedom, small cell densification, waveform design, in-band full duplex communications.}
-\pnote{However, an spectrum extension is envisioned as power source that is capable of sustaining the desired areal capacity for 5G}
-\pnote{Due to the static allocation of the spectrum below 6 GHz to different mobile services, it is difficult spectrum below 6 GHz. In this perspective, two alternatives exists: either look for spectrum at higher frequencies beyond 6 GHz, which corresponds to mm-W and visible light communications or increase the spectrum efficiency of spectrum existing below 6 GHz}
+\pnote{Despite the existence of these promising technologies, this large number in data rate cannot be achieved without an extension to already allocated spectrum}
+\pnote{Now, the question arises, where to look for spectrum, In this perspective, two alternatives exists: traditional approach is below 6 GHz. Due to the static allocation of the spectrum below 6 GHz to different mobile services, it is difficult spectrum below 6 GHz.}
+\pnote{Another alternative is to shift to higher frequencies beyond 6 GHz, which corresponds to mm-W and visible light communications}
 \pnote{Certainly, the spectrum above 6 GHz is prone to higher propagations loss, limited to LOS propagation, thus affecting the mobility of the wireless systems.}
-\pnote{This work is focussed on providing spectrum extension by promoting CR communications} 
+\pnote{A second alternative is utilize the spectrum below 6 GHz more efficiently, by opening the spectrum for secondary usage}
+%\pnote{This work is focussed on providing spectrum extension by promoting CR communications} 
 	\vspace{-2mm}
 	\fs{7}{8}
 	\begin{overlayarea}{\textwidth}{6.25cm}
@@ -312,16 +323,22 @@ single arrow head extend=.3cm,}}
 		\draw[decorate, decoration={brace, amplitude=10pt}, xshift = -4pt, yshift=0pt] (6.3,-0.7) -- (9.1,-0.7) node[black,midway,yshift=+0.5cm] {\SI{430}{THz} -- \SI{770}{THz}};
 		%\draw[-latex] (B) edge (A);
 		}
-		\only<1-2>
+		\only<1>
 		{
 			\fill[opacity = 0.4, fill = kit-green30] (-0.1,-0.4) rectangle (8.9,2.2);
 		}
+		\only<2>
+		{
+			\fill[opacity = 0.4, fill = kit-green30] (-0.1,-0.4) rectangle (2.7,1.15);
+			\fill[opacity = 0.4, fill = kit-green30] (3.0,-0.4) rectangle (8.9,1.15);
+		}	
 		\only<3->
 		{
 			\draw[opacity = 0, decorate, decoration={brace, amplitude=10pt}, xshift = -4pt, yshift=0pt] (0.0,-0.7) -- (2.8,-0.7) node[black,midway,yshift=+0.5cm] {< \SI{6}{GHz}};
 			\draw[opacity = 0, decorate, decoration={brace, amplitude=10pt}, xshift = -4pt, yshift=0pt] (3.15,-0.7) -- (5.95,-0.7) node[black,midway,yshift=+0.5cm] {\SI{6}{GHz} -- \SI{300}{GHz}};
-			\draw[opacity = 0, decorate, decoration={brace, amplitude=10pt}, xshift = -4pt, yshift=0pt] (6.3,-0.7) -- (9.1,-0.7) node[black,midway,yshift=+0.5cm] {\SI{430}{THz} -- \SI{770}{THz}};
+			\draw[opacity = 0.0, decorate, decoration={brace, amplitude=10pt}, xshift = -4pt, yshift=0pt] (6.3,-0.7) -- (9.1,-0.7) node[black,midway,yshift=+0.5cm] {\SI{430}{THz} -- \SI{770}{THz}};
 			\fill[opacity = 0.4, fill = kit-green30] (-0.1,-0.4) rectangle (2.7,1.15);
+			\fill[opacity = 0.0, fill = kit-green30] (3.0,-0.4) rectangle (8.9,1.15);
 		}
 		\end{tikzpicture}
 	\end{center}
@@ -338,7 +355,7 @@ single arrow head extend=.3cm,}}
 		\only<3>
 		{
 			\begin{block}{}
-			A Cognitive Radio (CR) is an agile system that allows efficient usage (secondary access) of the spectrum below $\SI{6}{GHz}$ 
+			A Cognitive Radio (CR) is an agile system that facilitates an efficient usage (secondary access) of the spectrum below $\SI{6}{GHz}$ 
 			\end{block}
 		}
 	\end{center}
@@ -671,6 +688,15 @@ Interweave System
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}[t]{Interweave System}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\pnote{Here the deployment scenario corresponding to CSC is transformed into an interweave system}
+	\pnote{Spectrum sensing, a CR technique, is employed at the ST}
+	\pnote{In this way, by listening to signal transmitted by the PT, the ST protects the PR, by not transmitting its own signal whenever the primary user signal is detected.} 
+	\pnote{Corresponding to this approach the following signal model is proposed. The signal received at the ST over the channel $\hpo$ depends on the following hypothesis, the PT is active and PT is inactive}
+	\pnote{The signal is received at the SR only under two conditions, wherever there is a misdetection or the condition where no false alarm happens.} 
+	\pnote{With reference to the signal model, the performance of the CR system can be jointly characterized in terms of detectors performance, which symbolizes the primary system performance and throughput received at SR}
+	\pnote{The detector's performance can be characterized in terms of the detection probability and false alarm probability. Considering the fact that no knowledge concerning the PU signal is available, energy detectors is employed.}
+	\pnote{Secondary throughput, corresponding to the signal model, the signal received at SR is with and without interference from PT. The prefactor corresponds to the time resources allocated for sensing.} 
+	\pnote{It is worthy to point out that the characterization of the performance parameters requires the knowledge of the involved channels} 
 	\vspace{-2mm}
 	\fs{7}{8}
 	\begin{columns}
@@ -753,6 +779,15 @@ Interweave System
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}[t]{Interweave System}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\pnote{In an idealistic scenario that assumes the knowledge of the involved channels, it is possible to determine a suitable sensing time that achieves a maximum throughput such that detection probability mainly responsible for causing interference is constrained}
+	\pnote{It is worthy to that since no knowledge regarding the channels is available, such an optimization yields inadequate results}
+	\pnote{To resolve this issue, following approach is proposed, the time resources are allocated at the ST and the SR frame structure.}
+        \pnote{The variations due to the estimation of the involved channels are characterized in terms of their cdf.}
+	\pnote{It is worthy to mention here that the received power estimation is employed for the channels between the primary and secondary systems and pilot based estimation is employed for the channel within the secondary system} % In this regard, the estimated parameters is observed indirectly in the form of received power 
+	\pnote{Next, the variations in the performance parameters are characterized using their cdfs, where C0 and C1 corresponds to the data rate with and without interference in the throughput expression}
+	\pnote{The cdfs of the performance parameters are used to determine the suitable estimation and sensing time intervals that achieves the maximum secondary throughput.}
+	\pnote{Based on the proposed approach, an estimation model that include channel estimation that yields the achievable throughput while satisfying the new interference constraints on the detection probability}
+	\pnote{In this work, an average and outage constraint is proposed.} 
 	\vspace{-2mm}
 	\fs{7}{8}
 	%\begin{block}{}
@@ -774,7 +809,7 @@ Interweave System
 			\begin{tikzpicture}[node distance = 1.27cm, auto]
                         	% draw nodes
 				\node [block] (frame) {Incorporation of time resources for channel estimation and sensing in frame structure ($\test, \tsen$)};
-  			        \node [block, below of=frame] (channelest) {Variations ($\epgpo$, $\epgpt$, $\epgs$) due to channel estimation are characterized in terms of $\fprcvd, \fpgpt, \fprcvdsr$};
+  			        \node [block, below of=frame] (channelest) {Variations due to channel estimation ($\pgpo$, $\pgpt$, $\pgs$) are characterized in terms of $\fprcvd, \fprcvdsr, \fpgpt$};
   			        \node [block, below of=channelest] (cdf) {Variations in performance parameters ($\epd$, $\ecz$, $\eco$) are characterized in terms of $\fpd, \fcz, \fco$};
   			        \node [block, below of=cdf] (tradeoff) {The cdfs are used to determine the achievable secondary throughput subject to interference constraints};
 				% draw edges
@@ -796,6 +831,10 @@ Interweave System
 				{
 					\includegraphics[width = \columnwidth]{figures/Frame_Structure_IS.ps}     
 				};
+				\fill[opacity = 0.4, fill = kit-green100] (0.84,1.35) rectangle (1.55,1.71);
+				\fill[opacity = 0.4, fill = kit-green100] (4.01,1.35) rectangle (4.72,1.71);
+				\fill[opacity = 0.4, fill = kit-green100] (0.84,2.97) rectangle (1.55,3.33);
+				\fill[opacity = 0.4, fill = kit-green100] (4.01,2.97) rectangle (4.72,3.33);
 			\end{tikzpicture}	
                         \end{overlayarea}
 			\vspace{3.5mm}
@@ -817,7 +856,7 @@ Interweave System
                                	 \vspace{-3.2mm}
 					\begin{align*}
 					\trsac(\ttest, \ttsenac) =& \maxi_{\test, \tsen} \e{\epd, \ecz, \eco}{\rs(\test, \tsen)},	\\	
-					\text{s.t.} & \text{ }  \color{kit-green100}{\p(\epd \le \pdd) \le \mpd}, \\
+					\text{s.t.} & \text{ }  \color{kit-green100}{\p(\epd \le \pdd) \le \mpd}, \\[0.35em]
 \text{s.t.} & \text{ }  0 < \test \le \tsen \le T
 					\end{align*} 
                		 	\end{block}
@@ -832,6 +871,14 @@ Interweave System
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}[t]{Interweave System}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\pnote{It is worthy to mention here that theoretical expressions are derived in the thesis are used for performance analysis, these expressions are verified by means of Monte Carlo simulation}
+	\pnote{A glimpse of the parameters used for performance analysis}
+	\pnote{Sampling frequency, Channel gain, frame duration, noise power, occurrence probability, Number of pilot symbols used for pilot-based channel estimation.}
+	\pnote{Here, we analyze the variation of secondary throughput along the estimation for idealistic approach and estimation model in reference to average and outage constraint.} 
+	\pnote{An ideal model is used for evaluating the performance degradation acquired due to incorporation of channel knowledge}
+	\pnote{The figure depicts a tradeoff between a tradeoff between the estimation and secondary throughput. Based on this analysis it is revealed that performance degradation can be effectively regulated by choosing the estimation time appropriately} % The estimation time 
+	\pnote{The analysis clearly reveals that the OC presenting an aggressive way of tacking the variations results in large degradation in performance.}
+ 
 	\vspace{-2mm}
 	\begin{columns}
 	\begin{column}{0.45\columnwidth}
@@ -893,10 +940,11 @@ Interweave System
 	\begin{block}{}
 		\fs{7}{8}
 		\begin{itemize}
-			\item Ideal model is used as a benchmark $\Rightarrow$ evaluate degradation in performance due to inclusion of channel estimation
+			\item Ideal model allows us to evaluate performance degradation due to inclusion of channel estimation
 			%\item Outage constraint is a severe interference constraint in comparison to average constraint 
 
 			\item Tradeoff between the estimation time and the secondary throughput 
+			\item Outage constraint presents an aggressive way of handling the variations $\Rightarrow$ large performance degradation 
 		\end{itemize}		
 	\end{block}	
 \end{frame}
@@ -1165,7 +1213,7 @@ Underlay System
 \end{frame}
 \fi
 
-\ifhard
+\ifhybrid
 \section{Hybrid System}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}[c]{}
@@ -1342,8 +1390,10 @@ Hybrid System
 	\end{columns}
 \end{frame}
 
+\fi
 
 
+\ifhard
 
 \section{Hardware Implementation}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1484,11 +1534,11 @@ Hardware Implementation
 			\fs{7}{8}
 			\centering
              	        \resizebox{.95 \columnwidth}{!}{%
-				\input{figures/P_PR_Rx}
+				\input{../kapitel06/figures/P_PR_Rx}
       		  		\begin{tikzpicture}[scale=1]
                 		\node[anchor=south west,inner sep=0] (image) at (0,0)
           		        {
-                        		\includegraphics[width=\figscale]{figures/P_PR_Rx}
+                        		\includegraphics[width=\figscale]{../kapitel06/figures/P_PR_Rx}
             		        };
 
             		        \begin{scope}[x={(image.south east)},y={(image.north west)}]
@@ -1505,8 +1555,8 @@ Hardware Implementation
 			\vspace{2mm}	
 				
              	        \resizebox{.95 \columnwidth}{!}{%
-				\input{figures/R_s}
-			        \includegraphics[width=\figscale]{figures/R_s}%
+				\input{../kapitel06/figures/R_s}
+			        \includegraphics[width=\figscale]{../kapitel06/figures/R_s}%
 			}
 		\end{column}
 		\begin{column}{0.55\columnwidth}
