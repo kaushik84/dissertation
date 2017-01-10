@@ -965,6 +965,10 @@ Underlay System
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}[t]{Underlay System}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\pnote{Next, the deployment scenario is transformed into an underlay system, which are interference tolerant system.}
+	\pnote{Unlink interweave system, which employ time interlacing, the underlay system allow the secondary users to co-exist at the same time only if the interference received at the PR is kept below a desired level.}
+	\pnote{A power control mechanism is employed at the ST that listens to signals transmitted by the PR. In this regard, secondary listens interchangeably to the transmissions from the PT and PR.}
+	\pnote{} 
 	\vspace{-4mm}
 	\fs{7}{8}
 	\begin{columns}
@@ -1019,10 +1023,9 @@ Underlay System
 				};
 				\only<1>
 				{
-					%\fill[opacity = 0.2, fill = blue] (.32,1.16) rectangle (1.22,1.8);
-					%\fill[opacity = 0.2, fill = blue] (.32,-0.06) rectangle (1.22,0.58);
-					%\fill[opacity = 0.2, fill = red] (3.65,1.18) rectangle (4.65,1.6);
-					%\fill[opacity = 0.2, fill = red] (2.42,2.3) rectangle (3.88,3.08);
+					\fill[opacity = 0.2, fill = kit-green100] (1.0,1.63) rectangle (1.4,1.97);
+					\fill[opacity = 0.2, fill = kit-green100] (2.12,0.54) rectangle (2.52,.88);
+					\fill[opacity = 0.2, fill = kit-green100] (2.85,1.56) rectangle (3.25,1.90);
 				}
 			\end{tikzpicture}
 			\vspace{-10mm}	
@@ -1031,6 +1034,8 @@ Underlay System
 				{
 					\includegraphics[width = \columnwidth]{figures/Frame_Structure_US.ps}     
 				};
+				\fill[opacity = 0.4, fill = kit-green100] (0.77,2.21) rectangle (1.41,2.54);
+				\fill[opacity = 0.4, fill = kit-green100] (3.63,1.01) rectangle (4.27,1.34);
 			\end{tikzpicture}	
 		\end{center}
 		\end{column}
