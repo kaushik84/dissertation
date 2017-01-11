@@ -966,9 +966,14 @@ Underlay System
 \begin{frame}[t]{Underlay System}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	\pnote{Next, the deployment scenario is transformed into an underlay system, which are interference tolerant system.}
-	\pnote{Unlink interweave system, which employ time interlacing, the underlay system allow the secondary users to co-exist at the same time only if the interference received at the PR is kept below a desired level.}
-	\pnote{A power control mechanism is employed at the ST that listens to signals transmitted by the PR. In this regard, secondary listens interchangeably to the transmissions from the PT and PR.}
-	\pnote{} 
+	\pnote{Unlike interweave system, which considers time interlacing, the underlay system allows the secondary users to co-exist during the same time interval only if the interference received at the PR is kept below a desired level.}
+	\pnote{A power control mechanism is employed at the ST that listens to signals transmitted by the PR. In this regard, secondary system listens interchangeably to the transmissions from the PT and PR.}
+	\pnote{The signal received at ST over the channel is composed of signal transmitted by the PR over the channel hp3}
+	\pnote{During data transmission at ST with control power, the signal received at the PR is given by} % As it is noticed channel reciprocity is employed by the ST to acquire knowledge of the channel 
+	\pnote{Finally, the signal received at SR comprises of data signal with controlled power over hs and interference signal from PT over hp2} 
+	\pnote{Next, the operation of the US is summarized as follows the received interference power at PR, which comprises of the channel gain and control power should be less than a certain interference threshold. Using this relationship it is straightforward to determine the expression of control power} % Characterizes the performance of primary system
+	\pnote{Next, the data rate with control power can be computed as}
+	\pnote{Now, in order to employ power control and assure a QoE to the SR, the ST must acquire the knowledge of the involved channels} % The estimation of the channel hp2 happens at SR. This information is made available through a feedback channel 
 	\vspace{-4mm}
 	\fs{7}{8}
 	\begin{columns}
@@ -984,7 +989,7 @@ Underlay System
 				\end{itemize}
 			\end{block}
 			\vspace{2mm}
-			\onslide<1->
+			\only<1>
 			{
 				\begin{block}{\scriptsize Signal model} %{\scriptsize Signal model}
 				\begin{equation*}
@@ -998,14 +1003,40 @@ Underlay System
 				\end{equation*}
 				\end{block}
 				\vspace{2mm}
-				\begin{block}{\scriptsize Ideal Model} 
+				\begin{block}{\scriptsize Ideal Model (IM)} 
 				%Interference received at PR\\[-.2em]	
 				\begin{equation*}
-					\prcvdpr = {\color{kit-green100}{\phpth}} \preg \le \ite
+					\prcvdpr = {{\phpth}} \preg \le \ite
 				\end{equation*}	
 				%Data rate at SR\\[-.2em]	
 				\begin{equation*}
-					\ca = \log_2 \left(1 + \frac{{\color{kit-green100}{\pgs}} \preg}{ {\color{kit-green100}{\pgpt}} \ptranpt + \nps} \right)	
+					\ca = \log_2 \left(1 + \frac{{{\pgs}} \preg}{ {{\pgpt}} \ptranpt + \nps} \right)	
+				\end{equation*}	
+				\end{block}	
+			}
+			\only<2->
+			{
+
+				\begin{block}{\scriptsize Signal model} %{\scriptsize Signal model}
+				\begin{equation*}
+					\yrcvd[n] = \hpth \cdot \xtran[n] + \wsr[n]
+				\end{equation*}
+				\begin{equation*}
+					\yp[n] = \hpth  \cdot \xreg[n] + \wpr[n]
+				\end{equation*}
+				\begin{equation*}
+					\ys[n] = \gs \cdot \xreg[n] + \gpt \cdot \xp[n] + \wsr[n]
+				\end{equation*}
+				\end{block}	
+				\vspace{2mm}
+				\begin{block}{\scriptsize Ideal Model (IM)} 
+				%Interference received at PR\\[-.2em]	
+				\begin{equation*}
+					\prcvdpr = {\color{red}{\phpth}} \preg \le \ite
+				\end{equation*}	
+				%Data rate at SR\\[-.2em]	
+				\begin{equation*}
+					\ca = \log_2 \left(1 + \frac{{\color{kit-green100}{\pgs}} \preg}{ {\color{blue}{\pgpt}} \ptranpt + \nps} \right)	
 				\end{equation*}	
 				\end{block}	
 			}
@@ -1021,10 +1052,10 @@ Underlay System
 				{
 					\includegraphics[width = .81 \columnwidth]{../kapitel04/figures/CR_Scenario_Underlay}	     
 				};
-				\only<1>
+				\only<2>
 				{
-					\fill[opacity = 0.2, fill = kit-green100] (1.0,1.63) rectangle (1.4,1.97);
-					\fill[opacity = 0.2, fill = kit-green100] (2.12,0.54) rectangle (2.52,.88);
+					\fill[opacity = 0.2, fill = red] (1.0,1.63) rectangle (1.4,1.97);
+					\fill[opacity = 0.2, fill = blue] (2.12,0.54) rectangle (2.52,.88);
 					\fill[opacity = 0.2, fill = kit-green100] (2.85,1.56) rectangle (3.25,1.90);
 				}
 			\end{tikzpicture}
@@ -1034,8 +1065,11 @@ Underlay System
 				{
 					\includegraphics[width = \columnwidth]{figures/Frame_Structure_US.ps}     
 				};
-				\fill[opacity = 0.4, fill = kit-green100] (0.77,2.21) rectangle (1.41,2.54);
-				\fill[opacity = 0.4, fill = kit-green100] (3.63,1.01) rectangle (4.27,1.34);
+				\only<2->
+				{
+					\fill[opacity = 0.4, fill = red] (0.77,2.21) rectangle (1.41,2.54);
+					\fill[opacity = 0.4, fill = blue] (3.63,1.01) rectangle (4.27,1.34);
+				}
 			\end{tikzpicture}	
 		\end{center}
 		\end{column}
@@ -1046,15 +1080,24 @@ Underlay System
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}[t]{Underlay System}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\pnote{Again variations are induced due to channel estimation resulting in variations in the received power (performance parameter for the primary system) which in certain occasions can exceed the interference threshold. Such events are harmful for the operation of underlay system.} 
+	\pnote{These variations are captured by means of outage constraint on the received power}
+	\pnote{Besides, the transmit power is constrained, i.e., cannot be exceeded beyond a certain value}
+	\pnote{Considering these two constraints the control power at ST that employs channel estimation is characterized as}
+	\pnote{It is worthy to note that, in contrast to the idealistic approach, the expression of control power is influenced by channel gain via SNRp3 and the estimation time. Thus, control power allow us to capture the variations in the system.}
+	\pnote{Based on this, the control power under the influence of channel estimation is classified as interference limited regime and power-limited regime (Use the expression).} 
+	\pnote{At low value of test, large variations are induced in the system causing a larger of interference at the PR, hence a sever power control (low value of control power) is exercised.}
+	\pnote{However, at high value of estimation time are power control is less severe, hence approaches the ideal value of the transmit power}
+	\pnote{Such a phenomenon is reflected in figure, where the control increases with the estimation time for different values of the outage constraint. Obviously, stringent constraint results in a sever power control} 
 	\vspace{-4.5mm}
 	\fs{7}{8}
 	\begin{columns}
 		\begin{column}{0.45\columnwidth}
-			\begin{block}{\scriptsize Control Power} %{\scriptsize Principle}
+			\begin{block}{\scriptsize Control power} 
 			Constraint on received interference at PR 
 			\begin{align*}
 				\p\left( \prcvdpr = \ephpth \preg \ge \ite \right) \le \opc, \\  
-				\p\left( \left( \frac{{\color{kit-green100}{\eprcvdstpr}} - \nps}{\ptran}\right) \preg \ge \ite \right) \le \opc 
+				\p\left( \left( \frac{{\color{red}{\eprcvdstpr}} - \nps}{\ptran}\right) \preg \ge \ite \right) \le \opc 
 			\end{align*}
 			Constraint on transmit power at ST 
 			\begin{equation*}
@@ -1120,7 +1163,7 @@ Underlay System
 			\begin{block}{\scriptsize Secondary throughput} %{\scriptsize Principle}
 			\vspace{-3mm}
 			\begin{align*}
-				\eca  = \log_2 \left(1 + \frac{\epgs \preg}{\eprcvdsr} \right) \\
+				\eca  = \log_2 \left(1 + \frac{{\color{kit-green100}{\epgs}} \preg}{{\color{blue}{\eprcvdsr}}} \right) \\
 				\rs(\test) = \frac{T - \test}{T} \e{\eca} {\eca} 
 			\end{align*}
 			\end{block}
