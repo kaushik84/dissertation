@@ -303,7 +303,7 @@ single arrow head extend=.3cm,}}
 \pnote{Despite the existence of these promising technologies, this large number in data rate cannot be achieved without an extension to already allocated spectrum}
 \pnote{Now, the question arises, where to look for spectrum, In this perspective, two alternatives exists: traditional approach is below 6 GHz. Due to the static allocation of the spectrum below 6 GHz to different mobile services, it is difficult spectrum below 6 GHz.}
 \pnote{Another alternative is to shift to higher frequencies beyond 6 GHz, which corresponds to mm-W and visible light communications}
-\pnote{Certainly, the spectrum above 6 GHz is prone to higher propagations loss, limited to LOS propagation, thus affecting the mobility of the wireless systems.}
+\pnote{Certainly, the spectrum above 6 GHz is prone to higher propagations loss, limited to LOS propagation, thus mobility of wireless systems is compromised.}
 \pnote{A second alternative is utilize the spectrum below 6 GHz more efficiently, by opening the spectrum for secondary usage}
 %\pnote{This work is focussed on providing spectrum extension by promoting CR communications} 
 	\vspace{-2mm}
@@ -368,6 +368,7 @@ single arrow head extend=.3cm,}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}[t]{Cognitive Small Cell}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\pnote{Since, we are talking about the 5G systems, it is useful to consider a scenario, where cognitive radio finds its application}
 \pnote{A comprehensive incorporation of CR system in a preliminary 5G architecture in the form of CSC is illustrated.} 
 \pnote{A CSC is a network entity that enable CR communications for the devices operating indoor.}
 \pnote{In order to enhance the viability of the proposed architecture, some essential ingredients are highlighted}
@@ -447,8 +448,9 @@ single arrow head extend=.3cm,}}
 \begin{frame}[t]{Performance Analysis of CR System}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \pnote{Performance analysis in context to wireless system has two main objectives: Firstly, It help us understand the feasibility of a wireless system in real or close to real conditions. Secondly, it allows us to determine the performance limits.} 
-\pnote{Coexistence of different wireless systems (refer to the figure and highlight the primary and secondary system) has always been a difficult task, the task becomes even more challenging if we take into account the fact that two different system (which may differ in their communication standards) coexists, i.e., share a band of spectrum, separated in time, space or polarization.}
-\pnote{From a physical layer perspective, with no concrete guidelines (although there exists certain use cases, but are applicable to specific specific scenarios) available on how to choose the primary user signal. As a result, only solutions will persist that consider no knowledge of primary user signals, for instance energy detection. In other words, versatile and applicable to large range of wireless system.}  
+\pnote{Coexistence of different wireless systems has always been a difficult task, the task becomes even more challenging if we take into account the fact that two different systems (which may differ in their communication standards) coexists, i.e., share a band of spectrum, separated in time, space or polarization.}
+\pnote{With no concrete guidelines on what are prospective primary systems (although there exists certain use cases, but are applicable to specific specific scenarios). From a physical layer perspective, it becomes difficult on how to choose the primary user signal in order to extract some information about the primary system.} 
+\pnote{Ofcourse, assinging a dedicated curcuitory to every primary user signal is unrealistic from a deployment perspective. As a result, only solutions will persist that consider no knowledge of primary user signals, for instance energy detection. In other words, versatile and applicable to large range of wireless system.}  
 \pnote{It is well-know fact that concept of CR has been under discussion over the last 18 years, during this time line several models have been established, characterizing the performance of CR systems. However, due to the complexity of the underlaying scenario, very few are models have been implemented over the hardware. Leaving their performance analysis questionable.}
 \pnote{Since we are dealing with two different systems, it is important to jointly quantify their performance. From a physical layer perspective, secondary access to the licensed spectrum can be made possible through the application of CR techniques at the ST. In order to coexist, a CR system guarantee a sufficient protection to the primary system in the form of interference power received at the PR.}
 \pnote{On the other end, in order to co-benefit from the secondary access, the CR system guarantees a certain QoE in the form of throughput at the SR} 
@@ -1157,15 +1159,15 @@ Underlay System
 \begin{frame}[t]{Underlay System}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	\pnote{Next, the variations in the throughput are captured by characterizing the cdf of the data rate C3}
-	\pnote{It is worthy to note that the secondary throughput is dependent on the estimation time directly through the resouce allocation and indirectly through the control power (seen in previous slide).}
+	\pnote{It is worthy to note that the secondary throughput is dependent on the estimation time directly through the resource allocation and indirectly through the control power (seen in previous slide).}
 	\pnote{Such a tradeoff can be used to determine the suitable estimation time that achieves the maximum secondary throughput as represented by the expression that achieves the maximum secondary throughput as represented by the expression and represented in the figure}
 	\pnote{At lower values of estimation time the time resources are used for reducing the variations via control power. Beyond a certain time resources results in performance degradation.}
-	\pnote{Next, the variation of the acheivable throughput is compared with the SNR received at ST over the channel hp3 for the IM, EM. Coro2 represents the EM but without power control} 
+	\pnote{Next, the variation of the achievable throughput is compared with the SNR received at ST over the channel hp3 for the IM, EM. Coro2 represents the EM but without power control} 
 	\pnote{Low values are favourable for the secondary system, as seen by the increase in throughput of the ideal model.}   
 	\pnote{Next, the operation of the underlay system are classified into interference- and power-limited regimes}
 	\pnote{Under interference-limited regime the underlay system is bounded by interference in the system}
 	\pnote{Under power-limited regime the underlay system is bounded by the transmit power}
-	\pnote{The operation range where the benifits from US can be procured (operating under low SNR of US) is highly dependent on transmit power}  
+	\pnote{The operation range where the benefits from US can be procured (operating under low SNR of US) is highly dependent on transmit power}  
 	%\vspace{-4.5mm}
 	\fs{7}{8}
 	\begin{columns}
@@ -1285,18 +1287,25 @@ Hybrid System
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}[t]{Hybrid System}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\pnote{Hybrid systems combines the benefits of interweave system (ability to find spectrum holes) and underlay system (exploiting the interference tolerance capability of primary system) so that amiable spectrum can be utilized more efficiently.}
+	\pnote{In this regard, spectrum sensing and power control mechanisms are employed at the ST. The decision to employ power control is based on spectrum sensing}
+	\pnote{The signal received at the ST, similar to interweave system, is conditioned on following two hypothesis, presence and absence of the primary use signal}
+	\pnote{The sensing decision influences the signal transmitted, in addition to misdetection and no false alarm that transmit with full power, we have power control applied for the cases with correct detection and false alarm}
+	\pnote{As a result, the interference signal received at PR is given by the following expression. The interference only happens for the cases when primary transmitter is actually active, detection and misdetection}
+	\pnote{Following the similar approach, a frame structure is proposed that facilitates estimation of the involved channels}
 	\vspace{-4mm}
 	\fs{7}{8}
 	\begin{columns}
 		\begin{column}{0.45\columnwidth}
-				%\vspace{-1mm}
+			%\vspace{-1mm}
 			\begin{block}{\scriptsize Principle} 
 				\begin{itemize}
-					\item Hybrid system combines the benefits of interweave and underlay systems to enhance spectral efficiency of cognitive radio systems  
-					\item Spectrum sensing followed by power control is employed at ST 
+					\item Hybrid system combines the benefits of interweave and underlay systems to utilize the available spectrum more efficiently  
+					\item Spectrum sensing and power control mechanism are employed at the ST				
+					\item Approach $\Rightarrow$ the decision to employ power control is based on spectrum sensing 
 				\end{itemize}
 			\end{block}
-			\vspace{3mm}
+			\vspace{-0.5mm}
 			\onslide<1->
 			{
 				%\vspace{-2mm}
@@ -1340,10 +1349,11 @@ Hybrid System
 				};
 				\only<1>
 				{
-					%\fill[opacity = 0.2, fill = blue] (.32,1.16) rectangle (1.22,1.8);
-					%\fill[opacity = 0.2, fill = blue] (.32,-0.06) rectangle (1.22,0.58);
-					%\fill[opacity = 0.2, fill = red] (3.65,1.18) rectangle (4.65,1.6);
-					%\fill[opacity = 0.2, fill = red] (2.42,2.3) rectangle (3.88,3.08);
+					
+					\fill[opacity = 0.2, fill = kit-orange100] (0.90,0.68) rectangle (1.30,1.02);
+					\fill[opacity = 0.2, fill = red] (0.86,1.4) rectangle (1.26,1.74);
+					\fill[opacity = 0.2, fill = blue] (1.82,0.47) rectangle (2.22,.81);
+					\fill[opacity = 0.2, fill = kit-green100] (2.45,1.32) rectangle (2.85,1.66);
 				}
 			\end{tikzpicture}
 			\vspace{-16mm}	
@@ -1352,6 +1362,12 @@ Hybrid System
 				{
 					\includegraphics[width = 1.02\columnwidth]{figures/Frame_Structure_HS.ps}     
 				};
+				\fill[opacity = 0.4, fill = red] (0.77,2.50) rectangle (1.41,2.83);
+				\fill[opacity = 0.4, fill = blue] (3.63,1.01) rectangle (4.27,1.34);
+				\fill[opacity = 0.4, fill = kit-orange100] (3.63,2.50) rectangle (4.27,2.83);
+				%\fill[opacity = 0.4, fill = blue] (0.77,1.01) rectangle (1.41,1.34);
+
+	
 			\end{tikzpicture}	
 		\end{center}
 		\end{column}
