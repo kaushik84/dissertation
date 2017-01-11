@@ -31,12 +31,12 @@
 \underfalse
 
 \newif\ifhybrid
-\hybridtrue
-%\hybridfalse
+%\hybridtrue
+\hybridfalse
 
 \newif\ifhard
-%\hardtrue
-\hardfalse
+\hardtrue
+%\hardfalse
 
 %\setbeamertemplate{note page}[plain]
 %\setbeameroption{show only notes}
@@ -1292,7 +1292,7 @@ Hybrid System
 	\pnote{The signal received at the ST, similar to interweave system, is conditioned on following two hypothesis, presence and absence of the primary use signal}
 	\pnote{The sensing decision influences the signal transmitted, in addition to misdetection and no false alarm that transmit with full power, we have power control applied for the cases with correct detection and false alarm}
 	\pnote{As a result, the interference signal received at PR is given by the following expression. The interference only happens for the cases when primary transmitter is actually active, detection and misdetection}
-	\pnote{Following the similar approach, a frame structure is proposed that facilitates estimation of the involved channels}
+	\pnote{Following an approach, similar to interweave and underlay systems, a frame structure is proposed that facilitates estimation of the involved channels}
 	\vspace{-4mm}
 	\fs{7}{8}
 	\begin{columns}
@@ -1378,19 +1378,19 @@ Hybrid System
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}[t]{Hybrid System}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\pnote{The uncertainty in the detectors performance and interference received at the PR, characterizing the performance of primary system, are captured by means of probabilistic constraints}
+	\pnote{The variations in secondary throughput are captured in terms of expectation, where C0, C1, C2, C3, corresponds to the data rate for 4 different kind of signals (discussed previously) received at the SR.}
+	\pnote{It is worthwhile to understand the performance benefits delivered due to the deployment of Hybrid Systems.}
+	\pnote{In this regard, the control power is varied across the channel gain hp3, existing between the ST and PR.}
+	\pnote{It is worthy to note that at low channel gain, the hybrid system gets huge contribution from the underlay system and vice-versa for large channel gain}
+	\pnote{To understand the performance gain, the operation range is classified into 3 regimes}
+	\pnote{In regime 1, due to large channel gain, the US system employs a severe more control and results in control power that is non-beneficial for the system, hence the hybrid system attains throughput from the interweave system}
+	\pnote{In regime 2, the underlay system start to contribute to the overall performance of the hybrid system}
+	\pnote{In regime 3, the performance gain from the underlay system is limited by the maximum transmit power} 
 	\vspace{-4.5mm}
 	\fs{7}{8}
 	\begin{columns}
 		\begin{column}{0.45\columnwidth}
-			\begin{block}{\scriptsize Secondary throughput}
-				\vspace{-4.0mm}
-				\begin{align*}
-				\e{\epd, \ecz, \eco, \ectw, \ecth}{\rs(\tsen)} =  \frac{T - \testpr - \tsen}{T} \\ \Bigg[ (1 - \pfa) \cdot \phz \cdot \e{\ecz}{\ecz} +  \\ 
-				(1 - \e{\epd}\epd) \cdot \pho \cdot \e{\eco}{\eco} +  \\ \pfa \cdot \phz \cdot \e{\ectw}{\ectw} + \nonumber  \\ 
-				\e{\epd}{\epd} \cdot \pho \cdot \e{\ecth}{\ecth} \Bigg] 
-				\end{align*}
-			\end{block}
-			\vspace{-0.5mm}
 			\begin{block}{\scriptsize Interference Constraints} %{\scriptsize Principle}
 			Constraint on detection probability
 			\begin{align*}
@@ -1401,12 +1401,22 @@ Hybrid System
 				\p(\eprcvdpr \ge \ite) \le \opc 	
 			\end{equation*}
 			\end{block} 
+			\vspace{-0.5mm}
+			\begin{block}{\scriptsize Secondary throughput}
+				\vspace{-4.0mm}
+				\begin{align*}
+				\e{\epd, \ecz, \eco, \ectw, \ecth}{\rs(\tsen)} =  \frac{T - \testpr - \tsen}{T} \\ \Bigg[ (1 - \pfa) \cdot \phz \cdot \e{\ecz}{\ecz} +  \\ 
+				(1 - \e{\epd}\epd) \cdot \pho \cdot \e{\eco}{\eco} +  \\ \pfa \cdot \phz \cdot \e{\ectw}{\ectw} + \nonumber  \\ 
+				\e{\epd}{\epd} \cdot \pho \cdot \e{\ecth}{\ecth} \Bigg] 
+				\end{align*}
+			\end{block}
 		\end{column}
 		\begin{column}{0.55\columnwidth}
 		\fs{7}{8}
 		\begin{center}
              	        \resizebox{.95 \columnwidth}{!}{%
-                        \only<1>
+                        \iffalse
+			\only<1>
 			{
 				\begin{tikzpicture}[scale=1]
 				%	%% Add psfrag entries
@@ -1427,7 +1437,8 @@ Hybrid System
 					\end{scope}
 				\end{tikzpicture}
 			}
-                        \only<2->
+			\fi
+                        \only<1>
 			{
 				\begin{tikzpicture}[scale=1]
 					%% Add psfrag entries
@@ -1482,13 +1493,19 @@ Hardware Implementation
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}[t]{Hardware Implementation}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	\vspace{-3mm}
+	\pnote{The aforementioned analysis has been limited to theoretical expressions, it worthy to note that regard to CR systems it is essential as-well-as challenging to depict their hardware realizations}
+	\pnote{Hence, the main objective is to verify the feasibility of the analysis proposed}
+	\pnote{Without any specific argumentation, an underlay system is selected}
+	\pnote{With regard the analysis proposed previously, some simplifications and modification were considered for the hardware implementation}
+	\pnote{Channel estimation was restricted to the channel hp3, the perfect estimation was considered. The main purpose here is to demonstrate the applicability of the interference constraint}
+	\pnote{To capture the variations in the received power the outage constraint was replaced with confidence probability constraint}   
+	\pnote{Finally, the primary  
+	%%\vspace{-3mm}
 	\fs{7}{8}
 	\begin{block}{\scriptsize Objective}
 		\begin{itemize}
-			% The aforementioned analysis has been limited to theoretical expressions, with regard to CR systems it is essential as-well-as challenging to depict their hardware realizations
-			\item Depict the feasibility of the proposed performance analysis by deploying CR technique on a hardware
-			\item Justify the necessity of channel knowledge for the deployment of CR systems 
+			\item Verify the feasibility of proposed performance analysis under practical conditions  
+			%\item Justify the necessity of channel knowledge for the deployment of CR systems 
 	
 		\end{itemize}
 	\end{block}
