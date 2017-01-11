@@ -1088,7 +1088,7 @@ Underlay System
 	\pnote{Based on this, the control power under the influence of channel estimation is classified as interference limited regime and power-limited regime (Use the expression).} 
 	\pnote{At low value of test, large variations are induced in the system causing a larger of interference at the PR, hence a sever power control (low value of control power) is exercised.}
 	\pnote{However, at high value of estimation time are power control is less severe, hence approaches the ideal value of the transmit power}
-	\pnote{Such a phenomenon is reflected in figure, where the control increases with the estimation time for different values of the outage constraint. Obviously, stringent constraint results in a sever power control} 
+	\pnote{Such a phenomenon is reflected in figure, where the control power increases with the estimation time for different values of the outage constraint. Obviously, stringent constraint results in a sever power control} 
 	\vspace{-4.5mm}
 	\fs{7}{8}
 	\begin{columns}
@@ -1156,6 +1156,16 @@ Underlay System
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}[t]{Underlay System}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\pnote{Next, the variations in the throughput are captured by characterizing the cdf of the data rate C3}
+	\pnote{It is worthy to note that the secondary throughput is dependent on the estimation time directly through the resouce allocation and indirectly through the control power (seen in previous slide).}
+	\pnote{Such a tradeoff can be used to determine the suitable estimation time that achieves the maximum secondary throughput as represented by the expression that achieves the maximum secondary throughput as represented by the expression and represented in the figure}
+	\pnote{At lower values of estimation time the time resources are used for reducing the variations via control power. Beyond a certain time resources results in performance degradation.}
+	\pnote{Next, the variation of the acheivable throughput is compared with the SNR received at ST over the channel hp3 for the IM, EM. Coro2 represents the EM but without power control} 
+	\pnote{Low values are favourable for the secondary system, as seen by the increase in throughput of the ideal model.}   
+	\pnote{Next, the operation of the underlay system are classified into interference- and power-limited regimes}
+	\pnote{Under interference-limited regime the underlay system is bounded by interference in the system}
+	\pnote{Under power-limited regime the underlay system is bounded by the transmit power}
+	\pnote{The operation range where the benifits from US can be procured (operating under low SNR of US) is highly dependent on transmit power}  
 	%\vspace{-4.5mm}
 	\fs{7}{8}
 	\begin{columns}
@@ -1254,7 +1264,7 @@ Underlay System
 			% Due to tansmit power constraint the operation of the US is resctricted for low of SNR
 			
 			\item Operation of underlay system is classified is different regimes: (i) power-limited regime and (ii) interference-limited regime
-			\item The performance (operation range) of US is highly dependent on $\pfull$ 
+			\item The operation range of US is depends on $\pfull$ 
 		\end{itemize}		
 		\end{block}
 	}
