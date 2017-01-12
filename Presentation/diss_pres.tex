@@ -47,7 +47,7 @@
 %% SLIDE FORMAT
 \usepackage{templates/beamerthemekit}
 %\usepackage{ngerman}
-\usepackage[ngerman]{babel}
+%\usepackage[ngerman]{babel}
 %\usepackage[T1]{fontenc}
 %\usepackage[utf8]{inputenc} % Für Linux
 
@@ -67,7 +67,7 @@
 
 % My Packages:
 \usepackage{siunitx}
-\sisetup{locale = DE}%, 
+%\sisetup{locale = DE}%, 
 %		 range-phrase={bis},  % muss trotzdem nochmal definiert werden!!
 %		 range-units = single       % Einheiten bei Fehlern und Range nicht wiederholen}
 
@@ -1502,7 +1502,8 @@ Hardware Implementation
 	\pnote{Primary and secondary signals are modelled as OFDM modulated signals}
 	\pnote{Interference from the PT to the SR over hp2 is assumed to be negligible}
 	\pnote{Despite these simplifications and modifications, the signal model remains unchanged, except for the signal received at SR, which excludes the interference from PT}
-	\pnote{Besides, }
+	\pnote{The modified version of the deployment scenario and the frame structure is illustrated in the figure}
+	\pnote{The performance parameter, the interference received at the PR and the throughput at SR are presented, followed by the estimation throughput tradeoff subject to confidence probability constraint}
 	%%\vspace{-3mm}
 	\fs{7}{8}
 	\begin{block}{\scriptsize Objective}
@@ -1572,6 +1573,7 @@ Hardware Implementation
 				{
 					\includegraphics[width = 0.85 \columnwidth]{../kapitel06/figures/CR_Scenario_Underlay_gruen} 
 				};
+				\fill[opacity = 0.2, fill = red] (0.57,0.9) rectangle (0.97,1.24);
 			\end{tikzpicture}	
 			\end{overlayarea}
 			\centering
@@ -1580,6 +1582,7 @@ Hardware Implementation
 				{
 					\includegraphics[width = 0.85 \columnwidth]{../kapitel06/figures/Frame_Structure_grau_U} 
 				};
+				\fill[opacity = 0.4, fill = red] (0.04,0.54) rectangle (.94,0.89);
 			\end{tikzpicture}	
 		\end{column}
 	\end{columns}
@@ -1590,6 +1593,11 @@ Hardware Implementation
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}[c]{Validation}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\pnote{To perform the validation process, the following measurement setup was used}
+	\pnote{The signal generator was modelled as PR for transmitting signals}
+	\pnote{Since our main focus here was to certify the significance of the expressions obtained, the channel hp3 was modelled using a coaxial cable for signal transmissions. Later for the demonstration the antennas are deployed}
+	\pnote{An SDR platform emulates the ST that realizes the power control and data transmission to a virtual SR because channel knowledge is assumed to be perfect}
+	\pnote{The host computer provides an interface to perform basic computation and act as a database for storing samples} 
 	\begin{columns}
 		\begin{column}{0.45\columnwidth}
 			\fs{7}{8}
@@ -1624,16 +1632,22 @@ Hardware Implementation
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}[c]{Validation}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\pnote{Based the measurement parameters illustrated in the table, the pdfs of performance parameters obtained using the theoretical expressions are compared with the histograms computed from the measurements}
+	\pnote{This certifies that the accuracy of analytical expressions for performance analysis}
+	\pnote{Besides, the obtained expressions can be programmed onto the hardware}
+	\pnote{Finally, the figure justifies the applicability of optimization problem yielding an achievable throughput}
+	\pnote{We see the variations of the performance parameters over the estimation time, the expected throughput decreases due to the time allocation. On the other side, the confidence probability increases due to reduction in variations} 
+	\pnote{The time interval at which the confidence probability constraint is satisfied yields th maximum expected throughput} 
 	\begin{columns}
 		\begin{column}{0.45\columnwidth}
 			\fs{7}{8}
 			\centering
              	        \resizebox{.95 \columnwidth}{!}{%
-				\input{../kapitel06/figures/P_PR_Rx}
+				\input{figures/P_PR_Rx}
       		  		\begin{tikzpicture}[scale=1]
                 		\node[anchor=south west,inner sep=0] (image) at (0,0)
           		        {
-                        		\includegraphics[width=\figscale]{../kapitel06/figures/P_PR_Rx}
+                        		\includegraphics[width=\figscale]{figures/P_PR_Rx}
             		        };
 
             		        \begin{scope}[x={(image.south east)},y={(image.north west)}]
@@ -1650,8 +1664,8 @@ Hardware Implementation
 			\vspace{2mm}	
 				
              	        \resizebox{.95 \columnwidth}{!}{%
-				\input{../kapitel06/figures/R_s}
-			        \includegraphics[width=\figscale]{../kapitel06/figures/R_s}%
+				\input{figures/R_s}
+			        \includegraphics[width=\figscale]{figures/R_s}%
 			}
 		\end{column}
 		\begin{column}{0.55\columnwidth}
@@ -1660,15 +1674,17 @@ Hardware Implementation
 			\vspace{2mm}	
 		\begin{center}
 		\centering
+		\renewcommand{\arraystretch}{1.3}
 		\begin{tabular}{c||c}
                 	\rowcolor{kit-green30}
 			Parameter & Value \\ \hline \hline
                 	$\snrrcvdu$ & \SI{22}{dB} \\
-                	$N$ & 100 \\
+                	%$N$ & 100 \\
+                	$\fsam$ & \SI{50}{KHz}\\
                 	$\test$ & \SI{2}{ms}\\
                 	$\ite$ & \SI{-110}{dBm}\\
                 	$T$ & \SI{100}{ms}\\
-               		$\pgs$ & 1 \\
+               		%$\pgs$ & 1 \\
                 	$\npp$ & $\SI{-96.74}{dBm}$\\ \hline
         	\end{tabular}
 		\end{center}
@@ -1706,6 +1722,10 @@ Hardware Implementation
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}[c]{Demonstration}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+		\pnote{Validation is restricted to offline phenomenon, the real functioning of underlay system can be depicted by deploying a demonstrator} 
+		\pnote{The block diagram illustrates the operation of the demonstrator at the primary receiver and secondary transmitter}
+		\pnote{The PR sends a pilot signal over the USRP, the SDR platform -> received by other USRP acting as ST -> pre-processing to remove effects such as DC offset and flickering noise}
+		\pnote{Channel estimation is employed and upon applying the interference constraint --> power control is employed --> data signal is transmitted over the USRP and received by the first USRP --> which computes the actual power received --> compute the actual confidence probability --> verify if the constraint is applicable} 
 		\fs{7}{8}
 		\centering
              	%\resizebox{1.\columnwidth}{!}{%
@@ -1760,6 +1780,10 @@ Hardware Implementation
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}[c]{Demonstration}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\pnote{The GUI is presented that allows access to the parameters}
+	\pnote{Before starting the demonstration, the SDRs are configured by setting the following parameters: Estimation time (which is shown such the underlay system operates within desired range of SNR), interference threshold, frame duration, estimation, confidence probability constraint} 
+	\pnote{Upon starting the demonstrators, the following observed: 1) the received power at the PR is rightly below the interference threshold --> This conveys that received power estimation followed by power control are functioning at the ST as expected}
+	\pnote{Moreover, upon evaluating the confidence probability evaluated at PR, it is observed that the interference constraint employed at the ST is rightly satisfied at the PR} 
 	\begin{columns}
 		\begin{column}{0.5\columnwidth}
 			\fs{7}{8}
