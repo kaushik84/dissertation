@@ -1498,8 +1498,11 @@ Hardware Implementation
 	\pnote{Without any specific argumentation, an underlay system is selected}
 	\pnote{With regard the analysis proposed previously, some simplifications and modification were considered for the hardware implementation}
 	\pnote{Channel estimation was restricted to the channel hp3, the perfect estimation was considered. The main purpose here is to demonstrate the applicability of the interference constraint}
-	\pnote{To capture the variations in the received power the outage constraint was replaced with confidence probability constraint}   
-	\pnote{Finally, the primary and secondary signals are modelled as OFDM modulated signals} 
+	\pnote{To capture the variations in the received power the outage constraint was replaced with confidence probability constraint}  
+	\pnote{Primary and secondary signals are modelled as OFDM modulated signals}
+	\pnote{Interference from the PT to the SR over hp2 is assumed to be negligible}
+	\pnote{Despite these simplifications and modifications, the signal model remains unchanged, except for the signal received at SR, which excludes the interference from PT}
+	\pnote{Besides, }
 	%%\vspace{-3mm}
 	\fs{7}{8}
 	\begin{block}{\scriptsize Objective}
@@ -1517,7 +1520,8 @@ Hardware Implementation
 				\begin{itemize}
 					\item Channel estimation is restricted to channel $\phpth$ $\Rightarrow$ Interference constraint
 					\item Outage constraint is replaced with confidence probability constraint
-					\item Primary and secondary systems transmit OFDM modulated signal 
+					%\item Primary and secondary systems transmit OFDM modulated signal 
+					\item Interference from the PT to the SR over $\phpt$ is assumed to be negligible
 
 				\end{itemize}				
 			\end{block}
@@ -1528,7 +1532,7 @@ Hardware Implementation
 					\yrcvd[n] = \hpth \cdot \xtranpr[n] + \wst[n]
 				\end{equation*}
 				\begin{equation*}
-					\yp[n] = \hpth \cdot \xscont[n] + \wpr[n],
+					\yp[n] = \hpth \cdot \xscont[n] + \wpr[n]
 				\end{equation*}
 				\begin{equation*}
 					\ys[n] = \gs \cdot \xscont[n] + \wsr[n]
