@@ -23,12 +23,12 @@
 %\motifalse
 
 \newif\ifinter
-%\intertrue
-\interfalse
+\intertrue
+%\interfalse
 
 \newif\ifunder
-%\undertrue
-\underfalse
+\undertrue
+%\underfalse
 
 \newif\ifhybrid
 %\hybridtrue
@@ -37,6 +37,10 @@
 \newif\ifhard
 %\hardtrue
 \hardfalse
+
+\newif\ifvideo
+%\videotrue
+\videofalse
 
 %\setbeamertemplate{note page}[plain]
 %\setbeameroption{show only notes}
@@ -186,6 +190,10 @@ single arrow head extend=.3cm,}}
     text width=18em, text centered, rounded corners, minimum height=3.2em]
 \tikzstyle{line} = [draw, -latex']
 
+%\usepackage{multimedia}
+\usepackage{animate,media9,movie15}
+
+
 
 % Include Figures Path
 \graphicspath{~/dissertation/kapital01/figures/}
@@ -299,8 +307,8 @@ single arrow head extend=.3cm,}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}[t]{5G Technologies}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	\pnote{The feasibility of these requirements can be envisaged through the application of some of the promising approaches such as maximizing the spatial degree of freedom, small cell densification, waveform design, in-band full duplex communications.}
-\pnote{Despite the existence of these promising technologies, this large number in data rate cannot be achieved without an extension to already allocated spectrum}
+	\pnote{The feasibility of these requirements can be envisaged through the application of some of the promising approaches such as maximizing the spatial degree of freedom, reducing the size of the cell to enhance spectrum reuse, designing the waveform to increase spectral efficiency, in-band full duplex communications.}
+\pnote{Although these technologies contributes to an increase in data rate, this large number in data rate cannot be achieved without an extension to already allocated spectrum}
 \pnote{Now, the question arises, where to look for spectrum, In this perspective, two alternatives exists: traditional approach is below 6 GHz. Due to the static allocation of the spectrum below 6 GHz to different mobile services, it is difficult spectrum below 6 GHz.}
 \pnote{Another alternative is to shift to higher frequencies beyond 6 GHz, which corresponds to mm-W and visible light communications}
 \pnote{Certainly, the spectrum above 6 GHz is prone to higher propagations loss, limited to LOS propagation, thus mobility of wireless systems is compromised.}
@@ -368,9 +376,10 @@ single arrow head extend=.3cm,}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}[t]{Cognitive Small Cell}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\pnote{Since, we are talking about the 5G systems, it is useful to consider a scenario, where cognitive radio finds its application}
-\pnote{A comprehensive incorporation of CR system in a preliminary 5G architecture in the form of CSC is illustrated.} 
-\pnote{A CSC is a network entity that enable CR communications for the devices operating indoor.}
+\pnote{Since, we are talking about the 5G systems, it is useful to consider a scenario that facilitates a successful incorporation of CR technology in a 5G network}
+%\pnote{A comprehensive incorporation of CR system in a preliminary 5G architecture in the form of CSC is illustrated.} 
+\pnote{In this regard, a CSC that enables the CR communications for the devices operating indoor.}
+%\pnote{A CSC is a network entity that enable CR communications for the devices operating indoor.}
 \pnote{In order to enhance the viability of the proposed architecture, some essential ingredients are highlighted}
 \pnote{The architecture presented comprises of following network elements, MC-BS, MSs as a part of the CSC and MC, CSC-BS.}
 \pnote{Next, different spectrum access schemes, pertaining to proposed 5G architecture, are presented. Wireless backhaul link represents a link between MC-BS and CSC-BS (representing a control and data plane). Following the trends, the mm-Wave, visible light communications and exclusively acquired spectrum are the potential candidates in support of wireless backhaul communications.}
@@ -425,6 +434,11 @@ single arrow head extend=.3cm,}}
 				{
 					\includegraphics[width = \columnwidth]{../kapitel01/figures/Cellular_Scenario_CR6F}	     
 				};
+				\only<1>
+				{
+
+					\fill[opacity = 0.2, fill = red] (1.08,0.89) rectangle (2.05,1.61);
+				}
 				\only<2>
 				{
 					\fill[opacity = 0.2, fill = blue] (0.65,1.47) rectangle (1.28,2.03);
@@ -451,7 +465,7 @@ single arrow head extend=.3cm,}}
 	\pnote{Coexistence of different wireless systems has always been a difficult task, the task becomes even more challenging if we take into account the fact that two different systems (which may differ in their communication standards) coexist by sharing a band of spectrum, separated in time, space or polarization.}
 	\pnote{With no concrete guidelines that means no knowledge about the prospective primary systems. From a physical layer perspective, this means no knowledge about the primary user signal.} 
 	\pnote{One alternative to assign a dedicated circuitry corresponding to every primary user signal, which is unrealistic from a deployment perspective. As a result, only solutions will persist that consider no knowledge of primary user signals, for instance energy detection. In other words, versatile and applicable to large range of wireless system.}  
-	\pnote{It is well-know fact that concept of CR has been under discussion over the last 18 years, during this time line several models have been established, characterizing the performance of CR systems. However, due to the complexity of the underlaying scenario, very few are models have been implemented over the hardware. Leaving their performance analysis questionable.}
+	\pnote{The concept of CR has been under discussion over the last 18 years, during this time line several models have been established, characterizing the performance of CR systems. However, due to the complexity of the underlying scenario, these models tend to makes assumptions that are feasible over the hardware. Leaving their performance analysis questionable.}
 	\pnote{Secondary access is enabled through the employment of CR techniques at the ST. Through the implementation of these techniques, a CR system guarantees sufficient protection at the PR in the form of interference power received at the PR} 
 	\pnote{On the other end, in order to co-benefit from the secondary access, the CR system guarantees a certain QoE in the form of throughput at the SR} 
 	\pnote{Considering the performance of primary and secondary system jointly, we characterizes the performance of CR system} 
@@ -557,10 +571,11 @@ single arrow head extend=.3cm,}}
 \begin{frame}[t]{Major Contributions}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	\pnote{The major contributions are summarized as follows:}
-	\pnote{From a system design's perspective, it is important to accommodate the channel estimation into the system model. Hence, the system has cope up with the variations induced in the system due to imperfect channel knowledge, at the same time allocate resources for channel estimation}
+	\pnote{From a design's perspective, the system should be capable of handling the variations induced in the system due to imperfect channel knowledge, at the same incorporate time resources for channel estimation}
 	\pnote{These variations are captured by means of a stochastic model. Furthermore, a certain amount of time resources are allocated for channel estimation in the secondary user frame structure.} 
-	\pnote{With regard to the psychology established in the previous slide, with no knowledge of the primary user signals, we are faced with the challenge of estimating the channels that exists between two different systems. With this situation in hand, conventional estimation techniques are not applicable. Besides, we have to look for techniques that offer versatility towards unknown primary user signals and low complexity.}
-	\pnote{ In this regard, a novel estimation technique termed as received-power based estimation is proposed that satisfies the low-complexity and versatility requirements.}
+	%\pnote{With regard to the psychology established in the previous slide, with no knowledge of the primary user signals,} 
+	\pnote{We are faced with the challenge of estimating the channels that exists between two different systems. With this situation in hand, conventional estimation techniques are not applicable. Besides, we have to look for techniques that offer versatility towards unknown primary user signals and low complexity.}
+	\pnote{In this regard, a novel estimation technique termed as received-power based estimation is proposed that satisfies the low-complexity and versatility requirements.}
 	\pnote{It is an obvious fact that channel estimation will certainly has a detrimental effect on the performance, thereby degrading the performance of CR systems, in terms of uncertainty in the interference caused due to imperfect channel knowledge or variations induced in the system. Secondly, degradation in throughput caused due to the time allocation.} 
 	\pnote{In order to regulate uncertainty in interference, new interference constraints are proposed. Secondly, the interplay between the uncertain interference and the secondary throughput is analyzed in terms of performance tradeoffs. These tradeoffs allow us to determine the suitable estimation time that yields the maximum throughput achieved by the CR systems.}
 	\pnote{In order to verify the propositions made while establishing the system model, a hardware is deployed using a software-defined platform.}
@@ -584,7 +599,7 @@ single arrow head extend=.3cm,}}
 					Estimation of channels between two different systems %$\Rightarrow$ 
 					\begin{itemize}
 						\item Conventional techniques are not feasible  
-						\item Complexity and versatility towards unknown primary user signals
+						\item Look for techniques must offer low-complexity and versatility towards unknown primary user signals
 					\end{itemize}
 				\end{block}
 				}
@@ -792,7 +807,7 @@ Interweave System
 \begin{frame}[t]{Interweave System}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	\pnote{In an idealistic scenario that assumes the knowledge of the involved channels, it is possible to determine a suitable sensing time that achieves a maximum throughput such that detection probability mainly responsible for causing interference is constrained}
-	\pnote{It is worthy to that since no knowledge regarding the channels is available, such an optimization yields inadequate results}
+	\pnote{It is worthy to that since no knowledge regarding the channels is available, such an optimization is no longer valid for the hardware deployment}
 	\pnote{To resolve this issue, following approach is proposed, the time resources are allocated at the ST and the SR frame structure.}
         \pnote{The variations due to the estimation of the involved channels are characterized in terms of their cdf.}
 	\pnote{It is worthy to mention here that the received power estimation is employed for the channels between the primary and secondary systems and pilot based estimation is employed for the channel within the secondary system} % In this regard, the estimated parameters is observed indirectly in the form of received power 
@@ -821,7 +836,7 @@ Interweave System
 			\begin{tikzpicture}[node distance = 1.27cm, auto]
                         	% draw nodes
 				\node [block] (frame) {Incorporation of time resources for channel estimation and sensing in frame structure ($\test, \tsen$)};
-  			        \node [block, below of=frame] (channelest) {Variations due to channel estimation ($\pgpo$, $\pgpt$, $\pgs$) are characterized in terms of $\fprcvd, \fprcvdsr, \fpgpt$};
+  			        \node [block, below of=frame] (channelest) {Variations due to channel estimation ($\pgpo$, $\pgpt$, $\pgs$) are characterized in terms of $\fprcvd, \fprcvdsr, \fephs$};
   			        \node [block, below of=channelest] (cdf) {Variations in performance parameters ($\epd$, $\ecz$, $\eco$) are characterized in terms of $\fpd, \fcz, \fco$};
   			        \node [block, below of=cdf] (tradeoff) {The cdfs are used to determine the achievable secondary throughput subject to interference constraints};
 				% draw edges
@@ -1096,7 +1111,7 @@ Underlay System
 	\pnote{These variations are captured by means of outage constraint on the received power}
 	\pnote{Besides, the transmit power is constrained, i.e., cannot be exceeded beyond a certain value}
 	\pnote{Considering these two constraints the control power at ST that employs channel estimation is characterized as}
-	\pnote{It is worthy to note that, in contrast to the idealistic approach, the expression of control power is influenced by channel gain via SNRp3 and the estimation time. Thus, control power allow us to capture the variations in the system.}
+	\pnote{It is worthy to note that, in contrast to the idealistic approach, the expression of control power is influenced by channel gain reflected in SNRp3 and the estimation time. Thus, control power allow us to capture the variations in the system.}
 	\pnote{Based on this, the control power under the influence of channel estimation is classified as interference limited regime and power-limited regime (Use the expression).} 
 	\pnote{At low value of test, large variations are induced in the system causing a larger of interference at the PR, hence a sever power control (low value of control power) is exercised.}
 	\pnote{However, at high value of estimation time are power control is less severe, hence approaches the ideal value of the transmit power}
@@ -1159,7 +1174,7 @@ Underlay System
 				\frac{\ite \ptran}{ \left(\bpo \Gamma^{-1}(\opc, \apo) - \nps  \right)}, & \mbox{for } \preg < \pc \Rightarrow \text{Interference-limited regime}\\
 				\pc, & \mbox{for } \preg \ge \pc \Rightarrow \text{Power-limited regime}
 				\end{cases} \\
-				\text{where  } \apo &= \frac{{\color{kit-green100}{\test \fsam}} (1 + \snrrcvdu)^2}{2 + 4 \snrrcvdu} \text{ and } \bpo = \frac{\nps (2 + 4 \snrrcvdu)}{{\color{kit-green100}{\test \fsam}} (1 + \snrrcvdu)},
+				\text{where  } \apo &= \frac{{\color{kit-green100}{\test \fsam}} (1 + {\color{kit-green100}{\snrrcvdu}})^2}{2 + 4 {\color{kit-green100}{\snrrcvdu}}} \text{ and } \bpo = \frac{\nps (2 + 4 {\color{kit-green100}{\snrrcvdu}})}{{\color{kit-green100}{\test \fsam}} (1 + {\color{kit-green100}{\snrrcvdu}})},
 			\end{align*}
 	\end{block}
 \end{frame}
@@ -1228,6 +1243,7 @@ Underlay System
 				\end{scope}
 				\end{tikzpicture}
 			}
+			\iffalse
                         \only<2>
 			{
 				\input{../kapitel04/figures/fig_opt_thr_vs_SNR_AWGN_SI_00.tex}
@@ -1264,10 +1280,29 @@ Underlay System
 				\end{scope}
 				\end{tikzpicture}	
 			}
+			\fi
                 }
 		\end{center}
 		\end{column}
 	\end{columns}
+	\iftrue
+	\onslide<1->
+	{	
+		\begin{block}{}%{\scriptsize Power control} 
+		\begin{itemize}
+			%\item Ideal model allows us to evaluate the performance degradation induced due to incorporation of channel knowledge 
+			\item Secondary throughput is dependent on estimation time throughput control power and resource allocation (pre-factor)   
+			\item Below $\test$, the time resources are used for reducing the variations via control power		
+			\item Beyond $\ttest$, the system experiences performance degradation.
+			% Due to tansmit power constraint the operation of the US is resctricted for low of SNR
+			
+		\end{itemize}	
+		\end{block}	
+	}
+	\fi	
+
+
+	\iffalse
 	\onslide<2->
 	{	
 		\begin{block}{}%{\scriptsize Power control} 
@@ -1280,6 +1315,7 @@ Underlay System
 		\end{itemize}		
 		\end{block}
 	}
+	\fi
 \end{frame}
 \fi
 
@@ -1871,6 +1907,29 @@ Hardware Implementation
 		}
 		\end{column}
 	\end{columns}
+\end{frame}
+
+\fi
+
+\ifvideo
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[c]{Demonstrator}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+   \begin{figure}
+   \includemovie[
+     poster=figures/out.ps,
+     autoplay,
+     externalviewer,
+     inline=false,
+     %text={\includegraphics{scale=0.8}{figures/5G.ps}}
+   ]{8cm}{7cm}{figures/out.mp4}
+   \end{figure}
+%	\begin{figure}
+%	\centering
+%	\movie[label = show3, width = .8\textwidth, poster, showcontrols]{\includegraphics[width=0.8\textwidth]{figures/5G.ps}}{figures/out.mp4}
+%	\end{figure}
 \end{frame}
 
 \fi
