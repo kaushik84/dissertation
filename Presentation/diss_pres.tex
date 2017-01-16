@@ -35,8 +35,8 @@
 \hybridfalse
 
 \newif\ifhard
-%\hardtrue
-\hardfalse
+\hardtrue
+%\hardfalse
 
 \newif\ifvideo
 %\videotrue
@@ -578,8 +578,8 @@ single arrow head extend=.3cm,}}
 	\pnote{In this regard, a novel estimation technique termed as received-power based estimation is proposed that satisfies the low-complexity and versatility requirements.}
 	\pnote{It is an obvious fact that channel estimation will certainly has a detrimental effect on the performance, thereby degrading the performance of CR systems, in terms of uncertainty in the interference caused due to imperfect channel knowledge or variations induced in the system. Secondly, degradation in throughput caused due to the time allocation.} 
 	\pnote{In order to regulate uncertainty in interference, new interference constraints are proposed. Secondly, the interplay between the uncertain interference and the secondary throughput is analyzed in terms of performance tradeoffs. These tradeoffs allow us to determine the suitable estimation time that yields the maximum throughput achieved by the CR systems.}
-	\pnote{In order to verify the propositions made while establishing the system model, a hardware is deployed using a software-defined platform.}
-	\pnote{Finally, a applicability of the proposed framework in realistic conditions is presented by means of a hardware demonstrator}  
+	\pnote{In order to validate the exprerrions derrived made while establishing the system model, a hardware is deployed using a software-defined platform.}
+	\pnote{Finally, a applicability of the propositions (time allocation, channel estimation, variations) made are verified by means of a hardware demonstrator}  
 	\vspace{-1.5mm}
 	\begin{columns}
 		\begin{column}[t]{0.53\columnwidth}
@@ -618,8 +618,8 @@ single arrow head extend=.3cm,}}
 				{
 				\begin{block}{\scriptsize Hardware Feasibility?}%{\scriptsize Channel knowledge}
 					\begin{itemize}
-					\item Validity of the propositions made? 
-					\item Applicability of the proposed framework under realistic scenarios? 
+					\item Validatity of the expressions obtained? 
+					\item Applicability of the proposiitions under realistic scenarios? 
 					\end{itemize}	
 				\end{block}
 				}
@@ -717,7 +717,7 @@ Interweave System
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	\pnote{Here the deployment scenario corresponding to CSC is transformed into an interweave system}
 	\pnote{Spectrum sensing, a CR technique, is employed at the ST}
-	\pnote{In this way, by listening to signal transmitted by the PT, the ST protects the PR, by not transmitting its own signal whenever the primary user signal is detected.} 
+	\pnote{By listening to signal transmitted by the PT, the ST detects the presence and absence of primary user signal. In thsi way, the ST protects the PR, by not transmitting its own signal whenever the primary user signal is detected.} 
 	\pnote{Corresponding to this approach the following signal model is proposed. The signal received at the ST over the channel $\hpo$ depends on the following hypothesis, the PT is active and PT is inactive}
 	\pnote{The signal is received at the SR only under two conditions, wherever there is a misdetection or the condition where no false alarm happens.} 
 	\pnote{With reference to the signal model, the performance of the CR system can be jointly characterized in terms of detectors performance, which symbolizes the primary system performance and throughput received at SR}
@@ -812,7 +812,7 @@ Interweave System
         \pnote{The variations due to the estimation of the involved channels are characterized in terms of their cdf.}
 	\pnote{It is worthy to mention here that the received power estimation is employed for the channels between the primary and secondary systems and pilot based estimation is employed for the channel within the secondary system} % In this regard, the estimated parameters is observed indirectly in the form of received power 
 	\pnote{Next, the variations in the performance parameters are characterized using their cdfs, where C0 and C1 corresponds to the data rate with and without interference in the throughput expression}
-	\pnote{The cdfs of the performance parameters are used to determine the suitable estimation and sensing time intervals that achieves the maximum secondary throughput.}
+	\pnote{The derived expressions are used to determine the suitable estimation and sensing time intervals that achieves the maximum secondary throughput.}
 	\pnote{Based on the proposed approach, an estimation model that include channel estimation that yields the achievable throughput while satisfying the new interference constraints on the detection probability}
 	\pnote{In this work, an average and outage constraint is proposed.} 
 	\vspace{-2mm}
@@ -838,7 +838,7 @@ Interweave System
 				\node [block] (frame) {Incorporation of time resources for channel estimation and sensing in frame structure ($\test, \tsen$)};
   			        \node [block, below of=frame] (channelest) {Variations due to channel estimation ($\pgpo$, $\pgpt$, $\pgs$) are characterized in terms of $\fprcvd, \fprcvdsr, \fephs$};
   			        \node [block, below of=channelest] (cdf) {Variations in performance parameters ($\epd$, $\ecz$, $\eco$) are characterized in terms of $\fpd, \fcz, \fco$};
-  			        \node [block, below of=cdf] (tradeoff) {The cdfs are used to determine the achievable secondary throughput subject to interference constraints};
+  			        \node [block, below of=cdf] (tradeoff) {Derived expressions are used to establish estimation-sensing-throughput tradeoff};
 				% draw edges
     				\path [line] (frame) -- (channelest);
     				\path [line] (channelest) -- (cdf);
@@ -903,7 +903,7 @@ Interweave System
 	\pnote{Sampling frequency, Channel gain, frame duration, noise power, occurrence probability, Number of pilot symbols used for pilot-based channel estimation.}
 	\pnote{Here, we analyze the variation of secondary throughput along the estimation for idealistic approach and estimation model in reference to average and outage constraint.} 
 	\pnote{An ideal model is used for evaluating the performance degradation acquired due to incorporation of channel knowledge}
-	\pnote{The figure depicts a tradeoff between a tradeoff between the estimation and secondary throughput. Based on this analysis it is revealed that performance degradation can be effectively regulated by choosing the estimation time appropriately} % The estimation time 
+	\pnote{The figure depicts a tradeoff between the estimation and secondary throughput. Based on this analysis it is revealed that performance degradation can be effectively regulated by choosing the estimation time appropriately} % The estimation time 
 	\pnote{The analysis clearly reveals that the OC presenting an aggressive way of tacking the variations results in large degradation in performance.}
  
 	\vspace{-2mm}
@@ -992,15 +992,17 @@ Underlay System
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}[t]{Underlay System}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	\pnote{Next, the deployment scenario is transformed into an underlay system, which are interference tolerant system.}
-	\pnote{Unlike interweave system, which considers time interlacing, the underlay system allows the secondary users to co-exist during the same time interval only if the interference received at the PR is kept below a desired level.}
-	\pnote{A power control mechanism is employed at the ST that listens to signals transmitted by the PR. In this regard, secondary system listens interchangeably to the transmissions from the PT and PR.}
+	\pnote{Next, the deployment scenario is transformed into an underlay system, which utilizes the interference tolerant capability of primary systems.}
+	\pnote{Unlike interweave system that considers temporal separation, the underlay system allows the secondary users to co-exist during the same time interval however separated in space, only if the interference received at the PR is kept below a desired level.}
+	\pnote{A power control mechanism is employed at the ST}
+	\pnote{Now, to employ power control, the ST listens to signals transmitted by the PR and apply channel reciprocity so as to maintain the interference received at PR is below a certain threshold.} 
 	\pnote{The signal received at ST over the channel is composed of signal transmitted by the PR over the channel hp3}
 	\pnote{During data transmission at ST with control power, the signal received at the PR is given by} % As it is noticed channel reciprocity is employed by the ST to acquire knowledge of the channel 
 	\pnote{Finally, the signal received at SR comprises of data signal with controlled power over hs and interference signal from PT over hp2} 
 	\pnote{Next, the operation of the US is summarized as follows the received interference power at PR, which comprises of the channel gain and control power should be less than a certain interference threshold. Using this relationship it is straightforward to determine the expression of control power} % Characterizes the performance of primary system
 	\pnote{Next, the data rate with control power can be computed as}
-	\pnote{Now, in order to employ power control and assure a QoE to the SR, the ST must acquire the knowledge of the involved channels} % The estimation of the channel hp2 happens at SR. This information is made available through a feedback channel 
+	\pnote{Now, in order to employ power control and assure a QoE to the SR, the ST must acquire the knowledge of the involved channels} % The estimation of the channel hp2 happens at SR. This information is made available through a feedback channel
+	\pnote{In this regard, secondary system listens interchangeably to the transmissions from the PT and PR.} 
 	\vspace{-4mm}
 	\fs{7}{8}
 	\begin{columns}
@@ -1420,7 +1422,7 @@ Hybrid System
 	\end{columns}
 \end{frame}
 
-
+\iftrue
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}[t]{Hybrid System}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1522,6 +1524,7 @@ Hybrid System
 \end{frame}
 
 \fi
+\fi
 
 
 \ifhard
@@ -1565,7 +1568,7 @@ Hardware Implementation
 			\only<1>{
 			\begin{block}{\scriptsize Simplifications/Modifications} 
 				\begin{itemize}
-					\item Channel estimation is restricted to channel $\phpth$ $\Rightarrow$ Interference constraint
+					\item Channel estimation is restricted to $\phpth$ $\Rightarrow$ Interference constraint
 					\item Outage constraint is replaced with confidence probability constraint
 					%\item Primary and secondary systems transmit OFDM modulated signal 
 					\item Interference from the PT to the SR over $\phpt$ is assumed to be negligible
@@ -1854,12 +1857,13 @@ Hardware Implementation
 
 		\only<1>
 		{	
-			\draw[blue, thick] (-0.02,.72) rectangle (.52,.77); % Noise Power
-			\draw[blue, thick] (-0.02,.055) rectangle (.82,.31); % Inter, Frame duration
+			\draw[blue, thick] (0.00,.72) rectangle (.52,.77); % Noise Power
+			\draw[blue, thick] (0.00,.055) rectangle (.82,.31); % Inter, Frame duration
+			\draw[opacity = 0, blue, thick] (0.00,.38) rectangle (.69,.73); % Inter, Frame duration
                 }
 		\only<2>
 		{
-			\draw[blue, thick] (-0.02,.38) rectangle (.69,.73); % Inter, Frame duration
+			\draw[blue, thick] (0.00,.38) rectangle (.69,.73); % Inter, Frame duration
 		}
 		
 		%\draw[help lines,xstep=.1,ystep=.1] (0,0) grid (1,1);
@@ -1883,19 +1887,20 @@ Hardware Implementation
                 \begin{scope}[x={(image.south east)},y={(image.north west)}]
                 \node[draw=none, fill=gray!35,font=\footnotesize] at (0.49,0.979) {Primary Receiver};
                 \node[draw=none, fill=gray!35,font=\footnotesize] at (0.332,0.93) {Interference Power at PR, $\eprcvdpr$};
-                \node[draw=none, fill=gray!35,font=\footnotesize] at (0.363,0.695) {Confidence probability constraint, $\pcod$};
+                \node[draw=none, fill=gray!35,font=\footnotesize, text width = 133.5, align = left] at (0.363,0.695) {Confidence probability};
                 \node[draw=none, fill=gray!35,font=\footnotesize] at (0.228,0.46) {$\p(\eprcvdpr \ge \ite (1 + \acc))$};
                 \node[draw=none, fill=gray!35,font=\footnotesize] at (0.228,0.22) {$\p(\eprcvdpr \le \ite (1 - \acc))$};
 		
 		\only<1>
 		{	
-			\draw[blue, thick] (-0.02,.6) rectangle (.72,.73); % Confidence probability constraint
+			%\draw[blue, thick] (-0.02,.6) rectangle (.72,.73); % Confidence probability constraint
+			\draw[opacity =  0, blue, thick] (0.00,.83) rectangle (.72,.96); % Received interference power
 		}
  
 		\only<2>
 		{	
-			\draw[blue, thick] (-0.02,.83) rectangle (.72,.96); % Received interference power
-			\draw[blue, thick] (-0.02,.1) rectangle (.72,.5); % Confidence probability 
+			\draw[blue, thick] (0.00,.83) rectangle (.72,.96); % Received interference power
+			\draw[blue, thick] (0.00,.6) rectangle (.72,.73); % Confidence probability 
 		} 
                 
 		%\draw[help lines,xstep=.1,ystep=.1] (0,0) grid (1,1);
