@@ -187,7 +187,7 @@ single arrow head extend=.3cm,}}
 
 % tiksyle accustomed to build flowgraphs
 \tikzstyle{block} = [rectangle, draw, fill=kit-green50, 
-    text width=18em, text centered, rounded corners, minimum height=3.2em]
+    text width=18em, text centered, rounded corners, minimum height=5.5em]
 \tikzstyle{line} = [draw, -latex']
 
 %\usepackage{multimedia}
@@ -212,7 +212,7 @@ single arrow head extend=.3cm,}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	\pnote{This is the outline of my presentation, I will start with the motivation, where the deployment scenario (CSC) briefly illustrated.} 
 	\pnote{In addition, emphasize is laid on the fact that why performance analysis is critical to the CR systems, particularly what role does channel knowledge play in performance characterization fo a CR systems.}
-	\pnote{Next, the analysis with regard to different CR systems, namely, interweave system and  is carried out}
+	\pnote{Next, we discuss performance analysis from the perspective of CR systems, namely, interweave system}
 	\pnote{The performed analysis is verified by means of a hardware validation and demonstration.}
 	\pnote{The presentation ends with a short conclusion} 
 	\fs{10}{15}
@@ -544,8 +544,8 @@ single arrow head extend=.3cm,}}
 					
 					\fill[opacity = 0.2, fill = orange] (1.28,.98) rectangle (1.68,1.34);
 					\fill[opacity = 0.2, fill = red] (1.22,1.96) rectangle (1.62,2.32);
-					\fill[opacity = 0.2, fill = blue] (3.38,1.86) rectangle (3.78,2.22);
-					\fill[opacity = 0.2, fill = kit-green100] (2.52,.68) rectangle (2.92,1.04);
+					\fill[opacity = 0.2, fill = kit-green100] (3.38,1.86) rectangle (3.78,2.22);
+					\fill[opacity = 0.2, fill = blue] (2.52,.68) rectangle (2.92,1.04);
 					
 					%% Dummy figure added to avoid a shift between two slides
 					\fill[opacity = 0.0, fill = blue] (.32,-0.06) rectangle (1.22,0.58);
@@ -715,16 +715,17 @@ Interweave System
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}[t]{Interweave System}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	\pnote{Here the deployment scenario corresponding to CSC is transformed into an interweave system}
+	%\pnote{Here the deployment scenario corresponding to CSC is transformed into an interweave system}
+	\pnote{Interweave system enable coexistence by operating the primary and secondary system in temporal domain} 
 	\pnote{Spectrum sensing, a CR technique, is employed at the ST}
-	\pnote{By listening to signal transmitted by the PT, the ST detects the presence and absence of primary user signal. In thsi way, the ST protects the PR, by not transmitting its own signal whenever the primary user signal is detected.} 
+	\pnote{The ST detects the presence and absence of primary user signal by listening to the PT. In this way, the ST protects the PR, by not transmitting its own signal whenever the primary user signal is detected.} 
 	\pnote{Corresponding to this approach the following signal model is proposed. The signal received at the ST over the channel $\hpo$ depends on the following hypothesis, the PT is active and PT is inactive}
-	\pnote{The signal is received at the SR only under two conditions, wherever there is a misdetection or the condition where no false alarm happens.} 
-	\pnote{With reference to the signal model, the performance of the CR system can be jointly characterized in terms of detectors performance, which symbolizes the primary system performance and throughput received at SR}
+	\pnote{During data transmission, the signal is received at the SR only under two conditions, wherever there is a misdetection or the condition where no false alarm happens.} 
+	\pnote{With reference to the signal model, the performance of the interweave system can be jointly characterized in terms of detectors performance, which regulates the interference at the PR and throughput received at SR}
 	\pnote{The detector's performance can be characterized in terms of the detection probability and false alarm probability. Considering the fact that no knowledge concerning the PU signal is available, energy detectors is employed.}
 	\pnote{Secondary throughput, corresponding to the signal model, the signal received at SR is with and without interference from PT. The prefactor corresponds to the time resources allocated for sensing.} 
 	\pnote{It is worthy to point out that the characterization of the performance parameters requires the knowledge of the involved channels} 
-	\vspace{-2mm}
+	\vspace{-4mm}
 	\fs{7}{8}
 	\begin{columns}
 		\begin{column}{0.44\columnwidth}
@@ -737,7 +738,7 @@ Interweave System
 				\end{itemize}
 			\end{block}
 			\vspace{-1mm}
-			\onslide<2->
+			\onslide<1->
 			{
 				\begin{block}{\scriptsize Signal model} %{\scriptsize Signal model}
 				\begin{equation*}
@@ -758,7 +759,21 @@ Interweave System
 				\end{equation*}
 				\end{block}
 			}
-			\onslide<3->
+			\only<1>
+			{
+			
+				\vspace{-1mm}
+				\begin{block}{\scriptsize Energy detector's performance} %Detector performance Interference at PR is dependent on the detectors performance
+				\begin{equation*}
+						\pd = \Gamma\left( \frac{\tsen \fsam}{2}, \frac{\tsen \fsam \mu}{2 \color{black}{\prcvdstpt}} \right), %\\ 
+				\end{equation*}	
+				\begin{equation*}
+						\pfa = \Gamma\left( \frac{\tsen \fsam}{2}, \frac{\tsen \fsam \mu}{2 \npo} \right)%,  \label{eq_IS:pfa} 
+				\end{equation*}
+				\vspace{0.1em}	
+				\end{block}	
+			}
+			\only<2>
 			{
 			
 				\vspace{-1mm}
@@ -768,12 +783,13 @@ Interweave System
 				\end{equation*}	
 				\begin{equation*}
 						\pfa = \Gamma\left( \frac{\tsen \fsam}{2}, \frac{\tsen \fsam \mu}{2 \npo} \right)%,  \label{eq_IS:pfa} 
-				\end{equation*}	
+				\end{equation*}
+				\vspace{0.1em}	
 				\end{block}	
 			}
 		\end{column}
 		\begin{column}{0.56\columnwidth}
-		\vspace{6mm}
+		\vspace{1mm}
 		\fs{7}{8}
 		\begin{center}
 			% Interacting entities
@@ -781,21 +797,31 @@ Interweave System
         		\begin{tikzpicture}[scale=1]
 				\node[anchor=south west,inner sep=0] (image) at (0,0)
 				{
-					\includegraphics[width = 0.9\columnwidth]{../kapitel03/figures/CR_Scenario_Interweave}	     
+					\includegraphics[width = 0.85\columnwidth]{../kapitel03/figures/CR_Scenario_Interweave_V3}	     
 				};
-				\only<3>
+				\only<2>
 				{
-					\fill[opacity = 0.2, fill = orange] (1.03,1.41) rectangle (1.43,1.75);
-					\fill[opacity = 0.2, fill = blue] (1.35,0.2) rectangle (1.75,.54);
-					\fill[opacity = 0.2, fill = kit-green100] (3.13,0.98) rectangle (3.53,1.34);
+					\fill[opacity = 0.2, fill = orange] (1.12,.85) rectangle (1.52,1.21);
+					%\fill[opacity = 0.2, fill = red] (1.22,1.96) rectangle (1.62,2.32);
+					\fill[opacity = 0.2, fill = kit-green100] (2.98,1.63) rectangle (3.38,1.99);
+					\fill[opacity = 0.2, fill = blue] (2.22,.58) rectangle (2.62,.94);
 				}
 			\end{tikzpicture}	
 		\end{center}
-		\onslide<3->	
+		\vspace{1.4mm}
+		\only<1>	
 		{\begin{block}{\scriptsize Secondary throughput} %Secondary throughput
-                                \vspace{-2.6mm}
+                                \vspace{-2.0mm}
 				\begin{align*}
-                               		\rs(\tsen) =& \frac{T- \tsen}{T} \bigg[ \log_2 \left(1 + {\color{kit-green100}{|\hs|^2}} \frac{\ptranst}{\npo}\right) (1 - \pfa) \phz  \\ & + \log_2 \left(1 + \frac{{\color{kit-green100}{|\hs|^2}} \ptranst }{{\color{blue}{|\hpt|^2}} \ptranpt  + \npo } \right)  (1 - \pd) \pho  \bigg] 
+                               		\rs(\tsen) =& \frac{T- \tsen}{T} \bigg[ \log_2 \left(1 + {\color{black}{|\hs|^2}} \frac{\ptranst}{\npo}\right) (1 - \pfa) \phz  \\ & + \log_2 \left(1 + \frac{{\color{black}{|\hs|^2}} \ptranst }{{\color{black}{|\hpt|^2}} \ptranpt  + \npo } \right)  (1 - \pd) \pho  \bigg]\\[-1.0em] 
+				\end{align*} 
+                \end{block} 	
+		}
+		\only<2>	
+		{\begin{block}{\scriptsize Secondary throughput} %Secondary throughput
+                                \vspace{-2.0mm}
+				\begin{align*}
+                               		\rs(\tsen) =& \frac{T- \tsen}{T} \bigg[ \log_2 \left(1 + {\color{kit-green100}{|\hs|^2}} \frac{\ptranst}{\npo}\right) (1 - \pfa) \phz  \\ & + \log_2 \left(1 + \frac{{\color{kit-green100}{|\hs|^2}} \ptranst }{{\color{blue}{|\hpt|^2}} \ptranpt  + \npo } \right)  (1 - \pd) \pho  \bigg]\\[-1.0em] 
 				\end{align*} 
                 \end{block} 	
 		}
@@ -806,15 +832,16 @@ Interweave System
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}[t]{Interweave System}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	\pnote{In an idealistic scenario that assumes the knowledge of the involved channels, it is possible to determine a suitable sensing time that achieves a maximum throughput such that detection probability mainly responsible for causing interference is constrained}
-	\pnote{It is worthy to that since no knowledge regarding the channels is available, such an optimization is no longer valid for the hardware deployment}
-	\pnote{To resolve this issue, following approach is proposed, the time resources are allocated at the ST and the SR frame structure.}
+	%\pnote{In an idealistic scenario that assumes the knowledge of the involved channels, it is possible to determine a suitable sensing time that achieves a maximum throughput such that detection probability mainly responsible for causing interference is constrained}
+	%\pnote{It is worthy to that since no knowledge regarding the channels is available, such an optimization is no longer valid for the hardware deployment}
+	\pnote{In order to acquire this knowledge, following approach is proposed, the time resources for the estimation corresponding channels are allocated at the ST and the SR frame structure.}
         \pnote{The variations due to the estimation of the involved channels are characterized in terms of their cdf.}
 	\pnote{It is worthy to mention here that the received power estimation is employed for the channels between the primary and secondary systems and pilot based estimation is employed for the channel within the secondary system} % In this regard, the estimated parameters is observed indirectly in the form of received power 
 	\pnote{Next, the variations in the performance parameters are characterized using their cdfs, where C0 and C1 corresponds to the data rate with and without interference in the throughput expression}
-	\pnote{The derived expressions are used to determine the suitable estimation and sensing time intervals that achieves the maximum secondary throughput.}
-	\pnote{Based on the proposed approach, an estimation model that include channel estimation that yields the achievable throughput while satisfying the new interference constraints on the detection probability}
-	\pnote{In this work, an average and outage constraint is proposed.} 
+	\pnote{The derived expressions are used to determine the suitable estimation and sensing time intervals that achieves the maximum secondary throughput, represented by the expression on the right}
+	\pnote{The variations in the detectors performance, leading to uncertain interference are captured by means average constraint and outage constraint} 
+	%\pnote{Based on the proposed approach, an estimation model that include channel estimation that yields the achievable throughput while satisfying the new interference constraints on the detection probability}
+	%\pnote{In this work, an average and outage constraint is proposed.} 
 	\vspace{-2mm}
 	\fs{7}{8}
 	%\begin{block}{}
@@ -822,18 +849,17 @@ Interweave System
 	\begin{columns}
 		\begin{column}{0.38\columnwidth}
 			%\vspace{-1mm}
-			\begin{block}{\scriptsize Ideal Model (IM)}
-     			   	\vspace{-4.5mm}
-	    		        \begin{align*}
-				\trs(\ttsen) =& \maxi_{\tsen} \trs(\tsen)\\ 
-				\text{s.t.} & \text{ } \pd \ge \pdd	
-	        	\end{align*}
-			%Without the knowledge of channel gains $\phpo$, $\phpt$ and $\phs$, it is difficult to characterize the performance parameters $\pd$ and $\rs$  
-			\end{block}
-			\vspace{-1.5mm}
+			%\begin{block}{\scriptsize Ideal Model (IM)}
+     			%  	\vspace{-4.5mm}
+		  	%	\begin{align*}
+			%		\trs(\ttsen) =& \maxi_{\tsen} \trs(\tsen)\\ 
+			%		\text{s.t.} & \text{ } \pd \ge \pdd	
+	        	%	\end{align*}
+			%\end{block}
+			\vspace{-0.7mm}
 			\begin{block}{\scriptsize Proposed Approach}
 			\begin{center}
-			\begin{tikzpicture}[node distance = 1.27cm, auto]
+			\begin{tikzpicture}[node distance = 1.77cm, auto]
                         	% draw nodes
 				\node [block] (frame) {Incorporation of time resources for channel estimation and sensing in frame structure ($\test, \tsen$)};
   			        \node [block, below of=frame] (channelest) {Variations due to channel estimation ($\pgpo$, $\pgpt$, $\pgs$) are characterized in terms of $\fprcvd, \fprcvdsr, \fephs$};
@@ -910,7 +936,8 @@ Interweave System
 	\begin{columns}
 	\begin{column}{0.45\columnwidth}
 	\fs{7}{8}
-		\renewcommand{\arraystretch}{1.55}
+		\centering
+		\renewcommand{\arraystretch}{1.6}
 		\begin{tabular}{c||c}
 		%\hline
 		\rowcolor{kit-green30}
@@ -922,15 +949,16 @@ Interweave System
 		$\phs$ & $\SI{-80}{dB}$ \\ %\hline 
 		$T$ & $\SI{100}{ms}$ \\ %\hline 
 		$\npo$ & $\SI{-100}{dBm}$ \\ %\hline
-		$\snrrcvd$ & $\SI{-10}{dB}$ \\ %\hline
-		$\snrpt$ & $\SI{-10}{dB}$ \\ %\hline
-		$\snrso$ & $\SI{10}{dB}$ \\ %\hline
+		%$\snrrcvd$ & $\SI{-10}{dB}$ \\ %\hline
+		%$\snrpt$ & $\SI{-10}{dB}$ \\ %\hline
+		%$\snrso$ & $\SI{10}{dB}$ \\ %\hline
 		%$\ptranpt$ & $-\SI{10}{dBm}$ \\ %\hline
 		%$\ptranst$ & $-\SI{10}{dBm}$ \\ %\hline
 		$\pho = 1 - \phz$ & 0.2 \\ %\hline
 		%$\test$ & $\SI{5}{ms}$ \\ %\hline
-		$\Ks$ & 10 \\ \hline
-		%$\Kp$ & $1000$ \\ \hline
+		%$\Ks$ & 10 \\ \hline
+		%$\Kp$ & $1000$ \\ 
+		\hline
 	\end{tabular}
 
 	\end{column}
@@ -992,17 +1020,20 @@ Underlay System
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}[t]{Underlay System}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	\pnote{Next, the deployment scenario is transformed into an underlay system, which utilizes the interference tolerant capability of primary systems.}
-	\pnote{Unlike interweave system that considers temporal separation, the underlay system allows the secondary users to co-exist during the same time interval however separated in space, only if the interference received at the PR is kept below a desired level.}
-	\pnote{A power control mechanism is employed at the ST}
-	\pnote{Now, to employ power control, the ST listens to signals transmitted by the PR and apply channel reciprocity so as to maintain the interference received at PR is below a certain threshold.} 
+	%\pnote{Next, the deployment scenario is transformed into an underlay system, which utilizes the interference tolerant capability of primary systems.}
+	%\pnote{The underlay system exploits the interference tolerance capability of the primary system, which allows the secondary users to co-exist in the during the same time interval however separated in space, only if the interference received at the PR is kept below a desired level.}
+	\pnote{The underlay system enables secondary access by spatial separating the two systems} 
+	\pnote{In this view, a power control mechanism is employed at the ST}
+	\pnote{Now, to employ power control, the ST listens to signals transmitted by the PR, apply channel reciprocity and control its transmit power so that the interference received at PR is below a certain threshold.} 
 	\pnote{The signal received at ST over the channel is composed of signal transmitted by the PR over the channel hp3}
 	\pnote{During data transmission at ST with control power, the signal received at the PR is given by} % As it is noticed channel reciprocity is employed by the ST to acquire knowledge of the channel 
 	\pnote{Finally, the signal received at SR comprises of data signal with controlled power over hs and interference signal from PT over hp2} 
-	\pnote{Next, the operation of the US is summarized as follows the received interference power at PR, which comprises of the channel gain and control power should be less than a certain interference threshold. Using this relationship it is straightforward to determine the expression of control power} % Characterizes the performance of primary system
-	\pnote{Next, the data rate with control power can be computed as}
+	\pnote{The performance of an underlay system is characterized in terms of interference received at the PR and the data rate at the SR}
+	%\pnote{Next, the operation of the US is summarized as follows the received interference power at PR, which comprises of the channel gain and control power should be less than a certain interference threshold. Using this relationship it is straightforward to determine the expression of control power} % Characterizes the performance of primary system
+	%\pnote{Next, the data rate with control power can be computed as}
 	\pnote{Now, in order to employ power control and assure a QoE to the SR, the ST must acquire the knowledge of the involved channels} % The estimation of the channel hp2 happens at SR. This information is made available through a feedback channel
-	\pnote{In this regard, secondary system listens interchangeably to the transmissions from the PT and PR.} 
+	\pnote{In this regard, channel estimation for the corresponding channels are incorporated in the secondary system frame structure} 
+	%\pnote{In this regard, secondary system listens interchangeably to the transmissions from the PT and PR.} 
 	\vspace{-4mm}
 	\fs{7}{8}
 	\begin{columns}
@@ -1109,7 +1140,7 @@ Underlay System
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}[t]{Underlay System}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	\pnote{Again variations are induced due to channel estimation resulting in variations in the received power (performance parameter for the primary system) which in certain occasions can exceed the interference threshold. Such events are harmful for the operation of underlay system.} 
+	\pnote{The variations are induced due to channel estimation affects the power control resulting in uncertain interference at the PR. Such events are harmful for the operation of underlay system.} 
 	\pnote{These variations are captured by means of outage constraint on the received power}
 	\pnote{Besides, the transmit power is constrained, i.e., cannot be exceeded beyond a certain value}
 	\pnote{Considering these two constraints the control power at ST that employs channel estimation is characterized as}
@@ -1117,7 +1148,7 @@ Underlay System
 	\pnote{Based on this, the control power under the influence of channel estimation is classified as interference limited regime and power-limited regime (Use the expression).} 
 	\pnote{At low value of test, large variations are induced in the system causing a larger of interference at the PR, hence a sever power control (low value of control power) is exercised.}
 	\pnote{However, at high value of estimation time are power control is less severe, hence approaches the ideal value of the transmit power}
-	\pnote{Such a phenomenon is reflected in figure, where the control power increases with the estimation time for different values of the outage constraint. Obviously, stringent constraint results in a sever power control} 
+	%\pnote{Such a phenomenon is reflected in figure, where the control power increases with the estimation time for different values of the outage constraint. Obviously, stringent constraint results in a sever power control} 
 	\vspace{-4.5mm}
 	\fs{7}{8}
 	\begin{columns}
@@ -1176,7 +1207,7 @@ Underlay System
 				\frac{\ite \ptran}{ \left(\bpo \Gamma^{-1}(\opc, \apo) - \nps  \right)}, & \mbox{for } \preg < \pc \Rightarrow \text{Interference-limited regime}\\
 				\pc, & \mbox{for } \preg \ge \pc \Rightarrow \text{Power-limited regime}
 				\end{cases} \\
-				\text{where  } \apo &= \frac{{\color{kit-green100}{\test \fsam}} (1 + {\color{kit-green100}{\snrrcvdu}})^2}{2 + 4 {\color{kit-green100}{\snrrcvdu}}} \text{ and } \bpo = \frac{\nps (2 + 4 {\color{kit-green100}{\snrrcvdu}})}{{\color{kit-green100}{\test \fsam}} (1 + {\color{kit-green100}{\snrrcvdu}})},
+				\text{where  } \apo &= \frac{{\color{kit-green100}{\test \fsam}} (1 + {\color{kit-green100}{\snrrcvdu}})^2}{2 + 4 {\color{black}{\snrrcvdu}}} \text{ and } \bpo = \frac{\nps (2 + 4 {\color{black}{\snrrcvdu}})}{{\color{kit-green100}{\test \fsam}} (1 + {\color{black}{\snrrcvdu}})},
 			\end{align*}
 	\end{block}
 \end{frame}
@@ -1185,16 +1216,17 @@ Underlay System
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}[t]{Underlay System}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	\pnote{Next, the variations in the throughput are captured by characterizing the cdf of the data rate C3}
+	\pnote{Next, the variations due to the estimation of the channels hs and hp3 are characterized}
 	\pnote{It is worthy to note that the secondary throughput is dependent on the estimation time directly through the resource allocation and indirectly through the control power (seen in previous slide).}
-	\pnote{Such a tradeoff can be used to determine the suitable estimation time that achieves the maximum secondary throughput as represented by the expression that achieves the maximum secondary throughput as represented by the expression and represented in the figure}
-	\pnote{At lower values of estimation time the time resources are used for reducing the variations via control power. Beyond a certain time resources results in performance degradation.}
-	\pnote{Next, the variation of the achievable throughput is compared with the SNR received at ST over the channel hp3 for the IM, EM. Coro2 represents the EM but without power control} 
-	\pnote{Low values are favourable for the secondary system, as seen by the increase in throughput of the ideal model.}   
-	\pnote{Next, the operation of the underlay system are classified into interference- and power-limited regimes}
-	\pnote{Under interference-limited regime the underlay system is bounded by interference in the system}
-	\pnote{Under power-limited regime the underlay system is bounded by the transmit power}
-	\pnote{The operation range where the benefits from US can be procured (operating under low SNR of US) is highly dependent on transmit power}  
+	\pnote{Such a tradeoff can be used to determine the suitable estimation time that achieves the maximum secondary throughput as represented by the expression that achieves the maximum secondary throughput as represented by the expression, analyzed in the figure}
+	\pnote{Below $\ttest$, the time resources are used for reducing the variations via control power. Beyond $\ttest$, the system experiences performance degradation.}
+	%\pnote{It is analyzed, for lower values of estimation time, the proposed power control effectively captures the variations in the system. Beyond a certain point, these time resources are contributes marginally to performance improvement in terms of variations and largely to the degradation due to the resources consumed.}
+	%\pnote{Next, the variation of the achievable throughput is compared with the SNR received at ST over the channel hp3 for the IM, EM. Coro2 represents the EM but without power control} 
+	%\pnote{Low values are favourable for the secondary system, as seen by the increase in throughput of the ideal model.}   
+	%\pnote{Next, the operation of the underlay system are classified into interference- and power-limited regimes}
+	%\pnote{Under interference-limited regime the underlay system is bounded by interference in the system}
+	%\pnote{Under power-limited regime the underlay system is bounded by the transmit power}
+	%\pnote{The operation range where the benefits from US can be procured (operating under low SNR of US) is highly dependent on transmit power}  
 	%\vspace{-4.5mm}
 	\fs{7}{8}
 	\begin{columns}
@@ -1294,8 +1326,8 @@ Underlay System
 		\begin{itemize}
 			%\item Ideal model allows us to evaluate the performance degradation induced due to incorporation of channel knowledge 
 			\item Secondary throughput is dependent on estimation time throughput control power and resource allocation (pre-factor)   
-			\item Below $\test$, the time resources are used for reducing the variations via control power		
-			\item Beyond $\ttest$, the system experiences performance degradation.
+			\item Below $\ttest$, the time resources are used for reducing the variations via control power		
+			\item Beyond $\ttest$, the system experiences performance degradation
 			% Due to tansmit power constraint the operation of the US is resctricted for low of SNR
 			
 		\end{itemize}	
@@ -1551,8 +1583,9 @@ Hardware Implementation
 	\pnote{Primary and secondary signals are modelled as OFDM modulated signals}
 	\pnote{Interference from the PT to the SR over hp2 is assumed to be negligible}
 	\pnote{Despite these simplifications and modifications, the signal model remains unchanged, except for the signal received at SR, which excludes the interference from PT}
-	\pnote{The modified version of the deployment scenario and the frame structure is illustrated in the figure}
-	\pnote{The performance parameter, the interference received at the PR and the throughput at SR are presented, followed by the estimation throughput tradeoff subject to confidence probability constraint}
+	\pnote{The modified version of the deployment scenario and the frame structure is illustrated in the figures}
+	\pnote{The variations in the system are characterized in terms of the interference received at the PR and the throughput at SR}
+	\pnote{Besides, an estimation throughput tradeoff subject to confidence probability constraint is proposed}
 	%%\vspace{-3mm}
 	\fs{7}{8}
 	\begin{block}{\scriptsize Objective}
