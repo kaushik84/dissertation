@@ -718,7 +718,7 @@ Interweave System
 	%\pnote{Here the deployment scenario corresponding to CSC is transformed into an interweave system}
 	\pnote{Interweave system enable coexistence by operating the primary and secondary system in temporal domain} 
 	\pnote{Spectrum sensing, a CR technique, is employed at the ST}
-	\pnote{The ST detects the presence and absence of primary user signal by listening to the PT. In this way, the ST protects the PR, by not transmitting its own signal whenever the primary user signal is detected.} 
+	\pnote{By which, the ST detects the presence and absence of primary user signal by listening to the PT. In this way, the ST protects the PR, by not transmitting its own signal whenever the primary user signal is detected.} 
 	\pnote{Corresponding to this approach the following signal model is proposed. The signal received at the ST over the channel $\hpo$ depends on the following hypothesis, the PT is active and PT is inactive}
 	\pnote{During data transmission, the signal is received at the SR only under two conditions, wherever there is a misdetection or the condition where no false alarm happens.} 
 	\pnote{With reference to the signal model, the performance of the interweave system can be jointly characterized in terms of detectors performance, which regulates the interference at the PR and throughput received at SR}
@@ -1024,7 +1024,7 @@ Underlay System
 	%\pnote{The underlay system exploits the interference tolerance capability of the primary system, which allows the secondary users to co-exist in the during the same time interval however separated in space, only if the interference received at the PR is kept below a desired level.}
 	\pnote{The underlay system enables secondary access by spatial separating the two systems} 
 	\pnote{In this view, a power control mechanism is employed at the ST}
-	\pnote{Now, to employ power control, the ST listens to signals transmitted by the PR, apply channel reciprocity and control its transmit power so that the interference received at PR is below a certain threshold.} 
+	\pnote{By which, the ST listens to signals transmitted by the PR, apply channel reciprocity and control its transmit power so that the interference received at PR is below a certain threshold.} 
 	\pnote{The signal received at ST over the channel is composed of signal transmitted by the PR over the channel hp3}
 	\pnote{During data transmission at ST with control power, the signal received at the PR is given by} % As it is noticed channel reciprocity is employed by the ST to acquire knowledge of the channel 
 	\pnote{Finally, the signal received at SR comprises of data signal with controlled power over hs and interference signal from PT over hp2} 
@@ -1137,6 +1137,113 @@ Underlay System
 \end{frame}
 
 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[t]{Underlay System}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\pnote{The variations are induced due to channel estimation affects the power control resulting in uncertain interference at the PR. Such events are harmful for the operation of underlay system.} 
+	\pnote{These variations are captured by means of outage constraint on the received power}
+	\pnote{Besides, the transmit power is constrained, i.e., cannot be exceeded beyond a certain value}
+	\pnote{Considering these two constraints the control power at ST that employs channel estimation is characterized as}
+	\pnote{It is worthy to note that, in contrast to the idealistic approach, the expression of control power is dependent on the estimation time. Thus, control power allow us to capture the variations in the system.}
+	\pnote{Next, the variations due to the estimation of the channels hs and hp3 are characterized}
+	\pnote{It is worthy to note that the secondary throughput is dependent on the estimation time directly through the resource allocation and indirectly through the control power (seen in previous slide).}
+	\pnote{Such a tradeoff can be used to determine the suitable estimation time that achieves the maximum secondary throughput as represented by the expression that achieves the maximum secondary throughput as represented by the expression, analyzed in the figure}
+	\pnote{Below $\ttest$, the time resources are used for reducing the variations via control power. Beyond $\ttest$, the system experiences performance degradation.}
+	%\pnote{Based on this, the control power under the influence of channel estimation is classified as interference limited regime and power-limited regime (Use the expression).} 
+	%\pnote{At low value of test, large variations are induced in the system causing a larger of interference at the PR, hence a sever power control (low value of control power) is exercised.}
+	%\pnote{However, at high value of estimation time are power control is less severe, hence approaches the ideal value of the transmit power}
+	%\pnote{Such a phenomenon is reflected in figure, where the control power increases with the estimation time for different values of the outage constraint. Obviously, stringent constraint results in a sever power control} 
+	\vspace{-4.5mm}
+	\fs{7}{8}
+	\begin{columns}
+		\begin{column}{0.45\columnwidth}
+			\only<1>
+			{
+				\begin{block}{\scriptsize Control power} 
+				Constraint on received interference at PR 
+				\begin{align*}
+					\p\left( \prcvdpr = \ephpth \preg \ge \ite \right) \le \opc, \\  
+					\p\left( \left( \frac{{\color{red}{\eprcvdstpr}} - \nps}{\ptran}\right) \preg \ge \ite \right) \le \opc 
+				\end{align*}
+				Constraint on transmit power at ST 
+				\begin{equation*}
+				\preg \le \pc. \label{eq_US:pc} 
+				\end{equation*}
+				\end{block} 
+				\vspace{-3mm}
+				\begin{center}	
+					\tikzfancyarrow[0.9cm][kit-green70][top color=kit-green50, bottom color=kit-green50, shape border rotate=270]{\color{kit-green50}{10}}		%	\\[0.5em]
+				\end{center}	
+			}
+			\only<2->
+			{
+				\begin{block}{\scriptsize Secondary throughput} %{\scriptsize Principle}
+				\vspace{-3mm}
+				\begin{align*}
+					\eca  = \log_2 \left(1 + \frac{{\color{kit-green100}{\epgs}} \preg}{{\color{blue}{\eprcvdsr}}} \right) \\
+					\rs(\test) = \frac{T - \test}{T} \e{\eca} {\eca} 
+				\end{align*}
+				\end{block}
+
+				\begin{block}{\scriptsize Achievable secondary throughput} 
+				\vspace{-3mm}
+				\begin{align*}
+					\trs(\ttest)  = \maxi_{\test}  & \text{      } {\rs(\test)} \\
+					\text{s.t.} & \;\p\left( \ephpth \preg \ge \ite \right) \le \opc \\
+					\text{s.t.} & \;\preg \le \pc
+				\end{align*}
+				\end{block}
+			}
+		\end{column}
+		\begin{column}{0.55\columnwidth}
+		\fs{7}{8}
+		\begin{center}
+			\centering
+             	        \resizebox{.95 \columnwidth}{!}{%
+                        %\only<1>
+			{
+				%% Add psfrag entries
+              		  	\input{../kapitel04/figures/fig_thr_est_time_tradeoff_AWGN.tex}
+				\begin{tikzpicture}[scale=1]
+					\node[anchor=south west,inner sep=0] (image) at (0,0)
+					{
+					\includegraphics[width= \figscale]{../kapitel04/figures/fig_thr_est_time_tradeoff_AWGN}
+};
+					\begin{scope}[x={(image.south east)},y={(image.north west)}]
+
+					\draw (0.38,0.78) arc(-130:130:0.005 and 0.015);
+					\node[draw, fill=gray!10,font=\scriptsize] at (0.39,0.735) {$\opc = 0.01$};
+
+					\draw (0.65,0.77) arc(-130:130:0.005 and 0.015);
+					\node[draw,fill=gray!10,font=\scriptsize] at (0.66,0.838) {$\opc = 0.1$};
+					\node[draw=none,fill=kit-green30, minimum height = 0.6cm, align = center, font = \footnotesize] at (0.5, 1.05) {Estimation-throughput tradeoff};
+
+					%\draw[help lines,xstep=.1,ystep=.1] (0,0) grid (1,1);
+					%\foreach \x in {0,1,...,9} { \node [anchor=north] at (\x/10,0) {0.\x}; }
+					%\foreach \y in {0,1,...,9} { \node [anchor=east] at (0,\y/10) {0.\y}; }
+				\end{scope}
+				\end{tikzpicture}
+			}
+		}
+		\end{center}
+		\end{column}
+	\end{columns}
+	\begin{block}{}%{\scriptsize Power control} 
+		\vspace{-4mm}
+		\begin{align*}
+			\preg &= 
+			\begin{cases} 
+				\frac{\ite \ptran}{ \left(\bpo \Gamma^{-1}(\opc, \apo) - \nps  \right)}, & \mbox{for } \preg < \pc \Rightarrow \text{Interference-limited regime}\\
+				\pc, & \mbox{for } \preg \ge \pc \Rightarrow \text{Power-limited regime}
+				\end{cases} \\
+				\text{where  } \apo &= \frac{{\color{kit-green100}{\test \fsam}} (1 + {\color{black}{\snrrcvdu}})^2}{2 + 4 {\color{black}{\snrrcvdu}}} \text{ and } \bpo = \frac{\nps (2 + 4 {\color{black}{\snrrcvdu}})}{{\color{kit-green100}{\test \fsam}} (1 + {\color{black}{\snrrcvdu}})},
+			\end{align*}
+	\end{block}
+\end{frame}
+
+\iffalse
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}[t]{Underlay System}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1207,7 +1314,7 @@ Underlay System
 				\frac{\ite \ptran}{ \left(\bpo \Gamma^{-1}(\opc, \apo) - \nps  \right)}, & \mbox{for } \preg < \pc \Rightarrow \text{Interference-limited regime}\\
 				\pc, & \mbox{for } \preg \ge \pc \Rightarrow \text{Power-limited regime}
 				\end{cases} \\
-				\text{where  } \apo &= \frac{{\color{kit-green100}{\test \fsam}} (1 + {\color{kit-green100}{\snrrcvdu}})^2}{2 + 4 {\color{black}{\snrrcvdu}}} \text{ and } \bpo = \frac{\nps (2 + 4 {\color{black}{\snrrcvdu}})}{{\color{kit-green100}{\test \fsam}} (1 + {\color{black}{\snrrcvdu}})},
+				\text{where  } \apo &= \frac{{\color{kit-green100}{\test \fsam}} (1 + {\color{black}{\snrrcvdu}})^2}{2 + 4 {\color{black}{\snrrcvdu}}} \text{ and } \bpo = \frac{\nps (2 + 4 {\color{black}{\snrrcvdu}})}{{\color{kit-green100}{\test \fsam}} (1 + {\color{black}{\snrrcvdu}})},
 			\end{align*}
 	\end{block}
 \end{frame}
@@ -1351,6 +1458,8 @@ Underlay System
 	}
 	\fi
 \end{frame}
+\fi
+
 \fi
 
 \ifhybrid
@@ -1574,18 +1683,19 @@ Hardware Implementation
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}[t]{Hardware Implementation}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	\pnote{The aforementioned analysis has been limited to theoretical expressions, it worthy to note that regard to CR systems it is essential as-well-as challenging to depict their hardware realizations}
-	\pnote{Hence, the main objective is to verify the feasibility of the analysis proposed}
+	%\pnote{The aforementioned analysis has been limited to theoretical expressions} 
+	\pnote{It is essential as-well-as challenging to depict their hardware implementation of CR systems}
+	\pnote{In this regard, the feasibility of the proposed analysis is verified by means of hardware implementation}
 	\pnote{Without any specific argumentation, an underlay system is selected}
 	\pnote{With regard the analysis proposed previously, some simplifications and modification were considered for the hardware implementation}
-	\pnote{Channel estimation was restricted to the channel hp3, the perfect estimation was considered. The main purpose here is to demonstrate the applicability of the interference constraint}
+	\pnote{Channel estimation was restricted to the channel hp3. The main purpose here is to demonstrate the applicability of the interference constraint}
 	\pnote{To capture the variations in the received power the outage constraint was replaced with confidence probability constraint}  
-	\pnote{Primary and secondary signals are modelled as OFDM modulated signals}
+	%\pnote{Primary and secondary signals are modelled as OFDM modulated signals}
 	\pnote{Interference from the PT to the SR over hp2 is assumed to be negligible}
 	\pnote{Despite these simplifications and modifications, the signal model remains unchanged, except for the signal received at SR, which excludes the interference from PT}
 	\pnote{The modified version of the deployment scenario and the frame structure is illustrated in the figures}
-	\pnote{The variations in the system are characterized in terms of the interference received at the PR and the throughput at SR}
-	\pnote{Besides, an estimation throughput tradeoff subject to confidence probability constraint is proposed}
+	%\pnote{The variations in the system are considered in terms of the interference received at the PR and the throughput at SR}
+	%\pnote{Besides, an estimation throughput tradeoff subject to confidence probability constraint is proposed}
 	%%\vspace{-3mm}
 	\fs{7}{8}
 	\begin{block}{\scriptsize Objective}
@@ -1622,6 +1732,7 @@ Hardware Implementation
 				\end{equation*}
 			\end{block} 
 			}
+			\iffalse
 			\only<2>	
 			{
 			\vspace{-2mm}	
@@ -1645,6 +1756,7 @@ Hardware Implementation
 				\end{align*}
 			\end{block}	 
 			}
+			\fi
 		\end{column}
 		\begin{column}{0.55\columnwidth}
 		\fs{7}{8}
@@ -1675,10 +1787,11 @@ Hardware Implementation
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}[c]{Validation}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\pnote{Firstly, a hardware validation of derived expressions is proposed} 
 	\pnote{To perform the validation process, the following measurement setup was used}
 	\pnote{The signal generator was modelled as PR for transmitting signals}
-	\pnote{Since our main focus here was to certify the significance of the expressions obtained, the channel hp3 was modelled using a coaxial cable for signal transmissions. Later for the demonstration the antennas are deployed}
-	\pnote{An SDR platform emulates the ST that realizes the power control and data transmission to a virtual SR because channel knowledge is assumed to be perfect}
+	%\pnote{Since our main focus here was to certify the significance of the expressions obtained, the channel hp3 was modelled using a coaxial cable for signal transmissions. Later for the demonstration the antennas are deployed}
+	\pnote{An SDR platform emulates the ST that realizes channel estimation, the power control and data transmission (to a virtual SR because channel knowledge is assumed to be perfect)}
 	\pnote{The host computer provides an interface to perform basic computation and act as a database for storing samples} 
 	\begin{columns}
 		\begin{column}{0.45\columnwidth}
@@ -1717,9 +1830,9 @@ Hardware Implementation
 	\pnote{Based the measurement parameters illustrated in the table, the pdfs of performance parameters obtained using the theoretical expressions are compared with the histograms computed from the measurements}
 	\pnote{This certifies that the accuracy of analytical expressions for performance analysis}
 	\pnote{Besides, the obtained expressions can be programmed onto the hardware}
-	\pnote{Finally, the figure justifies the applicability of optimization problem yielding an achievable throughput}
-	\pnote{We see the variations of the performance parameters over the estimation time, the expected throughput decreases due to the time allocation. On the other side, the confidence probability increases due to reduction in variations} 
-	\pnote{The time interval at which the confidence probability constraint is satisfied yields th maximum expected throughput} 
+	\pnote{Finally, the figure justifies the applicability of estimation throughput tradeoff yielding an achievable throughput for a desired value of confidence probability constraint}
+	%\pnote{We see the variations of the performance parameters over the estimation time, the expected throughput decreases due to the time allocation. On the other side, the confidence probability increases due to reduction in variations} 
+	%\pnote{The time interval at which the confidence probability constraint is satisfied yields the maximum expected throughput} 
 	\begin{columns}
 		\begin{column}{0.45\columnwidth}
 			\fs{7}{8}
