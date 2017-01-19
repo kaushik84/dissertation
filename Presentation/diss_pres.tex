@@ -39,8 +39,8 @@
 %\hardfalse
 
 \newif\ifnovideo
-\novideotrue
-%\novideofalse
+%\novideotrue
+\novideofalse
 
 %\newif\ifvideo
 %\videotrue
@@ -312,7 +312,7 @@ single arrow head extend=.3cm,}}
 \begin{frame}[t]{5G Technologies}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	\pnote{The feasibility of these requirements can be envisaged through the application of some of the promising approaches such as maximizing the spatial degree of freedom, reducing the size of the cell to enhance spectrum reuse, designing the waveform to increase spectral efficiency, in-band full duplex communications.}
-\pnote{Although these technologies contributes to an increase in data rate, this large number in data rate cannot be achieved without an extension to already allocated spectrum}
+\pnote{Despite the fact that these technologies contributes significantly to an increase in data rate, this large number in data rate cannot be achieved without an extension to already allocated spectrum}
 \pnote{Now, the question arises, where to look for spectrum, In this perspective, two alternatives exists: traditional approach is below 6 GHz. Due to the static allocation of the spectrum below 6 GHz to different mobile services, it is difficult spectrum below 6 GHz.}
 \pnote{Another alternative is to shift to higher frequencies beyond 6 GHz, which corresponds to mm-W and visible light communications}
 \pnote{Certainly, the spectrum above 6 GHz is prone to higher propagation loss, limited to LOS propagation, thus mobility of wireless systems is compromised.}
@@ -387,7 +387,7 @@ single arrow head extend=.3cm,}}
 \pnote{In order to enhance the viability of the proposed architecture, some essential ingredients are highlighted}
 \pnote{The architecture presented comprises of following network elements, MC-BS, MSs as a part of the CSC and MC, CSC-BS.}
 %\pnote{Next, different spectrum access schemes, pertaining to proposed 5G architecture, are presented. Wireless backhaul link represents a link between MC-BS and CSC-BS (representing a control and data plane). Following the trends, the mm-Wave, visible light communications and exclusively acquired spectrum are the potential candidates in support of wireless backhaul communications.}
-\pnote{Next, different spectrum access, which primarily constitutes the CR communication between the CSC-BS and the MS represents a user interface, wireless backhaul between CSC-BS and MS meant for exchanging the control and user information} 
+\pnote{The user interface (between the CSC-BS and the MS) represents of the secondary access to licensed spectrum (CR communication), wireless backhaul between CSC-BS and MS meant for exchanging the control and user information, representing a mm-Wave communication} 
 %\pnote{Direct link corresponds to the conventional link that already exist between the MC-BS and MS. The spectrum for the direct access correspond to conventional link.} 
 %\pnote{Indirect link corresponds to the CR communications, a spectrum is acquired for secondary usage is utilized for indoor communications.} 
 \pnote{Next, it is worthy to understand that why an indoor deployment is proposed for disposition of CR techniques. From a market survey, it has been revealed that 70\% of the data traffic is originated indoor, thus by deploying CSC one attempts to consolidate these traffic sources. Besides, the indoor deployment provides a spatial separation between licensed and unlicensed users.} 
@@ -414,9 +414,9 @@ single arrow head extend=.3cm,}}
 		{
 			\begin{block}{\scriptsize Spectrum Access}
 				\begin{itemize}
-					\item Wireless backhaul link ($\color{blue}{\text{CSC-BS} \Leftrightarrow \text{MC-BS}}$)
-					\item Direct link ($\color{kit-green100}{\text{MC-BS} \Leftrightarrow \text{MS}}$) 
-					\item Indirect link ($\color{red}{\text{CSC-BS} \Leftrightarrow \text{MS}}$) 
+					\item Secondary access ($\color{red}{\text{CSC-BS} \leftrightarrow \text{MS}}$) 
+					\item Wireless backhaul ($\color{blue}{\text{CSC-BS} \leftrightarrow \text{MC-BS}}$)
+					%\item ($\color{kit-green100}{\text{MC-BS} \leftrightarrow \text{MS}}$) 
 				\end{itemize}
 			\end{block}
 		}
@@ -453,7 +453,7 @@ single arrow head extend=.3cm,}}
 				\only<3>
 				{
 					\fill[opacity = 0.2, fill = blue] (1.37,2.78) rectangle (3.2,3.35);
-					\fill[opacity = 0.2, fill = kit-green100] (3.35,3.5) rectangle (3.6,4.3);
+					%\fill[opacity = 0.2, fill = kit-green100] (3.35,3.5) rectangle (3.6,4.3);
 					\fill[opacity = 0.2, fill = red] (1.08,0.89) rectangle (2.05,1.61);
 				}
 			\end{tikzpicture}	
@@ -471,12 +471,11 @@ single arrow head extend=.3cm,}}
 	\pnote{With no concrete guidelines that means no knowledge about the prospective primary systems. From a physical layer perspective, this means no knowledge about the primary user signal.} 
 	\pnote{One alternative to assign a dedicated circuitry corresponding to every primary user signal, which is unrealistic from a deployment perspective. As a result, only solutions will persist that consider no knowledge of primary user signals, for instance energy detection. In other words, versatile and applicable to large range of wireless system.}  
 	\pnote{The concept of CR has been under discussion over the last 18 years, during this time line several models have been established, characterizing the performance of CR systems. However, due to the complexity of the underlying scenario, these models tend to makes assumptions that are feasible over the hardware. Leaving their performance analysis questionable.}
-	\pnote{Secondary access is enabled through the employment of CR techniques at the ST. Through the implementation of these techniques, a CR system guarantees sufficient protection at the PR in the form of interference power received at the PR} 
-	\pnote{On the other end, in order to co-benefit from the secondary access, the CR system guarantees a certain QoE in the form of throughput at the SR} 
+	\pnote{Secondary access is enabled through the employment of CR techniques at the ST. Through the implementation of these techniques, a CR system guarantees sufficient protection at the PR in the form of interference power received at the PR, a certain QoE in the form of throughput at the SR} 
 	\pnote{Considering the performance of primary and secondary system jointly, we characterizes the performance of CR system} 
 	\pnote{It is been identified is a knowledge of the involved channels is necessary to demonstrate the feasibility of CR techniques}
 	\pnote{In this regard, channel estimation is proposed at the secondary system} 
-	\pnote{Incorporating channel knowledge in the system model allows us to analyze the performance of CR system in conditions which are one step closer to reality} 
+	\pnote{Incorporating channel knowledge in the system model allows us to analyze the performance of CR system closer to realistic conditions} 
 	\vspace{-3mm}
 	\fs{7}{8}
 	\begin{block}{\scriptsize Challenges}
@@ -583,8 +582,8 @@ single arrow head extend=.3cm,}}
 	\pnote{In this regard, a novel estimation technique termed as received-power based estimation is proposed that satisfies the low-complexity and versatility requirements.}
 	\pnote{It is an obvious fact that channel estimation will certainly has a detrimental effect on the performance, thereby degrading the performance of CR systems, in terms of uncertainty in the interference caused due to imperfect channel knowledge or variations induced in the system. Secondly, degradation in throughput caused due to the time allocation.} 
 	\pnote{In order to regulate uncertainty in interference, new interference constraints are proposed. Secondly, the interplay between the uncertain interference and the secondary throughput is analyzed in terms of performance tradeoffs. These tradeoffs allow us to determine the suitable estimation time that yields the maximum throughput achieved by the CR systems.}
-	\pnote{In order to validate the exprerrions derrived made while establishing the system model, a hardware is deployed using a software-defined platform.}
-	\pnote{Finally, a applicability of the propositions (time allocation, channel estimation, variations) made are verified by means of a hardware demonstrator}  
+	\pnote{Finally, the analytical expressions (derived while establishing the system model) are verified by means of an empirical validation.}
+	\pnote{Finally, a feasibility of the propositions (time allocation, channel estimation, variations) made are justified by means of a hardware demonstrator}  
 	\vspace{-1.5mm}
 	\begin{columns}
 		\begin{column}[t]{0.53\columnwidth}
@@ -623,8 +622,8 @@ single arrow head extend=.3cm,}}
 				{
 				\begin{block}{\scriptsize Hardware Feasibility?}%{\scriptsize Channel knowledge}
 					\begin{itemize}
-					\item Validatity of the expressions obtained? 
-					\item Applicability of the proposiitions under realistic scenarios? 
+					\item Verify the analytical expressions? 
+					\item Feasibility of the propositions under realistic situations? 
 					\end{itemize}	
 				\end{block}
 				}
@@ -2085,7 +2084,7 @@ Hardware Implementation
      externalviewer,
      inline=false,
      %text={\includegraphics{scale=0.8}{figures/5G.ps}}
-   ]{8cm}{7cm}{figures/out.mp4}
+   ]{8.4cm}{7.35cm}{figures/out.mp4}
    \end{figure}
 %	\begin{figure}
 %	\centering
