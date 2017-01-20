@@ -23,8 +23,8 @@
 %\motifalse
 
 \newif\ifinter
-\intertrue
-%\interfalse
+%\intertrue
+\interfalse
 
 \newif\ifunder
 \undertrue
@@ -131,10 +131,10 @@
 % the presentation starts here
 
 % english vs. ngerman
-%\selectlanguage{english}
+\selectlanguage{english}
 
 \title[Performance Analysis of Cognitive Radio Systems with Imperfect Channel Knowledge]{Performance Analysis of Cognitive Radio Systems with Imperfect Channel Knowledge}
-\subtitle{Doctorate Presentation}
+%\subtitle{Doctorate Presentation}
 \author[Ankit Kaushik]{M.\,Sc. Ankit Kaushik}
 
 %% insert date in correct format
@@ -145,7 +145,7 @@
 }
 
 \institute{Communications Engineering Lab}
-\date{31 Janauary 2017}
+\date{31 January 2017}
 
 % Fußnote anpassen, so dass es nicht mit dem Footer überschneidet
 \addtobeamertemplate{footnote}{\vspace{-6pt}\advance\hsize-0.5cm}{\vspace{6pt}}
@@ -257,6 +257,8 @@ single arrow head extend=.3cm,}}
 			stack plots=y,
 			area style,
 			enlarge x limits = false,
+			ylabel={Mobile traffic (Monthly Exabytes)},
+			ylabel near ticks,
 			]
 			%\addplot [draw = kit-blue70, fill = kit-blue30] 
 			%coordinates
@@ -266,7 +268,7 @@ single arrow head extend=.3cm,}}
 			coordinates
 			{(2015,5.5) (2016,8) (2017,12) (2018,18) (2019, 27) (2020,38) (2021, 52)}
 			\closedcycle;
-			\addlegendentry{Global mobile traffic (monthly ExaBytes $\approx 10^{18}$)}
+			%\addlegendentry{Global mobile traffic (monthly ExaBytes $\approx 10^{18}$)}
 		\end{axis}
 	
 	
@@ -1675,12 +1677,12 @@ Hybrid System
 
 \ifhard
 
-\section{Hardware Implementation}
+\section{Validation}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}[c]{}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{center}
-Hardware Implementation
+Validation
 \end{center}
 \end{frame}
 
@@ -1852,7 +1854,7 @@ Hardware Implementation
             		        };
 
             		        \begin{scope}[x={(image.south east)},y={(image.north west)}]
-           		        \node[above, font=\footnotesize] at (0.16,0.93) {$ \times 10^{-11}$};
+           		        \node[above, font=\footnotesize] at (0.16,0.93) {$ \times 10^{11}$};
 
             		        \draw[black,thick,<-] (0.577,0.57) --  node[above, font=\footnotesize] {$\ite (1 + \acc)$} (0.777,0.57);
                 		\draw[black,thick,<-] (0.379,0.57) --  node[above, font=\footnotesize] {$\ite (1 - \acc)$} (0.179,0.57);
@@ -1899,13 +1901,13 @@ Hardware Implementation
                 			\includegraphics[width=\figscale]{../kapitel06/figures/ETT}
         			};
         			\begin{scope}[x={(image.south east)},y={(image.north west)}]
-        			\node[draw, fill=gray!10,font=\scriptsize] (text1) at (0.98,0.872) {$\pcod$};
+        			\node[draw, fill=gray!10,font=\footnotesize] (text1) at (0.98,0.872) {$\pcod$};
         			\draw[black, ->] (text1.west) -- (0.913,0.872);
 
-       				\node[draw, fill=gray!10,font=\scriptsize] (text2) at (0.3275,0.01) {$\ttest$};
+       				\node[draw, fill=gray!10,font=\footnotesize] (text2) at (0.3275,0.01) {$\ttest$};
         			\draw[black, ->] (text2.north) -- (0.3275,0.086);
 
-        			\node[draw, fill=gray!10,font=\scriptsize] (text3) at (-0.06,0.9) {$\maxi\e{\ers}{\ers}$};
+        			\node[draw, fill=gray!10,font=\footnotesize] (text3) at (-0.06,0.9) {$\maxi\rs$};
         			\draw[black, ->] (text3.south) -- (0.084,0.7);
 
                 		%\draw[help lines,xstep=.1,ystep=.1] (0,0) grid (1,1);
@@ -2080,12 +2082,12 @@ Hardware Implementation
 	\pnote{Upon changing interference threshold at the PR results in an increase in confidence probability} 
 	\begin{figure}
    \includemovie[
-     poster=figures/out.ps,
+     poster=figures/demo.ps,
      autoplay,
      externalviewer,
      inline=false,
      %text={\includegraphics{scale=0.8}{figures/5G.ps}}
-   ]{8.4cm}{7.35cm}{figures/out.mp4}
+   ]{9.2cm}{6.9cm}{figures/demo3.mp4}
    \end{figure}
 %	\begin{figure}
 %	\centering
