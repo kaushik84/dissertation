@@ -15,10 +15,15 @@
    height="525.63104"
    id="svg2"
    version="1.1"
-   inkscape:version="0.48.4 r9939"
-   sodipodi:docname="Frame_Structure_US.ps">
+   inkscape:version="0.91 r13725"
+   sodipodi:docname="Frame_Structure_US.svg">
   <defs
      id="defs4">
+    <pattern
+       inkscape:collect="always"
+       xlink:href="#Strips1_1"
+       id="pattern6041"
+       patternTransform="matrix(10,0,0,10,0,1.0425972)" />
     <pattern
        inkscape:collect="always"
        xlink:href="#Strips1_1"
@@ -330,11 +335,6 @@
          inkscape:connector-curvature="0" />
     </marker>
     <pattern
-       inkscape:collect="always"
-       xlink:href="#pattern5460-4"
-       id="pattern5773"
-       patternTransform="translate(192.40506,419.55347)" />
-    <pattern
        patternUnits="userSpaceOnUse"
        width="91.162842"
        height="47.899128"
@@ -377,9 +377,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1.017325"
-     inkscape:cx="476.72694"
-     inkscape:cy="327.99219"
+     inkscape:zoom="2.8774296"
+     inkscape:cx="414.85748"
+     inkscape:cy="239.23178"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="true"
@@ -925,7 +925,7 @@
        id="path3875-68"
        inkscape:connector-curvature="0" />
     <rect
-       style="fill:#ffffff;fill-opacity:0.05887451;stroke:#010000;stroke-width:2.50253916;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       style="fill:#ffffff;fill-opacity:0;stroke:#010000;stroke-width:2.50253916;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
        id="rect2985-7-0"
        width="401.45541"
        height="47.508911"
@@ -1221,11 +1221,11 @@
        y="419.91461"
        id="rect5465-2" />
     <rect
-       style="fill:url(#pattern5773);fill-opacity:1;stroke:none"
+       style="fill:url(#pattern6041);fill-opacity:1;stroke:none"
        width="91.162842"
        height="47.899128"
        x="192.40503"
-       y="419.55341"
+       y="420.59601"
        id="rect5476-3" />
     <text
        xml:space="preserve"

@@ -19,8 +19,8 @@
 
 % Fasten the compilation process 
 \newif\ifmoti
-%\motitrue
-\motifalse
+\motitrue
+%\motifalse
 
 \newif\ifinter
 %\intertrue
@@ -35,8 +35,8 @@
 \hybridfalse
 
 \newif\ifhard
-%\hardtrue
-\hardfalse
+\hardtrue
+%\hardfalse
 
 \newif\ifnovideo
 %\novideotrue
@@ -197,6 +197,10 @@ single arrow head extend=.3cm,}}
 %\usepackage{multimedia}
 \usepackage{animate,media9,movie15}
 
+\pgfdeclarelayer{background}
+\pgfdeclarelayer{foreground}
+\pgfsetlayers{background,main,foreground}   %% some additional layers for demo
+
 
 
 % Include Figures Path
@@ -325,7 +329,7 @@ single arrow head extend=.3cm,}}
 %\pnote{This work is focussed on providing spectrum extension by promoting CR communications} 
 	%\vspace{-2mm}
 	\fs{8}{8}
-	\begin{overlayarea}{\textwidth}{5.6cm}
+	\begin{overlayarea}{\textwidth}{5.8cm}
 	\begin{center}
         	\begin{tikzpicture}[scale=1]
 		\node[anchor=south west,inner sep=0] (image) at (0,0)
@@ -333,35 +337,42 @@ single arrow head extend=.3cm,}}
 			\includegraphics[width = 0.88\columnwidth]{figures/5G.ps}
         	};	
 		%\node[draw = none,align=center] (A) at (0.23,0.53) {> \SI{6}{GHz}};
-		\only<1-2>
+		\only<1>
 		{
 		\draw[decorate, decoration={brace, amplitude=10pt}, xshift = -4pt, yshift=0pt] (0.2,-0.7) -- (3.0,-0.7) node[black,midway,yshift=+0.5cm] {< \SI{6}{GHz}};
 		\draw[decorate, decoration={brace, amplitude=10pt}, xshift = -4pt, yshift=0pt] (3.9,-0.7) -- (6.7,-0.7) node[black,midway,yshift=+0.5cm] {\SI{6}{GHz} -- \SI{300}{GHz}};
 		\draw[decorate, decoration={brace, amplitude=10pt}, xshift = -4pt, yshift=0pt] (7.65,-0.7) -- (10.45,-0.7) node[black,midway,yshift=+0.5cm] {\SI{430}{THz} -- \SI{770}{THz}};
 		%\draw[-latex] (B) edge (A);
 		}
+	%	\only<1>
+	%	{
+	%		\begin{pgfonlayer}{background}
+	%		\fill[opacity = 0.4, fill = kit-green30] (-0.1,-0.05) rectangle (10.3,0.92);
+		%	\end{pgfonlayer}
+		%}
 		\only<1>
 		{
-			\fill[opacity = 0.4, fill = kit-green30] (-0.1,-0.05) rectangle (10.3,2.55);
-		}
-		\only<2>
-		{
+			\begin{pgfonlayer}{background}
 			\fill[opacity = 0.4, fill = kit-green30] (-0.1,-0.05) rectangle (2.88,0.92);
 			\fill[opacity = 0.4, fill = kit-green30] (3.6,-0.05) rectangle (10.3,0.92);
+			\end{pgfonlayer}
 		}	
-		\only<3->
+		\only<2->
 		{
-			\draw[opacity = 0, decorate, decoration={brace, amplitude=10pt}, xshift = -4pt, yshift=0pt] (0.0,-0.7) -- (2.8,-0.7) node[black,midway,yshift=+0.5cm] {< \SI{6}{GHz}};
-			\draw[opacity = 0, decorate, decoration={brace, amplitude=10pt}, xshift = -4pt, yshift=0pt] (3.15,-0.7) -- (5.95,-0.7) node[black,midway,yshift=+0.5cm] {\SI{6}{GHz} -- \SI{300}{GHz}};
-			\draw[opacity = 0.0, decorate, decoration={brace, amplitude=10pt}, xshift = -4pt, yshift=0pt] (6.3,-0.7) -- (9.1,-0.7) node[black,midway,yshift=+0.5cm] {\SI{430}{THz} -- \SI{770}{THz}};
+			\draw[opacity = 0.0, decorate, decoration={brace, amplitude=10pt}, xshift = -4pt, yshift=0pt] (0.2,-0.7) -- (3.0,-0.7) node[black,midway,yshift=+0.5cm] {< \SI{6}{GHz}};
+			\draw[opacity  = 0.0, decorate, decoration={brace, amplitude=10pt}, xshift = -4pt, yshift=0pt] (3.9,-0.7) -- (6.7,-0.7) node[black,midway,yshift=+0.5cm] {\SI{6}{GHz} -- \SI{300}{GHz}};
+			\draw[opacity  = 0.0, decorate, decoration={brace, amplitude=10pt}, xshift = -4pt, yshift=0pt] (7.65,-0.7) -- (10.45,-0.7) node[black,midway,yshift=+0.5cm] {\SI{430}{THz} -- \SI{770}{THz}};
+			\begin{pgfonlayer}{background}
 			\fill[opacity = 0.4, fill = kit-green30] (-0.1,-0.05) rectangle (2.88,0.92);
+			\end{pgfonlayer}
 			\fill[opacity = 0.0, fill = kit-green30] (3.6,-0.05) rectangle (10.3,0.02);
 		}
 		\end{tikzpicture}
 	\end{center}
 	\end{overlayarea}
+	\begin{overlayarea}{\textwidth}{1.5cm}
 	\begin{center}
-		\only<1-2>
+		\only<1>
 		{
 			\tikzfancyarrow[11.8cm][kit-green70][top color=kit-green30, bottom color=kit-green50, shape border rotate=0]{Electromagnetic Spectrum}
 		}
@@ -369,14 +380,14 @@ single arrow head extend=.3cm,}}
 		%{
 	%		\tikzfancyarrow[11.0cm][kit-green70][top color=kit-green30, bottom color=kit-green50, shape border rotate=180]{Mobility}
 	%	}
-		\only<3>
+		\only<2>
 		{
 			\begin{block}{}
 			A Cognitive Radio (CR) is an agile system that facilitates an efficient usage of the spectrum  
 			\end{block}
 		}
 	\end{center}
-
+	\end{overlayarea}	
 
 \end{frame}
 
@@ -1175,7 +1186,7 @@ Underlay System
 	\pnote{It is worthy to mention here that the received power estimation is employed for the channels between the primary and secondary systems and pilot based estimation is employed for the channel within the secondary system} % In this regard, the estimated parameters is observed indirectly in the form of received power 
 	\pnote{Next, the variations in the performance parameters are characterized using their cdfs, where C0 and C1 corresponds to the data rate with and without interference in the throughput expression}
 	\pnote{The derived expressions are used to determine the suitable estimation and sensing time intervals that achieves the maximum secondary throughput, represented by the expression on the right}
-	\vspace{-2mm}
+	\vspace{-3mm}
 	\fs{8}{8}
 	%\begin{block}{}
 	%\end{block}			
@@ -1184,7 +1195,7 @@ Underlay System
 			\vspace{-0.7mm}
 			\begin{block}{\scriptsize Proposed Approach}
 			\begin{center}
-			\begin{tikzpicture}[node distance = 1.77cm, auto]
+			\begin{tikzpicture}[node distance = 1.8cm, auto]
                         	% draw nodes
 				\node [block] (frame) {Incorporation of time resources for channel estimation};
   			        \node [block, below of=frame] (channelest) {Characterizing the variations due to channel estimation};
@@ -1202,45 +1213,70 @@ Underlay System
 		\begin{column}{0.62\columnwidth}
 		\fs{8}{8}
 		\begin{center}
-			\begin{overlayarea}{\textwidth}{4.1cm}
-                        \begin{tikzpicture}[scale=1]
-                                \node[anchor=south west,inner sep=0] (image) at (0,0)
-                                {
-                                       \includegraphics[width = \columnwidth]{figures/Frame_Structure_US.ps}     
-                                };
-                                \only<2->
-                                {
-                                        \fill[opacity = 0.4, fill = red] (0.77,2.21) rectangle (1.41,2.54);
-                                        \fill[opacity = 0.4, fill = blue] (3.63,1.01) rectangle (4.27,1.34);
-                                }
-                        \end{tikzpicture}
+			\begin{overlayarea}{\textwidth}{4.6cm}
+				\only<1>
+				{	
+					\vspace{3mm}
+					\begin{tikzpicture}[scale=1]
+                           	        \node[anchor=south west,inner sep=0] (image) at (0,0)
+                               	 	{
+                                       		\includegraphics[width = \columnwidth]{figures/Frame_Structure_US.ps}     
+                                	};
+                                %\only<2->
+                                	{
+                                       		
+						\begin{pgfonlayer}{background}
+						\fill[opacity = 0.4, fill = red] (0.85,2.44) rectangle (1.56,2.82);
+                                        	\fill[opacity = 0.4, fill = blue] (4.01,1.12) rectangle (4.72,1.50);
+						\end{pgfonlayer}
+                                	}
+                        		\end{tikzpicture}
+				}
+				\only<2->
+				{
+					\vspace{-3mm}
+					\centering
+					\resizebox{.8 \columnwidth}{!}{%
+                        		\input{../kapitel04/figures/fig_Preg_est_time_AWGN.tex}
+					\centering
+					\begin{tikzpicture}[scale=1]
+					\node[anchor=south west,inner sep=0] (image) at (0,0)
+					{
+						\includegraphics[width= 0.9 \columnwidth]{../kapitel04/figures/fig_Preg_est_time_AWGN}
+					};
+					\begin{scope}[x={(image.south east)},y={(image.north west)}]
+
+					\draw (0.35,0.56) arc(-130:130:0.007 and 0.021);
+					\node[draw,fill=gray!10,font=\scriptsize] at (0.44,0.515) {$\opc = 0.01$};
+
+					\draw (0.35,0.68) arc(-130:130:0.007 and 0.021);
+					\node[draw,fill=gray!10,font=\scriptsize] at (0.275,0.758) {$\opc = 0.1$};
+					\node[draw=none,fill=kit-green30, minimum height = 0.6cm, align = center, font = \footnotesize] at (0.5, 1.05) {Power control versus estimation time};
+
+
+					%\draw[help lines,xstep=.1,ystep=.1] (0,0) grid (1,1);
+					%\foreach \x in {0,1,...,9} { \node [anchor=north] at (\x/10,0) {0.\x}; }
+					%\foreach \y in {0,1,...,9} { \node [anchor=east] at (0,\y/10) {0.\y}; }
+					\end{scope}
+				\end{tikzpicture}
+
+				}
+			}
 			\end{overlayarea}
-			\vspace{3.5mm}
-			\begin{overlayarea}{\textwidth}{2.6cm}
-			\only<1>
-			{	
-				\begin{block}{\scriptsize Estimation Model (EM) -- Average Constraint (AC)} 
-                               	 \vspace{-3.2mm}
-					\begin{align*}
-					\trsac(\ttest, \ttsenac) =& \maxi_{\test, \tsen} \e{\epd, \ecz, \eco}{\rs(\test, \tsen)},	\\	
-					\text{s.t.} & \text{ }  \color{kit-green100}{\e{\epd}{\epd} \ge \pdd}, \\ 
-\text{s.t.} & \text{ }  0 < \test \le \tsen \le T
-					\end{align*} 
+			\end{center}
+			%\vspace{3.5mm}
+			%\begin{overlayarea}{\textwidth}{2.6cm}
+			\only<1->
+			{
+				\begin{block}{\footnotesize Constraints}
+				\vspace{-3.5mm}	
+					\begin{align*}		
+						\p\left( \left( \frac{{\color{red}{\eprcvdstpr}} - \nps}{\ptran}\right) \preg \ge \ite \right) &\le \opc \\ 
+                                	\preg &\le \pc 
+                                \end{align*} 
                		 	\end{block}
 			} 
-			\only<2->
-			{	
-				\begin{block}{\scriptsize Estimation Model (EM) -- Outage Constraint (OC)} 
-                               	 \vspace{-3.2mm}
-					\begin{align*}
-					\trsac(\ttest, \ttsenac) =& \maxi_{\test, \tsen} \e{\epd, \ecz, \eco}{\rs(\test, \tsen)},	\\	
-					\text{s.t.} & \text{ }  \color{kit-green100}{\p(\epd \le \pdd) \le \mpd}, \\[0.35em]
-\text{s.t.} & \text{ }  0 < \test \le \tsen \le T
-					\end{align*} 
-               		 	\end{block}
-			} 
-                        \end{overlayarea}
-		\end{center}
+                        %\end{overlayarea}
 		\end{column}
 	\end{columns}
 \end{frame}
@@ -1263,9 +1299,10 @@ Underlay System
 	%\pnote{However, at high value of estimation time are power control is less severe, hence approaches the ideal value of the transmit power}
 	%\pnote{Such a phenomenon is reflected in figure, where the control power increases with the estimation time for different values of the outage constraint. Obviously, stringent constraint results in a sever power control} 
 	\vspace{-4.5mm}
-	\fs{7}{8}
+	\fs{8}{8}
 	\begin{columns}
 		\begin{column}{0.45\columnwidth}
+			\iffalse
 			\only<1>
 			{
 				\begin{block}{\scriptsize Control power} 
@@ -1284,9 +1321,10 @@ Underlay System
 					\tikzfancyarrow[0.9cm][kit-green70][top color=kit-green50, bottom color=kit-green50, shape border rotate=270]{\color{kit-green50}{10}}		%	\\[0.5em]
 				\end{center}	
 			}
-			\only<2->
+			\fi
+			\only<1->
 			{
-				\begin{block}{\scriptsize Secondary throughput} %{\scriptsize Principle}
+				\begin{block}{\footnotesize Secondary throughput} %{\scriptsize Principle}
 				\vspace{-3mm}
 				\begin{align*}
 					\eca  = \log_2 \left(1 + \frac{{\color{kit-green100}{\epgs}} \preg}{{\color{blue}{\eprcvdsr}}} \right) \\
@@ -1294,22 +1332,58 @@ Underlay System
 				\end{align*}
 				\end{block}
 
-				\begin{block}{\scriptsize Achievable secondary throughput} 
+			}
+			\vspace{3mm}
+			\onslide<2->
+			{
+				\centering
+		                \renewcommand{\arraystretch}{1.6}
+       		                \begin{tabular}{c||c}
+             			%\hline
+                		\rowcolor{kit-green30}
+                		Parameter & Value \\
+                		\hline\hline
+                		$\fsam$ & $\SI{1}{MHz}$ \\ %\hline
+                		$\phpth$ & $\SI{-100}{dB}$ \\ %\hline
+                		$\phpt$ & $\SI{-100}{dB}$ \\ %\hline
+                		$\phs$ & $\SI{-80}{dB}$ \\ %\hline 
+                		$T$ & $\SI{100}{ms}$ \\ %\hline 
+                		%$\ptran$ & $\SI{0}{dBm}$ \\
+				%$\ptranpt$ & $\SI{0}{dBm}$ \\
+				$\npo$ & $\SI{-100}{dBm}$ \\ %\hline
+                		$\ite$ & $\SI{-110}{dBm}$ \\
+				$\snrrcvdu$ & $\SI{0}{dB}$ \\ 	
+				%$\snrrcvd$ & $\SI{-10}{dB}$ \\ %\hline
+               	 		%$\snrpt$ & $\SI{-10}{dB}$ \\ %\hline
+                		%$\snrso$ & $\SI{10}{dB}$ \\ %\hline
+                		%$\ptranpt$ & $-\SI{10}{dBm}$ \\ %\hline
+                		%$\ptranst$ & $-\SI{10}{dBm}$ \\ %\hline
+                		%$\pho = 1 - \phz$ & 0.2 \\ %\hline
+                		%$\test$ & $\SI{5}{ms}$ \\ %\hline
+                		%$\Ks$ & 10 \\ \hline
+                		%$\Kp$ & $1000$ \\ 
+                		\hline
+        			\end{tabular}
+	
+			}
+		\end{column}
+		\begin{column}{0.55\columnwidth}
+		\fs{8}{8}
+			%\vspace{0.5mm}
+			\begin{block}{\footnotesize Achievable secondary throughput} 
 				\vspace{-3mm}
 				\begin{align*}
 					\trs(\ttest)  = \maxi_{\test}  & \text{      } {\rs(\test)} \\
 					\text{s.t.} & \;\p\left( \ephpth \preg \ge \ite \right) \le \opc \\
 					\text{s.t.} & \;\preg \le \pc
 				\end{align*}
-				\end{block}
-			}
-		\end{column}
-		\begin{column}{0.55\columnwidth}
-		\fs{7}{8}
+			\end{block}
+		\vspace{-3mm}
 		\begin{center}
+			\begin{overlayarea}{\textwidth}{4.45cm}
 			\centering
              	        \resizebox{.95 \columnwidth}{!}{%
-                        \onslide<2->
+			\only<2>
 			{
 				%% Add psfrag entries
               		  	\input{../kapitel04/figures/fig_thr_est_time_tradeoff_AWGN.tex}
@@ -1325,7 +1399,7 @@ Underlay System
 
 					\draw (0.65,0.77) arc(-130:130:0.005 and 0.015);
 					\node[draw,fill=gray!10,font=\scriptsize] at (0.66,0.838) {$\opc = 0.1$};
-					\node[draw=none,fill=kit-green30, minimum height = 0.6cm, align = center, font = \footnotesize] at (0.5, 1.05) {Estimation-throughput tradeoff};
+	%				\node[draw=none,fill=kit-green30, minimum height = 0.6cm, align = center, font = \footnotesize] at (0.5, 1.015) {Estimation-throughput tradeoff};
 
 					%\draw[help lines,xstep=.1,ystep=.1] (0,0) grid (1,1);
 					%\foreach \x in {0,1,...,9} { \node [anchor=north] at (\x/10,0) {0.\x}; }
@@ -1333,11 +1407,49 @@ Underlay System
 				\end{scope}
 				\end{tikzpicture}
 			}
+			\only<3->
+			{
+				\input{../kapitel04/figures/fig_opt_thr_vs_SNR_AWGN_SI_00.tex}
+                                \begin{tikzpicture}[scale=1]
+                                \node[anchor=south west,inner sep=0] (image) at (0,0)
+                                {
+                                        \includegraphics[width= \figscale]{../kapitel04/figures/fig_opt_thr_vs_SNR_AWGN_SI_00}
+                                };
+                                \begin{scope}[x={(image.south east)},y={(image.north west)}]
+
+                                \draw (0.225,0.615) arc(-160:160:0.01 and 0.03);
+                                \node[draw, fill=gray!10, font=\scriptsize] (text1) at (0.7,0.725) {$\pc = \SI{00}{dBm}$};
+                                \draw (0.275,0.33) arc(-160:160:0.01 and 0.03);
+                                \node[draw, fill=gray!10, font=\scriptsize] (text2) at (0.75,0.44) {$\pc = \SI{-10}{dBm}$};
+                                %\draw (0.63,0.66) arc(-150:150:0.016 and 0.048);
+                                \draw[black, ->] (text1.west) -- (0.245,0.635);
+                                %\draw (0.63,0.59) arc(-160:160:0.01 and 0.03);
+                                \draw[black, ->] (text2.west) -- (0.295,0.35);
+
+
+                                \draw (0.27,0.225) arc(-160:160:0.01 and 0.03);
+                                \draw[black,thick,<->] (0.084,0.25) --  node[above, font=\scriptsize] {Power-limited} (0.367,0.25);
+                                \draw[black,thick,<->] (0.084,0.22) --  (0.667,0.22);
+
+                                \draw (0.7,0.105) arc(-160:160:0.01 and 0.03);
+                                \draw[black,thick,<->] (0.37,0.13) --  node[above, font=\scriptsize] {Interference-limited} (0.965,0.13);
+                                \draw[black,thick,<->] (0.67,0.10) --  (0.965,0.10);
+
+                         %       \node[draw=none,fill=kit-green30, minimum height = 0.6cm, align = center, font = \footnotesize] at (0.5, 1.03) {Achievable throughput versus SNR at ST over $\phpth$};
+
+                                %\draw[help lines,xstep=.1,ystep=.1] (0,0) grid (1,1);
+                                %\foreach \x in {0,1,...,9} { \node [anchor=north] at (\x/10,0) {0.\x}; }
+                                %\foreach \y in {0,1,...,9} { \node [anchor=east] at (0,\y/10) {0.\y}; }
+                                \end{scope}
+                                \end{tikzpicture}
+			}
 		}
+		\end{overlayarea}
 		\end{center}
 		\end{column}
 	\end{columns}
-	\begin{block}{}%{\scriptsize Power control} 
+	\iffalse
+	{\begin{block}{}%{\scriptsize Power control} 
 		\vspace{-4mm}
 		\begin{align*}
 			\preg &= 
@@ -1347,7 +1459,8 @@ Underlay System
 				\end{cases} \\
 				\text{where  } \apo &= \frac{{\color{kit-green100}{\test \fsam}} (1 + {\color{black}{\snrrcvdu}})^2}{2 + 4 {\color{black}{\snrrcvdu}}} \text{ and } \bpo = \frac{\nps (2 + 4 {\color{black}{\snrrcvdu}})}{{\color{kit-green100}{\test \fsam}} (1 + {\color{black}{\snrrcvdu}})},
 			\end{align*}
-	\end{block}
+	\end{block}}
+	\fi
 \end{frame}
 
 \iffalse
@@ -1985,7 +2098,7 @@ Validation
 			Parameter & Value \\ \hline \hline
                 	$\snrrcvdu$ & \SI{22}{dB} \\
                 	%$N$ & 100 \\
-                	$\fsam$ & \SI{50}{KHz}\\
+                	$\fsam$ & \SI{50}{kHz}\\
                 	$\test$ & \SI{2}{ms}\\
                 	$\ite$ & \SI{-110}{dBm}\\
                 	$T$ & \SI{100}{ms}\\
