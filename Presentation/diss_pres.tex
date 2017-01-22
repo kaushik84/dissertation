@@ -19,8 +19,8 @@
 
 % Fasten the compilation process 
 \newif\ifmoti
-\motitrue
-%\motifalse
+%\motitrue
+\motifalse
 
 \newif\ifinter
 %\intertrue
@@ -35,8 +35,8 @@
 \hybridfalse
 
 \newif\ifhard
-\hardtrue
-%\hardfalse
+%\hardtrue
+\hardfalse
 
 \newif\ifnovideo
 %\novideotrue
@@ -191,7 +191,7 @@ single arrow head extend=.3cm,}}
 
 % tiksyle accustomed to build flowgraphs
 \tikzstyle{block} = [rectangle, draw, fill=kit-green50, 
-    text width=18em, text centered, rounded corners, minimum height=5.5em]
+    text width=16em, text centered, rounded corners, minimum height=5em]
 \tikzstyle{line} = [draw, -latex']
 
 %\usepackage{multimedia}
@@ -240,7 +240,7 @@ single arrow head extend=.3cm,}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	\begin{columns}
 	\begin{column}{0.55\columnwidth}
-	\fs{7}{8}
+	\fs{8}{8}
 	%\resizebox{1.1\columnwidth}{!}{%
 	\pnote{According to recent survey, it is being prognoses that the mobile traffic will increase 11-fold over the next few years.}
 	\pnote{With this situation in hand, the standardization bodies are currently in the phase of situation the requirements of fifth-generation of mobile systems.}
@@ -258,7 +258,9 @@ single arrow head extend=.3cm,}}
 			area style,
 			enlarge x limits = false,
 			ylabel={Mobile traffic (Monthly Exabytes)},
+			xlabel={Year},
 			ylabel near ticks,
+			xlabel near ticks,
 			]
 			%\addplot [draw = kit-blue70, fill = kit-blue30] 
 			%coordinates
@@ -300,7 +302,7 @@ single arrow head extend=.3cm,}}
 	\begin{block}{} 
 	\begin{itemize}
 		\item Data rate (1000$\times)$
-		\item Latency $(< \SI{1}{ms})$  
+		%\item Latency $(< \SI{1}{ms})$  
 		\item Energy- and cost- efficiency
 	\end{itemize}	
 	\end{block}
@@ -321,56 +323,56 @@ single arrow head extend=.3cm,}}
 \pnote{Another alternative is utilize the spectrum below 6 GHz more efficiently by enabling CR communications}
 \pnote{CR is an agile system that facilitates the efficient usage of the spectrum by enabling secondary access to the licensed spectrum}
 %\pnote{This work is focussed on providing spectrum extension by promoting CR communications} 
-	\vspace{-2mm}
-	\fs{7}{8}
-	\begin{overlayarea}{\textwidth}{6.25cm}
+	%\vspace{-2mm}
+	\fs{8}{8}
+	\begin{overlayarea}{\textwidth}{5.6cm}
 	\begin{center}
         	\begin{tikzpicture}[scale=1]
 		\node[anchor=south west,inner sep=0] (image) at (0,0)
 		{
-			\includegraphics[width = 0.75\columnwidth]{figures/5G.ps}
+			\includegraphics[width = 0.88\columnwidth]{figures/5G.ps}
         	};	
 		%\node[draw = none,align=center] (A) at (0.23,0.53) {> \SI{6}{GHz}};
-		\only<1>
+		\only<1-2>
 		{
-		\draw[decorate, decoration={brace, amplitude=10pt}, xshift = -4pt, yshift=0pt] (0.0,-0.7) -- (2.8,-0.7) node[black,midway,yshift=+0.5cm] {< \SI{6}{GHz}};
-		\draw[decorate, decoration={brace, amplitude=10pt}, xshift = -4pt, yshift=0pt] (3.15,-0.7) -- (5.95,-0.7) node[black,midway,yshift=+0.5cm] {\SI{6}{GHz} -- \SI{300}{GHz}};
-		\draw[decorate, decoration={brace, amplitude=10pt}, xshift = -4pt, yshift=0pt] (6.3,-0.7) -- (9.1,-0.7) node[black,midway,yshift=+0.5cm] {\SI{430}{THz} -- \SI{770}{THz}};
+		\draw[decorate, decoration={brace, amplitude=10pt}, xshift = -4pt, yshift=0pt] (0.2,-0.7) -- (3.0,-0.7) node[black,midway,yshift=+0.5cm] {< \SI{6}{GHz}};
+		\draw[decorate, decoration={brace, amplitude=10pt}, xshift = -4pt, yshift=0pt] (3.9,-0.7) -- (6.7,-0.7) node[black,midway,yshift=+0.5cm] {\SI{6}{GHz} -- \SI{300}{GHz}};
+		\draw[decorate, decoration={brace, amplitude=10pt}, xshift = -4pt, yshift=0pt] (7.65,-0.7) -- (10.45,-0.7) node[black,midway,yshift=+0.5cm] {\SI{430}{THz} -- \SI{770}{THz}};
 		%\draw[-latex] (B) edge (A);
 		}
 		\only<1>
 		{
-			\fill[opacity = 0.4, fill = kit-green30] (-0.1,-0.4) rectangle (8.9,2.2);
+			\fill[opacity = 0.4, fill = kit-green30] (-0.1,-0.05) rectangle (10.3,2.55);
 		}
 		\only<2>
 		{
-			\fill[opacity = 0.4, fill = kit-green30] (-0.1,-0.4) rectangle (2.7,1.15);
-			\fill[opacity = 0.4, fill = kit-green30] (3.0,-0.4) rectangle (8.9,1.15);
+			\fill[opacity = 0.4, fill = kit-green30] (-0.1,-0.05) rectangle (2.88,0.92);
+			\fill[opacity = 0.4, fill = kit-green30] (3.6,-0.05) rectangle (10.3,0.92);
 		}	
 		\only<3->
 		{
 			\draw[opacity = 0, decorate, decoration={brace, amplitude=10pt}, xshift = -4pt, yshift=0pt] (0.0,-0.7) -- (2.8,-0.7) node[black,midway,yshift=+0.5cm] {< \SI{6}{GHz}};
 			\draw[opacity = 0, decorate, decoration={brace, amplitude=10pt}, xshift = -4pt, yshift=0pt] (3.15,-0.7) -- (5.95,-0.7) node[black,midway,yshift=+0.5cm] {\SI{6}{GHz} -- \SI{300}{GHz}};
 			\draw[opacity = 0.0, decorate, decoration={brace, amplitude=10pt}, xshift = -4pt, yshift=0pt] (6.3,-0.7) -- (9.1,-0.7) node[black,midway,yshift=+0.5cm] {\SI{430}{THz} -- \SI{770}{THz}};
-			\fill[opacity = 0.4, fill = kit-green30] (-0.1,-0.4) rectangle (2.7,1.15);
-			\fill[opacity = 0.0, fill = kit-green30] (3.0,-0.4) rectangle (8.9,1.15);
+			\fill[opacity = 0.4, fill = kit-green30] (-0.1,-0.05) rectangle (2.88,0.92);
+			\fill[opacity = 0.0, fill = kit-green30] (3.6,-0.05) rectangle (10.3,0.02);
 		}
 		\end{tikzpicture}
 	\end{center}
 	\end{overlayarea}
 	\begin{center}
-		\only<1>
+		\only<1-2>
 		{
-			\tikzfancyarrow[11.0cm][kit-green70][top color=kit-green30, bottom color=kit-green50, shape border rotate=0]{Electromagnetic Spectrum}
+			\tikzfancyarrow[11.8cm][kit-green70][top color=kit-green30, bottom color=kit-green50, shape border rotate=0]{Electromagnetic Spectrum}
 		}
-		\only<2>
-		{
-			\tikzfancyarrow[11.0cm][kit-green70][top color=kit-green30, bottom color=kit-green50, shape border rotate=180]{Mobility}
-		}
+		%\only<2>
+		%{
+	%		\tikzfancyarrow[11.0cm][kit-green70][top color=kit-green30, bottom color=kit-green50, shape border rotate=180]{Mobility}
+	%	}
 		\only<3>
 		{
 			\begin{block}{}
-			A Cognitive Radio (CR) is an agile system that facilitates an efficient usage (secondary access) of the spectrum  
+			A Cognitive Radio (CR) is an agile system that facilitates an efficient usage of the spectrum  
 			\end{block}
 		}
 	\end{center}
@@ -395,17 +397,17 @@ single arrow head extend=.3cm,}}
 %\pnote{Indirect link corresponds to the CR communications, a spectrum is acquired for secondary usage is utilized for indoor communications.} 
 \pnote{Next, it is worthy to understand that why an indoor deployment is proposed for disposition of CR techniques. From a market survey, it has been revealed that 70\% of the data traffic is originated indoor, thus by deploying CSC one attempts to consolidate these traffic sources. Besides, the indoor deployment provides a spatial separation between licensed and unlicensed users.} 
 %Question: Regarding the Please note that the presented architecture in the dissertation is currently in a preliminary format. This can be extended further from a conceptual viewpoint.  
-		\vspace{-0.3cm}
-		\fs{7}{8}
-		\begin{block}{}%{\scriptsize Cognitive Small Cell?}
-		A Cognitive Small Cell (CSC) is a network entity that enable CR communications for the devices operating indoor 
-		\end{block}
+		\vspace{-0.1cm}
+		\fs{8}{8}
+		%\begin{block}{}%{\scriptsize Cognitive Small Cell?}
+		%A Cognitive Small Cell (CSC) is a network entity that enable CR communications for the devices operating indoor 
+		%\end{block}
 	\begin{columns}
 	\begin{column}{0.37\columnwidth}
 		\vspace{-0.1cm}
 		\onslide<2->
 		{	
-			\begin{block}{\scriptsize Network Elements}
+			\begin{block}{\footnotesize Network Elements}
 				\begin{itemize}
 					\item Cognitive Small Cell-Base Station ($\color{blue}{\text{CSC-BS}}$)
 					\item Mobile Station ($\color{kit-green100}{\text{MS}}$) 
@@ -415,7 +417,7 @@ single arrow head extend=.3cm,}}
 		}
 		\onslide<3->
 		{
-			\begin{block}{\scriptsize Spectrum Access}
+			\begin{block}{\footnotesize Spectrum Access}
 				\begin{itemize}
 					\item Secondary access ($\color{red}{\text{CSC-BS} \leftrightarrow \text{MS}}$) 
 					\item Wireless backhaul ($\color{blue}{\text{CSC-BS} \leftrightarrow \text{MC-BS}}$)
@@ -434,30 +436,30 @@ single arrow head extend=.3cm,}}
 		}
 	\end{column}
 	\begin{column}{0.63\columnwidth}
-		\fs{7}{8}
+		\fs{8}{8}
 		\begin{center}
 			CSC in a preliminary 5G network \\\vspace{0.4cm} 
         		\begin{tikzpicture}[scale=1]
 				\node[anchor=south west,inner sep=0] (image) at (0,0)
 				{
-					\includegraphics[width = \columnwidth]{../kapitel01/figures/Cellular_Scenario_CR6F}	     
+					\includegraphics[width = \columnwidth]{../kapitel01/figures/Cellular_Scenario_CR_T6}	     
 				};
 				\only<1>
 				{
 
-					\fill[opacity = 0.2, fill = red] (1.08,0.89) rectangle (2.05,1.61);
+					\fill[opacity = 0.2, fill = red] (1.58,1.32) rectangle (2.7,2.16);
 				}
 				\only<2>
 				{
-					\fill[opacity = 0.2, fill = blue] (0.65,1.47) rectangle (1.28,2.03);
-					\fill[opacity = 0.2, fill = kit-green100] (1.5,.33) rectangle (2.32,.81);
-					\fill[opacity = 0.2, fill = red] (2.8,2.2) rectangle (3.59,3.57);
+					\fill[opacity = 0.2, fill = blue] (1.05,2.01) rectangle (1.75,2.7);
+					\fill[opacity = 0.2, fill = kit-green100] (2.1,.6) rectangle (3.05,1.2);
+					\fill[opacity = 0.2, fill = red] (4.38,2.77) rectangle (4.94,3.8);
 				}
 				\only<3>
 				{
-					\fill[opacity = 0.2, fill = blue] (1.37,2.78) rectangle (3.2,3.35);
+					\fill[opacity = 0.2, fill = red] (1.58,1.32) rectangle (2.7,2.16);
+					\fill[opacity = 0.2, fill = blue] (3.45,3.25) rectangle (4.65,3.65);
 					%\fill[opacity = 0.2, fill = kit-green100] (3.35,3.5) rectangle (3.6,4.3);
-					\fill[opacity = 0.2, fill = red] (1.08,0.89) rectangle (2.05,1.61);
 				}
 			\end{tikzpicture}	
 		\end{center}
@@ -479,12 +481,12 @@ single arrow head extend=.3cm,}}
 	\pnote{It is been identified is a knowledge of the involved channels is necessary to demonstrate the feasibility of CR techniques}
 	\pnote{In this regard, channel estimation is proposed at the secondary system} 
 	\pnote{Incorporating channel knowledge in the system model allows us to analyze the performance of CR system closer to realistic conditions} 
-	\vspace{-3mm}
-	\fs{7}{8}
-	\begin{block}{\scriptsize Challenges}
+	\vspace{-1mm}
+	\fs{8}{8}
+	\begin{block}{\footnotesize Challenges}
 		\begin{itemize}
-			\item Involves the coexistence of two different systems: {\color{blue}{primary (licensed)}} and {\color{red}{secondary (unlicensed)}} 
-			\item Lack of concrete guidelines regarding the prospective primary systems $\Rightarrow$ only those solutions persist that consider no knowledge about the primary user signal 
+			\item Coexistence of two different systems: {\color{blue}{primary (licensed)}} and {\color{red}{secondary (unlicensed)}} 
+			\item Lack of concrete guidelines regarding the prospective primary systems %$\Rightarrow$ only those solutions persist that consider no knowledge about the primary user signal 
 			% With regard to the above issues 
 			\item Existing theoretical analysis rarely converges to a hardware implementation %$\Rightarrow$ deployment perspective % in order words, rarely deal(tackle) the problem from a deployment perspective 
 		\end{itemize}
@@ -494,26 +496,26 @@ single arrow head extend=.3cm,}}
 		\begin{column}{0.37\columnwidth}
 			\onslide<2->
 			{
-				\begin{block}{\scriptsize Performance characterization}
-					Secondary access is enabled through the employment of CR techniques at ST%, a CR system guarantees
+				\begin{block}{\footnotesize Secondary access}
+					Employ CR techniques at ST%, a CR system guarantees
 				\begin{itemize}
-						\item Protection to primary system $\Leftrightarrow$ interference power at PR 
+						\item Protection to primary system %$\Leftrightarrow$ interference power at PR 
 						\item QoE to secondary system %$\Leftrightarrow$ at SR 
 					\end{itemize}
 				\end{block}
 			}
-			\vspace{-1mm}
+			%\vspace{-1mm}
 			\onslide<3->
 			{
 				\begin{block}{}%{\scriptsize Channel knowledge}
 					\centering
-					Knowledge of involved channels is necessary for the realization of CR techniques at ST 
+					Knowledge of involved channels is necessary %for the realization of CR techniques at ST 
 				\end{block}
 			}
 			\onslide<4->
 	 		{
 				\centering
-				\tikzfancyarrow[0.85cm][kit-green70][top color=kit-green50, bottom color=kit-green50, shape border rotate=270]{\color{kit-green50}{10}}			\\[0.5em]	
+				\tikzfancyarrow[0.95cm][kit-green70][top color=kit-green50, bottom color=kit-green50, shape border rotate=270]{\color{kit-green50}{10}}			\\[0.5em]	
 	               		\begin{tikzpicture}[scale=1]
 	               	 		\node[draw=none,fill=kit-green15, minimum height = 0.5cm, text width = \columnwidth, align = center] at (0.0, 0.0) {Channel Estimation is proposed at ST/SR};
 				\end{tikzpicture}
@@ -521,7 +523,7 @@ single arrow head extend=.3cm,}}
 		\end{column}
 		\begin{column}{0.63\columnwidth}
 		\vspace{-1mm}
-		\fs{7}{8}
+		\fs{8}{8}
 		\begin{center}
 			% Interacting entities
 			{\color{blue}{PT, PR}}, \color{red}{ST($\Leftrightarrow$ CSC-BS) and SR($\Leftrightarrow$ MS)}\\\vspace{0.2cm} 
@@ -591,42 +593,42 @@ single arrow head extend=.3cm,}}
 	\begin{columns}
 		\begin{column}[t]{0.53\columnwidth}
 			\centering Challenges: \\[-0.2em]
-				\fs{7}{8}
-				\begin{block}{\scriptsize System design aspects?} %of incorporating channel estimation on the performance
+				\fs{8}{8}
+				\begin{block}{\footnotesize System design aspects?} %of incorporating channel estimation on the performance
 					\begin{itemize} 
-						\item handling the induced variations 
-						\item Time allocation for channel estimation 
+						\item Handling variations 
+						\item Time allocation 
 						%\item Channel fading 
 					\end{itemize}
 				\end{block}
-				\vspace{-1.1mm}
+				\vspace{3.4mm}
 				\onslide<2->
 				{
-				\begin{block}{\scriptsize Estimation technique?} %{\scriptsize Challenges}
-					Estimation of channels between two different systems %$\Rightarrow$ 
+				\begin{block}{\footnotesize Estimation technique?} %{\scriptsize Challenges}
+					%Estimation of channels between two different systems %$\Rightarrow$ 
 					\begin{itemize}
 						\item Conventional techniques are not feasible  
-						\item Look for techniques must offer low-complexity and versatility towards unknown primary user signals
+						\item Offer low-complexity and versatility %towards unknown primary user signals
 					\end{itemize}
 				\end{block}
 				}
 				\vspace{-1.1mm}
 				\onslide<3->
 				{
-				\begin{block}{\scriptsize Impact on performance?}%{\scriptsize Channel knowledge}
+				\begin{block}{\footnotesize Impact on performance?}%{\scriptsize Channel knowledge}
 					\begin{itemize}
-						\item Primary system $\Rightarrow$ uncertain interference 
-						\item Secondary system $\Rightarrow$ degradation in throughput 
+						\item Uncertain interference 
+						\item Degradation in throughput 
 					\end{itemize} 
 				\end{block}
 				}	
-				\vspace{-1.1mm}
+				\vspace{-0.9mm}
 				\onslide<4->
 				{
-				\begin{block}{\scriptsize Hardware Feasibility?}%{\scriptsize Channel knowledge}
+				\begin{block}{\footnotesize Hardware Feasibility?}%{\scriptsize Channel knowledge}
 					\begin{itemize}
 					\item Verify the analytical expressions? 
-					\item Feasibility of the propositions under realistic situations? 
+					\item Applicability of the propositions? 
 					\end{itemize}	
 				\end{block}
 				}
@@ -637,10 +639,10 @@ single arrow head extend=.3cm,}}
 		
 		\begin{column}[t]{0.44\columnwidth}
 			\centering Proposed Solutions: \\[-0.2em]
-			\fs{7}{8}
+			\fs{8}{8}
 			\begin{block}{}
 				\centering
-			  	Stochastic approach\\ To characterize the variations 	
+			  	Stochastic approach%\\ To characterize the variations 	
 			\end{block}
 			\vspace{-0.5mm}
 			\begin{block}{}
@@ -655,17 +657,17 @@ single arrow head extend=.3cm,}}
 				Received power based channel estimation
 				%\begin{itemize}
 					%\item 
-					Low-complexity and versatility requirements are satisfied  
+					%Low-complexity and versatility requirements are satisfied  
 					%\item Incorporation of received power in performance characterization 
 				%\end{itemize}
 			\end{block}
 			}
-			\vspace{-0.5mm}
+			\vspace{7.0mm}
 			\onslide<3->
 			{
 			\begin{block}{}
 				\centering
-			  	Interference constraints  \\To protect PR from harmful interference 
+			  	Interference constraints  %\\To protect PR from harmful interference 
 			\end{block}
 			}	
 			\vspace{-0.5mm}
@@ -673,19 +675,21 @@ single arrow head extend=.3cm,}}
 			{
 			\begin{block}{}
 				\centering
-			 	Performance tradeoffs \\ To determine suitable estimation time that determines the achievable throughput	
+			 	Performance tradeoffs %\\ To determine suitable estimation time that determines the achievable throughput	
 			\end{block}
 			}
-			\vspace{-0.4mm}
+			\vspace{-0.5mm}
 			\onslide<4->
 			{
-			\begin{block}{}%{\scriptsize Hardware Feasibility}%{\scriptsize Channel knowledge}			
+			\begin{block}{}
 				\centering
-				Empirical validation \\ Hardware demonstration
-				%\begin{itemize}
-					%\item Empirical validation %of the derived expressions
-					%\item Hardware demonstration %of a CR system
-				%\end{itemize}	
+				Empirical validation 
+			\end{block}
+			\vspace{-0.5mm}
+			\onslide<4->
+			\begin{block}{}
+				\centering
+				Demonstration
 			\end{block}
 			}
 		\end{column}
@@ -1041,16 +1045,16 @@ Underlay System
 	\pnote{Now, in order to employ power control and assure a QoE to the SR, the ST must acquire the knowledge of the involved channels} % The estimation of the channel hp2 happens at SR. This information is made available through a feedback channel
 	\pnote{In this regard, channel estimation for the corresponding channels are incorporated in the secondary system frame structure} 
 	%\pnote{In this regard, secondary system listens interchangeably to the transmissions from the PT and PR.} 
-	\vspace{-4mm}
-	\fs{7}{8}
+	%\vspace{-4mm}
+	\fs{8}{8}
 	\begin{columns}
-		\begin{column}{0.44\columnwidth}
+		\begin{column}{0.5\columnwidth}
 				%\vspace{-1mm}
-			\begin{block}{\scriptsize Principle} %{\scriptsize Principle}
+			\begin{block}{\footnotesize Principle} %{\scriptsize Principle}
 				\begin{itemize}
 					%\item Underlay systems correspond to a interference tolerant systems
-					\item Power control mechanism is employed at ST 
-					\item ST listens to control signal transmitted by PR 
+					\item Spatial separation \item Power control mechanism is employed 
+					%\item ST listens to control signal transmitted by PR 
 					%\item Spectrum sensing is CR technique used for detecting the signals transmitted by PT
 					%\item Energy detector is employed 
 				\end{itemize}
@@ -1058,19 +1062,20 @@ Underlay System
 			\vspace{2mm}
 			\only<1>
 			{
-				\begin{block}{\scriptsize Signal model} %{\scriptsize Signal model}
-				\begin{equation*}
-					\yrcvd[n] = \hpth \cdot \xtran[n] + \wsr[n]
-				\end{equation*}
-				\begin{equation*}
-					\yp[n] = \hpth  \cdot \xreg[n] + \wpr[n]
-				\end{equation*}
-				\begin{equation*}
-					\ys[n] = \gs \cdot \xreg[n] + \gpt \cdot \xp[n] + \wsr[n]
-				\end{equation*}
+				\begin{block}{\footnotesize Signal model} %{\scriptsize Signal model}
+				\vspace{-3mm}
+				\begin{align*}
+					\yrcvd[n] &= \hpth \cdot \xtran[n] + \wsr[n] \\[.2em]
+				%\end{equation*}
+				%\begin{equation*}
+					\yp[n] &= \hpth  \cdot \xreg[n] + \wpr[n] \\[.2em]
+				%\end{equation*}
+				%\begin{equation*}
+					\ys[n] &= \gs \cdot \xreg[n] + \gpt \cdot \xp[n] + \wsr[n]
+				\end{align*}
 				\end{block}
 				\vspace{2mm}
-				\begin{block}{\scriptsize Ideal Model (IM)} 
+				\begin{block}{\footnotesize Ideal Model (IM)} 
 				%Interference received at PR\\[-.2em]	
 				\begin{equation*}
 					\prcvdpr = {{\phpth}} \preg \le \ite
@@ -1084,19 +1089,20 @@ Underlay System
 			\only<2->
 			{
 
-				\begin{block}{\scriptsize Signal model} %{\scriptsize Signal model}
-				\begin{equation*}
-					\yrcvd[n] = \hpth \cdot \xtran[n] + \wsr[n]
-				\end{equation*}
-				\begin{equation*}
-					\yp[n] = \hpth  \cdot \xreg[n] + \wpr[n]
-				\end{equation*}
-				\begin{equation*}
-					\ys[n] = \gs \cdot \xreg[n] + \gpt \cdot \xp[n] + \wsr[n]
-				\end{equation*}
+				\begin{block}{\footnotesize Signal model} %{\scriptsize Signal model}
+				\vspace{-3mm}
+				\begin{align*}
+					\yrcvd[n] &= \hpth \cdot \xtran[n] + \wsr[n] \\[.2em]
+				%\end{equation*}
+				%\begin{equation*}
+					\yp[n] &= \hpth  \cdot \xreg[n] + \wpr[n] \\[.2em]
+				%\end{equation*}
+				%\begin{equation*}
+					\ys[n] &= \gs \cdot \xreg[n] + \gpt \cdot \xp[n] + \wsr[n]
+				\end{align*}
 				\end{block}	
 				\vspace{2mm}
-				\begin{block}{\scriptsize Ideal Model (IM)} 
+				\begin{block}{\footnotesize Ideal Model (IM)} 
 				%Interference received at PR\\[-.2em]	
 				\begin{equation*}
 					\prcvdpr = {\color{red}{\phpth}} \preg \le \ite
@@ -1108,41 +1114,136 @@ Underlay System
 				\end{block}	
 			}
 		\end{column}
-		\begin{column}{0.56\columnwidth}
-		\vspace{-6mm}
-		\fs{7}{8}
+		\begin{column}{0.5\columnwidth}
+		%\vspace{-6mm}
+		\fs{8}{8}
 		\begin{center}
 			% Interacting entities
 			%Interweave Scenario \\\vspace{0.2cm} 
+			\begin{overlayarea}{\textwidth}{4.2cm}
         		\begin{tikzpicture}[scale=1]
 				\node[anchor=south west,inner sep=0] (image) at (0,0)
 				{
-					\includegraphics[width = .81 \columnwidth]{../kapitel04/figures/CR_Scenario_Underlay}	     
+					\includegraphics[width =  \columnwidth]{../kapitel04/figures/CR_Scenario_Underlay}	     
 				};
-				\only<2>
+				\only<2->
 				{
 					\fill[opacity = 0.2, fill = red] (1.0,1.63) rectangle (1.4,1.97);
 					\fill[opacity = 0.2, fill = blue] (2.12,0.54) rectangle (2.52,.88);
 					\fill[opacity = 0.2, fill = kit-green100] (2.85,1.56) rectangle (3.25,1.90);
 				}
 			\end{tikzpicture}
-			\vspace{-10mm}	
-			\begin{tikzpicture}[scale=1]
-				\node[anchor=south west,inner sep=0] (image) at (0,0)
-				{
-					\includegraphics[width = \columnwidth]{figures/Frame_Structure_US.ps}     
-				};
-				\only<2->
-				{
-					\fill[opacity = 0.4, fill = red] (0.77,2.21) rectangle (1.41,2.54);
-					\fill[opacity = 0.4, fill = blue] (3.63,1.01) rectangle (4.27,1.34);
-				}
-			\end{tikzpicture}	
+			%\vspace{-10mm}	
+			%\begin{tikzpicture}[scale=1]
+				%\node[anchor=south west,inner sep=0] (image) at (0,0)
+				%{
+				%	\includegraphics[width = \columnwidth]{figures/Frame_Structure_US.ps}     
+				%};
+				%\only<2->
+				%{
+					%\fill[opacity = 0.4, fill = red] (0.77,2.21) rectangle (1.41,2.54);
+					%\fill[opacity = 0.4, fill = blue] (3.63,1.01) rectangle (4.27,1.34);
+				%}
+			%\end{tikzpicture}	
+                \end{overlayarea}	
+		\end{center}
+		\onslide<2->
+		{
+		\begin{overlayarea}{\textwidth}{1.25cm}
+		\centering
+		\begin{tikzpicture}[scale=1]
+                	\node[draw=none,fill=kit-green15, minimum height = 0.5cm, text width = .85\columnwidth, align = center] at (0.0, 0.0) {Received power based channel estimation $\Rightarrow \color{red}{\eprcvdstpr}$, $\color{blue}{\eprcvdsr}$};
+                \end{tikzpicture}	
+                \end{overlayarea}	
+		\begin{overlayarea}{\textwidth}{.65cm}
+		\centering
+		\begin{tikzpicture}[scale=1]
+                	\node[draw=none,fill=kit-green15, minimum height = 0.5cm, text width = .85\columnwidth, align = center] at (0.0, 0.0) {Pilot based channel estimation $\Rightarrow \color{kit-green100}{\ephs}$};
+                \end{tikzpicture}		
+                \end{overlayarea}	
+		}
+	\end{column}
+	\end{columns}
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[t]{Underlay System}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\pnote{In order to acquire this knowledge, following approach is proposed, the time resources for the estimation corresponding channels are allocated at the ST and the SR frame structure.}
+        \pnote{The variations due to the estimation of the involved channels are characterized in terms of their cdf.}
+	\pnote{It is worthy to mention here that the received power estimation is employed for the channels between the primary and secondary systems and pilot based estimation is employed for the channel within the secondary system} % In this regard, the estimated parameters is observed indirectly in the form of received power 
+	\pnote{Next, the variations in the performance parameters are characterized using their cdfs, where C0 and C1 corresponds to the data rate with and without interference in the throughput expression}
+	\pnote{The derived expressions are used to determine the suitable estimation and sensing time intervals that achieves the maximum secondary throughput, represented by the expression on the right}
+	\vspace{-2mm}
+	\fs{8}{8}
+	%\begin{block}{}
+	%\end{block}			
+	\begin{columns}
+		\begin{column}{0.38\columnwidth}
+			\vspace{-0.7mm}
+			\begin{block}{\scriptsize Proposed Approach}
+			\begin{center}
+			\begin{tikzpicture}[node distance = 1.77cm, auto]
+                        	% draw nodes
+				\node [block] (frame) {Incorporation of time resources for channel estimation};
+  			        \node [block, below of=frame] (channelest) {Characterizing the variations due to channel estimation};
+  			        \node [block, below of=channelest] (cdf) {Characterizing the variations in performance parameters};
+  			        \node [block, below of=cdf] (tradeoff) {Estimation-throughput tradeoff};
+				% draw edges
+    				\path [line] (frame) -- (channelest);
+    				\path [line] (channelest) -- (cdf);
+    				\path [line] (cdf) -- (tradeoff);
+			\end{tikzpicture}
+			\end{center}
+			\end{block}
+
+		\end{column}
+		\begin{column}{0.62\columnwidth}
+		\fs{8}{8}
+		\begin{center}
+			\begin{overlayarea}{\textwidth}{4.1cm}
+                        \begin{tikzpicture}[scale=1]
+                                \node[anchor=south west,inner sep=0] (image) at (0,0)
+                                {
+                                       \includegraphics[width = \columnwidth]{figures/Frame_Structure_US.ps}     
+                                };
+                                \only<2->
+                                {
+                                        \fill[opacity = 0.4, fill = red] (0.77,2.21) rectangle (1.41,2.54);
+                                        \fill[opacity = 0.4, fill = blue] (3.63,1.01) rectangle (4.27,1.34);
+                                }
+                        \end{tikzpicture}
+			\end{overlayarea}
+			\vspace{3.5mm}
+			\begin{overlayarea}{\textwidth}{2.6cm}
+			\only<1>
+			{	
+				\begin{block}{\scriptsize Estimation Model (EM) -- Average Constraint (AC)} 
+                               	 \vspace{-3.2mm}
+					\begin{align*}
+					\trsac(\ttest, \ttsenac) =& \maxi_{\test, \tsen} \e{\epd, \ecz, \eco}{\rs(\test, \tsen)},	\\	
+					\text{s.t.} & \text{ }  \color{kit-green100}{\e{\epd}{\epd} \ge \pdd}, \\ 
+\text{s.t.} & \text{ }  0 < \test \le \tsen \le T
+					\end{align*} 
+               		 	\end{block}
+			} 
+			\only<2->
+			{	
+				\begin{block}{\scriptsize Estimation Model (EM) -- Outage Constraint (OC)} 
+                               	 \vspace{-3.2mm}
+					\begin{align*}
+					\trsac(\ttest, \ttsenac) =& \maxi_{\test, \tsen} \e{\epd, \ecz, \eco}{\rs(\test, \tsen)},	\\	
+					\text{s.t.} & \text{ }  \color{kit-green100}{\p(\epd \le \pdd) \le \mpd}, \\[0.35em]
+\text{s.t.} & \text{ }  0 < \test \le \tsen \le T
+					\end{align*} 
+               		 	\end{block}
+			} 
+                        \end{overlayarea}
 		\end{center}
 		\end{column}
 	\end{columns}
 \end{frame}
-
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1705,8 +1806,8 @@ Validation
 	%\pnote{The variations in the system are considered in terms of the interference received at the PR and the throughput at SR}
 	%\pnote{Besides, an estimation throughput tradeoff subject to confidence probability constraint is proposed}
 	%%\vspace{-3mm}
-	\fs{7}{8}
-	\begin{block}{\scriptsize Objective}
+	\fs{8}{8}
+	\begin{block}{\footnotesize Objective}
 		\begin{itemize}
 			\item Verify the feasibility of proposed performance analysis under practical conditions  
 			%\item Justify the necessity of channel knowledge for the deployment of CR systems 
@@ -1717,27 +1818,28 @@ Validation
 		\begin{column}{0.45\columnwidth}
 			%\begin{overlayarea}{\textwidth}{2cm}
 			\only<1>{
-			\begin{block}{\scriptsize Simplifications/Modifications} 
+			\begin{block}{\footnotesize Simplifications/Modifications} 
 				\begin{itemize}
-					\item Channel estimation is restricted to $\phpth$ $\Rightarrow$ Interference constraint
-					\item Outage constraint is replaced with confidence probability constraint
+					\item Channel estimation is restricted to $\phpth$ 
+					\item Outage constraint $\Rightarrow$ confidence probability constraint
 					%\item Primary and secondary systems transmit OFDM modulated signal 
-					\item Interference from the PT to the SR over $\phpt$ is assumed to be negligible
+					\item Interference over $\phpt$ is neglected 
 
 				\end{itemize}				
 			\end{block}
 			%\end{overlayarea}
 			\vspace{3mm}
-			\begin{block}{\scriptsize Signal model}
-				\begin{equation*}
-					\yrcvd[n] = \hpth \cdot \xtranpr[n] + \wst[n]
-				\end{equation*}
-				\begin{equation*}
-					\yp[n] = \hpth \cdot \xscont[n] + \wpr[n]
-				\end{equation*}
-				\begin{equation*}
-					\ys[n] = \gs \cdot \xscont[n] + \wsr[n]
-				\end{equation*}
+			\begin{block}{\footnotesize Signal model}
+				\vspace{-3mm}
+				\begin{align*}
+					\yrcvd[n] &= \hpth \cdot \xtranpr[n] + \wst[n] \\[0.3em]
+				%\end{equation*}
+				%\begin{equation*}
+					\yp[n] &= \hpth \cdot \xscont[n] + \wpr[n] \\[0.3em]
+				%\end{equation*}
+				%\begin{equation*}
+					\ys[n] &= \gs \cdot \xscont[n] + \wsr[n]
+				\end{align*}
 			\end{block} 
 			}
 			\iffalse
@@ -1791,7 +1893,7 @@ Validation
 \end{frame}
 
 
-\subsection{Validation}
+%\subsection{Validation}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}[c]{Validation}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1801,15 +1903,15 @@ Validation
 	%\pnote{Since our main focus here was to certify the significance of the expressions obtained, the channel hp3 was modelled using a coaxial cable for signal transmissions. Later for the demonstration the antennas are deployed}
 	\pnote{A SDR platform emulates the ST that realizes channel estimation, the power control and data transmission (to a virtual SR because channel knowledge is assumed to be perfect)}
 	\pnote{The host computer provides an interface to perform basic computation and act as a database for storing samples} 
-	\begin{columns}
-		\begin{column}{0.45\columnwidth}
-			\fs{7}{8}
+	%\begin{columns}
+		%\begin{column}{0.45\columnwidth}
+			%\fs{7}{8}
 			\centering
-             	        \resizebox{.95 \columnwidth}{!}{%
+             	        %\resizebox{.95 \columnwidth}{!}{%
 			\begin{tikzpicture}[scale=1]
 				\node[anchor=south west,inner sep=0] (image) at (0,0)
             		    	{
-               		        	\includegraphics[width=\figscale]{../kapitel06/figures/ValidationSetUp.ps}
+               		        	\includegraphics[width=0.5 \columnwidth]{../kapitel06/figures/ValidationSetUp.ps}
                 		};
 
         	        \begin{scope}[x={(image.south east)},y={(image.north west)}]
@@ -1824,11 +1926,11 @@ Validation
                 	%\foreach \y in {0,1,...,9} { \node [anchor=east] at (0,\y/10) {0.\y}; }
                 	\end{scope}
 			\end{tikzpicture}
-		}
-		\end{column}
+		%}
+		%\end{column}
 		%\begin{column}{0.5\columnwidth}
 		%\end{column}
-	\end{columns}
+	%\end{columns}
 \end{frame}
 
 
@@ -1843,14 +1945,14 @@ Validation
 	%\pnote{The time interval at which the confidence probability constraint is satisfied yields the maximum expected throughput} 
 	\begin{columns}
 		\begin{column}{0.45\columnwidth}
-			\fs{7}{8}
+			\fs{8}{8}
 			\centering
              	        \resizebox{.95 \columnwidth}{!}{%
 				\input{figures/P_PR_Rx}
       		  		\begin{tikzpicture}[scale=1]
                 		\node[anchor=south west,inner sep=0] (image) at (0,0)
           		        {
-                        		\includegraphics[width=\figscale]{figures/P_PR_Rx}
+                        		\includegraphics[width=1.4\columnwidth]{figures/P_PR_Rx}
             		        };
 
             		        \begin{scope}[x={(image.south east)},y={(image.north west)}]
@@ -1866,9 +1968,9 @@ Validation
 			}
 			\vspace{2mm}	
 				
-             	        \resizebox{.95 \columnwidth}{!}{%
+             	        \resizebox{0.95 \columnwidth}{!}{%
 				\input{figures/R_s}
-			        \includegraphics[width=\figscale]{figures/R_s}%
+			        \includegraphics[width=1.4 \columnwidth]{figures/R_s}%
 			}
 		\end{column}
 		\begin{column}{0.55\columnwidth}
@@ -1894,11 +1996,11 @@ Validation
 		\end{overlayarea}
 		\resizebox{.95 \columnwidth}{!}{%
 		\centering
-			\input{../kapitel06/figures/ETT.tex}
+			\input{figures/ETT.tex}
 		        \begin{tikzpicture}[scale=1]
        				\node[anchor=south west,inner sep=0] (image) at (0,0)
         			{
-                			\includegraphics[width=\figscale]{../kapitel06/figures/ETT}
+                			\includegraphics[width=\figscale]{figures/ETT}
         			};
         			\begin{scope}[x={(image.south east)},y={(image.north west)}]
         			\node[draw, fill=gray!10,font=\footnotesize] (text1) at (0.98,0.872) {$\pcod$};
@@ -1921,7 +2023,7 @@ Validation
 \end{frame}
 
 \newcommand{\anglee}{00}
-\subsection{Demonstration}
+\section{Demonstration}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}[c]{Demonstration}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1936,44 +2038,44 @@ Validation
 		\begin{tikzpicture}[scale=1]
                 	\node[anchor=south west,inner sep=0] (image) at (0,0)
                 {
-                        \includegraphics[width=1.0 \columnwidth, angle = \anglee]{../kapitel06/figures/BlockDiagram_Demo.ps}
+                        \includegraphics[width=1.0 \columnwidth, angle = \anglee]{figures/BlockDiagram_Demo.ps}
                 };
 
                 \begin{scope}[x={(image.south east)},y={(image.north west)}]
 
                 %\node[draw, fill=kit-green30, font=\tiny, rotate = \anglee, align = center] at (0.48,1.3) {Block Diagram of the Deployment Demonstrator};
                 
-		\node[draw, fill=kit-green30, font=\tiny, rotate = \anglee, align = center] at (0.48,1.08) {Air Interface};
-                \node[draw, fill=kit-green30, font=\tiny, rotate = \anglee, align = center] at (0.391,0.037) {Primary Receiver};
-                \node[draw, fill=kit-green30, font=\tiny, rotate = \anglee, align = center] at (0.5858,0.037) {Secondary Transmitter};
-                \node[draw, fill=kit-green30, font=\tiny, rotate = 90, align = center] at (0.986,0.97) {SDR Interface};
-                \node[draw, fill=kit-green30, font=\tiny, rotate = 90, align = center] at (0.986,0.592) {Host Interface};
+		\node[draw, fill=kit-green30, font=\scriptsize, rotate = \anglee, align = center] at (0.5,1.08) {Air Interface};
+                \node[draw, fill=kit-green30, font=\scriptsize, rotate = \anglee, align = center] at (0.37,0.0) {Primary Receiver};
+                \node[draw, fill=kit-green30, font=\scriptsize, rotate = \anglee, align = center] at (0.66,0.0) {Secondary Transmitter};
+                \node[draw, fill=kit-green30, font=\scriptsize, rotate = 90, align = center] at (0.986,0.915) {SDR Interface};
+                \node[draw, fill=kit-green30, font=\scriptsize, rotate = 90, align = center] at (0.986,0.537) {Host Interface};
 		
 			% Transmit and receive signals  
-                \node[draw=none, font=\tiny, rotate = \anglee, align = center] at (0.27,0.97) {Rx Signal};
-                \node[draw=none, font=\tiny, rotate = \anglee, align = center] at (0.27,0.879) {Tx Signal};
-                \node[draw=none, font=\tiny, rotate = \anglee, align = center] at (0.68,0.97) {Tx Signal};
-                \node[draw=none, font=\tiny, rotate = \anglee, align = center] at (0.68,0.879) {Rx Signal};
+                \node[draw=none, font=\scriptsize, rotate = \anglee, align = center] at (0.18,0.92) {Rx Signal};
+                \node[draw=none, font=\scriptsize, rotate = \anglee, align = center] at (0.18,0.829) {Tx Signal};
+                \node[draw=none, font=\scriptsize, rotate = \anglee, align = center] at (0.82,0.92) {Tx Signal};
+                \node[draw=none, font=\scriptsize, rotate = \anglee, align = center] at (0.82,0.829) {Rx Signal};
                 % Channels
-                \node[draw=none, font=\tiny, rotate = \anglee, align = center] at (0.48,1.00) {$\hpth$};
+                \node[draw=none, font=\scriptsize, rotate = \anglee, align = center] at (0.5,1.00) {$\hpth$};
                 %\node[draw=none, font=\scriptsize, rotate = \anglee, align = center] at (0.48,0.889) {$\hpt$};
                 % Fill Empty Boxes
                 % PR Interface
-                \node[draw=none, font=\tiny, rotate = \anglee, align = center] at (0.136, 0.616) {Pilot Signal \\ $(\ptran)$};
-                \node[draw=none, font=\tiny, rotate = \anglee, align = center] at (0.136,0.40) {$\sum |\cdot|^2$ \\ $(= \prcvdpr)$};
-                \node[draw=none, font=\tiny, rotate = \anglee, align = center] at (0.264,0.40) {Compute $\pco$ \\ ($\acc, \ite$) };
-                \node[draw=none, font=\tiny, rotate = \anglee, align = center] at (0.394,0.40) {Validate\\ $\pco \ge \pcod$};
+                \node[draw=none, font=\scriptsize, rotate = \anglee, align = center] at (0.201, 0.562) {Pilot Signal \\ $\ptran$};
+                \node[draw=none, font=\scriptsize, rotate = \anglee, align = center] at (0.201,0.349) {$\sum |\cdot|^2$ \\ $(= \prcvdpr)$};
+                \node[draw=none, font=\scriptsize, rotate = \anglee, align = center] at (0.38,0.349) {Compute $\pco$ \\ ($\acc, \ite$) };
+                %\node[draw=none, font=\scriptsize, rotate = \anglee, align = center] at (0.394,0.40) {Validate\\ $\pco \ge \pcod$};
 
                 % ST Interface
-                \node[draw=none, font=\tiny, rotate = \anglee, align = center] at (0.8234,0.616) {Pre\\-processing};
-                \node[draw=none, font=\tiny, rotate = \anglee, align = center] at (0.695,0.616) {Compute \\ $\eprcvdpr$};
-                \node[draw=none, font=\tiny, rotate = \anglee, align = center] at (0.567,0.616) {Compute \\ $\epreg$};
-                \node[draw=none, font=\tiny, rotate = \anglee, align = center] at (0.567,0.40) {Compute  $\ers$  \\ ($\ttesto$)};
-                \node[draw=none, font=\tiny, rotate = \anglee, align = center] at (0.8234,0.40) {Data Signal \\ $\epreg$};
-                \node[draw=none, font=\tiny, rotate = \anglee, align = center] at (0.567,0.184) {Emulate \\ $(\hs)$ ST-SR};
+                \node[draw=none, font=\scriptsize, rotate = \anglee, align = center] at (0.804,0.562) {Pre\\-processing};
+                \node[draw=none, font=\scriptsize, rotate = \anglee, align = center] at (0.624,0.561) {Channel \\ Estimation \\ $\eprcvdpr$};
+                \node[draw=none, font=\scriptsize, rotate = \anglee, align = center] at (0.624,0.349) {Power \\ Control};
+                %\node[draw=none, font=\scriptsize, rotate = \anglee, align = center] at (0.567,0.40) {Power Control $\ers$  \\ ($\ttesto$)};
+                \node[draw=none, font=\scriptsize, rotate = \anglee, align = center] at (0.804,0.349) {Data Signal \\ $\epreg$};
+                \node[draw=none, font=\scriptsize, rotate = \anglee, align = center] at (0.624,0.135) {Throughput \\ $\ers$ };
                 %\node[draw, fill=gray!10, font=\tiny, rotate = \anglee, align = center] at (0.8234,0.73) {Pre-processing};
-                \node[draw, fill=kit-green30, font=\tiny, rotate = \anglee, align = center] at (0.695,0.44) {Power Control};
-                \node[draw, fill=kit-green30, font=\tiny, rotate = \anglee, align = center] at (0.695,0.73) {Channel Estimation};
+                %\node[draw, fill=kit-green30, font=\scriptsize, rotate = \anglee, align = center] at (0.695,0.44) {Power Control};
+                %\node[draw, fill=kit-green30, font=\scriptsize, rotate = \anglee, align = center] at (0.695,0.73) {Channel Estimation};
                 \end{scope}
         \end{tikzpicture}
 
@@ -2104,24 +2206,24 @@ Validation
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	\pnote{This finally brings us to the conclusion}
 	\pnote{With adequate analysis and hardware verification, it is identified that channel knowledge is extremely necessary..} 
-	\begin{block}{}
-	\fs{7}{9}
+%	\begin{block}{}
+	\fs{8}{9}
 		\begin{itemize}	
 			%\item Lack of channel knowledge renders the performance analysis of CR system incomplete 
 			% Through adequate analysis and hardware deployment it is justified that 
-			\item Channel knowledge is extremely necessary for the realization of CR techniques over the hardware, allowing secondary systems to coexists with the primary system 
-			\item An analytical framework is proposed that captures the detrimental effects (time allocation and variations) due to imperfect channel knowledge  
-			\item Finally, the performed analysis does not only provide answers to specific questions related to imperfect channel knowledge, including 
+			\item Channel knowledge is extremely necessary for the realization of CR techniques %, allowing secondary systems to coexists with the primary system 
+			\item An analytical framework is proposed that captures the detrimental effects due to imperfect channel knowledge  
+			\item Finally, the performed analysis provides answers to specific questions related to imperfect channel knowledge 
 				\begin{itemize} 
-				\fs{7}{9}
-\item How to counter the uncertain interference induced in different CR systems? \item How to evaluate the performance degradation? \item How to determine the suitable estimation time and suitable sensing time that yields the maximum throughput achieved? \end{itemize}
-but also promotes techniques such as 
+				\fs{8}{9}
+\item How to counter the uncertain interference induced? \item How to evaluate the performance degradation? \item How to determine the suitable estimation time that yields the maximum throughput achieved? \end{itemize}
+at the same time promotes techniques such as 
 
 \begin{itemize} 
-\fs{7}{9}
+\fs{8}{9}
 \item implementation of the channel estimation at the secondary system \item energy-based detection and \item received power-based channel estimation \end{itemize} that ultimately encourage hardware feasibility of CR systems
 		\end{itemize} 
-	\end{block}
+%	\end{block}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
