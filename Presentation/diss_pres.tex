@@ -481,31 +481,6 @@ single arrow head extend=.3cm,}}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}[c]{Classification}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	\fs{8}{8}
-	\begin{overlayarea}{\textwidth}{5.8cm}
-        	\centering
-		\begin{tikzpicture}[scale=1]
-		\node[anchor=south west,inner sep=0] (image) at (0,0)
-		{
-			\includegraphics[width = 0.8\columnwidth]{figures/CR_paradigm.ps}
-        	};	
-		\iffalse
-		\only<2->
-		{
-			\begin{pgfonlayer}{background}
-			\fill[opacity = 0.4, fill = kit-green30] (-0.1,-0.05) rectangle (4.88,5.92);
-			\end{pgfonlayer}
-		}
-		\fi
-		\end{tikzpicture}
-	\end{overlayarea}
-\end{frame}
-
-
-\subsection{Performance Analysis}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}[t]{Performance Analysis of CR Systems}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	%\pnote{Performance analysis in context to wireless system help us understand the feasibility of a wireless system in real conditions.} 
@@ -612,6 +587,38 @@ single arrow head extend=.3cm,}}
 	%	\node[draw=none,fill=kit-green15, align = center] at (0.0, 0.0) {Incorporating channel knowledge allows us analyze the performance of CR in conditions close to reality};
 	%\end{tikzpicture}
 \end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[c]{Classification}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\pnote{Depending on how secondary access is performed, CR systems are classified as: interweave system, underlay system and overlay system.}
+	\pnote{An interweave system enables the coexistence of primary and secondary systems by separating them in temporal domain.} 
+	\pnote{In this regard a spectrum sensing is employed to detect the presence and absence of primary user signal. Hence, an interference is avoided by not transmitting the signal wherever the primary signal is detected}
+	\pnote{An underlay system utilizes the interference tolerance capability of the primary systems. Hence, by employing techniques such as power control it is able to keep the interference received at the primary system below a certain interference threshold} 
+	\pnote{An overlay system requires the involvement of higher layers for implementing advance coding techniques to enable the coexistence of primary system and secondary system.}
+	\pnote{Finally, the hybrid system that exploits the benefits of interweave and underlay system so that the acquired spectrum can be utilized more efficiently.} 
+	\fs{8}{8}
+	\begin{overlayarea}{\textwidth}{5.8cm}
+        	\centering
+		\begin{tikzpicture}[scale=1]
+		\node[anchor=south west,inner sep=0] (image) at (0,0)
+		{
+			\includegraphics[width = 0.8\columnwidth]{figures/CR_paradigm.ps}
+        	};	
+		\iffalse
+		\only<2->
+		{
+			\begin{pgfonlayer}{background}
+			\fill[opacity = 0.4, fill = kit-green30] (-0.1,-0.05) rectangle (4.88,5.92);
+			\end{pgfonlayer}
+		}
+		\fi
+		\end{tikzpicture}
+	\end{overlayarea}
+\end{frame}
+
+
+\subsection{Performance Analysis}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1438,6 +1445,7 @@ Underlay System
 				\end{scope}
 				\end{tikzpicture}
 			}
+			\iffalse
 			\only<3->
 			{
 				\input{../kapitel04/figures/fig_opt_thr_vs_SNR_AWGN_SI_00.tex}
@@ -1474,6 +1482,7 @@ Underlay System
                                 \end{scope}
                                 \end{tikzpicture}
 			}
+			\fi
 		}
 		\end{overlayarea}
 		\end{center}
