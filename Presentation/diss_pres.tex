@@ -220,8 +220,8 @@ single arrow head extend=.3cm,}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	\pnote{This is the outline of my presentation, I will start with the motivation, where the deployment scenario (CSC) briefly illustrated.} 
 	\pnote{In addition, emphasize is laid on the fact that why performance analysis is critical to the CR systems, particularly it is argued why channel knowledge is elementary to the deployment of CR systems.}
-	\pnote{Next, we discuss performance analysis from the perspective of CR systems, namely, interweave system}
-	\pnote{The performed analysis is verified by means of a hardware validation and demonstration.}
+	\pnote{Next, we discuss performance analysis of the underlay system}
+	\pnote{The performed analysis is verified by means of a validation and demonstration.}
 	\pnote{The presentation ends with a short conclusion} 
 	\fs{10}{15}
 	\tableofcontents
@@ -246,9 +246,10 @@ single arrow head extend=.3cm,}}
 	\begin{column}{0.55\columnwidth}
 	\fs{8}{8}
 	%\resizebox{1.1\columnwidth}{!}{%
-	\pnote{According to recent survey, it is being prognoses that the mobile traffic will increase 11-fold over the next few years.}
-	\pnote{With this situation in hand, the standardization bodies are currently in the phase of situation the requirements of fifth-generation of mobile systems.}
-	\pnote{Some of these major requirements are:}
+	\pnote{According to recent survey, it is being prognosed that there will be a tremendous increase in mobile traffic 11-fold over the next few years.}
+	\pnote{With this situation in hand, the standardization bodies are currently in the phase of conceptualizing the requirements of fifth-generation of mobile systems.}
+	\pnote{Which includes: increasing the areal capacity by a factor of 1000 in reference to start of the art standards.}
+	\pnote{Promoting cost and energy efficient deployments of the network}
 	\begin{tikzpicture}
 		\begin{axis}
 			[
@@ -305,7 +306,7 @@ single arrow head extend=.3cm,}}
 	\fs{8}{8}
 	\begin{block}{} 
 	\begin{itemize}
-		\item Data rate (1000$\times)$
+		\item Areal capacity (1000$\times)$
 		%\item Latency $(< \SI{1}{ms})$  
 		\item Energy- and cost- efficiency
 	\end{itemize}	
@@ -319,7 +320,7 @@ single arrow head extend=.3cm,}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}[t]{5G Technologies}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	\pnote{The feasibility of these requirements can be envisaged through the application of some of the promising approaches such as maximizing the spatial degree of freedom, reducing the size of the cell to enhance spectrum reuse, designing the waveform to increase spectral efficiency, in-band full duplex communications.}
+	\pnote{The feasibility of these requirements can be envisaged through the application of some of the promising approaches such as maximizing the spatial degree of freedom, reducing the size of the cell to enhance spectrum reuse, designing the waveform to increase spectral efficiency, promoting in-band full duplex communications.}
 \pnote{Despite the fact that these technologies contributes significantly to an increase in data rate, this large number in data rate cannot be achieved without an extension to already allocated spectrum}
 \pnote{Now, the question arises, where to look for spectrum? A conventional approach is to look for spectrum below 6 GHz, due to the static allocation of the spectrum below 6 GHz to different mobile services.}
 \pnote{One possibility is to shift to higher frequencies, which corresponds to mm-W and visible light communications}
@@ -438,7 +439,7 @@ single arrow head extend=.3cm,}}
 		}
 		\onslide<4->
 		{
-			\begin{block}{\scriptsize Indoor?}
+			\begin{block}{\footnotesize Indoor?}
 				\begin{itemize}
 					\item 70\% traffic is originated indoor $\Leftrightarrow$ Traffic Management
 					\item Spatial separation $\Leftrightarrow$ Interference suppression	
@@ -449,27 +450,27 @@ single arrow head extend=.3cm,}}
 	\begin{column}{0.63\columnwidth}
 		\fs{8}{8}
 		\begin{center}
-			CSC in a preliminary 5G network \\\vspace{0.4cm} 
+			%CSC in a preliminary 5G network \\\vspace{0.4cm} 
         		\begin{tikzpicture}[scale=1]
 				\node[anchor=south west,inner sep=0] (image) at (0,0)
 				{
-					\includegraphics[width = \columnwidth]{../kapitel01/figures/Cellular_Scenario_CR_T6}	     
+					\includegraphics[width = \columnwidth]{figures/Cellular_Scenario_CR}	     
 				};
 				\only<1>
 				{
 
-					\fill[opacity = 0.2, fill = red] (1.58,1.32) rectangle (2.7,2.16);
+					\fill[opacity = 0.2, fill = red] (1.44,1.35) rectangle (2.6,2.2);
 				}
 				\only<2>
 				{
-					\fill[opacity = 0.2, fill = blue] (1.05,2.01) rectangle (1.75,2.7);
-					\fill[opacity = 0.2, fill = kit-green100] (2.1,.6) rectangle (3.05,1.2);
-					\fill[opacity = 0.2, fill = red] (4.38,2.77) rectangle (4.94,3.8);
+					\fill[opacity = 0.2, fill = blue] (.88,2.05) rectangle (1.62,2.78);
+					\fill[opacity = 0.2, fill = kit-green100] (1.98,.62) rectangle (2.95,1.2);
+					\fill[opacity = 0.2, fill = red] (4.32,2.86) rectangle (4.9,3.88);
 				}
 				\only<3>
 				{
-					\fill[opacity = 0.2, fill = red] (1.58,1.32) rectangle (2.7,2.16);
-					\fill[opacity = 0.2, fill = blue] (3.45,3.25) rectangle (4.65,3.65);
+					\fill[opacity = 0.2, fill = red] (1.44,1.35) rectangle (2.6,2.2);
+					\fill[opacity = 0.2, fill = blue] (3.38,3.38) rectangle (4.58,3.72);
 					%\fill[opacity = 0.2, fill = kit-green100] (3.35,3.5) rectangle (3.6,4.3);
 				}
 			\end{tikzpicture}	
@@ -478,9 +479,34 @@ single arrow head extend=.3cm,}}
 	\end{columns}
 \end{frame}
 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[c]{Classification}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\fs{8}{8}
+	\begin{overlayarea}{\textwidth}{5.8cm}
+        	\centering
+		\begin{tikzpicture}[scale=1]
+		\node[anchor=south west,inner sep=0] (image) at (0,0)
+		{
+			\includegraphics[width = 0.8\columnwidth]{figures/CR_paradigm.ps}
+        	};	
+		\iffalse
+		\only<2->
+		{
+			\begin{pgfonlayer}{background}
+			\fill[opacity = 0.4, fill = kit-green30] (-0.1,-0.05) rectangle (4.88,5.92);
+			\end{pgfonlayer}
+		}
+		\fi
+		\end{tikzpicture}
+	\end{overlayarea}
+\end{frame}
+
+
 \subsection{Performance Analysis}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}[t]{Performance Analysis of CR System}
+\begin{frame}[t]{Performance Analysis of CR Systems}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	%\pnote{Performance analysis in context to wireless system help us understand the feasibility of a wireless system in real conditions.} 
 	\pnote{Coexistence of different wireless systems has always been a difficult task, the task becomes even more challenging if we take into account the fact that two different systems (which may differ in their communication standards) coexist by sharing a band of spectrum, separated in time, space or polarization.}
@@ -541,34 +567,35 @@ single arrow head extend=.3cm,}}
         		\begin{tikzpicture}[scale=1]
 				\node[anchor=south west,inner sep=0] (image) at (0,0)
 				{
-					\includegraphics[width = 0.85\columnwidth]{../kapitel01/figures/CR_Scenario_Hybrid}	     
+					\includegraphics[width = 0.8\columnwidth]{figures/Hybrid_Scenario}	     
 				};
 				\only<1>
 				{
-					\fill[opacity = 0.2, fill = blue] (.32,1.16) rectangle (1.22,1.8);
-					\fill[opacity = 0.2, fill = blue] (.32,-0.06) rectangle (1.22,0.58);
-					\fill[opacity = 0.2, fill = red] (3.65,1.18) rectangle (4.65,1.6);
-					\fill[opacity = 0.2, fill = red] (2.42,2.3) rectangle (3.88,3.08);
+					\fill[opacity = 0.2, fill = blue] (.04,2.25) rectangle (1.11,2.99);
+					\fill[opacity = 0.2, fill = blue] (.05,-0.01) rectangle (1.12,0.73);
+					\fill[opacity = 0.2, fill = red] (4.68,1.42) rectangle (5.86,1.96);
+					\fill[opacity = 0.2, fill = red] (3.12,3.14) rectangle (4.98,4.06);
 				}
 				\only<2>
 				{
-					\fill[opacity = 0.2, fill = blue] (.32,1.16) rectangle (1.22,1.8); %PR
-					\fill[opacity = 0.2, fill = red] (3.65,1.18) rectangle (4.65,1.6); %ST
-					\fill[opacity = 0.2, fill = red] (2.42,2.3) rectangle (3.88,3.08); %SR
-					
+					\fill[opacity = 0.2, fill = blue] (.04,2.25) rectangle (1.11,2.99);
+					%\fill[opacity = 0.2, fill = blue] (.05,-0.01) rectangle (1.12,0.73);
+					\fill[opacity = 0.2, fill = red] (4.68,1.42) rectangle (5.86,1.96);
+					\fill[opacity = 0.2, fill = red] (3.12,3.14) rectangle (4.98,4.06);
 					%% Dummy figure added to avoid a shift between two slides
-					\fill[opacity = 0.0, fill = blue] (.32,-0.06) rectangle (1.22,0.58);
+					\fill[opacity = 0.0, fill = blue] (.05,-0.01) rectangle (1.12,0.73);
 				}
 				\only<3->
 				{
 					
-					\fill[opacity = 0.2, fill = orange] (1.28,.98) rectangle (1.68,1.34);
-					\fill[opacity = 0.2, fill = red] (1.22,1.96) rectangle (1.62,2.32);
-					\fill[opacity = 0.2, fill = kit-green100] (3.38,1.86) rectangle (3.78,2.22);
-					\fill[opacity = 0.2, fill = blue] (2.52,.68) rectangle (2.92,1.04);
+					\fill[opacity = 0.2, fill = orange] (1.34,1.37) rectangle (1.74,1.73);
+					\fill[opacity = 0.2, fill = red] (1.63,2.49) rectangle (2.03,2.85);
+					\fill[opacity = 0.2, fill = kit-green100] (4.16,2.46) rectangle (4.56,2.82);
+					\fill[opacity = 0.2, fill = blue] (3.04,.96) rectangle (3.44,1.32);
 					
 					%% Dummy figure added to avoid a shift between two slides
-					\fill[opacity = 0.0, fill = blue] (.32,-0.06) rectangle (1.22,0.58);
+					\fill[opacity = 0.0, fill = red] (3.12,3.14) rectangle (4.98,4.06);
+					\fill[opacity = 0.0, fill = blue] (.05,-0.01) rectangle (1.12,0.73);
 				}
 				\iffalse
 				\only<4->
@@ -1135,13 +1162,17 @@ Underlay System
         		\begin{tikzpicture}[scale=1]
 				\node[anchor=south west,inner sep=0] (image) at (0,0)
 				{
-					\includegraphics[width =  \columnwidth]{../kapitel04/figures/CR_Scenario_Underlay}	     
+					\includegraphics[width =  \columnwidth]{figures/Underlay_Scenario}	     
 				};
 				\only<2->
 				{
-					\fill[opacity = 0.2, fill = red] (1.0,1.63) rectangle (1.4,1.97);
-					\fill[opacity = 0.2, fill = blue] (2.12,0.54) rectangle (2.52,.88);
-					\fill[opacity = 0.2, fill = kit-green100] (2.85,1.56) rectangle (3.25,1.90);
+					%\fill[opacity = 0.2, fill = orange] (1.34,1.37) rectangle (1.74,1.73);
+					\fill[opacity = 0.2, fill = red] (1.68,2.535) rectangle (2.08,2.895);
+					\fill[opacity = 0.2, fill = kit-green100] (4.24,2.52) rectangle (4.64,2.88);
+					\fill[opacity = 0.2, fill = blue] (3.1,.98) rectangle (3.5,1.34);
+					%\fill[opacity = 0.2, fill = red] (1.0,1.63) rectangle (1.4,1.97);
+					%\fill[opacity = 0.2, fill = blue] (2.12,0.54) rectangle (2.52,.88);
+					%\fill[opacity = 0.2, fill = kit-green100] (2.85,1.56) rectangle (3.25,1.90);
 				}
 			\end{tikzpicture}
 			%\vspace{-10mm}	
@@ -1988,9 +2019,10 @@ Validation
 			\begin{tikzpicture}[scale=1]
 				\node[anchor=south west,inner sep=0] (image) at (0,0)
 				{
-					\includegraphics[width = 0.85 \columnwidth]{../kapitel06/figures/CR_Scenario_Underlay_gruen} 
+					\includegraphics[width = 0.75 \columnwidth]{figures/Underlay_Scenario_HW} 
 				};
-				\fill[opacity = 0.2, fill = red] (0.57,0.9) rectangle (0.97,1.24);
+				%\fill[opacity = 0.2, fill = red] (0.57,0.9) rectangle (0.97,1.24);
+				\fill[opacity = 0.2, fill = red] (1.34,2.07) rectangle (1.74,2.43);
 			\end{tikzpicture}	
 			\end{overlayarea}
 			\centering
@@ -2137,6 +2169,14 @@ Validation
 
 \newcommand{\anglee}{00}
 \section{Demonstration}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[c]{}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{center}
+Demonstration
+\end{center}
+\end{frame}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}[c]{Demonstration}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -2326,11 +2366,11 @@ Validation
 			% Through adequate analysis and hardware deployment it is justified that 
 			\item Channel knowledge is extremely necessary for the realization of CR techniques %, allowing secondary systems to coexists with the primary system 
 			\item An analytical framework is proposed that captures the detrimental effects due to imperfect channel knowledge  
-			\item Finally, the performed analysis provides answers to specific questions related to imperfect channel knowledge 
+			\item The performed analysis provides answers to specific questions related to imperfect channel knowledge 
 				\begin{itemize} 
 				\fs{8}{9}
 \item How to counter the uncertain interference induced? \item How to evaluate the performance degradation? \item How to determine the suitable estimation time that yields the maximum throughput achieved? \end{itemize}
-at the same time promotes techniques such as 
+\item Most importantly, the performed analysis promotes techniques such as 
 
 \begin{itemize} 
 \fs{8}{9}
