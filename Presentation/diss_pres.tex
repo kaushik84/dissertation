@@ -484,6 +484,7 @@ single arrow head extend=.3cm,}}
 \begin{frame}[t]{Performance Analysis of CR Systems}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	%\pnote{Performance analysis in context to wireless system help us understand the feasibility of a wireless system in real conditions.} 
+	\pnote{Here the CSC is transformed into a CR system scenario, comprising of primary and secondary system corresponding to licensed and unlicensed system} 
 	\pnote{Coexistence of different wireless systems has always been a difficult task, the task becomes even more challenging if we take into account the fact that two different systems (which may differ in their communication standards) coexist by sharing a band of spectrum, separated in time, space or polarization.}
 	\pnote{With no concrete guidelines that means no knowledge about the prospective primary systems. From a physical layer perspective, this means no knowledge about the primary user signal.} 
 	\pnote{One alternative to assign a dedicated circuitry corresponding to every primary user signal, which is unrealistic from a deployment perspective. As a result, only solutions will persist that consider no knowledge of primary user signals, for instance energy detection. In other words, versatile and applicable to large range of wireless system.}  
@@ -495,7 +496,7 @@ single arrow head extend=.3cm,}}
 	\pnote{Incorporating channel knowledge in the system model allows us to analyze the performance of CR system closer to realistic conditions} 
 	\vspace{-1mm}
 	\fs{8}{8}
-	\begin{block}{\footnotesize Challenges}
+	\onslide<2->{\begin{block}{\footnotesize Challenges}
 		\begin{itemize}
 			\item Coexistence of two different systems: {\color{blue}{primary (licensed)}} and {\color{red}{secondary (unlicensed)}} 
 			\item Lack of concrete guidelines regarding the prospective primary systems %$\Rightarrow$ only those solutions persist that consider no knowledge about the primary user signal 
@@ -503,10 +504,11 @@ single arrow head extend=.3cm,}}
 			\item Existing theoretical analysis rarely converges to a hardware implementation %$\Rightarrow$ deployment perspective % in order words, rarely deal(tackle) the problem from a deployment perspective 
 		\end{itemize}
 	\end{block}
+	}
 	\vspace{-1mm}
 	\begin{columns}
 		\begin{column}{0.37\columnwidth}
-			\onslide<2->
+			\onslide<3->
 			{
 				\begin{block}{\footnotesize Secondary access}
 					Employ CR techniques at ST%, a CR system guarantees
@@ -517,14 +519,14 @@ single arrow head extend=.3cm,}}
 				\end{block}
 			}
 			%\vspace{-1mm}
-			\onslide<3->
+			\onslide<4->
 			{
 				\begin{block}{}%{\scriptsize Channel knowledge}
 					\centering
 					Knowledge of involved channels is necessary %for the realization of CR techniques at ST 
 				\end{block}
 			}
-			\onslide<4->
+			\onslide<5->
 	 		{
 				\centering
 				\tikzfancyarrow[0.95cm][kit-green70][top color=kit-green50, bottom color=kit-green50, shape border rotate=270]{\color{kit-green50}{10}}			\\[0.5em]	
@@ -546,12 +548,19 @@ single arrow head extend=.3cm,}}
 				};
 				\only<1>
 				{
+					\fill[opacity = 0.0, fill = blue] (.04,2.25) rectangle (1.11,2.99);
+					\fill[opacity = 0.0, fill = blue] (.05,-0.01) rectangle (1.12,0.73);
+					\fill[opacity = 0.0, fill = red] (4.68,1.42) rectangle (5.86,1.96);
+					\fill[opacity = 0.0, fill = red] (3.12,3.14) rectangle (4.98,4.06);
+				}
+				\only<2>
+				{
 					\fill[opacity = 0.2, fill = blue] (.04,2.25) rectangle (1.11,2.99);
 					\fill[opacity = 0.2, fill = blue] (.05,-0.01) rectangle (1.12,0.73);
 					\fill[opacity = 0.2, fill = red] (4.68,1.42) rectangle (5.86,1.96);
 					\fill[opacity = 0.2, fill = red] (3.12,3.14) rectangle (4.98,4.06);
 				}
-				\only<2>
+				\only<3>
 				{
 					\fill[opacity = 0.2, fill = blue] (.04,2.25) rectangle (1.11,2.99);
 					%\fill[opacity = 0.2, fill = blue] (.05,-0.01) rectangle (1.12,0.73);
@@ -560,7 +569,7 @@ single arrow head extend=.3cm,}}
 					%% Dummy figure added to avoid a shift between two slides
 					\fill[opacity = 0.0, fill = blue] (.05,-0.01) rectangle (1.12,0.73);
 				}
-				\only<3->
+				\only<4->
 				{
 					
 					\fill[opacity = 0.2, fill = orange] (1.34,1.37) rectangle (1.74,1.73);
