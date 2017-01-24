@@ -192,8 +192,8 @@
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
      inkscape:zoom="1.2783878"
-     inkscape:cx="291.89714"
-     inkscape:cy="174.86881"
+     inkscape:cx="338.07196"
+     inkscape:cy="139.08781"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="true"
@@ -251,13 +251,14 @@
     <flowRoot
        xml:space="preserve"
        id="flowRoot4109"
-       style="font-style:normal;font-weight:normal;font-size:20px;line-height:125%;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"><flowRegion
+       style="font-style:normal;font-weight:normal;font-size:20px;line-height:125%;font-family:helvetica;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;-inkscape-font-specification:helvetica;font-stretch:normal;font-variant:normal;"><flowRegion
          id="flowRegion4111"><rect
            id="rect4113"
            width="69.033974"
            height="25.609379"
            x="121.36619"
-           y="490.06931" /></flowRegion><flowPara
+           y="490.06931"
+           style="-inkscape-font-specification:helvetica;font-family:helvetica;font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;" /></flowRegion><flowPara
          id="flowPara4115" /></flowRoot>    <path
        sodipodi:type="arc"
        style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
@@ -287,17 +288,17 @@
     <text
        sodipodi:linespacing="125%"
        id="text5406"
-       y="577.65485"
+       y="577.99554"
        x="72.646446"
-       style="font-style:normal;font-weight:normal;font-size:20px;line-height:125%;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
+       style="font-style:normal;font-weight:normal;font-size:20px;line-height:125%;font-family:helvetica;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;-inkscape-font-specification:helvetica;font-stretch:normal;font-variant:normal;"
        xml:space="preserve"><tspan
-         style="font-size:20px;font-family:Times;-inkscape-font-specification:Times;text-align:center;text-anchor:middle"
-         y="577.65485"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:17.5px;font-family:helvetica;-inkscape-font-specification:helvetica;text-align:center;text-anchor:middle;"
+         y="577.99554"
          x="72.646446"
          sodipodi:role="line"
          id="tspan5533">In-band Full-Duplex</tspan><tspan
-         style="font-size:20px;font-family:Times;-inkscape-font-specification:Times;text-align:center;text-anchor:middle"
-         y="602.65485"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:17.5px;font-family:helvetica;-inkscape-font-specification:helvetica;text-align:center;text-anchor:middle;"
+         y="599.87054"
          x="72.646446"
          sodipodi:role="line"
          id="tspan5557">Communications</tspan></text>
@@ -330,30 +331,31 @@
     <text
        sodipodi:linespacing="125%"
        id="text5478"
-       y="525.68011"
-       x="349.5"
-       style="font-style:normal;font-weight:normal;font-size:20px;line-height:125%;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
+       y="526.50977"
+       x="348.67035"
+       style="font-style:normal;font-weight:normal;font-size:20px;line-height:125%;font-family:helvetica;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;-inkscape-font-specification:helvetica;font-stretch:normal;font-variant:normal;"
        xml:space="preserve"><tspan
          id="tspan5482"
-         style="font-size:20px;font-family:Times;-inkscape-font-specification:Times;text-align:center;text-anchor:middle"
-         y="525.68011"
-         x="349.5"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:17.5px;font-family:helvetica;-inkscape-font-specification:helvetica;text-align:center;text-anchor:middle;"
+         y="526.50977"
+         x="348.67035"
          sodipodi:role="line">Fifth-Generation of</tspan><tspan
-         style="font-size:20px;font-family:Times;-inkscape-font-specification:Times;text-align:center;text-anchor:middle"
-         y="550.68011"
-         x="349.5"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:17.5px;font-family:helvetica;-inkscape-font-specification:helvetica;text-align:center;text-anchor:middle;"
+         y="548.38477"
+         x="348.67035"
          sodipodi:role="line"
          id="tspan6758">Wireless Systems</tspan></text>
     <flowRoot
        xml:space="preserve"
        id="flowRoot5497"
-       style="font-style:normal;font-weight:normal;font-size:20px;line-height:125%;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"><flowRegion
+       style="font-style:normal;font-weight:normal;font-size:20px;line-height:125%;font-family:helvetica;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;-inkscape-font-specification:helvetica;font-stretch:normal;font-variant:normal;"><flowRegion
          id="flowRegion5499"><rect
            id="rect5501"
            width="378.30212"
            height="122.32948"
            x="-54.447224"
-           y="679.00983" /></flowRegion><flowPara
+           y="679.00983"
+           style="-inkscape-font-specification:helvetica;font-family:helvetica;font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;" /></flowRegion><flowPara
          id="flowPara5503" /></flowRoot>    <path
        transform="translate(-7.03301,24.845674)"
        sodipodi:open="true"
@@ -369,7 +371,7 @@
        sodipodi:type="arc" />
     <text
        xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:20px;line-height:125%;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
+       style="font-style:normal;font-weight:normal;font-size:20px;line-height:125%;font-family:helvetica;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;-inkscape-font-specification:helvetica;font-stretch:normal;font-variant:normal;"
        x="199.70711"
        y="411.88736"
        id="text5507"
@@ -377,13 +379,13 @@
          sodipodi:role="line"
          x="202.20711"
          y="411.88736"
-         style="font-size:20px;font-family:Times;-inkscape-font-specification:Times;text-align:center;text-anchor:middle"
+         style="font-size:17.5px;font-family:helvetica;-inkscape-font-specification:helvetica;text-align:center;text-anchor:middle;font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;"
          id="tspan5509">Spatial degrees </tspan><tspan
          id="tspan5511"
          sodipodi:role="line"
          x="199.70711"
          y="436.88736"
-         style="font-size:20px;font-family:Times;-inkscape-font-specification:Times;text-align:center;text-anchor:middle">of freedom</tspan></text>
+         style="font-size:17.5px;font-family:helvetica;-inkscape-font-specification:helvetica;text-align:center;text-anchor:middle;font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;">of freedom</tspan></text>
     <path
        transform="translate(381.58578,88.828428)"
        sodipodi:open="true"
@@ -398,7 +400,6 @@
        style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
        sodipodi:type="arc" />
     <path
-       transform="translate(327.84566,28.966996)"
        sodipodi:open="true"
        sodipodi:end="4.7446367"
        sodipodi:start="4.7446872"
@@ -409,19 +410,25 @@
        sodipodi:cx="205"
        id="path5523"
        style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:2;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
-       sodipodi:type="arc" />
+       sodipodi:type="arc"
+       transform="translate(327.84566,28.966996)" />
     <text
        xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:20px;line-height:125%;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
+       style="font-style:normal;font-weight:normal;font-size:20px;line-height:125%;font-family:helvetica;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;-inkscape-font-specification:helvetica;font-stretch:normal;font-variant:normal;"
        x="534.58582"
-       y="425.19055"
+       y="415.19055"
        id="text5525"
        sodipodi:linespacing="125%"><tspan
          id="tspan5529"
          sodipodi:role="line"
+         x="537.57043"
+         y="415.19055"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:17.5px;font-family:helvetica;-inkscape-font-specification:helvetica;text-align:center;text-anchor:middle;">Small Cell </tspan><tspan
+         sodipodi:role="line"
          x="534.58582"
-         y="425.19055"
-         style="font-size:20px;font-family:Times;-inkscape-font-specification:Times;text-align:center;text-anchor:middle">Small Cell Densification</tspan></text>
+         y="438.62805"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:17.5px;font-family:helvetica;-inkscape-font-specification:helvetica;text-align:center;text-anchor:middle;"
+         id="tspan3413">Densification</tspan></text>
     <path
        sodipodi:type="arc"
        style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:2;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
@@ -440,9 +447,9 @@
        id="text5537"
        y="669.63434"
        x="350.17163"
-       style="font-style:normal;font-weight:normal;font-size:20px;line-height:125%;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
+       style="font-style:normal;font-weight:normal;font-size:20px;line-height:125%;font-family:helvetica;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;-inkscape-font-specification:helvetica;font-stretch:normal;font-variant:normal;"
        xml:space="preserve"><tspan
-         style="font-size:20px;font-family:Times;-inkscape-font-specification:Times;text-align:center;text-anchor:middle"
+         style="font-size:17.5px;font-family:helvetica;-inkscape-font-specification:helvetica;text-align:center;text-anchor:middle;font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;"
          y="669.63434"
          x="350.17163"
          sodipodi:role="line"
@@ -462,7 +469,7 @@
        sodipodi:type="arc" />
     <text
        xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:20px;line-height:125%;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
+       style="font-style:normal;font-weight:normal;font-size:20px;line-height:125%;font-family:helvetica;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;-inkscape-font-specification:helvetica;font-stretch:normal;font-variant:normal;"
        x="350.7605"
        y="784.10931"
        id="text5551"
@@ -470,12 +477,12 @@
          sodipodi:role="line"
          x="350.7605"
          y="784.10931"
-         style="font-size:20px;font-family:Times;-inkscape-font-specification:Times;text-align:center;text-anchor:middle"
+         style="font-size:17.5px;font-family:helvetica;-inkscape-font-specification:helvetica;text-align:center;text-anchor:middle;font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;"
          id="tspan5559">Millimeter-Wave</tspan><tspan
          sodipodi:role="line"
          x="350.7605"
          y="809.10931"
-         style="font-size:20px;font-family:Times;-inkscape-font-specification:Times;text-align:center;text-anchor:middle"
+         style="font-size:17.5px;font-family:helvetica;-inkscape-font-specification:helvetica;text-align:center;text-anchor:middle;font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;"
          id="tspan3856">Communications</tspan></text>
     <path
        sodipodi:type="arc"
@@ -495,10 +502,10 @@
        id="text5563"
        y="582.8623"
        x="637"
-       style="font-style:normal;font-weight:normal;font-size:20px;line-height:125%;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
+       style="font-style:normal;font-weight:normal;font-size:20px;line-height:125%;font-family:helvetica;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;-inkscape-font-specification:helvetica;font-stretch:normal;font-variant:normal;"
        xml:space="preserve"><tspan
          id="tspan5567"
-         style="font-size:20px;font-family:Times;-inkscape-font-specification:Times;text-align:center;text-anchor:middle"
+         style="font-size:17.5px;font-family:helvetica;-inkscape-font-specification:helvetica;text-align:center;text-anchor:middle;font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;"
          y="582.8623"
          x="637"
          sodipodi:role="line">Waveform Design</tspan></text>
@@ -520,15 +527,15 @@
        id="text5575"
        y="784.10931"
        x="636.87872"
-       style="font-style:normal;font-weight:normal;font-size:20px;line-height:125%;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
+       style="font-style:normal;font-weight:normal;font-size:20px;line-height:125%;font-family:helvetica;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;-inkscape-font-specification:helvetica;font-stretch:normal;font-variant:normal;"
        xml:space="preserve"><tspan
-         style="font-size:20px;font-family:Times;-inkscape-font-specification:Times;text-align:center;text-anchor:middle"
+         style="font-size:17.5px;font-family:helvetica;-inkscape-font-specification:helvetica;text-align:center;text-anchor:middle;font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;"
          y="784.10931"
          x="636.87872"
          sodipodi:role="line"
          id="tspan5577">Visible Light</tspan><tspan
          id="tspan5579"
-         style="font-size:20px;font-family:Times;-inkscape-font-specification:Times;text-align:center;text-anchor:middle"
+         style="font-size:17.5px;font-family:helvetica;-inkscape-font-specification:helvetica;text-align:center;text-anchor:middle;font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;"
          y="809.10931"
          x="636.87872"
          sodipodi:role="line">Communications</tspan></text>
@@ -550,14 +557,14 @@
        id="text5583"
        y="783.34308"
        x="64.580017"
-       style="font-style:normal;font-weight:normal;font-size:20px;line-height:125%;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
+       style="font-style:normal;font-weight:normal;font-size:20px;line-height:125%;font-family:helvetica;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;-inkscape-font-specification:helvetica;font-stretch:normal;font-variant:normal;"
        xml:space="preserve"><tspan
-         style="font-size:20px;font-family:Times;-inkscape-font-specification:Times;text-align:center;text-anchor:middle"
+         style="font-size:17.5px;font-family:helvetica;-inkscape-font-specification:helvetica;text-align:center;text-anchor:middle;font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;"
          y="783.34308"
          x="64.580017"
          sodipodi:role="line"
          id="tspan6768">Cognitive Radio</tspan><tspan
-         style="font-size:20px;font-family:Times;-inkscape-font-specification:Times;text-align:center;text-anchor:middle"
+         style="font-size:17.5px;font-family:helvetica;-inkscape-font-specification:helvetica;text-align:center;text-anchor:middle;font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;"
          y="808.34308"
          x="64.580017"
          sodipodi:role="line"
