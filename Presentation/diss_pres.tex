@@ -201,6 +201,7 @@ single arrow head extend=.3cm,}}
 \pgfdeclarelayer{foreground}
 \pgfsetlayers{background,main,foreground}   %% some additional layers for demo
 
+\setbeamertemplate{section in toc}[ball unnumbered]
 
 
 % Include Figures Path
@@ -239,6 +240,7 @@ single arrow head extend=.3cm,}}
 %\input{inhalt.tex}
 
 \section{Motivation}
+%\addcontentsline{toc}{section}{Motivation}  
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}[c]{Mobile Traffic}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -511,7 +513,9 @@ single arrow head extend=.3cm,}}
 	}
 	\vspace{-1mm}
 	\begin{columns}
-		\begin{column}{0.37\columnwidth}
+		\begin{column}{0.001\columnwidth}
+		\end{column}
+		\begin{column}{0.369\columnwidth}
 			\onslide<3->
 			{
 				\begin{block}{\footnotesize Secondary access}
@@ -533,10 +537,14 @@ single arrow head extend=.3cm,}}
 			\onslide<5->
 	 		{
 				\centering
-				\tikzfancyarrow[0.95cm][kit-green70][top color=kit-green50, bottom color=kit-green50, shape border rotate=270]{\color{kit-green50}{10}}			\\[0.5em]	
-	               		\begin{tikzpicture}[scale=1]
-	               	 		\node[draw=none,fill=kit-green15, minimum height = 0.5cm, text width = \columnwidth, align = center] at (0.0, 0.0) {Channel Estimation is proposed at ST/SR};
-				\end{tikzpicture}
+				\tikzfancyarrow[0.95cm][kit-green70][top color=kit-green50, bottom color=kit-green50, shape border rotate=270]{\color{kit-green50}{10}}			%\\[0.5em]	
+	               		%\begin{tikzpicture}[scale=1]
+	               	 		%\node[draw=none,fill=kit-green15, minimum height = 0.5cm, text width = \columnwidth, align = center] at (0.0, 0.0) {Channel Estimation is proposed at ST/SR};
+				%\end{tikzpicture}
+				\begin{block}{}%{\scriptsize Channel knowledge}
+					\centering
+				Channel Estimation is proposed 
+				\end{block}
 			}
 		\end{column}
 		\begin{column}{0.63\columnwidth}
@@ -544,7 +552,7 @@ single arrow head extend=.3cm,}}
 		\fs{8}{8}
 		\begin{center}
 			% Interacting entities
-			{\color{blue}{PT, PR}}, \color{red}{ST($\Leftrightarrow$ CSC-BS) and SR($\Leftrightarrow$ MS)}\\\vspace{0.2cm} 
+			%{\color{blue}{PT, PR}}, \color{red}{ST($\Leftrightarrow$ CSC-BS) and SR($\Leftrightarrow$ MS)}\\\vspace{0.2cm} 
         		\begin{tikzpicture}[scale=1]
 				\node[anchor=south west,inner sep=0] (image) at (0,0)
 				{
@@ -652,7 +660,9 @@ single arrow head extend=.3cm,}}
 	\pnote{Finally, the feasibility of the propositions (time allocation, channel estimation, variations) made are justified by means of a hardware demonstrator}  
 	\vspace{-1.5mm}
 	\begin{columns}
-		\begin{column}[t]{0.53\columnwidth}
+		%\begin{column}{0.\columnwidth}
+		%\end{column}	
+		\begin{column}[t]{0.48\columnwidth}
 			\centering Challenges: \\[-0.2em]
 				\fs{8}{8}
 				\begin{block}{\footnotesize System design aspects?} %of incorporating channel estimation on the performance
@@ -695,7 +705,7 @@ single arrow head extend=.3cm,}}
 				}
 		\end{column}
 		
-		\begin{column}{0.03\columnwidth}
+		\begin{column}{0.0\columnwidth}
 		\end{column}
 		
 		\begin{column}[t]{0.44\columnwidth}
@@ -788,7 +798,7 @@ Interweave System
 \begin{frame}[t]{Interweave System}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	%\pnote{Here the deployment scenario corresponding to CSC is transformed into an interweave system}
-	\pnote{Interweave system enable coexistence of the primary and secondary system by seperating them in temporal domain} 
+	\pnote{Interweave system enable coexistence of the primary and secondary system by separating them in temporal domain} 
 	\pnote{Spectrum sensing, a CR technique, is employed at the ST}
 	\pnote{By which, the ST detects the presence and absence of primary user signal by listening to the PT. In this way, the ST protects the PR, by not transmitting its own signal whenever the primary user signal is detected.} 
 	\pnote{Corresponding to this approach the following signal model is proposed. The signal received at the ST over the channel $\hpo$ depends on the following hypothesis, the PT is active and PT is inactive}
@@ -1251,9 +1261,9 @@ Underlay System
 			\begin{center}
 			\begin{tikzpicture}[node distance = 1.8cm, auto]
                         	% draw nodes
-				\node [block] (frame) {Incorporation of time resources for channel estimation};
-  			        \node [block, below of=frame] (channelest) {Characterizing the variations in $\eprcvdstpr$, $\eprcvdsr$, $\ehs$};
-  			        \node [block, below of=channelest] (cdf) {Characterizing the variations in $\eprcvdpr, \ecth$};
+				\node [block, align = flush center] (frame) {Incorporation of time resources \\ for channel estimation};
+  			        \node [block, below of=frame, align = flush center] (channelest) {Characterizing the variations \\ in $\eprcvdstpr$, $\eprcvdsr$ and $\ehs$};
+  			        \node [block, below of=channelest, align = flush center] (cdf) {Characterizing the variations \\ in $\eprcvdpr$ and $\ecth$};
   			        \node [block, below of=cdf] (tradeoff) {Estimation-throughput tradeoff};
 				% draw edges
     				\path [line] (frame) -- (channelest);
@@ -1296,7 +1306,7 @@ Underlay System
 					\begin{tikzpicture}[scale=1]
 					\node[anchor=south west,inner sep=0] (image) at (0,0)
 					{
-						\includegraphics[width= 0.9 \columnwidth]{../kapitel04/figures/fig_Preg_est_time_AWGN}
+						\includegraphics[width= \columnwidth]{../kapitel04/figures/fig_Preg_est_time_AWGN}
 					};
 					\begin{scope}[x={(image.south east)},y={(image.north west)}]
 
@@ -1305,7 +1315,7 @@ Underlay System
 
 					\draw (0.35,0.68) arc(-130:130:0.007 and 0.021);
 					\node[draw,fill=gray!10,font=\scriptsize] at (0.275,0.758) {$\opc = 0.1$};
-					\node[draw=none,fill=kit-green30, minimum height = 0.6cm, align = center, font = \footnotesize] at (0.5, 1.05) {Power control versus estimation time};
+					%\node[draw=none,fill=kit-green30, minimum height = 0.6cm, align = center, font = \footnotesize] at (0.5, 1.05) {Power control versus estimation time};
 
 
 					%\draw[help lines,xstep=.1,ystep=.1] (0,0) grid (1,1);
@@ -1962,15 +1972,15 @@ Validation
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	%\pnote{The aforementioned analysis has been limited to theoretical expressions} 
 	%\pnote{Knowing the fact that it is essential as-well-as challenging to depict their hardware implementation of CR systems}
-	\pnote{Next, the feasibility of the proposed analysis is verified by means of hardware implementation}
+	\pnote{Next, the feasibility of the proposed analysis is verified by means of empirical validation}
 	\pnote{Without any specific argumentation, an underlay system is selected}
 	\pnote{With regard the analysis discussed previously, some simplifications and modification were considered for the hardware implementation}
 	\pnote{Channel estimation was restricted to the channel hp3, such a simplification is reflected in the deployed scenario and secondary user frame structure.} 
 	\pnote{The main purpose here is to illustrate the applicability of the received power channel estimation, power control mechanisms and interference constraint}
-	\pnote{To capture the variations in the received power the outage constraint was replaced with confidence probability constraint}  
+	\pnote{The outage constraint that captures the uncertainty in the interference is replaced with confidence probability constraint}  
 	%\pnote{Primary and secondary signals are modelled as OFDM modulated signals}
 	\pnote{Interference from the PT to the SR over hp2 is assumed to be negligible}
-	\pnote{Despite these simplifications and modifications, the signal model remains unchanged, except for the signal received at SR, which excludes the interference from PT}
+	\pnote{Despite these modifications, the signal model remains unchanged, except for the signal received at SR, which excludes the interference from PT}
 	%\pnote{The modified version of the deployment scenario and the frame structure is illustrated in the figures, where the channel estimation is restricted to hp3}
 	%\pnote{The variations in the system are considered in terms of the interference received at the PR and the throughput at SR}
 	%\pnote{Besides, an estimation throughput tradeoff subject to confidence probability constraint is proposed}
@@ -1978,12 +1988,14 @@ Validation
 	\fs{8}{8}
 	\begin{block}{\footnotesize Objective}
 		\begin{itemize}
-			\item Verify the feasibility of proposed performance analysis under practical conditions  
+			\item Verify the feasibility of proposed analysis under practical conditions  
 			%\item Justify the necessity of channel knowledge for the deployment of CR systems 
 	
 		\end{itemize}
 	\end{block}
 	\begin{columns}
+		\begin{column}{0.00\columnwidth}
+		\end{column}
 		\begin{column}{0.45\columnwidth}
 			%\begin{overlayarea}{\textwidth}{2cm}
 			\only<1>{
@@ -2067,7 +2079,6 @@ Validation
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame}[c]{Validation}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	\pnote{Firstly, a empirical validation of derived expressions is considered} 
 	\pnote{To perform the validation process, the following measurement setup was used}
 	\pnote{The signal generator is emulated as PR for transmitting pilot signals}
 	%\pnote{Since our main focus here was to certify the significance of the expressions obtained, the channel hp3 was modelled using a coaxial cable for signal transmissions. Later for the demonstration the antennas are deployed}
@@ -2111,6 +2122,7 @@ Validation
 	\pnote{This certifies that the accuracy of analytical expressions for performance analysis}
 	%\pnote{Besides, the obtained expressions can be programmed onto the hardware}
 	\pnote{Finally, the estimation-throughput secondary is validated in terms of secondary throughput and confidence probability over different values of estimation time, depicting an achievable throughput for a desired value of confidence probability constraint}
+	\pnote{This illustrates the feasibility of the proposed performance tradeoff} 
 	%\pnote{We see the variations of the performance parameters over the estimation time, the expected throughput decreases due to the time allocation. On the other side, the confidence probability increases due to reduction in variations} 
 	%\pnote{The time interval at which the confidence probability constraint is satisfied yields the maximum expected throughput} 
 	\begin{columns}
@@ -2267,7 +2279,9 @@ Demonstration
 	\pnote{The GUI is presented that allows access to the parameters}
 	\pnote{Before starting the demonstration, the SDRs are configured by setting the following parameters: Estimation time (which is shown such the underlay system operates within desired range of SNR), interference threshold, frame duration, estimation, confidence probability constraint} 
 	\pnote{Upon starting the demonstrator, the following observed: 1) the received power at the PR is rightly below the interference threshold --> This conveys that received power estimation followed by power control are functioning at the ST as expected}
-	\pnote{Moreover, upon evaluating the confidence probability evaluated at PR, it is observed that the interference constraint employed at the ST is rightly satisfied at the PR} 
+	\pnote{Moreover, upon evaluating the confidence probability evaluated at PR, it is observed that the interference constraint employed at the ST is rightly satisfied at the PR}
+	\pnote{This demonstrates the feasibility of received power based estimation, power control and interference constraint in real scenarios.}
+	\pnote{Most importantly, it certifies the requirement of channel knowledge for the implementation of CR Systems} 
 	\begin{columns}
 		\begin{column}{0.5\columnwidth}
 			\fs{7}{8}
@@ -2352,7 +2366,7 @@ Demonstration
 \else
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}[c]{Demonstrator}
+\begin{frame}[c]{Demonstration}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	\pnote{The GUI is presented that allows access to the parameters at the ST and PR}
 	\pnote{Before starting the demonstration, the SDRs are configured by setting the following parameters: Estimation time (which is shown such the underlay system operates within desired range of SNR), interference threshold, frame duration and estimation}
@@ -2394,12 +2408,14 @@ Demonstration
 			\item The performed analysis provides answers to specific questions related to imperfect channel knowledge 
 				\begin{itemize} 
 				\fs{8}{9}
-\item How to counter the uncertain interference induced? \item How to evaluate the performance degradation? \item How to determine the suitable estimation time that yields the maximum throughput achieved? \end{itemize}
+\item How to counter the uncertain interference induced? %\item How to evaluate the performance degradation? 
+\item How to determine the suitable estimation time that yields the maximum throughput achieved? \end{itemize}
 \item Most importantly, the performed analysis promotes techniques such as 
 
 \begin{itemize} 
 \fs{8}{9}
-\item implementation of the channel estimation at the secondary system \item energy-based detection and \item received power-based channel estimation \end{itemize} that ultimately encourage hardware feasibility of CR systems
+%\item implementation of the channel estimation at the secondary system 
+\item energy-based detection and \item received power-based channel estimation \end{itemize} that ultimately encourage hardware feasibility of CR systems
 		\end{itemize} 
 %	\end{block}
 \end{frame}
