@@ -19,16 +19,16 @@
 
 % Fasten the compilation process 
 \newif\ifmoti
-%\motitrue
-\motifalse
+\motitrue
+%\motifalse
 
 \newif\ifinter
 %\intertrue
 \interfalse
 
 \newif\ifunder
-%\undertrue
-\underfalse
+\undertrue
+%\underfalse
 
 \newif\ifhybrid
 %\hybridtrue
@@ -194,7 +194,7 @@ single arrow head extend=.3cm,}}
 % tiksyle accustomed to build flowgraphs
 \tikzstyle{block} = [rectangle, draw, fill=kit-green50, 
     text width=16em, text centered, rounded corners, minimum height=5em]
-\tikzstyle{line} = [draw, -latex']
+\tikzstyle{line} = [draw, thick, -latex']
 
 %\usepackage{multimedia}
 \usepackage{animate,media9,movie15}
@@ -1253,16 +1253,16 @@ Underlay System
 	%\pnote{It is worthy to mention here that the received power estimation is employed for the channels between the primary and secondary systems and pilot based estimation is employed for the channel within the secondary system} % In this regard, the estimated parameters is observed indirectly in the form of received power 
 	\pnote{Next, the variations in the performance parameters are characterized using their cdfs, where C0 and C1 corresponds to the data rate with and without interference in the throughput expression}
 	\pnote{The derived expressions are used to determine the suitable estimation and sensing time intervals that achieves the maximum secondary throughput, represented by the expression on the right}
-	\vspace{-3mm}
+	\vspace{-1mm}
 	\fs{8}{8}
 	%\begin{block}{}
 	%\end{block}			
 	\begin{columns}
 		\begin{column}{0.38\columnwidth}
-			\vspace{-0.7mm}
+			%\vspace{-0.7mm}
 			\begin{block}{\footnotesize Proposed Approach}
 			\begin{center}
-			\begin{tikzpicture}[node distance = 1.78cm, auto]
+			\begin{tikzpicture}[node distance = 1.68cm, auto]
                         	% draw nodes
 				\node [block, align = flush center] (frame) {Incorporation of time resources \\ for channel estimation};
   			        \node [block, below of=frame, align = flush center] (channelest) {Characterizing the variations \\ in $\eprcvdstpr$, $\eprcvdsr$ and $\ehs$};
@@ -1280,7 +1280,7 @@ Underlay System
 		\begin{column}{0.62\columnwidth}
 		\fs{8}{8}
 		\begin{center}
-			\begin{overlayarea}{\textwidth}{4.6cm}
+			\begin{overlayarea}{\textwidth}{4.65cm}
 				\only<1>
 				{	
 					\vspace{3mm}
@@ -1331,15 +1331,15 @@ Underlay System
 			}
 			\end{overlayarea}
 			\end{center}
-			%\vspace{3.5mm}
+			%\vspace{3.0mm}
 			%\begin{overlayarea}{\textwidth}{2.6cm}
 			\only<1->
 			{
 				\begin{block}{\footnotesize Constraints}
-				\vspace{-3.5mm}	
+				\vspace{-2.mm}	
 					\begin{align*}		
-						\p\left( \left( \frac{{\color{red}{\eprcvdstpr}} - \nps}{\ptran}\right) \preg \ge \ite \right) &\le \opc \\ 
-                                	\preg &\le \pc 
+						\p\left( \left( \frac{{\color{red}{\eprcvdstpr}} - \nps}{\ptran}\right) \preg \ge \ite \right) &\le \opc %\\ 
+                                	%\preg &\le \pc 
                                 \end{align*} 
                		 	\end{block}
 			} 
@@ -1392,15 +1392,15 @@ Underlay System
 			\only<1->
 			{
 				\begin{block}{\footnotesize Secondary throughput} %{\scriptsize Principle}
-				\vspace{-3mm}
+				\vspace{-4.5mm}
 				\begin{align*}
 					\eca  = \log_2 \left(1 + \frac{{\color{kit-green100}{\epgs}} \preg}{{\color{blue}{\eprcvdsr}}} \right) \\
-					\rs(\test) = \frac{T - \test}{T} \e{\eca} {\eca} 
+					\rs(\test) = \frac{T - \test}{T} \e{\eca} {\eca} \\[-1.7em] 
 				\end{align*}
 				\end{block}
 
 			}
-			\vspace{5mm}
+			\vspace{6.5mm}
 			\onslide<2->
 			{
 				\centering
@@ -1437,7 +1437,7 @@ Underlay System
 		\begin{column}{0.55\columnwidth}
 		\fs{8}{8}
 			%\vspace{0.5mm}
-			\begin{block}{\footnotesize Achievable secondary throughput} 
+			\begin{block}{\footnotesize Estimation-throughput tradeoff} 
 				\vspace{-3mm}
 				\begin{align*}
 					\trs(\ttest)  = \maxi_{\test}  & \text{      } {\rs(\test)} \\
@@ -2387,7 +2387,7 @@ Demonstration
 		\vspace{-2.2mm}
 		\hspace{-2.64mm}
 		\centering
-		\includegraphics[keepaspectratio, height=\paperheight, trim = 0 0 5 0,clip]{figures/demo6.ps}
+		\includegraphics[keepaspectratio, height=\paperheight, trim = 0 0 0 0,clip]{figures/demo6.ps}
 %\fullFrameMovie[]{figures/out-2.ogv}{figures/demo.ps}{}
 		%\hspace{10mm}
 \end{figure}
