@@ -19,16 +19,16 @@
 
 % Fasten the compilation process 
 \newif\ifmoti
-\motitrue
-%\motifalse
+%\motitrue
+\motifalse
 
 \newif\ifinter
 %\intertrue
 \interfalse
 
 \newif\ifunder
-\undertrue
-%\underfalse
+%\undertrue
+\underfalse
 
 \newif\ifhybrid
 %\hybridtrue
@@ -2369,7 +2369,13 @@ Demonstration
 \else
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame}[c]{Demonstration}
+%\begin{frame}[c]{Demonstration}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\bgroup
+    \setbeamertemplate{background canvas}[default]
+    \setbeamercolor{background canvas}{bg=black}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[plain]
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	\pnote{The GUI is presented that allows access to the parameters at the ST and PR}
 	\pnote{Before starting the demonstration, the SDRs are configured by setting the following parameters: Estimation time (which is shown such the underlay system operates within desired range of SNR), interference threshold, frame duration and estimation}
@@ -2377,13 +2383,22 @@ Demonstration
 	\pnote{Upon starting the demonstrator, following is observed: 1) the variations in the received power is rightly around the interference threshold. 2) high value of confidence probability --> This conveys that received power estimation followed by power control are functioning at the ST as expected}
    	\pnote{Upon reducing the interference threshold, causes a decrease in the control power. Besides, the variations shift to the new interference threshold.} 
 	\pnote{Upon changing interference threshold at the PR results in an increase in confidence probability} 
+\begin{figure}
+		\vspace{-2.2mm}
+		\hspace{-2.64mm}
+		\centering
+		\includegraphics[keepaspectratio, height=\paperheight, trim = 0 0 5 0,clip]{figures/demo6.ps}
+%\fullFrameMovie[]{figures/out-2.ogv}{figures/demo.ps}{}
+		%\hspace{10mm}
+\end{figure}
+\end{frame}
 
-
-\bgroup
-    \setbeamertemplate{background canvas}[default]
-    \setbeamercolor{background canvas}{bg=black}
-   
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[plain]
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+		\centering
 \fullFrameMovie[autostart]{figures/out-2.ogv}{figures/demo.ps}{}
+\end{frame}
 \egroup
 
 
@@ -2402,7 +2417,7 @@ Demonstration
 %	\centering
 %	\movie[label = show3, width = .8\textwidth, poster, showcontrols]{\includegraphics[width=0.8\textwidth]{figures/5G.ps}}{figures/out.mp4}
 %	\end{figure}
-\end{frame}
+%\end{frame}
 
 \fi
 \fi
