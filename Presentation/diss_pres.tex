@@ -125,6 +125,8 @@
 % Define a new type for columns 
 \newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}} 
 \newcolumntype{M}[1]{>{\centering\arraybackslash}m{#1}} 
+
+\usepackage{pdfpc-commands}
 	
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -620,6 +622,7 @@ single arrow head extend=.3cm,}}
 	\pnote{Finally, the hybrid system that exploits the benefits of interweave and underlay system so as to utlilize the acquired spectrum more efficiently.}
 	\pnote{In the work, from a physical layer the performance of interweave, underlay and hybrid is analyzed. For this persentation, the underlay system is considered.} 
 	\fs{8}{8}
+	\vspace{-3.5mm}
 	\begin{overlayarea}{\textwidth}{5.8cm}
         	\centering
 		\begin{tikzpicture}[scale=1]
@@ -627,12 +630,12 @@ single arrow head extend=.3cm,}}
 		{
 			\includegraphics[width = 0.8\columnwidth]{figures/CR_paradigm.ps}
         	};	
-		\iffalse
-		\only<2->
+		\iftrue
+		%\only<2->
 		{
-			%\begin{pgfonlayer}{background}
+			\begin{pgfonlayer}{background}
 			\fill[opacity = 0.4, fill = kit-green30] (3.5,2.8) rectangle (5.2,3.3);
-			%\end{pgfonlayer}
+			\end{pgfonlayer}
 		}
 		\fi
 		\end{tikzpicture}
@@ -939,7 +942,7 @@ Interweave System
 	        	%	\end{align*}
 			%\end{block}
 			\vspace{-0.7mm}
-			\begin{block}{\scriptsize Proposed Approach}
+			\begin{block}{\footnotesize Proposed Approach}
 			\begin{center}
 			\begin{tikzpicture}[node distance = 1.77cm, auto]
                         	% draw nodes
@@ -1257,9 +1260,9 @@ Underlay System
 	\begin{columns}
 		\begin{column}{0.38\columnwidth}
 			\vspace{-0.7mm}
-			\begin{block}{\scriptsize Proposed Approach}
+			\begin{block}{\footnotesize Proposed Approach}
 			\begin{center}
-			\begin{tikzpicture}[node distance = 1.8cm, auto]
+			\begin{tikzpicture}[node distance = 1.78cm, auto]
                         	% draw nodes
 				\node [block, align = flush center] (frame) {Incorporation of time resources \\ for channel estimation};
   			        \node [block, below of=frame, align = flush center] (channelest) {Characterizing the variations \\ in $\eprcvdstpr$, $\eprcvdsr$ and $\ehs$};
@@ -1362,7 +1365,7 @@ Underlay System
 	%\pnote{At low value of test, large variations are induced in the system causing a larger of interference at the PR, hence a sever power control (low value of control power) is exercised.}
 	%\pnote{However, at high value of estimation time are power control is less severe, hence approaches the ideal value of the transmit power}
 	%\pnote{Such a phenomenon is reflected in figure, where the control power increases with the estimation time for different values of the outage constraint. Obviously, stringent constraint results in a sever power control} 
-	\vspace{-4.5mm}
+	\vspace{-3.5mm}
 	\fs{8}{8}
 	\begin{columns}
 		\begin{column}{0.45\columnwidth}
@@ -1397,11 +1400,11 @@ Underlay System
 				\end{block}
 
 			}
-			\vspace{3mm}
+			\vspace{5mm}
 			\onslide<2->
 			{
 				\centering
-		                \renewcommand{\arraystretch}{1.6}
+		                \renewcommand{\arraystretch}{1.7}
        		                \begin{tabular}{c||c}
              			%\hline
                 		\rowcolor{kit-green30}
@@ -1416,7 +1419,7 @@ Underlay System
 				%$\ptranpt$ & $\SI{0}{dBm}$ \\
 				$\npo$ & $\SI{-100}{dBm}$ \\ %\hline
                 		$\ite$ & $\SI{-110}{dBm}$ \\
-				$\snrrcvdu$ & $\SI{0}{dB}$ \\ 	
+				%$\snrrcvdu$ & $\SI{0}{dB}$ \\ 	
 				%$\snrrcvd$ & $\SI{-10}{dB}$ \\ %\hline
                	 		%$\snrpt$ & $\SI{-10}{dB}$ \\ %\hline
                 		%$\snrso$ & $\SI{10}{dB}$ \\ %\hline
@@ -1972,7 +1975,7 @@ Validation
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	%\pnote{The aforementioned analysis has been limited to theoretical expressions} 
 	%\pnote{Knowing the fact that it is essential as-well-as challenging to depict their hardware implementation of CR systems}
-	\pnote{Next, the feasibility of the proposed analysis is verified by means of empirical validation}
+	\pnote{Next, the feasibility of the proposed analysis is considered}
 	\pnote{Without any specific argumentation, an underlay system is selected}
 	\pnote{With regard the analysis discussed previously, some simplifications and modification were considered for the hardware implementation}
 	\pnote{Channel estimation was restricted to the channel hp3, such a simplification is reflected in the deployed scenario and secondary user frame structure.} 
@@ -2374,15 +2377,27 @@ Demonstration
 	\pnote{Upon starting the demonstrator, following is observed: 1) the variations in the received power is rightly around the interference threshold. 2) high value of confidence probability --> This conveys that received power estimation followed by power control are functioning at the ST as expected}
    	\pnote{Upon reducing the interference threshold, causes a decrease in the control power. Besides, the variations shift to the new interference threshold.} 
 	\pnote{Upon changing interference threshold at the PR results in an increase in confidence probability} 
-	\begin{figure}
-   \includemovie[
-     poster=figures/demo.ps,
-     autoplay,
-     externalviewer,
-     inline=false,
+
+
+\bgroup
+    \setbeamertemplate{background canvas}[default]
+    \setbeamercolor{background canvas}{bg=black}
+   
+\fullFrameMovie[autostart]{figures/out-2.ogv}{figures/demo.ps}{}
+\egroup
+
+
+%	\begin{figure}
+%   \includemovie[
+%     poster=figures/demo.ps,
+%     autoplay,
+%     externalviewer,
+%     inline=false,
      %text={\includegraphics{scale=0.8}{figures/5G.ps}}
-   ]{9.2cm}{6.9cm}{figures/demo3.mp4}
-   \end{figure}
+%   ]{9.2cm}{6.9cm}{figures/demo3.mp4}
+%   \end{figure}
+
+
 %	\begin{figure}
 %	\centering
 %	\movie[label = show3, width = .8\textwidth, poster, showcontrols]{\includegraphics[width=0.8\textwidth]{figures/5G.ps}}{figures/out.mp4}
