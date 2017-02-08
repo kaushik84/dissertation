@@ -114,7 +114,7 @@ version=last
 \usepackage{cite} % Combining multiple citations
 %\include{cite}
 
-\hyphenation{centra-lity knowl-edge throu-ghput fra-mework domi-nant esti-mation-throughput gro-wth}
+\hyphenation{centra-lity knowl-edge throu-ghput fra-mework domi-nant esti-mation-throughput gro-wth Indoor-versorgung Funkzugangs-netzen}
 
 %\usepackage{rotating} % Rotate the text sideways
 %\usepackage{adjustbox}% Rotate the text sideways
@@ -185,42 +185,47 @@ version=last
 % Titelseite aus Grafik
 
 %% Uncomment this to make the following appear
-%\thispagestyle{empty}
+\thispagestyle{empty}
 
 %\todo{Cover Image}
-%\begin{figure}[]
-%\vspace{-1.5cm}
-%\hspace{-1.9cm}
+\begin{figure}[]
+\vspace{-1.5cm}
+\hspace{-1.9cm}
 %\centering
-%\includegraphics[]{../sonstiges/bilder/title.pdf}
-%\end{figure}
-%\clearpage
+\includegraphics[]{../stuff/title}
+\end{figure}
+%\thispagestyle{empty}
+%\begin{center}
+%  \makebox[\textwidth]{\includegraphics[width=\paperwidth]{../stuff/title}}
+%\end{center}
+
+\clearpage
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Rückseite Schmutztitel
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%\thispagestyle{empty}
-%\phantom{x}
-%\vfill
-%\begin{tabular}{@{}l@{ }l@{}}
-%Copyright:&Institut für Nachrichtentechnik (CEL)\\
-%&Karlsruher Institut für Technologie (KIT)\\
-%&2011\\
-%&\\
-%Druck: & Frick Digitaldruck\\
-%        &Brühlstraße 6\\
-%        &86381 Krumbach\\
-%&\\
-%ISSN: & 1433-3821
-%\end{tabular}
-%\newpage
+\thispagestyle{empty}
+\phantom{x}
+\vfill
+\begin{tabular}{@{}l@{ }l@{}}
+Copyright:&Institut für Nachrichtentechnik (CEL)\\
+&Karlsruher Institut für Technologie (KIT)\\
+&2011\\
+&\\
+Druck: & Frick Digitaldruck\\
+        &Brühlstraße 6\\
+        &86381 Krumbach\\
+&\\
+ISSN: & 1433-3821
+\end{tabular}
+\newpage
 
-%\input{../sonstiges/diss_liste_int}
-%\cleardoublepage
+\input{../stuff/diss_liste_int}
+\cleardoublepage
 
-%\input{../sonstiges/vorwort}
-%\cleardoublepage
+\input{../stuff/vorwort}
+\cleardoublepage
 
 \input{../stuff/titel}
 \cleardoublepage

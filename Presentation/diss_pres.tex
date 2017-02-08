@@ -619,8 +619,8 @@ single arrow head extend=.3cm,}}
 	\pnote{In this regard a spectrum sensing is employed to detect the presence and absence of primary user signal.} %Hence, an interference is avoided by not transmitting the signal wherever the primary signal is detected}
 	\pnote{An underlay system utilizes the interference tolerance capability of the primary systems. Hence, by employing techniques such as power control it is able to keep the interference received at the primary system below a certain interference threshold} 
 	\pnote{An overlay system requires the involvement of higher layers (for implementing advance coding techniques) to enable the coexistence of primary system and secondary system.}
-	\pnote{Finally, the hybrid system that exploits the benefits of interweave and underlay system so as to utlilize the acquired spectrum more efficiently.}
-	\pnote{In the work, from a physical layer the performance of interweave, underlay and hybrid is analyzed. For this persentation, the underlay system is considered.} 
+	\pnote{Finally, the hybrid system that exploits the benefits of interweave and underlay system so as to utilize the acquired spectrum more efficiently.}
+	\pnote{In the work, from a physical layer the performance of interweave, underlay and hybrid is analyzed. For this presentation, the underlay system is considered.} 
 	\fs{8}{8}
 	\vspace{-3.5mm}
 	\begin{overlayarea}{\textwidth}{5.8cm}
@@ -655,9 +655,9 @@ single arrow head extend=.3cm,}}
 	%\pnote{With regard to the psychology established in the previous slide, with no knowledge of the primary user signals,} 
 	\pnote{We are faced with the challenge of estimating the channels that exists between two different systems. With this situation in hand, conventional estimation techniques are not applicable. Besides, we have to look for techniques that offer versatility towards unknown primary user signals and low complexity.}
 	\pnote{In this regard, a novel estimation technique termed as received-power based estimation is proposed that satisfies the low-complexity and versatility requirements.}
-	\pnote{Channel estimation, if not captured appropriately can severly degrade the performance of CR systems}
+	\pnote{Channel estimation, if not captured appropriately can severely degrade the performance of CR systems}
 	\pnote{The variations induced in the system caused uncertainty in the interference. These variations are regulated using the interference constraints} %Secondly, degradation in throughput caused due to the time allocation.} 
-	\pnote{Moreover, a system witness a degrdation in the form of throughput. In this regard, performance tradeoff are established that yields the maxumum achievable throughput.}
+	\pnote{Moreover, a system witness a degradation in the form of throughput. In this regard, performance tradeoff are established that yields the maximum achievable throughput.}
 	%\pnote{In order to regulate uncertainty in interference, new interference constraints are proposed. Secondly, the interplay between the uncertain interference and the secondary throughput is analyzed in terms of performance tradeoffs. These tradeoffs allow us to determine the suitable estimation time that yields the maximum throughput achieved by the CR systems.}
 	\pnote{The analytical expressions (derived while establishing the system model) are verified by means of empirical validation.}
 	\pnote{Finally, the feasibility of the propositions (time allocation, channel estimation, variations) made are justified by means of a hardware demonstrator}  
@@ -757,7 +757,7 @@ single arrow head extend=.3cm,}}
 			{
 			\begin{block}{}
 				\centering
-				Empirical validation 
+				Validation 
 			\end{block}
 			\vspace{-0.5mm}
 			\onslide<4->
@@ -1139,7 +1139,7 @@ Underlay System
 				\begin{block}{\footnotesize Signal model} %{\scriptsize Signal model}
 				\vspace{-3mm}
 				\begin{align*}
-					\yrcvd[n] &= \hpth \cdot \xtran[n] + \wsr[n] \\[.2em]
+					\yrcvd[n] &= \hpth \cdot \xtran[n] + \wst[n] \\[.2em]
 				%\end{equation*}
 				%\begin{equation*}
 					\yp[n] &= \hpth  \cdot \xreg[n] + \wpr[n] \\[.2em]
@@ -1166,7 +1166,7 @@ Underlay System
 				\begin{block}{\footnotesize Signal model} %{\scriptsize Signal model}
 				\vspace{-3mm}
 				\begin{align*}
-					\yrcvd[n] &= \hpth \cdot \xtran[n] + \wsr[n] \\[.2em]
+					\yrcvd[n] &= \hpth \cdot \xtran[n] + \wst[n] \\[.2em]
 				%\end{equation*}
 				%\begin{equation*}
 					\yp[n] &= \hpth  \cdot \xreg[n] + \wpr[n] \\[.2em]
@@ -1299,6 +1299,7 @@ Underlay System
                                 	}
                         		\end{tikzpicture}
 				}
+				\iffalse
 				\only<2->
 				{
 					\vspace{-3mm}
@@ -1327,8 +1328,8 @@ Underlay System
 					\end{scope}
 				\end{tikzpicture}
 
-				}
-			}
+				}	
+			}\fi
 			\end{overlayarea}
 			\end{center}
 			%\vspace{3.0mm}
@@ -1360,7 +1361,10 @@ Underlay System
 	\pnote{Next, the variations due to the estimation of the channels hs and hp3 are characterized}
 	\pnote{It is worthy to note that the secondary throughput is dependent on the estimation time directly through the resource allocation and indirectly through the control power (seen in previous slide).}
 	\pnote{Such a tradeoff can be used to determine the suitable estimation time that achieves the maximum secondary throughput as represented by the expression that achieves the maximum secondary throughput as represented by the expression, analyzed in the figure}
-	\pnote{Below $\ttest$, the time resources are used for reducing the variations via control power. Beyond $\ttest$, the system experiences performance degradation.}
+	\pnote{The figure considered the variations of secondary throughput and estimation time for the IM that consider the perfect knowledge of channel and EM, corresponding to the approach followed}
+	\pnote{The estimation model depicts the degradation in the performance due to variations induced and the time allocation.}
+	\pnote{This tradeoff depicts a suitable estimation that yields the maximum throughput}	
+	%\pnote{Below $\ttest$, the time resources are used for reducing the variations via control power. Beyond $\ttest$, the system experiences performance degradation.}
 	%\pnote{Based on this, the control power under the influence of channel estimation is classified as interference limited regime and power-limited regime (Use the expression).} 
 	%\pnote{At low value of test, large variations are induced in the system causing a larger of interference at the PR, hence a sever power control (low value of control power) is exercised.}
 	%\pnote{However, at high value of estimation time are power control is less severe, hence approaches the ideal value of the transmit power}
@@ -1466,6 +1470,8 @@ Underlay System
 
 					\draw (0.65,0.77) arc(-130:130:0.005 and 0.015);
 					\node[draw,fill=gray!10,font=\scriptsize] at (0.66,0.838) {$\opc = 0.1$};
+				\draw[black,thick,<->] (0.32,0.52) --  node[above, font=\scriptsize] {Time allocation} (0.965,0.52);
+				\draw[black,thick,<->] (0.09,0.52) --  node[above, font=\scriptsize] {Variations} (0.315,0.52);
 	%				\node[draw=none,fill=kit-green30, minimum height = 0.6cm, align = center, font = \footnotesize] at (0.5, 1.015) {Estimation-throughput tradeoff};
 
 					%\draw[help lines,xstep=.1,ystep=.1] (0,0) grid (1,1);
@@ -2284,7 +2290,7 @@ Demonstration
 	\pnote{Before starting the demonstration, the SDRs are configured by setting the following parameters: Estimation time (which is shown such the underlay system operates within desired range of SNR), interference threshold, frame duration, estimation, confidence probability constraint} 
 	\pnote{Upon starting the demonstrator, the following observed: 1) the received power at the PR is rightly below the interference threshold --> This conveys that received power estimation followed by power control are functioning at the ST as expected}
 	\pnote{Moreover, upon evaluating the confidence probability evaluated at PR, it is observed that the interference constraint employed at the ST is rightly satisfied at the PR}
-	\pnote{This demonstrates the feasibility of received power based estimation, power control and interference constraint in real scenarios.}
+	\pnote{This demonstrates the feasibility of received power based estimation to acquire channel knowledge, necessary for the employment of power control and satisfy the interference constraint.}
 	%\pnote{Most importantly, it certifies the requirement of channel knowledge for the implementation of CR Systems} 
 	\begin{columns}
 		\begin{column}{0.5\columnwidth}
@@ -2457,7 +2463,7 @@ Demonstration
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \pnote{This ends my presentation...}
 \begin{center}
-Thank you for your Attention!
+Thank you for your attention!
 \end{center}
 \end{frame}
 

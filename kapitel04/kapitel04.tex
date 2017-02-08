@@ -127,10 +127,10 @@ At first, the proposed frame structure in context to the deterministic behavior 
 \subsection{Signal Model}
 In the uplink, during the estimation phase, the discrete and complex signal received at the ST, transmitted by the PR, is given by
 \begin{equation}
-\yrcvd[n] = \hpth \cdot \xtran[n] + \wsr[n],
+\yrcvd[n] = \hpth \cdot \xtran[n] + \wst[n],
 \label{eq_US:sys_mod_st}
 \end{equation}
-where $\xtran[n]$ corresponds to a discrete and complex sample transmitted by the PR with constant transmit power $\ptran$. It is assumed that $\ptran$ is known at the ST (an assumption discussed later in Section \ref{ssec_US:as}). $\phpth$ represents the power gain for the primary interference channel and $\wsr[n]$ is circularly symmetric AWGN at the ST with %The transmitted power at PR is $\ptran$, considering that $\test \fsam$ $(= N)$ is the number of samples used for estimation. 
+where $\xtran[n]$ corresponds to a discrete and complex sample transmitted by the PR with constant transmit power $\ptran$. It is assumed that $\ptran$ is known at the ST (an assumption discussed later in Section \ref{ssec_US:as}). $\phpth$ represents the power gain for the primary interference channel and $\wst[n]$ is circularly symmetric AWGN at the ST with %The transmitted power at PR is $\ptran$, considering that $\test \fsam$ $(= N)$ is the number of samples used for estimation. 
 $\mathcal{CN}(0, \nps)$. %The power received at the ST is given as 
 %\begin{align}
 %\prcvd = \s{\test \fsam}{ |\sqrt{\gp \ap} \xtran[n] + \nas[n]|^2}.

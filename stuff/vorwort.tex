@@ -1,16 +1,39 @@
 \chapter*{Vorwort des Herausgebers}
 
-%Software Defined Radios (SDRs) werden inzwischen seit zwei Jahrzehnten intensiv untersucht. Dabei stand zunächst die Frage im Vordergrund, wie ein Funkgerät entwickelt werden kann, das mehrere verschiedene Standards unterstützt. Danach wurden in weitergehenden Untersuchungen Verfahren zum Software-Update, auch durch Funkübertragung, implementiert. Dazu gehörten auch Methoden zum Nachweis der Korrektheit der übertragenen Software. Breitflächig durchgesetzt haben sich die SDR Technologien bisher im Wesentlichen in Basisstationsgeräten. Mobile Endgeräte existieren vor allen Dingen als Multiband- (GSM 900, 1800, 1900) und Multistandard- (GSM, UMTS) Transceiver.
+Alle Prognosen deuten darauf hin, dass das Volumen der Datenübertragung in Mobilfunknetzen in den kommenden Jahren weiterhin dramatisch wachsen wird. Da für den Mobilfunk nur ein endlicher Frequenzumfang zur Verfügung steht, werden unterschiedliche Technologien, die einen substantiellen Beitrag zur Erhöhung des Datendurchsatzes leisten können, vorangetrieben. Dazu gehören insbesondere
 
-%Eine weitere wesentliche Eigenschaft, durch die sich SDRs auszeichnen können, wurde bisher zwar in der Literatur breit diskutiert, experimentell jedoch, wohl wegen der dazu notwendigen Hardware, nicht angegangen. Es handelt sich um die \textbf{Portabilität} von Wellenformen\footnote{Die Begriffe Standard und Wellenform werden oft als synonym angesehen. Allerdings umfassen Wellenformen, im Gegensatz zu Standards, häufig neben der Definition einer Luftschnittstelle auch Eigenschaften des Empfängers.} von einer Hardwareplattform auf eine andere. Durch das Aufkommen finanzierbarer Plattformen wie der Universal Software Radio Peripheral (USRP) von Ettus Research oder der Small Form Factor Software Defined Radio Development Platform (SFF SDR DP) von Lyrtech wird eine experimentelle Untersuchung der Portabilität von Wellenformen durchführbar. Dabei treten Fragen nach einer Entwicklungsstrategie für die SDR Software unter Berücksichtigung der Portabilität sowie nach den Kosten, die eine Portierung verursacht, in den Vordergrund. Um hierfür Antworten finden zu können, müssen, neben einem profunden Wissen über die beteiligten SDR Plattformen, Kenntnisse über Wellenformen bzw. Standards vorliegen. Dazu kommt die Beherrschung der notwendigen Hilfsmittel wie Programmiersprachen von MatLab über Python und C bis hin zu VHDL, Verilog und Assembler sowie der Umgang mit Messmitteln wie Signalgeneratoren und -analysatoren, die für den Nachweis erfolgreicher Arbeit, der die Interoperabilität zwischen auf verschiedenen Hardwareplattformen basierenden Funkgeräten umfasst, gebraucht werden.
+\begin{itemize}
 
-%Auf der Basis des am KIT Institut für Nachrichtentechnik (Communications Engineering Lab, CEL) eingerichteten Funklabors hat Stefan Nagel die Portabilität verschiedener Wellenformen zwischen den beiden oben genannten Hardwareplattformen USRP und SFF SDR DP untersucht. Mit der Dissertation \emph{Portable Waveform Development for Software Defined Radios} legt er die wesentlichen Ergebnisse seiner Arbeit vor.
+\item \textbf{Höhere Übertragungsbandbreiten:} Der einfachste Weg, zu höheren Funkkapazitäten zu kommen, besteht natürlich in der Zuteilung weiterer Frequenzbereiche. Solche sind aber unterhalb von 6 GHz kaum noch zu identifizieren, so dass inzwischen untersucht wird, mit welchen Mitteln höhere Frequenzen, z.B. im Bereich um 90 GHz, für die Mobilkommunikation nutzbar gemacht werden können. 
 
-%Die Arbeit trägt insofern nachhaltig zum Fortschritt von Wissenschaft und Technik bei, als hier erstmalig, basierend auf der Model Driven Architecture (MDA) der Object Management Group (OMG), die Software für die Signalverarbeitung verschiedener Funkübertragungsstandards entwickelt, implementiert und von einer Plattform auf eine andere portiert wurde. 
+\item \textbf{Cognitive Radio:} Durch den Einsatz intelligenter flexibler Funksysteme können innerhalb bestehender Mobilfunksysteme brachliegende Übertragungsressourcen genutzt werden. Das bedeutet, dass ein Primärnutzersystem innerhalb des ihm zugeteilten Frequenzbereichs unter bestimmten Bedingungen den Betrieb von Sekundärnutzersystemen zulässt. 
 
+\item \textbf{Heterogene Netze:} Ein derzeit bereits genutzter Ansatz zur Kapazitätserweiterung besteht darin, Basisstationen mit niedriger Leistung und damit Pico- bzw. Femtozellen in bestehende Netze einzufügen. Andere Untersuchungen zielen auf den Einsatz der \textit{Device-to-Device} Technologie oder von Ad-hoc Netzen ab. 
 
-Karlsruhe, im 20XX\newline
-Friedrich Jondral
+\item \textbf{Mehrantennentechnologien:} Die Nutzung der räumlichen Dimension durch \textit{Multiple Input Multiple Output} Systeme zur Verbesserung der  Ve-rbindungsqualität oder zur Erhöhung der Datenrate wird in zukünftigen Netzen eine wichtige Rolle spielen. Je nachdem, welche Kanalzustandsinformation sende- und empfangsseitig verfügbar ist, kann hier an räumliches Multiplexing, räumliche Interferenzreduktion, Raumdiversity oder Kombinationen dieser Technologien gedacht werden. 
+
+\end{itemize}
+
+Die vorliegende Dissertation untersucht den Einsatz von \textit{Cognitive Radio} Systemen für den \textit{Inhouse}-Betrieb. Dabei wird die Anbindung an das Mobilfunknetz über eine kognitive Kleinzellen-Basisstation gewährleistet, die auf der einen Seite den \textit{Inhouse}-Betrieb steuert und auf der anderen Seite per Richtfunk mit der Basisstation einer Mobilfunkzelle (Makrozelle) verbunden ist. In solchen Konstellationen muss sichergestellt sein, dass die in die Makrozelle eingesetzte Kleinzelle den Betrieb innerhalb der Makrozelle nicht merklich stört. Darüber hinaus sollte natürlich auch die Makrozelle die eingesetzte Kleinzelle nicht wesentlich stören. Es geht also darum, die zwischen den beiden Zellen existierenden Querkanäle in den Griff zu bekommen, um bei gleich bleibender Übertragungsqualität in der Makrozelle den Durchsatz in der Kleinzelle zu optimieren zu können. Diese Fragestellung wird in der in den vergangenen Jahren veröffentlichten Literatur ausführlich diskutiert, wobei allerdings stets die exakte Kenntnis aller beteiligten Kanäle an der Kleinzellen-Basisstation vorausgesetzt wird. Für den praktischen Einsatz ist eine solche Voraussetzung natürlich nicht haltbar. Daher befasst sich die vorliegende Dissertation mit der Leistungsanalyse kognitiver Funksysteme bei einer aus Schätzungen resultierenden, nicht perfekten Kanalkenntnis. Die durch die Arbeit von Ankit Kaushik geleisteten Beiträge zum Fortschritt von Wissenschaft und Technik umfassen insbesondere
+
+\begin{itemize}
+
+\item die Entwicklung und Einbeziehung von Schätzverfahren für die zwischen Primär- und Sekundärnutzern bestehenden (ungewollten) Kanäle und der Nachweis, dass deren Einsatz die Durchsätze von Primär- und Sekundärsystem praktisch kaum beeinflusst, 
+	
+\item die stochastische Charakterisierung dieser Kanäle.
+
+\item die Optimierung des Durchsatzes in \textit{Cognitive Small Cells},
+
+\item die Verifikation der im Rahmen der Arbeit entstandenen theoretischen Ergebnisse durch Simulationen und experimentelle Untersuchungen und
+
+\item den Aufbau eines Demonstrators für ein \textit{Underlay System}\footnote{Ein \textit{Underlay System} ist ein spezielles \textit{Cognitive Radio} System.}.
+
+\end{itemize}
+
+Der Ausgangspunkt der Arbeiten von Ankit Kaushik findet sich im in den Jahren 2012 bis 2014 vom Bundesministerium für Bildung und Forschung (BMBF) geförderten Teilprojekt \textit{Spektrumsmanagement und Kognitive Indoorversorgung} (SKI)\footnote{Förderkennzeichen: 01BU1205} des Verbundprojekts Cognitive Mobile Radio - Intelligente Netzwerkelemente zur effizienten Ressourcennutzung in mobilen Funkzugangsnetzen (CoMoRa). Die in seiner Dissertation dokumentierten Ergebnisse gehen jedoch weit über die dort vorgenommenen Untersuchungen hinaus.
+
+Karlsruhe, im Februar 2017\newline
+Friedrich K. Jondral
 
 
 
