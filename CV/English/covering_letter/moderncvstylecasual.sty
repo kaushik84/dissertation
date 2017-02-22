@@ -130,7 +130,7 @@
   \begin{minipage}[t]{.5\textwidth}
     \raggedright%
     \addressfont%
-    {\bfseries\upshape\@recipientname}\\%
+    {\upshape\@recipientname}\\%
     \@recipientaddress%
   \end{minipage}
   % date
@@ -140,7 +140,7 @@
   
   % opening
   \raggedright%
-  \bfseries Job Reference: \@jobref\\[1.0em]%
+  Job Reference: \@jobref\\[1.0em]%
   \@opening\\[1.0em]%
   % ensure no extra spacing after \makelettertitle due to a possible blank line
 %  \ignorespacesafterend% not working
@@ -154,7 +154,7 @@
         \centering%
         \addressfont\color{color2}%
         \vspace{-\baselineskip}% to cancel out the extra vertical space taken by the name (below) and ensure perfect alignment of letter and cv footers
-        \strut{\bfseries\upshape\@firstname~\@lastname}\\% the \strut is required to ensure the line is exactly \baselineskip tall
+        \strut{\upshape\@firstname~\@lastname}\\% the \strut is required to ensure the line is exactly \baselineskip tall
         \ifthenelse{\isundefined{\@addressstreet}}{}{\addtofooter[]{\addresssymbol\@addressstreet}%
           \ifthenelse{\equal{\@addresscity}{}}{}{\addtofooter[~--~]{\@addresscity}}% if \addresstreet is defined, \addresscity and addresscountry will always be defined but could be empty
           \ifthenelse{\equal{\@addresscountry}{}}{}{\addtofooter[~--~]{\@addresscountry}}%
@@ -170,7 +170,7 @@
 
 \renewcommand*{\makeletterclosing}{
   \@closing\\[0em]%
-  {\bfseries\@firstname~\@lastname}%
+  {\@firstname~\@lastname}%
   \ifthenelse{\isundefined{\@enclosure}}{}{%
     \\%
     \vfil%
