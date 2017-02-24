@@ -1,0 +1,82 @@
+%% start of file `template.tex'.
+%% Copyright 2006-2013 Xavier Danaux (xdanaux@gmail.com).
+%
+% This work may be distributed and/or modified under the
+% conditions of the LaTeX Project Public License version 1.3c,
+% available at http://www.latex-project.org/lppl/.
+
+
+\documentclass[11pt,a4paper,sans]{moderncv}        % possible options include font size ('10pt', '11pt' and '12pt'), paper size ('a4paper', 'letterpaper', 'a5paper', 'legalpaper', 'executivepaper' and 'landscape') and font family ('sans' and 'roman')
+
+% moderncv themes
+\moderncvstyle{classic}                             % style options are 'casual' (default), 'classic', 'oldstyle' and 'banking'
+\moderncvcolor{blue}                               % color options 'blue' (default), 'orange', 'green', 'red', 'purple', 'grey' and 'black'
+%\renewcommand{\familydefault}{\sfdefault}         % to set the default font; use '\sfdefault' for the default sans serif font, '\rmdefault' for the default roman one, or any tex font name
+%\nopagenumbers{}                                  % uncomment to suppress automatic page numbering for CVs longer than one page
+
+% character encoding
+\usepackage[utf8]{inputenc}                       % if you are not using xelatex ou lualatex, replace by the encoding you are using
+%\usepackage{CJKutf8}                              % if you need to use CJK to typeset your resume in Chinese, Japanese or Korean
+
+% adjust the page margins
+\usepackage[scale=0.75]{geometry}
+%\setlength{\hintscolumnwidth}{3cm}                % if you want to change the width of the column with the dates
+%\setlength{\makecvtitlenamewidth}{10cm}           % for the 'classic' style, if you want to force the width allocated to your name and avoid line breaks. be careful though, the length is normally calculated to avoid any overlap with your personal info; use this at your own typographical risks...
+
+% personal data
+\name{Ankit}{Kaushik}
+%\title{5G Networks Research Scientist Senior Researcher}                               % optional, remove / comment the line if not wanted
+%\address{Luise Riegger Strasse 58}{76137 Karlsruhe}{Germany}% optional, remove / comment the line if not wanted; the "postcode city" and and "country" arguments can be omitted or provided empty
+%\phone[mobile]{+49~(176)~236~457~33}                   % optional, remove / comment the line if not wanted
+%\phone[fixed]{+49~(721)~608~437~48}                    % optional, remove / comment the line if not wanted
+%\phone[fax]{+3~(456)~789~012}                      % optional, remove / comment the line if not wanted
+%\email{ankit.kaushik1984@gmail.com}                               % optional, remove / comment the line if not wanted
+%\homepage{\url{http://www.cel.kit.edu/english/team_1316.php}}                         % optional, remove / comment the line if not wanted
+%\extrainfo{additional information}                 % optional, remove / comment the line if not wanted
+\photo[64pt][0.4pt]{picture}                       % optional, remove / comment the line if not wanted; '64pt' is the height the picture must be resized to, 0.4pt is the thickness of the frame around it (put it to 0pt for no frame) and 'picture' is the name of the picture file
+\quote{Some quote}                                 % optional, remove / comment the line if not wanted
+
+% to show numerical labels in the bibliography (default is to show no labels); only useful if you make citations in your resume
+%\makeatletter
+%\renewcommand*{\bibliographyitemlabel}{\@biblabel{\arabic{enumiv}}}
+%\makeatother
+%\renewcommand*{\bibliographyitemlabel}{[\arabic{enumiv}]}% CONSIDER REPLACING THE ABOVE BY THIS
+
+% bibliography with mutiple entries
+%\usepackage{multibib}
+%\newcites{book,misc}{{Books},{Others}}
+%----------------------------------------------------------------------------------
+%            content
+%----------------------------------------------------------------------------------
+\begin{document}
+%-----       letter       ---------------------------------------------------------
+% recipient data
+\recipient{Recruitment team}{NOKIA Bell Labs}
+\jobref{Research Engineer}
+\date{\today}
+\opening{Dear Dr. Hans-Peter Mayer,}
+\closing{Yours faithfully,}
+%\enclosure[Attached]{curriculum vitae, which includes the list of publications}          % use an optional argument to use a string other than "Enclosure", or redefine \enclname
+\makelettertitle
+I will be graduating with a Doctor's degree in Electrical Engineering in January 2017 from Karlsruhe Institute of Technology, Karlsruhe, Germany. 
+
+My research primarily focuses on cognitive radio that presents an alternative approach of resolving spectrum demand for the upcoming 5G networks, by opportunistically accessing the licensed spectrum. The main objective of my research was to identify aspects (including signal uncertainty, noise uncertainty, channel knowledge and RF distortions) that are fundamental to the hardware implementation of cognitive radio systems. 
+
+The knowledge of the involved channels residing within a cognitive radio system is one such aspect dealt in my thesis. From the physical layer perspective, it has been identified that the channel knowledge is extremely necessary for the realization of the cognitive radio techniques (such as spectrum sensing and power control) on a hardware. An access to this knowledge allows a cognitive radio system to control the interference accumulated by the primary system. In my research, this notion has been extensively justified and resolved through adequate theoretical analysis while considering a hardware deployment. As a result, the theoretical findings are validated by means of hardware implementation using a software defined platform. A part of my findings was presented at CoMoRa project meetings.   
+
+%Since I am highly interested in research related to wireless communications, I believe starting as a researcher at NOKIA Bell Labs would be the next logical step for me. 
+%I am approaching you in this matter because your department is involved with various technologies for next generation wireless systems, such as waveform design, spectrum opportunities and spatial signal processing, which are well aligned to my research interests. 
+
+Based on my current research experience, I believe procurement of an additional source of spectrum -- assuring connectivity to billions of devices and meeting huge volumes of mobile traffic -- is one of the biggest challenges currently faced by the wireless community. Cognitive radio along with millimeter-wave technology and visible light communications, or their combination, are envisioned as the possible candidates that could overcome this demand of spectrum for future wireless standards. Investigating these aforementioned technologies is one such research area, where I would like to focus on. From the physical layer perspective, I believe that by analyzing the performance of these technologies or by resolving potential bottlenecks would promote their successful incorporation in future wireless standards. Besides, in accordance with my industrial and research experience, I am interested in validating the major findings in the form of hardware implementations or demonstrations. %Besides, I am attracted towards the fact that Bell Labs, NOKIA provides a great opportunity to collaborate with research institutions. %Despite the fact that my research experience has been confined mostly to the physical layer aspects for wireless communications, I am willing extend my knowledge to optical communications, particularly in the direction of fixed networks and the related architecture, as mentioned in the job description.
+
+Despite the fact that the spectrum opportunities, particularly cognitive radio, are well associated to my research experience, I am equally inclined towards key technologies, including spatial signal processing (massive MIMO, 3D-beamforming), full-duplex transmissions and waveform design. 
+
+I assume, to a certain extent, I have conveyed my research interests and hope that my profile fits to your workgroup. I am looking forward to hearing from you. Please let me know if you need any further information. 
+
+
+\makeletterclosing
+
+\end{document}
+
+
+%% end of file `template.tex'.
