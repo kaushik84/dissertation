@@ -188,9 +188,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="2"
-     inkscape:cx="386.98768"
-     inkscape:cy="342.86254"
+     inkscape:zoom="0.78595116"
+     inkscape:cx="446.03436"
+     inkscape:cy="191.09179"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="true"
@@ -212,7 +212,7 @@
        enabled="true"
        snapvisiblegridlinesonly="true"
        originx="52.153959px"
-       originy="-231.34926px" />
+       originy="-231.34953px" />
   </sodipodi:namedview>
   <metadata
      id="metadata7">
@@ -222,7 +222,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -239,7 +239,7 @@
        sodipodi:cy="532.36218"
        sodipodi:rx="300"
        sodipodi:ry="140"
-       d="m 359.68778,392.4352 a 300,140 0 1 1 -1.5e-4,0"
+       d="m 359.68778,392.4352 c 165.59901,2.49686 295.50617,67.16841 290.15576,144.44795 C 644.49312,614.16269 505.91123,674.78603 340.31222,672.28917 174.71321,669.79231 44.806049,605.12076 50.156463,527.84122 55.506875,450.56171 194.08867,389.93838 359.68763,392.4352"
        sodipodi:start="4.7446872"
        sodipodi:end="11.027872"
        sodipodi:open="true" />
@@ -299,7 +299,7 @@
          sodipodi:role="line"
          id="tspan5533">In-band Full-Duplex</tspan><tspan
          style="font-size:20px;text-align:center;text-anchor:middle;font-family:Times;-inkscape-font-specification:Times"
-         y="600.15485"
+         y="602.65485"
          x="72.646446"
          sodipodi:role="line"
          id="tspan5557">Communications</tspan></text>
@@ -345,7 +345,7 @@
          y="550.68011"
          x="349.5"
          sodipodi:role="line"
-         id="tspan6758">Wireless System</tspan></text>
+         id="tspan6758">Wireless Systems</tspan></text>
     <flowRoot
        xml:space="preserve"
        id="flowRoot5497"
@@ -356,7 +356,7 @@
            height="122.32948"
            x="-54.447224"
            y="679.00983" /></flowRegion><flowPara
-         id="flowPara5503"></flowPara></flowRoot>    <path
+         id="flowPara5503" /></flowRoot>    <path
        transform="translate(-7.03301,24.845674)"
        sodipodi:open="true"
        sodipodi:end="11.027822"
@@ -465,20 +465,20 @@
     <text
        xml:space="preserve"
        style="font-size:20px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
-       x="352.29291"
+       x="350.7605"
        y="784.10931"
        id="text5551"
        sodipodi:linespacing="125%"><tspan
-         id="tspan5553"
          sodipodi:role="line"
-         x="352.29291"
+         x="350.7605"
          y="784.10931"
-         style="font-size:20px;text-align:center;text-anchor:middle;font-family:Times;-inkscape-font-specification:Times">Cognitive Radio</tspan><tspan
-         sodipodi:role="line"
-         x="352.29291"
-         y="806.60931"
          style="font-size:20px;text-align:center;text-anchor:middle;font-family:Times;-inkscape-font-specification:Times"
-         id="tspan5559">Communications</tspan></text>
+         id="tspan5559">Millimeter-Wave</tspan><tspan
+         sodipodi:role="line"
+         x="350.7605"
+         y="809.10931"
+         style="font-size:20px;text-align:center;text-anchor:middle;font-family:Times;-inkscape-font-specification:Times"
+         id="tspan3856">Communications</tspan></text>
     <path
        sodipodi:type="arc"
        style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:2;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
@@ -531,7 +531,7 @@
          id="tspan5577">Visible Light</tspan><tspan
          id="tspan5579"
          style="font-size:20px;text-align:center;text-anchor:middle;font-family:Times;-inkscape-font-specification:Times"
-         y="806.60931"
+         y="809.10931"
          x="636.87872"
          sodipodi:role="line">Communications</tspan></text>
     <path
@@ -550,20 +550,20 @@
     <text
        sodipodi:linespacing="125%"
        id="text5583"
-       y="784.10931"
-       x="66.878677"
+       y="783.34308"
+       x="64.580017"
        style="font-size:20px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
        xml:space="preserve"><tspan
          style="font-size:20px;text-align:center;text-anchor:middle;font-family:Times;-inkscape-font-specification:Times"
-         y="784.10931"
-         x="66.878677"
+         y="783.34308"
+         x="64.580017"
          sodipodi:role="line"
-         id="tspan6764">Milimeter-Wave</tspan><tspan
+         id="tspan6768">Cognitive Radio</tspan><tspan
          style="font-size:20px;text-align:center;text-anchor:middle;font-family:Times;-inkscape-font-specification:Times"
-         y="806.60931"
-         x="66.878677"
+         y="808.34308"
+         x="64.580017"
          sodipodi:role="line"
-         id="tspan6768">Communications</tspan></text>
+         id="tspan3852">Communications</tspan></text>
     <path
        sodipodi:type="arc"
        style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:2;stroke-linejoin:round;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;stroke-dashoffset:0"
