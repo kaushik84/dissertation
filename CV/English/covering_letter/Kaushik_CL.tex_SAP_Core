@@ -1,0 +1,93 @@
+%% start of file `template.tex'.
+%% Copyright 2006-2013 Xavier Danaux (xdanaux@gmail.com).
+%
+% This work may be distributed and/or modified under the
+% conditions of the LaTeX Project Public License version 1.3c,
+% available at http://www.latex-project.org/lppl/.
+
+
+\documentclass[11pt,a4paper,sans]{moderncv}        % possible options include font size ('10pt', '11pt' and '12pt'), paper size ('a4paper', 'letterpaper', 'a5paper', 'legalpaper', 'executivepaper' and 'landscape') and font family ('sans' and 'roman')
+
+% moderncv themes
+\moderncvstyle{casual}                             % style options are 'casual' (default), 'classic', 'oldstyle' and 'banking'
+\moderncvcolor{blue}                               % color options 'blue' (default), 'orange', 'green', 'red', 'purple', 'grey' and 'black'
+%\renewcommand{\familydefault}{\sfdefault}         % to set the default font; use '\sfdefault' for the default sans serif font, '\rmdefault' for the default roman one, or any tex font name
+%\nopagenumbers{}                                  % uncomment to suppress automatic page numbering for CVs longer than one page
+
+% character encoding
+\usepackage[utf8]{inputenc}                       % if you are not using xelatex ou lualatex, replace by the encoding you are using
+%\usepackage{CJKutf8}                              % if you need to use CJK to typeset your resume in Chinese, Japanese or Korean
+
+%\usepackage{url}
+%\usepackage{hyperref}
+%\hypersetup{
+%    colorlinks=true,
+%    linkcolor=blue,
+%    filecolor=magenta,
+%    urlcolor=blue,
+%}
+
+
+% adjust the page margins
+\usepackage[scale=0.75]{geometry}
+%\setlength{\hintscolumnwidth}{3cm}                % if you want to change the width of the column with the dates
+%\setlength{\makecvtitlenamewidth}{10cm}           % for the 'classic' style, if you want to force the width allocated to your name and avoid line breaks. be careful though, the length is normally calculated to avoid any overlap with your personal info; use this at your own typographical risks...
+
+% personal data
+\name{Ankit}{Kaushik}
+%\title{5G Networks Research Scientist Senior Researcher}                               % optional, remove / comment the line if not wanted
+\address{Luise Riegger Strasse 58}{76137 Karlsruhe}{Germany}% optional, remove / comment the line if not wanted; the "postcode city" and and "country" arguments can be omitted or provided empty
+\phone[mobile]{+49~(176)~236~457~33}                   % optional, remove / comment the line if not wanted
+%\phone[fixed]{+49~(721)~608~437~48}                    % optional, remove / comment the line if not wanted
+%\phone[fax]{+3~(456)~789~012}                      % optional, remove / comment the line if not wanted
+\email{ankit.kaushik1984@gmail.com}                               % optional, remove / comment the line if not wanted
+%\homepage{\url{http://www.cel.kit.edu/english/team_1316.php}}                         % optional, remove / comment the line if not wanted
+%\extrainfo{additional information}                 % optional, remove / comment the line if not wanted
+\photo[64pt][0.4pt]{picture}                       % optional, remove / comment the line if not wanted; '64pt' is the height the picture must be resized to, 0.4pt is the thickness of the frame around it (put it to 0pt for no frame) and 'picture' is the name of the picture file
+\quote{Some quote}                                 % optional, remove / comment the line if not wanted
+
+% to show numerical labels in the bibliography (default is to show no labels); only useful if you make citations in your resume
+%\makeatletter
+%\renewcommand*{\bibliographyitemlabel}{\@biblabel{\arabic{enumiv}}}
+%\makeatother
+%\renewcommand*{\bibliographyitemlabel}{[\arabic{enumiv}]}% CONSIDER REPLACING THE ABOVE BY THIS
+
+% bibliography with mutiple entries
+%\usepackage{multibib}
+%\newcites{book,misc}{{Books},{Others}}
+%----------------------------------------------------------------------------------
+%            content
+%----------------------------------------------------------------------------------
+\begin{document}
+%-----       letter       ---------------------------------------------------------
+% recipient data
+\recipient{Recruitment team}{SAP Walldorf,\\
+Germany}
+\jobref{Requisition ID - 137879: ABAP/C\texttt{++}/Java Developers for core server technology}
+\date{\today}
+\opening{Dear Madam or Sir,}
+\closing{Yours faithfully,}
+\enclosure[Attached]{curriculum vitae, leaving certificate (Leica Camera AG), List of publications, Master Grade, Language Certificate, Dissertation Grade (Provisional)}          % use an optional argument to use a string other than "Enclosure", or redefine \enclname
+\makelettertitle
+I recently graduated with a Doctor's degree (Dr.\,-Ing.) in electrical engineering from Karlsruhe Institute of Technology, Karlsruhe, Germany. My doctoral thesis primarily focuses on cognitive radio that presents an alternative approach of resolving spectrum scarcity for the upcoming 5G networks, by opportunistically accessing the licensed spectrum. %As a result, a significant part of my research was associated with the statistical learning of the access behavior for the licensed users. More importantly, I have been able to justify my theoretical findings by means of implementation. 
+Besides research, I successfully participated in a BMBF (German Federal Ministry of Research and Education) project, supervised master and bachelor theses, held tutorials and laboratory during the semester. 
+
+%For four years and seven months, I have worked for Leica Camera AG in the department of digital imaging on data compression and their container formats. During this period, I was able to extend my knowledge on the work-flow of image data for modern digital cameras. Here, I developed an algorithm for lossless compression of RAW images using context adaptive Huffman codes which is now used in the new line of digital cameras.
+
+Since I am highly interested in research and development, I believe starting as a software developer at SAP would be the next logical step for me. I am approaching you in this matter because your group is looking for candidates that will work on SAP Core technology, which appears to me an exciting opportunity. Besides, I am mainly attracted about the fact that the job description promotes a conducive work environment, knowledge sharing and clear exchange of ideas. 
+It is worthy to mention here that, I believe, I have profound programming skills (C/C\texttt{++}) and suitable experience in software development. Apart from this, I am willing to extend my programming skills in ABAP and Java. 
+
+Besides, I have been associated with open source community, \href{http://gnuradio.org/redmine/projects/gnuradio}{\color{blue}{GNU Radio}}, where I have participated as a mentor in \href{http://gnuradio.org/redmine/projects/gnuradio/wiki/GSoCPastProjects}{\color{blue}{Google Summer of Code 2013}} and contributed by writing tutorials for the community. Moreover, since 2013, I have been serving as treasurer for \href{http://www.ieee-ka.de/about-us/}{\color{blue}{IEEE student branch Karlsruhe}}. These voluntary activities describe my social competence, which, I believe, to a certain extent suffices the job requirements, such as team building and knowledge sharing.  %In particular, in context of my research, I have deployed statistical learning and reinforcement learning algorithms. Apart from this, based on my industrial experience, I have profound knowledge of image and video data sets.   
+%Despite the fact that my experience has been confined mostly to the wireless communications, I am willing extend my knowledge to technologies related to satellite navigation, as mentioned in the job description.
+
+As far as the German language is concerned, I have acquired B1 certification and also possess the capacity to express my views in a clear fashion. In addition to this, I am willing to enhance my language skills towards proficiency. Apart from my professional interest, I believe working at SAP is beneficial for me from a personal perspective, as my wife Mini Kaushik will start at SAP from April 2017 under the department of Mr. Werner Wolf. I would like to mention here that Mr. Wolf has recommended me to apply for the job position. 
+
+I would like to contribute to the ongoing development at SAP and hope that my profile fits to your requirements. I am looking forward to hearing from you. 
+
+
+\makeletterclosing
+
+\end{document}
+
+
+%% end of file `template.tex'.
