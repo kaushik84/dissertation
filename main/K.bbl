@@ -24,7 +24,7 @@
 
 \item[Note:] 
 %\hspace{-\labelwidth}\hspace{-\labelsep} 
-This thesis contains material from the following publications \citeK{Kaushik13, Kaushik15_CC, Kaushik15_ICC, Kaushik16_TWC, Kaushik16_VTC1, Kaushik16_TCCN, Kaushik16_ICC, Kaushik16_CC, Kaushik17}, \textcopyright2013-2017 IEEE. Reprinted, with permission. To maintain the consistency of the thesis, the following publications \citeK{Kaushik14_W, Kaushik14_CC, Kaushik14_P, Kaushik15_D, Kaushik16_VTC2} are not included in the thesis. 
+This thesis contains material from the following publications \citeK{Kaushik13, Kaushik15_CC, Kaushik15_ICC, Kaushik16_TWC, Kaushik16_VTC1, Kaushik16_TCCN, Kaushik16_ICC, Kaushik16_CC, Kaushik17}, \textcopyright2013-2017 IEEE. Reprinted, with permission. To maintain the consistency of the thesis, the following publications \citeK{Kaushik14_W, Kaushik14_CC, Kaushik14_P, Kaushik15_D, Kaushik16_VTC2} are not included in the thesis. Also, the thesis contains material that will appear in publication \citeK{Kaushik17}. 
 %\hspace{-\labelwidth}\hspace{-\labelsep} 
 
 %Also, this thesis contains material that will appear in publication \citeK{Kaushik16_TCCN, Kaushik16_VTC1, Kaushik16_VTC2, Kaushik17}.
@@ -52,13 +52,12 @@ A.~Kaushik, S.~K. Sharma, S.~Chatzinotas, B.~Ottersten, and F.~K. Jondral,
 A.~Kaushik, S.~K. Sharma, S.~Chatzinotas, B.~Ottersten, and F.~K. Jondral,
   ``{Performance Analysis of Interweave Cognitive Radio Systems with Imperfect
   Channel Knowledge over Nakagami Fading Channels},'' in \emph{{IEEE 84th
-  Vehicular Technology Conference (VTC)}}, Sep. 2016, (to appear).
+  Vehicular Technology Conference (VTC)}}, Sep. 2016, pp. 1--5.
 
 \bibitem{Kaushik16_TCCN}
 A.~Kaushik, S.~K. Sharma, S.~Chatzinotas, B.~Ottersten, and F.~K. Jondral,
   ``{On the Performance Analysis of Underlay Cognitive Radio Systems: A
-  Deployment Perspective},'' \emph{{IEEE} Trans. on Cogn. Commun. Netw.}, (to
-  appear).
+  Deployment Perspective},'' \emph{{IEEE} Trans. on Cogn. Commun. Netw.}, vol.~2, no.~3, pp. 273--287, Sep. 2016.
 
 \bibitem{Kaushik16_ICC}
 A.~Kaushik, S.~K. Sharma, S.~Chatzinotas, B.~Ottersten, and F.~K. Jondral,
@@ -81,9 +80,9 @@ A.~Kaushik, S.~K. Sharma, S.~Chatzinotas, B.~Ottersten, and F.~K. Jondral,
 
 \bibitem{Kaushik17}
 A.~Kaushik, S.~K. Sharma, S.~Chatzinotas, B.~Ottersten, and F.~K. Jondral,
-  ``{Modelling and Performance Analysis of Cognitive Radio Systems from a
-  Deployment Perspective},'' in \emph{{Handbook of Cognitive Radio}}, W.~Zhang,
-  Ed.\hskip 1em plus 0.5em minus 0.4em\relax Springer, 2017, (to appear).
+  ``{Performance Analysis of Cognitive Radio Systems from a
+  Deployment Perspective},'' in \emph{{Handbook of Cognve Radio}}, W.~Zhang,
+  Ed.\hskip 1em plus 0.5em minus 0.4em\relax Springer, 2017.
 
 
 \bibitem{Kaushik14_W}
@@ -113,6 +112,6 @@ A.~Kaushik, F.~Wunsch, A.~Sagainov, N.~Cuervo, J.~Demel, S.~Koslowski,
 L.~Rodes, A.~Kaushik, S.~K. Sharma, S.~Chatzinotas, and F.~K. Jondral,
   ``{Square-Law Selector and Square-Law Combiner for Cognitive Radio Systems:
   An Experimental Study},'' in \emph{{IEEE 84th Vehicular Technology Conference
-  (VTC)}}, Sep. 2016, (to appear).
+  (VTC)}}, Sep. 2016, pp. 1--5.
 
 \end{thebibliography}

@@ -20,7 +20,15 @@ numbers=noenddot,
 version=last
 ]{scrbook}
 
-
+\makeatletter
+\DeclareOldFontCommand{\rm}{\normalfont\rmfamily}{\mathrm}
+\DeclareOldFontCommand{\sf}{\normalfont\sffamily}{\mathsf}
+\DeclareOldFontCommand{\tt}{\normalfont\ttfamily}{\mathtt}
+\DeclareOldFontCommand{\bf}{\normalfont\bfseries}{\mathbf}
+\DeclareOldFontCommand{\it}{\normalfont\itshape}{\mathit}
+\DeclareOldFontCommand{\sl}{\normalfont\slshape}{\@nomath\sl}
+\DeclareOldFontCommand{\sc}{\normalfont\scshape}{\@nomath\sc}
+\makeatother
 
 
 %% Language %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -154,7 +162,6 @@ version=last
 \allowdisplaybreaks
 
 
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% DOCUMENT
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -189,10 +196,10 @@ version=last
 
 %\todo{Cover Image}
 \begin{figure}[]
-\vspace{-1.5cm}
-\hspace{-1.8cm}
-%\centering
-\includegraphics[]{../stuff/title}
+\vspace{-0.8cm}
+\hspace{.2cm}
+%\centerin}g
+\centerline{\includegraphics[scale=0.95]{../stuff/title_page}}
 \end{figure}
 %\thispagestyle{empty}
 %\begin{center}
@@ -211,7 +218,7 @@ version=last
 \begin{tabular}{@{}l@{ }l@{}}
 Copyright:&Institut für Nachrichtentechnik (CEL)\\
 &Karlsruher Institut für Technologie (KIT)\\
-&2011\\
+&2017\\
 &\\
 Druck: & Frick Digitaldruck\\
         &Brühlstraße 6\\
@@ -246,28 +253,28 @@ ISSN: & 1433-3821
 %% Chapters %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \mainmatter
 
-%\import{../kapitel01/}{kapitel01}
-\import{../kapitel01/}{d_kapitel01}
+\import{../kapitel01/}{kapitel01}
+%\import{../kapitel01/}{d_kapitel01}
 \cleardoublepage
 
-%\import{../kapitel03/}{kapitel03}
-\import{../kapitel03/}{d_kapitel03}
+\import{../kapitel03/}{kapitel03}
+%\import{../kapitel03/}{d_kapitel03}
 \cleardoublepage
 
-%\import{../kapitel04/}{kapitel04}
-\import{../kapitel04/}{d_kapitel04}
+\import{../kapitel04/}{kapitel04}
+%\import{../kapitel04/}{d_kapitel04}
 \cleardoublepage
 
-%\import{../kapitel05/}{kapitel05}
-\import{../kapitel05/}{d_kapitel05}
+\import{../kapitel05/}{kapitel05}
+%\import{../kapitel05/}{d_kapitel05}
 \cleardoublepage
 
-%\import{../kapitel06/}{kapitel06}
-\import{../kapitel06/}{d_kapitel06}
+\import{../kapitel06/}{kapitel06}
+%\import{../kapitel06/}{d_kapitel06}
 \cleardoublepage
 
-%\import{../kapitel07/}{kapitel07}
-\import{../kapitel07/}{d_kapitel07}
+\import{../kapitel07/}{kapitel07}
+%\import{../kapitel07/}{d_kapitel07}
 \cleardoublepage
 
 %\begin{appendix}
